@@ -23,3 +23,4 @@ $ stow .
 -   `:Lazy sync` -> sync plugins with lazy plugins manager
 -   `:NvCheatsheet` -> show nvchat cheat sheet
 -   `:Telescope keymaps` -> show telescope keymaps
+-   `:source %` -> source lua file
