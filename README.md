@@ -2,7 +2,7 @@
 
 Finally organizing config with dotfiles
 
-## Setup
+## Setup .files
 
 ```sh
 $ stow .
@@ -10,20 +10,12 @@ $ stow .
 
 ## .config/nvim
 
-### LSPs
-
--   [x] C/C++
--   [x] Go
--   [x] JavaScript/Typescript
--   [x] PHP, Twig
--   [x] HTML, CSS, TailwindCSS
--   Spell checker
-
 ### Keymaps
 
 -   `<leader> + th` -> changing theme
 -   `esc` -> escaping from the current buffer
 -   `v + it` -> for selecting tag block of code
+-   `qq` after recoreding macro `q` again, then `@q` to perform the macro
 
 ### Commands
 
