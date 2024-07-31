@@ -81,7 +81,6 @@ CASE_SENSITIVE="true"
 # Syntax Highlighting and Autosuggestions 
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 
-
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -89,7 +88,7 @@ source $ZSH/oh-my-zsh.sh
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -109,18 +108,6 @@ source $ZSH/oh-my-zsh.sh
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# Functions
-# function git-all {
-#   git add -A
-#   if [ "$1" != "" ]
-#   then
-#       git commit -m "$1"
-#   else
-#       git commit -m updates
-#   fi
-#   git push
-# }
-
 # OWN config start
 
 export PATH="$HOME/.local/bin":$PATH
@@ -128,7 +115,7 @@ export PATH="$HOME/.local/bin":$PATH
 alias zshconfig="nvim ~/.zshrc"
 alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# vim
+# VIM
 alias vim="nvim"
 
 # C/C++
@@ -146,14 +133,5 @@ alias pa="php artisan"
 # Go 
 export GOPATH=$HOME/go
 export PATH="$PATH:$GOPATH/bin"
-
-export LANG="en_US.UTF-8"
-export LC_COLLATE="en_US.UTF-8"
-export LC_CTYPE="en_US.UTF-8"
-export LC_MESSAGES="en_US.UTF-8"
-export LC_MONETARY="en_US.UTF-8"
-export LC_NUMERIC="en_US.UTF-8"
-export LC_TIME="en_US.UTF-8"
-export LC_ALL="en_US.UTF-8"
 
 # OWN config end
