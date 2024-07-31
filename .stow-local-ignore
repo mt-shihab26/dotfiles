@@ -23,4 +23,6 @@ _darcs
 ^/COPYING
 
 .DS_Store
+.stylua.toml
+Makefile
 
