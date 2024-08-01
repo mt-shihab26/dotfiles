@@ -1,3 +1,3 @@
 format:
-	stylua . -v
+	@stylua .
 
