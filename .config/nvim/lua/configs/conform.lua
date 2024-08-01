@@ -9,7 +9,7 @@ local options = {
         javascriptreact = { "prettier" },
         typescriptreact = { "prettier" },
         vue = { "prettier" },
-        php = { "pint" },
+        php = { "pint", "prettier" },
     },
 
     format_on_save = {
