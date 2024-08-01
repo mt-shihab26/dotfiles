@@ -8,7 +8,7 @@ Finally organizing config with dotfiles
 $ stow .
 ```
 
-## .config/nvim
+## Neovim
 
 ### Keymaps
 
@@ -24,3 +24,11 @@ $ stow .
 -   `:NvCheatsheet` -> show nvchat cheat sheet
 -   `:Telescope keymaps` -> show telescope keymaps
 -   `:source %` -> source lua file
+
+## Warp
+
+### Keymaps
+
+- `^r` -> fuzzy find commands history
+- `^~` -> to prompt warp ai
+

@@ -5,9 +5,9 @@
 local M = {}
 
 M.ui = {
-    theme = "gatekeeper",
+    theme = "catppuccin",
 
-    transparency = true,
+    transparency = false,
 
     hl_override = {
         Comment = { italic = true },
