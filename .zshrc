@@ -134,6 +134,9 @@ alias pa="php artisan"
 export GOPATH=$HOME/go
 export PATH="$PATH:$GOPATH/bin"
 
+
+eval "$(starship init zsh)"
+
 # OWN config end
 
 
