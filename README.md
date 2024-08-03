@@ -68,6 +68,14 @@ $ stow .
     - `p` -> paste the copied or deleted content
     - note: deleting text in the normal mode also copies that for pasting.
 
+## Commands
+
+- `:source %` -> source current lua file
+
+## lazy.nvim
+
+- `:Lazy` -> opening lazy ui
+
 ## NvChad
 
 - general commands
@@ -77,7 +85,6 @@ $ stow .
     - `:Lazy sync` -> Sync plugins with Lazy plugin manager
     - `:NvCheatsheet` -> Show NvChad cheat sheet
     - `:Telescope keymaps` -> Show Telescope keymaps
-    - `:source %` -> Source current Lua file
 - Visual Mode
     - `v + it` -> Select tag block of code
 
