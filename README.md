@@ -12,13 +12,17 @@ $ stow .
 
 ## Normal Mode
 
-- basic motions
+- fundamental motions
     - `j` -> move down
     - `k` -> move up
     - `h` -> move left
     - `l` -> move right
     - `w` -> move right by word
     - `b` -> move left by word
+    - `_` -> move to beginning of the line
+    - `$` -> move to end of the line
+    - `0` -> move to horizental 0th character
+    - `f<character>` -> move forword to that character
 - motion with count
     - `8j` -> move down 8 lines
     - `6k` -> move up 6 lines
@@ -26,6 +30,7 @@ $ stow .
     - `10l` -> move right 10 characters
 - delete Commands
     - `dd` -> delete current line
+    - `D` -> delete end of line character to current character 
     - `dj` -> delete current line and 1 line below
     - `d3j` -> delete current line and 3 lines below
     - `dk` -> delete current line and 1 line above
@@ -43,6 +48,7 @@ $ stow .
 - enter insert mode
     - `i` -> enter insert mode before the cursor
     - `a` -> enter insert mode after the cursor
+    - `A` -> enter insert mode end of the line
     - `o` -> enter insert mode below the cursor
 - exit insert mode
     - `esc`
