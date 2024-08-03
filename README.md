@@ -39,9 +39,17 @@ $ stow .
 
 ## Insert Mode 
 
-- escaping insert mode
+- go into insert mode
+    - `i` -> go into insert mode on the current character left
+    - `a` -> go into insert mode on the current character right
+- leave insert mode
     -  `esc`
     -  `ctrl + [`
+    -  `ctrl + c`
+
+## Visual Mode
+
+- 
 
 ## NvChad
 
