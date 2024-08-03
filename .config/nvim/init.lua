@@ -72,12 +72,13 @@ vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
 require("conform").setup {
     format_on_save = {
         -- These options will be passed to conform.format()
-        timeout_ms = 500,
+        timeout_ms = 2000,
         lsp_format = "fallback",
     },
     formatters_by_ft = {
         lua = { "stylua" },
-        blade = { "blade-formatter" },
+        blade = { "prettier" },
+        php = { "pint" },
     },
 }
 
@@ -97,6 +98,7 @@ configs.setup {
         "php",
     },
     sync_install = false,
+    auto_install = true,
     highlight = { enable = true },
     indent = { enable = true },
 }
@@ -116,4 +118,3 @@ vim.filetype.add {
         [".*%.blade%.php"] = "blade",
     },
 }
-
