@@ -36,7 +36,7 @@ $ stow .
     - `d3b` -> delete previous 3 words
 - undo/redo
     - `u` -> Undo the previous action
-    - `Ctrl + r` -> Redo the previous action
+    - `^r` -> Redo the previous action
 
 ## Insert Mode
 
@@ -46,29 +46,37 @@ $ stow .
     - `o` -> enter insert mode below the cursor
 - exit insert mode
     - `esc`
-    - `ctrl + [`
-    - `ctrl + c`
+    - `^[`
+    - `^c`
 
 ## Visual Mode
 
--
+- enter visual mode
+    - `v` -> enter character-wise visual mode
+    - `V` -> enter line-wise visual mode
+- visual mode operations
+    - use any normal mode motion commands to select text
+    - `y` -> copy (yank) the selected text
+    - `yy` -> Copy (yank) the whole current line
+    - `d` -> delete the selected text (also copies it)
+    - `p` -> paste the copied or deleted content
+    - note: deleting text in the normal mode also copies that for pasting.
 
 ## NvChad
 
--   `<leader> + th` -> changing theme
--   `esc` -> escaping from the current buffer
--   `v + it` -> for selecting tag block of code
--   `qq` after recoreding macro `q` again, then `@q` to perform the macro
--   `:MasonInstallAll` -> install all mason packages
--   `:Lazy sync` -> sync plugins with lazy plugins manager
--   `:NvCheatsheet` -> show nvchat cheat sheet
--   `:Telescope keymaps` -> show telescope keymaps
--   `:source %` -> source lua file
+- general commands
+    - `<leader> + th` -> Change theme
+    - `Esc` -> Escape from the current buffer
+    - `:MasonInstallAll` -> Install all Mason packages
+    - `:Lazy sync` -> Sync plugins with Lazy plugin manager
+    - `:NvCheatsheet` -> Show NvChad cheat sheet
+    - `:Telescope keymaps` -> Show Telescope keymaps
+    - `:source %` -> Source current Lua file
+- Visual Mode
+    - `v + it` -> Select tag block of code
 
 # Warp
 
-## Keymaps
-
 - `^r` -> fuzzy find commands history
-- `^~` -> to prompt warp ai
+- `^~` -> open warp AI prompt
 
