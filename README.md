@@ -8,7 +8,16 @@ Finally organizing config with dotfiles
 $ stow .
 ```
 
-## Neovim
+## Neovim Basic
+
+### Keymaps
+
+-   `` -> 
+-   `` -> 
+-   `` -> 
+-   `` -> 
+
+## NvChad - Neovim 
 
 ### Keymaps
 

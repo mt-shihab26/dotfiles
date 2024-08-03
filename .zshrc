@@ -106,7 +106,7 @@ eval "$(starship init zsh)"
 # OWN config end
 
 # Herd injected NVM configuration
-export yVM_DIR="/Users/shihab/Library/Application Support/Herd/config/nvm"
+export NVM_DIR="/Users/shihab/Library/Application Support/Herd/config/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
 [[ -f "/Applications/Herd.app/Contents/Resources/config/shell/zshrc.zsh" ]] && builtin source "/Applications/Herd.app/Contents/Resources/config/shell/zshrc.zsh"
