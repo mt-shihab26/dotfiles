@@ -12,44 +12,46 @@ $ stow .
 
 ## Normal Mode
 
-- foundational motions
-    - `j` -> go down
-    - `k` -> go up
-    - `h` -> go left
-    - `l` -> go right
-    - `w` -> go right by word
-    - `b` -> go left by word
-- command count motions
-    - `8j` -> go down to 8th line
-    - `6k` -> go up to 6th line
-    - `9k` -> go left to 6th line
-    - `10l` -> go right to 6th line
-- `d` commands
-    - `dd` -> for deleting line
-    - `u` -> undo the previous action
-    - `ctrl + r` -> redo the previous action
-    - `dj` -> delete current line with below 1 line 
-    - `d3j` -> delete current line with below 3 lines
-    - `dk` -> delete current line with above 1 line 
-    - `d3k` -> delete current line with ebove 3 lines
-    - `dw` ->  delete next 1 word
-    - `d2w` ->  delete next 3 words
-    - `db`->  delete previous 1 word
+- basic motions
+    - `j` -> move down
+    - `k` -> move up
+    - `h` -> move left
+    - `l` -> move right
+    - `w` -> move right by word
+    - `b` -> move left by word
+- motion with count
+    - `8j` -> move down 8 lines
+    - `6k` -> move up 6 lines
+    - `9h` -> move left 9 characters
+    - `10l` -> move right 10 characters
+- delete Commands
+    - `dd` -> delete current line
+    - `dj` -> delete current line and 1 line below
+    - `d3j` -> delete current line and 3 lines below
+    - `dk` -> delete current line and 1 line above
+    - `d3k` -> delete current line and 3 lines above
+    - `dw` -> delete next word
+    - `d2w` -> delete next 2 words
+    - `db` -> delete previous word
     - `d3b` -> delete previous 3 words
+- undo/redo
+    - `u` -> Undo the previous action
+    - `Ctrl + r` -> Redo the previous action
 
-## Insert Mode 
+## Insert Mode
 
-- go into insert mode
-    - `i` -> go into insert mode on the current character left
-    - `a` -> go into insert mode on the current character right
-- leave insert mode
-    -  `esc`
-    -  `ctrl + [`
-    -  `ctrl + c`
+- enter insert mode
+    - `i` -> enter insert mode before the cursor
+    - `a` -> enter insert mode after the cursor
+    - `o` -> enter insert mode below the cursor
+- exit insert mode
+    - `esc`
+    - `ctrl + [`
+    - `ctrl + c`
 
 ## Visual Mode
 
-- 
+-
 
 ## NvChad
 
