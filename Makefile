@@ -1,3 +1,2 @@
 format:
-	@stylua .
-
+	@stylua .config -v
