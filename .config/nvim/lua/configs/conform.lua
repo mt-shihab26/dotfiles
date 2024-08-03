@@ -3,14 +3,17 @@ require("conform").setup {
         lua = { "stylua" },
         html = { "prettier" },
         css = { "prettier" },
+        json = { "prettier" },
+        markdown = { "prettier" },
         c = { "clang-format" },
         cpp = { "clang-format" },
         javascript = { "prettier" },
         typescript = { "prettier" },
         php = { "pint" },
         blade = { "prettier" },
-        twig = { "twig-cs-fixer" },
         elixir = { "mix" },
+        go = { "goimports", "gofmt" },
+        rust = { "rustfmt", lsp_format = "fallback" },
     },
 
     format_on_save = {
