@@ -12,9 +12,7 @@ local options = {
 }
 
 local config = function()
-    local neotree = require "neo-tree"
-
-    neotree.setup(options)
+    require("neo-tree").setup(options)
 
     vim.keymap.set("n", "<leader>e", ":Neotree filesystem action=focus reveal<CR>", {})
     vim.keymap.set("n", "<leader>p", ":Neotree filesystem action=close reveal<CR>", {})

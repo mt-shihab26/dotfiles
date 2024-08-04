@@ -24,10 +24,9 @@ local options = {
 }
 
 local config = function()
-    local configs = require "nvim-treesitter.configs"
-    local parsers = require "nvim-treesitter.parsers"
+    require("nvim-treesitter.configs").setup(options)
 
-    configs.setup(options)
+    local parsers = require "nvim-treesitter.parsers"
 
     parsers.get_parser_configs().blade = {
         install_info = {

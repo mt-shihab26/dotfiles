@@ -23,9 +23,7 @@ local options = {
 }
 
 local config = function()
-    local conform = require "conform"
-
-    conform.setup(options)
+    require("conform").setup(options)
 end
 
 return {

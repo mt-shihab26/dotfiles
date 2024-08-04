@@ -20,11 +20,10 @@ local options = {
 }
 
 local config = function()
-    local telescope = require "telescope"
+    require("telescope").setup(options)
+
     local builtin = require "telescope.builtin"
     local _config = require "telescope.config"
-
-    telescope.setup(options)
 
     vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
     vim.keymap.set("n", "<leader>fw", builtin.live_grep, {})
