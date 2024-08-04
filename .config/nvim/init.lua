@@ -41,3 +41,4 @@ end)
 require "configs.conform"
 require "configs.treesitter"
 require "configs.nvimtree"
+require "configs.telescope"

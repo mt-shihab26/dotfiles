@@ -27,6 +27,7 @@ return {
                 "javascript",
                 "typescript",
                 "php",
+                "php_only",
                 "twig",
                 "elixir",
                 "go",
