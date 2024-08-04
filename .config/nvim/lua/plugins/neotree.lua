@@ -16,7 +16,8 @@ local config = function()
 
     neotree.setup(options)
 
-    vim.keymap.set("n", "<leader>e", ":Neotree filesystem toggle reveal<CR>", {})
+    vim.keymap.set("n", "<leader>e", ":Neotree filesystem action=focus reveal<CR>", {})
+    vim.keymap.set("n", "<leader>p", ":Neotree filesystem action=close reveal<CR>", {})
     vim.keymap.set("n", "<C-n>", ":Neotree filesystem toggle reveal<CR>", {})
 end
 
