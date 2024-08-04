@@ -1,17 +1,31 @@
+local options = {
+    formatters_by_ft = {
+        lua = { "stylua" },
+        html = { "prettier" },
+        css = { "prettier" },
+        json = { "prettier" },
+        markdown = { "prettier" },
+        c = { "clang-format" },
+        cpp = { "clang-format" },
+        javascript = { "prettier" },
+        typescript = { "prettier" },
+        php = { "pint" },
+        blade = { "prettier" },
+        elixir = { "mix" },
+        go = { "goimports", "gofmt" },
+        rust = { "rustfmt", lsp_format = "fallback" },
+    },
+    format_on_save = {
+        -- These options will be passed to conform.format()
+        timeout_ms = 2000,
+        lsp_format = "fallback",
+    },
+}
+
 local config = function()
     local conform = require "conform"
-    conform.setup {
-        format_on_save = {
-            -- These options will be passed to conform.format()
-            timeout_ms = 2000,
-            lsp_format = "fallback",
-        },
-        formatters_by_ft = {
-            lua = { "stylua" },
-            blade = { "prettier" },
-            php = { "pint" },
-        },
-    }
+
+    conform.setup(options)
 end
 
 return {
