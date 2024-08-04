@@ -1,5 +1,11 @@
+local options = {
+    options = {
+        theme = "dracula",
+    },
+}
+
 local config = function()
-    require("lualine").setup()
+    require("lualine").setup(options)
 end
 
 return {
