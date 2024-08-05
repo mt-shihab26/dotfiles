@@ -8,3 +8,5 @@ vim.wo.relativenumber = true
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
+
+vim.opt.clipboard = "unnamedplus"
