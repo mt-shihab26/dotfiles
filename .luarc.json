@@ -4,6 +4,7 @@
         "vimgrep_arguments"
     ],
     "diagnostics.disable": [
-        "deprecated"
+        "deprecated",
+        "different-requires"
     ]
 }

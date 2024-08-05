@@ -7,10 +7,10 @@ vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
 vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 vim.keymap.set({ "n", "v" }, "L", vim.lsp.buf.code_action, {})
 
--- Neo Tree
-vim.keymap.set("n", "<leader>e", ":Neotree filesystem action=focus reveal<CR>", {})
-vim.keymap.set("n", "<leader>p", ":Neotree filesystem action=close reveal<CR>", {})
-vim.keymap.set("n", "<C-n>", ":Neotree filesystem toggle reveal<CR>", {})
+-- Tree
+vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeFocus<CR>", { desc = "nvimtree focus window" })
+vim.keymap.set("n", "<leader>p", "<cmd>NvimTreeClose<CR>", { desc = "nvimtree focus close" })
+vim.keymap.set("n", "<C-n>", "<cmd>NvimTreeToggle<CR>", { desc = "nvimtree toggle window" })
 
 -- Telescope
 vim.keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "telescope find files" })

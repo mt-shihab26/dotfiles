@@ -31,7 +31,7 @@ return {
                         {
                             desc = "🌲Tree",
                             group = "Label",
-                            action = "Neotree",
+                            action = "NvimTreeToggle",
                             key = "t",
                         },
                         {
