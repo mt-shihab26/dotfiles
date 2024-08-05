@@ -7,6 +7,11 @@ return {
             "nvim-lua/plenary.nvim",
         },
         config = function()
+            -- Clone the default Telescope configuration
+            local vimgrep_arguments = {
+                unpack(require("telescope.config").values.vimgrep_arguments),
+            }
+
             require("telescope").setup {
                 defaults = {
                     vimgrep_arguments = vimgrep_arguments,
@@ -34,13 +39,6 @@ return {
                         },
                     },
                 },
-            }
-
-            local _config = require "telescope.config"
-
-            -- Clone the default Telescope configuration
-            local vimgrep_arguments = {
-                unpack(_config.values.vimgrep_arguments),
             }
 
             -- I want to search in hidden/dot files.

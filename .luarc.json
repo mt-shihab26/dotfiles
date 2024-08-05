@@ -1,10 +1,5 @@
 {
-    "diagnostics.globals": [
-        "vim",
-        "vimgrep_arguments"
-    ],
-    "diagnostics.disable": [
-        "deprecated",
-        "different-requires"
-    ]
+    "diagnostics.globals": ["vim"],
+    "diagnostics.disable": ["deprecated", "different-requires"]
 }
+
