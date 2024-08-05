@@ -8,7 +8,7 @@ Finally organizing config with dotfiles
 $ stow .
 ```
 
-# Neovim
+# Neovim v0.10.1
 
 ## Normal Mode
 
@@ -67,6 +67,7 @@ $ stow .
     -   `d` -> delete the selected text (also copies it)
     -   `p` -> paste the copied or deleted content
     -   note: deleting text in the normal mode also copies that for pasting.
+    -   `v + it` -> Select tag block of code
 
 ## Commands
 
@@ -77,15 +78,12 @@ $ stow .
 
 ## NvChad
 
--   general commands
-    -   `<leader> + th` -> Change theme
-    -   `Esc` -> Escape from the current buffer
-    -   `:MasonInstallAll` -> Install all Mason packages
-    -   `:Lazy sync` -> Sync plugins with Lazy plugin manager
-    -   `:NvCheatsheet` -> Show NvChad cheat sheet
-    -   `:Telescope keymaps` -> Show Telescope keymaps
--   Visual Mode
-    -   `v + it` -> Select tag block of code
+-   `<leader> + th` -> Change theme
+-   `Esc` -> Escape from the current buffer
+-   `:MasonInstallAll` -> Install all Mason packages
+-   `:Lazy sync` -> Sync plugins with Lazy plugin manager
+-   `:NvCheatsheet` -> Show NvChad cheat sheet
+-   `:Telescope keymaps` -> Show Telescope keymaps
 
 # Warp
 
