@@ -3,7 +3,9 @@ return {
         "nvim-telescope/telescope.nvim",
         cmd = "Telescope",
         tag = "0.1.8",
-        dependencies = { "nvim-lua/plenary.nvim" },
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+        },
         config = function()
             require("telescope").setup {
                 defaults = {
@@ -15,13 +17,21 @@ return {
                         },
                     },
                     mappings = {
-                        n = { ["q"] = require("telescope.actions").close },
+                        n = {
+                            ["q"] = require("telescope.actions").close,
+                        },
                     },
                 },
                 pickers = {
                     find_files = {
                         -- `hidden = true` will still show the inside of `.git/` as it's not `.gitignore`d.
-                        find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
+                        find_command = {
+                            "rg",
+                            "--files",
+                            "--hidden",
+                            "--glob",
+                            "!**/.git/*",
+                        },
                     },
                 },
             }
@@ -29,7 +39,9 @@ return {
             local _config = require "telescope.config"
 
             -- Clone the default Telescope configuration
-            local vimgrep_arguments = { unpack(_config.values.vimgrep_arguments) }
+            local vimgrep_arguments = {
+                unpack(_config.values.vimgrep_arguments),
+            }
 
             -- I want to search in hidden/dot files.
             table.insert(vimgrep_arguments, "--hidden")
