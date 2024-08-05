@@ -17,7 +17,7 @@ local lsps = {
     "nginx_language_server",
     "sqlls",
 
-    -- "clangd",
+    "clangd",
 
     "tsserver",
     "vuels",
@@ -25,9 +25,7 @@ local lsps = {
     "astro",
 
     "intelephense",
-    "stimulus_ls",
     "twiggy_language_server",
-    "pest_ls",
 
     "elixirls",
 
