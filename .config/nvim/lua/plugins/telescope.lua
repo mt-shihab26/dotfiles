@@ -25,14 +25,7 @@ return {
                 },
             }
 
-            local builtin = require "telescope.builtin"
             local _config = require "telescope.config"
-
-            vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
-            vim.keymap.set("n", "<leader>fw", builtin.live_grep, {})
-            vim.keymap.set("n", "<leader>fc", builtin.git_commits, {})
-            vim.keymap.set("n", "<leader>fs", builtin.git_status, {})
-            vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
 
             -- Clone the default Telescope configuration
             local vimgrep_arguments = { unpack(_config.values.vimgrep_arguments) }
