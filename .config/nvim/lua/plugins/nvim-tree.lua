@@ -21,7 +21,7 @@ return {
                     update_root = false,
                 },
                 view = {
-                    width = 40,
+                    width = 36,
                 },
                 renderer = {
                     root_folder_label = false,
