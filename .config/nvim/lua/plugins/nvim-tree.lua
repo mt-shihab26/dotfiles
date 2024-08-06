@@ -22,10 +22,14 @@ return {
                 },
                 view = {
                     width = 36,
+                    number = true,
+                    relativenumber = true,
                 },
                 renderer = {
                     highlight_git = true,
-                    indent_markers = { enable = true },
+                    indent_markers = {
+                        enable = true,
+                    },
                     icons = {
                         glyphs = {
                             default = "󰈚",
