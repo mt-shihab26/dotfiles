@@ -27,7 +27,7 @@ return {
         config = function()
             require("flow").setup {
                 transparent = true,
-                fluo_color = "pink", --  pink, yellow, orange, green
+                fluo_color = "green", --  pink, yellow, orange, green
                 mode = "normal", -- normal, bright, desaturate, dark
                 aggressive_spell = false,
             }
@@ -115,6 +115,13 @@ return {
             }
 
             hooks.register(hooks.type.SCOPE_HIGHLIGHT, hooks.builtin.scope_highlight_from_extmark)
+        end,
+    },
+    {
+        "lewis6991/gitsigns.nvim",
+        event = { "BufReadPre", "BufNewFile" },
+        config = function()
+            require("gitsigns").setup()
         end,
     },
 }
