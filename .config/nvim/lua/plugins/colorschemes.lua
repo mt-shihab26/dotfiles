@@ -40,6 +40,14 @@ return {
         end,
     },
     {
+        "craftzdog/solarized-osaka.nvim",
+        config = function()
+            require("solarized-osaka").setup {
+                transparent = false,
+            }
+        end,
+    },
+    {
         "zaldih/themery.nvim",
         config = function()
             require("themery").setup {
@@ -60,6 +68,7 @@ return {
                     "flow",
                     "dracula",
                     "dracula-soft",
+                    "solarized-osaka",
                 },
                 livePreview = true,
             }
