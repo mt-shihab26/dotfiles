@@ -1,3 +1,6 @@
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
+
 require "./options"
-require "./lazy"
 require "./keymaps"
+require "./lazy"
