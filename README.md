@@ -1,6 +1,6 @@
 # dotfiles
 
-        Finally organizing config with dotfiles
+Finally organizing config with dotfiles
 
 # Setup .files
 
@@ -70,7 +70,9 @@ $ stow .
 
 ## Keymaps
 
--   `<leader>th` -> change color scheme
+-   `<leader>th` -> open color scheme changer
+-   `<leader>lg` -> open lazygit inside neovim
+-   `<leader>ld` -> open lazydocker inside neovim
 
 ## Commands
 
@@ -81,6 +83,14 @@ $ stow .
 -   `:Lazy sync` -> update plugins with lazy plugin manager
 -   `:Telescope keymaps` -> show telescope keymaps
 
-## Lazygit
+# Lazygit
 
 -   `$ lazygit` -> open lazygit from terminal
+
+# Lazydocker
+
+-   `$ lazydocker` -> open lazydocker from terminal
+
+# Lazysql
+
+-   `$ lazysql` -> open lazysql from terminal

@@ -42,4 +42,12 @@ map("n", "<S-tab>", "<cmd>BufferLineCyclePrev<CR>", opts { desc = "Previous buff
 map("n", "<C-x>", ":bp<bar>sp<bar>bn<bar>bd<CR>", opts { desc = "Close buffer" })
 
 -- Colorscheme
-map("n", "<leader>th", "<cmd>Themery<CR>", opts { desc = "Open colorscheme changer dropdown" })
+map("n", "<leader>cs", "<cmd>Themery<CR>", opts { desc = "Open colorscheme changer dropdown" })
+
+-- Integrations
+map("n", "<leader>lg", "<cmd>LazyGit<CR>", opts { desc = "Open lazygit inside neovim" })
+map("n", "<leader>ld", "<cmd>LazyDocker<CR>", opts { desc = "Open lazydocker inside neovim" })
+map("n", "<leader>ls", "<cmd>LazySQL<CR>", opts { desc = "Open lazysql inside neovim" })
+
+-- Terminal
+map("n", "<leader>tf", "<cmd>ToggleTerm<CR>", opts { desc = "Open floating terminal" })

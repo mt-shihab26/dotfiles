@@ -79,6 +79,7 @@ export LANG=en_US.UTF-8
 # OWN config start
 
 export PATH="$HOME/.local/bin":$PATH
+export XDG_CONFIG_HOME="$HOME/.config"
 
 alias zshconfig="nvim ~/.zshrc"
 

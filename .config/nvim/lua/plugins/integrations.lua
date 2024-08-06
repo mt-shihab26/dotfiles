@@ -1,6 +1,7 @@
 return {
     {
         "kdheepak/lazygit.nvim",
+        event = "VeryLazy",
         cmd = {
             "LazyGit",
             "LazyGitConfig",
@@ -11,11 +12,25 @@ return {
         dependencies = {
             "nvim-lua/plenary.nvim",
         },
-        -- setting the keybinding for LazyGit with 'keys' is recommended in
-        -- order to load the plugin when the command is run for the first time
-        keys = {
-            { "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
+    },
+    {
+        "crnvl96/lazydocker.nvim",
+        event = "VeryLazy",
+        dependencies = {
+            "MunifTanjim/nui.nvim",
         },
-        config = function() end,
+        config = function()
+            require("lazydocker").setup()
+        end,
+    },
+
+    {
+        "akinsho/toggleterm.nvim",
+        version = "*",
+        config = function()
+            require("toggleterm").setup {
+                direction = "float",
+            }
+        end,
     },
 }
