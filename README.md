@@ -1,6 +1,6 @@
 # dotfiles
 
-Finally organizing config with dotfiles
+        Finally organizing config with dotfiles
 
 # Setup .files
 
