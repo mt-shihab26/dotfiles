@@ -2,7 +2,7 @@
 
 Finally organizing config with dotfiles
 
-# Setup .files
+# Setup .files abc
 
 ```sh
 $ stow .

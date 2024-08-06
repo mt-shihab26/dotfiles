@@ -40,3 +40,6 @@ map("n", "<leader>fs", "<cmd>Telescope git_status<CR>", opts { desc = "Telescope
 map("n", "<tab>", "<cmd>BufferLineCycleNext<CR>", opts { desc = "Next buffer" })
 map("n", "<S-tab>", "<cmd>BufferLineCyclePrev<CR>", opts { desc = "Previous buffer" })
 map("n", "<C-x>", ":bp<bar>sp<bar>bn<bar>bd<CR>", opts { desc = "Close buffer" })
+
+-- Colorscheme
+map("n", "<leader>th", "<cmd>Themery<CR>", opts { desc = "Open colorscheme changer dropdown" })
