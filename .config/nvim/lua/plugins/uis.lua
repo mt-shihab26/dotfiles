@@ -16,11 +16,7 @@ return {
             "nvim-tree/nvim-web-devicons",
         },
         config = function()
-            require("lualine").setup {
-                -- options = {
-                -- theme = "dracula",
-                -- },
-            }
+            require("lualine").setup {}
         end,
     },
     {
@@ -103,7 +99,7 @@ return {
                         {
                             desc = " Files",
                             group = "Label",
-                            action = "Telescope find_files",
+                            action = "TelescopeProjectFiles",
                             key = "f",
                             icon_hl = "@variable",
                         },

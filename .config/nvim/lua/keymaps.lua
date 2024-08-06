@@ -39,7 +39,7 @@ map("n", "<S-tab>", "<cmd>BufferLineCyclePrev<CR>", opts { desc = "previous buff
 map("n", "<C-x>", ":bp<bar>sp<bar>bn<bar>bd<CR>", opts { desc = "close buffer" })
 
 -- Colorscheme
-map("n", "<leader>cs", "<cmd>Themery<CR>", opts { desc = "open colorscheme changer" })
+-- map("n", "<leader>cs", "<cmd>Themery<CR>", opts { desc = "open colorscheme changer" })
 
 -- Integrations
 map("n", "<leader>lg", "<cmd>LazyGit<CR>", opts { desc = "open lazygit" })
