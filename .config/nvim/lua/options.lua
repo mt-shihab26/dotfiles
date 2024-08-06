@@ -1,11 +1,13 @@
-vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
-
 local opt = vim.opt
 
 -- line numbers
 opt.relativenumber = true -- show relative line numbers
 opt.number = true -- shows absolute line number on cursor line (when relative number is on)
+
+-- clipboard
+vim.schedule(function()
+    opt.clipboard = "unnamedplus" -- use system clipboard as default register
+end)
 
 -- tabs & indentation
 opt.tabstop = 4 -- 4 spaces for tabs (prettier default)
@@ -30,12 +32,10 @@ opt.cursorline = true -- highlight the current cursor line
 -- backspace
 opt.backspace = "indent,eol,start" -- allow backspace on indent, end of line or insert mode start position
 
--- clipboard
-opt.clipboard:append "unnamedplus" -- use system clipboard as default register
-
 -- split windows
 opt.splitright = true -- split vertical window to the right
 opt.splitbelow = true -- split horizontal window to the bottom
 
 -- turn off swap file
 opt.swapfile = false
+vim.opt.undofile = true -- save undo history

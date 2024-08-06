@@ -1,4 +1,5 @@
 {
-    "diagnostics.globals": ["vim", "Terminal"],
+    "diagnostics.globals": ["vim", "Terminal",
+        "is_inside_work_tree"],
     "diagnostics.disable": ["deprecated", "different-requires"]
 }

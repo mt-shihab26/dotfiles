@@ -30,11 +30,8 @@ map("n", "<leader>p", "<cmd>NvimTreeClose<CR>", opts { desc = "close file tree" 
 map("n", "<C-n>", "<cmd>NvimTreeToggle<CR>", opts { desc = "toggle file tree" })
 
 -- Telescope
-map("n", "<leader>ff", "<cmd>Telescope find_files<cr>", opts { desc = "find files" })
+map("n", "<leader>ff", "<cmd>TelescopeProjectFiles<CR>", opts { desc = "find files" })
 map("n", "<leader>fw", "<cmd>Telescope live_grep<CR>", opts { desc = "live grep" })
-map("n", "<leader>fb", "<cmd>Telescope buffers<CR>", opts { desc = "find buffers" })
-map("n", "<leader>fc", "<cmd>Telescope git_commits<CR>", opts { desc = "find git commits" })
-map("n", "<leader>fs", "<cmd>Telescope git_status<CR>", opts { desc = "find git status" })
 
 -- Tabs
 map("n", "<tab>", "<cmd>BufferLineCycleNext<CR>", opts { desc = "next buffer" })

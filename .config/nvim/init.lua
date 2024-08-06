@@ -1,4 +1,5 @@
+require "./globals"
 require "./options"
 require "./lazy"
-require "./commands.lazysql"
+require "./commands"
 require "./keymaps"
