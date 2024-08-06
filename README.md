@@ -2,7 +2,7 @@
 
 Finally organizing config with dotfiles
 
-# Setup .files abc
+# Setup .files
 
 ```sh
 $ stow .
@@ -61,7 +61,11 @@ $ stow .
     -   `d` -> delete the selected text (also copies it)
     -   `p` -> paste the copied or deleted content
     -   note: deleting text in the normal mode also copies that for pasting.
-    -   `v + it` -> Select tag block of code
+    -   `vit` -> Select tag block of code
+
+## Keymaps
+
+-   `<leader>th` -> Change theme
 
 ## Commands
 
@@ -69,15 +73,8 @@ $ stow .
 -   `:Lazy` -> opening lazy ui
 -   `:Mason` -> opening mason ui
 -   `:LspInfo` -> opening current buffer connected lsps
-
-## NvChad
-
--   `<leader> + th` -> Change theme
--   `Esc` -> Escape from the current buffer
--   `:MasonInstallAll` -> Install all Mason packages
--   `:Lazy sync` -> Sync plugins with Lazy plugin manager
--   `:NvCheatsheet` -> Show NvChad cheat sheet
--   `:Telescope keymaps` -> Show Telescope keymaps
+-   `:Lazy sync` -> update plugins with lazy plugin manager
+-   `:Telescope keymaps` -> show telescope keymaps
 
 # Warp
 
