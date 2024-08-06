@@ -8,6 +8,11 @@ Finally organizing config with dotfiles
 $ stow .
 ```
 
+# Warp
+
+-   `^r` -> fuzzy find commands history
+-   `^~` -> open warp AI prompt
+
 # Neovim v0.10.1
 
 ## Normal Mode
@@ -65,7 +70,7 @@ $ stow .
 
 ## Keymaps
 
--   `<leader>th` -> Change theme
+-   `<leader>th` -> change color scheme
 
 ## Commands
 
@@ -76,7 +81,6 @@ $ stow .
 -   `:Lazy sync` -> update plugins with lazy plugin manager
 -   `:Telescope keymaps` -> show telescope keymaps
 
-# Warp
+## Lazygit
 
--   `^r` -> fuzzy find commands history
--   `^~` -> open warp AI prompt
+-   `$ lazygit` -> open lazygit from terminal
