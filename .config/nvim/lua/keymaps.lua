@@ -5,13 +5,8 @@ local opts = function(options)
     return vim.tbl_extend("force", default_options, options or {})
 end
 
--- use jk to exit insert mode
 map("i", "jk", "<ESC>", opts { desc = "Exit insert mode with jk" })
-
--- clear search highlights
 -- map("n", "<leader>nh", ":nohl<CR>", opts({ desc = "Clear search highlights" }))
-
--- delete single character without copying into register
 -- map("n", "x", '"_x', opts())
 
 -- Windows
@@ -37,20 +32,11 @@ map("n", "<C-n>", "<cmd>NvimTreeToggle<CR>", opts { desc = "NvimTree toggle wind
 -- Telescope
 map("n", "<leader>ff", "<cmd>Telescope find_files<cr>", opts { desc = "Telescope find files" })
 map("n", "<leader>fw", "<cmd>Telescope live_grep<CR>", opts { desc = "Telescope live grep" })
+map("n", "<leader>fb", "<cmd>Telescope buffers<CR>", opts { desc = "Telescope find buffers" })
 map("n", "<leader>fc", "<cmd>Telescope git_commits<CR>", opts { desc = "Telescope git commits" })
 map("n", "<leader>fs", "<cmd>Telescope git_status<CR>", opts { desc = "Telescope git status" })
-map("n", "<leader>fb", "<cmd>Telescope buffers<CR>", opts { desc = "Telescope find buffers" })
 
--- Barbar Tabs
-map("n", "<tab>", "<cmd>BufferNext<CR>", opts { desc = "Next buffer" })
-map("n", "<S-tab>", "<cmd>BufferPrevious<CR>", opts { desc = "Previous buffer" })
--- map("n", "<t-0>", "<cmd>BufferLast<CR>", opts { desc = "Go to last buffer" })
--- map("n", "<t-1>", "<cmd>BufferGoto 1<CR>", opts { desc = "Go to buffer 1" })
--- map("n", "<t-2>", "<cmd>BufferGoto 2<CR>", opts { desc = "Go to buffer 2" })
--- map("n", "<t-3>", "<cmd>BufferGoto 3<CR>", opts { desc = "Go to buffer 3" })
--- map("n", "<t-4>", "<cmd>BufferGoto 4<CR>", opts { desc = "Go to buffer 4" })
--- map("n", "<t-5>", "<cmd>BufferGoto 5<CR>", opts { desc = "Go to buffer 5" })
--- map("n", "<t-6>", "<cmd>BufferGoto 6<CR>", opts { desc = "Go to buffer 6" })
--- map("n", "<t-7>", "<cmd>BufferGoto 7<CR>", opts { desc = "Go to buffer 7" })
--- map("n", "<t-8>", "<cmd>BufferGoto 8<CR>", opts { desc = "Go to buffer 8" })
--- map("n", "<t-9>", "<cmd>BufferGoto 9<CR>", opts { desc = "Go to buffer 9" })
+-- Tabs
+map("n", "<tab>", "<cmd>BufferLineCycleNext<CR>", opts { desc = "Next buffer" })
+map("n", "<S-tab>", "<cmd>BufferLineCyclePrev<CR>", opts { desc = "Previous buffer" })
+map("n", "<C-x>", ":bp<bar>sp<bar>bn<bar>bd<CR>", opts { desc = "Close buffer" })
