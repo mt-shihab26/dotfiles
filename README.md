@@ -31,14 +31,8 @@ $ stow .
 -   delete Commands
     -   `dd` -> delete current line
     -   `D` -> delete end of line character to current character
-    -   `dj` -> delete current line and 1 line below
-    -   `d3j` -> delete current line and 3 lines below
-    -   `dk` -> delete current line and 1 line above
-    -   `d3k` -> delete current line and 3 lines above
-    -   `dw` -> delete next word
-    -   `d2w` -> delete next 2 words
-    -   `db` -> delete previous word
-    -   `d3b` -> delete previous 3 words
+    -   `dj`, `d3j`, `dk`, `d3k`, `dw`, `d2w`, `db` & `d3b` -> delete with motions
+    -   `d$` -> delete from current character to end of the line
 -   undo/redo
     -   `u` -> Undo the previous action
     -   `^r` -> Redo the previous action
