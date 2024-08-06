@@ -1,5 +1,19 @@
 return {
     {
+        "windwp/nvim-ts-autotag",
+        ft = {
+            "html",
+            "php",
+            "blade",
+            "twig",
+            "javascriptreact",
+            "typescriptreact",
+        },
+        config = function()
+            require("nvim-ts-autotag").setup {}
+        end,
+    },
+    {
         "hrsh7th/nvim-cmp",
         event = "InsertEnter",
         dependencies = {
