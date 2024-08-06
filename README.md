@@ -24,10 +24,16 @@ $ stow .
     -   `l` -> move right
     -   `w` -> move right by word
     -   `b` -> move left by word
-    -   `_` -> move to beginning of the line
+-   horizontal motions
+    -   `_` -> move to first non-blank character of the line
     -   `$` -> move to end of the line
-    -   `0` -> move to horizental 0th character
-    -   `f<character>` -> move forword to that character
+    -   `0` -> move to first character of the line (column 0)
+    -   `f<char>` -> move forward to (and land on) the next occurrence of `<char>`
+    -   `F<char>` -> move backward to (and land on) the previous occurrence of `<char>`
+    -   `t<char>` -> move forward to (and land before) the next occurrence of `<char>`
+    -   `T<char>` -> move backward to (and land after) the previous occurrence of `<char>`
+    -   `;` -> repeat the last `f`, `F`, `t`, or `T` motion forward
+    -   `,` -> repeat the last `f`, `F`, `t`, or `T` motion backward
 -   motion with count
     -   `8j` -> move down 8 lines
     -   `6k` -> move up 6 lines
