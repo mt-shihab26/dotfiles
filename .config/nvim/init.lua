@@ -1,4 +1,5 @@
 require "./globals"
+require "./cmds"
 require "./options"
 require "./lazy"
 require "./commands"

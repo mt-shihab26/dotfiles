@@ -10,8 +10,8 @@ vim.api.nvim_create_user_command("TelescopeProjectFiles", function()
     local builtin = require "telescope.builtin"
 
     if is_inside_work_tree[cwd] then
-        builtin.git_files {}
+        builtin.git_files { show_untracked = true }
     else
-        builtin.find_files {}
+        builtin.find_files { find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" } }
     end
 end, {})

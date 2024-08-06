@@ -10,7 +10,6 @@ return {
             local telescope = require "telescope"
             local config = require "telescope.config"
 
-            -- Clone the default Telescope configuration
             local vimgrep_arguments = { unpack(config.values.vimgrep_arguments) }
 
             -- I want to search in hidden/dot files.
@@ -21,7 +20,6 @@ return {
 
             telescope.setup {
                 defaults = {
-                    -- `hidden = true` is not supported in text grep commands.
                     vimgrep_arguments = vimgrep_arguments,
                     sorting_strategy = "ascending",
                     layout_config = {
@@ -33,12 +31,6 @@ return {
                         n = {
                             ["q"] = require("telescope.actions").close,
                         },
-                    },
-                },
-                pickers = {
-                    find_files = {
-                        -- `hidden = true` will still show the inside of `.git/` as it's not `.gitignore`d.
-                        find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
                     },
                 },
             }
