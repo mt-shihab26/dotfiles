@@ -38,4 +38,6 @@ opt.splitbelow = true -- split horizontal window to the bottom
 
 -- turn off swap file
 opt.swapfile = false
-vim.opt.undofile = true -- save undo history
+opt.undofile = true -- save undo history
+
+opt.updatetime = 50
