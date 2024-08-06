@@ -1,8 +1,7 @@
--- File type detection for .env and .env.example files
+-- file type detection for .env and .env.* files
 vim.cmd [[
   augroup dotenv
     autocmd!
     autocmd BufNewFile,BufRead .env,.env.* setfiletype sh
-    autocmd BufNewFile,BufRead .env.example setfiletype sh
   augroup END
 ]]
