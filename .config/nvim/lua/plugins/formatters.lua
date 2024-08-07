@@ -15,6 +15,7 @@ return {
                     javascriptreact = { "prettier" },
                     typescript = { "prettier" },
                     typescriptreact = { "prettier" },
+                    astro = { "prettier" },
                     php = { "pint" },
                     blade = { "prettier" },
                     elixir = { "mix" },
