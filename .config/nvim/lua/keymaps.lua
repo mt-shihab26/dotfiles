@@ -48,3 +48,6 @@ map("n", "<leader>ls", "<cmd>LazySQL<CR>", opts { desc = "open lazysql" })
 
 -- Terminal
 map("n", "<leader>t", "<cmd>ToggleTerm<CR>", opts { desc = "open terminal" })
+
+-- Copy
+map("n", "<leader>y", "<cmd>CopyFilePath<CR>", { desc = "copy file path" })
