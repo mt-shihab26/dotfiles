@@ -1,19 +1,5 @@
 return {
     {
-        "kdheepak/lazygit.nvim",
-        event = "VeryLazy",
-        cmd = {
-            "LazyGit",
-            "LazyGitConfig",
-            "LazyGitCurrentFile",
-            "LazyGitFilter",
-            "LazyGitFilterCurrentFile",
-        },
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-        },
-    },
-    {
         "crnvl96/lazydocker.nvim",
         event = "VeryLazy",
         dependencies = {

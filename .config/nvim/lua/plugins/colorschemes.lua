@@ -52,13 +52,6 @@ return {
         end,
     },
     {
-        "lewis6991/gitsigns.nvim",
-        event = { "BufReadPre", "BufNewFile" },
-        config = function()
-            require("gitsigns").setup()
-        end,
-    },
-    {
         "folke/tokyonight.nvim",
         config = function()
             require("tokyonight").setup {}

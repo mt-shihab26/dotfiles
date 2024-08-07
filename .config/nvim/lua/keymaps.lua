@@ -51,3 +51,6 @@ map("n", "<leader>t", "<cmd>ToggleTerm<CR>", opts { desc = "open terminal" })
 
 -- Copy
 map("n", "<leader>y", "<cmd>CopyFilePath<CR>", { desc = "copy file path" })
+
+-- Git
+map("n", "<leader>gp", "<cmd>Gitsigns preview_hunk<CR>", { desc = "preview git line change" })

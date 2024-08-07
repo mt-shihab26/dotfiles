@@ -27,6 +27,15 @@ return {
                 preset = "modern",
             }
         end,
+        keys = {
+            {
+                "<leader>?",
+                function()
+                    require("which-key").show { global = false }
+                end,
+                desc = "buffer local keymaps (which-key)",
+            },
+        },
     },
     {
         "nvim-tree/nvim-tree.lua",
