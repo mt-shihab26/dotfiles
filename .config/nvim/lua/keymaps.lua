@@ -1,4 +1,4 @@
-local map = vim.keymap.set
+local map = map
 
 local opts = function(options)
     local default_options = { noremap = true, silent = true }
@@ -20,9 +20,15 @@ map("n", "<leader>/", "gcc", opts { desc = "comment toggle", remap = true })
 map("v", "<leader>/", "gc", opts { desc = "comment toggle", remap = true })
 
 -- LSP Config
-map("n", "gd", vim.lsp.buf.definition, opts { desc = "go to definition" })
 map("n", "K", vim.lsp.buf.hover, opts { desc = "show hover information" })
-map({ "n", "v" }, "L", vim.lsp.buf.code_action, opts { desc = "show code actions" })
+map("n", "<leader>k", vim.lsp.buf.signature_help, opts { desc = "show signature help" })
+map("n", "<leader>D", vim.lsp.buf.type_definition, opts { desc = "show type definition" })
+map("n", "gd", vim.lsp.buf.definition, opts { desc = "go to definition" })
+map("n", "gD", vim.lsp.buf.declaration, opts { desc = "go to declaration" })
+map("n", "gi", vim.lsp.buf.implementation, opts { desc = "go to implementation" })
+map("n", "gr", vim.lsp.buf.references, opts { desc = "list all references" })
+map("n", "<leader>rn", vim.lsp.buf.rename, opts { desc = "rename symbol" })
+map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts { desc = "show code action" })
 
 -- Tree
 map("n", "<leader>e", "<cmd>NvimTreeFocus<CR>", opts { desc = "open file tree" })
