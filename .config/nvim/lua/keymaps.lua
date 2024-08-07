@@ -1,4 +1,4 @@
-local map = map
+local map = vim.keymap.set
 
 local opts = function(options)
     local default_options = { noremap = true, silent = true }
@@ -27,8 +27,8 @@ map("n", "gd", vim.lsp.buf.definition, opts { desc = "go to definition" })
 map("n", "gD", vim.lsp.buf.declaration, opts { desc = "go to declaration" })
 map("n", "gi", vim.lsp.buf.implementation, opts { desc = "go to implementation" })
 map("n", "gr", vim.lsp.buf.references, opts { desc = "list all references" })
-map("n", "<leader>rn", vim.lsp.buf.rename, opts { desc = "rename symbol" })
-map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts { desc = "show code action" })
+map("n", "<leader>r", vim.lsp.buf.rename, opts { desc = "rename symbol" })
+map({ "n", "v" }, "<leader>a", vim.lsp.buf.code_action, opts { desc = "show code action" })
 
 -- Tree
 map("n", "<leader>e", "<cmd>NvimTreeFocus<CR>", opts { desc = "open file tree" })
@@ -45,7 +45,7 @@ map("n", "<S-tab>", "<cmd>BufferLineCyclePrev<CR>", opts { desc = "previous buff
 map("n", "<C-x>", ":bp<bar>sp<bar>bn<bar>bd<CR>", opts { desc = "close buffer" })
 
 -- Colorscheme
--- map("n", "<leader>cs", "<cmd>Themery<CR>", opts { desc = "open colorscheme changer" })
+map("n", "<leader>cs", "<cmd>Themery<CR>", opts { desc = "open colorscheme changer" })
 
 -- Integrations
 map("n", "<leader>lg", "<cmd>LazyGit<CR>", opts { desc = "open lazygit" })
