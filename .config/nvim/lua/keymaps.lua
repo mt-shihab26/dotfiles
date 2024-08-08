@@ -21,6 +21,7 @@ map("v", "<leader>/", "gc", opts { desc = "comment toggle", remap = true })
 
 -- LSP Config
 map("n", "K", vim.lsp.buf.hover, opts { desc = "show hover information" })
+map("n", "L", vim.lsp.diagnostic.show_line_diagnostics, opts { desc = "show hover line diagnostics" })
 map("n", "<leader>k", vim.lsp.buf.signature_help, opts { desc = "show signature help" })
 map("n", "<leader>D", vim.lsp.buf.type_definition, opts { desc = "show type definition" })
 map("n", "gd", vim.lsp.buf.definition, opts { desc = "go to definition" })
@@ -42,11 +43,10 @@ map("n", "<leader>fw", "<cmd>Telescope live_grep<CR>", opts { desc = "live grep"
 -- Tabs
 map("n", "<tab>", "<cmd>BufferLineCycleNext<CR>", opts { desc = "next buffer" })
 map("n", "<S-tab>", "<cmd>BufferLineCyclePrev<CR>", opts { desc = "previous buffer" })
-map("n", "<C-x>", ":bp<bar>sp<bar>bn<bar>bd<CR>", opts { desc = "close buffer" })
+map("n", "<leader>c", ":bp<bar>sp<bar>bn<bar>bd<CR>", opts { desc = "close buffer" })
 
 -- Colorscheme
-map("n", "<leader>cs", "<cmd>Themery<CR>", opts { desc = "open colorscheme changer" })
-
+map("n", "<leader>tc", "<cmd>Themery<CR>", opts { desc = "open colorscheme changer" })
 -- Integrations
 map("n", "<leader>lg", "<cmd>LazyGit<CR>", opts { desc = "open lazygit" })
 map("n", "<leader>ld", "<cmd>LazyDocker<CR>", opts { desc = "open lazydocker" })
