@@ -21,7 +21,7 @@ map("v", "<leader>/", "gc", opts { desc = "comment toggle", remap = true })
 
 -- LSP Config
 map("n", "K", vim.lsp.buf.hover, opts { desc = "show hover information" })
-map("n", "L", vim.lsp.diagnostic.show_line_diagnostics, opts { desc = "show hover line diagnostics" })
+map("n", "L", vim.diagnostic.open_float, opts { desc = "show hover line diagnostics" })
 map("n", "<leader>k", vim.lsp.buf.signature_help, opts { desc = "show signature help" })
 map("n", "<leader>D", vim.lsp.buf.type_definition, opts { desc = "show type definition" })
 map("n", "gd", vim.lsp.buf.definition, opts { desc = "go to definition" })
