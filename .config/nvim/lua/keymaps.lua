@@ -47,6 +47,7 @@ map("n", "<leader>c", ":bp<bar>sp<bar>bn<bar>bd<CR>", opts { desc = "close buffe
 
 -- Colorscheme
 map("n", "<leader>tc", "<cmd>Themery<CR>", opts { desc = "open colorscheme changer" })
+
 -- Integrations
 map("n", "<leader>lg", "<cmd>LazyGit<CR>", opts { desc = "open lazygit" })
 map("n", "<leader>ld", "<cmd>LazyDocker<CR>", opts { desc = "open lazydocker" })
