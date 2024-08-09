@@ -39,6 +39,7 @@ map("n", "<C-n>", "<cmd>NvimTreeToggle<CR>", opts { desc = "toggle file tree" })
 -- Telescope
 map("n", "<leader>ff", "<cmd>TelescopeProjectFiles<CR>", opts { desc = "find files" })
 map("n", "<leader>fw", "<cmd>Telescope live_grep<CR>", opts { desc = "live grep" })
+map("n", "<leader>fd", "<cmd>TelescopeDotFiles<CR>", opts { desc = "find dotfiles" })
 
 -- Tabs
 map("n", "<tab>", "<cmd>BufferLineCycleNext<CR>", opts { desc = "next buffer" })

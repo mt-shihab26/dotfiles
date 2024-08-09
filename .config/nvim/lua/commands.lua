@@ -1,6 +1,7 @@
 -- telescopes
 
 local is_inside_work_tree = {}
+local find_files_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" }
 
 vim.api.nvim_create_user_command("TelescopeProjectFiles", function()
     local cwd = vim.fn.getcwd()
@@ -14,8 +15,17 @@ vim.api.nvim_create_user_command("TelescopeProjectFiles", function()
     if is_inside_work_tree[cwd] then
         builtin.git_files { show_untracked = true }
     else
-        builtin.find_files { find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" } }
+        builtin.find_files { find_command = find_files_command }
     end
+end, {})
+
+local telescope = require "telescope.builtin"
+
+vim.api.nvim_create_user_command("TelescopeDotFiles", function()
+    telescope.find_files {
+        find_command = find_files_command,
+        cwd = "~/dotfiles",
+    }
 end, {})
 
 -- lazysql
