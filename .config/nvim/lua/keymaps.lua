@@ -61,3 +61,18 @@ map("n", "<leader>y", "<cmd>CopyFilePath<CR>", { desc = "copy file path" })
 
 -- Git
 map("n", "<leader>gp", "<cmd>Gitsigns preview_hunk<CR>", { desc = "preview git line change" })
+
+-- ChatGPT
+map("n", "<leader>gc", ":ChatGPT<CR>", opts { desc = "chatgpt" })
+map({ "n", "v" }, "<leader>ge", ":ChatGPTEditWithInstruction<CR>", opts { desc = "chatgpt prompts" })
+map({ "n", "v" }, "<leader>gg", ":ChatGPTRun grammar_correction<CR>", opts { desc = "chatgpt grammar correction" })
+map({ "n", "v" }, "<leader>gt", ":ChatGPTRun translate<CR>", opts { desc = "chatgpt translate" })
+map({ "n", "v" }, "<leader>gk", ":ChatGPTRun keywords<CR>", opts { desc = "chatgpt keywords" })
+map({ "n", "v" }, "<leader>gd", ":ChatGPTRun docstring<CR>", opts { desc = "chatgpt docstring" })
+map({ "n", "v" }, "<leader>ga", ":ChatGPTRun add_tests<CR>", opts { desc = "chatgpt add tests" })
+map({ "n", "v" }, "<leader>go", ":ChatGPTRun optimize_code<CR>", opts { desc = "chatgpt optimize Code" })
+map({ "n", "v" }, "<leader>gs", ":ChatGPTRun summarize<CR>", opts { desc = "chatgpt summarize" })
+map({ "n", "v" }, "<leader>gf", ":ChatGPTRun fix_bugs<CR>", opts { desc = "chatgpt fix Bugs" })
+map({ "n", "v" }, "<leader>gx", ":ChatGPTRun explain_code<CR>", opts { desc = "chatgpt explain Code" })
+map({ "n", "v" }, "<leader>gr", ":ChatGPTRun roxygen_edit<CR>", opts { desc = "chatgpt roxygen Edit" })
+map({ "n", "v" }, "<leader>gl", ":ChatGPTRun code_readability_analysis<CR>", opts { desc = "chatgpt code readability" })
