@@ -2,8 +2,13 @@ return {
     {
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
+        dependencies = {
+            "terrortylor/nvim-comment",
+            "nvim-treesitter/nvim-treesitter-textobjects",
+        },
         config = function()
             require("nvim-treesitter.configs").setup {
+
                 ensure_installed = {
                     "lua",
                     "html",
@@ -23,11 +28,22 @@ return {
                     "go",
                     "rust",
                 },
-                sync_install = false,
                 auto_install = true,
-                highlight = {
-                    enable = true,
-                    additional_vim_regex_highlighting = false,
+                highlight = { enable = true },
+                indent = { enable = true, disable = { "yaml" } },
+                context_commentstring = { enable = true },
+                rainbow = { enable = true },
+                textobjects = {
+                    select = {
+                        enable = true,
+                        lookahead = true,
+                        keymaps = {
+                            ["if"] = "@function.inner",
+                            ["af"] = "@function.outer",
+                            ["ia"] = "@parameter.inner",
+                            ["aa"] = "@parameter.outer",
+                        },
+                    },
                 },
             }
 
