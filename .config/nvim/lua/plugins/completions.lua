@@ -37,7 +37,7 @@ return {
             "onsails/lspkind-nvim",
             "hrsh7th/cmp-nvim-lsp",
             "hrsh7th/cmp-nvim-lsp-signature-help",
-            -- "hrsh7th/cmp-buffer",
+            "hrsh7th/cmp-buffer",
             "hrsh7th/cmp-path",
             "L3MON4D3/LuaSnip",
             -- "rafamadriz/friendly-snippets",
@@ -57,15 +57,15 @@ return {
                     and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match "%s" == nil
             end
 
-            local source_map = {
-                -- buffer = "Buffer",
-                nvim_lsp = "LSP",
-                nvim_lsp_signature_help = "Signature",
-                luasnip = "LuaSnip",
-                nvim_lua = "Lua",
-                path = "Path",
-                copilot = "Copilot",
-            }
+            -- local source_map = {
+            --     buffer = "Buffer",
+            --     nvim_lsp = "LSP",
+            --     nvim_lsp_signature_help = "Signature",
+            --     luasnip = "LuaSnip",
+            --     nvim_lua = "Lua",
+            --     path = "Path",
+            --     copilot = "Copilot",
+            -- }
 
             local function ltrim(s)
                 return s:match "^%s*(.*)"
@@ -133,7 +133,8 @@ return {
                             vim_item.menu = "  "
                                 .. vim_item.kind
                                 .. " ("
-                                .. (source_map[entry.source.name] or entry.source.name)
+                                -- .. (source_map[entry.source.name] or entry.source.name)
+                                .. entry.source.name
                                 .. ")"
                             vim_item.menu_hl_group = "SpecialComment"
 
