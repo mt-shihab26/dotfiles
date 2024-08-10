@@ -7,16 +7,9 @@ local opts = function(options)
 end
 
 map("i", "jk", "<ESC>", opts { desc = "exit insert mode" })
--- map("n", "<leader>nh", ":nohl<CR>", opts({ desc = "Clear search highlights" }))
--- map("n", "x", '"_x', opts())
-
--- Windows
--- map("n", "<leader>sv", "<C-w>v", opts({ desc = "Split window vertically" }))
--- map("n", "<leader>sh", "<C-w>s", opts({ desc = "Split window horizontally" }))
--- map("n", "<leader>se", "<C-w>=", opts({ desc = "Make splits equal size" }))
--- map("n", "<leader>sx", "<cmd>close<CR>", opts({ desc = "Close current split" }))
 
 -- Comment
+
 map("n", "<leader>/", "gcc", opts { desc = "comment toggle", remap = true })
 map("v", "<leader>/", "gc", opts { desc = "comment toggle", remap = true })
 
@@ -33,22 +26,26 @@ map("n", "<leader>r", vim.lsp.buf.rename, opts { desc = "rename symbol" })
 map({ "n", "v" }, "<leader>a", vim.lsp.buf.code_action, opts { desc = "show code action" })
 
 -- Tree
-map("n", "<leader>e", "<cmd>NvimTreeFocus<CR>", opts { desc = "open file tree" })
-map("n", "<leader>p", "<cmd>NvimTreeClose<CR>", opts { desc = "close file tree" })
-map("n", "<C-n>", "<cmd>NvimTreeToggle<CR>", opts { desc = "toggle file tree" })
+wk.add {
+    { "<leader>e", "<cmd>NvimTreeFocus<CR>", mode = "n", desc = "open file tree" },
+    { "<leader>p", "<cmd>NvimTreeClose<CR>", mode = "n", desc = "close file tree" },
+    { "<C-n>", "<cmd>NvimTreeToggle<CR>", mode = "n", desc = "toggle file tree" },
+}
 
 -- Telescope
 wk.add {
     { "<leader>f", group = "telescope" },
-    { mode = "n", "<leader>ff", "<cmd>TelescopeProjectFiles<cr>", desc = "find file" },
-    { mode = "n", "<leader>fw", "<cmd>Telescope live_grep<cr>", desc = "live grep" },
-    { mode = "n", "<leader>fd", "<cmd>TelescopeDotFiles<cr>", desc = "find dotfiles" },
+    { "<leader>ff", "<cmd>TelescopeProjectFiles<CR>", mode = "n", desc = "find file" },
+    { "<leader>fw", "<cmd>Telescope live_grep<CR>", mode = "n", desc = "live grep" },
+    { "<leader>fd", "<cmd>TelescopeDotFiles<CR>", mode = "n", desc = "find dotfiles" },
 }
 
 -- Tabs
-map("n", "<tab>", "<cmd>BufferLineCycleNext<CR>", opts { desc = "next buffer" })
-map("n", "<S-tab>", "<cmd>BufferLineCyclePrev<CR>", opts { desc = "previous buffer" })
-map("n", "<leader>c", ":bp<bar>sp<bar>bn<bar>bd<CR>", opts { desc = "close buffer" })
+wk.add {
+    { mode = "n", "<tab>", "<cmd>BufferLineCycleNext<CR>", desc = "next buffer" },
+    { mode = "n", "<S-tab>", "<cmd>BufferLineCyclePrev<CR>", desc = "previous buffer" },
+    { mode = "n", "<leader>c", "<cmd>bp<bar>sp<bar>bn<bar>bd<CR>", desc = "close buffer" },
+}
 
 -- Colorscheme
 map("n", "<leader>tc", "<cmd>Themery<CR>", opts { desc = "open colorscheme changer" })
@@ -62,7 +59,10 @@ map("n", "<leader>ls", "<cmd>LazySQL<CR>", opts { desc = "open lazysql" })
 map("n", "<leader>t", "<cmd>ToggleTerm<CR>", opts { desc = "open terminal" })
 
 -- Copy
-map("n", "<leader>y", "<cmd>CopyFilePath<CR>", { desc = "copy file path" })
+map("n", "<leader>y", "<cmd>CopyFilePath<CR>", opts { desc = "copy file path" })
 
 -- Git
 map("n", "<leader>gp", "<cmd>Gitsigns preview_hunk<CR>", { desc = "preview git line change" })
+
+-- Link open
+map({ "n", "v" }, "<leader>ol", "<cmd>OpenInBrowser<CR>", opts { desc = "open in browser" })
