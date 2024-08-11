@@ -1,10 +1,17 @@
+local map = vim.keymap.set
+
+local opts = function(options)
+    local default_options = { noremap = true, silent = true }
+    return vim.tbl_extend("force", default_options, options or {})
+end
+
+map("i", "jk", "<ESC>", opts { desc = "exit insert mode" })
+
+-- Comment
+map("n", "<leader>/", "gcc", opts { desc = "comment toggle", remap = true })
+map("v", "<leader>/", "gc", opts { desc = "comment toggle", remap = true })
+
 require("which-key").add {
-    { "jk", "<ESC>", mode = "i", desc = "exit insert mode" },
-
-    -- comment
-    { "<leader>/", "gcc", mode = "n", desc = "comment toggle" },
-    { "<leader>/", "gc", mode = "v", desc = "comment toggle" },
-
     -- tree
     { "<leader>e", "<CMD>NvimTreeFocus<CR>", mode = "n", desc = "open file tree" },
     { "<leader>p", "<CMD>NvimTreeClose<CR>", mode = "n", desc = "close file tree" },
