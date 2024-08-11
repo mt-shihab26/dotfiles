@@ -5,7 +5,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -84,12 +84,17 @@ plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
+# Variables
+export GOPATH=$HOME/go
+export PNPM_HOME="$HOME/Library/pnpm"
 
-# export MANPATH="/usr/local/man:$MANPATH"
+# PATH Variable
+export PATH="$PATH:$HOME/.composer/vendor/bin"
+export PATH="$PATH:$PNPM_HOME"
+export PATH="$PATH:$GOPATH/bin"
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -105,76 +110,13 @@ source $ZSH/oh-my-zsh.sh
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-#
+alias pa="php artisan"
+alias g++="g++ -std=c++20"
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# Functions
-# function git-all {
-#   git add -A
-#   if [ "$1" != "" ]
-#   then
-#       git commit -m "$1"
-#   else
-#       git commit -m updates
-#   fi
-#   git push
-# }
-#
-# Aliases
-alias vim="nvim"
-alias pa="php artisan"
-alias zshconfig="nvim ~/.zshrc"
-alias ohmyzsh="mate ~/.oh-my-zsh"
-alias g++="g++ -std=c++20"
-# alias x="./x.sh"
-
-# Envs
-export GOPATH=$HOME/go
-export PNPM_HOME="$HOME/Library/pnpm"
-
-# Paths
-export PATH="$PATH:$HOME/bin"
-export PATH="$PATH:$HOME/.composer/vendor/bin"
-export PATH="$PATH:/usr/local/go/bin"
-export PATH="$PATH:$GOPATH/bin"
-export PATH="$PATH:$PNPM_HOME"
-export PATH="/opt/homebrew/lib/ruby/gems/3.3.0/bin:$PATH"
-
-# Sources
-source $(brew --prefix nvm)/nvm.sh
-
-# pnpm
-export PNPM_HOME="/Users/shihab/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
-
 source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
 
-# Herd injected PHP binary.
-export PATH="/Users/shihab/Library/Application Support/Herd/bin/":$PATH
+# End
 
-
-# Herd injected PHP 8.2 configuration.
-export HERD_PHP_82_INI_SCAN_DIR="/Users/shihab/Library/Application Support/Herd/config/php/82/"
-
-
-# Herd injected PHP 8.3 configuration.
-export HERD_PHP_83_INI_SCAN_DIR="/Users/shihab/Library/Application Support/Herd/config/php/83/"
-export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
-
-
-# Herd injected PHP 8.0 configuration.
-export HERD_PHP_80_INI_SCAN_DIR="/Users/shihab/Library/Application Support/Herd/config/php/80/"
-
-export LANG="en_US.UTF-8"
-export LC_COLLATE="en_US.UTF-8"
-export LC_CTYPE="en_US.UTF-8"
-export LC_MESSAGES="en_US.UTF-8"
-export LC_MONETARY="en_US.UTF-8"
-export LC_NUMERIC="en_US.UTF-8"
-export LC_TIME="en_US.UTF-8"
-export LC_ALL="en_US.UTF-8"
