@@ -89,14 +89,3 @@ $ stow .
 -   `:Lazy sync` -> update plugins with lazy plugin manager
 -   `:Telescope keymaps` -> show telescope keymaps
 
-# Lazygit
-
--   `$ lazygit` -> open lazygit from terminal
-
-# Lazydocker
-
--   `$ lazydocker` -> open lazydocker from terminal
-
-# Lazysql
-
--   `$ lazysql` -> open lazysql from terminal
