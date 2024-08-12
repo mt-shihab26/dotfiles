@@ -23,7 +23,7 @@ require("which-key").add {
     { "<leader>c", "<CMD>bp<bar>sp<bar>bn<bar>bd<CR>", mode = "n", desc = "close buffer" },
 
     -- terminal
-    { "<leader>ft", "<CMD>ToggleTerm<CR>", mode = "n", desc = "open terminal" },
+    { "<leader>s", "<CMD>ToggleTerm<CR>", mode = "n", desc = "open terminal" },
 
     -- copy
     { "<leader>y", "<CMD>CopyFilePath<CR>", mode = "n", desc = "copy file path" },
@@ -57,5 +57,6 @@ require("which-key").add {
     { "<leader>ot", "<CMD>Themery<CR>", mode = "n", desc = "open colorscheme changer" },
 
     -- toggles
-    { "<leader>tcf", "<CMD>TailwindFoldToggle<CR>", mode = "n", desc = "toggle html classes float" },
+    { "<leader>t", group = "toggle things" },
+    { "<leader>tf", "<CMD>TailwindFoldToggle<CR>", mode = "n", desc = "toggle html classes float" },
 }
