@@ -138,4 +138,22 @@ return {
             }
         end,
     },
+    {
+        "razak17/tailwind-fold.nvim",
+        dependencies = { "nvim-treesitter/nvim-treesitter" },
+        event = "VeryLazy",
+        config = function()
+            require("tailwind-fold").setup {
+                ft = {
+                    "html",
+                    "astro",
+                    "vue",
+                    "typescriptreact",
+                    "javascriptreact",
+                    "php",
+                    "blade",
+                },
+            }
+        end,
+    },
 }

@@ -23,7 +23,7 @@ require("which-key").add {
     { "<leader>c", "<CMD>bp<bar>sp<bar>bn<bar>bd<CR>", mode = "n", desc = "close buffer" },
 
     -- terminal
-    { "<leader>t", "<CMD>ToggleTerm<CR>", mode = "n", desc = "open terminal" },
+    { "<leader>ft", "<CMD>ToggleTerm<CR>", mode = "n", desc = "open terminal" },
 
     -- copy
     { "<leader>y", "<CMD>CopyFilePath<CR>", mode = "n", desc = "copy file path" },
@@ -55,4 +55,7 @@ require("which-key").add {
     { "<leader>os", "<CMD>LazySQL<CR>", mode = "n", desc = "open lazysql" },
     { "<leader>ol", "<CMD>OpenInBrowser<CR>", mode = { "n", "v" }, desc = "open in browser" },
     { "<leader>ot", "<CMD>Themery<CR>", mode = "n", desc = "open colorscheme changer" },
+
+    -- toggles
+    { "<leader>tcf", "<CMD>TailwindFoldToggle<CR>", mode = "n", desc = "toggle html classes float" },
 }
