@@ -8,6 +8,10 @@ Finally organizing config with dotfiles
 $ stow .
 ```
 
+# aerospace
+
+-   `Ctrl+Tab` -> switching work spaces
+
 # Warp
 
 -   `^r` -> fuzzy find commands history
@@ -88,4 +92,3 @@ $ stow .
 -   `:LspInfo` -> opening current buffer connected lsps
 -   `:Lazy sync` -> update plugins with lazy plugin manager
 -   `:Telescope keymaps` -> show telescope keymaps
-
