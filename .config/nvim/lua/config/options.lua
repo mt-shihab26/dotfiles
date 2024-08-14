@@ -3,6 +3,7 @@
 -- Add any additional options here
 
 local opt = vim.opt
+
 -- tabs & indentation
 opt.tabstop = 4 -- 4 spaces for tabs (prettier default)
 opt.shiftwidth = 4 -- 4 spaces for indent width
