@@ -1,7 +1,2 @@
-require "./globals"
-require "./cmds"
-require "./options"
-require "./lazy"
-require "./commands"
-require "./commands"
-require "./keymaps"
+-- bootstrap lazy.nvim, LazyVim and your plugins
+require("config.lazy")
