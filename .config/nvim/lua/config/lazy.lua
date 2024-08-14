@@ -31,7 +31,6 @@ require("lazy").setup {
         { import = "lazyvim.plugins.extras.lang.markdown" },
         { import = "extras.lang.php" },
         { import = "lazyvim.plugins.extras.lang.python" },
-        { import = "lazyvim.plugins.extras.lang.ruby" },
         { import = "lazyvim.plugins.extras.lang.rust" },
         { import = "lazyvim.plugins.extras.lang.sql" },
         { import = "lazyvim.plugins.extras.lang.svelte" },
