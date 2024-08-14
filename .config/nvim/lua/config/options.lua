@@ -9,3 +9,5 @@ opt.tabstop = 4 -- 4 spaces for tabs (prettier default)
 opt.shiftwidth = 4 -- 4 spaces for indent width
 opt.expandtab = true -- expand tab to spaces
 opt.autoindent = true -- copy indent from current line when starting new one
+
+vim.opt.background = "dark" -- set this to dark or light
