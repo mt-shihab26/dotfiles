@@ -18,8 +18,28 @@ require("lazy").setup {
     spec = {
         -- add LazyVim and import its plugins
         { "LazyVim/LazyVim", import = "lazyvim.plugins" },
-        -- add tailwind support
+        -- add formatter
+        { import = "lazyvim.plugins.extras.formatting.prettier" },
+        -- add lang support
+        { import = "lazyvim.plugins.extras.lang.astro" },
+        { import = "lazyvim.plugins.extras.lang.clangd" },
+        { import = "lazyvim.plugins.extras.lang.docker" },
+        { import = "lazyvim.plugins.extras.lang.elixir" },
+        { import = "lazyvim.plugins.extras.lang.git" },
+        { import = "lazyvim.plugins.extras.lang.go" },
+        { import = "lazyvim.plugins.extras.lang.json" },
+        { import = "lazyvim.plugins.extras.lang.markdown" },
+        { import = "extras.lang.php" },
+        { import = "lazyvim.plugins.extras.lang.python" },
+        { import = "lazyvim.plugins.extras.lang.ruby" },
+        { import = "lazyvim.plugins.extras.lang.rust" },
+        { import = "lazyvim.plugins.extras.lang.sql" },
+        { import = "lazyvim.plugins.extras.lang.svelte" },
         { import = "lazyvim.plugins.extras.lang.tailwind" },
+        { import = "lazyvim.plugins.extras.lang.toml" },
+        { import = "lazyvim.plugins.extras.lang.typescript" },
+        { import = "lazyvim.plugins.extras.lang.vue" },
+        { import = "lazyvim.plugins.extras.lang.yaml" },
         -- import/override with your plugins
         { import = "plugins" },
     },
