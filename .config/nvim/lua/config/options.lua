@@ -11,3 +11,7 @@ opt.expandtab = true -- expand tab to spaces
 opt.autoindent = true -- copy indent from current line when starting new one
 
 opt.swapfile = false
+
+-- spell checking
+opt.spell = true
+opt.spelllang = "en_us"
