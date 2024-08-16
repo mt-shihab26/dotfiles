@@ -33,6 +33,8 @@ return {
                     },
                 },
                 sqlls = {},
+                tsserver = {},
+                vuels = {},
             },
         },
     },

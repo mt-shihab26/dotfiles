@@ -9,6 +9,7 @@ return {
                 "php",
                 "php_only",
                 "twig",
+                "vue",
             },
         },
     },
