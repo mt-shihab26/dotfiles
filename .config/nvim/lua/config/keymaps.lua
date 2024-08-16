@@ -8,4 +8,16 @@ wk.add {
     { "<leader>k", vim.diagnostic.open_float, mode = "n", desc = "Hover Diagnostics" },
     { "<leader>nn", "<CMD>GoIfErr<CR>", mode = "n", desc = "Generate if err != nil {" },
     { "<leader>gac", "<CMD>GoTagAdd json<CR>", mode = "n", desc = "Add and remove tags for structs" },
+
+    -- toggles
+    { "<leader>t", group = "toggle things" },
+    { "<leader>tc", "<CMD>TailwindFoldToggle<CR>", mode = "n", desc = "toggle html classes float" },
+
+    -- integrations
+    { "<leader>o", group = "open things" },
+    { "<leader>og", "<CMD>LazyGit<CR>", mode = "n", desc = "open lazygit" },
+    { "<leader>od", "<CMD>LazyDocker<CR>", mode = "n", desc = "open lazydocker" },
+    { "<leader>os", "<CMD>LazySQL<CR>", mode = "n", desc = "open lazysql" },
+    { "<leader>ol", "<CMD>OpenInBrowser<CR>", mode = { "n", "v" }, desc = "open in browser" },
+    { "<leader>ot", "<CMD>Themery<CR>", mode = "n", desc = "open colorscheme changer" },
 }
