@@ -7,6 +7,7 @@ return {
                 blade = { "prettier" },
                 svg = { "prettier" },
                 sql = { "sleek" },
+                astro = { "prettier" },
             },
         },
     },

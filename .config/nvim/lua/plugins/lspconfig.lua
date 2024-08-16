@@ -35,6 +35,7 @@ return {
                 sqlls = {},
                 tsserver = {},
                 vuels = {},
+                astro = {},
             },
         },
     },

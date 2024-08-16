@@ -10,6 +10,7 @@ return {
                 "php_only",
                 "twig",
                 "vue",
+                "astro",
             },
         },
     },
