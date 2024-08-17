@@ -6,6 +6,7 @@ return {
                 php = { "pint" },
                 blade = { "prettier" },
                 svg = { "prettier" },
+                markdown = { "prettier" },
                 sql = { "sleek" },
                 astro = { "prettier" },
             },

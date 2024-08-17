@@ -2,24 +2,24 @@
 
 Finally organizing config with dotfiles
 
-# Setup .files
+## Setup .files
 
 ```sh
-$ stow .
+stow .
 ```
 
-# aerospace
+## aerospace
 
 -   `Ctrl+Tab` -> switching work spaces
 
-# Warp
+## Warp
 
 -   `^r` -> fuzzy find commands history
 -   `^~` -> open warp AI prompt
 
-# Neovim v0.10.1
+## Neovim v0.10.1
 
-## Normal Mode
+### Normal Mode
 
 -   fundamental motions
     -   `j` -> move down
@@ -52,7 +52,7 @@ $ stow .
     -   `u` -> Undo the previous action
     -   `^r` -> Redo the previous action
 
-## Insert Mode
+### Insert Mode
 
 -   enter insert mode
     -   `i` -> enter insert mode before the cursor
@@ -64,7 +64,7 @@ $ stow .
     -   `^[`
     -   `^c`
 
-## Visual Mode
+### Visual Mode
 
 -   enter visual mode
     -   `v` -> enter character-wise visual mode
@@ -78,13 +78,12 @@ $ stow .
     -   note: deleting text in the normal mode also copies that for pasting.
     -   `vit` -> Select tag block of code
 
-## Keymaps
+### Keymaps
 
 -   `<leader>th` -> open color scheme changer
--   `<leader>lg` -> open lazygit inside neovim
 -   `<leader>ld` -> open lazydocker inside neovim
 
-## Commands
+### Commands
 
 -   `:source %` -> source current lua file
 -   `:Lazy` -> opening lazy ui

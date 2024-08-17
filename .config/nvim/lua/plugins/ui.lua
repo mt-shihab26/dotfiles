@@ -38,20 +38,6 @@ return {
         end,
     },
     {
-        "kdheepak/lazygit.nvim",
-        event = "VeryLazy",
-        cmd = {
-            "LazyGit",
-            "LazyGitConfig",
-            "LazyGitCurrentFile",
-            "LazyGitFilter",
-            "LazyGitFilterCurrentFile",
-        },
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-        },
-    },
-    {
         "akinsho/toggleterm.nvim",
         version = "*",
         config = function()
