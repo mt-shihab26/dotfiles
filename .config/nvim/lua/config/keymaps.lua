@@ -13,6 +13,11 @@ wk.add {
     { "<leader>t", group = "toggle things" },
     { "<leader>tc", "<CMD>TailwindFoldToggle<CR>", mode = "n", desc = "toggle html classes float" },
 
+    -- tabs
+    -- { "<tab>", "<CMD>BufferLineCycleNext<CR>", mode = "n", desc = "next buffer" },
+    -- { "<S-tab>", "<CMD>BufferLineCyclePrev<CR>", mode = "n", desc = "previous buffer" },
+    { "<C-c>", "<CMD>bp<bar>sp<bar>bn<bar>bd<CR>", mode = "n", desc = "close buffer" },
+
     -- integrations
     { "<leader>o", group = "open things" },
     { "<leader>og", "<CMD>LazyGit<CR>", mode = "n", desc = "open lazygit" },
