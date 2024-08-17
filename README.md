@@ -8,7 +8,7 @@ Finally organizing config with dotfiles
 stow .
 ```
 
-## aerospace
+## AeroSpace
 
 -   `Ctrl+Tab` -> switching work spaces
 
