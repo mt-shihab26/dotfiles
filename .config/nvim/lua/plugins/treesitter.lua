@@ -1,7 +1,13 @@
 local function blade_parser()
-    local parsers = require "nvim-treesitter.parsers"
+    vim.filetype.add {
+        pattern = {
+            [".*%.blade%.php"] = "blade",
+        },
+    }
 
-    parsers.get_parser_configs().blade = {
+    local configs = require("nvim-treesitter.parsers").get_parser_configs()
+
+    configs.blade = {
         install_info = {
             url = "https://github.com/EmranMR/tree-sitter-blade",
             files = {
@@ -10,12 +16,6 @@ local function blade_parser()
             branch = "main",
         },
         filetype = "blade",
-    }
-
-    vim.filetype.add {
-        pattern = {
-            [".*%.blade%.php"] = "blade",
-        },
     }
 end
 
@@ -33,7 +33,14 @@ return {
                 "markdown",
                 "markdown_inline",
                 "sql",
+                "templ",
             },
+        },
+    },
+    {
+        "windwp/nvim-ts-autotag",
+        ft = {
+            "templ",
         },
     },
 }

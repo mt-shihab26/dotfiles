@@ -16,8 +16,10 @@ return {
                     },
                 },
                 html = {},
+                -- filetypes = { "html" }, -- this is {"html", "templ"} by default
                 cssls = {},
                 sqlls = {},
+                templ = {},
             },
         },
     },
