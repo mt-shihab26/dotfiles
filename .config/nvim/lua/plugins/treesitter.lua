@@ -1,5 +1,3 @@
-require "config.treesitter"
-
 local function blade_parser()
     local parsers = require "nvim-treesitter.parsers"
 
