@@ -3,6 +3,9 @@ return {
         "neovim/nvim-lspconfig",
         opts = {
             servers = {
+                html = {},
+                cssls = {},
+                sqlls = {},
                 intelephense = {
                     filetypes = { "php", "blade", "php_only" },
                     settings = {
@@ -15,10 +18,21 @@ return {
                         },
                     },
                 },
-                html = {},
-                -- filetypes = { "html" }, -- this is {"html", "templ"} by default
-                cssls = {},
-                sqlls = {},
+                gopls = {
+                    settings = {
+                        gopls = {
+                            hints = {
+                                -- assignVariableTypes = false,
+                                -- compositeLiteralFields = false,
+                                -- compositeLiteralTypes = false,
+                                -- constantValues = false,
+                                -- functionTypeParameters = false,
+                                parameterNames = false,
+                                -- rangeVariableTypes = false,
+                            },
+                        },
+                    },
+                },
                 templ = {},
             },
         },
