@@ -8,7 +8,6 @@ return {
                 svg = { "prettier" },
                 markdown = { "prettier" },
                 -- sql = { "sleek" },
-                astro = { "prettier" },
             },
         },
     },

@@ -1,15 +1,20 @@
 return {
-    -- {
-    --     "LazyVim/LazyVim",
-    --     opts = {
-    --         -- colorscheme = "gatekeeper",
-    --     },
-    -- },
     {
         "zaldih/themery.nvim",
         config = function()
             require("themery").setup {
-                themes = require "config.themes",
+                themes = {
+                    "tokyonight",
+                    "tokyonight-night",
+                    "tokyonight-storm",
+                    "tokyonight-day",
+                    "tokyonight-moon",
+                    "catppuccin",
+                    "catppuccin-latte",
+                    "catppuccin-frappe",
+                    "catppuccin-macchiato",
+                    "catppuccin-mocha",
+                },
                 livePreview = true,
             }
         end,

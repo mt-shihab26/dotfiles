@@ -1,3 +1,13 @@
+local function vimgrep_arguments()
+    local vg = { unpack(require("telescope.config").values.vimgrep_arguments) }
+    -- I want to search in hidden/dot files.
+    table.insert(vg, "--hidden")
+    -- I don't want to search in the `.git` directory.
+    table.insert(vg, "--glob")
+    table.insert(vg, "!**/.git/*")
+    return vg
+end
+
 return {
     {
         "rcarriga/nvim-notify",
@@ -15,6 +25,7 @@ return {
                 layout_config = { prompt_position = "top" },
                 sorting_strategy = "ascending",
                 winblend = 0,
+                vimgrep_arguments = vimgrep_arguments(),
             },
         },
     },
@@ -34,7 +45,7 @@ return {
                     "blade",
                 },
             }
-            -- vim.cmd [[TailwindFoldDisable]]
+            vim.cmd [[TailwindFoldDisable]]
         end,
     },
     {

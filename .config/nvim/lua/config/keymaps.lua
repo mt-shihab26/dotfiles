@@ -14,8 +14,6 @@ wk.add {
     { "<leader>tc", "<CMD>TailwindFoldToggle<CR>", mode = "n", desc = "toggle html classes float" },
 
     -- tabs
-    -- { "<tab>", "<CMD>BufferLineCycleNext<CR>", mode = "n", desc = "next buffer" },
-    -- { "<S-tab>", "<CMD>BufferLineCyclePrev<CR>", mode = "n", desc = "previous buffer" },
     { "<leader>bc", "<CMD>bp<bar>sp<bar>bn<bar>bd<CR>", mode = "n", desc = "close buffer" },
 
     -- integrations
