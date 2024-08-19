@@ -8,6 +8,12 @@ Finally organizing config with dotfiles
 stow .
 ```
 
+## Links
+
+## Commands
+
+- `$ df -h /` -> Seeing disk usages of root files system
+
 ## AeroSpace
 
 -   `Ctrl+Tab` -> switching work spaces
