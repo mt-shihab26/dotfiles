@@ -169,6 +169,10 @@ run = "move-node-to-workspace 1"
 if.app-id = 'com.apple.Preview'
 run = "move-node-to-workspace 1"
 
+[[on-window-detected]]
+if.app-id = 'com.apple.QuickTimePlayerX'
+run = "move-node-to-workspace 1"
+
 
 # Terminal & Editors
 
