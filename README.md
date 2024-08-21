@@ -12,16 +12,13 @@ stow .
 
 ## Commands
 
-- `$ df -h /` -> Seeing disk usages of root files system
+-   `$ df -h /` -> Seeing disk usages of root files system
 
 ## AeroSpace
 
 -   `Ctrl+Tab` -> switching work spaces
 
-## Warp
-
--   `^r` -> fuzzy find commands history
--   `^~` -> open warp AI prompt
+## WezTerm
 
 ## Neovim v0.10.1
 
