@@ -34,6 +34,20 @@ return {
                     },
                 },
                 templ = {},
+                vtsls = {
+                    settings = {
+                        typescript = {
+                            inlayHints = {
+                                -- enumMemberValues = { enabled = true },
+                                -- functionLikeReturnTypes = { enabled = true },
+                                parameterNames = { enabled = false },
+                                -- parameterTypes = { enabled = true },
+                                -- propertyDeclarationTypes = { enabled = true },
+                                -- variableTypes = { enabled = false },
+                            },
+                        },
+                    },
+                },
             },
         },
     },
