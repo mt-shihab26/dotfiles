@@ -14,21 +14,9 @@ return {
                     "catppuccin-frappe",
                     "catppuccin-macchiato",
                     "catppuccin-mocha",
-                    "abscs",
-                    "material",
-                    "oxocarbon",
                 },
                 livePreview = true,
             }
         end,
-    },
-    {
-        "Abstract-IDE/Abstract-cs",
-    },
-    {
-        "marko-cerovac/material.nvim",
-    },
-    {
-        "nyoom-engineering/oxocarbon.nvim",
     },
 }
