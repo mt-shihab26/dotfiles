@@ -8,19 +8,21 @@ Finally organizing config with dotfiles
 stow .
 ```
 
-## Links
-
-## Commands
+## `Darwin/Linux` <- OS
 
 -   `$ df -h /` -> Seeing disk usages of root files system
 
-## AeroSpace
+## `AeroSpace` <- Window Manager
 
 -   `Ctrl+Tab` -> switching work spaces
 
-## WezTerm
+## `WezTerm` <- Terminal Emulator
 
-## Neovim v0.10.1
+## `Zellij` <- Terminal Multiplexer
+
+## `Neovim` <- Editor
+
+Neovim v0.10.1
 
 ### Normal Mode
 
