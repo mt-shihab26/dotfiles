@@ -18,6 +18,8 @@ stow .
 
 ## `WezTerm` <- Terminal Emulator
 
+## ZSH, fzf
+
 ## `Zellij` <- Terminal Multiplexer
 
 ## `Neovim` <- Editor
