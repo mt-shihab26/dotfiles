@@ -20,7 +20,7 @@ stow .
 
 ## ZSH, fzf
 
-## `Zellij` <- Terminal Multiplexer
+## `Tmux` <- Terminal Multiplexer
 
 ## `Neovim` <- Editor
 
