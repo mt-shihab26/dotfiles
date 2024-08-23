@@ -225,7 +225,7 @@ if.app-id = 'com.electron.dockerdesktop'
 run = "move-node-to-workspace 4"
 
 [[on-window-detected]]
-if.app-id = 'com.electron.dockerdesktop'
+if.app-id = 'com.tinyapp.DBngin'
 run = "move-node-to-workspace 4"
 
 
