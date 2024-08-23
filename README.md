@@ -18,7 +18,7 @@ stow .
 
 ## `WezTerm` <- Terminal Emulator
 
-## ZSH, fzf
+## `ZSH` <- Shell
 
 ## `Tmux` <- Terminal Multiplexer
 

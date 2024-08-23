@@ -24,5 +24,6 @@ _darcs
 
 .DS_Store
 .stylua.toml
+.luarc.json
 Makefile
 
