@@ -74,6 +74,7 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 alias ls='ls --color'
 alias pa="php artisan"
 alias g++="g++ -std=c++20"
+alias gp="$HOME/.bin/tmux-sessionizer.sh"
 
 # Shell integrations
 eval "$(fzf --zsh)"
