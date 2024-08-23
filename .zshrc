@@ -70,12 +70,6 @@ zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
-# Aliases
-alias ls='ls --color'
-alias pa="php artisan"
-alias g++="g++ -std=c++20"
-alias gp="$HOME/.bin/tmux-sessionizer.sh"
-
 # Shell integrations
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
@@ -89,6 +83,13 @@ export PNPM_HOME="$HOME/Library/pnpm"
 export PATH="$PATH:$HOME/.composer/vendor/bin"
 export PATH="$PATH:$PNPM_HOME"
 export PATH="$PATH:$GOPATH/bin"
+
+# Aliases
+alias ls='ls --color'
+alias pa="php artisan"
+alias g++="g++ -std=c++20"
+alias xp="$HOME/.scripts/tmux-sessionizer.sh"
+alias init="$HOME/.scripts/tmux-init.sh"
 
 # Done
 
