@@ -8,21 +8,21 @@ Finally organizing config with dotfiles
 stow .
 ```
 
-## `Darwin/Linux` <- OS
+## Darwin <- OS
 
 -   `$ df -h /` -> Seeing disk usages of root files system
 
-## `AeroSpace` <- Window Manager
+## AeroSpace <- Window Manager
 
 -   `Ctrl+Tab` -> switching work spaces
 
-## `WezTerm` <- Terminal Emulator
+## WezTerm <- Terminal Emulator
 
-## `ZSH` <- Shell
+## ZSH <- Shell
 
-## `Tmux` <- Terminal Multiplexer
+## Tmux <- Terminal Multiplexer
 
-## `Neovim` <- Editor
+## Neovim <- Editor
 
 Neovim v0.10.1
 
