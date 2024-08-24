@@ -88,8 +88,10 @@ export PATH="$PATH:$GOPATH/bin"
 alias ls='ls --color'
 alias pa="php artisan"
 alias g++="g++ -std=c++20"
-alias xp="$HOME/.scripts/tmux-sessionizer.sh"
 alias init="$HOME/.scripts/tmux-init.sh"
+alias xs="$HOME/.scripts/tmux-sessionizer.sh"
+alias xp="xs project"
+alias xl="xs learn"
 
 # Done
 

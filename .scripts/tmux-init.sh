@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 # Check if a tmux session named "init" exists
 if tmux has-session -t init 2>/dev/null; then

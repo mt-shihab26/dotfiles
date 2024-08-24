@@ -1,9 +1,15 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
-if [[ $# -eq 1 ]]; then
+
+if [[ $1 == "project" ]]; then
+    selected=$(find ~/Code ~/Tmp -mindepth 1 -maxdepth 1 -type d | fzf)
+elif [[ $1 == "learn" ]]; then
+    selected=$(find ~/Code/courses/ ~/Code/crash_courses/ -mindepth 1 -maxdepth 2 -type d | fzf)
+elif [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find ~/Code ~/Tmp -mindepth 1 -maxdepth 1 -type d | fzf)
+    echo "Invalid argument. Usage: $0 [directory|learn|project]"
+    exit 1
 fi
 
 if [[ -z $selected ]]; then
