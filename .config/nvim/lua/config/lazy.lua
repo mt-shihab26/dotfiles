@@ -32,7 +32,7 @@ require("lazy").setup {
         { import = "lazyvim.plugins.extras.lang.elixir" },
         { import = "lazyvim.plugins.extras.lang.rust" },
         -- { import = "lazyvim.plugins.extras.lang.sql" }, -- sql is implemented via custom code
-        { import = "lazyvim.plugins.extras.lang.json" },
+        -- { import = "lazyvim.plugins.extras.lang.json" },
         { import = "lazyvim.plugins.extras.lang.yaml" },
         { import = "lazyvim.plugins.extras.lang.toml" },
         { import = "lazyvim.plugins.extras.lang.git" },
