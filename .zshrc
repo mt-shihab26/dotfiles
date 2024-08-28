@@ -93,6 +93,19 @@ alias xs="$HOME/.scripts/tmux-sessionizer.sh"
 alias xp="xs project"
 alias xl="xs learn"
 
+# Ruby
+export LDFLAGS="-L/opt/homebrew/opt/ruby/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/ruby/include"
+export PKG_CONFIG_PATH="/opt/homebrew/opt/ruby/lib/pkgconfig"
+
+# export PATH="$PATH:/opt/homebrew/lib/ruby/gems/3.3.0/bin"
+# export PATH="$PATH:/opt/homebrew/opt/ruby/bin"
+
+if [ -d "/opt/homebrew/opt/ruby/bin" ]; then
+  export PATH=/opt/homebrew/opt/ruby/bin:$PATH
+  export PATH=`gem environment gemdir`/bin:$PATH
+fi
+
 # Done
 
 
