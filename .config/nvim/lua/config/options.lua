@@ -15,3 +15,5 @@ opt.swapfile = false
 -- spell checking
 opt.spell = true
 opt.spelllang = "en_us"
+
+vim.g.lazyvim_php_lsp = "intelephense"

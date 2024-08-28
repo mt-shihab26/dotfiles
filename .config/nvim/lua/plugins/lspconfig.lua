@@ -6,18 +6,18 @@ return {
                 html = {},
                 cssls = {},
                 sqlls = {},
-                intelephense = {
-                    filetypes = { "php", "blade", "php_only" },
-                    settings = {
-                        intelephense = {
-                            filetypes = { "php", "blade", "php_only" },
-                            files = {
-                                associations = { "*.php", "*.blade.php" }, -- Associating .blade.php files as well
-                                maxSize = 5000000,
-                            },
-                        },
-                    },
-                },
+                -- intelephense = {
+                --     filetypes = { "php", "blade", "php_only" },
+                --     settings = {
+                --         intelephense = {
+                --             filetypes = { "php", "blade", "php_only" },
+                --             files = {
+                --                 associations = { "*.php", "*.blade.php" }, -- Associating .blade.php files as well
+                --                 maxSize = 5000000,
+                --             },
+                --         },
+                --     },
+                -- },
                 gopls = {
                     settings = {
                         gopls = {
@@ -54,11 +54,16 @@ return {
     {
         "olexsmir/gopher.nvim",
         ft = "go",
-        -- (optional) will update plugin's deps on every update
         build = function()
             vim.cmd.GoInstallDeps()
         end,
-        ---@type gopher.Config
-        opts = {},
+    },
+    {
+        "nvimtools/none-ls.nvim",
+        enabled = false,
+    },
+    {
+        "mfussenegger/nvim-lint",
+        enabled = false,
     },
 }
