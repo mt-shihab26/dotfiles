@@ -1,11 +1,4 @@
 return {
-    -- NOTE: Plugins can specify dependencies.
-    --
-    -- The dependencies are proper plugin specifications as well - anything
-    -- you do for a plugin at the top level, you can do for a dependency.
-    --
-    -- Use the `dependencies` key to specify the dependencies of a particular plugin
-
     { -- Fuzzy Finder (files, lsp, etc)
         "nvim-telescope/telescope.nvim",
         event = "VimEnter",
@@ -49,6 +42,16 @@ return {
             -- This opens a window that shows you all of the keymaps for the current
             -- Telescope picker. This is really useful to discover what Telescope can
             -- do as well as how to actually do it!
+            --
+            local function vimgrep_arguments()
+                local vg = { unpack(require("telescope.config").values.vimgrep_arguments) }
+                -- I want to search in hidden/dot files.
+                table.insert(vg, "--hidden")
+                -- I don't want to search in the `.git` directory.
+                table.insert(vg, "--glob")
+                table.insert(vg, "!**/.git/*")
+                return vg
+            end
 
             -- [[ Configure Telescope ]]
             -- See `:help telescope` and `:help telescope.setup()`
@@ -56,11 +59,16 @@ return {
                 -- You can put your default mappings / updates / etc. in here
                 --  All the info you're looking for is in `:help telescope.setup()`
                 --
-                -- defaults = {
-                --   mappings = {
-                --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
-                --   },
-                -- },
+                defaults = {
+                    mappings = {
+                        i = { ["<c-enter>"] = "to_fuzzy_refine" },
+                    },
+                    layout_strategy = "horizontal",
+                    layout_config = { prompt_position = "top" },
+                    sorting_strategy = "ascending",
+                    winblend = 0,
+                    vimgrep_arguments = vimgrep_arguments(),
+                },
                 -- pickers = {}
                 extensions = {
                     ["ui-select"] = {

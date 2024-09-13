@@ -90,8 +90,9 @@ vim.g.have_nerd_font = false
 
 require "options"
 require "keymaps"
-require "autocommands"
 require "lazying"
+require "autocommands"
+require "autocmds"
 require "health"
 
 -- The line beneath this is called `modeline`. See `:help modeline`
