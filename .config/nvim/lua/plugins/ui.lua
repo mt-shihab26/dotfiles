@@ -124,12 +124,34 @@ return {
             },
         },
     },
-    { -- Add indentation guides even on blank lines
+    {
         "lukas-reineke/indent-blankline.nvim",
-        -- Enable `lukas-reineke/indent-blankline.nvim`
-        -- See `:help ibl`
+        event = "VimEnter",
+        opts = function()
+            return {
+                indent = {
+                    char = "│",
+                    tab_char = "│",
+                },
+                scope = { show_start = false, show_end = false },
+                exclude = {
+                    filetypes = {
+                        "help",
+                        "alpha",
+                        "dashboard",
+                        "neo-tree",
+                        "Trouble",
+                        "trouble",
+                        "lazy",
+                        "mason",
+                        "notify",
+                        "toggleterm",
+                        "lazyterm",
+                    },
+                },
+            }
+        end,
         main = "ibl",
-        opts = {},
     },
     {
         "windwp/nvim-autopairs",
@@ -144,23 +166,22 @@ return {
             cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
         end,
     },
-
-{
-  "folke/which-key.nvim",
-  event = "VeryLazy",
-  opts = {
-    -- your configuration comes here
-    -- or leave it empty to use the default settings
-    -- refer to the configuration section below
-  },
-  keys = {
     {
-      "<leader>?",
-      function()
-        require("which-key").show({ global = false })
-      end,
-      desc = "Buffer Local Keymaps (which-key)",
+        "folke/which-key.nvim",
+        event = "VeryLazy",
+        opts = {
+            -- your configuration comes here
+            -- or leave it empty to use the default settings
+            -- refer to the configuration section below
+        },
+        keys = {
+            {
+                "<leader>?",
+                function()
+                    require("which-key").show { global = false }
+                end,
+                desc = "Buffer Local Keymaps (which-key)",
+            },
+        },
     },
-  },
-}
 }
