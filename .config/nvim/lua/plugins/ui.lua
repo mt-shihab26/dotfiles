@@ -1,186 +1,102 @@
+local function vimgrep_arguments()
+    local vg = { unpack(require("telescope.config").values.vimgrep_arguments) }
+    -- I want to search in hidden/dot files.
+    table.insert(vg, "--hidden")
+    -- I don't want to search in the `.git` directory.
+    table.insert(vg, "--glob")
+    table.insert(vg, "!**/.git/*")
+    return vg
+end
+
 return {
-    -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
-    "tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
-
-    -- NOTE: Plugins can also be added by using a table,
-    -- with the first argument being the link and the following
-    -- keys can be used to configure plugin behavior/loading/etc.
-    --
-    -- Use `opts = {}` to force a plugin to be loaded.
-    --
-
-    -- Here is a more advanced example where we pass configuration
-    -- options to `gitsigns.nvim`. This is equivalent to the following Lua:
-    --    require('gitsigns').setup({ ... })
-    --
-    -- See `:help gitsigns` to understand what the configuration keys do
-    -- { -- Adds git related signs to the gutter, as well as utilities for managing changes
-    --     "lewis6991/gitsigns.nvim",
-    --     opts = {
-    --         signs = {
-    --             add = { text = "+" },
-    --             change = { text = "~" },
-    --             delete = { text = "_" },
-    --             topdelete = { text = "‾" },
-    --             changedelete = { text = "~" },
-    --         },
-    --     },
+    -- {
+    --     "rcarriga/nvim-notify",
+    --     enabled = false,
     -- },
-
-    -- NOTE: Plugins can also be configured to run Lua code when they are loaded.
-    --
-    -- This is often very useful to both group configuration, as well as handle
-    -- lazy loading plugins that don't need to be loaded immediately at startup.
-    --
-    -- For example, in the following configuration, we use:
-    --  event = 'VimEnter'
-    --
-    -- which loads which-key before all the UI elements are loaded. Events can be
-    -- normal autocommands events (`:help autocmd-events`).
-    --
-    -- Then, because we use the `config` key, the configuration only runs
-    -- after the plugin has been loaded:
-    --  config = function() ... end
-
-    { -- Useful plugin to show you pending keybinds.
-        "folke/which-key.nvim",
-        event = "VimEnter", -- Sets the loading event to 'VimEnter'
+    -- {
+    --     "folke/noice.nvim",
+    --     enabled = false,
+    -- },
+    {
+        "nvim-telescope/telescope.nvim",
         opts = {
-            icons = {
-                -- set icon mappings to true if you have a Nerd Font
-                mappings = vim.g.have_nerd_font,
-                -- If you are using a Nerd Font: set icons.keys to an empty table which will use the
-                -- default whick-key.nvim defined Nerd Font icons, otherwise define a string table
-                keys = vim.g.have_nerd_font and {} or {
-                    Up = "<Up> ",
-                    Down = "<Down> ",
-                    Left = "<Left> ",
-                    Right = "<Right> ",
-                    C = "<C-…> ",
-                    M = "<M-…> ",
-                    D = "<D-…> ",
-                    S = "<S-…> ",
-                    CR = "<CR> ",
-                    Esc = "<Esc> ",
-                    ScrollWheelDown = "<ScrollWheelDown> ",
-                    ScrollWheelUp = "<ScrollWheelUp> ",
-                    NL = "<NL> ",
-                    BS = "<BS> ",
-                    Space = "<Space> ",
-                    Tab = "<Tab> ",
-                    F1 = "<F1>",
-                    F2 = "<F2>",
-                    F3 = "<F3>",
-                    F4 = "<F4>",
-                    F5 = "<F5>",
-                    F6 = "<F6>",
-                    F7 = "<F7>",
-                    F8 = "<F8>",
-                    F9 = "<F9>",
-                    F10 = "<F10>",
-                    F11 = "<F11>",
-                    F12 = "<F12>",
-                },
-            },
-
-            -- Document existing key chains
-            spec = {
-                { "<leader>c", group = "[C]ode", mode = { "n", "x" } },
-                { "<leader>d", group = "[D]ocument" },
-                { "<leader>r", group = "[R]ename" },
-                { "<leader>s", group = "[S]earch" },
-                { "<leader>w", group = "[W]orkspace" },
-                { "<leader>t", group = "[T]oggle" },
-                { "<leader>h", group = "Git [H]unk", mode = { "n", "v" } },
+            defaults = {
+                layout_strategy = "horizontal",
+                layout_config = { prompt_position = "top" },
+                sorting_strategy = "ascending",
+                winblend = 0,
+                vimgrep_arguments = vimgrep_arguments(),
             },
         },
     },
     {
-        "nvim-neo-tree/neo-tree.nvim",
-        version = "*",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-            "MunifTanjim/nui.nvim",
-        },
-        cmd = "Neotree",
-        keys = {
-            { "\\", ":Neotree reveal<CR>", desc = "NeoTree reveal", silent = true },
-            -- { "<leader>e", "<CMD>Neotree action=focus<CR>", desc = "Focus File Tree", remap = true },
-            -- { "<leader>p", "<CMD>Neotree action=close<CR>", desc = "Close File Tree", remap = true },
-            -- { "<C-n>", "<CMD>Neotree toggle<CR>", desc = "Toggle File Tree", remap = true },
-        },
-        opts = {
-            filesystem = {
-                window = {
-                    mappings = {
-                        ["\\"] = "close_window",
-                    },
-                },
-                filtered_items = {
-                    hide_dotfiles = false,
-                    hide_gitignored = false,
-                },
-            },
-        },
-    },
-    {
-        "lukas-reineke/indent-blankline.nvim",
-        event = "VimEnter",
-        opts = function()
-            return {
-                indent = {
-                    char = "│",
-                    tab_char = "│",
-                },
-                scope = { show_start = false, show_end = false },
-                exclude = {
-                    filetypes = {
-                        "help",
-                        "alpha",
-                        "dashboard",
-                        "neo-tree",
-                        "Trouble",
-                        "trouble",
-                        "lazy",
-                        "mason",
-                        "notify",
-                        "toggleterm",
-                        "lazyterm",
-                    },
+        "razak17/tailwind-fold.nvim",
+        dependencies = { "nvim-treesitter/nvim-treesitter" },
+        event = "VeryLazy",
+        config = function()
+            require("tailwind-fold").setup {
+                ft = {
+                    "html",
+                    "astro",
+                    "vue",
+                    "typescriptreact",
+                    "javascriptreact",
+                    "php",
+                    "blade",
                 },
             }
+            vim.cmd [[TailwindFoldDisable]]
         end,
-        main = "ibl",
     },
     {
-        "windwp/nvim-autopairs",
-        event = "InsertEnter",
-        -- Optional dependency
-        dependencies = { "hrsh7th/nvim-cmp" },
+        "akinsho/toggleterm.nvim",
+        version = "*",
         config = function()
-            require("nvim-autopairs").setup {}
-            -- If you want to automatically add `(` after selecting a function or method
-            local cmp_autopairs = require "nvim-autopairs.completion.cmp"
-            local cmp = require "cmp"
-            cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+            require("toggleterm").setup {
+                direction = "float",
+            }
         end,
     },
     {
-        "folke/which-key.nvim",
-        event = "VeryLazy",
+        "nvimdev/dashboard-nvim",
         opts = {
-            -- your configuration comes here
-            -- or leave it empty to use the default settings
-            -- refer to the configuration section below
-        },
-        keys = {
-            {
-                "<leader>?",
-                function()
-                    require("which-key").show { global = false }
-                end,
-                desc = "Buffer Local Keymaps (which-key)",
+            theme = "hyper",
+            config = {
+                week_header = {
+                    enable = true,
+                },
+                shortcut = {
+                    {
+                        action = "Lazy",
+                        desc = " Lazy",
+                        icon = "󰒲 ",
+                        key = "l",
+                        group = "Label",
+                    },
+                    {
+                        action = "Mason",
+                        desc = "Mason",
+                        icon = " ",
+                        key = "m",
+                        group = "@property",
+                    },
+                    {
+                        action = "lua LazyVim.pick.config_files()()",
+                        desc = " Config",
+                        icon = " ",
+                        key = "c",
+                        group = "@property",
+                    },
+                    {
+                        action = function()
+                            vim.api.nvim_input "<cmd>qa<cr>"
+                        end,
+                        desc = " Quit",
+                        icon = " ",
+                        key = "q",
+                        group = "Label",
+                    },
+                },
             },
         },
     },
