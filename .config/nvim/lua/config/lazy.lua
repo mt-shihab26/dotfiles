@@ -38,7 +38,6 @@ require("lazy").setup {
         { import = "lazyvim.plugins.extras.lang.toml" },
         { import = "lazyvim.plugins.extras.lang.git" },
         { import = "lazyvim.plugins.extras.lang.docker" },
-        -- { import = "lazyvim.plugins.extras.util.dot" },
         -- import/override with your plugins
         { import = "plugins" },
     },

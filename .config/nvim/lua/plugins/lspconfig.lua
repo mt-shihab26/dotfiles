@@ -6,18 +6,6 @@ return {
                 html = {},
                 cssls = {},
                 sqlls = {},
-                -- intelephense = {
-                --     filetypes = { "php", "blade", "php_only" },
-                --     settings = {
-                --         intelephense = {
-                --             filetypes = { "php", "blade", "php_only" },
-                --             files = {
-                --                 associations = { "*.php", "*.blade.php" }, -- Associating .blade.php files as well
-                --                 maxSize = 5000000,
-                --             },
-                --         },
-                --     },
-                -- },
                 gopls = {
                     settings = {
                         gopls = {
@@ -57,13 +45,5 @@ return {
         build = function()
             vim.cmd.GoInstallDeps()
         end,
-    },
-    {
-        "nvimtools/none-ls.nvim",
-        enabled = false,
-    },
-    {
-        "mfussenegger/nvim-lint",
-        enabled = false,
     },
 }

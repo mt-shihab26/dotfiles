@@ -9,14 +9,12 @@ local function vimgrep_arguments()
 end
 
 return {
-    -- {
-    --     "rcarriga/nvim-notify",
-    --     enabled = false,
-    -- },
-    -- {
-    --     "folke/noice.nvim",
-    --     enabled = false,
-    -- },
+    {
+        "LazyVim/LazyVim",
+        opts = {
+            colorscheme = "tokyonight-night",
+        },
+    },
     {
         "nvim-telescope/telescope.nvim",
         opts = {
@@ -30,32 +28,33 @@ return {
         },
     },
     {
-        "razak17/tailwind-fold.nvim",
-        dependencies = { "nvim-treesitter/nvim-treesitter" },
-        event = "VeryLazy",
-        config = function()
-            require("tailwind-fold").setup {
-                ft = {
-                    "html",
-                    "astro",
-                    "vue",
-                    "typescriptreact",
-                    "javascriptreact",
-                    "php",
-                    "blade",
+        "nvim-neo-tree/neo-tree.nvim",
+        keys = {
+            { "<leader>e", "<CMD>Neotree action=focus<CR>", desc = "Focus File Tree", remap = true },
+            { "<leader>p", "<CMD>Neotree action=close<CR>", desc = "Close File Tree", remap = true },
+            { "<C-n>", "<CMD>Neotree toggle<CR>", desc = "Toggle File Tree", remap = true },
+        },
+        opts = {
+            filesystem = {
+                filtered_items = {
+                    hide_dotfiles = false,
+                    hide_gitignored = false,
                 },
-            }
-            vim.cmd [[TailwindFoldDisable]]
-        end,
+            },
+        },
     },
     {
-        "akinsho/toggleterm.nvim",
-        version = "*",
-        config = function()
-            require("toggleterm").setup {
-                direction = "float",
-            }
-        end,
+        "stevearc/conform.nvim",
+        opts = {
+            formatters_by_ft = {
+                php = { "pint" },
+                blade = { "prettier" },
+                svg = { "prettier" },
+                markdown = { "prettier" },
+                -- sql = { "sleek" },
+                templ = { "templ" },
+            },
+        },
     },
     {
         "nvimdev/dashboard-nvim",
