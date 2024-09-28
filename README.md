@@ -22,15 +22,13 @@ stow .
 
 ## Docs
 
-## Unix Commands 
+### Unix Commands 
 
 -   `$ df -h /` -> Seeing disk usages of root files system
 
-## Neovim <- Editor
+### Neovim v0.10.1
 
-Neovim v0.10.1
-
-### Normal Mode
+#### Normal Mode
 
 -   fundamental motions
     -   `j` -> move down
@@ -63,7 +61,7 @@ Neovim v0.10.1
     -   `u` -> Undo the previous action
     -   `^r` -> Redo the previous action
 
-### Insert Mode
+#### Insert Mode
 
 -   enter insert mode
     -   `i` -> enter insert mode before the cursor
@@ -75,7 +73,7 @@ Neovim v0.10.1
     -   `^[`
     -   `^c`
 
-### Visual Mode
+#### Visual Mode
 
 -   enter visual mode
     -   `v` -> enter character-wise visual mode
@@ -89,12 +87,12 @@ Neovim v0.10.1
     -   note: deleting text in the normal mode also copies that for pasting.
     -   `vit` -> Select tag block of code
 
-### Keymaps
+#### Keymaps
 
 -   `<leader>th` -> open color scheme changer
 -   `<leader>ld` -> open lazydocker inside neovim
 
-### Commands
+#### Commands
 
 -   `:source %` -> source current lua file
 -   `:Lazy` -> opening lazy ui
