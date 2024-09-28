@@ -16,8 +16,9 @@ stow .
 - Shell: ZSH
 - Terminal Multiplexer: Tmux
 - Code Editor: Neovim
-- TUIs Tools: Lazygit, Lazydocker
 - Browser: Chrome
+- TUIs Tools: Lazygit, Lazydocker
+- GUIs Tools: TablePlus, Medis
 
 ## Docs
 
