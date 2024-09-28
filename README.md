@@ -8,19 +8,22 @@ Finally organizing config with dotfiles
 stow .
 ```
 
-## Darwin <- OS
+## Tools
+
+- OS: Darwin, Linux
+- Window Manager: Darwin -> AeroSpace
+- Terminal Emulator: WezTerm
+- Shell: ZSH
+- Terminal Multiplexer: Tmux
+- Code Editor: Neovim
+- TUIs Tools: Lazygit, Lazydocker
+- Browser: Chrome
+
+## Docs
+
+## Unix Commands 
 
 -   `$ df -h /` -> Seeing disk usages of root files system
-
-## AeroSpace <- Window Manager
-
--   `Ctrl+Tab` -> switching work spaces
-
-## WezTerm <- Terminal Emulator
-
-## ZSH <- Shell
-
-## Tmux <- Terminal Multiplexer
 
 ## Neovim <- Editor
 
