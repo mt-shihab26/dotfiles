@@ -18,7 +18,7 @@ stow .
 - Code Editor: Neovim
 - Browser: Chrome
 - TUIs Tools: Lazygit, Lazydocker
-- GUIs Tools: TablePlus, Medis
+- GUIs Tools: TablePlus
 
 ## Docs
 
