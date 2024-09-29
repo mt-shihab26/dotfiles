@@ -83,6 +83,7 @@ export PNPM_HOME="$HOME/Library/pnpm"
 export PATH="$PATH:$HOME/.composer/vendor/bin"
 export PATH="$PATH:$PNPM_HOME"
 export PATH="$PATH:$GOPATH/bin"
+export PATH="$PATH:/Users/Shared/DBngin/mysql/8.0.33/bin"
 
 # Aliases
 alias ls='ls --color'
