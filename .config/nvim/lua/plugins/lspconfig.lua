@@ -27,7 +27,7 @@ return {
                         typescript = {
                             inlayHints = {
                                 -- enumMemberValues = { enabled = true },
-                                -- functionLikeReturnTypes = { enabled = true },
+                                functionLikeReturnTypes = { enabled = false },
                                 parameterNames = { enabled = false },
                                 parameterTypes = { enabled = false },
                                 -- propertyDeclarationTypes = { enabled = true },
