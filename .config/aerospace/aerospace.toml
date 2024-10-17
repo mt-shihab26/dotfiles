@@ -1,3 +1,5 @@
+# Command to list all running apps: $ aerospace list-apps
+
 # Place a copy of this config to ~/.aerospace.toml
 # After that, you can edit ~/.aerospace.toml to your liking
 
@@ -158,19 +160,23 @@ alt-shift-l = ['join-with right', 'mode main']
 # Browsers
 
 [[on-window-detected]]
-if.app-id = 'company.thebrowser.Browser'
-run = "move-node-to-workspace 1"
-
-[[on-window-detected]]
 if.app-id = 'com.google.Chrome'
 run = "move-node-to-workspace 1"
 
 [[on-window-detected]]
-if.app-id = 'com.brave.Browser'
+if.app-id = 'org.mozilla.firefox'
 run = "move-node-to-workspace 1"
 
 [[on-window-detected]]
-if.app-id = 'org.mozilla.firefox'
+if.app-id = 'com.apple.Safari'
+run = "move-node-to-workspace 1"
+
+[[on-window-detected]]
+if.app-id = 'company.thebrowser.Browser'
+run = "move-node-to-workspace 1"
+
+[[on-window-detected]]
+if.app-id = 'com.brave.Browser'
 run = "move-node-to-workspace 1"
 
 [[on-window-detected]]
