@@ -142,3 +142,4 @@ export HERD_PHP_80_INI_SCAN_DIR="/Users/shihab/Library/Application Support/Herd/
 
 # Turso
 export PATH="$PATH:/Users/shihab/.turso"
+. "/Users/shihab/.deno/env"
