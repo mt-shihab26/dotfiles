@@ -23,7 +23,11 @@ _darcs
 ^/COPYING
 
 .DS_Store
-.stylua.toml
-.luarc.json
-Makefile
 
+docs
+extarnal
+.luarc.json
+.stylua.toml
+LICENSE
+Makefile
+README.md
