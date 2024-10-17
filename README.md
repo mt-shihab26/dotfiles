@@ -2,7 +2,7 @@
 
 Finally organizing config with dotfiles
 
-## Setup .files
+## Setup . files
 
 ```sh
 stow .
@@ -12,11 +12,11 @@ stow .
 
 - OS: Darwin, Linux
 - Window Manager: Darwin -> AeroSpace
-- Terminal Emulator: WezTerm
+- Terminal Emulator: Alacritty
 - Shell: ZSH
 - Terminal Multiplexer: Tmux
-- Code Editor: Neovim
-- Browser: Chrome
+- Code Editor: Neovim, VSCode, PHPStorm
+- Browser: Google Chrome, Firefox, Safari
 - TUIs Tools: Lazygit, Lazydocker
 - GUIs Tools: TablePlus
 
