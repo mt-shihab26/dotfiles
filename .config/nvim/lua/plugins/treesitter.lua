@@ -1,50 +1,3 @@
-local ensure_installed = {
-    "c",
-    "diff",
-    "printf",
-    "python",
-    "query",
-    "regex",
-    "lua",
-    "luadoc",
-    "luap",
-    "vim",
-    "vimdoc",
-    "markdown",
-    "markdown_inline",
-    "xml",
-    "toml",
-    "yaml",
-    "bash",
-
-    -- javascript
-    "html",
-    "css",
-    "scss",
-    "javascript",
-    "jsdoc",
-    "json",
-    "jsonc",
-    "tsx",
-    "typescript",
-    "vue",
-    "astro",
-    "svelte",
-
-    -- php
-    "php",
-    "php_only",
-    "twig",
-
-    -- go
-    "go",
-    "templ",
-
-    -- elixir
-    "elixir",
-    "heex",
-}
-
 local function blade_parser()
     vim.filetype.add {
         pattern = {
@@ -71,12 +24,58 @@ return {
         config = function()
             local configs = require "nvim-treesitter.configs"
             configs.setup {
-                ensure_installed = ensure_installed,
+                ensure_installed = {
+                    "c",
+                    "diff",
+                    "printf",
+                    "python",
+                    "query",
+                    "regex",
+                    "lua",
+                    "luadoc",
+                    "luap",
+                    "vim",
+                    "vimdoc",
+                    "markdown",
+                    "markdown_inline",
+                    "xml",
+                    "toml",
+                    "yaml",
+                    "bash",
+
+                    -- javascript
+                    "html",
+                    "css",
+                    "scss",
+                    "javascript",
+                    "jsdoc",
+                    "json",
+                    "jsonc",
+                    "tsx",
+                    "typescript",
+                    "vue",
+                    "astro",
+                    "svelte",
+
+                    -- php
+                    "php",
+                    "php_only",
+                    "twig",
+
+                    -- go
+                    "go",
+                    "templ",
+
+                    -- elixir
+                    "elixir",
+                    "heex",
+                },
                 auto_install = true,
                 sync_install = false,
                 highlight = { enable = true },
                 indent = { enable = true },
             }
+
             blade_parser()
         end,
     },
@@ -84,5 +83,10 @@ return {
         "windwp/nvim-ts-autotag",
         event = "InsertEnter",
         opts = {},
+    },
+    {
+        "windwp/nvim-autopairs",
+        event = "InsertEnter",
+        config = true,
     },
 }
