@@ -1,4 +1,2 @@
-require "mount"
-require "boot"
-require "cmd"
-require "unmount"
+-- bootstrap lazy.nvim, LazyVim and your plugins
+require "config.lazy"
