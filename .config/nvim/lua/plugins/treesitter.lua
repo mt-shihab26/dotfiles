@@ -65,17 +65,24 @@ local function blade_parser()
 end
 
 return {
-    "nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdate",
-    config = function()
-        local configs = require "nvim-treesitter.configs"
-        configs.setup {
-            ensure_installed = ensure_installed,
-            auto_install = true,
-            sync_install = false,
-            highlight = { enable = true },
-            indent = { enable = true },
-        }
-        blade_parser()
-    end,
+    {
+        "nvim-treesitter/nvim-treesitter",
+        build = ":TSUpdate",
+        config = function()
+            local configs = require "nvim-treesitter.configs"
+            configs.setup {
+                ensure_installed = ensure_installed,
+                auto_install = true,
+                sync_install = false,
+                highlight = { enable = true },
+                indent = { enable = true },
+            }
+            blade_parser()
+        end,
+    },
+    {
+        "windwp/nvim-ts-autotag",
+        event = "InsertEnter",
+        opts = {},
+    },
 }
