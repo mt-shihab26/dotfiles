@@ -1,10 +1,10 @@
 return {
     "nvim-lualine/lualine.nvim",
-    lazy = false,
     dependencies = {
         "arkav/lualine-lsp-progress",
         "nvim-tree/nvim-web-devicons",
     },
+    lazy = false,
     opts = {
         options = {
             section_separators = "",

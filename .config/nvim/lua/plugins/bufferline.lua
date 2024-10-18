@@ -1,11 +1,11 @@
-local inactiveBg = {
-    bg = { attribute = "bg", highlight = "BufferlineInactive" },
-}
+local inactiveBg = { bg = { attribute = "bg", highlight = "BufferlineInactive" } }
 
 return {
     "akinsho/bufferline.nvim",
+    dependencies = {
+        "nvim-tree/nvim-web-devicons",
+    },
     event = "VeryLazy",
-    dependencies = "nvim-tree/nvim-web-devicons",
     opts = {
         options = {
             offsets = {
