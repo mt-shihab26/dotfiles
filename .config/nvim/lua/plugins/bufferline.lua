@@ -6,7 +6,6 @@ return {
     "akinsho/bufferline.nvim",
     event = "VeryLazy",
     dependencies = "nvim-tree/nvim-web-devicons",
-
     opts = {
         options = {
             indicator = {
@@ -17,17 +16,9 @@ return {
             max_name_length = 25,
             offsets = {
                 {
-                    filetype = "NvimTree",
-                    text = "  Files",
-                    highlight = "StatusLine",
-                    text_align = "left",
-                },
-                {
                     filetype = "neo-tree",
-                    text = function()
-                        return " " .. vim.fn.fnamemodify(vim.fn.getcwd(), ":~")
-                    end,
-                    highlight = "StatusLineComment",
+                    text = "Neo-tree",
+                    highlight = "Directory",
                     text_align = "left",
                 },
             },
