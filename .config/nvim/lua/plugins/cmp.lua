@@ -11,6 +11,7 @@ return {
         "L3MON4D3/LuaSnip",
         "saadparwaiz1/cmp_luasnip",
         "onsails/lspkind-nvim",
+        "petertriho/cmp-git",
     },
     event = "InsertEnter",
     config = function()
@@ -130,10 +131,11 @@ return {
             sources = {
                 { name = "nvim_lsp" },
                 { name = "nvim_lsp_signature_help" },
-                { name = "luasnip" },
-                -- { name = 'copilot' },
                 { name = "buffer" },
                 { name = "path" },
+                -- { name = 'copilot' },
+                { name = "luasnip" },
+                { name = "git" },
             },
             experimental = {
                 -- ghost_text = true,

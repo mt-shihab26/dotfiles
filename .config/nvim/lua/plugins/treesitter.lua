@@ -22,6 +22,13 @@ return {
                 "yaml",
                 "bash",
 
+                -- git
+                "git_config",
+                "gitcommit",
+                "git_rebase",
+                "gitignore",
+                "gitattributes",
+
                 -- javascript
                 "html",
                 "css",
