@@ -73,27 +73,27 @@ return {
             end,
             desc = "Live grep in all files  (include gitignored)",
         },
-        {
-            "<leader>b",
-            function()
-                require("telescope.builtin").buffers()
-            end,
-            desc = "List open buffers",
-        },
-        {
-            "<leader>h",
-            function()
-                require("telescope.builtin").help_tags()
-            end,
-            desc = "Search help tags",
-        },
-        {
-            "<leader>s",
-            function()
-                require("telescope.builtin").lsp_document_symbols()
-            end,
-            desc = "List document symbols",
-        },
+        -- {
+        --     "<leader>b",
+        --     function()
+        --         require("telescope.builtin").buffers()
+        --     end,
+        --     desc = "List open buffers",
+        -- },
+        -- {
+        --     "<leader>h",
+        --     function()
+        --         require("telescope.builtin").help_tags()
+        --     end,
+        --     desc = "Search help tags",
+        -- },
+        -- {
+        --     "<leader>s",
+        --     function()
+        --         require("telescope.builtin").lsp_document_symbols()
+        --     end,
+        --     desc = "List document symbols",
+        -- },
     },
     config = function()
         local actions = require "telescope.actions"
