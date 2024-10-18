@@ -14,26 +14,27 @@ return {
         {
             "<leader>f",
             function()
-                require("telescope.builtin").find_files()
+                require("telescope.builtin").find_files {
+                    prompt_title = "Find Files",
+                }
             end,
+            desc = "Find files (respect gitignored)",
         },
         {
             "<leader>F",
             function()
-                require("telescope.builtin").find_files { no_ignore = true, prompt_title = "All Files" }
+                require("telescope.builtin").find_files {
+                    prompt_title = "Find All Files",
+                    no_ignore = true,
+                }
             end,
-        },
-        {
-            "<leader>b",
-            function()
-                require("telescope.builtin").buffers()
-            end,
+            desc = "Find all files (include gitignored)",
         },
         {
             "<leader>g",
             function()
                 require("telescope").extensions.live_grep_args.live_grep_args {
-                    prompt_title = "Grep Project",
+                    prompt_title = "Grep Files",
                     vimgrep_arguments = {
                         "rg",
                         "--hidden",
@@ -48,6 +49,7 @@ return {
                     },
                 }
             end,
+            desc = "Live grep in files (respect gitignored)",
         },
         {
             "<leader>G",
@@ -69,18 +71,28 @@ return {
                     },
                 }
             end,
+            desc = "Live grep in all files  (include gitignored)",
+        },
+        {
+            "<leader>b",
+            function()
+                require("telescope.builtin").buffers()
+            end,
+            desc = "List open buffers",
         },
         {
             "<leader>h",
             function()
                 require("telescope.builtin").help_tags()
             end,
+            desc = "Search help tags",
         },
         {
             "<leader>s",
             function()
                 require("telescope.builtin").lsp_document_symbols()
             end,
+            desc = "List document symbols",
         },
     },
     config = function()
