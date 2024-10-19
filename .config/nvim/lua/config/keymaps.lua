@@ -6,8 +6,6 @@ local wk = require "which-key"
 
 wk.add {
     { "<leader>k", vim.diagnostic.open_float, mode = "n", desc = "Hover Diagnostics" },
-    { "<leader>nn", "<CMD>GoIfErr<CR>", mode = "n", desc = "Generate if err != nil {" },
-    { "<leader>gac", "<CMD>GoTagAdd json<CR>", mode = "n", desc = "Add and remove tags for structs" },
 
     -- tabs
     { "<leader>bc", "<CMD>bp<bar>sp<bar>bn<bar>bd<CR>", mode = "n", desc = "close buffer" },

@@ -8,6 +8,9 @@
     -   `<leader>e` -> focus file tree
     -   `<leader>p` -> close file tree
     -   `<C-n>` -> toggle file tree
+-   gopher
+    -   `<leader>gne` -> generate go 'if err != nil {}' block
+    -   `<leader>gta` -> add go json tags to struct fields
 
 ## Normal Mode
 
