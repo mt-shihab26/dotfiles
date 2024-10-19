@@ -14,7 +14,4 @@ return {
         "php",
         "blade",
     },
-    config = function()
-        vim.cmd [[TailwindFoldDisable]]
-    end,
 }

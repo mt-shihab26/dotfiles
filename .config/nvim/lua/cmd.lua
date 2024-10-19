@@ -5,3 +5,6 @@ vim.cmd [[
     autocmd BufNewFile,BufRead .env,.env.* setfiletype sh
   augroup END
 ]]
+
+-- disable tailwind fold
+vim.cmd [[TailwindFoldDisable]]
