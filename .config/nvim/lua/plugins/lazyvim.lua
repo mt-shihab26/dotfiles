@@ -1,3 +1,5 @@
+-- Override LazyVim config
+
 return {
     "LazyVim/LazyVim",
     opts = {

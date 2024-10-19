@@ -1,3 +1,5 @@
+-- Fuzzy finder
+
 local function vimgrep_arguments()
     local vg = { unpack(require("telescope.config").values.vimgrep_arguments) }
     -- I want to search in hidden/dot files.

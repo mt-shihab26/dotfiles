@@ -1,3 +1,5 @@
+-- Init dashboard
+
 return {
     "nvimdev/dashboard-nvim",
     opts = {
