@@ -9,6 +9,10 @@ return {
             "markdown_inline",
             "templ",
 
+            -- css
+            "html",
+            "css",
+
             -- php
             "php",
             "php_only",

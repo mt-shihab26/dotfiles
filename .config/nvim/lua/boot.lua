@@ -22,10 +22,10 @@ require("lazy").setup {
         { import = "lazyvim.plugins.extras.lang.docker" },
         { import = "lazyvim.plugins.extras.lang.typescript" },
         { import = "lazyvim.plugins.extras.lang.astro" },
-        { import = "lazyvim.plugins.extras.lang.tailwind" },
 
         -- { import = "lazyvim.plugins.extras.lang.php" }, -- [x] custom written
         -- { import = "lazyvim.plugins.extras.lang.go" }, -- [x] custom written
+        -- { import = "lazyvim.plugins.extras.lang.tailwind" }, -- [ ] custom written
 
         { import = "plugins" }, -- import/override with own plugins
 

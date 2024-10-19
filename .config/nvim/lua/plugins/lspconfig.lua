@@ -1,8 +1,55 @@
 -- LSP configuration
 
+-- css
+
+local html = {}
+
+local cssls = {}
+
+local tailwindcss = {
+    -- exclude a filetype from the default_config
+    filetypes_exclude = { "markdown" },
+    -- add additional filetypes to the default_config
+    filetypes_include = {},
+    -- to fully override the default_config, change the below
+    -- filetypes = {}
+}
+
+local tailwindcss_setup = function(_, opts)
+    --- @type any
+    local tw = LazyVim.lsp.get_raw_config "tailwindcss"
+    opts.filetypes = opts.filetypes or {}
+
+    -- Add default filetypes
+    vim.list_extend(opts.filetypes, tw.default_config.filetypes)
+
+    -- Remove excluded filetypes
+    --- @param ft string
+    opts.filetypes = vim.tbl_filter(function(ft)
+        return not vim.tbl_contains(opts.filetypes_exclude or {}, ft)
+    end, opts.filetypes)
+
+    -- Additional settings for Phoenix projects
+    opts.settings = {
+        tailwindCSS = {
+            includeLanguages = {
+                elixir = "html-eex",
+                eelixir = "html-eex",
+                heex = "html-eex",
+            },
+        },
+    }
+    -- Add additional filetypes
+    vim.list_extend(opts.filetypes, opts.filetypes_include or {})
+end
+
+-- php
+
 local intelephense = {
     enabled = true,
 }
+
+-- go
 
 local gopls = {
     settings = {
@@ -43,6 +90,27 @@ local gopls = {
     },
 }
 
+local gopls_setup = function(_, _)
+    -- workaround for gopls not supporting semanticTokensProvider
+    -- https://github.com/golang/go/issues/54531#issuecomment-1464982242
+    LazyVim.lsp.on_attach(function(client, _)
+        if not client.server_capabilities.semanticTokensProvider then
+            local semantic = client.config.capabilities.textDocument.semanticTokens
+            if semantic then
+                client.server_capabilities.semanticTokensProvider = {
+                    full = true,
+                    legend = {
+                        tokenTypes = semantic.tokenTypes,
+                        tokenModifiers = semantic.tokenModifiers,
+                    },
+                    range = true,
+                }
+            end
+        end
+    end, "gopls")
+    -- end workaround
+end
+
 local templ = {
     enabled = true,
 }
@@ -51,8 +119,6 @@ return {
     "neovim/nvim-lspconfig",
     opts = {
         servers = {
-            html = {},
-            cssls = {},
             vtsls = {
                 settings = {
                     typescript = {
@@ -68,6 +134,11 @@ return {
                 },
             },
 
+            -- css
+            html = html,
+            cssls = cssls,
+            tailwindcss = tailwindcss,
+
             -- php
             intelephense = intelephense,
 
@@ -76,26 +147,11 @@ return {
             templ = templ,
         },
         setup = {
-            gopls = function(_, _)
-                -- workaround for gopls not supporting semanticTokensProvider
-                -- https://github.com/golang/go/issues/54531#issuecomment-1464982242
-                LazyVim.lsp.on_attach(function(client, _)
-                    if not client.server_capabilities.semanticTokensProvider then
-                        local semantic = client.config.capabilities.textDocument.semanticTokens
-                        if semantic then
-                            client.server_capabilities.semanticTokensProvider = {
-                                full = true,
-                                legend = {
-                                    tokenTypes = semantic.tokenTypes,
-                                    tokenModifiers = semantic.tokenModifiers,
-                                },
-                                range = true,
-                            }
-                        end
-                    end
-                end, "gopls")
-                -- end workaround
-            end,
+            -- css
+            tailwindcss = tailwindcss_setup,
+
+            -- go
+            gopls = gopls_setup,
         },
     },
     keys = {
