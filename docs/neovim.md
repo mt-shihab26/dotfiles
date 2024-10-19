@@ -11,6 +11,13 @@
 -   gopher
     -   `<leader>gne` -> generate go 'if err != nil {}' block
     -   `<leader>gta` -> add go json tags to struct fields
+-   lspconfig
+    -   `<leader>k` -> hover diagnostics
+-   bufferline
+    -   `<leader>bc` -> close current buffer
+-   toggleterm
+    -   `<leader>ld` -> toggle lazydocker
+    -   `<leader>ls` -> toggle lazysql
 
 ## Normal Mode
 

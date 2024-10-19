@@ -39,4 +39,7 @@ return {
             templ = {},
         },
     },
+    keys = {
+        { "<leader>k", vim.diagnostic.open_float, desc = "hover diagnostics", mode = "n" },
+    },
 }
