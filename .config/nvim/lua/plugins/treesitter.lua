@@ -5,21 +5,28 @@ return {
     opts = {
         auto_install = true,
         ensure_installed = {
-            "bash",
             "c",
             "diff",
-            "lua",
-            "luadoc",
-            "luap",
+            "vim",
+            "vimdoc",
             "printf",
             "python",
             "query",
             "regex",
-            "toml",
-            "vim",
-            "vimdoc",
+
+            -- tools
             "xml",
+            "svg",
+            "toml",
             "yaml",
+            "bash",
+
+            -- lua
+            "lua",
+            "luadoc",
+            "luap",
+
+            -- markdown
             "markdown",
             "markdown_inline",
 

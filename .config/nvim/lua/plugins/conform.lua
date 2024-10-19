@@ -5,16 +5,19 @@ return {
     opts = {
         formatters_by_ft = {
             -- tools
-            lua = { "stylua" },
-            sh = { "shfmt" },
-            fish = { "fish_indent" },
             svg = { "prettier" },
+            yaml = { "prettier" },
             json = { "prettier" },
             jsonc = { "prettier" },
-            yaml = { "prettier" },
+            fish = { "fish_indent" },
+            sh = { "shfmt" },
+
+            -- lua
+            lua = { "stylua" },
+
+            -- markdown
             markdown = { "prettier" },
             mdx = { "prettier" },
-            graphql = { "prettier" },
 
             -- css
             html = { "prettier" },
