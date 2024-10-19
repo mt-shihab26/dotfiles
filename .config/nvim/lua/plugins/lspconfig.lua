@@ -4,6 +4,7 @@ return {
     "neovim/nvim-lspconfig",
     opts = {
         servers = {
+
             html = {},
             cssls = {},
             vtsls = {
@@ -37,6 +38,11 @@ return {
                 },
             },
             templ = {},
+
+            -- php
+            intelephense = {
+                enabled = true,
+            },
         },
     },
     keys = {

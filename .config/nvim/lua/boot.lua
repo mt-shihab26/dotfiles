@@ -25,7 +25,8 @@ require("lazy").setup {
         { import = "lazyvim.plugins.extras.lang.go" },
         { import = "lazyvim.plugins.extras.lang.tailwind" },
 
-        { import = "lazyvim.plugins.extras.lang.php" },
+        -- { import = "lazyvim.plugins.extras.lang.php" }, -- [ ] custom written
+
         { import = "plugins" }, -- import/override with own plugins
         -- { import = "lazyvim.plugins.extras.lang.toml" },
         -- { import = "lazyvim.plugins.extras.lang.json" },

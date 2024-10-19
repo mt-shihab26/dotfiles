@@ -5,11 +5,14 @@ return {
     opts = {
         auto_install = true,
         ensure_installed = {
-            "php_only",
-            "twig",
             "markdown",
             "markdown_inline",
             "templ",
+
+            -- php
+            "php",
+            "php_only",
+            "twig",
         },
     },
 }
