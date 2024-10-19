@@ -42,8 +42,4 @@ return {
             lazydocker:toggle()
         end, {})
     end,
-    keys = {
-        { "<leader>ld", "<cmd>LazyDocker<cr>", desc = "toggle lazydocker", mode = "n" },
-        { "<leader>ls", "<cmd>LazySQL<cr>", desc = "toggle lazysql", mode = "n" },
-    },
 }

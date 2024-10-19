@@ -15,7 +15,7 @@
     -   `<leader>k` -> hover diagnostics
 -   bufferline
     -   `<leader>bc` -> close current buffer
--   toggleterm
+-   floating tools
     -   `<leader>ld` -> toggle lazydocker
     -   `<leader>ls` -> toggle lazysql
 

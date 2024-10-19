@@ -1,2 +1,11 @@
--- bootstrap lazy.nvim, LazyVim and your plugins
-require "config.lazy"
+-- initial options
+require "opt"
+
+-- bootstrap lazy
+require "boot"
+
+-- commands
+require "commands.copy-file-path"
+
+-- keymaps
+require "maps"

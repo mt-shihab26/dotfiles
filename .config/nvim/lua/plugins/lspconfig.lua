@@ -42,4 +42,7 @@ return {
     keys = {
         { "<leader>k", vim.diagnostic.open_float, desc = "hover diagnostics", mode = "n" },
     },
+    init = function()
+        vim.g.lazyvim_php_lsp = "intelephense"
+    end,
 }
