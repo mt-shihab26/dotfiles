@@ -18,11 +18,12 @@ require("lazy").setup {
     spec = {
         { "LazyVim/LazyVim", import = "lazyvim.plugins" },
         { import = "lazyvim.plugins.extras.formatting.prettier" },
-        { import = "lazyvim.plugins.extras.lang.git" },
+
         { import = "lazyvim.plugins.extras.lang.docker" },
 
         { import = "plugins" }, -- import/override with own plugins
 
+        -- { import = "lazyvim.plugins.extras.lang.git" },-- [x] custom written
         -- { import = "lazyvim.plugins.extras.lang.tailwind" }, -- [x] custom written
         -- { import = "lazyvim.plugins.extras.lang.typescript" }, -- [x] custom written
         -- { import = "lazyvim.plugins.extras.lang.astro" }, -- [x] custom written

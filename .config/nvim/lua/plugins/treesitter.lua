@@ -23,6 +23,13 @@ return {
             "markdown",
             "markdown_inline",
 
+            -- git
+            "git_config",
+            "gitcommit",
+            "git_rebase",
+            "gitignore",
+            "gitattributes",
+
             -- css
             "html",
             "css",
