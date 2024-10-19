@@ -5,13 +5,36 @@ return {
     opts = {
         auto_install = true,
         ensure_installed = {
+            "bash",
+            "c",
+            "diff",
+            "lua",
+            "luadoc",
+            "luap",
+            "printf",
+            "python",
+            "query",
+            "regex",
+            "toml",
+            "vim",
+            "vimdoc",
+            "xml",
+            "yaml",
             "markdown",
             "markdown_inline",
-            "templ",
 
             -- css
             "html",
             "css",
+
+            -- javascript
+            "javascript",
+            "jsdoc",
+            "json",
+            "jsonc",
+            "typescript",
+            "tsx",
+            "astro",
 
             -- php
             "php",
@@ -23,6 +46,7 @@ return {
             "gomod",
             "gowork",
             "gosum",
+            "templ",
         },
     },
 }

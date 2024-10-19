@@ -23,7 +23,7 @@ require("lazy").setup {
 
         -- { import = "lazyvim.plugins.extras.lang.tailwind" }, -- [x] custom written
         -- { import = "lazyvim.plugins.extras.lang.typescript" }, -- [x] custom written
-        -- { import = "lazyvim.plugins.extras.lang.astro" }, -- [ ] custom written
+        -- { import = "lazyvim.plugins.extras.lang.astro" }, -- [x] custom written
         -- { import = "lazyvim.plugins.extras.lang.vue" }, -- [ ] custom written
         -- { import = "lazyvim.plugins.extras.lang.php" }, -- [x] custom written
         -- { import = "lazyvim.plugins.extras.lang.go" }, -- [x] custom written

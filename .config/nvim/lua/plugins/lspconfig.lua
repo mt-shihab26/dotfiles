@@ -2,9 +2,13 @@
 
 -- css
 
-local html = {}
+local html = {
+    --
+}
 
-local cssls = {}
+local cssls = {
+    --
+}
 
 local tailwindcss = {
     -- exclude a filetype from the default_config
@@ -192,6 +196,20 @@ local vtsls_setup = function(_, opts)
         vim.tbl_deep_extend("force", {}, opts.settings.typescript, opts.settings.javascript or {})
 end
 
+local astro = {
+    --
+}
+
+local astro_setup = function(_, opts)
+    LazyVim.extend(opts.servers.vtsls, "settings.vtsls.tsserver.globalPlugins", {
+        {
+            name = "@astrojs/ts-plugin",
+            location = LazyVim.get_pkg_path("astro-language-server", "/node_modules/@astrojs/ts-plugin"),
+            enableForWorkspaceTypeScriptVersions = true,
+        },
+    })
+end
+
 -- php
 
 local intelephense = {
@@ -275,6 +293,7 @@ return {
 
             -- javascript
             vtsls = vtsls,
+            astro = astro,
 
             -- php
             intelephense = intelephense,
@@ -289,6 +308,7 @@ return {
 
             -- javascript
             vtsls = vtsls_setup,
+            astro = astro_setup,
 
             -- go
             gopls = gopls_setup,
