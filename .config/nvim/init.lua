@@ -9,3 +9,6 @@ require "commands.copy-file-path"
 
 -- keymaps
 require "maps"
+
+-- langs
+require "php"
