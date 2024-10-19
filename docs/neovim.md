@@ -1,6 +1,15 @@
-### Neovim v0.10.1
+# Neovim
 
-#### Normal Mode
+## Keymaps
+
+-   floaterm
+    -   `<C-t>` -> toggle floating terminal
+-   neotree
+    -   `<leader>e` -> focus file tree
+    -   `<leader>p` -> close file tree
+    -   `<C-n>` -> toggle file tree
+
+## Normal Mode
 
 -   fundamental motions
     -   `j` -> move down
@@ -33,7 +42,7 @@
     -   `u` -> Undo the previous action
     -   `^r` -> Redo the previous action
 
-#### Insert Mode
+## Insert Mode
 
 -   enter insert mode
     -   `i` -> enter insert mode before the cursor
@@ -45,7 +54,7 @@
     -   `^[`
     -   `^c`
 
-#### Visual Mode
+## Visual Mode
 
 -   enter visual mode
     -   `v` -> enter character-wise visual mode
@@ -59,12 +68,7 @@
     -   note: deleting text in the normal mode also copies that for pasting.
     -   `vit` -> Select tag block of code
 
-#### Keymaps
-
--   `<leader>th` -> open color scheme changer
--   `<leader>ld` -> open lazydocker inside neovim
-
-#### Commands
+## Commands
 
 -   `:source %` -> source current lua file
 -   `:Lazy` -> opening lazy ui

@@ -9,10 +9,6 @@ wk.add {
     { "<leader>nn", "<CMD>GoIfErr<CR>", mode = "n", desc = "Generate if err != nil {" },
     { "<leader>gac", "<CMD>GoTagAdd json<CR>", mode = "n", desc = "Add and remove tags for structs" },
 
-    -- toggles
-    { "<leader>t", group = "toggle things" },
-    { "<leader>tc", "<CMD>TailwindFoldToggle<CR>", mode = "n", desc = "toggle html classes float" },
-
     -- tabs
     { "<leader>bc", "<CMD>bp<bar>sp<bar>bn<bar>bd<CR>", mode = "n", desc = "close buffer" },
 
