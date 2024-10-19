@@ -13,6 +13,12 @@ return {
             "php",
             "php_only",
             "twig",
+
+            -- go
+            "go",
+            "gomod",
+            "gowork",
+            "gosum",
         },
     },
 }
