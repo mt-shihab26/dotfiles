@@ -22,7 +22,7 @@ stow .
 -   Terminal Multiplexer:
     -   `Tmux`
 -   Code Editor:
-    -   [ ] `Neovim`
+    -   [x] `Neovim`
     -   `VSCode`
     -   `PHPStorm`
 -   Browser:

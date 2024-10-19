@@ -16,7 +16,6 @@ return {
 
             -- tools
             "xml",
-            "svg",
             "toml",
             "yaml",
             "bash",
