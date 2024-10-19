@@ -30,6 +30,9 @@ return {
             "gitignore",
             "gitattributes",
 
+            -- docker
+            "dockerfile",
+
             -- css
             "html",
             "css",

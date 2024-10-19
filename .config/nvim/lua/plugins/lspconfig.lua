@@ -1,5 +1,15 @@
 -- LSP configuration
 
+-- docker
+
+local dockerls = {
+    --
+}
+
+local docker_compose_language_service = {
+    --
+}
+
 -- css
 
 local html = {
@@ -294,6 +304,10 @@ return {
     "neovim/nvim-lspconfig",
     opts = {
         servers = {
+            -- docker
+            dockerls = dockerls,
+            docker_compose_language_service = docker_compose_language_service,
+
             -- css
             html = html,
             cssls = cssls,
