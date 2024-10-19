@@ -200,15 +200,23 @@ local astro = {
     --
 }
 
-local astro_setup = function(_, opts)
-    LazyVim.extend(opts.servers.vtsls, "settings.vtsls.tsserver.globalPlugins", {
-        {
-            name = "@astrojs/ts-plugin",
-            location = LazyVim.get_pkg_path("astro-language-server", "/node_modules/@astrojs/ts-plugin"),
-            enableForWorkspaceTypeScriptVersions = true,
-        },
-    })
+local astro_setup = function(_, _) -- opts
+    -- LazyVim.extend(opts.servers.vtsls, "settings.vtsls.tsserver.globalPlugins", {
+    --     {
+    --         name = "@astrojs/ts-plugin",
+    --         location = LazyVim.get_pkg_path("astro-language-server", "/node_modules/@astrojs/ts-plugin"),
+    --         enableForWorkspaceTypeScriptVersions = true,
+    --     },
+    -- })
 end
+
+local volar = {
+    init_options = {
+        vue = {
+            hybridMode = true,
+        },
+    },
+}
 
 -- php
 
@@ -294,6 +302,7 @@ return {
             -- javascript
             vtsls = vtsls,
             astro = astro,
+            volar = volar,
 
             -- php
             intelephense = intelephense,

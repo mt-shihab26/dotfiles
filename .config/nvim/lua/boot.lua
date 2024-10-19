@@ -21,24 +21,14 @@ require("lazy").setup {
         { import = "lazyvim.plugins.extras.lang.git" },
         { import = "lazyvim.plugins.extras.lang.docker" },
 
+        { import = "plugins" }, -- import/override with own plugins
+
         -- { import = "lazyvim.plugins.extras.lang.tailwind" }, -- [x] custom written
         -- { import = "lazyvim.plugins.extras.lang.typescript" }, -- [x] custom written
         -- { import = "lazyvim.plugins.extras.lang.astro" }, -- [x] custom written
         -- { import = "lazyvim.plugins.extras.lang.vue" }, -- [ ] custom written
         -- { import = "lazyvim.plugins.extras.lang.php" }, -- [x] custom written
         -- { import = "lazyvim.plugins.extras.lang.go" }, -- [x] custom written
-
-        { import = "plugins" }, -- import/override with own plugins
-
-        -- { import = "lazyvim.plugins.extras.lang.toml" },
-        -- { import = "lazyvim.plugins.extras.lang.json" },
-        -- { import = "lazyvim.plugins.extras.lang.yaml" },
-        -- { import = "lazyvim.plugins.extras.lang.sql" },
-        -- { import = "lazyvim.plugins.extras.lang.clangd" },
-        -- { import = "lazyvim.plugins.extras.lang.python" },
-        -- { import = "lazyvim.plugins.extras.lang.ruby" },
-        -- { import = "lazyvim.plugins.extras.lang.elixir" },
-        -- { import = "lazyvim.plugins.extras.lang.rust" },
     },
     defaults = {
         -- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.

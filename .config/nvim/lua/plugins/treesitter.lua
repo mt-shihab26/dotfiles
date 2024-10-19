@@ -35,6 +35,7 @@ return {
             "typescript",
             "tsx",
             "astro",
+            "vue",
 
             -- php
             "php",
