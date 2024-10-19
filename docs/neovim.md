@@ -1,24 +1,5 @@
 # Neovim
 
-## Keymaps
-
--   floaterm
-    -   `<C-t>` -> toggle floating terminal
--   neotree
-    -   `<leader>e` -> focus file tree
-    -   `<leader>p` -> close file tree
-    -   `<C-n>` -> toggle file tree
--   gopher
-    -   `<leader>gne` -> generate go 'if err != nil {}' block
-    -   `<leader>gta` -> add go json tags to struct fields
--   lspconfig
-    -   `<leader>k` -> hover diagnostics
--   bufferline
-    -   `<leader>bc` -> close current buffer
--   floating tools
-    -   `<leader>ld` -> toggle lazydocker
-    -   `<leader>ls` -> toggle lazysql
-
 ## Normal Mode
 
 -   fundamental motions
@@ -86,3 +67,22 @@
 -   `:LspInfo` -> opening current buffer connected lsps
 -   `:Lazy sync` -> update plugins with lazy plugin manager
 -   `:Telescope keymaps` -> show telescope keymaps
+
+## Keymaps
+
+-   floaterm
+    -   `<C-t>` -> toggle floating terminal
+-   neotree
+    -   `<leader>e` -> focus file tree
+    -   `<leader>p` -> close file tree
+    -   `<C-n>` -> toggle file tree
+-   gopher
+    -   `<leader>gne` -> generate go 'if err != nil {}' block
+    -   `<leader>gta` -> add go json tags to struct fields
+-   lspconfig
+    -   `<leader>k` -> hover diagnostics
+-   bufferline
+    -   `<leader>bc` -> close current buffer
+-   floating tools
+    -   `<leader>ld` -> toggle lazydocker
+    -   `<leader>ls` -> toggle lazysql
