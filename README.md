@@ -24,7 +24,7 @@ stow .
 -   Window Manager:
     -   [x] Darwin -> `AeroSpace`
 -   Terminal Emulator:
-    -   [ ] `Kitty`
+    -   [x] `Kitty`
 -   Terminal Multiplexer:
     -   [ ] `Tmux`
 -   Shell:
