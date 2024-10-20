@@ -84,28 +84,25 @@ export PATH="$PATH:$HOME/.composer/vendor/bin"
 export PATH="$PATH:$PNPM_HOME"
 export PATH="$PATH:$GOPATH/bin"
 export PATH="$PATH:/Users/Shared/DBngin/mysql/8.0.33/bin"
+# Ruby
+export LDFLAGS="-L/opt/homebrew/opt/ruby/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/ruby/include"
+export PKG_CONFIG_PATH="/opt/homebrew/opt/ruby/lib/pkgconfig"
+if [ -d "/opt/homebrew/opt/ruby/bin" ]; then
+  export PATH=/opt/homebrew/opt/ruby/bin:$PATH
+  export PATH=`gem environment gemdir`/bin:$PATH
+fi
 
 # Aliases
 alias ls='ls --color'
 alias pa="php artisan"
 alias g++="g++ -std=c++20"
-alias init="$HOME/.scripts/tmux-init.sh"
-alias xs="$HOME/.scripts/tmux-sessionizer.sh"
-alias xp="xs project"
-alias xl="xs learn"
-
-# Ruby
-export LDFLAGS="-L/opt/homebrew/opt/ruby/lib"
-export CPPFLAGS="-I/opt/homebrew/opt/ruby/include"
-export PKG_CONFIG_PATH="/opt/homebrew/opt/ruby/lib/pkgconfig"
-
-# export PATH="$PATH:/opt/homebrew/lib/ruby/gems/3.3.0/bin"
-# export PATH="$PATH:/opt/homebrew/opt/ruby/bin"
-
-if [ -d "/opt/homebrew/opt/ruby/bin" ]; then
-  export PATH=/opt/homebrew/opt/ruby/bin:$PATH
-  export PATH=`gem environment gemdir`/bin:$PATH
-fi
+# Tmux Aliases
+alias t-init="$HOME/.scripts/tmux-init.sh"
+alias t-sessionizer="$HOME/.scripts/tmux-sessionizer.sh"
+alias t-p="t-sessionizer project"
+alias t-l="t-sessionizer learn"
+alias t-k="~/.scripts/tmux-kill-session.sh"
 
 # Done
 

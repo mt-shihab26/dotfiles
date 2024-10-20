@@ -1,6 +1,5 @@
 #!/usr/bin/env zsh
 
-
 if [[ $1 == "project" ]]; then
     selected=$(find ~/Code ~/Tmp ~/Code/paystubhero -mindepth 1 -maxdepth 1 -type d | fzf)
 elif [[ $1 == "learn" ]]; then

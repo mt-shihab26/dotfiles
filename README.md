@@ -18,30 +18,23 @@ stow .
 
 ## Tools
 
--   OS:
-    -   [x] `Darwin`
-    -   `Linux`
--   Window Manager:
-    -   [x] Darwin -> `AeroSpace`
--   Terminal Emulator:
+-   Window:
+    -   [x] macOS -> `AeroSpace`
+-   Terminal:
     -   [x] `kitty`
--   Terminal Multiplexer:
     -   [ ] `Tmux`
 -   Shell:
     -   [x] `ZSH`
--   Shell Tools
     -   [x] `fzf`
     -   [x] `zoxide`
--   Code Editor:
+-   Editor:
     -   [x] `Neovim`
-    -   `VSCode`
-    -   `PHPStorm`
+-   TUIs:
+    -   [x] `Lazygit`
+    -   [x] `Lazydocker`
 -   Browser:
     -   `Chrome`
     -   `Firefox`
     -   `Safari`
--   TUIs Tools:
-    -   [x] `Lazygit`
-    -   [x] `Lazydocker`
--   GUIs Tools:
-    -   [x] `TablePlus`
+-   GUIs:
+    -   `TablePlus`
