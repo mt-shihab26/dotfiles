@@ -6,12 +6,19 @@ Finally organizing config with dotfiles
 
 ```sh
 stow .
+
 ```
 
-## Tools
+## Things
 
 -   Color:
     -   [x] `tokyonight-night`
+-   Font:
+    -   [ ] Family: `CaskaydiaMono Nerd Font`
+    -   [ ] FontSize: `12`
+
+## Tools
+
 -   OS:
     -   [x] `Darwin`
     -   `Linux`
