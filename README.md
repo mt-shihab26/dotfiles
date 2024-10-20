@@ -16,11 +16,13 @@ stow .
 -   Window Manager:
     -   [x] Darwin -> `AeroSpace`
 -   Terminal Emulator:
-    -   `Alacritty`
--   Shell:
-    -   `ZSH`
+    -   `Kitty`
 -   Terminal Multiplexer:
     -   `Tmux`
+-   Shell:
+    -   `ZSH`
+-   Shell Tools
+    -   `fzf`
 -   Code Editor:
     -   [x] `Neovim`
     -   `VSCode`
