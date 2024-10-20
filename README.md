@@ -24,7 +24,7 @@ stow .
 -   Window Manager:
     -   [x] Darwin -> `AeroSpace`
 -   Terminal Emulator:
-    -   [x] `Kitty`
+    -   [x] `kitty`
 -   Terminal Multiplexer:
     -   [ ] `Tmux`
 -   Shell:
@@ -41,7 +41,7 @@ stow .
     -   `Firefox`
     -   `Safari`
 -   TUIs Tools:
-    -   [x] `Lazygit`,
+    -   [x] `Lazygit`
     -   [x] `Lazydocker`
 -   GUIs Tools:
     -   [x] `TablePlus`
