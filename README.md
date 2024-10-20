@@ -14,7 +14,7 @@ stow .
 -   Color:
     -   [x] `tokyonight-night`
 -   Font:
-    -   [ ] `CaskaydiaMono Nerd Font`
+    -   [x] `CaskaydiaMono Nerd Font`
 
 ## Tools
 
