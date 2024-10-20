@@ -79,7 +79,7 @@ export LANG=en_US.UTF-8
 export GOPATH=$HOME/go
 export PNPM_HOME="$HOME/Library/pnpm"
 
-# PATH Variable
+# PATH Variables
 export PATH="$PATH:$HOME/.composer/vendor/bin"
 export PATH="$PATH:$PNPM_HOME"
 export PATH="$PATH:$GOPATH/bin"
