@@ -20,11 +20,12 @@ stow .
 -   Terminal Emulator:
     -   [ ] `Kitty`
 -   Terminal Multiplexer:
-    -   `Tmux`
+    -   [ ] `Tmux`
 -   Shell:
-    -   `ZSH`
+    -   [x] `ZSH`
 -   Shell Tools
-    -   `fzf`
+    -   [x] `fzf`
+    -   [x] `zoxide`
 -   Code Editor:
     -   [x] `Neovim`
     -   `VSCode`
@@ -34,7 +35,7 @@ stow .
     -   `Firefox`
     -   `Safari`
 -   TUIs Tools:
-    -   `Lazygit`,
-    -   `Lazydocker`
+    -   [x] `Lazygit`,
+    -   [x] `Lazydocker`
 -   GUIs Tools:
-    -   `TablePlus`
+    -   [x] `TablePlus`
