@@ -10,6 +10,8 @@ stow .
 
 ## Tools
 
+-   Color:
+    -   [x] `tokyonight-night`
 -   OS:
     -   [x] `Darwin`
     -   `Linux`
