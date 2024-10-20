@@ -1,5 +1,11 @@
 # Tmux
 
+## Installation
+
+-   `$ brew install tmux` -> install tmux using homebrew
+-   `$ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm` -> clone tmux plugin manager (tpm)
+-   `$ ~/.tmux/plugins/tpm/bin/install_plugins` -> tnstall tmux plugins
+
 ## Commands
 
 -   `$ t-init` -> create or attach to default 'init' tmux session
