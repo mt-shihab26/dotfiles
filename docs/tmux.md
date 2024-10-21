@@ -10,12 +10,12 @@
 
 ## Keymaps
 
--   `<c-b>` -> prefix key
+-   prefix
+    -   `<c-b>` -> prefix key
 -   plugins
     -   `<prefix-I>` -> install tpm plugins
--   navigation
+-   navigation (also work inside neovim)
     -   `<c-h>` -> navigate to left window
     -   `<c-j>` -> navigate to window below
     -   `<c-k>` -> navigate to window above
     -   `<c-l>` -> navigate to right window
-    -   `<c-\>` -> navigate to previous window
