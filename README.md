@@ -33,8 +33,8 @@ stow .
     -   [x] `Lazygit`
     -   [x] `Lazydocker`
 -   Browser:
-    -   `Chrome`
-    -   `Firefox`
-    -   `Safari`
+    -   [x] `Chrome`
+    -   [x] `Firefox`
+    -   [x] `Safari`
 -   GUIs:
-    -   `TablePlus`
+    -   [x] `TablePlus`
