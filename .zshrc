@@ -98,11 +98,11 @@ alias ls='ls --color'
 alias pa="php artisan"
 alias g++="g++ -std=c++20"
 # Tmux Aliases
-alias t-init="$HOME/.scripts/tmux-init.sh"
-alias t-sessionizer="$HOME/.scripts/tmux-sessionizer.sh"
-alias t-p="t-sessionizer project"
-alias t-l="t-sessionizer learn"
-alias t-k="~/.scripts/tmux-kill-session.sh"
+alias init="$HOME/.scripts/tmux-init.sh"
+alias sessionizer="$HOME/.scripts/tmux-sessionizer.sh"
+alias sp="t-sessionizer project"
+alias sl="t-sessionizer learn"
+alias tkill="~/.scripts/tmux-kill-session.sh"
 
 # Done
 
