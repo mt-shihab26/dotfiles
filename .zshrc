@@ -100,9 +100,9 @@ alias g++="g++ -std=c++20"
 # Tmux Aliases
 alias init="$HOME/.scripts/tmux-init.sh"
 alias sessionizer="$HOME/.scripts/tmux-sessionizer.sh"
-alias sp="t-sessionizer project"
-alias sl="t-sessionizer learn"
-alias tkill="~/.scripts/tmux-kill-session.sh"
+alias sp="sessionizer project"
+alias sl="sessionizer learn"
+alias skill="~/.scripts/tmux-kill-session.sh"
 
 # Done
 

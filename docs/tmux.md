@@ -1,15 +1,11 @@
 # Tmux
 
-## Commands
+## Notes
 
--   `$ init` -> create or attach to default 'init' tmux session
--   `$ sessionizer <session name>` -> create or attach to fuzzy-found projects or specified session
--   `$ sp` -> fuzzy-find project directories, then create or attach tmux session
--   `$ sl` -> fuzzy-find learning-related projects directories, then create or attach tmux session
--   `$ tkill` -> Fuzzy-find active tmux sessions, then kill selected session
-
-## Keymaps
-
+-   session
+    -   `$ tmux`, `$ tmux new -s <session name>` -> create new session
+    -   `$ tmux ls`, `<prefix-s`, `<prefix-w` -> listing sessions
+    -   `$ tmux attach`, `$ tmux attach -t <session name>` -> attach session
 -   prefix
     -   `<c-space>` -> prefix key
 -   windows
@@ -36,3 +32,13 @@
         -   `y`: yank and exit copy mode
 -   plugins
     -   `<prefix-I>` -> install tpm plugins
+-   more
+    -   https://tmuxcheatsheet.com
+
+## Workaround
+
+-   `$ init` -> create or attach to default 'init' tmux session
+-   `$ sessionizer <session name>` -> create or attach to fuzzy-found projects or specified session
+-   `$ sp` -> fuzzy-find project directories, then create or attach tmux session
+-   `$ sl` -> fuzzy-find learning-related projects directories, then create or attach tmux session
+-   `$ sk` -> Fuzzy-find active tmux sessions, then kill selected session
