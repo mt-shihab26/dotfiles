@@ -16,10 +16,16 @@
     -   `<prefix-c` -> create new window
     -   `<shift-left`, `shift+alt+h` -> switch to previous-window
     -   `<shift-right`, `shift+alt+l` -> switch to next-window
--   plugins
-    -   `<prefix-I>` -> install tpm plugins
+-   yank
+    -   `<prefix-[>`: enter copy mode,
+    -   inside copy mod
+        -   `v`: start selection
+        -   `C-v`: toggle rectangle
+        -   `y`: yank and exit copy mode
 -   navigation (also work inside neovim)
     -   `<c-h>` -> navigate to left window
     -   `<c-j>` -> navigate to window below
     -   `<c-k>` -> navigate to window above
     -   `<c-l>` -> navigate to right window
+-   plugins
+    -   `<prefix-I>` -> install tpm plugins

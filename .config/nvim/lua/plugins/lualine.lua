@@ -7,6 +7,11 @@ return {
             component_separators = "",
         },
         sections = {
+            lualine_b = {
+                function()
+                    return ""
+                end,
+            },
             lualine_y = {
                 { "location", padding = { left = 0, right = 1 } },
             },
