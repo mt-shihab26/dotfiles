@@ -13,8 +13,9 @@
 -   prefix
     -   `<c-space>` -> prefix key
 -   windows
-    -   `<shif-left` -> switch to previous-window
-    -   `<shif-right` -> switch to next-window
+    -   `<prefix-c` -> create new window
+    -   `<shift-left`, `shift+alt+h` -> switch to previous-window
+    -   `<shift-right`, `shift+alt+l` -> switch to next-window
 -   plugins
     -   `<prefix-I>` -> install tpm plugins
 -   navigation (also work inside neovim)
