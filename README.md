@@ -22,7 +22,7 @@ stow .
     -   [x] macOS -> `AeroSpace`
 -   Terminal:
     -   [x] `kitty`
-    -   [ ] `Tmux`
+    -   [x] `Tmux`
 -   Shell:
     -   [x] `ZSH`
     -   [x] `fzf`
