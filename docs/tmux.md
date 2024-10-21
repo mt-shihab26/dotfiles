@@ -11,7 +11,10 @@
 ## Keymaps
 
 -   prefix
-    -   `<c-b>` -> prefix key
+    -   `<c-space>` -> prefix key
+-   windows
+    -   `<shif-left` -> switch to previous-window
+    -   `<shif-right` -> switch to next-window
 -   plugins
     -   `<prefix-I>` -> install tpm plugins
 -   navigation (also work inside neovim)
