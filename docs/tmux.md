@@ -13,19 +13,26 @@
 -   prefix
     -   `<c-space>` -> prefix key
 -   windows
-    -   `<prefix-c` -> create new window
-    -   `<shift-left`, `shift+alt+h` -> switch to previous-window
-    -   `<shift-right`, `shift+alt+l` -> switch to next-window
+    -   `<prefix-c>` -> create window
+    -   `<prefix-&` -> kill window
+    -   `<prefix-'window number'>` -> switch specific window
+    -   `<prefix-p`, `<shift-left`, `shift+alt+h` -> switch to previous-window
+    -   `<prefix-n`, `<shift-right`, `shift+alt+l` -> switch to next-window
+-   panes
+    -   `<prefix-%>` -> split pane horizontally
+    -   `<prefix-">` -> split pane vertically
+    -   `<prefix-arrow>`, `<c-h>`, `<c-j>`, `<c-k>`, `<c-l>` -> navigate panes
+    -   `<prefix-q>` -> toggle panes number
+    -   `<prefix-{>`, `<prefix-}>` -> swap panes
+    -   `<prefix-z>` -> pane take up full window
+    -   `<prefix-z>` -> toggle pane take up full window
+    -   `<prefix-!>` -> make pane into window
+    -   `<prefix-x>` -> close a pane
 -   yank
     -   `<prefix-[>`: enter copy mode,
     -   inside copy mod
         -   `v`: start selection
         -   `C-v`: toggle rectangle
         -   `y`: yank and exit copy mode
--   navigation (also work inside neovim)
-    -   `<c-h>` -> navigate to left window
-    -   `<c-j>` -> navigate to window below
-    -   `<c-k>` -> navigate to window above
-    -   `<c-l>` -> navigate to right window
 -   plugins
     -   `<prefix-I>` -> install tpm plugins
