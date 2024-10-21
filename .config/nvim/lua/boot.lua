@@ -28,8 +28,6 @@ require("lazy").setup {
         -- { import = "lazyvim.plugins.extras.lang.vue" }, -- [ ] custom written
         -- { import = "lazyvim.plugins.extras.lang.php" }, -- [x] custom written
         -- { import = "lazyvim.plugins.extras.lang.go" }, -- [x] custom written
-
-        -- { import = "lazyvim.plugins.extras.formatting.prettier" },
     },
     defaults = {
         -- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.
