@@ -24,10 +24,13 @@ _darcs
 
 .DS_Store
 
-docs
-extarnal
 .luarc.json
 .stylua.toml
+
+docs
+extarnal
+install
+
 LICENSE
 Makefile
 README.md
