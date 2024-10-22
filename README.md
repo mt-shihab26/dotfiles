@@ -38,3 +38,13 @@ stow .
     -   [x] `Safari`
 -   GUIs:
     -   [x] `TablePlus`
+
+## Stacks
+
+-  `C/C++`
+-  `TypeScript` : `React`, `Inertia.js`, `TailwindCSS`
+-  `PHP` : `WordPress`, `Laravel`, `Livewire`
+-  `Go`
+-  `SQLite`, `MySQL`
+-  `Linux`, `Neovim`, `DigitalOcean`, `Cloudflare`
+
