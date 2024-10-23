@@ -251,7 +251,7 @@ run = "move-node-to-workspace 4"
 # Management tools
 
 [[on-window-detected]]
-if.app-id = 'com.todoist.mac.Todoist'
+if.app-id = 'com.apple.clock'
 run = "move-node-to-workspace 5"
 
 [[on-window-detected]]
@@ -260,6 +260,10 @@ run = "move-node-to-workspace 5"
 
 [[on-window-detected]]
 if.app-id = 'us.zoom.xos'
+run = "move-node-to-workspace 5"
+
+[[on-window-detected]]
+if.app-id = 'com.todoist.mac.Todoist'
 run = "move-node-to-workspace 5"
 
 # Files & Previews
