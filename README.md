@@ -42,7 +42,7 @@ stow .
 ## Stacks
 
 -  `C/C++`
--  `TypeScript` : `React`, `Inertia.js`, `TailwindCSS`
+-  `TypeScript` : `React`, `Vue`, `Inertia.js`, `TailwindCSS`
 -  `PHP` : `WordPress`, `Laravel`, `Livewire`
 -  `Go`
 -  `SQLite`, `MySQL`
