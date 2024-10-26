@@ -12,48 +12,10 @@ local disable = function(keymaps)
     end
 end
 
-local telescope_keymaps = {
-    -- Basic mappings
-    "<leader>/",
-    "<leader>,",
-    "<leader>:",
-    "<leader><space>",
-    -- Find mappings
-    "<leader>fb",
-    "<leader>fc",
-    "<leader>ff",
-    "<leader>fF",
-    "<leader>fg",
-    "<leader>fr",
-    "<leader>fR",
-    -- Git mappings
-    "<leader>gc",
-    "<leader>gs",
-    -- Search mappings
-    '<leader>s"',
-    "<leader>sa",
-    "<leader>sb",
-    "<leader>sc",
-    "<leader>sC",
-    "<leader>sd",
-    "<leader>sD",
-    "<leader>sg",
-    "<leader>sG",
-    "<leader>sh",
-    "<leader>sH",
-    "<leader>sj",
-    "<leader>sk",
-    "<leader>sl",
-    "<leader>sM",
-    "<leader>sm",
-    "<leader>so",
-    "<leader>sR",
-    "<leader>sq",
-    "<leader>sw",
-    "<leader>sW",
-    "<leader>uC",
-    "<leader>ss",
-    "<leader>sS",
+local general = {
+    "<leader>fn",
+    "<leader>ft",
+    "<leader>fT",
 }
 
-disable(telescope_keymaps)
+disable(general)
