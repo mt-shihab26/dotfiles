@@ -1,11 +1,11 @@
 -- initial options
 require "opt"
 
--- disable
-require "disable"
-
 -- bootstrap lazy
 require "boot"
+
+-- disable
+require "disable"
 
 -- commands
 require "commands.copy-file-path"
