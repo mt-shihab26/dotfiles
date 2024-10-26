@@ -83,6 +83,7 @@
     -   `<leader>k` -> hover diagnostics
 -   bufferline
     -   `<leader>bc` -> close current buffer
--   floating tools
+-   floating
     -   `<leader>ld` -> toggle lazydocker
     -   `<leader>ls` -> toggle lazysql
+-   telescope

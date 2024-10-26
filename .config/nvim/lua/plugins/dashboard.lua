@@ -1,7 +1,8 @@
--- Init dashboard
+-- Dashboard
 
 return {
     "nvimdev/dashboard-nvim",
+    enabled = false,
     opts = {
         theme = "hyper",
         config = {

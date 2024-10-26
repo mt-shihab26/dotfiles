@@ -1,6 +1,9 @@
 -- initial options
 require "opt"
 
+-- disable
+require "disable"
+
 -- bootstrap lazy
 require "boot"
 
