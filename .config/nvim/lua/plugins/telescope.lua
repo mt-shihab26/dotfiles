@@ -1,15 +1,5 @@
 -- Fuzzy finder
 
-local function vimgrep_arguments()
-    local vg = { unpack(require("telescope.config").values.vimgrep_arguments) }
-    -- I want to search in hidden/dot files.
-    table.insert(vg, "--hidden")
-    -- I don't want to search in the `.git` directory.
-    table.insert(vg, "--glob")
-    table.insert(vg, "!**/.git/*")
-    return vg
-end
-
 return {
     "nvim-telescope/telescope.nvim",
     keys = {
@@ -55,14 +45,63 @@ return {
         { "<leader>uC", false },
         { "<leader>ss", false },
         { "<leader>sS", false },
-    },
-    opts = {
-        defaults = {
-            layout_strategy = "horizontal",
-            layout_config = { prompt_position = "top" },
-            sorting_strategy = "ascending",
-            winblend = 0,
-            vimgrep_arguments = vimgrep_arguments(),
+        {
+            "<leader>ff",
+            function()
+                require("telescope.builtin").find_files {
+                    prompt_title = "Find Files",
+                }
+            end,
+        },
+        {
+            "<leader>fF",
+            function()
+                require("telescope.builtin").find_files {
+                    prompt_title = "Find All Files",
+                    no_ignore = true,
+                }
+            end,
+        },
+        {
+            "<leader>fg",
+            function()
+                require("telescope").extensions.live_grep_args.live_grep_args {
+                    prompt_title = "Grep Files",
+                    vimgrep_arguments = {
+                        "rg",
+                        "--hidden",
+                        "-L",
+                        "--color=never",
+                        "--sort=path",
+                        "--no-heading",
+                        "--with-filename",
+                        "--line-number",
+                        "--column",
+                        "--smart-case",
+                    },
+                }
+            end,
+        },
+        {
+            "<leader>fG",
+            function()
+                require("telescope").extensions.live_grep_args.live_grep_args {
+                    prompt_title = "Grep All Files",
+                    vimgrep_arguments = {
+                        "rg",
+                        "--hidden",
+                        "--no-ignore",
+                        "-L",
+                        "--color=never",
+                        "--sort=path",
+                        "--no-heading",
+                        "--with-filename",
+                        "--line-number",
+                        "--column",
+                        "--smart-case",
+                    },
+                }
+            end,
         },
     },
 }

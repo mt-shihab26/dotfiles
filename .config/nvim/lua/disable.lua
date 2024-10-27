@@ -12,10 +12,6 @@ local disable = function(keymaps)
     end
 end
 
-local general = {
-    "<leader>fn",
-    "<leader>ft",
-    "<leader>fT",
-}
+local general = {}
 
 disable(general)
