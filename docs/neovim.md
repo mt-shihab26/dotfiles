@@ -70,7 +70,7 @@
 
 ## Keymaps
 
--   neotree
+-   neo-tree
     -   `<leader>e` -> focus file tree
     -   `<leader>p` -> close file tree
     -   `<C-n>` -> toggle file tree
@@ -79,18 +79,19 @@
     -   `<S-l>` -> next buffer
     -   `<leader>bo` -> delete other buffers
     -   `<leader>bc` -> close current buffer
--   floaterm
-    -   `<C-t>` -> toggle floating terminal
--   gopher
-    -   `<leader>gne` -> generate go 'if err != nil {}' block
-    -   `<leader>gta` -> add go json tags to struct fields
--   lspconfig
-    -   `<leader>k` -> hover diagnostics
--   floating
-    -   `<leader>ld` -> toggle lazydocker
-    -   `<leader>ls` -> toggle lazysql
--   telescope
-    -   `<leader>ff>`-> find finds
-    -   `<leader>fF>`-> find all finds
-    -   `<leader>fg>`-> grep finds
-    -   `<leader>fG>`-> grep all finds
+
+<!---   floaterm-->
+<!--    -   `<C-t>` -> toggle floating terminal-->
+<!---   gopher-->
+<!--    -   `<leader>gne` -> generate go 'if err != nil {}' block-->
+<!--    -   `<leader>gta` -> add go json tags to struct fields-->
+<!---   lspconfig-->
+<!--    -   `<leader>k` -> hover diagnostics-->
+<!---   floating-->
+<!--    -   `<leader>ld` -> toggle lazydocker-->
+<!--    -   `<leader>ls` -> toggle lazysql-->
+<!---   telescope-->
+<!--    -   `<leader>ff>`-> find finds-->
+<!--    -   `<leader>fF>`-> find all finds-->
+<!--    -   `<leader>fg>`-> grep finds-->
+<!--    -   `<leader>fG>`-> grep all finds-->

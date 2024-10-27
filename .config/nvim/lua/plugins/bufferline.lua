@@ -28,7 +28,7 @@ return {
                     filetype = "neo-tree",
                     text = "File Tree",
                     highlight = "Directory",
-                    separator = true,
+                    text_align = "left",
                 },
             },
             show_buffer_icons = true,
