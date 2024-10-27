@@ -1,5 +1,5 @@
 format:
-	@stylua .config -v
+	stylua .config
 
 clean:
 	rm -rf ~/.local/slate/nvim
