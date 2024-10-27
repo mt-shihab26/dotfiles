@@ -26,8 +26,10 @@ return {
             offsets = {
                 {
                     filetype = "neo-tree",
-                    text = "Tree",
-                    highlight = "Directory",
+                    text = function()
+                        return " " .. vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
+                    end,
+                    highlight = "StatusLineComment",
                     text_align = "left",
                 },
             },

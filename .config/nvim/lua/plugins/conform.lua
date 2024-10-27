@@ -1,50 +1,48 @@
 return {
-    {
-        "stevearc/conform.nvim",
-        opts = {
-            formatters_by_ft = {
-                -- tools
-                svg = { "prettier" },
-                yaml = { "prettier" },
-                json = { "prettier" },
-                jsonc = { "prettier" },
-                fish = { "fish_indent" },
-                sh = { "shfmt" },
+    "stevearc/conform.nvim",
+    opts = {
+        formatters_by_ft = {
+            -- tools
+            svg = { "prettier" },
+            yaml = { "prettier" },
+            json = { "prettier" },
+            jsonc = { "prettier" },
+            fish = { "fish_indent" },
+            sh = { "shfmt" },
 
-                -- lua
-                lua = { "stylua" },
+            -- lua
+            lua = { "stylua" },
 
-                -- markdown
-                markdown = { "prettier" },
-                mdx = { "prettier" },
+            -- markdown
+            markdown = { "prettier" },
+            mdx = { "prettier" },
 
-                -- css
-                html = { "prettier" },
-                css = { "prettier" },
-                scss = { "prettier" },
-                less = { "prettier" },
+            -- css
+            html = { "prettier" },
+            css = { "prettier" },
+            scss = { "prettier" },
+            less = { "prettier" },
 
-                -- javascript
-                javascript = { "prettier" },
-                javascriptreact = { "prettier" },
-                typescript = { "prettier" },
-                typescriptreact = { "prettier" },
-                astro = { "prettier" },
-                vue = { "prettier" },
+            -- javascript
+            javascript = { "prettier" },
+            javascriptreact = { "prettier" },
+            typescript = { "prettier" },
+            typescriptreact = { "prettier" },
+            astro = { "prettier" },
+            vue = { "prettier" },
 
-                -- php
-                php = { "pint" },
-                blade = { "prettier" },
+            -- php
+            php = { "pint" },
+            blade = { "prettier" },
 
-                -- go
-                go = { "goimports", "gofumpt" },
-                templ = { "templ" },
-            },
-            format_on_save = {
-                -- These options will be passed to conform.format()
-                timeout_ms = 1000,
-                -- lsp_format = "fallback",
-            },
+            -- go
+            go = { "goimports", "gofumpt" },
+            templ = { "templ" },
+        },
+        format_on_save = {
+            -- These options will be passed to conform.format()
+            timeout_ms = 1000,
+            -- lsp_format = "fallback",
         },
     },
 }
