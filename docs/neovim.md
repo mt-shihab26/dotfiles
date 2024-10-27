@@ -87,3 +87,7 @@
     -   `<leader>ld` -> toggle lazydocker
     -   `<leader>ls` -> toggle lazysql
 -   telescope
+    -   `<leader>ff>`-> find finds
+    -   `<leader>fF>`-> find all finds
+    -   `<leader>fg>`-> grep finds
+    -   `<leader>fG>`-> grep all finds
