@@ -79,6 +79,11 @@
     -   `<S-l>` -> next buffer
     -   `<leader>bo` -> delete other buffers
     -   `<leader>bc` -> close current buffer
+-   telescope
+    -   `<leader>ff>`-> find finds
+    -   `<leader>fF>`-> find all finds
+    -   `<leader>fg>`-> grep finds
+    -   `<leader>fG>`-> grep all finds
 
 <!---   floaterm-->
 <!--    -   `<C-t>` -> toggle floating terminal-->
@@ -90,8 +95,3 @@
 <!---   floating-->
 <!--    -   `<leader>ld` -> toggle lazydocker-->
 <!--    -   `<leader>ls` -> toggle lazysql-->
-<!---   telescope-->
-<!--    -   `<leader>ff>`-> find finds-->
-<!--    -   `<leader>fF>`-> find all finds-->
-<!--    -   `<leader>fg>`-> grep finds-->
-<!--    -   `<leader>fG>`-> grep all finds-->
