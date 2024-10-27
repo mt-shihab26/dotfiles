@@ -15,12 +15,17 @@ local servers = {
         },
     },
 
-    -- Frontend
+    -- HTML
+    html = {},
+
+    -- CSS
+    cssls = {},
     tailwindcss = {
         filetypes_exclude = { "markdown" },
         filetypes_include = {},
     },
 
+    -- Javascript
     vtsls = {
         filetypes = {
             "javascript",
@@ -57,7 +62,7 @@ local servers = {
             },
         },
     },
-
+    astro = {},
     volar = {
         init_options = {
             vue = {
@@ -65,6 +70,9 @@ local servers = {
             },
         },
     },
+
+    -- PHP
+    intelephense = {},
 
     -- Go
     gopls = {
@@ -105,6 +113,7 @@ local servers = {
             },
         },
     },
+    templ = {},
 
     -- Python
     pyright = {
@@ -119,15 +128,10 @@ local servers = {
         },
     },
 
-    -- Other languages with default settings
-    dockerls = {},
-    docker_compose_language_service = {},
-    html = {},
-    cssls = {},
-    astro = {},
-    intelephense = {},
-    templ = {},
+    -- RUST
     rust_analyzer = {},
+
+    -- C/C++
     clangd = {},
 }
 
@@ -155,11 +159,9 @@ return {
             },
         }
 
-        -- LSP settings
         local lspconfig = require "lspconfig"
         local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-        -- LSP keybindings
         local on_attach = function(_, bufnr)
             local opts = function(opts)
                 return vim.tbl_extend("force", {
@@ -182,7 +184,6 @@ return {
             vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, opts { desc = "rename symbol" })
         end
 
-        -- Setup all servers
         for server_name, server_settings in pairs(servers) do
             lspconfig[server_name].setup(vim.tbl_deep_extend("force", {
                 capabilities = capabilities,
