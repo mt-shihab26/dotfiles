@@ -26,9 +26,7 @@ return {
             offsets = {
                 {
                     filetype = "neo-tree",
-                    text = function()
-                        return " " .. vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
-                    end,
+                    text = "File Tree",
                     highlight = "Directory",
                     text_align = "left",
                 },
