@@ -89,6 +89,8 @@
 -   cmp
     -   `<Tab>` -> next suggestion
     -   `<S-Tab>` -> prev suggestion
+-   lazygit
+    -   `<leader>lg` -> open lazygit
 
 <!---   floaterm-->
 <!--    -   `<C-t>` -> toggle floating terminal-->
