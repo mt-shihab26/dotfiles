@@ -136,63 +136,28 @@ return {
     dependencies = {
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
-        { "j-hui/fidget.nvim", tag = "legacy" },
+        -- { "j-hui/fidget.nvim", tag = "legacy" },
     },
     config = function()
-        -- Mason setup
         require("mason").setup {}
+
         require("mason-lspconfig").setup {
             ensure_installed = vim.tbl_keys(servers),
             automatic_installation = true,
         }
 
-        -- Fidget setup for LSP loading progress
-        require("fidget").setup {
-            text = {
-                spinner = "pipe",
-            },
-            window = {
-                blend = 0,
-            },
-        }
+        -- require("fidget").setup {
+        --     text = {
+        --         spinner = "pipe",
+        --     },
+        --     window = {
+        --         blend = 0,
+        --     },
+        -- }
 
         -- LSP settings
         local lspconfig = require "lspconfig"
         local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
-        -- Diagnostic signs
-        local signs = {
-            Error = "󰅚",
-            Warn = "󰀪",
-            Hint = "󰌶",
-            Info = "",
-        }
-
-        for type, icon in pairs(signs) do
-            local hl = "DiagnosticSign" .. type
-            vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-        end
-
-        -- Diagnostic configuration
-        vim.diagnostic.config {
-            virtual_text = true,
-            signs = true,
-            update_in_insert = false,
-            underline = true,
-            severity_sort = true,
-            float = {
-                border = "rounded",
-                style = "minimal",
-                header = "",
-                prefix = "",
-                format = function(diagnostic)
-                    if diagnostic.source then
-                        return string.format("%s: %s", diagnostic.source, diagnostic.message)
-                    end
-                    return diagnostic.message
-                end,
-            },
-        }
 
         -- LSP keybindings
         local on_attach = function(_, bufnr)
