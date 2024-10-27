@@ -102,7 +102,6 @@ return {
                         luasnip.jump(1)
                     elseif has_words_before() then
                         cmp.complete()
-                        print "complete..."
                     else
                         fallback()
                     end
@@ -116,7 +115,9 @@ return {
                         fallback()
                     end
                 end, { "i", "s" }),
-                ["<CR>"] = cmp.mapping.confirm { select = false },
+                ["<CR>"] = cmp.mapping.confirm {
+                    select = true,
+                },
             },
         }
     end,
