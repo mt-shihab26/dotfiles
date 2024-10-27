@@ -91,6 +91,16 @@
     -   `<S-Tab>` -> prev suggestion
 -   lazygit
     -   `<leader>lg` -> open lazygit
+-   lspconfig
+    -   `gd` -> go to definition
+    -   `gD` -> go to declaration
+    -   `gr` -> go to references
+    -   `gi` -> go to implementation
+    -   `K` -> show hover documentation
+    -   `<C-k>` -> show hover diagnostics
+    -   `<leader>h` -> signature help
+    -   `<leader>a` -> code actions
+    -   `<leader>r` -> rename symbol
 
 <!---   floaterm-->
 <!--    -   `<C-t>` -> toggle floating terminal-->

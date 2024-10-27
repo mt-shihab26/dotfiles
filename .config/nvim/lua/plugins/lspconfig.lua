@@ -136,7 +136,7 @@ return {
     dependencies = {
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
-        -- { "j-hui/fidget.nvim", tag = "legacy" },
+        { "j-hui/fidget.nvim", tag = "legacy" },
     },
     config = function()
         require("mason").setup {}
@@ -146,14 +146,14 @@ return {
             automatic_installation = true,
         }
 
-        -- require("fidget").setup {
-        --     text = {
-        --         spinner = "pipe",
-        --     },
-        --     window = {
-        --         blend = 0,
-        --     },
-        -- }
+        require("fidget").setup {
+            text = {
+                spinner = "pipe",
+            },
+            window = {
+                blend = 0,
+            },
+        }
 
         -- LSP settings
         local lspconfig = require "lspconfig"
@@ -161,18 +161,25 @@ return {
 
         -- LSP keybindings
         local on_attach = function(_, bufnr)
-            local opts = { noremap = true, silent = true, buffer = bufnr }
+            local opts = function(opts)
+                return vim.tbl_extend("force", {
+                    noremap = true,
+                    silent = true,
+                    buffer = bufnr,
+                }, opts or {})
+            end
 
-            vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-            vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-            vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
-            vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+            vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts { desc = "go to definition" })
+            vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts { desc = "go to declaration" })
+            vim.keymap.set("n", "gr", vim.lsp.buf.references, opts { desc = "go to references" })
+            vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts { desc = "go to implementation" })
 
-            vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-            vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
+            vim.keymap.set("n", "K", vim.lsp.buf.hover, opts { desc = "show hover documentation" })
+            vim.keymap.set("n", "<C-k>", vim.diagnostic.open_float, opts { desc = "show hover diagnostics" })
 
-            vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, opts)
-            vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, opts)
+            vim.keymap.set("n", "<leader>h", vim.lsp.buf.signature_help, opts { desc = "signature help" })
+            vim.keymap.set("n", "<leader>a", vim.lsp.buf.code_action, opts { desc = "code actions" })
+            vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, opts { desc = "rename symbol" })
         end
 
         -- Setup all servers
