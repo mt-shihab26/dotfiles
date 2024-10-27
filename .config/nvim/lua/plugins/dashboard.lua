@@ -1,15 +1,13 @@
 return {
     "nvimdev/dashboard-nvim",
-    enabled = false,
+    event = "VimEnter",
     dependencies = {
         "nvim-tree/nvim-web-devicons",
     },
     opts = {
         theme = "hyper",
         config = {
-            week_header = {
-                enable = true,
-            },
+            week_header = { enable = true },
             shortcut = {
                 {
                     action = "Lazy",
@@ -26,7 +24,13 @@ return {
                     group = "@property",
                 },
                 {
-                    action = "lua LazyVim.pick.config_files()()",
+                    action = function()
+                        local telescope = require "telescope.builtin"
+                        telescope.find_files {
+                            prompt_title = "Find Dotfiles",
+                            cwd = vim.fn.expand "~/dotfiles",
+                        }
+                    end,
                     desc = " Config",
                     icon = " ",
                     key = "c",
