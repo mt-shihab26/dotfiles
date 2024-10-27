@@ -26,7 +26,7 @@ return {
             offsets = {
                 {
                     filetype = "neo-tree",
-                    text = "neo-tree",
+                    text = "Tree",
                     highlight = "Directory",
                     text_align = "left",
                 },

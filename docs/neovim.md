@@ -86,6 +86,9 @@
     -   `<leader>fG>`-> grep all finds
 -   which-key
     -   `<leader>?`-> buffer local keymaps
+-   cmp
+    -   `<Tab>` -> next suggestion
+    -   `<S-Tab>` -> prev suggestion
 
 <!---   floaterm-->
 <!--    -   `<C-t>` -> toggle floating terminal-->
