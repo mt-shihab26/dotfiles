@@ -43,7 +43,7 @@ return {
     keys = {
         { "<S-h>", "<cmd>BufferLineCyclePrev<cr>", desc = "prev buffer" },
         { "<S-l>", "<cmd>BufferLineCycleNext<cr>", desc = "next buffer" },
-        { "<leader>bo", "<Cmd>BufferLineCloseOthers<CR>", desc = "delete other buffers" },
-        { "<leader>bc", "<cmd>bp<bar>sp<bar>bn<bar>bd<cr>", mode = "n", desc = "close current buffer" },
+        { "<leader>q", "<cmd>bp<bar>sp<bar>bn<bar>bd<cr>", mode = "n", desc = "close current buffer" },
+        { "<leader>Q", "<Cmd>BufferLineCloseOthers<CR>", desc = "delete other buffers" },
     },
 }

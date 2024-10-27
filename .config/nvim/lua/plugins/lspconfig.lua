@@ -182,6 +182,9 @@ return {
             vim.keymap.set("n", "<leader>h", vim.lsp.buf.signature_help, opts { desc = "signature help" })
             vim.keymap.set("n", "<leader>a", vim.lsp.buf.code_action, opts { desc = "code actions" })
             vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, opts { desc = "rename symbol" })
+
+            vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "go to prev diagnostic" })
+            vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "go to next diagnostic" })
         end
 
         for server_name, server_settings in pairs(servers) do

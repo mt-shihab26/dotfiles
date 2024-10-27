@@ -8,6 +8,6 @@ return {
         "LazyGit",
     },
     keys = {
-        { "<leader>lg", "<cmd>LazyGit<cr>", desc = "open lazygit", remap = true },
+        { "<leader>l", "<cmd>LazyGit<cr>", desc = "open lazygit", remap = true },
     },
 }

@@ -77,13 +77,13 @@
 -   bufferline
     -   `<S-h>` -> prev buffer
     -   `<S-l>` -> next buffer
-    -   `<leader>bo` -> delete other buffers
-    -   `<leader>bc` -> close current buffer
+    -   `<leader>q` -> close current buffer
+    -   `<leader>Q` -> delete other buffers
 -   telescope
-    -   `<leader>ff>`-> find finds
-    -   `<leader>fF>`-> find all finds
-    -   `<leader>fg>`-> grep finds
-    -   `<leader>fG>`-> grep all finds
+    -   `<leader>f>`-> find finds
+    -   `<leader>F>`-> find all finds
+    -   `<leader>g>`-> grep finds
+    -   `<leader>G>`-> grep all finds
 -   which-key
     -   `<leader>?`-> buffer local keymaps
 -   cmp
@@ -101,6 +101,8 @@
     -   `<leader>h` -> signature help
     -   `<leader>a` -> code actions
     -   `<leader>r` -> rename symbol
+    -   `[d` -> go to prev diagnostic
+    -   `]d` -> go to next diagnostic
 
 <!---   floaterm-->
 <!--    -   `<C-t>` -> toggle floating terminal-->
