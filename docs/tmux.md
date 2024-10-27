@@ -15,7 +15,6 @@
     -   `<prefix-p`, `<shift-left`, `shift+alt+h` -> switch to previous-window
     -   `<prefix-n`, `<shift-right`, `shift+alt+l` -> switch to next-window
 -   panes
-
     -   `<prefix-%>` -> split pane horizontally
     -   `<prefix-">` -> split pane vertically
     -   `<prefix-arrow>`, `<c-h>`, `<c-j>`, `<c-k>`, `<c-l>` -> navigate panes
@@ -25,7 +24,6 @@
     -   `<prefix-z>` -> toggle pane take up full window
     -   `<prefix-!>` -> make pane into window
     -   `<prefix-x>` -> close a pane
-
 -   plugins
     -   `<prefix-I>` -> install tpm plugins
     -   yank
