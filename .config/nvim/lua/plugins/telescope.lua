@@ -7,18 +7,13 @@ return {
         { "<leader>,", false },
         { "<leader>:", false },
         { "<leader><space>", false },
-        -- find
         { "<leader>fb", false },
         { "<leader>fc", false },
-        { "<leader>ff", false },
-        { "<leader>fF", false },
         { "<leader>fg", false },
         { "<leader>fr", false },
         { "<leader>fR", false },
-        -- git
         { "<leader>gc", false },
         { "<leader>gs", false },
-        -- search
         { '<leader>s"', false },
         { "<leader>sa", false },
         { "<leader>sb", false },
@@ -52,6 +47,7 @@ return {
                     prompt_title = "Find Files",
                 }
             end,
+            desc = "find files",
         },
         {
             "<leader>fF",
@@ -61,11 +57,12 @@ return {
                     no_ignore = true,
                 }
             end,
+            desc = "find all files",
         },
         {
             "<leader>fg",
             function()
-                require("telescope").extensions.live_grep_args.live_grep_args {
+                require("telescope.builtin").live_grep {
                     prompt_title = "Grep Files",
                     vimgrep_arguments = {
                         "rg",
@@ -78,14 +75,20 @@ return {
                         "--line-number",
                         "--column",
                         "--smart-case",
+                        "--glob=!.git/*",
+                        "--glob=!composer.lock",
+                        "--glob=!pnpm-lock.yaml",
+                        "--glob=!package-lock.json",
+                        "--glob=!yarn.lock",
                     },
                 }
             end,
+            desc = "grep files",
         },
         {
             "<leader>fG",
             function()
-                require("telescope").extensions.live_grep_args.live_grep_args {
+                require("telescope.builtin").live_grep {
                     prompt_title = "Grep All Files",
                     vimgrep_arguments = {
                         "rg",
@@ -102,6 +105,7 @@ return {
                     },
                 }
             end,
+            desc = "grep all files",
         },
     },
 }
