@@ -1,31 +1,5 @@
-local ensure_installed = {
-    "lua_ls", -- lua
-
-    "dockerls", -- docker
-    "docker_compose_language_service",
-
-    "html", -- html
-
-    "cssls", -- css
-    "tailwindcss", -- tailwindcss
-
-    "vtsls", -- typescript
-    "astro", -- astro
-    "volar", -- vue
-
-    "intelephense", -- php
-
-    "gopls", -- go
-    "templ", -- templ
-
-    "pyright", -- python
-
-    "rust_analyzer", -- rust
-
-    "clangd", -- c/cpp
-}
-
 local servers = {
+    -- Lua
     lua_ls = {
         settings = {
             Lua = {
@@ -41,6 +15,7 @@ local servers = {
         },
     },
 
+    -- Frontend
     tailwindcss = {
         filetypes_exclude = { "markdown" },
         filetypes_include = {},
@@ -74,7 +49,7 @@ local servers = {
                 inlayHints = {
                     enumMemberValues = { enabled = true },
                     functionLikeReturnTypes = { enabled = false },
-                    parameterNames = { enabled = false }, -- "literals"
+                    parameterNames = { enabled = false },
                     parameterTypes = { enabled = false },
                     propertyDeclarationTypes = { enabled = true },
                     variableTypes = { enabled = false },
@@ -82,6 +57,7 @@ local servers = {
             },
         },
     },
+
     volar = {
         init_options = {
             vue = {
@@ -90,6 +66,7 @@ local servers = {
         },
     },
 
+    -- Go
     gopls = {
         settings = {
             gopls = {
@@ -129,6 +106,7 @@ local servers = {
         },
     },
 
+    -- Python
     pyright = {
         settings = {
             python = {
@@ -140,22 +118,31 @@ local servers = {
             },
         },
     },
+
+    -- Other languages with default settings
+    dockerls = {},
+    docker_compose_language_service = {},
+    html = {},
+    cssls = {},
+    astro = {},
+    intelephense = {},
+    templ = {},
+    rust_analyzer = {},
+    clangd = {},
 }
 
 return {
     "neovim/nvim-lspconfig",
     dependencies = {
-        -- Automatically install LSPs and related tools to stdpath for neovim
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
-        -- Useful status updates for LSP
         { "j-hui/fidget.nvim", tag = "legacy" },
     },
     config = function()
+        -- Mason setup
         require("mason").setup {}
-
         require("mason-lspconfig").setup {
-            ensure_installed = ensure_installed,
+            ensure_installed = vim.tbl_keys(servers),
             automatic_installation = true,
         }
 
@@ -173,12 +160,12 @@ return {
         local lspconfig = require "lspconfig"
         local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-        -- Diagnostic signs with more distinctive icons
+        -- Diagnostic signs
         local signs = {
-            Error = "󰅚", --
-            Warn = "󰀪", --
-            Hint = "󰌶", --
-            Info = "", --
+            Error = "󰅚",
+            Warn = "󰀪",
+            Hint = "󰌶",
+            Info = "",
         }
 
         for type, icon in pairs(signs) do
@@ -195,33 +182,32 @@ return {
             severity_sort = true,
             float = {
                 border = "rounded",
-                source = "always",
+                style = "minimal",
                 header = "",
                 prefix = "",
+                format = function(diagnostic)
+                    if diagnostic.source then
+                        return string.format("%s: %s", diagnostic.source, diagnostic.message)
+                    end
+                    return diagnostic.message
+                end,
             },
         }
 
         -- LSP keybindings
-        local on_attach = function(client, bufnr)
+        local on_attach = function(_, bufnr)
             local opts = { noremap = true, silent = true, buffer = bufnr }
 
-            vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
             vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-            vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-            vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-            vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
-            vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, opts)
-            vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, opts)
-            vim.keymap.set("n", "<space>wl", function()
-                print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-            end, opts)
-            vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, opts)
-            vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, opts)
-            vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, opts)
+            vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
             vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
-            vim.keymap.set("n", "<space>f", function()
-                vim.lsp.buf.format { async = true }
-            end, opts)
+            vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+
+            vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+            vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
+
+            vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, opts)
+            vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, opts)
         end
 
         -- Setup all servers
