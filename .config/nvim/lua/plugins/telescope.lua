@@ -102,6 +102,7 @@ return {
                         "--line-number",
                         "--column",
                         "--smart-case",
+                        "--glob=!.git/*",
                     },
                 }
             end,
