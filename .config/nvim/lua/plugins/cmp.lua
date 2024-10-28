@@ -37,7 +37,10 @@ return {
         end
 
         cmp.setup {
-            preselect = false,
+            preselect = cmp.PreselectMode.Item, -- Changed from false to preselect first item
+            completion = {
+                completeopt = "menu,menuone,noinsert", -- Added to show preview of selected item
+            },
             snippet = {
                 expand = function(args)
                     luasnip.lsp_expand(args.body)
