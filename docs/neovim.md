@@ -70,6 +70,8 @@
 
 ## Keymaps
 
+-   which-key
+    -   `<leader>?`-> buffer local keymaps
 -   neo-tree
     -   `<leader>e` -> focus file tree
     -   `<leader>p` -> close file tree
@@ -84,13 +86,6 @@
     -   `<leader>F>`-> find all finds
     -   `<leader>g>`-> grep finds
     -   `<leader>G>`-> grep all finds
--   which-key
-    -   `<leader>?`-> buffer local keymaps
--   cmp
-    -   `<Tab>` -> next suggestion
-    -   `<S-Tab>` -> prev suggestion
--   lazygit
-    -   `<leader>lg` -> open lazygit
 -   lspconfig
     -   `gd` -> go to definition
     -   `gD` -> go to declaration
@@ -103,14 +98,9 @@
     -   `<leader>r` -> rename symbol
     -   `[d` -> go to prev diagnostic
     -   `]d` -> go to next diagnostic
-
-<!---   floaterm-->
-<!--    -   `<C-t>` -> toggle floating terminal-->
-<!---   gopher-->
-<!--    -   `<leader>gne` -> generate go 'if err != nil {}' block-->
-<!--    -   `<leader>gta` -> add go json tags to struct fields-->
-<!---   lspconfig-->
-<!--    -   `<leader>k` -> hover diagnostics-->
-<!---   floating-->
-<!--    -   `<leader>ld` -> toggle lazydocker-->
-<!--    -   `<leader>ls` -> toggle lazysql-->
+-   cmp
+    -   `<Tab>` -> next suggestion
+    -   `<S-Tab>` -> prev suggestion
+    -   `<CR>` -> complete item
+-   tools
+    -   `<leader>lg` -> open lazygit
