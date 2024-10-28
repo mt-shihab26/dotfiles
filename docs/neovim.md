@@ -70,6 +70,9 @@
 
 ## Keymaps
 
+-   maps
+    -   `<esc>` -> clear search highlighting
+    -   `<leader>t` -> toggle tabs/spaces for indentation
 -   which-key
     -   `<leader>?`-> buffer local keymaps
 -   neo-tree
