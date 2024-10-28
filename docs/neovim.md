@@ -74,7 +74,7 @@
     -   `<esc>` -> clear search highlighting
     -   `<leader>t` -> toggle tabs/spaces for indentation
 -   which-key
-    -   `<leader>?`-> buffer local keymaps
+    -   `<leader>?`-> buffer local key maps
 -   neo-tree
     -   `<leader>e` -> focus file tree
     -   `<leader>p` -> close file tree
@@ -108,5 +108,8 @@
 -   tools
     -   `<leader>lg` -> open lazygit
 -   spell
-    -   `z=` -> opening correct spell suggestion buffer
-    -   `zg` -> adding good spell list
+    -   `z=` -> show spelling suggestions
+    -   `zg` -> add word to spell list
+    -   `zw` -> mark the word as incorrect
+    -   `[s` -> go to prev misspelled word
+    -   `]s` -> go to next misspelled word
