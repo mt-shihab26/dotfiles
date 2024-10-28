@@ -15,6 +15,28 @@ local servers = {
         },
     },
 
+    -- Python
+    pyright = {
+        settings = {
+            python = {
+                analysis = {
+                    typeCheckingMode = "basic",
+                    autoSearchPaths = true,
+                    useLibraryCodeForTypes = true,
+                },
+            },
+        },
+    },
+
+    -- RUST
+    rust_analyzer = {},
+
+    -- C/C++
+    clangd = {},
+
+    -- Elixir
+    elixirls = {},
+
     -- HTML
     html = {},
 
@@ -114,25 +136,6 @@ local servers = {
         },
     },
     templ = {},
-
-    -- Python
-    pyright = {
-        settings = {
-            python = {
-                analysis = {
-                    typeCheckingMode = "basic",
-                    autoSearchPaths = true,
-                    useLibraryCodeForTypes = true,
-                },
-            },
-        },
-    },
-
-    -- RUST
-    rust_analyzer = {},
-
-    -- C/C++
-    clangd = {},
 }
 
 return {
