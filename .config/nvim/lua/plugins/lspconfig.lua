@@ -143,14 +143,12 @@ return {
     dependencies = {
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
-        "j-hui/fidget.nvim",
         "antosha417/nvim-lsp-file-operations",
         "nvim-lua/plenary.nvim",
     },
     config = function()
         require("mason").setup {}
         require("mason-lspconfig").setup { ensure_installed = vim.tbl_keys(servers), automatic_installation = true }
-        require("fidget").setup {}
         require("lsp-file-operations").setup()
 
         local lspconfig = require "lspconfig"
