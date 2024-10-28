@@ -140,7 +140,9 @@ return {
     dependencies = {
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
-        { "j-hui/fidget.nvim", tag = "legacy" },
+        "j-hui/fidget.nvim",
+        "antosha417/nvim-lsp-file-operations",
+        "nvim-lua/plenary.nvim",
     },
     config = function()
         require("mason").setup {}
@@ -150,14 +152,8 @@ return {
             automatic_installation = true,
         }
 
-        require("fidget").setup {
-            text = {
-                spinner = "pipe",
-            },
-            window = {
-                blend = 0,
-            },
-        }
+        require("fidget").setup {}
+        require("lsp-file-operations").setup()
 
         local lspconfig = require "lspconfig"
         local capabilities = require("cmp_nvim_lsp").default_capabilities()
