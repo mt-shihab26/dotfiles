@@ -18,23 +18,15 @@ return {
             },
         },
         sections = {
-            lualine_a = {
-                "mode",
-            },
+            lualine_a = { "mode" },
             lualine_b = {
-                "branch",
-                {
-                    "diff",
-                    symbols = { added = " ", modified = " ", removed = " " },
-                },
+                { "diff", symbols = { added = " ", modified = " ", removed = " " } },
                 function()
                     return "󰅭 " .. vim.pesc(tostring(#vim.tbl_keys(vim.lsp.buf_get_clients())) or "")
                 end,
                 { "diagnostics", sources = { "nvim_diagnostic" } },
             },
-            lualine_c = {
-                "filename",
-            },
+            lualine_c = { "filename" },
             lualine_x = {
                 {
                     require("lazy.status").updates,
