@@ -1,5 +1,4 @@
 return {
-    enabled = false,
     "nvimdev/dashboard-nvim",
     event = "VimEnter",
     dependencies = {
@@ -7,6 +6,11 @@ return {
     },
     opts = {
         theme = "hyper",
+        hide = {
+            statusline = true,
+            tabline = true,
+            winbar = true,
+        },
         config = {
             week_header = { enable = true },
             shortcut = {

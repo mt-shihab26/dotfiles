@@ -23,6 +23,7 @@ return {
             right_trunc_marker = "",
             diagnostics = "nvim_lsp",
             diagnostics_update_in_insert = false,
+            exclude_ft = { "dashboard" },
             offsets = {
                 {
                     filetype = "neo-tree",
@@ -37,7 +38,7 @@ return {
             show_tab_indicators = true,
             separator_style = "thin",
             enforce_regular_tabs = false,
-            always_show_bufferline = true,
+            always_show_bufferline = false, -- Changed from true to false
         },
     },
     keys = {
