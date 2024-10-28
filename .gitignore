@@ -12,5 +12,4 @@ tags
 test.sh
 .luarc.json
 lazy-lock.json
-
-spell/
+*.spl

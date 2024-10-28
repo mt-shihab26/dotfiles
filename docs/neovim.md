@@ -104,3 +104,6 @@
     -   `<CR>` -> complete item
 -   tools
     -   `<leader>lg` -> open lazygit
+-   spell
+    -   `z=` -> opening correct spell suggestion buffer
+    -   `zg` -> adding good spell list
