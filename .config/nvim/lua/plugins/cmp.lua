@@ -6,6 +6,7 @@ return {
         "hrsh7th/cmp-nvim-lsp-signature-help",
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-path",
+        "hrsh7th/cmp-calc",
         "L3MON4D3/LuaSnip",
         "saadparwaiz1/cmp_luasnip",
         "onsails/lspkind-nvim",
@@ -25,9 +26,10 @@ return {
             sources = {
                 { name = "nvim_lsp" },
                 { name = "nvim_lsp_signature_help" },
-                { name = "luasnip" },
                 { name = "buffer" },
                 { name = "path" },
+                { name = "calc" },
+                { name = "luasnip" },
             },
             mapping = {
                 ["<Tab>"] = cmp.mapping(function(fallback)
