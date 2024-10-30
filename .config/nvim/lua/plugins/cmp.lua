@@ -82,7 +82,7 @@ return {
         local loader = require "luasnip.loaders.from_vscode"
 
         -- Load snippets
-        loader.lazy_load() -- load friendly-snippets
+        -- loader.lazy_load() -- load friendly-snippets
         loader.lazy_load { paths = { vim.fn.stdpath "config" .. "/snippets" } } -- load ~/.config/nvim/snippets
     end,
 }
