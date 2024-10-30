@@ -1,4 +1,4 @@
-require "opt"
-require "boot"
-require "cmd"
-require "maps"
+require "options"
+require "bootstrap"
+require "autocmds"
+require "keymaps"
