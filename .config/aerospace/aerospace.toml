@@ -225,6 +225,10 @@ if.app-id = 'net.whatsapp.WhatsApp'
 run = "move-node-to-workspace 3"
 
 [[on-window-detected]]
+if.app-id = 'com.facebook.archon.developerID'
+run = "move-node-to-workspace 3"
+
+[[on-window-detected]]
 if.app-id = 'com.skype.skype'
 run = "move-node-to-workspace 3"
 
