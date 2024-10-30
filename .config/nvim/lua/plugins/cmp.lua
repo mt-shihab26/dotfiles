@@ -22,23 +22,6 @@ return {
         end
 
         cmp.setup {
-            preselect = cmp.PreselectMode.Item, -- Changed from false to preselect first item
-            completion = {
-                completeopt = "menu,menuone,noinsert", -- Added to show preview of selected item
-            },
-            snippet = {
-                expand = function(args)
-                    luasnip.lsp_expand(args.body)
-                end,
-            },
-            view = {
-                entries = { name = "custom", selection_order = "near_cursor" },
-            },
-            window = {
-                completion = {
-                    col_offset = -2, -- align the abbr and word on cursor (due to fields order below)
-                },
-            },
             sources = {
                 { name = "nvim_lsp" },
                 { name = "nvim_lsp_signature_help" },
@@ -71,6 +54,15 @@ return {
                     select = true,
                 },
             },
+            completion = {
+                completeopt = "menu,menuone,noinsert",
+            },
+            snippet = {
+                expand = function(args)
+                    luasnip.lsp_expand(args.body)
+                end,
+            },
+            preselect = cmp.PreselectMode.Item,
         }
     end,
 }
