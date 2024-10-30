@@ -16,8 +16,13 @@ return {
     opts = {
         filesystem = {
             filtered_items = {
+                visible = false,
                 hide_dotfiles = false,
                 hide_gitignored = false,
+                hide_by_name = {
+                    ".DS_Store",
+                    ".git",
+                },
             },
             follow_current_file = {
                 enabled = true,
