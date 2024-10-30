@@ -154,6 +154,21 @@ return {
         local lspconfig = require "lspconfig"
         local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
+        -- Modify handler for textDocument/definition
+        ---@diagnostic disable: duplicate-set-field
+        vim.lsp.handlers["textDocument/definition"] = function(_, result, _, _)
+            if not result or vim.tbl_isempty(result) then
+                vim.notify("No definition found", vim.log.levels.WARN)
+                return
+            end
+
+            if vim.tbl_islist(result) and #result > 0 then
+                vim.lsp.util.jump_to_location(result[1], "utf-8")
+            else
+                vim.lsp.util.jump_to_location(result, "utf-8")
+            end
+        end
+
         lspconfig.util.default_config = vim.tbl_extend("force", lspconfig.util.default_config, {
             capabilities = vim.tbl_deep_extend(
                 "force",
