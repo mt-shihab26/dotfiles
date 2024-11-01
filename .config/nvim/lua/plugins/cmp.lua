@@ -29,6 +29,48 @@ local shift_tab_fallback = function(cmp, luasnip)
     end
 end
 
+local icons = {
+    Array = " ",
+    Boolean = "󰨙 ",
+    Class = " ",
+    Codeium = "󰘦 ",
+    Color = " ",
+    Control = " ",
+    Collapsed = " ",
+    Constant = "󰏿 ",
+    Constructor = " ",
+    Copilot = " ",
+    Enum = " ",
+    EnumMember = " ",
+    Event = " ",
+    Field = " ",
+    File = " ",
+    Folder = " ",
+    Function = "󰊕 ",
+    Interface = " ",
+    Key = " ",
+    Keyword = " ",
+    Method = "󰊕 ",
+    Module = " ",
+    Namespace = "󰦮 ",
+    Null = " ",
+    Number = "󰎠 ",
+    Object = " ",
+    Operator = " ",
+    Package = " ",
+    Property = " ",
+    Reference = " ",
+    Snippet = " ",
+    String = " ",
+    Struct = "󰆼 ",
+    TabNine = "󰏚 ",
+    Text = " ",
+    TypeParameter = " ",
+    Unit = " ",
+    Value = " ",
+    Variable = "󰀫 ",
+}
+
 return {
     "hrsh7th/nvim-cmp",
     event = "InsertEnter",
@@ -51,6 +93,7 @@ return {
 
         cmp.setup {
             preselect = cmp.PreselectMode.Item,
+            sorting = (require "cmp.config.default"()).sorting,
             completion = {
                 completeopt = "menu,menuone,noinsert",
             },
@@ -77,12 +120,37 @@ return {
                 { name = "cmdline" },
                 { name = "luasnip" },
             },
+            formatting = {
+                format = function(_, item)
+                    if icons[item.kind] then
+                        item.kind = icons[item.kind] .. item.kind
+                    end
+
+                    local widths = {
+                        abbr = vim.g.cmp_widths and vim.g.cmp_widths.abbr or 40,
+                        menu = vim.g.cmp_widths and vim.g.cmp_widths.menu or 30,
+                    }
+
+                    for key, width in pairs(widths) do
+                        if item[key] and vim.fn.strdisplaywidth(item[key]) > width then
+                            item[key] = vim.fn.strcharpart(item[key], 0, width - 1) .. "…"
+                        end
+                    end
+
+                    return item
+                end,
+            },
+            experimental = {
+                ghost_text = {
+                    hl_group = "CmpGhostText",
+                },
+            },
         }
 
         local loader = require "luasnip.loaders.from_vscode"
 
         -- Load snippets
-        -- loader.lazy_load() -- load friendly-snippets
+        loader.lazy_load() -- load friendly-snippets
         loader.lazy_load { paths = { vim.fn.stdpath "config" .. "/snippets" } } -- load ~/.config/nvim/snippets
     end,
 }
