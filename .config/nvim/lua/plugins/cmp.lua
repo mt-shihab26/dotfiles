@@ -29,6 +29,48 @@ local shift_tab_fallback = function(cmp, luasnip)
     end
 end
 
+local icons = {
+    Array = " ",
+    Boolean = "󰨙 ",
+    Class = " ",
+    Codeium = "󰘦 ",
+    Color = " ",
+    Control = " ",
+    Collapsed = " ",
+    Constant = "󰏿 ",
+    Constructor = " ",
+    Copilot = " ",
+    Enum = " ",
+    EnumMember = " ",
+    Event = " ",
+    Field = " ",
+    File = " ",
+    Folder = " ",
+    Function = "󰊕 ",
+    Interface = " ",
+    Key = " ",
+    Keyword = " ",
+    Method = "󰊕 ",
+    Module = " ",
+    Namespace = "󰦮 ",
+    Null = " ",
+    Number = "󰎠 ",
+    Object = " ",
+    Operator = " ",
+    Package = " ",
+    Property = " ",
+    Reference = " ",
+    Snippet = " ",
+    String = " ",
+    Struct = "󰆼 ",
+    TabNine = "󰏚 ",
+    Text = " ",
+    TypeParameter = " ",
+    Unit = " ",
+    Value = " ",
+    Variable = "󰀫 ",
+}
+
 return {
     "hrsh7th/nvim-cmp",
     event = "InsertEnter",
@@ -44,12 +86,12 @@ return {
     },
     config = function()
         local sources = {
-            nvim_lsp = "[lsp]",
-            nvim_lsp_signature_help = "[signature]",
-            buffer = "[buffer]",
-            path = "[path]",
-            calc = "[calc]",
-            luasnip = "[snippet]",
+            nvim_lsp = "lsp",
+            nvim_lsp_signature_help = "signature",
+            buffer = "buffer",
+            path = "path",
+            calc = "calc",
+            luasnip = "snippet",
         }
 
         ---@type table
@@ -87,9 +129,14 @@ return {
             },
             formatting = {
                 fields = { "abbr", "kind", "menu" },
-                format = function(entry, vim_item)
-                    vim_item.menu = sources[entry.source.name] or entry.source.name
-                    return require("tailwindcss-colorizer-cmp").formatter(entry, vim_item)
+                format = function(entry, item)
+                    item.kind = "["
+                        .. (sources[entry.source.name] or entry.source.name)
+                        .. "] "
+                        .. icons[item.kind]
+                        .. item.kind
+
+                    return require("tailwindcss-colorizer-cmp").formatter(entry, item)
                 end,
             },
         }
