@@ -41,6 +41,7 @@ return {
         "L3MON4D3/LuaSnip",
         "saadparwaiz1/cmp_luasnip",
         "rafamadriz/friendly-snippets",
+        "roobert/tailwindcss-colorizer-cmp.nvim",
     },
     config = function()
         local sources = {
@@ -56,7 +57,6 @@ return {
         local cmp = require "cmp"
         ---@type table
         local luasnip = require "luasnip"
-        ---@type table
 
         cmp.setup {
             preselect = cmp.PreselectMode.Item,
@@ -90,7 +90,7 @@ return {
                 fields = { "abbr", "kind", "menu" },
                 format = function(entry, vim_item)
                     vim_item.menu = sources[entry.source.name] or entry.source.name
-                    return vim_item
+                    return require("tailwindcss-colorizer-cmp").formatter(entry, vim_item)
                 end,
             },
         }
