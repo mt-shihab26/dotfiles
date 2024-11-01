@@ -40,7 +40,6 @@ return {
         "hrsh7th/cmp-calc",
         "L3MON4D3/LuaSnip",
         "saadparwaiz1/cmp_luasnip",
-        "rafamadriz/friendly-snippets",
         "roobert/tailwindcss-colorizer-cmp.nvim",
     },
     config = function()
@@ -95,9 +94,8 @@ return {
             },
         }
 
-        local loader = require "luasnip.loaders.from_vscode"
-
-        loader.lazy_load() -- load friendly-snippets
-        loader.lazy_load { paths = { vim.fn.stdpath "config" .. "/snippets" } } -- load ~/.config/nvim/snippets
+        require("luasnip.loaders.from_vscode").lazy_load {
+            paths = { vim.fn.stdpath "config" .. "/snippets" },
+        }
     end,
 }
