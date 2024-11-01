@@ -29,48 +29,6 @@ local shift_tab_fallback = function(cmp, luasnip)
     end
 end
 
-local icons = {
-    Array = " ",
-    Boolean = "󰨙 ",
-    Class = " ",
-    Codeium = "󰘦 ",
-    Color = " ",
-    Control = " ",
-    Collapsed = " ",
-    Constant = "󰏿 ",
-    Constructor = " ",
-    Copilot = " ",
-    Enum = " ",
-    EnumMember = " ",
-    Event = " ",
-    Field = " ",
-    File = " ",
-    Folder = " ",
-    Function = "󰊕 ",
-    Interface = " ",
-    Key = " ",
-    Keyword = " ",
-    Method = "󰊕 ",
-    Module = " ",
-    Namespace = "󰦮 ",
-    Null = " ",
-    Number = "󰎠 ",
-    Object = " ",
-    Operator = " ",
-    Package = " ",
-    Property = " ",
-    Reference = " ",
-    Snippet = " ",
-    String = " ",
-    Struct = "󰆼 ",
-    TabNine = "󰏚 ",
-    Text = " ",
-    TypeParameter = " ",
-    Unit = " ",
-    Value = " ",
-    Variable = "󰀫 ",
-}
-
 return {
     "hrsh7th/nvim-cmp",
     event = "InsertEnter",
@@ -80,16 +38,31 @@ return {
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-path",
         "hrsh7th/cmp-calc",
-        "hrsh7th/cmp-cmdline",
         "L3MON4D3/LuaSnip",
         "saadparwaiz1/cmp_luasnip",
         "rafamadriz/friendly-snippets",
+        "onsails/lspkind-nvim",
     },
     config = function()
         ---@type table
         local cmp = require "cmp"
         ---@type table
         local luasnip = require "luasnip"
+        ---@type table
+        local lspkind = require "lspkind"
+
+        local source_map = {
+            nvim_lsp = "lsp",
+            nvim_lsp_signature_help = "signature",
+            buffer = "buffer",
+            path = "path",
+            calc = "calc",
+            luasnip = "luasnip",
+        }
+
+        local function ltrim(s)
+            return s:match "^%s*(.*)"
+        end
 
         cmp.setup {
             preselect = cmp.PreselectMode.Item,
@@ -117,32 +90,41 @@ return {
                 { name = "buffer" },
                 { name = "path" },
                 { name = "calc" },
-                { name = "cmdline" },
                 { name = "luasnip" },
             },
             formatting = {
-                format = function(_, item)
-                    if icons[item.kind] then
-                        item.kind = icons[item.kind] .. item.kind
-                    end
+                fields = { "kind", "abbr", "menu" },
+                format = lspkind.cmp_format {
+                    mode = "symbol",
+                    before = function(entry, vim_item)
+                        -- Replace the 'menu' field with the kind and source
+                        vim_item.menu = "  "
+                            .. vim_item.kind
+                            .. " ("
+                            .. (source_map[entry.source.name] or entry.source.name)
+                            .. ")"
+                        vim_item.menu_hl_group = "SpecialComment"
 
-                    local widths = {
-                        abbr = vim.g.cmp_widths and vim.g.cmp_widths.abbr or 40,
-                        menu = vim.g.cmp_widths and vim.g.cmp_widths.menu or 30,
-                    }
+                        vim_item.abbr = ltrim(vim_item.abbr)
 
-                    for key, width in pairs(widths) do
-                        if item[key] and vim.fn.strdisplaywidth(item[key]) > width then
-                            item[key] = vim.fn.strcharpart(item[key], 0, width - 1) .. "…"
+                        if vim_item.kind == "Color" and entry.completion_item.documentation then
+                            local _, _, r, g, b =
+                                string.find(entry.completion_item.documentation, "^rgb%((%d+), (%d+), (%d+)")
+                            if r then
+                                local color = string.format("%02x", r)
+                                    .. string.format("%02x", g)
+                                    .. string.format("%02x", b)
+                                local group = "Tw_" .. color
+                                if vim.fn.hlID(group) < 1 then
+                                    vim.api.nvim_set_hl(0, group, { fg = "#" .. color })
+                                end
+                                vim_item.kind_hl_group = group
+                                return vim_item
+                            end
                         end
-                    end
 
-                    return item
-                end,
-            },
-            experimental = {
-                ghost_text = {
-                    hl_group = "CmpGhostText",
+                        return vim_item
+                    end,
                 },
             },
         }
