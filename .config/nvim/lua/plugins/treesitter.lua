@@ -1,8 +1,5 @@
 return {
     "nvim-treesitter/nvim-treesitter",
-    dependencies = {
-        "folke/ts-comments.nvim",
-    },
     event = "VeryLazy",
     build = function()
         require("nvim-treesitter.install").update { with_sync = true }
