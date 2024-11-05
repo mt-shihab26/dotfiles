@@ -8,3 +8,8 @@ map("n", "<leader>t", require "utils.toggle_indentation", { desc = "toggle tabs/
 
 -- Paste without copying replaced text
 map("x", "p", '"_dP', { noremap = true, desc = "paste without yanking selected text" })
+
+-- Comment keymaps
+map("n", "<leader>/", "gcc", { desc = "toggle comment line" })
+map("v", "<leader>/", "gc", { desc = "toggle comment selection" })
+map("o", "<leader>/", "gc", { desc = "toggle comment selection" })
