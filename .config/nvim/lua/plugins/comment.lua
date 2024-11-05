@@ -4,12 +4,19 @@ return {
         "JoosepAlviste/nvim-ts-context-commentstring",
     },
     config = function()
-        require("ts_context_commentstring").setup {}
+        -- Load ts_context_commentstring first
+        require("ts_context_commentstring").setup {
+            enable_autocmd = false,
+        }
 
         require("Comment").setup {
-            pre_hook = function()
-                return vim.bo.commentstring
-            end,
+            pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
+            padding = true,
+            sticky = true,
+            mappings = {
+                basic = true,
+                extra = false,
+            },
         }
     end,
     keys = {
