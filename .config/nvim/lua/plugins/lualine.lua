@@ -3,49 +3,46 @@ return {
     lazy = false,
     dependencies = {
         "nvim-tree/nvim-web-devicons",
+        "lewis6991/gitsigns.nvim",
     },
     opts = {
         options = {
             section_separators = "",
             component_separators = "",
             globalstatus = true,
-            theme = {
-                normal = {
-                    a = "StatusLine",
-                    b = "StatusLine",
-                    c = "StatusLine",
-                },
-            },
         },
         sections = {
             lualine_a = { "mode" },
             lualine_b = {
-                { "diff", symbols = { added = " ", modified = " ", removed = " " } },
-                function()
-                    return "󰅭 " .. vim.pesc(tostring(#vim.tbl_keys(vim.lsp.buf_get_clients())) or "")
-                end,
-                { "diagnostics", sources = { "nvim_diagnostic" } },
-            },
-            lualine_c = { "filename" },
-            lualine_x = {
                 {
-                    require("lazy.status").updates,
-                    cond = require("lazy.status").has_updates,
-                    color = { fg = "#ff9e64" },
+                    "filename",
+                    path = 1, -- Show relative path
+                    file_status = true,
+                    newfile_status = true,
+                    symbols = {
+                        modified = "[+]",
+                        readonly = "[-]",
+                        unnamed = "[No Name]",
+                        newfile = "[New]",
+                    },
                 },
             },
-            lualine_y = {
-                "filetype",
-                "encoding",
-                "fileformat",
-                '(vim.bo.expandtab and "␠ " or "⇥ ") .. vim.bo.shiftwidth',
+            lualine_c = {
+                {
+                    "b:gitsigns_blame_line",
+                    cond = function()
+                        return vim.b.gitsigns_blame_line ~= nil
+                    end,
+                    fmt = function(str)
+                        -- Trim the string to show only author and date
+                        local blame = str:gsub("%s*%(.*%)%s*$", "")
+                        return blame
+                    end,
+                },
             },
-            lualine_z = {
-                "searchcount",
-                "selectioncount",
-                "location",
-                "progress",
-            },
+            lualine_x = { "encoding", "fileformat", "filetype" },
+            lualine_y = { "diff", "diagnostics" },
+            lualine_z = { "progress", "location" },
         },
     },
 }

@@ -18,5 +18,10 @@ return {
             changedelete = { text = "~" },
             untracked = { text = "┆" },
         },
+        current_line_blame = true, -- Enable current line blame
+        current_line_blame_opts = {
+            virt_text = true,
+            delay = 500,
+        },
     },
 }
