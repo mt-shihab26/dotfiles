@@ -1,143 +1,3 @@
-local servers = {
-    -- Lua
-    lua_ls = {
-        settings = {
-            Lua = {
-                diagnostics = {
-                    globals = { "vim" },
-                },
-                workspace = {
-                    library = vim.api.nvim_get_runtime_file("", true),
-                    checkThirdParty = false,
-                },
-                telemetry = { enable = false },
-            },
-        },
-    },
-
-    -- Python
-    pyright = {
-        settings = {
-            python = {
-                analysis = {
-                    typeCheckingMode = "basic",
-                    autoSearchPaths = true,
-                    useLibraryCodeForTypes = true,
-                },
-            },
-        },
-    },
-
-    -- RUST
-    rust_analyzer = {},
-
-    -- C/C++
-    clangd = {},
-
-    -- Elixir
-    elixirls = {},
-
-    -- HTML
-    html = {},
-
-    -- CSS
-    cssls = {},
-    tailwindcss = {
-        filetypes_exclude = { "markdown" },
-        filetypes_include = {},
-    },
-
-    -- Javascript
-    vtsls = {
-        filetypes = {
-            "javascript",
-            "javascriptreact",
-            "javascript.jsx",
-            "typescript",
-            "typescriptreact",
-            "typescript.tsx",
-        },
-        settings = {
-            complete_function_calls = true,
-            vtsls = {
-                enableMoveToFileCodeAction = true,
-                autoUseWorkspaceTsdk = true,
-                experimental = {
-                    completion = {
-                        enableServerSideFuzzyMatch = true,
-                    },
-                },
-            },
-            typescript = {
-                updateImportsOnFileMove = { enabled = "always" },
-                suggest = {
-                    completeFunctionCalls = true,
-                },
-                inlayHints = {
-                    enumMemberValues = { enabled = true },
-                    functionLikeReturnTypes = { enabled = false },
-                    parameterNames = { enabled = false },
-                    parameterTypes = { enabled = false },
-                    propertyDeclarationTypes = { enabled = true },
-                    variableTypes = { enabled = false },
-                },
-            },
-        },
-    },
-    astro = {},
-    volar = {
-        init_options = {
-            vue = {
-                hybridMode = true,
-            },
-        },
-    },
-
-    -- PHP
-    intelephense = {},
-
-    -- Go
-    gopls = {
-        settings = {
-            gopls = {
-                gofumpt = true,
-                codelenses = {
-                    gc_details = false,
-                    generate = true,
-                    regenerate_cgo = true,
-                    run_govulncheck = true,
-                    test = true,
-                    tidy = true,
-                    upgrade_dependency = true,
-                    vendor = true,
-                },
-                hints = {
-                    assignVariableTypes = false,
-                    compositeLiteralFields = false,
-                    compositeLiteralTypes = true,
-                    constantValues = true,
-                    functionTypeParameters = true,
-                    parameterNames = false,
-                    rangeVariableTypes = true,
-                },
-                analyses = {
-                    fieldalignment = true,
-                    nilness = true,
-                    unusedparams = true,
-                    unusedwrite = true,
-                    useany = true,
-                },
-                usePlaceholders = true,
-                completeUnimported = true,
-                staticcheck = true,
-                directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules" },
-                semanticTokens = true,
-            },
-        },
-    },
-    templ = {},
-}
-
 return {
     "neovim/nvim-lspconfig",
     dependencies = {
@@ -147,8 +7,13 @@ return {
         "nvim-lua/plenary.nvim",
     },
     config = function()
+        local servers = require "configs.lsp_servers"
+
         require("mason").setup {}
-        require("mason-lspconfig").setup { ensure_installed = vim.tbl_keys(servers), automatic_installation = true }
+        require("mason-lspconfig").setup {
+            ensure_installed = vim.tbl_keys(servers),
+            automatic_installation = true,
+        }
         require("lsp-file-operations").setup()
 
         local lspconfig = require "lspconfig"

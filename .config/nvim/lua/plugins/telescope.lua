@@ -151,12 +151,6 @@ return {
             desc = "grep all files",
         },
         -- {
-        --     "<leader>b",
-        --     function()
-        --         require("telescope.builtin").buffers()
-        --     end,
-        -- },
-        -- {
         --     "<leader>h",
         --     function()
         --         require("telescope.builtin").help_tags()
