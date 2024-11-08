@@ -14,6 +14,9 @@ return {
         { "<C-n>", "<cmd>Neotree toggle<cr>", desc = "toggle file tree", remap = true },
     },
     opts = {
+        window = {
+            position = "right",
+        },
         filesystem = {
             filtered_items = {
                 visible = false,
