@@ -21,7 +21,7 @@ vim.opt.spelllang = "en_us"
 vim.opt.spell = true
 
 vim.opt.list = true
-vim.opt.listchars = { tab = "→ ", trail = "·", nbsp = "␣" }
+vim.opt.listchars = { space = "·", trail = "·", tab = "→ ", eol = "↲", nbsp = "␣" }
 
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
