@@ -42,6 +42,25 @@ return {
             ),
         })
 
+        local function restart_lsp_all()
+            local active_clients = vim.lsp.get_active_clients()
+
+            if #active_clients == 0 then
+                vim.notify("No active LSP clients found", vim.log.levels.WARN)
+                return
+            end
+
+            for _, client in ipairs(active_clients) do
+                vim.lsp.stop_client(client.id)
+                vim.notify(string.format("Stopped LSP client: %s", client.name), vim.log.levels.INFO)
+            end
+
+            vim.defer_fn(function()
+                vim.cmd "edit"
+                vim.notify("LSP servers restarted", vim.log.levels.INFO)
+            end, 100)
+        end
+
         local on_attach = function(_, bufnr)
             local opts = function(opts)
                 return vim.tbl_extend("force", {
@@ -49,6 +68,16 @@ return {
                     silent = true,
                     buffer = bufnr,
                 }, opts or {})
+            end
+
+            local restart_lsp_buffer = function()
+                local clients = vim.lsp.get_active_clients { bufnr = bufnr }
+                for _, client in ipairs(clients) do
+                    vim.lsp.buf_request(bufnr, "workspace/executeCommand", {
+                        command = "_typescript.restartServer",
+                    })
+                    vim.notify(string.format("Restarting LSP: %s", client.name))
+                end
             end
 
             vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts { desc = "go to definition" })
@@ -63,8 +92,11 @@ return {
             vim.keymap.set("n", "<leader>a", vim.lsp.buf.code_action, opts { desc = "code actions" })
             vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, opts { desc = "rename symbol" })
 
-            vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "go to prev diagnostic" })
-            vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "go to next diagnostic" })
+            vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts { desc = "go to prev diagnostic" })
+            vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts { desc = "go to next diagnostic" })
+
+            vim.keymap.set("n", "<leader>Lr", restart_lsp_buffer, opts { desc = "restart buffer buffer servers" })
+            vim.keymap.set("n", "<leader>LR", restart_lsp_all, opts { desc = "restart all lsp servers" })
         end
 
         for server_name, server_settings in pairs(servers) do
