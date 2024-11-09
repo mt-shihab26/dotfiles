@@ -42,7 +42,7 @@ return {
             ),
         })
 
-        local function restart_lsp_all()
+        local function restart_all_lsp()
             local active_clients = vim.lsp.get_active_clients()
 
             if #active_clients == 0 then
@@ -61,6 +61,25 @@ return {
             end, 100)
         end
 
+        local function stop_all_lsp()
+            local active_clients = vim.lsp.get_active_clients()
+            if #active_clients == 0 then
+                vim.notify("No active LSP clients found", vim.log.levels.WARN)
+                return
+            end
+
+            for _, client in ipairs(active_clients) do
+                vim.lsp.stop_client(client.id)
+                vim.notify(string.format("Stopped LSP client: %s", client.name), vim.log.levels.INFO)
+            end
+            vim.notify("All LSP servers stopped", vim.log.levels.INFO)
+        end
+
+        local function start_all_lsp()
+            vim.cmd "edit"
+            vim.notify("Starting LSP servers...", vim.log.levels.INFO)
+        end
+
         local on_attach = function(_, bufnr)
             local opts = function(opts)
                 return vim.tbl_extend("force", {
@@ -70,13 +89,21 @@ return {
                 }, opts or {})
             end
 
-            local restart_lsp_buffer = function()
+            local restart_buffer_lsp = function()
                 local clients = vim.lsp.get_active_clients { bufnr = bufnr }
                 for _, client in ipairs(clients) do
                     vim.lsp.buf_request(bufnr, "workspace/executeCommand", {
                         command = "_typescript.restartServer",
                     })
                     vim.notify(string.format("Restarting LSP: %s", client.name))
+                end
+            end
+
+            local stop_buffer_lsp = function()
+                local clients = vim.lsp.get_active_clients { bufnr = bufnr }
+                for _, client in ipairs(clients) do
+                    vim.lsp.stop_client(client.id)
+                    vim.notify(string.format("Stopped LSP client: %s", client.name), vim.log.levels.INFO)
                 end
             end
 
@@ -95,8 +122,11 @@ return {
             vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts { desc = "go to prev diagnostic" })
             vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts { desc = "go to next diagnostic" })
 
-            vim.keymap.set("n", "<leader>Lr", restart_lsp_buffer, opts { desc = "restart buffer buffer servers" })
-            vim.keymap.set("n", "<leader>LR", restart_lsp_all, opts { desc = "restart all lsp servers" })
+            vim.keymap.set("n", "<leader>Ls", stop_buffer_lsp, opts { desc = "stop buffer lsp server" })
+            vim.keymap.set("n", "<leader>LS", stop_all_lsp, opts { desc = "stop all lsp servers" })
+            vim.keymap.set("n", "<leader>Ll", start_all_lsp, opts { desc = "start all lsp servers" })
+            vim.keymap.set("n", "<leader>Lr", restart_buffer_lsp, opts { desc = "restart buffer buffer servers" })
+            vim.keymap.set("n", "<leader>LR", restart_all_lsp, opts { desc = "restart all lsp servers" })
         end
 
         for server_name, server_settings in pairs(servers) do
