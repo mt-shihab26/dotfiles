@@ -9,7 +9,7 @@ return {
     rust_analyzer = {},
 
     -- C/C++
-    clangd = {},
+    -- clangd = {},
 
     -- Elixir
     elixirls = {},
