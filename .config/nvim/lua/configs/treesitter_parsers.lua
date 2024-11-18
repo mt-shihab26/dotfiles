@@ -52,6 +52,9 @@ return {
     "php_only",
     "twig",
 
+    -- ruby
+    "ruby",
+
     -- go
     "go",
     "gomod",

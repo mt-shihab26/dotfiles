@@ -29,6 +29,9 @@ return {
     -- PHP
     intelephense = {},
 
+    -- ruby
+    ruby_lsp = {},
+
     -- Go
     gopls = require "settings.gopls",
     templ = {},
