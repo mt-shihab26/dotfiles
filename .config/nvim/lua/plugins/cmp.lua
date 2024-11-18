@@ -29,47 +29,47 @@ local shift_tab_fallback = function(cmp, luasnip)
     end
 end
 
-local icons = {
-    Array = " ",
-    Boolean = "󰨙 ",
-    Class = " ",
-    Codeium = "󰘦 ",
-    Color = " ",
-    Control = " ",
-    Collapsed = " ",
-    Constant = "󰏿 ",
-    Constructor = " ",
-    Copilot = " ",
-    Enum = " ",
-    EnumMember = " ",
-    Event = " ",
-    Field = " ",
-    File = " ",
-    Folder = " ",
-    Function = "󰊕 ",
-    Interface = " ",
-    Key = " ",
-    Keyword = " ",
-    Method = "󰊕 ",
-    Module = " ",
-    Namespace = "󰦮 ",
-    Null = " ",
-    Number = "󰎠 ",
-    Object = " ",
-    Operator = " ",
-    Package = " ",
-    Property = " ",
-    Reference = " ",
-    Snippet = " ",
-    String = " ",
-    Struct = "󰆼 ",
-    TabNine = "󰏚 ",
-    Text = " ",
-    TypeParameter = " ",
-    Unit = " ",
-    Value = " ",
-    Variable = "󰀫 ",
-}
+-- local icons = {
+--     Array = " ",
+--     Boolean = "󰨙 ",
+--     Class = " ",
+--     Codeium = "󰘦 ",
+--     Color = " ",
+--     Control = " ",
+--     Collapsed = " ",
+--     Constant = "󰏿 ",
+--     Constructor = " ",
+--     Copilot = " ",
+--     Enum = " ",
+--     EnumMember = " ",
+--     Event = " ",
+--     Field = " ",
+--     File = " ",
+--     Folder = " ",
+--     Function = "󰊕 ",
+--     Interface = " ",
+--     Key = " ",
+--     Keyword = " ",
+--     Method = "󰊕 ",
+--     Module = " ",
+--     Namespace = "󰦮 ",
+--     Null = " ",
+--     Number = "󰎠 ",
+--     Object = " ",
+--     Operator = " ",
+--     Package = " ",
+--     Property = " ",
+--     Reference = " ",
+--     Snippet = " ",
+--     String = " ",
+--     Struct = "󰆼 ",
+--     TabNine = "󰏚 ",
+--     Text = " ",
+--     TypeParameter = " ",
+--     Unit = " ",
+--     Value = " ",
+--     Variable = "󰀫 ",
+-- }
 
 return {
     "hrsh7th/nvim-cmp",
@@ -133,7 +133,7 @@ return {
                     item.kind = "["
                         .. (sources[entry.source.name] or entry.source.name)
                         .. "] "
-                        .. icons[item.kind]
+                        -- .. icons[item.kind]
                         .. item.kind
 
                     return require("tailwindcss-colorizer-cmp").formatter(entry, item)
