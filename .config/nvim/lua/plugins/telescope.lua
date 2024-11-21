@@ -14,7 +14,6 @@ return {
                 return vim.fn.executable "make" == 1
             end,
         },
-        "p-nerd/sr.nvim",
     },
     config = function()
         local actions = require "telescope.actions"
@@ -82,14 +81,6 @@ return {
 
         require("telescope").load_extension "fzf"
         require("telescope").load_extension "ui-select"
-
-        require("sr").setup {
-            keymap = "<leader>sr", -- default keymap
-            ignore_case = false, -- case sensitive by default
-            use_regex = false, -- use plain text search by default
-            preview_changes = true, -- preview changes before applying
-            live_preview = true, -- show live preview in telescope
-        }
     end,
     keys = {
         {
@@ -159,17 +150,19 @@ return {
             end,
             desc = "grep all files",
         },
-        -- {
-        --     "<leader>h",
-        --     function()
-        --         require("telescope.builtin").help_tags()
-        --     end,
-        -- },
-        -- {
-        --     "<leader>s",
-        --     function()
-        --         require("telescope.builtin").lsp_document_symbols()
-        --     end,
-        -- },
+        {
+            "<leader>h",
+            function()
+                require("telescope.builtin").help_tags()
+            end,
+            desc = "help tags",
+        },
+        {
+            "<leader>H",
+            function()
+                require("telescope.builtin").lsp_document_symbols()
+            end,
+            desc = "lsp document symbols",
+        },
     },
 }

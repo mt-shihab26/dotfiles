@@ -89,6 +89,8 @@
     -   `<leader>F>`-> find all finds
     -   `<leader>g>`-> grep finds
     -   `<leader>G>`-> grep all finds
+    -   `<leader>h>`-> help tags
+    -   `<leader>H>`-> lsp document symbols
 -   lspconfig
     -   `gd` -> go to definition
     -   `gD` -> go to declaration
