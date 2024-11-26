@@ -35,4 +35,6 @@ return {
     -- go
     go = { "goimports", "gofumpt" },
     templ = { "templ" },
+    -- rust
+    rust = { "rustfmt" },
 }
