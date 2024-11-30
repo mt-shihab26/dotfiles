@@ -1,12 +1,9 @@
 #!/usr/bin/env zsh
 
-PROJECT_DIRS="~/Code ~/Tmp ~/Code/paystubhero"
-LEARN_DIRS="~/Code/courses/ ~/Code/crash_courses/ ~/Code/imaginative_research/ ~/Code/projects/ ~/Code/manual/"
-
 if [[ $1 == "project" ]]; then
-    selected=$(find $PROJECT_DIRS -mindepth 1 -maxdepth 1 -type d | fzf)
+    selected=$(find ~/Code ~/Code/paystubhero -mindepth 1 -maxdepth 1 -type d | fzf)
 elif [[ $1 == "learn" ]]; then
-    selected=$(find $LEARN_DIRS -mindepth 1 -maxdepth 2 -type d | fzf)
+    selected=$(find ~/Code/courses/ ~/Code/crash_courses/ ~/Code/imaginative_research/ ~/Code/projects/ ~/Code/manual/ -mindepth 1 -maxdepth 2 -type d | fzf)
 elif [[ $# -eq 1 ]]; then
     selected=$1
 else
