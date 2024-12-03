@@ -213,6 +213,9 @@ run = "move-node-to-workspace 2"
 if.app-id = 'com.jetbrains.PhpStorm'
 run = "move-node-to-workspace 2"
 
+[[on-window-detected]]
+if.app-id = 'com.jetbrains.WebStorm'
+run = "move-node-to-workspace 2"
 
 # Chats
 
