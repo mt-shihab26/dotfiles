@@ -3,7 +3,9 @@ return {
     dependencies = {
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
+        "hrsh7th/cmp-nvim-lsp",
         "antosha417/nvim-lsp-file-operations",
+        "folke/which-key.nvim",
         "nvim-lua/plenary.nvim",
     },
     config = function()
