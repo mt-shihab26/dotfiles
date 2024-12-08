@@ -25,6 +25,7 @@ return {
     vtsls = require "settings.vtsls",
     astro = {},
     volar = require "settings.volar",
+    denols = require "settings.denols",
 
     -- PHP
     intelephense = {},
