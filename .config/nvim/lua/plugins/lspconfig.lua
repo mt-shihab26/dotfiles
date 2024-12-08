@@ -7,17 +7,19 @@ return {
         "nvim-lua/plenary.nvim",
     },
     config = function()
+        local lspconfig = require "lspconfig"
+        local mason = require "mason"
+        local mason_lspconfig = require "mason-lspconfig"
+        local cmp_nvim_lsp = require "cmp_nvim_lsp"
+        local lsp_file_operations = require "lsp-file-operations"
+        local which_key = require "which-key"
         local servers = require "configs.lsp_servers"
 
-        require("mason").setup {}
-        require("mason-lspconfig").setup {
-            ensure_installed = vim.tbl_keys(servers),
-            automatic_installation = true,
-        }
-        require("lsp-file-operations").setup()
+        mason.setup {}
+        mason_lspconfig.setup { ensure_installed = vim.tbl_keys(servers), automatic_installation = true }
+        lsp_file_operations.setup()
 
-        local lspconfig = require "lspconfig"
-        local capabilities = require("cmp_nvim_lsp").default_capabilities()
+        local capabilities = cmp_nvim_lsp.default_capabilities()
 
         -- Modify handler for textDocument/definition
         ---@diagnostic disable: duplicate-set-field
@@ -38,7 +40,7 @@ return {
             capabilities = vim.tbl_deep_extend(
                 "force",
                 vim.lsp.protocol.make_client_capabilities(),
-                require("lsp-file-operations").default_capabilities()
+                lsp_file_operations.default_capabilities()
             ),
         })
 
@@ -122,7 +124,7 @@ return {
             vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts { desc = "go to prev diagnostic" })
             vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts { desc = "go to next diagnostic" })
 
-            require("which-key").add { { "<leader>L", group = "lsp servers" } }
+            which_key.add { { "<leader>L", group = "lsp servers" } }
 
             vim.keymap.set("n", "<leader>Ls", stop_buffer_lsp, opts { desc = "stop buffer lsp servers" })
             vim.keymap.set("n", "<leader>LS", stop_all_lsp, opts { desc = "stop all lsp servers" })
