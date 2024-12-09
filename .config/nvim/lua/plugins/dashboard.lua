@@ -43,12 +43,17 @@ return {
                 },
                 {
                     action = function()
-                        vim.cmd "e #"
+                        local oldfiles = vim.v.oldfiles
+                        if #oldfiles > 0 then
+                            vim.cmd("e " .. oldfiles[1])
+                        else
+                            vim.notify("No recently opened files found", vim.log.levels.WARN)
+                        end
                     end,
-                    desc = " Last Buffer",
-                    icon = "󰋚 ",
-                    key = "r",
-                    group = "@property",
+                    desc = " Last",
+                    icon = "󰄉 ",
+                    key = "l",
+                    group = "Label",
                 },
                 {
                     action = function()
