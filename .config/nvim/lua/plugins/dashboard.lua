@@ -43,6 +43,15 @@ return {
                 },
                 {
                     action = function()
+                        vim.cmd "e #"
+                    end,
+                    desc = " Last Buffer",
+                    icon = "󰋚 ",
+                    key = "r",
+                    group = "@property",
+                },
+                {
+                    action = function()
                         vim.api.nvim_input "<cmd>qa<cr>"
                     end,
                     desc = " Quit",
