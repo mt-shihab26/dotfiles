@@ -11,3 +11,12 @@ map("n", "<leader>t", require "lib.toggle_indentation", { desc = "toggle tabs/sp
 
 -- Toggle line wrapping
 map("n", "<leader>w", require "lib.toggle_wrap", { desc = "toggle line wrapping on/off" })
+
+-- Source the current file
+map("n", "<space>x", "<cmd>source %<CR>", { desc = "source current file" })
+
+-- Execute current line as Lua code
+map("n", "<space>X", ":.lua<CR>", { desc = "execute current line as lua" })
+
+-- Execute selected text as Lua code
+map("v", "<space>X", ":lua<CR>", { desc = "execute selected text as lua" })
