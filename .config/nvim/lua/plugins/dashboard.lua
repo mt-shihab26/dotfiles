@@ -18,7 +18,7 @@ return {
                     action = "Lazy",
                     desc = " Lazy",
                     icon = "󰒲 ",
-                    key = "l",
+                    key = "p",
                     group = "Label",
                 },
                 {
@@ -53,7 +53,7 @@ return {
                     desc = " Last",
                     icon = "󰄉 ",
                     key = "l",
-                    group = "Label",
+                    group = "@property",
                 },
                 {
                     action = function()
