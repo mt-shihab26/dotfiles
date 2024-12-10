@@ -75,10 +75,10 @@
     -   `<leader>t` -> toggle tabs/spaces for indentation
 -   which-key
     -   `<leader>?`-> buffer local key maps
--   neo-tree
-    -   `<leader>e` -> focus file tree
-    -   `<leader>p` -> close file tree
-    -   `<C-n>` -> toggle file tree
+-   file explore
+    -   `<leader>e` -> focus file tree (neo-tree)
+    -   `<leader>p` -> close file tree (neo-tree)
+    -   `<leader>E` -> open directories as buffer (oil)
 -   bufferline
     -   `<S-h>` -> prev buffer
     -   `<S-l>` -> next buffer
