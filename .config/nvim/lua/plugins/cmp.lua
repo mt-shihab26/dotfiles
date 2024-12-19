@@ -83,8 +83,11 @@ return {
         "L3MON4D3/LuaSnip",
         "saadparwaiz1/cmp_luasnip",
         "roobert/tailwindcss-colorizer-cmp.nvim",
+        "zbirenbaum/copilot-cmp",
     },
     config = function()
+        require("copilot_cmp").setup()
+
         local sources = {
             nvim_lsp = "lsp",
             nvim_lsp_signature_help = "signature",
@@ -92,6 +95,7 @@ return {
             path = "path",
             calc = "calc",
             luasnip = "snippet",
+            copilot = "copilot",
         }
 
         ---@type table
