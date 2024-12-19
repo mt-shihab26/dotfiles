@@ -140,3 +140,6 @@ export HERD_PHP_80_INI_SCAN_DIR="/Users/shihab/Library/Application Support/Herd/
 # Turso
 export PATH="$PATH:/Users/shihab/.turso"
 . "/Users/shihab/.deno/env"
+
+# Shopify Hydrogen alias to local projects
+alias h2='$(npm prefix -s)/node_modules/.bin/shopify hydrogen'
