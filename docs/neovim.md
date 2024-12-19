@@ -75,7 +75,7 @@
     -   `<leader>t` -> toggle tabs/spaces for indentation
 -   which-key
     -   `<leader>?`-> buffer local key maps
--   file explore
+-   file explore (neo-tree, oil)
     -   `<leader>e` -> focus file tree (neo-tree)
     -   `<leader>p` -> close file tree (neo-tree)
     -   `<leader>E` -> open directories as buffer (oil)
