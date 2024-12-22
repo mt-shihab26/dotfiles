@@ -183,10 +183,6 @@ run = "move-node-to-workspace 1"
 if.app-id = 'com.openai.chat'
 run = "move-node-to-workspace 1"
 
-[[on-window-detected]]
-if.app-id = 'com.apple.iphonesimulator'
-run = "move-node-to-workspace 1"
-
 
 # Terminal & Editors
 
@@ -242,6 +238,10 @@ run = "move-node-to-workspace 3"
 
 [[on-window-detected]]
 if.app-id = 'com.hnc.Discord'
+run = "move-node-to-workspace 3"
+
+[[on-window-detected]]
+if.app-id = 'com.apple.iphonesimulator'
 run = "move-node-to-workspace 3"
 
 
