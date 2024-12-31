@@ -1,2 +1,16 @@
-config-file = tokyonight_night
+# Fonts
+font-size = 15
+
+# Mouse
+mouse-hide-while-typing = true
+
+# Theme
+theme = tokyonight_night
+cursor-invert-fg-bg = true
+
+# Window
+gtk-single-instance = true
+gtk-tabs-location = hidden
+gtk-wide-tabs = false
+window-decoration = false
 
