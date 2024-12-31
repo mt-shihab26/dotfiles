@@ -1,5 +1,6 @@
 # Fonts
-font-size = 16
+font-family = CaskaydiaMono Nerd Font
+font-size = 15.26
 
 # Mouse
 mouse-hide-while-typing = true
