@@ -6,7 +6,7 @@ cursor-style = block
 mouse-hide-while-typing = true
 
 theme = tokyonight_night
-cursor-invert-fg-bg = true
+# cursor-invert-fg-bg = true
 
 gtk-single-instance = true
 gtk-tabs-location = hidden
