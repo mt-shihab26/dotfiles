@@ -5,7 +5,7 @@
             "try {",
             "    ",
             "} catch (e: any) {",
-            "    console.error(`${1}:`, e);",
+            "    console.error(\"${1}:\", e);",
             "    return ${2}",
             "}"
         ],
