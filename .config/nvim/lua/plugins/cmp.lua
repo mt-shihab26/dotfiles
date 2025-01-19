@@ -134,12 +134,17 @@ return {
             formatting = {
                 fields = { "abbr", "kind", "menu" },
                 format = function(entry, item)
-                    item.kind = "["
-                        .. (sources[entry.source.name] or entry.source.name)
-                        .. "] "
-                        -- .. icons[item.kind]
-                        .. item.kind
+                    -- Ensure source name is a string
+                    local source_name = entry.source.name or ""
+                    local source_label = sources[source_name] or source_name
 
+                    -- Ensure kind is a string
+                    local kind_text = item.kind or ""
+
+                    -- Build the kind string safely
+                    item.kind = string.format("[%s] %s", source_label, kind_text)
+
+                    -- Apply tailwindcss colorizer formatting
                     return require("tailwindcss-colorizer-cmp").formatter(entry, item)
                 end,
             },
