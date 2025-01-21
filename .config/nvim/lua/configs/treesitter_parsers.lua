@@ -1,23 +1,14 @@
 return {
-    "c",
+    -- tools
     "diff",
-    "vim",
-    "vimdoc",
     "printf",
-    "python",
     "query",
     "regex",
-
-    -- tools
     "xml",
     "toml",
     "yaml",
     "bash",
-
-    -- lua
-    "lua",
-    "luadoc",
-    "luap",
+    "dockerfile",
 
     -- markdown
     "markdown",
@@ -30,12 +21,21 @@ return {
     "gitignore",
     "gitattributes",
 
-    -- docker
-    "dockerfile",
+    -- html
+    "html",
 
     -- css
-    "html",
     "css",
+
+    -- lua
+    "lua",
+    "luadoc",
+    "luap",
+    "vimdoc",
+    "vim",
+
+    -- python
+    "python",
 
     -- javascript
     "javascript",
@@ -47,13 +47,13 @@ return {
     "astro",
     "vue",
 
+    -- ruby
+    "ruby",
+
     -- php
     "php",
     "php_only",
     "twig",
-
-    -- ruby
-    "ruby",
 
     -- go
     "go",
@@ -61,4 +61,14 @@ return {
     "gowork",
     "gosum",
     "templ",
+
+    -- rust
+    "rust",
+
+    -- zig
+    "zig",
+
+    -- c/c++
+    "cpp",
+    "c",
 }
