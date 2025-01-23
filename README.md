@@ -26,7 +26,5 @@ $ stow .
 
 ## Stacks
 
--   Languages: `TypeScript` `PHP` `Zig`
--   Frameworks: `TailwindCSS` `React` `Inertia.js` `Laravel` `WordPress`
--   Databases: `SQLite`, `MySQL`
--   Tools: `Linux`, `Neovim`, `DigitalOcean`, `Cloudflare`
+-   Languages: `TS` `PHP` `Zig`
+-   Frameworks: `Laravel` `WordPress` `React` `TailwindCSS`
