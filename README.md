@@ -2,10 +2,13 @@
 
 Finally organizing config with dotfiles
 
-## Setup .files
+## Install dot files
 
 ```sh
-stow .
+$ cd ~
+$ git clone https://github.com/p-nerd/dotfiles.git
+$ cd dotfiles
+$ stow .
 
 ```
 
@@ -18,26 +21,13 @@ stow .
 
 ## Tools
 
--   Window:
-    -   [x] macOS -> `AeroSpace`
--   Terminal:
-    -   [x] `Ghostty`
-    -   [x] `Tmux`
--   Shell:
-    -   [x] `ZSH`
-    -   [x] `fzf`
-    -   [x] `zoxide`
--   Editor:
-    -   [x] `Neovim`
--   TUIs:
-    -   [x] `Lazygit`
-    -   [x] `Lazydocker`
--   Browser:
-    -   [x] `Chrome`
-    -   [x] `Firefox`
-    -   [x] `Safari`
--   GUIs:
-    -   [x] `TablePlus`
+-   Window Management: `AeroSpace`
+-   Terminal: `Ghostty` `Tmux`
+-   Shell: `ZSH` `fzf` `zoxide`
+-   Editor: `Neovim`
+-   TUIs: `Lazygit` `Lazydocker`
+-   Browser: `Chrome` `Firefox` `Safari`
+-   GUIs: `TablePlus`
 
 ## Stacks
 
