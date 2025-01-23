@@ -26,9 +26,7 @@ $ stow .
 
 ## Stacks
 
--   `C/C++`
--   `TypeScript` : `React`, `Inertia.js`, `TailwindCSS`
--   `PHP` : `WordPress`, `Laravel`, `Livewire`
--   `Go`
--   `SQLite`, `MySQL`
--   `Linux`, `Neovim`, `DigitalOcean`, `Cloudflare`
+-   Languages: `TypeScript` `PHP` `Zig`
+-   Frameworks: `TailwindCSS` `React` `Inertia.js` `Laravel` `WordPress`
+-   Databases: `SQLite`, `MySQL`
+-   Tools: `Linux`, `Neovim`, `DigitalOcean`, `Cloudflare`
