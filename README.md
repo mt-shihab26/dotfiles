@@ -12,15 +12,10 @@ $ stow .
 
 ```
 
-## Things
-
--   Color:
-    -   [x] `tokyonight-night`
--   Font:
-    -   [x] `CaskaydiaMono Nerd Font`
-
 ## Tools
 
+-   Color: `tokyonight-night`
+-   Font: `CaskaydiaMono Nerd Font`
 -   Window Management: `AeroSpace`
 -   Terminal: `Ghostty` `Tmux`
 -   Shell: `ZSH` `fzf` `zoxide`
