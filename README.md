@@ -21,7 +21,7 @@ stow .
 -   Window:
     -   [x] macOS -> `AeroSpace`
 -   Terminal:
-    -   [x] `kitty`
+    -   [x] `Ghostty`
     -   [x] `Tmux`
 -   Shell:
     -   [x] `ZSH`
@@ -41,10 +41,9 @@ stow .
 
 ## Stacks
 
--  `C/C++`
--  `TypeScript` : `React`, `Inertia.js`, `TailwindCSS`
--  `PHP` : `WordPress`, `Laravel`, `Livewire`
--  `Go`
--  `SQLite`, `MySQL`
--  `Linux`, `Neovim`, `DigitalOcean`, `Cloudflare`
-
+-   `C/C++`
+-   `TypeScript` : `React`, `Inertia.js`, `TailwindCSS`
+-   `PHP` : `WordPress`, `Laravel`, `Livewire`
+-   `Go`
+-   `SQLite`, `MySQL`
+-   `Linux`, `Neovim`, `DigitalOcean`, `Cloudflare`
