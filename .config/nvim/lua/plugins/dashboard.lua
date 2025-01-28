@@ -45,7 +45,12 @@ return {
                     action = function()
                         local oldfiles = vim.v.oldfiles
                         if #oldfiles > 0 then
-                            vim.cmd("e " .. oldfiles[1])
+                            -- Get the first oldfile
+                            local lastfile = oldfiles[1]
+                            -- Properly escape the path
+                            lastfile = vim.fn.fnameescape(lastfile)
+                            -- Open the file using edit command
+                            vim.cmd("edit " .. lastfile)
                         else
                             vim.notify("No recently opened files found", vim.log.levels.WARN)
                         end
