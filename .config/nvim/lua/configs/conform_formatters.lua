@@ -1,6 +1,7 @@
 return {
     -- TypeScript
     html = { "prettier" },
+    svg = { "prettier" },
     css = { "prettier" },
     scss = { "prettier" },
     less = { "prettier" },
@@ -12,14 +13,17 @@ return {
     vue = { "prettier" },
     markdown = { "prettier" },
     mdx = { "prettier" },
-    svg = { "prettier" },
     yaml = { "prettier" },
     json = { "prettier" },
     jsonc = { "prettier" },
 
-    -- php
+    -- PHP
     php = { "pint" },
     blade = { "prettier" },
+
+    -- Elixir
+
+    -- Zig
 
     -- Others
     go = { "goimports", "gofumpt" },
