@@ -1,40 +1,31 @@
 return {
-    -- tools
-    svg = { "prettier" },
-    yaml = { "prettier" },
-    json = { "prettier" },
-    jsonc = { "prettier" },
-    fish = { "fish_indent" },
-    sh = { "shfmt" },
-
-    -- lua
-    lua = { "stylua" },
-
-    -- markdown
-    markdown = { "prettier" },
-    mdx = { "prettier" },
-
-    -- css
+    -- TypeScript
     html = { "prettier" },
     css = { "prettier" },
     scss = { "prettier" },
     less = { "prettier" },
-
-    -- javascript
     javascript = { "prettier" },
     javascriptreact = { "prettier" },
     typescript = { "prettier" },
     typescriptreact = { "prettier" },
     astro = { "prettier" },
     vue = { "prettier" },
+    markdown = { "prettier" },
+    mdx = { "prettier" },
+    svg = { "prettier" },
+    yaml = { "prettier" },
+    json = { "prettier" },
+    jsonc = { "prettier" },
 
     -- php
     php = { "pint" },
     blade = { "prettier" },
 
-    -- go
+    -- Others
     go = { "goimports", "gofumpt" },
     templ = { "templ" },
-    -- rust
     rust = { "rustfmt" },
+    fish = { "fish_indent" },
+    sh = { "shfmt" },
+    lua = { "stylua" },
 }
