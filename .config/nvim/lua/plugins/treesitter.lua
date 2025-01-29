@@ -5,7 +5,7 @@ return {
         require("nvim-treesitter.install").update { with_sync = true }
     end,
     opts = {
-        ensure_installed = require "configs.treesitter_parsers",
+        ensure_installed = require "configs.parsers",
         auto_install = true,
         highlight = { enable = true },
         indent = { enable = true, disable = { "yaml" } },
