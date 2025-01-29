@@ -4,9 +4,9 @@ return {
     cssls = {},
     tailwindcss = require "settings.tailwindcss",
     vtsls = require "settings.vtsls",
+    denols = require "settings.denols",
     astro = {},
     volar = require "settings.volar",
-    denols = require "settings.denols",
 
     -- PHP
     intelephense = {},

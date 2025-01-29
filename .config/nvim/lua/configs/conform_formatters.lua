@@ -1,21 +1,21 @@
 return {
     -- TypeScript
     html = { "prettier" },
+    markdown = { "prettier" },
+    mdx = { "prettier" },
     svg = { "prettier" },
     css = { "prettier" },
     scss = { "prettier" },
     less = { "prettier" },
+    json = { "prettier" },
+    jsonc = { "prettier" },
     javascript = { "prettier" },
     javascriptreact = { "prettier" },
     typescript = { "prettier" },
     typescriptreact = { "prettier" },
     astro = { "prettier" },
     vue = { "prettier" },
-    markdown = { "prettier" },
-    mdx = { "prettier" },
     yaml = { "prettier" },
-    json = { "prettier" },
-    jsonc = { "prettier" },
 
     -- PHP
     php = { "pint" },
@@ -26,10 +26,8 @@ return {
     -- Zig
 
     -- Others
+    lua = { "stylua" },
     go = { "goimports", "gofumpt" },
     templ = { "templ" },
     rust = { "rustfmt" },
-    fish = { "fish_indent" },
-    sh = { "shfmt" },
-    lua = { "stylua" },
 }
