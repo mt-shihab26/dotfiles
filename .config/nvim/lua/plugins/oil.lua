@@ -12,6 +12,6 @@ return {
         },
     },
     keys = {
-        { "<leader>E", "<CMD>Oil<CR>", desc = "open directories as buffer (oil)" },
+        { "<leader>b", "<CMD>Oil<CR>", desc = "open directories as buffer (oil)" },
     },
 }
