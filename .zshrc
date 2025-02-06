@@ -92,6 +92,8 @@ if [ -d "/opt/homebrew/opt/ruby/bin" ]; then
   export PATH=/opt/homebrew/opt/ruby/bin:$PATH
   export PATH=`gem environment gemdir`/bin:$PATH
 fi
+# Zig
+export PATH="$PATH:$HOME/.zig"
 
 # Aliases
 alias ls='ls --color'
@@ -103,6 +105,8 @@ alias sessionizer="$HOME/.scripts/tmux-sessionizer.sh"
 alias sp="sessionizer project"
 alias sl="sessionizer learn"
 alias skill="~/.scripts/tmux-kill-session.sh"
+
+
 
 # Done
 
@@ -120,4 +124,5 @@ export HERD_PHP_83_INI_SCAN_DIR="/Users/shihab/Library/Application Support/Herd/
 
 # Herd injected PHP 8.4 configuration.
 export HERD_PHP_84_INI_SCAN_DIR="/Users/shihab/Library/Application Support/Herd/config/php/84/"
+
 
