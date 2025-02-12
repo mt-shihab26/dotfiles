@@ -115,3 +115,15 @@
     -   `zw` -> mark the word as incorrect
     -   `[s` -> go to prev misspelled word
     -   `]s` -> go to next misspelled word
+
+## Plugins
+
+plugins keymaps, docs etc
+
+### spectre (nvim-pack/nvim-spectre)
+
+#### keymaps
+
+-   `<leader>s` -> search on current buffer (spectre) 
+-   `<leader>S` -> search on multi buffers (spectre) 
+
