@@ -23,8 +23,3 @@ $ stow .
 -   TUIs: `Lazygit` `Lazydocker`
 -   Browser: `Chrome` `Firefox` `Safari`
 -   GUIs: `TablePlus`
-
-## Stacks
-
--   Languages: `TS` `PHP` `Zig`
--   Frameworks: `Laravel` `WordPress` `React` `TailwindCSS`
