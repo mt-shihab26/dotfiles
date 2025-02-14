@@ -1,13 +1,13 @@
 #!/usr/bin/env zsh
 
-if [[ $1 == "project" ]]; then
+if [[ $1 == "projects" ]]; then
     selected=$(find ~/Code ~/Code/paystubhero -mindepth 1 -maxdepth 1 -type d | fzf)
-elif [[ $1 == "learn" ]]; then
+elif [[ $1 == "learns" ]]; then
     selected=$(find ~/Code/courses/ ~/Code/crash_courses/ ~/Code/imaginative_research/ ~/Code/projects/ ~/Code/manual/ ~/Code/chirper -mindepth 1 -maxdepth 2 -type d | fzf)
 elif [[ $# -eq 1 ]]; then
     selected=$1
 else
-    echo "Invalid argument. Usage: $0 [directory|learn|project]"
+    echo "Invalid argument. Usage: $0 [directory|learns|projects]"
     exit 1
 fi
 

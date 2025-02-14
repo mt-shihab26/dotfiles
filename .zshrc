@@ -99,14 +99,14 @@ export PATH="$PATH:$HOME/.zig"
 alias ls='ls --color'
 alias pa="php artisan"
 alias g++="g++ -std=c++20"
+
 # Tmux Aliases
 alias init="$HOME/.scripts/tmux-init.sh"
 alias sessionizer="$HOME/.scripts/tmux-sessionizer.sh"
-alias sp="sessionizer project"
-alias sl="sessionizer learn"
-alias skill="~/.scripts/tmux-kill-session.sh"
+alias kill-session="$HOME/.scripts/tmux-kill-session.sh"
 
-
+alias projects="sessionizer projects"
+alias learns="sessionizer learns"
 
 # Done
 
