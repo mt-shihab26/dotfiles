@@ -2,11 +2,9 @@
     "React Component": {
         "prefix": "component",
         "body": [
-            "const ${TM_FILENAME_BASE} = () => {",
+            "export const ${TM_FILENAME_BASE} = () => {",
             "    return <div>${1:${TM_FILENAME_BASE}}</div>;",
-            "};",
-            "",
-            "export default ${TM_FILENAME_BASE};"
+            "};"
         ],
         "description": "Creates a React Component"
     }
