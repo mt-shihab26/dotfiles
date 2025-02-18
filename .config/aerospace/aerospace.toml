@@ -279,3 +279,10 @@ run = "move-node-to-workspace 6"
 [[on-window-detected]]
 if.app-id = 'com.apple.QuickTimePlayerX'
 run = "move-node-to-workspace 6"
+
+# Youtube
+
+[[on-window-detected]]
+if.app-id = 'com.google.Chrome.app.agimnkijcaahngcdmfeangaknmldooml'
+run = "move-node-to-workspace 7"
+
