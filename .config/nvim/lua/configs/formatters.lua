@@ -21,7 +21,8 @@ return {
     php = { "pint" },
     blade = { "prettier" },
 
-    -- Elixir
+    -- Python
+    python = { "isort", "black" },
 
     -- Zig
 
