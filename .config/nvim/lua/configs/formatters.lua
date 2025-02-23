@@ -22,7 +22,7 @@ return {
     blade = { "prettier" },
 
     -- Python
-    python = { "isort", "black" },
+    python = { "black" }, -- "isort"
 
     -- Zig
 

@@ -1,4 +1,4 @@
 return {
-    "isort",
+    -- "isort",
     "black",
 }
