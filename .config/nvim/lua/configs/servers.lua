@@ -11,15 +11,15 @@ return {
     -- PHP
     intelephense = {},
 
-    -- Elixir
-    elixirls = {},
+    -- Python
+    pyright = require "settings.pyright",
 
     -- Zig
     zls = {},
 
     -- Others
     lua_ls = require "settings.lua_ls",
-    pyright = require "settings.pyright",
+    elixirls = {},
     gopls = require "settings.gopls",
     templ = {},
     rust_analyzer = {},
