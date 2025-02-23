@@ -15,15 +15,13 @@ return {
     "toml",
     "yaml",
 
-    -- php
+    -- PHP
     "php",
     "php_only",
     "twig",
 
-    -- Elixir
-    "elixir",
-    "heex",
-    "eex",
+    -- Python
+    "python",
 
     -- Zig
     "zig",
@@ -55,5 +53,7 @@ return {
     "luap",
     "vimdoc",
     "vim",
-    "python",
+    "elixir",
+    "heex",
+    "eex",
 }
