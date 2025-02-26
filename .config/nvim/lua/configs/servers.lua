@@ -1,5 +1,8 @@
 return {
-    -- TypeScript
+    -- Lua
+    lua_ls = require "settings.lua_ls",
+
+    -- JavaScript
     html = {},
     cssls = {},
     tailwindcss = require "settings.tailwindcss",
@@ -8,20 +11,25 @@ return {
     astro = {},
     volar = require "settings.volar",
 
+    -- Python
+    pyright = require "settings.pyright",
+
     -- PHP
     intelephense = {},
 
-    -- Python
-    pyright = require "settings.pyright",
+    -- Elixir
+    elixirls = {},
+
+    -- Go
+    gopls = require "settings.gopls",
+    templ = {},
+
+    -- Rust
+    rust_analyzer = {},
 
     -- Zig
     zls = {},
 
-    -- Others
-    lua_ls = require "settings.lua_ls",
-    elixirls = {},
-    gopls = require "settings.gopls",
-    templ = {},
-    rust_analyzer = {},
+    -- C/C++
     clangd = {},
 }
