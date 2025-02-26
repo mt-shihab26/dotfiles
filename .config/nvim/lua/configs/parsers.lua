@@ -1,9 +1,14 @@
 return {
-    -- JavaScript
-    "html",
+    "html", -- HTML
+    "css", -- CSS
+    "yaml", -- YAML
+    "toml",
+
+    -- Markdown
     "markdown",
     "markdown_inline",
-    "css",
+
+    -- JavaScript
     "javascript",
     "jsdoc",
     "json",
@@ -12,8 +17,6 @@ return {
     "tsx",
     "astro",
     "vue",
-    "toml",
-    "yaml",
 
     -- PHP
     "php",

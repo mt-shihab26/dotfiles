@@ -1,31 +1,31 @@
 return {
-    jsonls = {}, -- Json
-    yamlls = {}, -- YAML
-    bashls = {}, -- Bash
-    sqls = {}, -- SQL
+    -- Markup
     html = {}, -- HTML
-    lua_ls = require "settings.lua_ls", -- Lua
-    ruby_lsp = {}, -- Ruby
-    pyright = require "settings.pyright", -- Python
-    elixirls = {}, -- Elixir
-    rust_analyzer = {}, -- Rust
-    zls = {}, -- Zig
-    clangd = {}, -- C/C++
     marksman = {}, -- Markdown
+    htmx = {}, -- HTMX
 
-    -- CSS
-    cssls = {},
+    -- Styling
+    cssls = {}, -- CSS
     css_variables = {},
     tailwindcss = require "settings.tailwindcss",
 
+    -- Data Formats
+    jsonls = {}, -- Json
+    yamlls = {}, -- YAML
+
+    -- Shell & System
+    bashls = {}, -- Bash
+    sqls = {}, -- SQL
+    dockerls = {},
+    docker_compose_language_service = {},
+
     -- JavaScript
-    htmx = {}, -- HTMX
     vtsls = require "settings.vtsls", -- TypeScript
     volar = require "settings.volar", -- Vue
     astro = {}, -- Astro
     angularls = {}, -- Angular
-    prismals = {}, -- Prisma
     svelte = {}, -- Svelte
+    prismals = {}, -- Prisma
 
     -- PHP
     intelephense = {}, -- PHP
@@ -33,10 +33,15 @@ return {
     twiggy_language_server = {}, -- Twig
 
     -- Go
-    gopls = require "settings.gopls",
-    templ = {},
+    gopls = require "settings.gopls", -- Go
+    templ = {}, -- Go template
 
-    -- Docker
-    dockerls = {},
-    docker_compose_language_service = {},
+    -- Other Languages
+    lua_ls = require "settings.lua_ls", -- Lua
+    ruby_lsp = {}, -- Ruby
+    pyright = require "settings.pyright", -- Python
+    elixirls = {}, -- Elixir
+    rust_analyzer = {}, -- Rust
+    zls = {}, -- Zig
+    clangd = {}, -- C/C++
 }
