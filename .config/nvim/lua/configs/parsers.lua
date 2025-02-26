@@ -1,51 +1,23 @@
 return {
-    "html", -- HTML
-    "css", -- CSS
-    "yaml", -- YAML
-    "toml",
-
-    -- Markdown
+    "html",
+    "xml",
     "markdown",
     "markdown_inline",
-
-    -- JavaScript
-    "javascript",
-    "jsdoc",
     "json",
     "jsonc",
+    "yaml",
+    "toml",
+    "javascript",
+    "jsdoc",
     "typescript",
     "tsx",
     "astro",
     "vue",
-
-    -- PHP
     "php",
     "php_only",
     "twig",
-
-    -- Python
+    "css",
     "python",
-
-    -- Zig
-    "zig",
-
-    -- Others
-    "c",
-    "cpp",
-    "rust",
-    "diff",
-    "printf",
-    "query",
-    "regex",
-    "xml",
-    "bash",
-    "ruby",
-    "dockerfile",
-    "git_config",
-    "gitcommit",
-    "git_rebase",
-    "gitignore",
-    "gitattributes",
     "go",
     "gomod",
     "gowork",
@@ -56,7 +28,23 @@ return {
     "luap",
     "vimdoc",
     "vim",
+    "bash",
+    "dockerfile",
+    "diff",
+    "git_config",
+    "gitcommit",
+    "git_rebase",
+    "gitignore",
+    "gitattributes",
+    "c",
+    "cpp",
+    "rust",
+    "zig",
+    "ruby",
     "elixir",
     "heex",
     "eex",
+    "printf",
+    "query",
+    "regex",
 }

@@ -1,42 +1,27 @@
 return {
-    -- Markup
     html = {}, -- HTML
     marksman = {}, -- Markdown
     htmx = {}, -- HTMX
-
-    -- Styling
     cssls = {}, -- CSS
-    css_variables = {},
-    tailwindcss = require "settings.tailwindcss",
-
-    -- Data Formats
+    css_variables = {}, -- CSS
+    tailwindcss = require "settings.tailwindcss", -- TailwindCSS
     jsonls = {}, -- Json
     yamlls = {}, -- YAML
-
-    -- Shell & System
     bashls = {}, -- Bash
     sqls = {}, -- SQL
-    dockerls = {},
-    docker_compose_language_service = {},
-
-    -- JavaScript
+    dockerls = {}, -- Docker
+    docker_compose_language_service = {}, -- Docker
     vtsls = require "settings.vtsls", -- TypeScript
     volar = require "settings.volar", -- Vue
     astro = {}, -- Astro
     angularls = {}, -- Angular
     svelte = {}, -- Svelte
     prismals = {}, -- Prisma
-
-    -- PHP
     intelephense = {}, -- PHP
     stimulus_ls = {}, -- Blade
     twiggy_language_server = {}, -- Twig
-
-    -- Go
     gopls = require "settings.gopls", -- Go
-    templ = {}, -- Go template
-
-    -- Other Languages
+    templ = {}, -- Go
     lua_ls = require "settings.lua_ls", -- Lua
     ruby_lsp = {}, -- Ruby
     pyright = require "settings.pyright", -- Python
