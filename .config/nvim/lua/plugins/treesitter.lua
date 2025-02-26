@@ -23,9 +23,24 @@ return {
             filetype = "blade",
         }
 
+        parser_config.ejs = {
+            install_info = {
+                url = "https://github.com/tree-sitter/tree-sitter-embedded-template",
+                files = { "src/parser.c" },
+                branch = "main",
+            },
+            filetype = "ejs",
+        }
+
         vim.filetype.add {
             pattern = {
                 [".*%.blade%.php"] = "blade",
+            },
+        }
+
+        vim.filetype.add {
+            pattern = {
+                [".*%.ejs"] = "blade",
             },
         }
 
