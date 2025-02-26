@@ -8,19 +8,15 @@ return {
     ruby_lsp = {}, -- Ruby
     pyright = require "settings.pyright", -- Python
     elixirls = {}, -- Elixir
-    csharp_ls = {}, -- C#
     rust_analyzer = {}, -- Rust
     zls = {}, -- Zig
     clangd = {}, -- C/C++
+    marksman = {}, -- Markdown
 
     -- CSS
     cssls = {},
     css_variables = {},
     tailwindcss = require "settings.tailwindcss",
-
-    -- Markdown
-    marksman = {},
-    mdx_analyzer = {},
 
     -- JavaScript
     htmx = {}, -- HTMX
@@ -36,10 +32,6 @@ return {
     stimulus_ls = {}, -- Blade
     twiggy_language_server = {}, -- Twig
 
-    -- Java
-    jdtls = {},
-    gradle_ls = {},
-    kotlin_language_server = {},
     -- Go
     gopls = require "settings.gopls",
     templ = {},
