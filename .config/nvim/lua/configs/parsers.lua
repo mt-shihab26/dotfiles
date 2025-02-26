@@ -1,5 +1,5 @@
 return {
-    -- TypeScript
+    -- JavaScript
     "html",
     "markdown",
     "markdown_inline",
