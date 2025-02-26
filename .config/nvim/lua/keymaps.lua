@@ -7,10 +7,10 @@ map("n", "<esc>", "<cmd>nohlsearch<cr>", { desc = "clear search highlighting" })
 map("x", "p", '"_dP', { desc = "paste without yanking selected text", noremap = true })
 
 -- Toggle between tabs/spaces
-map("n", "<leader>t", require "lib.toggle_indentation", { desc = "toggle tabs/spaces for indentation" })
+map("n", "<leader>t", require "funcs.toggle_indentation", { desc = "toggle tabs/spaces for indentation" })
 
 -- Toggle line wrapping
-map("n", "<leader>w", require "lib.toggle_wrap", { desc = "toggle line wrapping on/off" })
+map("n", "<leader>w", require "funcs.toggle_wrap", { desc = "toggle line wrapping on/off" })
 
 -- Source the current file
 map("n", "<space>x", "<cmd>source %<CR>", { desc = "source current file" })
