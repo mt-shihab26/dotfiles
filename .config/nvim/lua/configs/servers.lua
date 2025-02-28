@@ -1,7 +1,7 @@
 return {
     html = {}, -- HTML
-    htmx = {}, -- HTMX
-    marksman = {}, -- Markdown
+    -- htmx = {}, -- HTMX
+    -- marksman = {}, -- Markdown
 
     cssls = {}, -- CSS
     css_variables = {}, -- CSS
@@ -12,10 +12,10 @@ return {
 
     bashls = {}, -- Bash
 
-    sqls = {}, -- SQL
+    -- sqls = {}, -- SQL
 
-    dockerls = {}, -- Docker
-    docker_compose_language_service = {}, -- Docker
+    -- dockerls = {}, -- Docker
+    -- docker_compose_language_service = {}, -- Docker
 
     vtsls = require "settings.vtsls", -- TypeScript
     volar = require "settings.volar", -- Vue
@@ -28,20 +28,20 @@ return {
     stimulus_ls = {}, -- Blade
     twiggy_language_server = {}, -- Twig
 
-    gopls = require "settings.gopls", -- Go
-    templ = {}, -- Go
+    -- gopls = require "settings.gopls", -- Go
+    -- templ = {}, -- Go
 
     lua_ls = require "settings.lua_ls", -- Lua
 
-    ruby_lsp = {}, -- Ruby
+    -- ruby_lsp = {}, -- Ruby
 
-    pyright = require "settings.pyright", -- Python
+    -- pyright = require "settings.pyright", -- Python
 
-    elixirls = {}, -- Elixir
+    -- elixirls = {}, -- Elixir
 
-    rust_analyzer = {}, -- Rust
+    -- rust_analyzer = {}, -- Rust
 
     zls = {}, -- Zig
 
-    clangd = {}, -- C/C++
+    -- clangd = {}, -- C/C++
 }
