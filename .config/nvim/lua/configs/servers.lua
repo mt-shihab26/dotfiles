@@ -7,10 +7,10 @@ return {
     css_variables = {}, -- CSS
     tailwindcss = require "settings.tailwindcss", -- TailwindCSS
 
-    jsonls = {}, -- Json
-    yamlls = {}, -- YAML
+    -- jsonls = {}, -- Json
+    -- yamlls = {}, -- YAML
 
-    bashls = {}, -- Bash
+    -- bashls = {}, -- Bash
 
     -- sqls = {}, -- SQL
 
@@ -18,15 +18,15 @@ return {
     -- docker_compose_language_service = {}, -- Docker
 
     vtsls = require "settings.vtsls", -- TypeScript
-    volar = require "settings.volar", -- Vue
+    -- volar = require "settings.volar", -- Vue
     astro = {}, -- Astro
-    angularls = {}, -- Angular
-    svelte = {}, -- Svelte
-    prismals = {}, -- Prisma
+    -- angularls = {}, -- Angular
+    -- svelte = {}, -- Svelte
+    -- prismals = {}, -- Prisma
 
     intelephense = {}, -- PHP
-    stimulus_ls = {}, -- Blade
-    twiggy_language_server = {}, -- Twig
+    -- stimulus_ls = {}, -- Blade
+    -- twiggy_language_server = {}, -- Twig
 
     -- gopls = require "settings.gopls", -- Go
     -- templ = {}, -- Go
