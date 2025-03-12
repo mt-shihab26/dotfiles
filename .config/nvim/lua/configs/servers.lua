@@ -28,8 +28,8 @@ return {
     -- stimulus_ls = {}, -- Blade
     -- twiggy_language_server = {}, -- Twig
 
-    -- gopls = require "settings.gopls", -- Go
-    -- templ = {}, -- Go
+    gopls = require "settings.gopls", -- Go
+    templ = {}, -- Go
 
     lua_ls = require "settings.lua_ls", -- Lua
 
@@ -41,7 +41,7 @@ return {
 
     -- rust_analyzer = {}, -- Rust
 
-    zls = {}, -- Zig
+    -- zls = {}, -- Zig
 
     -- clangd = {}, -- C/C++
 }
