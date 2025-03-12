@@ -1,13 +1,12 @@
 return {
+    lua = { "stylua" },
     html = { "prettier" },
     markdown = { "prettier" },
     mdx = { "prettier" },
     svg = { "prettier" },
-
     css = { "prettier" },
     scss = { "prettier" },
     less = { "prettier" },
-
     json = { "prettier" },
     jsonc = { "prettier" },
     yaml = { "prettier" },
@@ -22,12 +21,9 @@ return {
     php = { "pint" },
     blade = { "prettier" },
 
-    python = { "black" }, -- "isort"
-
-    lua = { "stylua" },
-
     go = { "goimports", "gofumpt" },
     templ = { "templ" },
 
-    rust = { "rustfmt" },
+    -- python = { "black" }, -- "isort"
+    -- rust = { "rustfmt" },
 }
