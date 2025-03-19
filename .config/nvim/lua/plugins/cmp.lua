@@ -88,16 +88,12 @@ return {
                 end, { "i", "s" }),
             },
             sources = {
-                -- lsp
                 { name = "nvim_lsp" },
                 { name = "nvim_lsp_signature_help" },
-                -- copilot
-                { name = "copilot" },
-                -- snippet
-                { name = "luasnip" },
-                -- other
                 { name = "buffer" },
                 { name = "path" },
+                { name = "copilot" },
+                { name = "luasnip" },
                 { name = "calc" },
             },
             formatting = {
