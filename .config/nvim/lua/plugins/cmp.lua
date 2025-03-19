@@ -9,8 +9,6 @@ local tab_fallback = function(cmp, luasnip)
             cmp.select_next_item()
         elseif luasnip.expand_or_jumpable() then
             vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true), "")
-        elseif vim.b._copilot_suggestion ~= nil then
-            vim.fn.feedkeys(vim.api.nvim_replace_termcodes(vim.fn["copilot#Accept"](), true, true, true), "")
         elseif has_words_before() then
             cmp.complete()
         else
@@ -31,48 +29,6 @@ local shift_tab_fallback = function(cmp, luasnip)
     end
 end
 
--- local icons = {
---     Array = " ",
---     Boolean = "󰨙 ",
---     Class = " ",
---     Codeium = "󰘦 ",
---     Color = " ",
---     Control = " ",
---     Collapsed = " ",
---     Constant = "󰏿 ",
---     Constructor = " ",
---     Copilot = " ",
---     Enum = " ",
---     EnumMember = " ",
---     Event = " ",
---     Field = " ",
---     File = " ",
---     Folder = " ",
---     Function = "󰊕 ",
---     Interface = " ",
---     Key = " ",
---     Keyword = " ",
---     Method = "󰊕 ",
---     Module = " ",
---     Namespace = "󰦮 ",
---     Null = " ",
---     Number = "󰎠 ",
---     Object = " ",
---     Operator = " ",
---     Package = " ",
---     Property = " ",
---     Reference = " ",
---     Snippet = " ",
---     String = " ",
---     Struct = "󰆼 ",
---     TabNine = "󰏚 ",
---     Text = " ",
---     TypeParameter = " ",
---     Unit = " ",
---     Value = " ",
---     Variable = "󰀫 ",
--- }
-
 return {
     "hrsh7th/nvim-cmp",
     event = "InsertEnter",
@@ -85,10 +41,16 @@ return {
         "L3MON4D3/LuaSnip",
         "saadparwaiz1/cmp_luasnip",
         "roobert/tailwindcss-colorizer-cmp.nvim",
+        "zbirenbaum/copilot.lua",
         "zbirenbaum/copilot-cmp",
-        "github/copilot.vim",
     },
     config = function()
+        require("copilot").setup {
+            suggestion = { enabled = false },
+            panel = { enabled = false },
+        }
+
+        -- Then set up copilot-cmp
         require("copilot_cmp").setup()
 
         local sources = {
@@ -127,6 +89,7 @@ return {
                 ["<S-Tab>"] = cmp.mapping(shift_tab_fallback(cmp, luasnip), { "i", "s" }),
             },
             sources = {
+                { name = "copilot" },
                 { name = "nvim_lsp" },
                 { name = "nvim_lsp_signature_help" },
                 { name = "buffer" },
