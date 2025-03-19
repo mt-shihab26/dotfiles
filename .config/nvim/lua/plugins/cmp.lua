@@ -36,44 +36,9 @@ return {
         ---@type table
         local luasnip = require "luasnip"
 
-        -- Define custom sorting function to prioritize LSP over Copilot
-        local compare = require "cmp.config.compare"
-
-        local source_priority = {
-            nvim_lsp = 10,
-            nvim_lsp_signature_help = 9,
-            copilot = 8,
-            luasnip = 7,
-            buffer = 6,
-            path = 5,
-            calc = 4,
-        }
-
-        local source_compare = function(entry1, entry2)
-            local source1 = entry1.source.name
-            local source2 = entry2.source.name
-            local priority1 = source_priority[source1] or 0
-            local priority2 = source_priority[source2] or 0
-            return priority1 > priority2
-        end
-
         cmp.setup {
             preselect = cmp.PreselectMode.Item,
-            sorting = {
-                priority_weight = 2,
-                comparators = {
-                    source_compare, -- Our custom source prioritization
-                    compare.offset,
-                    compare.exact,
-                    compare.score,
-                    compare.recently_used,
-                    compare.locality,
-                    compare.kind,
-                    compare.sort_text,
-                    compare.length,
-                    compare.order,
-                },
-            },
+            sorting = (require "cmp.config.default"()).sorting,
             completion = {
                 completeopt = "menu,menuone,noinsert",
             },
@@ -124,16 +89,16 @@ return {
             },
             sources = {
                 -- lsp
-                { name = "nvim_lsp", priority = 10 },
-                { name = "nvim_lsp_signature_help", priority = 9 },
+                { name = "nvim_lsp" },
+                { name = "nvim_lsp_signature_help" },
                 -- copilot
-                { name = "copilot", priority = 8 },
+                { name = "copilot" },
                 -- snippet
-                { name = "luasnip", priority = 7 },
+                { name = "luasnip" },
                 -- other
-                { name = "buffer", priority = 6 },
-                { name = "path", priority = 5 },
-                { name = "calc", priority = 4 },
+                { name = "buffer" },
+                { name = "path" },
+                { name = "calc" },
             },
             formatting = {
                 fields = { "abbr", "kind", "menu" },
