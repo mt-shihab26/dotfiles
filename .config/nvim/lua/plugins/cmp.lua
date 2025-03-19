@@ -41,25 +41,23 @@ return {
         "L3MON4D3/LuaSnip",
         "saadparwaiz1/cmp_luasnip",
         "roobert/tailwindcss-colorizer-cmp.nvim",
-        "zbirenbaum/copilot-cmp",
     },
     config = function()
-        require("copilot_cmp").setup()
-
         local sources = {
-            nvim_lsp = "lsp",
-            nvim_lsp_signature_help = "signature",
-            buffer = "buffer",
-            path = "path",
-            calc = "calc",
-            luasnip = "snippet",
-            copilot = "copilot",
+            nvim_lsp = "LSP",
+            nvim_lsp_signature_help = "Sig",
+            buffer = "Buf",
+            path = "Path",
+            calc = "Calc",
+            luasnip = "Snip",
         }
 
         ---@type table
         local cmp = require "cmp"
         ---@type table
         local luasnip = require "luasnip"
+        -- Apply tailwindcss colorizer
+        local tailwind_formatter = require("tailwindcss-colorizer-cmp").formatter
 
         cmp.setup {
             preselect = cmp.PreselectMode.Item,
@@ -84,30 +82,26 @@ return {
             sources = {
                 { name = "nvim_lsp" },
                 { name = "nvim_lsp_signature_help" },
+                { name = "luasnip" },
                 { name = "buffer" },
                 { name = "path" },
                 { name = "calc" },
-                { name = "luasnip" },
             },
             formatting = {
                 fields = { "abbr", "kind", "menu" },
                 format = function(entry, item)
-                    -- Ensure source name is a string
-                    local source_name = entry.source.name or ""
+                    -- Get source name and apply formatting
+                    local source_name = entry.source.name
                     local source_label = sources[source_name] or source_name
-
-                    -- Ensure kind is a string
-                    local kind_text = item.kind or ""
-
-                    -- Build the kind string safely
-                    item.kind = string.format("[%s] %s", source_label, kind_text)
-
+                    -- Set menu text to show the source
+                    item.menu = " [" .. source_label .. "]"
                     -- Apply tailwindcss colorizer formatting
-                    return require("tailwindcss-colorizer-cmp").formatter(entry, item)
+                    return tailwind_formatter(entry, item)
                 end,
             },
         }
 
+        -- Load snippets
         require("luasnip.loaders.from_vscode").lazy_load {
             paths = { vim.fn.stdpath "config" .. "/snippets" },
         }
