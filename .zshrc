@@ -108,6 +108,10 @@ alias kill-session="$HOME/.scripts/tmux-kill-session.sh"
 alias projects="sessionizer projects"
 alias learns="sessionizer learns"
 
+# Git
+alias wip="git add -A && git commit -m 'wip' && git push"
+alias status="git status"
+
 # Done
 
 # Herd injected NVM configuration
