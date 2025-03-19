@@ -7,8 +7,10 @@ local tab_fallback = function(cmp, luasnip)
     return function(fallback)
         if cmp.visible() then
             cmp.select_next_item()
-        elseif luasnip.locally_jumpable(1) then
-            luasnip.jump(1)
+        elseif luasnip.expand_or_jumpable() then
+            vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true), "")
+        elseif vim.b._copilot_suggestion ~= nil then
+            vim.fn.feedkeys(vim.api.nvim_replace_termcodes(vim.fn["copilot#Accept"](), true, true, true), "")
         elseif has_words_before() then
             cmp.complete()
         else
@@ -30,44 +32,44 @@ local shift_tab_fallback = function(cmp, luasnip)
 end
 
 -- local icons = {
---     Array = " ",
+--     Array = " ",
 --     Boolean = "󰨙 ",
---     Class = " ",
+--     Class = " ",
 --     Codeium = "󰘦 ",
---     Color = " ",
---     Control = " ",
---     Collapsed = " ",
+--     Color = " ",
+--     Control = " ",
+--     Collapsed = " ",
 --     Constant = "󰏿 ",
---     Constructor = " ",
---     Copilot = " ",
---     Enum = " ",
---     EnumMember = " ",
---     Event = " ",
---     Field = " ",
---     File = " ",
---     Folder = " ",
+--     Constructor = " ",
+--     Copilot = " ",
+--     Enum = " ",
+--     EnumMember = " ",
+--     Event = " ",
+--     Field = " ",
+--     File = " ",
+--     Folder = " ",
 --     Function = "󰊕 ",
---     Interface = " ",
---     Key = " ",
---     Keyword = " ",
+--     Interface = " ",
+--     Key = " ",
+--     Keyword = " ",
 --     Method = "󰊕 ",
---     Module = " ",
+--     Module = " ",
 --     Namespace = "󰦮 ",
---     Null = " ",
+--     Null = " ",
 --     Number = "󰎠 ",
---     Object = " ",
---     Operator = " ",
---     Package = " ",
---     Property = " ",
---     Reference = " ",
---     Snippet = " ",
---     String = " ",
+--     Object = " ",
+--     Operator = " ",
+--     Package = " ",
+--     Property = " ",
+--     Reference = " ",
+--     Snippet = " ",
+--     String = " ",
 --     Struct = "󰆼 ",
 --     TabNine = "󰏚 ",
---     Text = " ",
---     TypeParameter = " ",
---     Unit = " ",
---     Value = " ",
+--     Text = " ",
+--     TypeParameter = " ",
+--     Unit = " ",
+--     Value = " ",
 --     Variable = "󰀫 ",
 -- }
 
@@ -84,6 +86,7 @@ return {
         "saadparwaiz1/cmp_luasnip",
         "roobert/tailwindcss-colorizer-cmp.nvim",
         "zbirenbaum/copilot-cmp",
+        "github/copilot.vim",
     },
     config = function()
         require("copilot_cmp").setup()
