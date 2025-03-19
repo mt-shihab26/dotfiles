@@ -13,26 +13,18 @@ return {
     },
     config = function()
         local sources = {
-            nvim_lsp = "LSP",
-            nvim_lsp_signature_help = "Sig",
-            buffer = "Buf",
-            path = "Path",
-            calc = "Calc",
-            luasnip = "Snip",
+            nvim_lsp = "lsp",
+            nvim_lsp_signature_help = "signature",
+            buffer = "buffer",
+            path = "path",
+            calc = "calc",
+            luasnip = "snippet",
         }
 
         ---@type table
         local cmp = require "cmp"
         ---@type table
         local luasnip = require "luasnip"
-
-        -- Apply tailwindcss colorizer
-        local tailwind_formatter = require("tailwindcss-colorizer-cmp").formatter
-
-        local function has_words_before()
-            local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-            return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match "%s" == nil
-        end
 
         cmp.setup {
             preselect = cmp.PreselectMode.Item,
@@ -83,13 +75,18 @@ return {
             formatting = {
                 fields = { "abbr", "kind", "menu" },
                 format = function(entry, item)
-                    -- Get source name and apply formatting
-                    local source_name = entry.source.name
+                    -- Ensure source name is a string
+                    local source_name = entry.source.name or ""
                     local source_label = sources[source_name] or source_name
-                    -- Set menu text to show the source
-                    item.menu = " [" .. source_label .. "]"
+
+                    -- Ensure kind is a string
+                    local kind_text = item.kind or ""
+
+                    -- Build the kind string safely
+                    item.kind = string.format("[%s] %s", source_label, kind_text)
+
                     -- Apply tailwindcss colorizer formatting
-                    return tailwind_formatter(entry, item)
+                    return require("tailwindcss-colorizer-cmp").formatter(entry, item)
                 end,
             },
         }
