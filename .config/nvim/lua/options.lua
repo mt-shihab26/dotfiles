@@ -40,3 +40,6 @@ vim.opt.cursorline = true
 vim.opt.scrolloff = 10
 
 vim.wo.wrap = false
+
+vim.opt.guicursor = ""
+vim.opt.guicursor = "n-v-c:block-blinkwait700-blinkoff400-blinkon250,i-ci-ve:block-blinkwait700-blinkoff400-blinkon250"
