@@ -1,22 +1,14 @@
-local map = vim.keymap.set
+-- Search
+vim.keymap.set("n", "<esc>", "<cmd>nohlsearch<cr>", { desc = "clear search highlighting" })
 
--- Clear search highlights with Esc
-map("n", "<esc>", "<cmd>nohlsearch<cr>", { desc = "clear search highlighting" })
+-- Clipboard
+vim.keymap.set("x", "p", '"_dP', { desc = "paste without yanking selected text", noremap = true })
 
--- Paste without copying replaced text
-map("x", "p", '"_dP', { desc = "paste without yanking selected text", noremap = true })
+-- Toggle settings
+vim.keymap.set("n", "<leader>t", require "funcs.toggle_indentation", { desc = "toggle tabs/spaces for indentation" })
+vim.keymap.set("n", "<leader>w", require "funcs.toggle_wrap", { desc = "toggle line wrapping on/off" })
 
--- Toggle between tabs/spaces
-map("n", "<leader>t", require "funcs.toggle_indentation", { desc = "toggle tabs/spaces for indentation" })
-
--- Toggle line wrapping
-map("n", "<leader>w", require "funcs.toggle_wrap", { desc = "toggle line wrapping on/off" })
-
--- Source the current file
-map("n", "<space>x", "<cmd>source %<CR>", { desc = "source current file" })
-
--- Execute current line as Lua code
-map("n", "<space>X", ":.lua<CR>", { desc = "execute current line as lua" })
-
--- Execute selected text as Lua code
-map("v", "<space>X", ":lua<CR>", { desc = "execute selected text as lua" })
+-- Source and execute Lua
+vim.keymap.set("n", "<space>x", "<cmd>source %<CR>", { desc = "source current file" })
+vim.keymap.set("n", "<space>X", ":.lua<CR>", { desc = "execute current line as lua" })
+vim.keymap.set("v", "<space>X", ":lua<CR>", { desc = "execute selected text as lua" })
