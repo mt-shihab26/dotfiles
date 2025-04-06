@@ -130,3 +130,6 @@ export HERD_PHP_83_INI_SCAN_DIR="/Users/shihab/Library/Application Support/Herd/
 export HERD_PHP_84_INI_SCAN_DIR="/Users/shihab/Library/Application Support/Herd/config/php/84/"
 
 
+
+# bun completions
+[ -s "/Users/shihab/.bun/_bun" ] && source "/Users/shihab/.bun/_bun"
