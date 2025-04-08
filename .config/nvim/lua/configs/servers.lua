@@ -23,11 +23,12 @@ return {
     -- stimulus_ls = {}, -- Blade
     -- twiggy_language_server = {}, -- Twig
 
+    ruby_lsp = {}, -- Ruby
+
     gopls = require "settings.gopls", -- Go
     templ = {}, -- Go
 
     -- htmx = {}, -- HTMX
-    -- ruby_lsp = {}, -- Ruby
     -- pyright = require "settings.pyright", -- Python
     -- elixirls = {}, -- Elixir
     -- rust_analyzer = {}, -- Rust

@@ -33,6 +33,8 @@ return {
     "php_only",
     "twig",
 
+    "ruby",
+
     "go",
     "gomod",
     "gowork",
@@ -44,7 +46,6 @@ return {
     -- "cpp",
     -- "rust",
     -- "zig",
-    -- "ruby",
     -- "elixir",
     -- "heex",
     -- "eex",
