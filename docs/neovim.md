@@ -2,10 +2,6 @@
 
 ## Vim Motion
 
--
-
-## Normal Mode
-
 - fundamental motions
     - `j` -> move down
     - `k` -> move up
@@ -13,6 +9,12 @@
     - `l` -> move right
     - `w` -> move right by word
     - `b` -> move left by word
+- argument with count motions
+    - `[count][j|k|h|l|w|b]` -> repeats the motion `[count]` times
+        - examples: 5j moves down 5 lines, 3w moves forward 3 words etc
+
+## Normal Mode
+
 - horizontal motions
     - `_` -> move to first non-blank character of the line
     - `$` -> move to end of the line
