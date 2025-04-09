@@ -3,15 +3,13 @@ return {
     opts = {
         formatters_by_ft = {
             lua = { "stylua" },
+
             html = { "prettier" },
             markdown = { "prettier" },
             mdx = { "prettier" },
             svg = { "prettier" },
             css = { "prettier" },
-            scss = { "prettier" },
-            less = { "prettier" },
             json = { "prettier" },
-            jsonc = { "prettier" },
             yaml = { "prettier" },
 
             javascript = { "prettier" },
