@@ -23,9 +23,10 @@ return {
 
     ruby = { "rubyfmt" },
 
-    go = { "goimports", "gofumpt" },
+    python = { "ruff" },
+
+    go = { "goimports", "gofmt" },
     templ = { "templ" },
 
-    -- python = { "black" }, -- "isort"
-    -- rust = { "rustfmt" },
+    rust = { "rustfmt" },
 }
