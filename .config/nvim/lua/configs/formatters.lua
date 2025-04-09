@@ -21,7 +21,7 @@ return {
     php = { "pint" },
     blade = { "prettier" },
 
-    ruby = { "rubocop" },
+    ruby = { "rubyfmt" },
 
     go = { "goimports", "gofumpt" },
     templ = { "templ" },
