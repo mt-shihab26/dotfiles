@@ -114,9 +114,6 @@ alt-3 = 'workspace 3'
 alt-4 = 'workspace 4'
 alt-5 = 'workspace 5'
 alt-6 = 'workspace 6'
-alt-7 = 'workspace 7'
-alt-8 = 'workspace 8'
-alt-9 = 'workspace 9'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
 alt-shift-1 = 'move-node-to-workspace 1'
@@ -125,9 +122,6 @@ alt-shift-3 = 'move-node-to-workspace 3'
 alt-shift-4 = 'move-node-to-workspace 4'
 alt-shift-5 = 'move-node-to-workspace 5'
 alt-shift-6 = 'move-node-to-workspace 6'
-alt-shift-7 = 'move-node-to-workspace 7'
-alt-shift-8 = 'move-node-to-workspace 8'
-alt-shift-9 = 'move-node-to-workspace 9'
 
 alt-shift-f = 'fullscreen'
 
@@ -157,74 +151,63 @@ alt-shift-k = ['join-with up', 'mode main']
 alt-shift-l = ['join-with right', 'mode main']
 
 
-# Browsers
-
-[[on-window-detected]]
-if.app-id = 'com.google.Chrome'
-run = "move-node-to-workspace 1"
-
-[[on-window-detected]]
-if.app-id = 'org.mozilla.firefox'
-run = "move-node-to-workspace 1"
-
-[[on-window-detected]]
-if.app-id = 'com.apple.Safari'
-run = "move-node-to-workspace 1"
-
-[[on-window-detected]]
-if.app-id = 'company.thebrowser.Browser'
-run = "move-node-to-workspace 1"
-
-[[on-window-detected]]
-if.app-id = 'com.brave.Browser'
-run = "move-node-to-workspace 1"
-
-[[on-window-detected]]
-if.app-id = 'com.openai.chat'
-run = "move-node-to-workspace 1"
-
-[[on-window-detected]]
-if.app-id = 'com.anthropic.claudefordesktop'
-run = "move-node-to-workspace 1"
-
-# Terminal & Editors
 
 [[on-window-detected]]
 if.app-id = 'com.mitchellh.ghostty'
-run = "move-node-to-workspace 2"
+run = "move-node-to-workspace 1"
 
 [[on-window-detected]]
 if.app-id = 'com.microsoft.VSCode'
-run = "move-node-to-workspace 2"
+run = "move-node-to-workspace 1"
 
 [[on-window-detected]]
 if.app-id = 'com.jetbrains.PhpStorm'
-run = "move-node-to-workspace 2"
+run = "move-node-to-workspace 1"
 
 [[on-window-detected]]
 if.app-id = 'com.jetbrains.WebStorm'
+run = "move-node-to-workspace 1"
+
+
+[[on-window-detected]]
+if.app-id = 'com.google.Chrome'
 run = "move-node-to-workspace 2"
 
-# Chats
+[[on-window-detected]]
+if.app-id = 'org.mozilla.firefox'
+run = "move-node-to-workspace 2"
 
 [[on-window-detected]]
-if.app-id = 'com.apple.mail'
+if.app-id = 'com.apple.Safari'
+run = "move-node-to-workspace 2"
+
+[[on-window-detected]]
+if.app-id = 'company.thebrowser.Browser'
+run = "move-node-to-workspace 2"
+
+[[on-window-detected]]
+if.app-id = 'com.brave.Browser'
+run = "move-node-to-workspace 2"
+
+[[on-window-detected]]
+if.app-id = 'com.openai.chat'
+run = "move-node-to-workspace 2"
+
+[[on-window-detected]]
+if.app-id = 'com.anthropic.claudefordesktop'
+run = "move-node-to-workspace 2"
+
+
+[[on-window-detected]]
+if.app-id = 'com.tinyapp.TablePlus'
 run = "move-node-to-workspace 3"
 
 [[on-window-detected]]
-if.app-id = 'net.whatsapp.WhatsApp'
+if.app-id = 'com.electron.dockerdesktop'
 run = "move-node-to-workspace 3"
 
 [[on-window-detected]]
-if.app-id = 'com.facebook.archon.developerID'
-run = "move-node-to-workspace 3"
-
-[[on-window-detected]]
-if.app-id = 'com.skype.skype'
-run = "move-node-to-workspace 3"
-
-[[on-window-detected]]
-if.app-id = 'com.hnc.Discord'
+if.app-id = 'com.tinyapp.DBngin'
 run = "move-node-to-workspace 3"
 
 [[on-window-detected]]
@@ -232,22 +215,25 @@ if.app-id = 'com.apple.iphonesimulator'
 run = "move-node-to-workspace 3"
 
 
-# GUI Clients
-
 [[on-window-detected]]
-if.app-id = 'com.tinyapp.TablePlus'
+if.app-id = 'com.apple.mail'
 run = "move-node-to-workspace 4"
 
 [[on-window-detected]]
-if.app-id = 'com.electron.dockerdesktop'
+if.app-id = 'net.whatsapp.WhatsApp'
 run = "move-node-to-workspace 4"
 
 [[on-window-detected]]
-if.app-id = 'com.tinyapp.DBngin'
+if.app-id = 'com.facebook.archon.developerID'
 run = "move-node-to-workspace 4"
 
+[[on-window-detected]]
+if.app-id = 'com.skype.skype'
+run = "move-node-to-workspace 4"
 
-# Management tools
+[[on-window-detected]]
+if.app-id = 'com.hnc.Discord'
+run = "move-node-to-workspace 4"
 
 [[on-window-detected]]
 if.app-id = 'com.apple.clock'
@@ -265,8 +251,6 @@ run = "move-node-to-workspace 5"
 if.app-id = 'com.todoist.mac.Todoist'
 run = "move-node-to-workspace 5"
 
-# Files & Previews
-
 [[on-window-detected]]
 if.app-id = 'com.apple.finder'
 run = "move-node-to-workspace 6"
@@ -282,10 +266,4 @@ run = "move-node-to-workspace 6"
 [[on-window-detected]]
 if.app-id = 'com.apple.QuickTimePlayerX'
 run = "move-node-to-workspace 6"
-
-# Youtube
-
-[[on-window-detected]]
-if.app-id = 'com.google.Chrome.app.agimnkijcaahngcdmfeangaknmldooml'
-run = "move-node-to-workspace 7"
 
