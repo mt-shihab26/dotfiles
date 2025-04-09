@@ -4,6 +4,7 @@ return {
     dependencies = {
         "nvim-tree/nvim-web-devicons",
         "lewis6991/gitsigns.nvim",
+        "AndreM222/copilot-lualine",
     },
     opts = {
         options = {
@@ -40,9 +41,24 @@ return {
                     end,
                 },
             },
-            lualine_x = { "encoding", "fileformat", "filetype" },
-            lualine_y = { "diff", "diagnostics" },
-            lualine_z = { "progress", "location" },
+            lualine_x = {
+                {
+                    "copilot",
+                    show_colors = true,
+                    show_loading = true,
+                },
+                "encoding",
+                "fileformat",
+                "filetype",
+            },
+            lualine_y = {
+                "diff",
+                "diagnostics",
+            },
+            lualine_z = {
+                "progress",
+                "location",
+            },
         },
     },
 }
