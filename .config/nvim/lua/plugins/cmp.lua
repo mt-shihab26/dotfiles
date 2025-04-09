@@ -10,8 +10,14 @@ return {
         "L3MON4D3/LuaSnip",
         "saadparwaiz1/cmp_luasnip",
         "roobert/tailwindcss-colorizer-cmp.nvim",
+        "zbirenbaum/copilot.lua",
+        "zbirenbaum/copilot-cmp",
     },
     config = function()
+        require("copilot").setup { suggestion = { enabled = false }, panel = { enabled = false } }
+
+        require("copilot_cmp").setup()
+
         local sources = {
             nvim_lsp = "lsp",
             nvim_lsp_signature_help = "signature",
@@ -19,7 +25,9 @@ return {
             path = "path",
             calc = "calc",
             luasnip = "snippet",
+            copilot = "Copilot", -- Add this line
         }
+
         ---@type table
         local cmp = require "cmp"
         ---@type table
@@ -72,6 +80,7 @@ return {
                 end, { "i", "s" }),
             },
             sources = {
+                { name = "copilot" }, -- Add Copilot as first source for priority
                 { name = "nvim_lsp" },
                 { name = "nvim_lsp_signature_help" },
                 { name = "luasnip" },
