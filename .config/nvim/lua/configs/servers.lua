@@ -24,7 +24,6 @@ return {
     htmx = {}, -- HTMX
     angularls = {}, -- Angular
     svelte = {}, -- Svelte
-    prismals = {}, -- Prisma
 
     intelephense = {}, -- PHP
 
