@@ -1,10 +1,10 @@
 return {
-    "stylua",
-    "shfmt",
-    "sqlfmt",
-    "prettier",
-    "pint",
-    "rubyfmt",
-    "goimports",
-    "ruff",
+    -- "stylua",
+    -- "shfmt",
+    -- "sqlfmt",
+    -- "prettier",
+    -- "pint",
+    -- "rubyfmt",
+    -- "goimports",
+    -- "ruff",
 }
