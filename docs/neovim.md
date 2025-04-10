@@ -113,6 +113,7 @@
     - `<Tab>` -> next suggestion
     - `<S-Tab>` -> prev suggestion
     - `<CR>` -> complete item
+    - `<leader>c` -> toggle copilot on/off
 - tools
     - `<leader>lg` -> open lazygit
 - spell
