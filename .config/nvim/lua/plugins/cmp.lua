@@ -25,7 +25,7 @@ return {
             path = "path",
             calc = "calc",
             luasnip = "snippet",
-            copilot = "Copilot", -- Add this line
+            copilot = "Copilot",
         }
 
         ---@type table
@@ -80,13 +80,13 @@ return {
                 end, { "i", "s" }),
             },
             sources = {
-                { name = "copilot" }, -- Add Copilot as first source for priority
-                { name = "nvim_lsp" },
-                { name = "nvim_lsp_signature_help" },
-                { name = "luasnip" },
-                { name = "buffer" },
-                { name = "path" },
-                { name = "calc" },
+                { name = "nvim_lsp", priority = 1000 },
+                { name = "nvim_lsp_signature_help", priority = 900 },
+                { name = "path", priority = 800 },
+                { name = "copilot", priority = 700 },
+                { name = "luasnip", priority = 600 },
+                { name = "buffer", priority = 500 },
+                { name = "calc", priority = 400 },
             },
             formatting = {
                 fields = { "abbr", "kind", "menu" },
