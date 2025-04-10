@@ -41,9 +41,80 @@ return {
             return col ~= 0 and vim.api.nvim_buf_get_text(0, line - 1, 0, line - 1, col, {})[1]:match "^%s*$" == nil
         end
 
+        -- Custom sorting function
+        local sort_items = function(items, query, _, _)
+            -- Source priority order
+            local source_priorities = {
+                nvim_lsp = 1000,
+                nvim_lsp_signature_help = 900,
+                path = 800,
+                copilot = 700,
+                luasnip = 600,
+                buffer = 500,
+                calc = 400,
+            }
+
+            -- Calculate scores for each item based on multiple factors
+            for _, item in ipairs(items) do
+                local score = 0
+
+                -- Priority based on source
+                local source_name = item.source.name or ""
+                local source_priority = source_priorities[source_name] or 0
+                score = score + source_priority
+
+                -- Exact match bonus
+                if item.exact_match then
+                    score = score + 100
+                end
+
+                -- Word match bonus (if item starts with the query)
+                if
+                    query
+                    and query ~= ""
+                    and item.filter_text
+                    and item.filter_text:lower():find(query:lower(), 1, true) == 1
+                then
+                    score = score + 80
+                end
+
+                -- Shorter completions are often better
+                if item.completion_item and item.completion_item.label then
+                    local label_length = #item.completion_item.label
+                    if label_length < 20 then
+                        score = score + (20 - label_length)
+                    end
+                end
+
+                -- Save score on the item for sorting
+                item.score = score
+            end
+
+            -- Sort based on calculated scores
+            table.sort(items, function(a, b)
+                return (a.score or 0) > (b.score or 0)
+            end)
+
+            return items
+        end
+
         cmp.setup {
             preselect = cmp.PreselectMode.Item,
-            sorting = (require "cmp.config.default"()).sorting,
+            sorting = {
+                priority_weight = 2,
+                comparators = {
+                    sort_items,
+                    cmp.config.compare.offset,
+                    cmp.config.compare.exact,
+                    cmp.config.compare.score,
+                    cmp.config.compare.recently_used,
+                    cmp.config.compare.locality,
+                    cmp.config.compare.kind,
+                    cmp.config.compare.sort_text,
+                    cmp.config.compare.length,
+                    cmp.config.compare.order,
+                },
+            },
             completion = {
                 completeopt = "menu,menuone,noinsert",
             },
