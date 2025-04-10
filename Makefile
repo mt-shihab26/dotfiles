@@ -1,6 +1,6 @@
 format:
 	stylua .config
 
-clean:
+clean-nvim:
 	rm -rf ~/.local/slate/nvim
 	rm -rf ~/.local/share/nvim
