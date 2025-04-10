@@ -27,7 +27,7 @@ return {
         php = { "pint" },
         blade = { "prettier" },
 
-        ruby = { "rubyfmt" },
+        ruby = { "rubocop" },
 
         python = { "ruff" },
 
