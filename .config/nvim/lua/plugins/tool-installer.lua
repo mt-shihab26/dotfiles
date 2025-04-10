@@ -5,16 +5,7 @@ return {
         require("mason").setup()
 
         require("mason-tool-installer").setup {
-            ensure_installed = {
-                "stylua",
-                "shfmt",
-                "sqlfmt",
-                "prettier",
-                "pint",
-                "rubyfmt",
-                "goimports",
-                "ruff",
-            },
+            ensure_installed = require "configs.tools",
             auto_update = false,
             run_on_start = true,
         }
