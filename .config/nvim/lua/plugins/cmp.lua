@@ -18,14 +18,15 @@ return {
 
         require("copilot_cmp").setup()
 
-        local sources = {
-            nvim_lsp = "lsp",
-            nvim_lsp_signature_help = "signature",
-            buffer = "buffer",
-            path = "path",
-            calc = "calc",
-            luasnip = "snippet",
-            copilot = "Copilot",
+        -- Define sources with their display labels and priorities in one place
+        local sources_config = {
+            nvim_lsp = { label = "lsp", priority = 1000 },
+            nvim_lsp_signature_help = { label = "signature", priority = 900 },
+            path = { label = "path", priority = 800 },
+            copilot = { label = "Copilot", priority = 700 },
+            luasnip = { label = "snippet", priority = 600 },
+            buffer = { label = "buffer", priority = 500 },
+            calc = { label = "calc", priority = 400 },
         }
 
         ---@type table
@@ -41,26 +42,15 @@ return {
             return col ~= 0 and vim.api.nvim_buf_get_text(0, line - 1, 0, line - 1, col, {})[1]:match "^%s*$" == nil
         end
 
-        -- Custom sorting function
+        -- Custom sorting function using the centralized sources_config
         local sort_items = function(items, query, _, _)
-            -- Source priority order
-            local source_priorities = {
-                nvim_lsp = 1000,
-                nvim_lsp_signature_help = 900,
-                path = 800,
-                copilot = 700,
-                luasnip = 600,
-                buffer = 500,
-                calc = 400,
-            }
-
             -- Calculate scores for each item based on multiple factors
             for _, item in ipairs(items) do
                 local score = 0
 
                 -- Priority based on source
                 local source_name = item.source.name or ""
-                local source_priority = source_priorities[source_name] or 0
+                local source_priority = sources_config[source_name] and sources_config[source_name].priority or 0
                 score = score + source_priority
 
                 -- Exact match bonus
@@ -96,6 +86,12 @@ return {
             end)
 
             return items
+        end
+
+        -- Build sources array from the centralized config
+        local sources_array = {}
+        for name, config in pairs(sources_config) do
+            table.insert(sources_array, { name = name, priority = config.priority })
         end
 
         cmp.setup {
@@ -150,21 +146,14 @@ return {
                     end
                 end, { "i", "s" }),
             },
-            sources = {
-                { name = "nvim_lsp", priority = 1000 },
-                { name = "nvim_lsp_signature_help", priority = 900 },
-                { name = "path", priority = 800 },
-                { name = "copilot", priority = 700 },
-                { name = "luasnip", priority = 600 },
-                { name = "buffer", priority = 500 },
-                { name = "calc", priority = 400 },
-            },
+            sources = sources_array,
             formatting = {
                 fields = { "abbr", "kind", "menu" },
                 format = function(entry, item)
                     -- Ensure source name is a string
                     local source_name = entry.source.name or ""
-                    local source_label = sources[source_name] or source_name
+                    local source_label = sources_config[source_name] and sources_config[source_name].label
+                        or source_name
                     -- Ensure kind is a string
                     local kind_text = item.kind or ""
                     -- Build the kind string safely
