@@ -2,19 +2,27 @@ return {
     "lua",
     "luadoc",
     "luap",
+
     "html",
     "xml",
     "markdown",
     "markdown_inline",
+
     "css",
+
     "bash",
+
     "json",
     "jsonc",
+
     "yaml",
     "toml",
+
     "vimdoc",
     "vim",
+
     "dockerfile",
+
     "diff",
     "git_config",
     "gitcommit",
@@ -35,21 +43,22 @@ return {
 
     "ruby",
 
+    "python",
+
+    "elixir",
+    "heex",
+    "eex",
+
     "go",
     "gomod",
     "gowork",
     "gosum",
     "templ",
 
-    -- "python",
-    -- "c",
-    -- "cpp",
-    -- "rust",
-    -- "zig",
-    -- "elixir",
-    -- "heex",
-    -- "eex",
-    -- "printf",
-    -- "query",
-    -- "regex",
+    "rust",
+
+    "zig",
+
+    "c",
+    "cpp",
 }
