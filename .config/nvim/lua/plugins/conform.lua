@@ -36,16 +36,12 @@ return {
             go = { "goimports", "gofmt" },
             templ = { "templ" },
 
-            -- swift
             swift = { "swiftformat" },
 
-            -- rust
             rust = { "rustfmt" },
 
-            -- zig
             zig = { "zigfmt" },
 
-            -- c/c++
             c = { "clang-format" },
             cpp = { "clang-format" },
             cmake = { "cmake_format" },

@@ -7,5 +7,4 @@ return {
     "rubyfmt",
     "goimports",
     "ruff",
-    "rustfmt",
 }
