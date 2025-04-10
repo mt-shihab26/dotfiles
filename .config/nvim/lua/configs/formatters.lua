@@ -1,45 +1,57 @@
 return {
-    lua = { "stylua" },
+    formatters_by_ft = {
+        lua = { "stylua" },
 
-    sh = { "shfmt" },
-    bash = { "shfmt" },
-    zsh = { "shfmt" },
+        sh = { "shfmt" },
+        bash = { "shfmt" },
+        zsh = { "shfmt" },
 
-    sql = { "sqlfmt" },
+        sql = { "sqlfmt" },
 
-    html = { "prettier" },
-    markdown = { "prettier" },
-    mdx = { "prettier" },
-    svg = { "prettier" },
-    css = { "prettier" },
-    json = { "prettier" },
-    yaml = { "prettier" },
-    toml = { "prettier" },
+        html = { "prettier" },
+        markdown = { "prettier" },
+        mdx = { "prettier" },
+        svg = { "prettier" },
+        css = { "prettier" },
+        json = { "prettier" },
+        yaml = { "prettier" },
+        toml = { "prettier" },
 
-    javascript = { "prettier" },
-    javascriptreact = { "prettier" },
-    typescript = { "prettier" },
-    typescriptreact = { "prettier" },
-    astro = { "prettier" },
-    vue = { "prettier" },
+        javascript = { "prettier" },
+        javascriptreact = { "prettier" },
+        typescript = { "prettier" },
+        typescriptreact = { "prettier" },
+        astro = { "prettier" },
+        vue = { "prettier" },
 
-    php = { "pint" },
-    blade = { "prettier" },
+        php = { "pint" },
+        blade = { "prettier" },
 
-    ruby = { "rubyfmt" },
+        ruby = { "rubyfmt" },
 
-    python = { "ruff" },
+        python = { "ruff" },
 
-    go = { "goimports", "gofmt" },
-    templ = { "templ" },
+        go = { "goimports", "gofmt" },
+        templ = { "templ" },
 
-    swift = { "swiftformat" },
+        swift = { "swiftformat" },
 
-    rust = { "rustfmt" },
+        rust = { "rustfmt" },
 
-    zig = { "zigfmt" },
+        zig = { "zigfmt" },
 
-    c = { "clang-format" },
-    cpp = { "clang-format" },
-    cmake = { "cmake_format" },
+        c = { "clang-format" },
+        cpp = { "clang-format" },
+        cmake = { "cmake_format" },
+    },
+    ignore_install = {
+        "gofmt",
+        "templ",
+
+        "swiftformat",
+
+        "zigfmt",
+
+        "cmake_format",
+    },
 }
