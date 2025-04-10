@@ -18,15 +18,14 @@ return {
 
         require("copilot_cmp").setup()
 
-        -- Define sources with their display labels and priorities in one place
-        local sources_config = {
-            nvim_lsp = { label = "lsp", priority = 1000 },
-            nvim_lsp_signature_help = { label = "signature", priority = 900 },
-            path = { label = "path", priority = 800 },
-            copilot = { label = "Copilot", priority = 700 },
-            luasnip = { label = "snippet", priority = 600 },
-            buffer = { label = "buffer", priority = 500 },
-            calc = { label = "calc", priority = 400 },
+        local sources = {
+            nvim_lsp = "lsp",
+            nvim_lsp_signature_help = "signature",
+            buffer = "buffer",
+            path = "path",
+            calc = "calc",
+            luasnip = "snippet",
+            copilot = "copilot",
         }
 
         ---@type table
@@ -41,76 +40,9 @@ return {
             local line, col = unpack(vim.api.nvim_win_get_cursor(0))
             return col ~= 0 and vim.api.nvim_buf_get_text(0, line - 1, 0, line - 1, col, {})[1]:match "^%s*$" == nil
         end
-
-        -- Custom sorting function using the centralized sources_config
-        local sort_items = function(items, query, _, _)
-            -- Calculate scores for each item based on multiple factors
-            for _, item in ipairs(items) do
-                local score = 0
-
-                -- Priority based on source
-                local source_name = item.source.name or ""
-                local source_priority = sources_config[source_name] and sources_config[source_name].priority or 0
-                score = score + source_priority
-
-                -- Exact match bonus
-                if item.exact_match then
-                    score = score + 100
-                end
-
-                -- Word match bonus (if item starts with the query)
-                if
-                    query
-                    and query ~= ""
-                    and item.filter_text
-                    and item.filter_text:lower():find(query:lower(), 1, true) == 1
-                then
-                    score = score + 80
-                end
-
-                -- Shorter completions are often better
-                if item.completion_item and item.completion_item.label then
-                    local label_length = #item.completion_item.label
-                    if label_length < 20 then
-                        score = score + (20 - label_length)
-                    end
-                end
-
-                -- Save score on the item for sorting
-                item.score = score
-            end
-
-            -- Sort based on calculated scores
-            table.sort(items, function(a, b)
-                return (a.score or 0) > (b.score or 0)
-            end)
-
-            return items
-        end
-
-        -- Build sources array from the centralized config
-        local sources_array = {}
-        for name, config in pairs(sources_config) do
-            table.insert(sources_array, { name = name, priority = config.priority })
-        end
-
         cmp.setup {
             preselect = cmp.PreselectMode.Item,
-            sorting = {
-                priority_weight = 2,
-                comparators = {
-                    sort_items,
-                    cmp.config.compare.offset,
-                    cmp.config.compare.exact,
-                    cmp.config.compare.score,
-                    cmp.config.compare.recently_used,
-                    cmp.config.compare.locality,
-                    cmp.config.compare.kind,
-                    cmp.config.compare.sort_text,
-                    cmp.config.compare.length,
-                    cmp.config.compare.order,
-                },
-            },
+            sorting = (require "cmp.config.default"()).sorting,
             completion = {
                 completeopt = "menu,menuone,noinsert",
             },
@@ -146,14 +78,21 @@ return {
                     end
                 end, { "i", "s" }),
             },
-            sources = sources_array,
+            sources = {
+                { name = "copilot" }, -- Add Copilot as first source for priority
+                { name = "nvim_lsp" },
+                { name = "nvim_lsp_signature_help" },
+                { name = "luasnip" },
+                { name = "buffer" },
+                { name = "path" },
+                { name = "calc" },
+            },
             formatting = {
                 fields = { "abbr", "kind", "menu" },
                 format = function(entry, item)
                     -- Ensure source name is a string
                     local source_name = entry.source.name or ""
-                    local source_label = sources_config[source_name] and sources_config[source_name].label
-                        or source_name
+                    local source_label = sources[source_name] or source_name
                     -- Ensure kind is a string
                     local kind_text = item.kind or ""
                     -- Build the kind string safely
