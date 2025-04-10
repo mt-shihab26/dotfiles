@@ -7,6 +7,7 @@ vim.keymap.set("x", "p", '"_dP', { desc = "paste without yanking selected text",
 -- Toggle settings
 vim.keymap.set("n", "<leader>t", require "funcs.toggle_indentation", { desc = "toggle tabs/spaces for indentation" })
 vim.keymap.set("n", "<leader>w", require "funcs.toggle_wrap", { desc = "toggle line wrapping on/off" })
+vim.keymap.set("n", "<leader>c", require "funcs.toogle_copilot", { desc = "toggle copilot on/off" })
 
 -- Source and execute Lua
 vim.keymap.set("n", "<space>x", "<cmd>source %<CR>", { desc = "source current file" })
