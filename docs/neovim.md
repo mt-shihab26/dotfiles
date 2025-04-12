@@ -131,3 +131,24 @@ plugins keymaps, docs etc
 
 - `<leader>s` -> search on current buffer (spectre)
 - `<leader>S` -> search on multi buffers (spectre)
+
+## Git
+
+### LazyGit
+
+- commands
+    - `:LazyGit`
+- keymaps:
+    - `<leader>z` -> open lazygit
+
+### fugitive
+
+- commands
+    - `:Git`
+
+### diffview.nvim
+
+- commands
+    - `:DiffviewOpen`
+- keymaps
+    - `<leader>d` -> open diff view
