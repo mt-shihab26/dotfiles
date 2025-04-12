@@ -114,8 +114,6 @@
     - `<S-Tab>` -> prev suggestion
     - `<CR>` -> complete item
     - `<leader>c` -> toggle copilot on/off
-- tools
-    - `<leader>lg` -> open lazygit
 - spell
     - `z=` -> show spelling suggestions
     - `zg` -> add word to spell list
