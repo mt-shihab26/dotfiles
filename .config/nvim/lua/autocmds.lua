@@ -1,5 +1,5 @@
 -- disable copilot
--- vim.cmd "Copilot disable"
+vim.cmd "Copilot disable"
 
 -- file type detection for .env and .env.* files
 vim.cmd [[
