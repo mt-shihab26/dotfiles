@@ -90,7 +90,7 @@ return {
                     prompt_title = "Find Files",
                 }
             end,
-            desc = "find files",
+            desc = "find files (telescope)",
         },
         {
             "<leader>F",
@@ -100,7 +100,7 @@ return {
                     no_ignore = true,
                 }
             end,
-            desc = "find all files",
+            desc = "find all files (telescope)",
         },
         {
             "<leader>g",
@@ -126,7 +126,7 @@ return {
                     },
                 }
             end,
-            desc = "grep files",
+            desc = "grep files (telescope)",
         },
         {
             "<leader>G",
@@ -148,21 +148,21 @@ return {
                     },
                 }
             end,
-            desc = "grep all files",
+            desc = "grep all files (telescope)",
         },
         {
             "<leader>h",
             function()
                 require("telescope.builtin").help_tags()
             end,
-            desc = "help tags",
+            desc = "help tags (telescope)",
         },
         {
             "<leader>H",
             function()
                 require("telescope.builtin").lsp_document_symbols()
             end,
-            desc = "lsp document symbols",
+            desc = "lsp document symbols (telescope)",
         },
     },
 }
