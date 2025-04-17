@@ -3,12 +3,8 @@ return {
         "lewis6991/gitsigns.nvim",
         lazy = false,
         keys = {
-            { "]h", ":silent Gitsigns next_hunk<CR>" },
-            { "[h", ":silent Gitsigns prev_hunk<CR>" },
-            -- { "gs", ":Gitsigns stage_hunk<CR>" },
-            -- { "gS", ":Gitsigns undo_stage_hunk<CR>" },
-            -- { "gp", ":Gitsigns preview_hunk<CR>" },
-            -- { "gb", ":Gitsigns blame_line<CR>" },
+            { "]h", ":silent Gitsigns next_hunk<CR>", { desc = "navigate to the next git hunk" } },
+            { "[h", ":silent Gitsigns prev_hunk<CR>", { desc = "navigate to the previous git hunk" } },
         },
         opts = {
             preview_config = {
@@ -49,7 +45,7 @@ return {
             "LazyGit",
         },
         keys = {
-            { "<leader>z", "<cmd>LazyGit<cr>", desc = "open lazygit", remap = true },
+            { "<leader>l", "<cmd>LazyGit<cr>", desc = "open lazygit window", remap = true },
         },
     },
     {
@@ -58,7 +54,7 @@ return {
     {
         "sindrets/diffview.nvim",
         keys = {
-            { "<leader>d", "<cmd>DiffviewOpen<cr>", desc = "open diff view", remap = true },
+            { "<leader>d", "<cmd>DiffviewOpen<cr>", desc = "open git diff view", remap = true },
         },
     },
 }

@@ -18,9 +18,6 @@ vim.opt.splitbelow = true -- Open new horizontal splits below
 vim.wo.wrap = false -- Don't wrap lines
 vim.opt.scrolloff = 10 -- Keep 10 lines visible above/below cursor
 
--- Cursor style
--- vim.opt.guicursor = "n-v-c:block-blinkwait700-blinkoff400-blinkon250,i-ci-ve:block-blinkwait700-blinkoff400-blinkon250" -- Block cursor in all modes with blinking, Wait 700ms before blinking, off for 400ms, on for 250ms
-
 -- Indentation settings
 vim.opt.tabstop = 4 -- Number of spaces a tab counts for
 vim.opt.shiftwidth = 4 -- Number of spaces to use for autoindent
