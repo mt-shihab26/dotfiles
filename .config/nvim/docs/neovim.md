@@ -76,20 +76,8 @@
 
 ## Keymaps
 
-- maps
-    - `<esc>` -> clear search highlighting
-    - `<leader>t` -> toggle tabs/spaces for indentation
 - which-key
     - `<leader>?`-> buffer local key maps
-- file explore (neo-tree, oil)
-    - `<leader>e` -> focus file tree (neo-tree)
-    - `<leader>p` -> close file tree (neo-tree)
-    - `<leader>E` -> open directories as buffer (oil)
-- bufferline
-    - `<S-h>` -> prev buffer
-    - `<S-l>` -> next buffer
-    - `<leader>q` -> close current buffer
-    - `<leader>Q` -> delete other buffers
 - telescope
     - `<leader>f>`-> find finds
     - `<leader>F>`-> find all finds
@@ -97,18 +85,6 @@
     - `<leader>G>`-> grep all finds
     - `<leader>h>`-> help tags
     - `<leader>H>`-> lsp document symbols
-- lspconfig
-    - `gd` -> go to definition
-    - `gD` -> go to declaration
-    - `gr` -> go to references
-    - `gi` -> go to implementation
-    - `K` -> show hover documentation
-    - `<C-k>` -> show hover diagnostics
-    - `<leader>h` -> signature help
-    - `<leader>a` -> code actions
-    - `<leader>r` -> rename symbol
-    - `[d` -> go to prev diagnostic
-    - `]d` -> go to next diagnostic
 - cmp
     - `<Tab>` -> next suggestion
     - `<S-Tab>` -> prev suggestion

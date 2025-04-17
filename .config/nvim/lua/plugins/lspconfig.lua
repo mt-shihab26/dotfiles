@@ -112,28 +112,38 @@ return {
                 end
             end
 
-            vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts { desc = "go to definition" })
-            vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts { desc = "go to declaration" })
-            vim.keymap.set("n", "gr", vim.lsp.buf.references, opts { desc = "go to references" })
-            vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts { desc = "go to implementation" })
+            vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts { desc = "go to definition (lspconfig)" })
+            vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts { desc = "go to declaration (lspconfig)" })
+            vim.keymap.set("n", "gr", vim.lsp.buf.references, opts { desc = "go to references (lspconfig)" })
+            vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts { desc = "go to implementation (lspconfig)" })
 
-            vim.keymap.set("n", "K", vim.lsp.buf.hover, opts { desc = "show hover documentation" })
-            vim.keymap.set("n", "<C-k>", vim.diagnostic.open_float, opts { desc = "show hover diagnostics" })
+            vim.keymap.set("n", "K", vim.lsp.buf.hover, opts { desc = "show hover documentation (lspconfig)" })
+            vim.keymap.set(
+                "n",
+                "<C-k>",
+                vim.diagnostic.open_float,
+                opts { desc = "show hover diagnostics (lspconfig)" }
+            )
 
-            vim.keymap.set("n", "<leader>h", vim.lsp.buf.signature_help, opts { desc = "signature help" })
-            vim.keymap.set("n", "<leader>a", vim.lsp.buf.code_action, opts { desc = "code actions" })
-            vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, opts { desc = "rename symbol" })
+            vim.keymap.set("n", "<leader>h", vim.lsp.buf.signature_help, opts { desc = "signature help (lspconfig)" })
+            vim.keymap.set("n", "<leader>a", vim.lsp.buf.code_action, opts { desc = "code actions (lspconfig)" })
+            vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, opts { desc = "rename symbol (lspconfig)" })
 
-            vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts { desc = "go to prev diagnostic" })
-            vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts { desc = "go to next diagnostic" })
+            vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts { desc = "go to prev diagnostic (lspconfig)" })
+            vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts { desc = "go to next diagnostic (lspconfig)" })
 
-            which_key.add { { "<leader>L", group = "lsp servers" } }
+            which_key.add { { "<leader>L", group = "lsp servers management (lspconfig)" } }
 
-            vim.keymap.set("n", "<leader>Ls", stop_buffer_lsp, opts { desc = "stop buffer lsp servers" })
-            vim.keymap.set("n", "<leader>LS", stop_all_lsp, opts { desc = "stop all lsp servers" })
-            vim.keymap.set("n", "<leader>Ll", start_all_lsp, opts { desc = "start all lsp servers" })
-            vim.keymap.set("n", "<leader>Lr", restart_buffer_lsp, opts { desc = "restart buffer buffer servers" })
-            vim.keymap.set("n", "<leader>LR", restart_all_lsp, opts { desc = "restart all lsp servers" })
+            vim.keymap.set("n", "<leader>Ls", stop_buffer_lsp, opts { desc = "stop buffer lsp servers (lspconfig)" })
+            vim.keymap.set("n", "<leader>LS", stop_all_lsp, opts { desc = "stop all lsp servers (lspconfig)" })
+            vim.keymap.set("n", "<leader>Ll", start_all_lsp, opts { desc = "start all lsp servers (lspconfig)" })
+            vim.keymap.set(
+                "n",
+                "<leader>Lr",
+                restart_buffer_lsp,
+                opts { desc = "restart buffer buffer servers (lspconfig)" }
+            )
+            vim.keymap.set("n", "<leader>LR", restart_all_lsp, opts { desc = "restart all lsp servers (lspconfig)" })
         end
 
         for server_name, server_settings in pairs(servers) do

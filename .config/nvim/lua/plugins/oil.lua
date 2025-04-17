@@ -10,8 +10,21 @@ return {
         view_options = {
             show_hidden = true,
         },
+        -- Enable git status in the UI
+        columns = {
+            "icon",
+            "permissions",
+            "size",
+            "mtime",
+            -- Add git status column
+            "git_status",
+        },
+        -- Configure git integration for highlighting
+        win_options = {
+            signcolumn = "yes", -- Show signcolumn for git status
+        },
     },
     keys = {
-        { "<leader>b", "<CMD>Oil<CR>", desc = "open directories as buffer (oil)" },
+        { "-", "<CMD>Oil<CR>", desc = "open directories as buffer (oil)" },
     },
 }

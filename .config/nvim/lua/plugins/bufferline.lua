@@ -38,13 +38,13 @@ return {
             show_tab_indicators = true,
             separator_style = "thin",
             enforce_regular_tabs = false,
-            always_show_bufferline = false, -- Changed from true to false
+            always_show_bufferline = false,
         },
     },
     keys = {
-        { "<S-h>", "<cmd>BufferLineCyclePrev<cr>", desc = "prev buffer" },
-        { "<S-l>", "<cmd>BufferLineCycleNext<cr>", desc = "next buffer" },
-        { "<leader>Q", "<cmd>bp<bar>sp<bar>bn<bar>bd<cr>", mode = "n", desc = "close current buffer" },
-        { "<leader>q", "<Cmd>BufferLineCloseOthers<CR>", desc = "delete other buffers" },
+        { "<S-h>", "<cmd>BufferLineCyclePrev<cr>", desc = "prev buffer (bufferline)" },
+        { "<S-l>", "<cmd>BufferLineCycleNext<cr>", desc = "next buffer (bufferline)" },
+        { "<leader>Q", "<cmd>bp<bar>sp<bar>bn<bar>bd<cr>", mode = "n", desc = "close current buffer (bufferline)" },
+        { "<leader>q", "<Cmd>BufferLineCloseOthers<CR>", desc = "delete other buffers (bufferline)" },
     },
 }
