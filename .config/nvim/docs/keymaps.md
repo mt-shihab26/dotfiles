@@ -15,7 +15,7 @@
 - `<leader>Q` -> delete other buffers (bufferline)
 - `<leader>e` -> focus file tree (neo-tree)
 - `<leader>p` -> close file tree (neo-tree)
-- `-` -> open directories as buffer (oil)
+- `<leader>E` -> open directories as buffer (oil)
 
 ## Git keymaps
 
