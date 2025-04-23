@@ -2,7 +2,7 @@ return {
     lua_ls = require "settings.lua_ls", -- Lua
 
     html = {}, -- HTML
-    marksman = {}, -- Markdown
+    -- marksman = {}, -- Markdown
 
     cssls = {}, -- CSS
     css_variables = {}, -- CSS
@@ -13,32 +13,32 @@ return {
 
     bashls = {}, -- Bash
 
-    sqls = {}, -- SQL
+    -- sqls = {}, -- SQL
 
-    dockerls = {}, -- Docker
-    docker_compose_language_service = {}, -- Docker
+    -- dockerls = {}, -- Docker
+    -- docker_compose_language_service = {}, -- Docker
 
     vtsls = require "settings.vtsls", -- TypeScript
-    volar = require "settings.volar", -- Vue
+    -- volar = require "settings.volar", -- Vue
     astro = {}, -- Astro
-    htmx = {}, -- HTMX
-    angularls = {}, -- Angular
-    svelte = {}, -- Svelte
+    -- htmx = {}, -- HTMX
+    -- angularls = {}, -- Angular
+    -- svelte = {}, -- Svelte
 
     intelephense = {}, -- PHP
 
-    ruby_lsp = {}, -- Ruby
+    -- ruby_lsp = {}, -- Ruby
 
-    pyright = require "settings.pyright", -- Python
+    -- pyright = require "settings.pyright", -- Python
 
-    elixirls = {}, -- Elixir
+    -- elixirls = {}, -- Elixir
 
-    gopls = require "settings.gopls", -- Go
-    templ = {}, -- Go
+    -- gopls = require "settings.gopls", -- Go
+    -- templ = {}, -- Go
 
-    rust_analyzer = {}, -- Rust
+    -- rust_analyzer = {}, -- Rust
 
-    zls = {}, -- Zig
+    -- zls = {}, -- Zig
 
-    clangd = {}, -- C/C++
+    -- clangd = {}, -- C/C++
 }

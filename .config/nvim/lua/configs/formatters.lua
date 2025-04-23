@@ -45,6 +45,8 @@ return {
         cmake = { "cmake_format" },
     },
     ignore_install = {
+        "rubocop",
+
         "gofmt",
         "templ",
 
