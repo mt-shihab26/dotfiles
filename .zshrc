@@ -135,3 +135,7 @@ export HERD_PHP_84_INI_SCAN_DIR="/Users/shihab/Library/Application Support/Herd/
 
 # bun completions
 [ -s "/Users/shihab/.bun/_bun" ] && source "/Users/shihab/.bun/_bun"
+
+
+# Herd injected PHP 8.0 configuration.
+export HERD_PHP_80_INI_SCAN_DIR="/Users/shihab/Library/Application Support/Herd/config/php/80/"
