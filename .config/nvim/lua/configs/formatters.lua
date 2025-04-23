@@ -48,6 +48,7 @@ return {
         "rubocop",
 
         "gofmt",
+        "goimports",
         "templ",
 
         "swiftformat",
