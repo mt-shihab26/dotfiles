@@ -2,6 +2,14 @@
 vim.opt.number = true 
 vim.opt.relativenumber = true
 
+-- highlight the current line
+vim.opt.cursorline = true 
+
+-- show invisible characters
+vim.opt.signcolumn = "yes"
+vim.opt.list = true 
+vim.opt.listchars = { space = "·", trail = "·", tab = "→ ", eol = "↲", nbsp = "␣" }
+
 -- don't wrap lines
 vim.wo.wrap = false 
 
