@@ -1,4 +1,4 @@
-# Basics
+# basics
 
 ## 1. Opening Neovim
 
