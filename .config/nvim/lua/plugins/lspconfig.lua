@@ -175,18 +175,18 @@ return {
             vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts { desc = "go to prev diagnostic (lspconfig)" })
             vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts { desc = "go to next diagnostic (lspconfig)" })
 
-            which_key.add { { "<leader>L", group = "lsp servers management (lspconfig)" } }
-
-            vim.keymap.set("n", "<leader>Ls", stop_buffer_lsp, opts { desc = "stop buffer lsp servers (lspconfig)" })
-            vim.keymap.set("n", "<leader>LS", stop_all_lsp, opts { desc = "stop all lsp servers (lspconfig)" })
-            vim.keymap.set("n", "<leader>Ll", start_all_lsp, opts { desc = "start all lsp servers (lspconfig)" })
-            vim.keymap.set(
-                "n",
-                "<leader>Lr",
-                restart_buffer_lsp,
-                opts { desc = "restart buffer buffer servers (lspconfig)" }
-            )
-            vim.keymap.set("n", "<leader>LR", restart_all_lsp, opts { desc = "restart all lsp servers (lspconfig)" })
+            -- which_key.add { { "<leader>L", group = "lsp servers management (lspconfig)" } }
+            --
+            -- vim.keymap.set("n", "<leader>Ls", stop_buffer_lsp, opts { desc = "stop buffer lsp servers (lspconfig)" })
+            -- vim.keymap.set("n", "<leader>LS", stop_all_lsp, opts { desc = "stop all lsp servers (lspconfig)" })
+            -- vim.keymap.set("n", "<leader>Ll", start_all_lsp, opts { desc = "start all lsp servers (lspconfig)" })
+            -- vim.keymap.set(
+            --     "n",
+            --     "<leader>Lr",
+            --     restart_buffer_lsp,
+            --     opts { desc = "restart buffer buffer servers (lspconfig)" }
+            -- )
+            -- vim.keymap.set("n", "<leader>LR", restart_all_lsp, opts { desc = "restart all lsp servers (lspconfig)" })
         end
 
         for server_name, server_settings in pairs(servers) do
