@@ -1,5 +1,34 @@
 return {
     {
+        "windwp/nvim-autopairs",
+        event = "InsertEnter",
+        config = true,
+    },
+    {
+        "windwp/nvim-ts-autotag",
+        event = "VeryLazy",
+        ft = {
+            "html",
+            "javascript",
+            "typescript",
+            "javascriptreact",
+            "typescriptreact",
+            "svelte",
+            "vue",
+            "tsx",
+            "jsx",
+            "rescript",
+            "xml",
+            "php",
+            "markdown",
+            "astro",
+            "glimmer",
+            "handlebars",
+            "hbs",
+        },
+        opts = {},
+    },
+    {
         "zbirenbaum/copilot.lua",
         config = function()
             require("copilot").setup {
