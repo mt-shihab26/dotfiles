@@ -1,7 +1,7 @@
 vim.opt.number = true -- line numbering
 vim.opt.relativenumber = true
 
-vim.opt.cursorline = true  -- highlight the current line
+vim.opt.cursorline = true -- highlight the current line
 
 vim.opt.list = true -- show invisible characters
 vim.opt.signcolumn = "yes"
@@ -14,7 +14,7 @@ vim.opt.undofile = true -- Enable persistent undo history
 vim.opt.swapfile = false -- Disable swap files
 
 vim.opt.spell = true -- enable spell checking
-vim.opt.spelllang = "en_us" 
+vim.opt.spelllang = "en_us"
 
 vim.opt.tabstop = 4 -- indentation settings
 vim.opt.shiftwidth = 4
@@ -34,7 +34,7 @@ vim.opt.timeoutlen = 300 -- time to wait for a mapped sequence to complete
 
 -- use system clipboard
 vim.schedule(function()
-    vim.opt.clipboard = "unnamedplus" 
+    vim.opt.clipboard = "unnamedplus"
 end)
 
 -- highlight on yank
@@ -51,4 +51,3 @@ vim.cmd [[
     autocmd BufNewFile,BufRead .env,.env.* setfiletype sh
   augroup END
 ]]
-
