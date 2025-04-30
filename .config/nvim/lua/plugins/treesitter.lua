@@ -1,3 +1,68 @@
+local parsers = {
+    "lua",
+    "luadoc",
+    "luap",
+
+    "html",
+    "xml",
+    "markdown",
+    "markdown_inline",
+
+    "css",
+
+    "bash",
+
+    "json",
+    "jsonc",
+
+    "yaml",
+    "toml",
+
+    "vimdoc",
+    "vim",
+
+    "dockerfile",
+
+    "diff",
+    "git_config",
+    "gitcommit",
+    "git_rebase",
+    "gitignore",
+    "gitattributes",
+
+    "javascript",
+    "jsdoc",
+    "typescript",
+    "tsx",
+    "astro",
+    "vue",
+
+    "php",
+    "php_only",
+    "twig",
+
+    "ruby",
+
+    "python",
+
+    "elixir",
+    "heex",
+    "eex",
+
+    "go",
+    "gomod",
+    "gowork",
+    "gosum",
+    "templ",
+
+    "rust",
+
+    "zig",
+
+    "c",
+    "cpp",
+}
+
 return {
     "nvim-treesitter/nvim-treesitter",
     event = "VeryLazy",
@@ -5,7 +70,7 @@ return {
         require("nvim-treesitter.install").update { with_sync = true }
     end,
     opts = {
-        ensure_installed = require "configs.parsers",
+        ensure_installed = parsers,
         auto_install = true,
         highlight = { enable = true },
         indent = { enable = true, disable = { "yaml" } },

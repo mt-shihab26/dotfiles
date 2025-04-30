@@ -1,3 +1,7 @@
+local tools = {
+    --
+}
+
 return {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
     dependencies = {
@@ -7,7 +11,7 @@ return {
         require("mason").setup()
 
         require("mason-tool-installer").setup {
-            ensure_installed = require "configs.tools",
+            ensure_installed = tools,
             auto_update = false,
             run_on_start = true,
         }
