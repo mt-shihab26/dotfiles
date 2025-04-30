@@ -270,3 +270,11 @@ run = "move-node-to-workspace 6"
 if.app-id = 'com.apple.QuickTimePlayerX'
 run = "move-node-to-workspace 6"
 
+[[on-window-detected]]
+if.app-id = 'org.gimp.gimp-3.0'
+run = "move-node-to-workspace 6"
+
+[[on-window-detected]]
+if.app-id = 'com.blackmagic-design.DaVinciResolve'
+run = "move-node-to-workspace 6"
+
