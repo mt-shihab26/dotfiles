@@ -12,14 +12,13 @@ $ stow .
 
 ```
 
-## Tools
+## What I used across OSs
 
--   Color: `Tokyo Night`
--   Font: `CaskaydiaMono Nerd Font`
--   Windows: `AeroSpace (OS X)`, `Hyprland`
--   Terminal: `Ghostty` `Tmux`
--   Shell: `ZSH` `fzf` `zoxide`
--   Editor: `Neovim`
--   TUIs: `Lazygit` `Lazydocker`
--   Browser: `Chrome` `Firefox` `Safari`
--   GUIs: `TablePlus`
+- Color: `Tokyo Night`
+- Font: `CaskaydiaMono Nerd Font`
+- Browser: `Chrome` `Firefox`
+- Windows: `AeroSpace (OS X)`, `Hyprland (Linux)`
+- Terminal: `Kitty`, `Tmux`, `ZSH`, `fzf`, `zoxide`
+- Editor: `Neovim`, `VSCode`
+- Tools: `Lazygit`, `Lazydocker`,`TablePlus`
+- Productivity: `Todoist`
