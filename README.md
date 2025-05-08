@@ -14,9 +14,9 @@ $ stow .
 
 ## Tools
 
--   Color: `tokyonight-night`
+-   Color: `Tokyo Night`
 -   Font: `CaskaydiaMono Nerd Font`
--   Window Management: `AeroSpace`
+-   Windows: `AeroSpace (OS X)`, `Hyprland`
 -   Terminal: `Ghostty` `Tmux`
 -   Shell: `ZSH` `fzf` `zoxide`
 -   Editor: `Neovim`
