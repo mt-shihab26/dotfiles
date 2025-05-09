@@ -21,6 +21,6 @@ $ stow .
 - Terminal: `WezTerm`, `Tmux`, `ZSH`, `fzf`, `zoxide`
 - Editor: `Neovim`, `VSCode`
 - Tools: `Lazygit`, `Lazydocker`,`TablePlus`
-- Productivity: `Pomofocus`, `Todoist`, `Keep`
+- Productivity: `Pomofocus`, `Todoist`, `Keep`, `Notion`
 - Messengers: `Whatsapp`, `Discord`
 - AI: `Copilot`, `Claude`, `Chatgpt`
