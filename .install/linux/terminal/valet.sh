@@ -1,5 +1,7 @@
 bash ./php.sh
 
+sudo apt remove apache2
+
 sudo apt update
 
 sudo apt install network-manager libnss3-tools jq xsel nginx
