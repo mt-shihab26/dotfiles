@@ -1,11 +1,17 @@
-[window]
-dimensions = { columns = 100, lines = 30 }
-decorations = "None"
-
-[font]
-normal = { family = "CaskaydiaMono Nerd Font", style = "Regular" }
-size = 12.0
+[env]
+TERM = "xterm-256color"
 
 [shell]
-program = "init"
+program = "/bin/zsh"
+args = ["-c", "$HOME/.scripts/tmux/init.sh"]
+
+[window]
+padding = { x = 16, y = 14 }
+decorations = "None"
+opacity = 0.98
+
+[keyboard]
+bindings = [
+  { key = "F11", action = "ToggleFullscreen" }
+]
 
