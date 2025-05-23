@@ -31,6 +31,7 @@ $ stow .
 -   4. Messengers:
     -   1. `Whatsapp`
     -   2. `Discord`
+    -   3. `Zoom`
 -   5. Productivity:
     -   1. Pomodoro Timer:
     -   2. To-do List: `Todoist`
