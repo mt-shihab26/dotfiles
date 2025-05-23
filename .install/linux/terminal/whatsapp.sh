@@ -1,1 +1,1 @@
-flatpak install flathub com.gigitux.youp
+# flatpak install flathub com.gigitux.youp
