@@ -22,7 +22,7 @@ $ stow .
     -   2. `Firefox`
     -   3. `Safari`
 -   2. Terminal:
-    -   1. `WezTerm + Tmux + ZSH + fzf + zoxide`, `Lazygit`, `Lazydocker`, `Neovim`
+    -   1. `Alacritty + Tmux + ZSH + fzf + zoxide`, `Lazygit`, `Lazydocker`, `Neovim`
     -   2. `VSCode`
 -   3. Tools:
     -   1. `TablePlus`
