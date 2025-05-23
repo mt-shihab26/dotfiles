@@ -25,3 +25,4 @@ sudo apt install -y wget tar luarocks tree-sitter-cli python3.12-venv
 
 # Continue with PHP setup
 bash ./php.sh
+bash ./lazygit.sh
