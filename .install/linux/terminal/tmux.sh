@@ -1,5 +1,5 @@
 echo "installing tmux..."
-sudo apt install tmux
+sudo apt install tmux -y
 
 echo "cloning tmux plugin manager (tpm)..."
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm

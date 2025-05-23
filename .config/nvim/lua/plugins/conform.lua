@@ -45,6 +45,8 @@ local formatters = {
         cmake = { "cmake_format" },
     },
     ignore_install = {
+        "pint",
+
         "rubocop",
 
         "gofmt",
