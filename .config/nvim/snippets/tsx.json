@@ -1,0 +1,11 @@
+{
+    "React Component": {
+        "prefix": "component",
+        "body": [
+            "export const ${TM_FILENAME_BASE} = () => {",
+            "    return <div>${1:${TM_FILENAME_BASE}}</div>;",
+            "};"
+        ],
+        "description": "Creates a React Component"
+    }
+}

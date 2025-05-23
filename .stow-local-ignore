@@ -27,12 +27,8 @@ _darcs
 .luarc.json
 .stylua.toml
 
-docs
-external
-install
+.install
+.kde
 
 LICENSE
-Makefile
 README.md
-x.sh
-

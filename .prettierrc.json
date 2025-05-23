@@ -1,0 +1,14 @@
+{
+    "printWidth": 100,
+    "tabWidth": 4,
+    "arrowParens": "avoid",
+    "overrides": [
+        {
+            "files": "*.svg",
+            "options": {
+                "parser": "html",
+                "htmlWhitespaceSensitivity": "ignore"
+            }
+        }
+    ]
+}
