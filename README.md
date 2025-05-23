@@ -26,7 +26,6 @@ $ stow .
     -   2. `VSCode`
 -   3. Tools:
     -   1. `TablePlus`
-    -   2. `Copilot`
     -   3. `Claude`
     -   4. `Chatgpt`
 -   4. Messengers:
