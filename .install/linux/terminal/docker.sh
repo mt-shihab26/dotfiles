@@ -1,8 +1,8 @@
-#!/bin/bash
+#!/bin/env bash
 
 set -e
 
-echo -e "\nInstalling Docker..."
+echo -e "Installing Docker..."
 
 echo -e "\nAdding Docker repository..."
 sudo install -m 0755 -d /etc/apt/keyrings

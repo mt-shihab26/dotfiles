@@ -1,6 +1,8 @@
-#!/bin/bash
+#!/bin/env bash
 
-echo -e "\nRunning PHP installation script..."
+set -e
+
+echo -e "Running PHP installation script..."
 bash ./php.sh
 
 echo -e "\nRemoving Apache2 if installed..."

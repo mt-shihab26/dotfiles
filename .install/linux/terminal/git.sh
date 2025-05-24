@@ -1,8 +1,8 @@
-#!/bin/bash
+#!/bin/env bash
 
 set -e
 
-echo -e "\nInstalling Git..."
+echo -e "Installing Git..."
 sudo apt install git -y
 
 echo -e "\nConfiguring Git aliases and identity..."

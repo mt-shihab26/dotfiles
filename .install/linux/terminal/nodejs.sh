@@ -1,8 +1,8 @@
-#!/bin/bash
+#!/bin/env bash
 
 set -e
 
-echo -e "\nChanging to /tmp directory..."
+echo -e "Changing to /tmp directory..."
 cd /tmp
 
 echo -e "\nDownloading and installing NVM..."
@@ -28,4 +28,4 @@ pnpm -v
 echo -e "\nReturning to previous directory..."
 cd -
 
-echo -e "\nNode.js, NVM, and PNPM installation complete.\n"
+echo -e "\nNode.js, NVM, and PNPM installation complete."

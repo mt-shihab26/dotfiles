@@ -1,8 +1,8 @@
-#!/bin/bash
+#!/bin/env bash
 
 set -e
 
-echo -e "\nAdding Fastfetch PPA..."
+echo -e "Adding Fastfetch PPA..."
 sudo add-apt-repository -y ppa:zhangsongcui3371/fastfetch
 
 echo -e "\nUpdating package lists..."

@@ -1,10 +1,10 @@
-#!/bin/bash
+#!/bin/env bash
 
 set -e
 
 MYSQL_ROOT_PASSWORD="2611"
 
-echo -e "\nUpdating package list..."
+echo -e "Updating package list..."
 sudo apt update
 
 echo -e "\nPre-configuring MySQL root password..."

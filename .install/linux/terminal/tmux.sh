@@ -1,13 +1,17 @@
-echo "installing tmux..."
-sudo apt install tmux -y
+#!/bin/env bash
 
-echo "cloning tmux plugin manager (tpm)..."
+set -e
+
+echo -e "Installing tmux..."
+sudo apt install -y tmux
+
+echo -e "\nCloning tmux plugin manager (TPM)..."
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
-echo "installing tmux plugins..."
+echo -e "\nInstalling tmux plugins..."
 ~/.tmux/plugins/tpm/bin/install_plugins
 
-echo "installing additional tools tmux..."
-sudo apt install bash bc coreutils gawk gh glab jq -y
+echo -e "\nInstalling additional tools used with tmux..."
+sudo apt install -y bash bc coreutils gawk gh glab jq
 
-echo "tmux installation and setup completed successfully!"
+echo -e "\nTmux installation and setup completed successfully!"

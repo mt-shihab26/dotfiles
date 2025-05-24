@@ -1,8 +1,8 @@
-#!/bin/bash
+#!/bin/env bash
 
 set -e
 
-echo -e "\nInstalling lazygit..."
+echo -e "Installing lazygit..."
 
 echo -e "\nDownloading and installing lazygit..."
 cd /tmp

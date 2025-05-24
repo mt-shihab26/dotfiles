@@ -1,10 +1,10 @@
-#!/bin/bash
+#!/bin/env bash
 
 set -e
 
 command="nvim"
 
-echo -e "\nChecking for '$command'..."
+echo -e "Checking for '$command'..."
 
 if ! command -v "$command" &>/dev/null; then
     echo -e "[WARN] The command '$command' does not exist."
@@ -29,10 +29,13 @@ echo -e "\nInstalling required dependencies..."
 sudo apt update
 sudo apt install -y wget tar luarocks tree-sitter-cli python3.12-venv
 
+echo -e "\nRunning LazyGit setup..."
+bash ./lazygit.sh
+
 echo -e "\nRunning PHP setup..."
 bash ./php.sh
 
-echo -e "\nRunning LazyGit setup..."
-bash ./lazygit.sh
+echo -e "\nRunning Nodejs setup..."
+bash ./nodejs.sh
 
 echo -e "\nAll tools installed and configured.\n"

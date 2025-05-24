@@ -1,8 +1,8 @@
-#!/bin/bash
+#!/bin/env bash
 
 set -e
 
-echo -e "\nInstalling lazydocker..."
+echo -e "Installing lazydocker..."
 
 echo -e "\nDownloading and installing lazydocker..."
 cd /tmp
