@@ -1,0 +1,133 @@
+[Application settings for Alacritty]
+Description=Application settings for Alacritty
+desktops=493dbf18-2496-44b4-bda2-b33d6a40595c
+desktopsrule=3
+wmclass=alacritty Alacritty
+wmclasscomplete=true
+wmclassmatch=1
+
+[Application settings for Asana]
+Description=Application settings for Asana
+clientmachine=localhost
+desktops=3bca4a67-75cc-40fc-97fc-5ef5539a6391
+desktopsrule=3
+wmclass=crx_hkeodafjgfngjeblciaffjenepdffnbf Google-chrome
+wmclasscomplete=true
+wmclassmatch=1
+
+[Application settings for ChatGPT]
+Description=Application settings for ChatGPT
+clientmachine=localhost
+desktops=7914f6ae-9b2c-4610-9277-f2188e924256
+desktopsrule=3
+wmclass=crx_cadlkienfkclaiaibeoongdcgmdikeeg Google-chrome
+wmclasscomplete=true
+wmclassmatch=1
+
+[Application settings for Claude]
+Description=Application settings for Claude
+clientmachine=localhost
+desktops=7914f6ae-9b2c-4610-9277-f2188e924256
+desktopsrule=3
+wmclass=crx_fmpnliohjhemenmnlpbfagaolkdacoja Google-chrome
+wmclasscomplete=true
+wmclassmatch=1
+
+[Application settings for Code]
+Description=Application settings for Code
+clientmachine=localhost
+desktops=493dbf18-2496-44b4-bda2-b33d6a40595c
+desktopsrule=3
+wmclass=code Code
+wmclasscomplete=true
+wmclassmatch=1
+
+[Application settings for Google-chrome]
+Description=Application settings for Google-chrome
+clientmachine=localhost
+desktops=713bdb68-ab6d-4fe9-8f50-e2f22d5f248b
+desktopsrule=3
+wmclass=google-chrome Google-chrome
+wmclasscomplete=true
+wmclassmatch=1
+
+[Application settings for TablePlus]
+Description=Application settings for TablePlus
+desktops=7914f6ae-9b2c-4610-9277-f2188e924256
+desktopsrule=3
+wmclass=tableplus TablePlus
+wmclasscomplete=true
+wmclassmatch=1
+
+[Application settings for Todoist]
+Description=Application settings for Todoist
+clientmachine=localhost
+desktops=3bca4a67-75cc-40fc-97fc-5ef5539a6391
+desktopsrule=3
+wmclass=todoist Todoist
+wmclasscomplete=true
+wmclassmatch=1
+
+[Application settings for WhatsApp Web]
+Description=Application settings for WhatsApp Web
+clientmachine=localhost
+desktops=3a36ef47-2a78-47b7-b08c-09957888d462
+desktopsrule=3
+wmclass=crx_hnpfjngllnobngcgfapefoaidbinmjnm Google-chrome
+wmclasscomplete=true
+wmclassmatch=1
+
+[Application settings for code]
+Description=Application settings for code
+desktops=493dbf18-2496-44b4-bda2-b33d6a40595c
+desktopsrule=3
+wmclass=code
+wmclassmatch=1
+
+[Application settings for discord]
+Description=Application settings for discord
+clientmachine=localhost
+desktops=7914f6ae-9b2c-4610-9277-f2188e924256
+desktopsrule=3
+wmclass=discord
+wmclassmatch=1
+
+[Application settings for firefox]
+Description=Application settings for firefox
+desktops=713bdb68-ab6d-4fe9-8f50-e2f22d5f248b
+desktopsrule=3
+wmclass=firefox-bin firefox
+wmclasscomplete=true
+wmclassmatch=1
+
+[Application settings for obsidian]
+Description=Application settings for obsidian
+clientmachine=localhost
+desktops=3bca4a67-75cc-40fc-97fc-5ef5539a6391
+desktopsrule=3
+wmclass=obsidian
+wmclassmatch=1
+
+[Application settings for org.kde.dolphin]
+Description=Application settings for org.kde.dolphin
+desktops=1fb1014b-9173-4220-970c-0ce61727b1d4
+desktopsrule=3
+wmclass=dolphin org.kde.dolphin
+wmclasscomplete=true
+wmclassmatch=1
+
+[Application settings for thunderbird-esr]
+Description=Application settings for thunderbird-esr
+desktops=3a36ef47-2a78-47b7-b08c-09957888d462
+desktopsrule=3
+wmclass=thunderbird-bin thunderbird-esr
+wmclasscomplete=true
+wmclassmatch=1
+
+[Application settings for zoom]
+Description=Application settings for zoom
+clientmachine=localhost
+desktops=3a36ef47-2a78-47b7-b08c-09957888d462
+desktopsrule=3
+wmclass=zoom
+wmclassmatch=1
