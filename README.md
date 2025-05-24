@@ -35,6 +35,6 @@ $ stow .
     -   4. `Zoom`
 -   5. Productivity:
     -   2. `Todoist`
-    -   3. `Obsidian`, `Keep`
+    -   3. `Obsidian`
     -   4. `Asana`
 -   6. Files & Others:
