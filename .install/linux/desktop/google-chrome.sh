@@ -1,16 +1,26 @@
-command_to_check="google-chrome"
+#!/bin/env bash
 
-if ! command -v "$command_to_check" &> /dev/null; then
-  echo "The command '$command_to_check' does not exist."
-  echo "Installing '$command_to_check' browser"
-  
-  # Browse the web with the most popular browser. See https://www.google.com/chrome/
-  cd /tmp
-  wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-  sudo apt install -y ./google-chrome-stable_current_amd64.deb
-  rm google-chrome-stable_current_amd64.deb
-  cd -
+set -e
+
+command="google-chrome"
+
+if ! command -v "$command" &>/dev/null; then
+    echo -e "The command '$command' does not exist."
+    echo -e "Installing '$command' browser..."
+
+    cd /tmp
+
+    echo -e "\nDownloading Google Chrome .deb package..."
+    wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+
+    echo -e "\nInstalling Google Chrome..."
+    sudo apt install -y ./google-chrome-stable_current_amd64.deb
+
+    echo -e "\nCleaning up installer..."
+    rm google-chrome-stable_current_amd64.deb
+    cd -
+
+    echo -e "\nGoogle Chrome installation completed successfully."
 else
-  echo "The command '$command_to_check' exists."
+    echo -e "The command '$command' is already available on this system."
 fi
-

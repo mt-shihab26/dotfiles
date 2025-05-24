@@ -1,21 +1,26 @@
-#!/bin/bash
+#!/bin/env bash
+
+set -e
 
 command="discord"
 
 if ! command -v "$command" &>/dev/null; then
-    echo "Checking for '$command'... not found."
-    echo "Downloading and installing '$command'..."
+    echo -e "Checking for '$command'... not found."
+    echo -e "Downloading and installing '$command'..."
 
-    # Download and install Discord
     cd /tmp
+
+    echo -e "\nDownloading Discord .deb package..."
     wget -O discord.deb "https://discord.com/api/download?platform=linux&format=deb"
-    echo "Installing Discord from 'discord.deb'..."
+
+    echo -e "\nInstalling Discord..."
     sudo apt install -y ./discord.deb
-    echo "Removing temporary installation file..."
+
+    echo -e "\nCleaning up..."
     rm ./discord.deb
     cd -
 
-    echo "'$command' has been successfully installed."
+    echo -e "\n'$command' has been successfully installed."
 else
-    echo "'$command' is already installed on this system."
+    echo -e "'$command' is already installed on this system."
 fi
