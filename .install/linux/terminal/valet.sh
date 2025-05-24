@@ -1,12 +1,21 @@
+#!/bin/bash
+
+echo -e "\nRunning PHP installation script..."
 bash ./php.sh
 
-sudo apt remove apache2
+echo -e "\nRemoving Apache2 if installed..."
+sudo apt remove -y apache2
 
+echo -e "\nUpdating package lists..."
 sudo apt update
 
-sudo apt install network-manager libnss3-tools jq xsel nginx
-sudo apt install php-cli php-curl php-mbstring php-mcrypt php-xml php-zip php-sqlite3 php-mysql php-pgsql php-redis
+echo -e "\nInstalling required system packages for Valet Linux..."
+sudo apt install -y network-manager libnss3-tools jq xsel nginx
 
+echo -e "\nInstalling Valet Linux globally via Composer..."
 composer global require cpriego/valet-linux
 
+echo -e "\nInstalling Valet..."
 valet install
+
+echo -e "\nValet installation complete."
