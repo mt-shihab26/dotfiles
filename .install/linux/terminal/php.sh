@@ -9,7 +9,30 @@ echo -e "\nInstalling PHP and Composer..."
 sudo apt install -y php composer
 
 echo -e "\nInstalling common PHP extensions..."
-sudo apt install -y php-fpm php-cli php-curl php-mbstring php-mcrypt php-xml php-zip php-sqlite3 php-mysql php-pgsql php-redis php-gd
+sudo apt install -y \
+    php-fpm \
+    php-cli \
+    php-curl \
+    php-mbstring \
+    php-mcrypt \
+    php-xml \
+    php-zip \
+    php-sqlite3 \
+    php-mysql \
+    php-pgsql \
+    php-redis \
+    php-gd \
+    php-bcmath \
+    php-intl \
+    php-soap \
+    php-readline \
+    php-tokenizer \
+    php-opcache \
+    php-common \
+    php-dev \
+    php-imap \
+    php-exif \
+    php-fileinfo
 
 echo -e "\nInstalling Laravel Pint globally via Composer..."
 composer global require laravel/pint
