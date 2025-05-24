@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 MYSQL_ROOT_PASSWORD="2611"
 
 echo -e "\nUpdating package list..."

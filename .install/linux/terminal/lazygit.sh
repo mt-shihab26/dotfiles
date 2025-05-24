@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 echo -e "\nInstalling lazygit..."
 
 echo -e "\nDownloading and installing lazygit..."

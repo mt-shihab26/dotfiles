@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 echo -e "\nInstalling Git..."
 sudo apt install git -y
 

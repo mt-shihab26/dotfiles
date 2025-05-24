@@ -1,11 +1,15 @@
 #!/bin/bash
+
 set -e
 
-command_to_check="nvim"
+command="nvim"
 
-if ! command -v "$command_to_check" &>/dev/null; then
-    echo "The command '$command_to_check' does not exist."
-    echo "Installing '$command_to_check'"
+echo -e "\nChecking for '$command'..."
+
+if ! command -v "$command" &>/dev/null; then
+    echo -e "[WARN] The command '$command' does not exist."
+    echo -e "[INFO] Installing '$command'..."
+
     cd /tmp
     wget -O nvim.tar.gz "https://github.com/neovim/neovim/releases/download/stable/nvim-linux-x86_64.tar.gz"
     tar -xf nvim.tar.gz
@@ -15,14 +19,20 @@ if ! command -v "$command_to_check" &>/dev/null; then
     rm -rf nvim-linux-x86_64 nvim.tar.gz
     cd -
     hash -r
+
+    echo -e "Neovim installed successfully."
 else
-    echo "The command '$command_to_check' exists."
+    echo -e "The command '$command' already exists."
 fi
 
-# Install dependencies
+echo -e "\nInstalling required dependencies..."
 sudo apt update
 sudo apt install -y wget tar luarocks tree-sitter-cli python3.12-venv
 
-# Continue with PHP setup
+echo -e "\nRunning PHP setup..."
 bash ./php.sh
+
+echo -e "\nRunning LazyGit setup..."
 bash ./lazygit.sh
+
+echo -e "\nAll tools installed and configured.\n"

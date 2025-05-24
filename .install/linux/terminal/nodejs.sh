@@ -1,22 +1,31 @@
+#!/bin/bash
+
+set -e
+
+echo -e "\nChanging to /tmp directory..."
 cd /tmp
 
-# Download and install nvm:
+echo -e "\nDownloading and installing NVM..."
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
 
-# in lieu of restarting the shell
-\. "$HOME/.nvm/nvm.sh"
+echo -e "\nLoading NVM without restarting the shell..."
+. "$HOME/.nvm/nvm.sh"
 
-# Download and install Node.js:
+echo -e "\nInstalling Node.js v22..."
 nvm install 22
 
-# Verify the Node.js version:
-node -v     # Should print "v22.16.0".
-nvm current # Should print "v22.16.0".
+echo -e "\nVerifying Node.js installation..."
+node -v
+nvm current
 
-# Verify npm version:
-npm -v # Should print "10.9.2".
+echo -e "\nVerifying npm version..."
+npm -v
 
+echo -e "\nInstalling pnpm..."
 npm install -g pnpm@latest
 pnpm -v
 
+echo -e "\nReturning to previous directory..."
 cd -
+
+echo -e "\nNode.js, NVM, and PNPM installation complete.\n"

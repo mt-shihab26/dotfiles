@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 echo -e "\nInstalling Docker..."
 
 echo -e "\nAdding Docker repository..."

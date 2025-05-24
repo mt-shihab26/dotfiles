@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 echo -e "\nInstalling lazydocker..."
 
 echo -e "\nDownloading and installing lazydocker..."

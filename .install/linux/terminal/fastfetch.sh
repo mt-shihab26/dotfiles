@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 echo -e "\nAdding Fastfetch PPA..."
 sudo add-apt-repository -y ppa:zhangsongcui3371/fastfetch
 
