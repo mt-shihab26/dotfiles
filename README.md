@@ -34,9 +34,7 @@ $ stow .
     -   3. `Discord`
     -   4. `Zoom`
 -   5. Productivity:
-    -   1. Pomodoro Timer:
-    -   2. To-do List: `Todoist`
-    -   3. Note-taking: `Obsidian`, `Keep`
-    -   4. Project Management: `Asana`
+    -   2. `Todoist`
+    -   3. `Obsidian`, `Keep`
+    -   4. `Asana`
 -   6. Files & Others:
-    -   1. `Finder`
