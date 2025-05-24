@@ -116,6 +116,14 @@ wmclass=dolphin org.kde.dolphin
 wmclasscomplete=true
 wmclassmatch=1
 
+[Application settings for org.kde.ktorrent]
+Description=Application settings for org.kde.ktorrent
+desktops=1fb1014b-9173-4220-970c-0ce61727b1d4
+desktopsrule=3
+wmclass=ktorrent org.kde.ktorrent
+wmclasscomplete=true
+wmclassmatch=1
+
 [Application settings for thunderbird-esr]
 Description=Application settings for thunderbird-esr
 desktops=3a36ef47-2a78-47b7-b08c-09957888d462
