@@ -39,3 +39,4 @@ $ stow .
     -   4. `Asana`
 -   6. Files & Others:
     -   1. `Dolphin`
+    -   2. `Ktorrent`
