@@ -2,10 +2,9 @@
 
 set -e
 
-echo -e "Changing to /tmp directory..."
 cd /tmp
 
-echo -e "\nDownloading and installing NVM..."
+echo -e "Downloading and installing NVM..."
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
 
 echo -e "\nLoading NVM without restarting the shell..."
@@ -25,7 +24,10 @@ echo -e "\nInstalling pnpm..."
 npm install -g pnpm@latest
 pnpm -v
 
-echo -e "\nReturning to previous directory..."
+echo -e "\nInstalling Bun..."
+npm install -g bun@latest
+bun -v
+
 cd -
 
-echo -e "\nNode.js, NVM, and PNPM installation complete."
+echo -e "\nNode.js, NVM, PNPM, and Bun installation complete."
