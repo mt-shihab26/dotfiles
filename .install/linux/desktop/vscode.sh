@@ -16,10 +16,10 @@ rm -f packages.microsoft.gpg
 cd -
 
 echo -e "\nUpdating package list..."
-sudo apt update -y
+sudo nala update
 
 echo -e "\nInstalling Visual Studio Code..."
-sudo apt install -y code
+sudo nala install -y code
 
 echo -e "\nInstalling VS Code extensions..."
 code --install-extension enkia.tokyo-night

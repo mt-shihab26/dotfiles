@@ -34,6 +34,7 @@ bash ./lazygit.sh
 
 echo -e "\nRunning PHP setup..."
 bash ./php.sh
+bash ./composer.sh
 
 echo -e "\nRunning Nodejs setup..."
 bash ./nodejs.sh

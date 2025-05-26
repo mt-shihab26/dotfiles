@@ -2,10 +2,7 @@
 
 set -e
 
-echo -e "Updating package list..."
-sudo apt update
-
 echo -e "\nInstalling Thunderbird..."
-sudo apt install -y thunderbird
+sudo nala install thunderbird
 
-echo -e "\n✅ Thunderbird installation complete!"
+echo -e "\nThunderbird installation complete!"

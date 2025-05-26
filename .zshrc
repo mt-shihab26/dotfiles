@@ -133,20 +133,12 @@ alias learns="sessionizer learns"
 # Shell Integrations
 ############################
 
-# eval "$(mise activate zsh)"
-source <(fzf --zsh)
-eval "$(zoxide init --cmd cd zsh)"
-
-############################
-# Injected Configs
-############################
-
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # pnpm
-export PNPM_HOME="/home/shihab/.local/share/pnpm"
+export PNPM_HOME="$HOME/.local/share/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
@@ -154,10 +146,16 @@ esac
 # pnpm end
 
 # bun completions
-[ -s "/home/shihab/.bun/_bun" ] && source "/home/shihab/.bun/_bun"
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+source <(fzf --zsh)
+eval "$(zoxide init --cmd cd zsh)"
+
+############################
+# Injected Configs
+############################
+
