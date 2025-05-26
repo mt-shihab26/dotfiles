@@ -26,8 +26,8 @@ else
 fi
 
 echo -e "\nInstalling required dependencies..."
-sudo apt update
-sudo apt install -y wget tar luarocks tree-sitter-cli python3.12-venv
+sudo nala update
+sudo nala install -y wget tar luarocks tree-sitter-cli python3.12-venv
 
 echo -e "\nRunning LazyGit setup..."
 bash ./lazygit.sh

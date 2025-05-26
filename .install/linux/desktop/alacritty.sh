@@ -3,9 +3,9 @@
 set -e
 
 echo -e "Updating package lists..."
-sudo apt update
+sudo nala update
 
 echo -e "\nInstalling Alacritty and wl-clipboard..."
-sudo apt install -y alacritty wl-clipboard
+sudo nala install -y alacritty wl-clipboard
 
 echo -e "\nInstallation complete."

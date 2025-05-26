@@ -6,9 +6,9 @@ echo -e "Adding Fastfetch PPA..."
 sudo add-apt-repository -y ppa:zhangsongcui3371/fastfetch
 
 echo -e "\nUpdating package lists..."
-sudo apt update -y
+sudo nala update
 
 echo -e "\nInstalling Fastfetch..."
-sudo apt install -y fastfetch
+sudo nala install -y fastfetch
 
 echo -e "\nFastfetch installation complete.\n"

@@ -3,10 +3,10 @@
 set -e
 
 echo -e "Updating package index..."
-sudo apt update
+sudo nala update
 
 echo -e "\nInstalling Redis server..."
-sudo apt install -y redis-server
+sudo nala install -y redis-server
 
 echo -e "\nEnabling and starting Redis service..."
 sudo systemctl enable redis-server

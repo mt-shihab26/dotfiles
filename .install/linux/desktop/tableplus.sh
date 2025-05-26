@@ -9,9 +9,9 @@ echo -e "\nAdding TablePlus APT repository..."
 sudo add-apt-repository -y "deb [arch=amd64] https://deb.tableplus.com/debian/24 tableplus main"
 
 echo -e "\nUpdating package lists..."
-sudo apt update -y
+sudo nala update
 
 echo -e "\nInstalling TablePlus..."
-sudo apt install -y tableplus
+sudo nala install -y tableplus
 
 echo -e "\nTablePlus installation complete."

@@ -14,7 +14,7 @@ if ! command -v "$command" &>/dev/null; then
     wget -O obsidian.deb "https://github.com/obsidianmd/obsidian-releases/releases/download/v1.8.10/obsidian_1.8.10_amd64.deb"
 
     echo -e "\nInstalling Obsidian..."
-    sudo apt install -y ./obsidian.deb
+    sudo nala install -y ./obsidian.deb
 
     echo -e "\nCleaning up..."
     rm ./obsidian.deb

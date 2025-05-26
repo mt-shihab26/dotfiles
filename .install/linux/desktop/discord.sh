@@ -14,7 +14,7 @@ if ! command -v "$command" &>/dev/null; then
     wget -O discord.deb "https://discord.com/api/download?platform=linux&format=deb"
 
     echo -e "\nInstalling Discord..."
-    sudo apt install -y ./discord.deb
+    sudo nala install -y ./discord.deb
 
     echo -e "\nCleaning up..."
     rm ./discord.deb

@@ -3,7 +3,8 @@
 set -e
 
 echo -e "Installing Git..."
-sudo apt install git -y
+sudo nala update
+sudo nala install git -y
 
 echo -e "\nConfiguring Git aliases and identity..."
 git config --global pull.rebase true

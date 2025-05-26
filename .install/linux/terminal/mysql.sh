@@ -5,14 +5,14 @@ set -e
 MYSQL_ROOT_PASSWORD="2611"
 
 echo -e "Updating package list..."
-sudo apt update
+sudo nala update
 
 echo -e "\nPre-configuring MySQL root password..."
 echo "mysql-server mysql-server/root_password password $MYSQL_ROOT_PASSWORD" | sudo debconf-set-selections
 echo "mysql-server mysql-server/root_password_again password $MYSQL_ROOT_PASSWORD" | sudo debconf-set-selections
 
 echo -e "\nInstalling MySQL Server..."
-sudo DEBIAN_FRONTEND=noninteractive apt install -y mysql-server
+sudo DEBIAN_FRONTEND=noninteractive nala install -y mysql-server
 
 echo -e "\nConfiguring MySQL root user password..."
 sudo mysql -u root <<EOF
