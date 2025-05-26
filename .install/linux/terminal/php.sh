@@ -15,7 +15,7 @@ echo -e "Checking php fpm status"
 sudo systemctl status php8.4-fpm | grep active
 
 echo -e "\nInstalling common PHP extensions..."
-sudo nala install php8.4-common php8.4-{bcmath,bz2,curl,gd,gmp,intl,mbstring,opcache,readline,xml,zip} php8.4-xdebug
+sudo nala install php8.4-common php8.4-{common,bcmath,bz2,curl,gd,gmp,intl,mbstring,opcache,readline,xml,zip,mysqli,mysql,sqlite3,redis,xdebug}
 
 # to changing php version
 # sudo update-alternatives --config php
