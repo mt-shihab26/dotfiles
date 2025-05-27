@@ -3,9 +3,9 @@ import = [ "tokyo-night.toml" ]
 [env]
 TERM = "xterm-256color"
 
-# [shell]
-# program = "/bin/zsh"
-# args = ["-c", "$HOME/.scripts/tmux/init.sh"]
+[shell]
+program = "/bin/zsh"
+args = ["-c", "$HOME/.scripts/tmux/init.sh"]
 
 [window]
 startup_mode = "Maximized"
