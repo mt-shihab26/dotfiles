@@ -92,65 +92,22 @@ bindkey '^[w' kill-region
 # Environment Variables
 ############################
 
-# Common
-export GOPATH="$HOME/go"
-
-# Path
-export PATH="./bin:$PATH"
-export PATH="$GOPATH/bin:$PATH"
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/.config/composer/vendor/bin:$PATH"
-
-# Editor
-export EDITOR="nvim"
-export SUDO_EDITOR="$EDITOR"
-
-# Wayland compatibility for Electron apps
-export ELECTRON_OZONE_PLATFORM_HINT="wayland"
-
-# Omakub
-export OMAKUB_PATH="/home/$USER/.local/share/omakub"
-
-
 ############################
 # Aliases
 ############################
 
-# General
-alias ls='ls --color'
 alias pa="php artisan"
-alias g++="g++ -std=c++20"
 
-# Tmux workflow
 alias init="$HOME/.scripts/tmux/init.sh"
 alias sessionizer="$HOME/.scripts/tmux/sessionizer.sh"
 alias kill-session="$HOME/.scripts/tmux/kill-session.sh"
+
 alias projects="sessionizer projects"
 alias learns="sessionizer learns"
-
 
 ############################
 # Shell Integrations
 ############################
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# pnpm
-export PNPM_HOME="$HOME/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
-
-# bun completions
-[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
 
 source <(fzf --zsh)
 eval "$(zoxide init --cmd cd zsh)"
