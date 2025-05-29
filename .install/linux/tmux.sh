@@ -3,7 +3,6 @@
 set -e
 
 echo -e "Installing tmux..."
-sudo pacman -Syu
 sudo pacman -Sy tmux
 
 echo -e "\nCloning tmux plugin manager (TPM)..."

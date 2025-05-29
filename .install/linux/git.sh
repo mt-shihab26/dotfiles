@@ -1,6 +1,5 @@
 #!/bin/sh
 
-sudo pacman -Syu
 sudo pacman -S git
 
 git config --global pull.rebase true

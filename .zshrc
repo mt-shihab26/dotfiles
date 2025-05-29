@@ -96,7 +96,7 @@ bindkey '^[w' kill-region
 # Aliases
 ############################
 
-alias pa="php artisan"
+alias ls="ls --color"
 
 alias init="$HOME/.scripts/tmux/init.sh"
 alias sessionizer="$HOME/.scripts/tmux/sessionizer.sh"
@@ -104,6 +104,8 @@ alias kill-session="$HOME/.scripts/tmux/kill-session.sh"
 
 alias projects="sessionizer projects"
 alias learns="sessionizer learns"
+
+alias pa="php artisan"
 
 ############################
 # Shell Integrations
