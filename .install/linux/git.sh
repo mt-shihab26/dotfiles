@@ -1,9 +1,9 @@
 #!/bin/sh
 
-sudo pacman -S git
+sudo pacman -S git github-cli
 
 git config --global pull.rebase true
 git config --global user.name "Shihab Mahamud"
 git config --global user.email "shihab4t@gmail.com"
 
-# gh auth login
+gh auth login
