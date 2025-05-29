@@ -1,0 +1,1 @@
+sudo pacman -S --noconfirm hyprland libnotify swaync
