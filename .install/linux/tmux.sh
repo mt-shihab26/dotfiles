@@ -5,6 +5,8 @@ set -e
 echo -e "Installing tmux..."
 sudo pacman -Sy tmux
 
+rm -rf ~/.tmux
+
 echo -e "\nCloning tmux plugin manager (TPM)..."
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
