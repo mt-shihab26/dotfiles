@@ -45,6 +45,11 @@ echo "===================================="
 php --ini
 
 echo "===================================="
+echo " 🔍 PHP loaded modules:"
+echo "===================================="
+php -m
+
+echo "===================================="
 echo "📝 Please add the following settings to your php.ini file:"
 echo "------------------------------------"
 echo "memory_limit = 1024M"
