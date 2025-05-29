@@ -15,10 +15,11 @@ composer global require cpriego/valet-linux
 
 valet install
 
+echo "\nAll the PHP extension have been installed."
+ls /usr/lib/php/modules
+
+echo "
 # Add this to php.ini file
-#
-# ;;;;;;;;;;;;;;;;;;;;;;
-# ; Dynamic Extensions ;
-# ;;;;;;;;;;;;;;;;;;;;;;
-#
-# extension=mysqli
+
+extension=mysqli
+"
