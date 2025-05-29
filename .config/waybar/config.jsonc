@@ -8,11 +8,11 @@
     // Choose the order of the modules
     "modules-left": [
         "hyprland/workspaces",
-    ],
-    "modules-center": [
         "hyprland/window"
     ],
+    "modules-center": [],
     "modules-right": [
+        "bluetooth",
         "mpd",
         "idle_inhibitor",
         "pulseaudio",
