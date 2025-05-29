@@ -1,33 +1,54 @@
 #!/bin/sh
 
+echo "===================================="
+echo "Installing PHP and essential extensions..."
+echo "===================================="
+
+# Optional packages (uncomment to install if needed):
 # php-bcmath \
 # php-bz2 \
 # php-gmp \
 # php-mysql \
 # php-xdebug
 
-sudo pacman -S php php-fpm php-gd php-intl php-redis php-sqlite php-mcrypt
-sudo pacman -S composer nss jq xsel networkmanager nginx dnsmasq inotify-tools
+sudo pacman -S --noconfirm php php-fpm php-gd php-intl php-redis php-sqlite php-mcrypt
+
+echo "===================================="
+echo "Installing Composer and system utilities..."
+echo "===================================="
+
+sudo pacman -S --noconfirm composer nss jq xsel networkmanager nginx dnsmasq inotify-tools
+
+echo "===================================="
+echo "Installing Laravel tools globally..."
+echo "===================================="
 
 composer global require laravel/pint
 composer global require laravel/installer
 composer global require cpriego/valet-linux
 
+echo "===================================="
+echo "Running Valet installation..."
+echo "===================================="
+
 valet install
 
-echo "\nAll the PHP extension have been installed."
-echo "ls /usr/lib/php/modules"
+echo "===================================="
+echo "✅ All PHP extensions have been installed."
+echo "📁 Listing PHP module files in /usr/lib/php/modules:"
+echo "===================================="
 ls /usr/lib/php/modules
 
-echo ""
+echo "===================================="
+echo "🔧 PHP configuration info:"
+echo "===================================="
 php --ini
 
-echo "
-# Add this to php.ini file
-
-memory_limit = 512M
-max_execution_time = 300
-max_input_time = 300
-
-extension=mysqli
-"
+echo "===================================="
+echo "📝 Please add the following settings to your php.ini file:"
+echo "------------------------------------"
+echo "memory_limit = 512M"
+echo "max_execution_time = 300"
+echo "max_input_time = 300"
+echo "extension=mysqli"
+echo "===================================="
