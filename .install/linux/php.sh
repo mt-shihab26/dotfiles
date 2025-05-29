@@ -17,7 +17,7 @@ echo "===================================="
 echo "Installing Composer and system utilities..."
 echo "===================================="
 
-sudo pacman -S --noconfirm composer nss jq xsel networkmanager nginx dnsmasq inotify-tools
+sudo pacman -S --noconfirm composer nss jq xsel networkmanager nginx dnsmasq inotify-tools rsync
 
 echo "===================================="
 echo "Installing Laravel tools globally..."
