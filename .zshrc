@@ -92,6 +92,8 @@ bindkey '^[w' kill-region
 # Environment Variables
 ############################
 
+export PATH="$PATH:$HOME/.config/composer/vendor/bin"
+
 ############################
 # Aliases
 ############################
