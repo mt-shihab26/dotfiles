@@ -92,6 +92,8 @@ bindkey '^[w' kill-region
 # Environment Variables
 ############################
 
+export QT_QPA_PLATFORM=wayland
+
 export PATH="$PATH:$HOME/.config/composer/vendor/bin"
 export PATH="$PATH:$HOME/go/bin"
 
