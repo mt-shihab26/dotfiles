@@ -93,6 +93,7 @@ bindkey '^[w' kill-region
 ############################
 
 export PATH="$PATH:$HOME/.config/composer/vendor/bin"
+export PATH="$PATH:$HOME/go/bin"
 
 ############################
 # Aliases
