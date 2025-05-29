@@ -1,3 +1,3 @@
 #!/bin/sh
 
-sudo pacman -S alacritty dolphin
+sudo pacman -S alacritty

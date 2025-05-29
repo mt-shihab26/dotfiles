@@ -3,7 +3,6 @@
 # php-bcmath \
 # php-bz2 \
 # php-gmp \
-# php-mysqli \
 # php-mysql \
 # php-xdebug
 
@@ -15,3 +14,11 @@ composer global require laravel/installer
 composer global require cpriego/valet-linux
 
 valet install
+
+# Add this to php.ini file
+#
+# ;;;;;;;;;;;;;;;;;;;;;;
+# ; Dynamic Extensions ;
+# ;;;;;;;;;;;;;;;;;;;;;;
+#
+# extension=mysqli
