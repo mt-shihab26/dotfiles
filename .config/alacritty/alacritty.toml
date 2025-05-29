@@ -14,7 +14,7 @@ decorations = "None"
 dimensions = { columns = 0, lines = 0 }
 padding = { x = 5, y = 0 }
 opacity = 0.95
-# blur = true
+blur = true
 
 [font]
 normal = { family = "CaskaydiaMono Nerd Font", style = "Regular" }
