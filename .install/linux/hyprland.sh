@@ -2,6 +2,10 @@
 
 sudo pacman -S hyprland waybar libnotify swaync hyprlock hypridle wpaperd iwd brightnessctl
 
+# Screenshot
+
+yay -S hyprshot
+
 # Network Manager
 yay -S iwgtk
 
