@@ -1,6 +1,6 @@
 show = drun
-prompt = Run:
-width = 30%
+prompt = Type:
+width = 50%
 height = 40%
 location = center
 always_parse_args = true
