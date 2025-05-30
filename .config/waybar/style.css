@@ -33,12 +33,13 @@ window#waybar {
 
 #window,
 #pulseaudio,
-#network,
 #keyboard-state,
 #power-profiles-daemon,
 #idle_inhibitor,
 #tray,
 #bluetooth,
+/*  */
+#network,
 #memory,
 #temperature,
 #cpu,
