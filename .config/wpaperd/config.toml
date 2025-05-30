@@ -1,8 +1,8 @@
 [default]
-duration = "5s" # "30m"
+duration = "5m" # "5s" 
 mode = "center"
 sorting = "ascending"
 
 [any]
-path = "~/.wallpapers/dracula"
+path = "~/wallpapers"
 
