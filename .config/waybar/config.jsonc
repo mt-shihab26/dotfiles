@@ -7,10 +7,11 @@
         "hyprland/window"
     ],
     "modules-right": [
-        "mpd",
-        "idle_inhibitor",
-        "pulseaudio",
+        // Background Applications Icons
         "tray",
+        // "mpd",
+        // "idle_inhibitor",
+        // "pulseaudio",
         // Bluetooth Status
         "bluetooth",
         // Network Status
@@ -38,6 +39,10 @@
             "default": "",
             "active": ""
         }
+    },
+    "tray": {
+        "spacing": 10,
+        "tooltip": false
     },
     "mpd": {
         "format": "{stateIcon} {artist} - {title} ({elapsedTime:%M:%S}) ",
@@ -91,9 +96,6 @@
         },
         "on-click": "pavucontrol"
     },
-    "tray": {
-        "spacing": 10
-    },
     "bluetooth": {
         "format": "{device_alias} ",
         "format-disconnected": "Disconnected ",
@@ -116,9 +118,12 @@
         "critical-threshold": 80,
         "format": "{temperatureC}°C {icon}",
         "format-icons": [
-            "",
+            "",
+            "",
             "",
-            ""
+            "",
+            "",
+            ""
         ],
         "tooltip": false
     },
@@ -167,9 +172,10 @@
         "tooltip": false
     },
     "clock": {
-        "format": "{:%a %Y %m %d %I:%M%p}",
-        "format-alt": "{:%A, %B %d %Y | %I:%M %p}",
-        "tooltip": false,
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+        "interval": 1, // 60
+        "format": "{:%a %Y %m %d %I:%M:%S %p}",
+        "format-alt": "{:%A, %B %d %Y | %I:%M:%S %p}",
+        "tooltip": true,
+        "tooltip-format": "<big>{:%Y %B %d, %I:%M:%S %p}</big>\n<tt><small>{calendar}</small></tt>"
     }
 }

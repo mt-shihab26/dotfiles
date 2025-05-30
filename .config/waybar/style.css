@@ -5,7 +5,7 @@
     font-family:
         CaskaydiaMono Nerd Font,
         monospace;
-    font-size: 13px;
+    font-size: 12px;
     min-height: 0;
 }
 
@@ -15,10 +15,10 @@ window#waybar {
 }
 
 #workspaces button {
-    padding: 0 5px;
+    padding: 0 10px;
     color: #7aa2f7;
     background: transparent;
-    border-radius: 5px;
+    border-radius: 2px;
 }
 
 #workspaces button.focused {
@@ -36,8 +36,8 @@ window#waybar {
 #keyboard-state,
 #power-profiles-daemon,
 #idle_inhibitor,
-#tray,
 /*  */
+#tray,
 #bluetooth,
 #network,
 #memory,
@@ -49,7 +49,7 @@ window#waybar {
     background: #24283b;
     padding: 0 10px;
     margin: 2px 2px;
-    border-radius: 5px;
+    border-radius: 2px;
 }
 
 #pulseaudio.muted {
