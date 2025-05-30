@@ -1,5 +1,5 @@
 show = drun
-prompt = Type:
+prompt = 
 width = 50%
 height = 40%
 location = center
