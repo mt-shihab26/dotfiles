@@ -11,7 +11,7 @@
         "idle_inhibitor",
         "pulseaudio",
         "tray",
-        // 
+        // Bluetooth Status
         "bluetooth",
         // Network Status
         "network",
@@ -95,7 +95,8 @@
         "spacing": 10
     },
     "bluetooth": {
-        "format": "{status} "
+        "format": "{status} ",
+        "tooltip": false
     },
     "network": {
         "format-wifi": "{essid} {signalStrength}% ",
@@ -140,7 +141,7 @@
         "tooltip": false
     },
     "battery": {
-        // "interval": 10,
+        "interval": 1, // 10,
         "states": {
             "warning": 30,
             "critical": 15
@@ -160,7 +161,7 @@
         "tooltip": false
     },
     "battery#bat2": {
-        // "interval": 10,
+        "interval": 1, // 10,
         "bat": "BAT2",
         "tooltip": false
     },
