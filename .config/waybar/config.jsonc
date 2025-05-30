@@ -10,7 +10,8 @@
     "modules-right": [
         // Background Applications Icons
         "tray",
-        // "mpd",
+        // Music Player Daemon Status
+        "mpd",
         // Memory Status
         "memory",
         // Temperature Status
@@ -47,8 +48,8 @@
     },
     "mpd": {
         "format": "{stateIcon} {artist} - {title} ({elapsedTime:%M:%S}) ",
-        "format-disconnected": "Disconnected ",
-        "format-stopped": "Stopped ",
+        "format-disconnected": "disconnected ",
+        "format-stopped": "stopped ",
         "interval": 5,
         "consume-icons": {
             "on": " "
@@ -68,7 +69,8 @@
             "playing": ""
         },
         "tooltip-format": "MPD (connected)",
-        "tooltip-format-disconnected": "MPD (disconnected)"
+        "tooltip-format-disconnected": "MPD (disconnected)",
+        "tooltip": false
     },
     "memory": {
         "format": "{}% ",
