@@ -14,6 +14,7 @@ window#waybar {
     color: #c0caf5;
 }
 
+/* Workspaces */
 #workspaces button {
     padding: 0 10px;
     color: #7aa2f7;
@@ -31,6 +32,7 @@ window#waybar {
     color: #ffffff;
 }
 
+/* Module Style */
 #window,
 #tray,
 #mpd,
@@ -49,6 +51,7 @@ window#waybar {
     border-radius: 2px;
 }
 
+/* Special States */
 #temperature.critical {
     background: #f7768e;
     color: #1a1b26;
@@ -62,6 +65,7 @@ window#waybar {
     color: #565f89;
 }
 
+/* Clock Highlight */
 #clock {
     color: #9ece6a;
 }
