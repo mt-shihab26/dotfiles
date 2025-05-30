@@ -14,9 +14,11 @@
         // 
         "network",
         "bluetooth",
-        "cpu",
         "memory",
         "temperature",
+        // CPU Status
+        "cpu",
+        // Brightness
         "backlight",
         // Battery Status
         "battery",
@@ -100,10 +102,6 @@
     "bluetooth": {
         "format": "{status} "
     },
-    "cpu": {
-        "format": "{usage}% ",
-        "tooltip": false
-    },
     "memory": {
         "format": "{}% "
     },
@@ -115,6 +113,10 @@
             "",
             ""
         ]
+    },
+    "cpu": {
+        "format": "{usage}% ",
+        "tooltip": false
     },
     "backlight": {
         "format": "{percent}% {icon}",
@@ -128,7 +130,8 @@
             "",
             "",
             ""
-        ]
+        ],
+        "tooltip": false
     },
     "battery": {
         // "interval": 10,
@@ -147,15 +150,18 @@
             "",
             "",
             ""
-        ]
+        ],
+        "tooltip": false
     },
     "battery#bat2": {
         // "interval": 10,
-        "bat": "BAT2"
+        "bat": "BAT2",
+        "tooltip": false
     },
     "clock": {
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format": "{:%a %Y/%m/%d %I:%M%p}",
-        "format-alt": "{:%A, %B %d %Y | %I:%M %p}"
+        "format-alt": "{:%A, %B %d %Y | %I:%M %p}",
+        "tooltip": false,
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
     }
 }
