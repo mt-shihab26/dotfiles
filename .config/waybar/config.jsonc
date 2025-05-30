@@ -11,9 +11,6 @@
         "tray",
         // "mpd",
         // "idle_inhibitor",
-        // "pulseaudio",
-        // Bluetooth Status
-        "bluetooth",
         // Network Status
         "network",
         // Memory Status
@@ -22,6 +19,8 @@
         "temperature",
         // CPU Status
         "cpu",
+        // Audio Status
+        "pulseaudio",
         // Brightness
         "backlight",
         // Battery Status
@@ -76,31 +75,6 @@
             "deactivated": ""
         }
     },
-    "pulseaudio": {
-        "format": "{volume}% {icon}",
-        "format-bluetooth": "{volume}% {icon}",
-        "format-bluetooth-muted": " {icon}",
-        "format-muted": "",
-        "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": [
-                "",
-                "",
-                ""
-            ]
-        },
-        "on-click": "pavucontrol"
-    },
-    "bluetooth": {
-        "format": "{device_alias} ",
-        "format-disconnected": "Disconnected ",
-        "tooltip": false
-    },
     "network": {
         "format-wifi": "{essid} {signalStrength}% ",
         "format-ethernet": "{ipaddr}/{cidr} ",
@@ -129,6 +103,31 @@
     },
     "cpu": {
         "format": "{usage}% ",
+        "tooltip": false
+    },
+    "pulseaudio": {
+        "format": "{volume}% {icon}",
+        "format-bluetooth": "{volume}% {icon}",
+        "format-bluetooth-muted": " {icon}",
+        "format-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": [
+                "",
+                "",
+                ""
+            ]
+        },
+        "on-click": "pavucontrol"
+    },
+    "bluetooth": {
+        "format": "{device_alias} ",
+        "format-disconnected": "Disconnected ",
         "tooltip": false
     },
     "backlight": {
