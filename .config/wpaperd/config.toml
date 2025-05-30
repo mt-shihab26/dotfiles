@@ -1,0 +1,8 @@
+[default]
+duration = "5s" # "30m"
+mode = "center"
+sorting = "ascending"
+
+[any]
+path = "~/.wallpapers/dracula"
+
