@@ -14,7 +14,9 @@
         // 
         "network",
         "bluetooth",
+        // Memory Status
         "memory",
+        // Temperature Status
         "temperature",
         // CPU Status
         "cpu",
@@ -103,7 +105,8 @@
         "format": "{status} "
     },
     "memory": {
-        "format": "{}% "
+        "format": "{}% ",
+        "tooltip": false
     },
     "temperature": {
         "critical-threshold": 80,
@@ -112,7 +115,8 @@
             "",
             "",
             ""
-        ]
+        ],
+        "tooltip": false
     },
     "cpu": {
         "format": "{usage}% ",
