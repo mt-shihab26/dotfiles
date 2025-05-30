@@ -1,4 +1,5 @@
 /* Tokyo Night Theme for Waybar */
+
 * {
     border: none;
     font-family:
@@ -31,8 +32,6 @@ window#waybar {
 }
 
 #window,
-#clock,
-#battery,
 #pulseaudio,
 #network,
 #cpu,
@@ -44,19 +43,13 @@ window#waybar {
 #idle_inhibitor,
 #tray,
 #bluetooth,
-#custom-power {
+#custom-power,
+#battery,
+#clock {
     background: #24283b;
     padding: 0 10px;
     margin: 2px 2px;
     border-radius: 5px;
-}
-
-#clock {
-    color: #9ece6a;
-}
-
-#battery.critical {
-    color: #f7768e;
 }
 
 #pulseaudio.muted {
@@ -66,4 +59,12 @@ window#waybar {
 #temperature.critical {
     background: #f7768e;
     color: #1a1b26;
+}
+
+#battery.critical {
+    color: #f7768e;
+}
+
+#clock {
+    color: #9ece6a;
 }

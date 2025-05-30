@@ -18,9 +18,10 @@
         "memory",
         "temperature",
         "backlight",
+        // Battery Status
         "battery",
         "battery#bat2",
-        "power-profiles-daemon",
+        // Day, Date, Time
         "clock"
     ],
     "hyprland/workspaces": {
@@ -130,6 +131,7 @@
         ]
     },
     "battery": {
+        // "interval": 10,
         "states": {
             "warning": 30,
             "critical": 15
@@ -148,18 +150,8 @@
         ]
     },
     "battery#bat2": {
+        // "interval": 10,
         "bat": "BAT2"
-    },
-    "power-profiles-daemon": {
-        "format": "{icon}",
-        "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
-        "tooltip": true,
-        "format-icons": {
-            "default": "",
-            "performance": "",
-            "balanced": "",
-            "power-saver": ""
-        }
     },
     "clock": {
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
