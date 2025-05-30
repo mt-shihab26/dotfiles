@@ -1,5 +1,5 @@
-// -*- mode: jsonc -*-
 {
+    "layer": "top",
     "position": "bottom",
     "height": 20,
     "spacing": 4,
@@ -21,8 +21,8 @@
         "keyboard-state",
         "battery",
         "battery#bat2",
-        "clock",
         "tray",
+        "clock",
         "custom/power"
     ],
     "hyprland/workspaces": {
