@@ -95,7 +95,8 @@
         "spacing": 10
     },
     "bluetooth": {
-        "format": "{status} ",
+        "format": "{device_alias} ",
+        "format-disconnected": "Disconnected ",
         "tooltip": false
     },
     "network": {
@@ -166,7 +167,7 @@
         "tooltip": false
     },
     "clock": {
-        "format": "{:%a %Y/%m/%d %I:%M%p}",
+        "format": "{:%a %Y %m %d %I:%M%p}",
         "format-alt": "{:%A, %B %d %Y | %I:%M %p}",
         "tooltip": false,
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
