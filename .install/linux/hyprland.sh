@@ -1,6 +1,6 @@
 #!/bin/sh
 
-sudo pacman -S hyprland waybar libnotify swaync hyprlock hypridle wpaperd iwd brightnessctl
+sudo pacman -S hyprland waybar libnotify swaync hyprlock hypridle wpaperd iwd brightnessctl noto-fonts-emoji
 
 # Network Manager
 yay -S iwgtk

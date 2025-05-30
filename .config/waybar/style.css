@@ -32,7 +32,6 @@ window#waybar {
 }
 
 #window,
-#pulseaudio,
 #keyboard-state,
 #power-profiles-daemon,
 #idle_inhibitor,
@@ -43,6 +42,7 @@ window#waybar {
 #memory,
 #temperature,
 #cpu,
+#pulseaudio,
 #backlight,
 #battery,
 #clock {
