@@ -2,6 +2,7 @@
     "layer": "top",
     "position": "bottom",
     "height": 24,
+    "spacing": 4,
     "modules-left": [
         "hyprland/workspaces",
         "hyprland/window"
@@ -11,21 +12,21 @@
         "tray",
         // "mpd",
         // "idle_inhibitor",
-        // Network Status
-        "network",
         // Memory Status
         "memory",
         // Temperature Status
         "temperature",
         // CPU Status
         "cpu",
-        // Audio Status
-        "pulseaudio",
-        // Brightness
-        "backlight",
         // Battery Status
         "battery",
         "battery#bat2",
+        // Brightness
+        "backlight",
+        // Audio Status
+        "pulseaudio",
+        // Network Status
+        "network",
         // Day, Date, Time
         "clock"
     ],
@@ -75,15 +76,6 @@
             "deactivated": ""
         }
     },
-    "network": {
-        "format-wifi": "{essid} {signalStrength}% ",
-        "format-ethernet": "{ipaddr}/{cidr} ",
-        "tooltip-format": "{ifname} via {gwaddr} ",
-        "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}",
-        "tooltip": false
-    },
     "memory": {
         "format": "{}% ",
         "tooltip": false
@@ -103,51 +95,6 @@
     },
     "cpu": {
         "format": "{usage}% ",
-        "tooltip": false
-    },
-    "pulseaudio": {
-        "format": "{volume}% {icon}",
-        "format-bluetooth": "{volume}% {icon}",
-        "format-bluetooth-muted": " {icon}",
-        "format-muted": "",
-        "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "microphone": "",
-            "speaker": "",
-            "hdmi": "",
-            "usb": "",
-            "bluetooth": "",
-            "default": [
-                "",
-                "",
-                ""
-            ]
-        },
-        "on-click": "pavucontrol"
-    },
-    "bluetooth": {
-        "format": "{device_alias} ",
-        "format-disconnected": "Disconnected ",
-        "tooltip": false
-    },
-    "backlight": {
-        "format": "{percent}% {icon}",
-        "format-icons": [
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            ""
-        ],
         "tooltip": false
     },
     "battery": {
@@ -170,9 +117,58 @@
         ],
         "tooltip": false
     },
+    "backlight": {
+        "format": "{percent}% {icon}",
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "tooltip": false
+    },
     "battery#bat2": {
         "interval": 1, // 10,
         "bat": "BAT2",
+        "tooltip": false
+    },
+    "pulseaudio": {
+        "format": "{volume}% {icon}",
+        "format-bluetooth": "{volume}% ",
+        "format-bluetooth-muted": "muted ",
+        "format-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "microphone": "",
+            "speaker": "",
+            "hdmi": "",
+            "usb": "",
+            "bluetooth": "",
+            "default": [
+                "",
+                "",
+                ""
+            ]
+        },
+        "on-click": "pavucontrol"
+    },
+    "network": {
+        "format-wifi": "{essid} {signalStrength}% ",
+        "format-ethernet": "{ipaddr}/{cidr} ",
+        "tooltip-format": "{ifname} via {gwaddr} ",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected ⚠",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
         "tooltip": false
     },
     "clock": {
