@@ -39,5 +39,4 @@ $ stow .
     -   3. `Obsidian`
     -   4. `Asana`
 -   6. Files & Others:
-    -   1. `Dolphin`
-    -   2. `Ktorrent`
+    -   1. `Nautilus`
