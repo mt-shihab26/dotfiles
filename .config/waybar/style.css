@@ -1,5 +1,3 @@
-/* Tokyo Night Theme for Waybar */
-
 * {
     border: none;
     font-family:
@@ -8,7 +6,6 @@
         "Font Awesome 5 Brands",
         monospace,
         sans-serif;
-
     font-size: 12px;
     min-height: 0;
 }
@@ -32,8 +29,8 @@ window#waybar {
 }
 
 #workspaces button:hover {
-    background: #3b4261;
-    color: #ffffff;
+    background: #414868;
+    color: #c0caf5;
 }
 
 /* Module Style */
@@ -60,6 +57,8 @@ window#waybar {
 #custom-power {
     margin-right: 2px;
     padding-right: 13.5px;
+    color: #9d7cd8;
+    background-color: #292e42;
 }
 
 /* Special States */
@@ -72,11 +71,34 @@ window#waybar {
     color: #f7768e;
 }
 
-/* #pulseaudio.muted { */
-/*     color: #565f89; */
-/* } */
+#battery.warning {
+    color: #e0af68;
+}
 
-/* Clock Highlight */
-#clock {
+#battery.good {
     color: #9ece6a;
+}
+
+/* Audio */
+#pulseaudio.muted {
+    color: #565f89;
+    background: #1a1b26;
+}
+
+/* Network */
+#network.connected {
+    color: #7aa2f7;
+}
+
+#network.disconnected {
+    color: #f7768e;
+}
+
+/* Tooltip Styling */
+tooltip {
+    background: #1a1b26;
+    color: #c0caf5;
+    border: 1px solid #7aa2f7;
+    padding: 5px;
+    border-radius: 4px;
 }
