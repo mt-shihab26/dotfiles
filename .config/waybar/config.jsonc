@@ -9,7 +9,7 @@
     ],
     "modules-right": [
         // Background Applications Icons
-        "tray",
+        // "tray",
         // Memory Status
         "memory",
         // Temperature Status
