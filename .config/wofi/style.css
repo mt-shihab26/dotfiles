@@ -1,52 +1,53 @@
-window {
-    margin: 0px;
-    border: 2px solid #414868;
-    border-radius: 5px;
-    background-color: #24283b;
+* {
     font-family: "CaskaydiaMono Nerd Font", monospace;
-    font-size: 16px;
+    color: #c0caf5; /* Default text color from Tokyo Night */
+    background: transparent;
 }
 
+/* Main window */
+#window {
+    background: #1a1b26; /* Tokyo Night base background */
+    margin: auto;
+    padding: 5px;
+    border-radius: 10px;
+    border: 3px solid #9d7cd8; /* Soft purple accent */
+}
+
+/* Input box */
 #input {
-    margin: 5px;
-    border: 1px solid #24283b;
-    color: #c0caf5;
-    background-color: #24283b;
-}
-
-#input image {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+    background-color: #292e42; /* Slightly elevated background */
     color: #c0caf5;
 }
 
-#inner-box {
-    margin: 5px;
-    border: none;
-    background-color: #24283b;
-}
-
+/* Outer container */
 #outer-box {
-    margin: 5px;
-    border: none;
-    background-color: #24283b;
+    padding: 20px;
 }
 
-#scroll {
-    margin: 0px;
-    border: none;
+/* Image/icon next to entries */
+#img {
+    margin-right: 6px;
 }
 
-#text {
-    margin: 5px;
-    border: none;
+/* Entry styling */
+#entry {
+    padding: 10px;
+    border-radius: 15px;
+    background-color: #24283b; /* Default entry background */
     color: #c0caf5;
+    margin: 5px 0;
 }
 
+/* Selected entry */
 #entry:selected {
     background-color: #414868;
-    font-weight: normal;
+    border: 1px solid #414868;
 }
 
-#text:selected {
-    background-color: #414868;
-    font-weight: normal;
+/* Entry text spacing */
+#text {
+    margin: 2px;
 }

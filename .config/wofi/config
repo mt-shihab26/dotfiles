@@ -1,12 +1,6 @@
-show = drun
-prompt = 
-width = 50%
+allow_images=true
+width = 40%
 height = 40%
-location = center
-always_parse_args = true
-term = foot
+layer = overlay
 insensitive = true
 allow_markup = true
-hide_scroll = false
-no_actions = false
-layer = overlay
