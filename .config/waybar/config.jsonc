@@ -9,7 +9,7 @@
     ],
     "modules-right": [
         // Background Applications Icons
-        // "tray",
+        "tray",
         // Memory Status
         "memory",
         // Temperature Status
@@ -110,7 +110,7 @@
         "tooltip": false,
         "on-scroll-up": "brightnessctl set 5%- && [ $(brightnessctl get) -lt $(brightnessctl max | awk '{printf \"%d\", $1 * 0.05}') ] && brightnessctl set 5%",
         "on-scroll-down": "brightnessctl set +5%",
-        "on-click": "~/.scripts/hypr/nightlight.sh"
+        "on-click": "~/.scripts/waybar/nightlight.sh"
     },
     "pulseaudio": {
         "format": "{volume}% {icon}",
