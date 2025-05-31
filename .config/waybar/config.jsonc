@@ -23,6 +23,8 @@
         "backlight",
         // Audio Status
         "pulseaudio",
+        // Microphone Status
+        "pulseaudio#microphone",
         // Network Status
         "network",
         // Day, Date, Time
@@ -129,6 +131,15 @@
             ]
         },
         "on-click": "pavucontrol"
+    },
+    "pulseaudio#microphone": {
+        "format": "{format_source}",
+        "format-source": "{volume}% ",
+        "format-source-muted": "muted  ",
+        "on-click": "pamixer --default-source -t",
+        "on-scroll-up": "pamixer --default-source -i 5",
+        "on-scroll-down": "pamixer --default-source -d 5",
+        "scroll-step": 5
     },
     "network": {
         "format-wifi": "{essid} {signalStrength}% ",
