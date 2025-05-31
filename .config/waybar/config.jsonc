@@ -31,9 +31,16 @@
         "network",
         // Day, Date, Time
         "clock",
+        // Language Indicator
+        "hyprland/language",
         // Power Menu
         "custom/power"
     ],
+    "hyprland/language": {
+        "format-us": "US",
+        "format-bd": "BD",
+        "tooltip": false
+    },
     "hyprland/workspaces": {
         "disable-scroll": true,
         "all-outputs": true,
