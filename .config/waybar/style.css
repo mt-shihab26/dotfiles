@@ -4,7 +4,11 @@
     border: none;
     font-family:
         CaskaydiaMono Nerd Font,
-        monospace;
+        "Font Awesome 5 Free",
+        "Font Awesome 5 Brands",
+        monospace,
+        sans-serif;
+
     font-size: 12px;
     min-height: 0;
 }
