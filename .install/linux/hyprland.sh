@@ -21,3 +21,6 @@ yay -S overskride-bin
 
 sudo systemctl enable bluetooth
 sudo systemctl start bluetooth
+
+# Logout
+yay -S wlogout
