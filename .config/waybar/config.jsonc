@@ -25,6 +25,8 @@
         "pulseaudio",
         // Microphone Status
         "pulseaudio#microphone",
+        // Bluetooth Status 
+        "bluetooth",
         // Network Status
         "network",
         // Day, Date, Time
@@ -107,25 +109,21 @@
         ],
         "tooltip": false,
         "on-scroll-up": "brightnessctl set 5%- && [ $(brightnessctl get) -lt $(brightnessctl max | awk '{printf \"%d\", $1 * 0.05}') ] && brightnessctl set 5%",
-        "on-scroll-down": "brightnessctl set +5%"
+        "on-scroll-down": "brightnessctl set +5%",
+        "on-click": "~/.scripts/hypr/nightlight.sh"
     },
     "pulseaudio": {
         "format": "{volume}% {icon}",
-        "format-bluetooth": "{volume}% ",
-        "format-bluetooth-muted": "muted ",
-        "format-muted": "",
+        "format-muted": "muted ",
         "format-icons": {
             "headphone": "",
             "hands-free": "",
             "headset": "",
             "phone": "",
             "portable": "",
-            "car": "",
-            "microphone": "",
             "speaker": "",
             "hdmi": "",
             "usb": "",
-            "bluetooth": "",
             "default": [
                 "",
                 "",
@@ -144,6 +142,13 @@
         "on-scroll-up": "pamixer --default-source -d 5",
         "on-scroll-down": "pamixer --default-source -i 5",
         "scroll-step": 5
+    },
+    "bluetooth": {
+        // "format": "{device_alias} ",
+        "format": "{device_alias} connected ",
+        "format-disconnected": "disconnected ",
+        "on-click": "overskride",
+        "tooltip": true
     },
     "network": {
         "format-wifi": "{essid} {signalStrength}% ",

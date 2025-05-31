@@ -46,6 +46,7 @@ window#waybar {
 #battery,
 #backlight,
 #pulseaudio,
+#bluetooth,
 #network,
 #clock,
 #idle_inhibitor {

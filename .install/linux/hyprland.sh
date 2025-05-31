@@ -1,6 +1,6 @@
 #!/bin/sh
 
-sudo pacman -S uwsm libnewt pipewire wireplumber hyprland waybar libnotify swaync hyprlock hypridle wpaperd iwd brightnessctl pamixer
+sudo pacman -S uwsm libnewt pipewire wireplumber hyprland waybar libnotify swaync hyprlock hypridle wpaperd iwd brightnessctl pamixer gammastep bluez
 
 # Volume Control
 # pavucontrol
