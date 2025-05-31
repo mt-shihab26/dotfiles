@@ -1,3 +1,4 @@
+/* Global Styles */
 * {
     border: none;
     font-family:
@@ -34,7 +35,7 @@ window#waybar {
     color: #c0caf5;
 }
 
-/* Module Style */
+/* Module Base Style */
 #window,
 #tray,
 #mpd,
@@ -56,6 +57,80 @@ window#waybar {
     border-radius: 2px;
 }
 
+/* Custom Colors per Module */
+#window {
+    color: #c0caf5;
+}
+
+#tray {
+    color: #bb9af7;
+}
+
+#memory {
+    color: #e0af68;
+}
+
+#temperature {
+    color: #f7768e;
+}
+
+#cpu {
+    color: #9ece6a;
+}
+
+#battery {
+    color: #7aa2f7;
+}
+
+#battery.good {
+    color: #9ece6a;
+}
+
+#battery.warning {
+    color: #e0af68;
+}
+
+#battery.critical {
+    color: #f7768e;
+}
+
+#backlight {
+    color: #e0af68;
+}
+
+#pulseaudio {
+    color: #7dcfff;
+}
+
+#pulseaudio.muted {
+    color: #565f89;
+    background: #1a1b26;
+}
+
+#bluetooth {
+    color: #bb9af7;
+}
+
+#network {
+    color: #7aa2f7;
+}
+
+#network.connected {
+    color: #7aa2f7;
+}
+
+#network.disconnected {
+    color: #f7768e;
+}
+
+#clock {
+    color: #9ece6a;
+}
+
+#language {
+    color: #ff9e64;
+}
+
 #custom-power {
     margin-right: 6px;
     padding-right: 13.5px;
@@ -63,37 +138,10 @@ window#waybar {
     background-color: #292e42;
 }
 
-/* Special States */
+/* Temperature Alert */
 #temperature.critical {
     background: #f7768e;
     color: #1a1b26;
-}
-
-#battery.critical {
-    color: #f7768e;
-}
-
-#battery.warning {
-    color: #e0af68;
-}
-
-#battery.good {
-    color: #9ece6a;
-}
-
-/* Audio */
-#pulseaudio.muted {
-    color: #565f89;
-    background: #1a1b26;
-}
-
-/* Network */
-#network.connected {
-    color: #7aa2f7;
-}
-
-#network.disconnected {
-    color: #f7768e;
 }
 
 /* Tooltip Styling */
