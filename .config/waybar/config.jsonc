@@ -106,7 +106,7 @@
             ""
         ],
         "tooltip": false,
-        "on-scroll-up": "brightnessctl set 5%-",
+        "on-scroll-up": "brightnessctl set 5%- && [ $(brightnessctl get) -lt $(brightnessctl max | awk '{printf \"%d\", $1 * 0.05}') ] && brightnessctl set 5%",
         "on-scroll-down": "brightnessctl set +5%"
     },
     "pulseaudio": {
