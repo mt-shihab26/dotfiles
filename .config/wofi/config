@@ -1,5 +1,5 @@
 allow_images=true
-width = 40%
+width = 30%
 height = 40%
 layer = overlay
 insensitive = true

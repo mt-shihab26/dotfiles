@@ -1,53 +1,46 @@
 * {
     font-family: "CaskaydiaMono Nerd Font", monospace;
-    color: #c0caf5; /* Default text color from Tokyo Night */
+    color: #c0caf5;
     background: transparent;
 }
 
-/* Main window */
 #window {
-    background: #1a1b26; /* Tokyo Night base background */
+    background: #1a1b26;
     margin: auto;
     padding: 5px;
     border-radius: 10px;
-    border: 3px solid #9d7cd8; /* Soft purple accent */
+    border: 3px solid #9d7cd8;
 }
 
-/* Input box */
 #input {
     padding: 10px;
     margin-bottom: 10px;
     border-radius: 15px;
-    background-color: #292e42; /* Slightly elevated background */
+    background-color: #292e42;
     color: #c0caf5;
 }
 
-/* Outer container */
 #outer-box {
     padding: 20px;
 }
 
-/* Image/icon next to entries */
 #img {
     margin-right: 6px;
 }
 
-/* Entry styling */
 #entry {
     padding: 10px;
     border-radius: 15px;
-    background-color: #24283b; /* Default entry background */
+    background-color: #24283b;
     color: #c0caf5;
     margin: 5px 0;
 }
 
-/* Selected entry */
 #entry:selected {
     background-color: #414868;
     border: 1px solid #414868;
 }
 
-/* Entry text spacing */
 #text {
     margin: 2px;
 }
