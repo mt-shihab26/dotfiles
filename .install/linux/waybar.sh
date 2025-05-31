@@ -3,7 +3,7 @@
 sudo pacman -S waybar
 
 # Logout Manager
-yay -S wlogout
+yay -S wlogout wayland-logout
 
 # Network Manager
 sudo pacman -S iwd
