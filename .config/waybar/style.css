@@ -61,9 +61,9 @@ window#waybar {
     color: #f7768e;
 }
 
-#pulseaudio.muted {
-    color: #565f89;
-}
+/* #pulseaudio.muted { */
+/*     color: #565f89; */
+/* } */
 
 /* Clock Highlight */
 #clock {

@@ -130,7 +130,7 @@
                 ""
             ]
         },
-        "on-click": "pavucontrol"
+        "on-click": "pamixer -t"
     },
     "pulseaudio#microphone": {
         "format": "{format_source}",
