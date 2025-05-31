@@ -2,6 +2,9 @@
 
 sudo pacman -S uwsm libnewt pipewire wireplumber hyprland waybar libnotify swaync hyprlock hypridle wpaperd iwd brightnessctl pamixer
 
+# Volume Control
+# pavucontrol
+
 # Screenshot
 
 yay -S hyprshot
