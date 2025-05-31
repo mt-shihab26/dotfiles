@@ -47,6 +47,7 @@ window#waybar {
 #bluetooth,
 #network,
 #clock,
+#language,
 #custom-power {
     background: #24283b;
     padding-left: 10px;

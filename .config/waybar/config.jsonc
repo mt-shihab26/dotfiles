@@ -31,16 +31,11 @@
         "network",
         // Day, Date, Time
         "clock",
-        // Language Indicator
+        // Language Indicator,
         "hyprland/language",
         // Power Menu
         "custom/power"
     ],
-    "hyprland/language": {
-        "format-us": "US",
-        "format-bd": "BD",
-        "tooltip": false
-    },
     "hyprland/workspaces": {
         "disable-scroll": true,
         "all-outputs": true,
@@ -175,6 +170,12 @@
         "format-alt": "{:%A, %B %d %Y | %I:%M:%S %p}",
         "tooltip": true,
         "tooltip-format": "<small>{:%I:%M:%S %p}</small>\n<tt><small>{calendar}</small></tt>"
+    },
+    "hyprland/language": {
+        "format-en": "EN",
+        "format-bn": "BD",
+        "min-length": 2,
+        "tooltip": false
     },
     "custom/power": {
         "format": "",
