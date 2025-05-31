@@ -11,7 +11,7 @@ echo "===================================="
 # php-mysql \
 # php-xdebug
 
-sudo pacman -S --noconfirm php php-fpm php-gd php-intl php-redis php-sqlite php-mcrypt
+sudo pacman -S --noconfirm php php-fpm php-gd php-intl php-redis php-sqlite
 
 echo "===================================="
 echo "Installing Composer and system utilities..."
