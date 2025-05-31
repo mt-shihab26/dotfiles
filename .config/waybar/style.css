@@ -49,11 +49,17 @@ window#waybar {
 #bluetooth,
 #network,
 #clock,
-#idle_inhibitor {
+#custom-power {
     background: #24283b;
-    padding: 0 10px;
+    padding-left: 10px;
+    padding-right: 10px;
     margin: 2px 0px;
     border-radius: 2px;
+}
+
+#custom-power {
+    margin-right: 2px;
+    padding-right: 13.5px;
 }
 
 /* Special States */
