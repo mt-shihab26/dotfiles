@@ -66,6 +66,10 @@ tooltip {
     border-radius: 2px;
 }
 
+#window {
+    margin-right: 6px;
+}
+
 #temperature.warning {
     color: #e0af68;
 }
