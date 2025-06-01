@@ -12,7 +12,7 @@ args = ["-c", "$HOME/.scripts/tmux/init.sh"]
 startup_mode = "Maximized"
 decorations = "None"
 dimensions = { columns = 0, lines = 0 }
-padding = { x = 5, y = 0 }
+padding = { x = 5, y = 5 }
 opacity = 0.93
 blur = true
 
