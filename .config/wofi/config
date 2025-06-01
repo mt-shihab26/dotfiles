@@ -1,6 +1,9 @@
+show-icons=false
 allow_images=true
-width = 30%
-height = 40%
-layer = overlay
-insensitive = true
-allow_markup = true
+allow_markup=true
+width=30%
+lines=8
+layer=overlay
+insensitive=true
+location=center
+always_parse_args=true
