@@ -183,7 +183,8 @@
         "format-en": "EN",
         "format-bn": "BD",
         "min-length": 2,
-        "tooltip": false
+        "tooltip": false,
+        "on-click": "hyprctl switchxkblayout at-translated-set-2-keyboard next"
     },
     "custom/power": {
         "format": "",
