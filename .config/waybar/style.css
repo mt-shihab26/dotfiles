@@ -13,8 +13,8 @@ window#waybar {
 }
 
 tooltip {
-    background: #1a1b26;
-    color: #c0caf5;
+    background: #24283b;
+    color: #7aa2f7;
     padding: 5px;
     border-radius: 4px;
 }

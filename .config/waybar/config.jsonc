@@ -173,11 +173,11 @@
         "on-click": "iwgtk"
     },
     "clock": {
-        "interval": 1, // 60
+        "interval": 1,
         "format": "{:%a %Y %m %d %I:%M:%S %p}",
-        "format-alt": "{:%A, %B %d %Y | %I:%M:%S %p}",
+        "format-alt": "{:%A, %B %d %Y | %I:%M:%S %p (%Z)}",
         "tooltip": true,
-        "tooltip-format": "<small>{:%I:%M:%S %p}</small>\n<tt><small>{calendar}</small></tt>"
+        "tooltip-format": "<small>{:%A, %I:%M:%S %p %Z}</small>\n<tt><small>{calendar}</small></tt>"
     },
     "hyprland/language": {
         "format-en": "EN",
