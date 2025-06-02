@@ -4,6 +4,17 @@ This cheat sheet compares `pacman` (the official package manager) with `yay` (an
 
 ---
 
+## 📋 Listing Installed Packages
+
+| Task                           | pacman               | yay               |
+| ------------------------------ | -------------------- | ----------------- |
+| List all installed packages    | `pacman -Q`          | `yay -Q`          |
+| List explicitly installed only | `pacman -Qe`         | `yay -Qe`         |
+| List packages from AUR only    | _N/A_                | `yay -Qm`         |
+| List packages by group         | `pacman -Qg <group>` | `yay -Qg <group>` |
+
+---
+
 ## 🔍 Searching Packages
 
 | Task                        | pacman                 | yay                 |
