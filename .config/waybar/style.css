@@ -35,13 +35,13 @@ tooltip {
 }
 
 #workspaces button.focused {
-    background: #7aa2f7;
-    color: #1a1b26;
+    background: #bb9af7;
+    color: #292e42;
 }
 
 #workspaces button:hover {
-    background: #7aa2f7;
-    color: #1a1b26;
+    background: #bb9af7;
+    color: #292e42;
 }
 
 #window,
