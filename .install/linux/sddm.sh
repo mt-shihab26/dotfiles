@@ -1,7 +1,7 @@
 #!/bin/sh
 
 echo "Installing the sddm-astronaut-theme with yay..."
-# yay -S sddm-astronaut-theme
+yay -S sddm-astronaut-theme
 
 echo "Listing available SDDM themes..."
 ls /usr/share/sddm/themes/

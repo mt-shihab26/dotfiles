@@ -11,13 +11,13 @@ echo "===================================="
 # php-mysql \
 # php-xdebug
 
-sudo pacman -S --noconfirm php php-fpm php-gd php-intl php-redis php-sqlite
+sudo pacman -S php php-fpm php-gd php-intl php-redis php-sqlite
 
 echo "===================================="
 echo "Installing Composer and system utilities..."
 echo "===================================="
 
-sudo pacman -S --noconfirm composer nss jq xsel networkmanager nginx dnsmasq inotify-tools rsync
+sudo pacman -S composer xsel nginx dnsmasq inotify-tools
 
 echo "===================================="
 echo "Installing Laravel tools globally..."
