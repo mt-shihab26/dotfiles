@@ -92,10 +92,10 @@ bindkey '^[w' kill-region
 # Environment Variables
 ############################
 
-export MOZ_ENABLE_WAYLAND=1
-export QT_QPA_PLATFORM=wayland
-export SDL_VIDEODRIVER=wayland
-export XDG_SESSION_TYPE=wayland
+# export MOZ_ENABLE_WAYLAND=1
+# export QT_QPA_PLATFORM=wayland
+# export SDL_VIDEODRIVER=wayland
+# export XDG_SESSION_TYPE=wayland
 
 export PATH="$PATH:$HOME/.config/composer/vendor/bin"
 export PATH="$PATH:$HOME/go/bin"
