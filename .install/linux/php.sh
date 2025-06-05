@@ -17,7 +17,7 @@ echo "===================================="
 echo "Installing Composer and system utilities..."
 echo "===================================="
 
-sudo pacman -S composer xsel nginx dnsmasq inotify-tools
+sudo pacman -S composer xsel nginx dnsmasq inotify-tools rsync
 
 echo "===================================="
 echo "Installing Laravel tools globally..."
