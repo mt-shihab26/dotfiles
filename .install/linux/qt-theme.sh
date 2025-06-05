@@ -1,3 +1,5 @@
 #!/bin/sh
 
-sudo pacman -S kvantum kvantum-qt5
+sudo pacman -S qt6ct kvantum
+
+yay -S kvantum-theme-catppuccin-git
