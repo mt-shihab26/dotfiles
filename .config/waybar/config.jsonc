@@ -173,7 +173,7 @@
         "format-disconnected": "disconnected ",
         "tooltip": true,
         "tooltip-format": "{ifname} via {gwaddr} ",
-        "on-click": "iwgtk"
+        "on-click": "nm-connection-editor"
     },
     "clock": {
         "interval": 1,
