@@ -8,32 +8,19 @@
         "hyprland/window"
     ],
     "modules-right": [
-        // Background Applications Icons
-        // "tray",
-        // Memory Status
+        "tray",
         "memory",
-        // Temperature Status
         "temperature",
-        // CPU Status
         "cpu",
-        // Battery Status
         "battery",
         "battery#bat2",
-        // Brightness
         "backlight",
-        // Audio Status
         "pulseaudio",
-        // Microphone Status
         "pulseaudio#microphone",
-        // Bluetooth Status 
         "bluetooth",
-        // Network Status
         "network",
-        // Day, Date, Time
         "clock",
-        // Language Indicator,
         "hyprland/language",
-        // Power Menu
         "custom/power"
     ],
     "hyprland/workspaces": {
