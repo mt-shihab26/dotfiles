@@ -1,13 +1,31 @@
 local formatters = {
     formatters_by_ft = {
-        lua = { "stylua" },
+        -- JavaScript
+        javascript = { "prettier" },
+        javascriptreact = { "prettier" },
+        typescript = { "prettier" },
+        typescriptreact = { "prettier" },
+        astro = { "prettier" },
+        vue = { "prettier" },
 
+        -- PHP
+        php = { "pint" },
+        blade = { "prettier" },
+
+        -- Rust
+        rust = { "rustfmt" },
+
+        -- C/C++
+        c = { "clang-format" },
+        cpp = { "clang-format" },
+        cmake = { "cmake_format" },
+
+        -- Others
+        lua = { "stylua" },
         sh = { "shfmt" },
         bash = { "shfmt" },
         zsh = { "shfmt" },
-
         sql = { "sqlfmt" },
-
         html = { "prettier" },
         markdown = { "prettier" },
         mdx = { "prettier" },
@@ -16,46 +34,9 @@ local formatters = {
         json = { "prettier" },
         yaml = { "prettier" },
         toml = { "prettier" },
-
-        javascript = { "prettier" },
-        javascriptreact = { "prettier" },
-        typescript = { "prettier" },
-        typescriptreact = { "prettier" },
-        astro = { "prettier" },
-        vue = { "prettier" },
-
-        php = { "pint" },
-        blade = { "prettier" },
-
-        ruby = { "rubocop" },
-
-        python = { "ruff" },
-
-        go = { "goimports", "gofmt" },
-        templ = { "templ" },
-
-        swift = { "swiftformat" },
-
-        rust = { "rustfmt" },
-
-        zig = { "zigfmt" },
-
-        c = { "clang-format" },
-        cpp = { "clang-format" },
-        cmake = { "cmake_format" },
     },
     ignore_install = {
         "pint",
-
-        "rubocop",
-
-        "gofmt",
-        "goimports",
-        "templ",
-
-        "swiftformat",
-
-        "zigfmt",
 
         "cmake_format",
     },
