@@ -1,46 +1,41 @@
 local servers = {
+    -- JavaScript
+    vtsls = require "settings.vtsls", -- TypeScript
+    astro = {}, -- Astro
+
+    -- PHP
+    intelephense = {}, -- PHP
+
+    -- Rust
+    rust_analyzer = {}, -- Rust
+
+    -- C/C++
+    clangd = {}, -- C/C++
+
+    -- Others
     lua_ls = require "settings.lua_ls", -- Lua
-
     html = {}, -- HTML
-    -- marksman = {}, -- Markdown
-
+    marksman = {}, -- Markdown
     cssls = {}, -- CSS
     css_variables = {}, -- CSS
     tailwindcss = require "settings.tailwindcss", -- TailwindCSS
-
     jsonls = {}, -- Json
     yamlls = {}, -- YAML
-
     bashls = {}, -- Bash
 
     -- sqls = {}, -- SQL
-
     -- dockerls = {}, -- Docker
     -- docker_compose_language_service = {}, -- Docker
-
-    vtsls = require "settings.vtsls", -- TypeScript
     -- volar = require "settings.volar", -- Vue
-    astro = {}, -- Astro
     -- htmx = {}, -- HTMX
     -- angularls = {}, -- Angular
     -- svelte = {}, -- Svelte
-
-    intelephense = {}, -- PHP
-
     -- ruby_lsp = {}, -- Ruby
-
     -- pyright = require "settings.pyright", -- Python
-
     -- elixirls = {}, -- Elixir
-
     -- gopls = require "settings.gopls", -- Go
     -- templ = {}, -- Go
-
-    -- rust_analyzer = {}, -- Rust
-
     -- zls = {}, -- Zig
-
-    -- clangd = {}, -- C/C++
 }
 
 return {
@@ -90,43 +85,43 @@ return {
             ),
         })
 
-        local function restart_all_lsp()
-            local active_clients = vim.lsp.get_active_clients()
+        -- local function restart_all_lsp()
+        --     local active_clients = vim.lsp.get_active_clients()
+        --
+        --     if #active_clients == 0 then
+        --         vim.notify("No active LSP clients found", vim.log.levels.WARN)
+        --         return
+        --     end
+        --
+        --     for _, client in ipairs(active_clients) do
+        --         vim.lsp.stop_client(client.id)
+        --         vim.notify(string.format("Stopped LSP client: %s", client.name), vim.log.levels.INFO)
+        --     end
+        --
+        --     vim.defer_fn(function()
+        --         vim.cmd "edit"
+        --         vim.notify("LSP servers restarted", vim.log.levels.INFO)
+        --     end, 100)
+        -- end
 
-            if #active_clients == 0 then
-                vim.notify("No active LSP clients found", vim.log.levels.WARN)
-                return
-            end
+        -- local function stop_all_lsp()
+        --     local active_clients = vim.lsp.get_active_clients()
+        --     if #active_clients == 0 then
+        --         vim.notify("No active LSP clients found", vim.log.levels.WARN)
+        --         return
+        --     end
+        --
+        --     for _, client in ipairs(active_clients) do
+        --         vim.lsp.stop_client(client.id)
+        --         vim.notify(string.format("Stopped LSP client: %s", client.name), vim.log.levels.INFO)
+        --     end
+        --     vim.notify("All LSP servers stopped", vim.log.levels.INFO)
+        -- end
 
-            for _, client in ipairs(active_clients) do
-                vim.lsp.stop_client(client.id)
-                vim.notify(string.format("Stopped LSP client: %s", client.name), vim.log.levels.INFO)
-            end
-
-            vim.defer_fn(function()
-                vim.cmd "edit"
-                vim.notify("LSP servers restarted", vim.log.levels.INFO)
-            end, 100)
-        end
-
-        local function stop_all_lsp()
-            local active_clients = vim.lsp.get_active_clients()
-            if #active_clients == 0 then
-                vim.notify("No active LSP clients found", vim.log.levels.WARN)
-                return
-            end
-
-            for _, client in ipairs(active_clients) do
-                vim.lsp.stop_client(client.id)
-                vim.notify(string.format("Stopped LSP client: %s", client.name), vim.log.levels.INFO)
-            end
-            vim.notify("All LSP servers stopped", vim.log.levels.INFO)
-        end
-
-        local function start_all_lsp()
-            vim.cmd "edit"
-            vim.notify("Starting LSP servers...", vim.log.levels.INFO)
-        end
+        -- local function start_all_lsp()
+        --     vim.cmd "edit"
+        --     vim.notify("Starting LSP servers...", vim.log.levels.INFO)
+        -- end
 
         local on_attach = function(_, bufnr)
             local opts = function(opts)
@@ -137,23 +132,23 @@ return {
                 }, opts or {})
             end
 
-            local restart_buffer_lsp = function()
-                local clients = vim.lsp.get_active_clients { bufnr = bufnr }
-                for _, client in ipairs(clients) do
-                    vim.lsp.buf_request(bufnr, "workspace/executeCommand", {
-                        command = "_typescript.restartServer",
-                    })
-                    vim.notify(string.format("Restarting LSP: %s", client.name))
-                end
-            end
-
-            local stop_buffer_lsp = function()
-                local clients = vim.lsp.get_active_clients { bufnr = bufnr }
-                for _, client in ipairs(clients) do
-                    vim.lsp.stop_client(client.id)
-                    vim.notify(string.format("Stopped LSP client: %s", client.name), vim.log.levels.INFO)
-                end
-            end
+            -- local restart_buffer_lsp = function()
+            --     local clients = vim.lsp.get_active_clients { bufnr = bufnr }
+            --     for _, client in ipairs(clients) do
+            --         vim.lsp.buf_request(bufnr, "workspace/executeCommand", {
+            --             command = "_typescript.restartServer",
+            --         })
+            --         vim.notify(string.format("Restarting LSP: %s", client.name))
+            --     end
+            -- end
+            --
+            -- local stop_buffer_lsp = function()
+            --     local clients = vim.lsp.get_active_clients { bufnr = bufnr }
+            --     for _, client in ipairs(clients) do
+            --         vim.lsp.stop_client(client.id)
+            --         vim.notify(string.format("Stopped LSP client: %s", client.name), vim.log.levels.INFO)
+            --     end
+            -- end
 
             vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts { desc = "go to definition (lspconfig)" })
             vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts { desc = "go to declaration (lspconfig)" })
