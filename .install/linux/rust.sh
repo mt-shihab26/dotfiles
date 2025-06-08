@@ -1,5 +1,5 @@
 #!/bin/sh
 
-sudo pacman -S rustup
+sudo pacman -S rustup gcc
 
 rustup default stable
