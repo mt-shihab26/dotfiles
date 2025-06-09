@@ -3,7 +3,9 @@
 if [[ $1 == "projects" ]]; then
     selected=$(find ~/projects -mindepth 1 -maxdepth 1 -type d | fzf)
 elif [[ $1 == "learns" ]]; then
-    selected=$(find ~/learns/ ~/learns/courses/ ~/learns/crash_courses/ ~/learns/imaginative_research/ ~/learns/projects/ ~/learns/manual/ -mindepth 1 -maxdepth 2 -type d | fzf)
+    selected=$(find ~/learns/courses/ ~/learns/crash_courses/ ~/learns/imaginative_research/ ~/learns/projects/ ~/learns/manual/ \
+        -mindepth 1 -maxdepth 1 -type d \
+        -not -path "*/.git*" | fzf)
 elif [[ $# -eq 1 ]]; then
     selected=$1
 else
