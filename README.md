@@ -22,10 +22,10 @@ $ stow .
     -   2. `Firefox`
     -   3. `Safari`
 -   2. Terminal:
-    -   1. `Alacritty + Tmux + ZSH + fzf + zoxide`, `Lazygit`, `Lazydocker`, `Neovim`
+    -   1. `Kitty + Tmux + ZSH + fzf + zoxide`, `Lazygit`, `Lazydocker`, `Neovim`
     -   2. `VSCode`
 -   3. Tools:
-    -   1. `DBeaver`
+    -   1. `TablePlus`
     -   3. `Claude`
     -   4. `Chatgpt`
 -   4. Messengers:
