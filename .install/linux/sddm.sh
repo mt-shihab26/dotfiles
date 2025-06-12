@@ -18,7 +18,7 @@ echo "Edit the following file:"
 echo "/usr/share/sddm/themes/sddm-astronaut-theme/metadata.desktop"
 echo
 echo "Find and add this line:"
-echo "ConfigFile=Themes/hyprland_kath.conf"
+echo "ConfigFile=Themes/astronaut.conf"
 echo
 echo "Available theme configurations:"
 ls /usr/share/sddm/themes/sddm-astronaut-theme/Themes/
