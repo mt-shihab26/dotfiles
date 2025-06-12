@@ -3,11 +3,17 @@
 # Torrent Client
 sudo pacman -S fragments
 
-# Image Previewer
-sudo pacman -S loupe
+# Document Viewer
+sudo pacman -S evince
 
 # Audio Player
 sudo pacman -S decibels
 
-# Document Viewer
-sudo pacman -S evince
+# Image Previewer
+sudo pacman -S loupe
+
+# Image Editor
+sudo pacman -S gimp
+
+# Video Player
+sudo pacman -S mpv
