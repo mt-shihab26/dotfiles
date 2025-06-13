@@ -17,6 +17,13 @@ return {
             -- PHP
             intelephense = {}, -- PHP
 
+            -- Python
+            pyright = require "settings.pyright", -- Python
+
+            -- Go
+            gopls = require "settings.gopls", -- Go
+            templ = {}, -- Go Templ
+
             -- Rust
             rust_analyzer = {}, -- Rust
 
@@ -42,10 +49,7 @@ return {
             -- angularls = {}, -- Angular
             -- svelte = {}, -- Svelte
             -- ruby_lsp = {}, -- Ruby
-            -- pyright = require "settings.pyright", -- Python
             -- elixirls = {}, -- Elixir
-            -- gopls = require "settings.gopls", -- Go
-            -- templ = {}, -- Go
             -- zls = {}, -- Zig
         }
 

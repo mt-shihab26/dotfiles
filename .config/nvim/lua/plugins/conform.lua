@@ -12,6 +12,13 @@ local formatters = {
         php = { "pint" },
         blade = { "prettier" },
 
+        -- Python
+        python = { "ruff" },
+
+        -- Go
+        go = { "goimports", "gofmt" },
+        templ = { "templ" },
+
         -- Rust
         rust = { "rustfmt" },
 
@@ -34,9 +41,17 @@ local formatters = {
         json = { "prettier" },
         yaml = { "prettier" },
         toml = { "prettier" },
+
+        -- ruby = { "rubocop" },
+        -- swift = { "swiftformat" },
+        -- zig = { "zigfmt" },
     },
     ignore_install = {
         "pint",
+
+        "gofmt",
+        "goimports",
+        "templ",
 
         "cmake_format",
     },

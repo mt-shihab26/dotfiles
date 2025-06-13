@@ -19,6 +19,16 @@ return {
             "php_only",
             "twig",
 
+            -- Python
+            "python",
+
+            -- Go
+            "go",
+            "gomod",
+            "gowork",
+            "gosum",
+            "templ",
+
             -- Rust
             "rust",
 
@@ -49,6 +59,12 @@ return {
             "git_rebase",
             "gitignore",
             "gitattributes",
+
+            -- "ruby",
+            -- "elixir",
+            -- "heex",
+            -- "eex",
+            -- "zig",
         },
         auto_install = true,
         highlight = { enable = true },
