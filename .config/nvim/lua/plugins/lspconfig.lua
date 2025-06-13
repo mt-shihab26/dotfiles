@@ -54,7 +54,7 @@ return {
         local mason_lspconfig = require "mason-lspconfig"
         local cmp_nvim_lsp = require "cmp_nvim_lsp"
         local lsp_file_operations = require "lsp-file-operations"
-        local which_key = require "which-key"
+        -- local which_key = require "which-key"
 
         mason.setup {}
         mason_lspconfig.setup { ensure_installed = vim.tbl_keys(servers), automatic_installation = true }

@@ -1,3 +1,48 @@
+# File Explore
+
+## netrw
+
+### commands
+
+- `:Ex` `:Ex <path>` or `:Explore` -> open netrw explorer
+- `:Vex` -> open vertical split netrw window
+- `:Sex` -> open horizental split netrw window
+
+### keymaps
+
+#### basic navigation
+
+- `x` -> open directory in finder
+- `enter/return` -> open file or directory
+- `-` -> go up to parent directory
+- `u` -> go to the previous directory
+- `gh` -> toogle hidden files
+
+#### file operations
+
+- `%` -> create new file
+- `d` -> create directory
+- `D` -> delete file or directory
+- `R` -> rename file or directory
+
+# window navigation
+
+## creating splits
+
+| Command                            | Description               |
+| ---------------------------------- | ------------------------- |
+| `:split`, `:sp`, `:sp file.txt`    | Create a horizontal split |
+| `:vsplit`, `:vsp`, `:vsp file.txt` | Create a vertical split   |
+
+## navigating between windows
+
+| Key                      | Action               |
+| ------------------------ | -------------------- |
+| `Ctrl-w h`, `<leader>h>` | Move to left window  |
+| `Ctrl-w l`, `<leader>l>` | Move to right window |
+| `Ctrl-w j`, `<leader>j>` | Move to below window |
+| `Ctrl-w k`, `<leader>k>` | Move to above window |
+
 # intermediate
 
 ## 1. Window, Buffer, and Tab Management
