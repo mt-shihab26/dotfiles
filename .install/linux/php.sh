@@ -4,14 +4,10 @@ echo "===================================="
 echo "Installing PHP and essential extensions..."
 echo "===================================="
 
-# Optional packages (uncomment to install if needed):
-# php-bcmath \
-# php-bz2 \
-# php-gmp \
-# php-mysql \
-# php-xdebug
-
 sudo pacman -S php php-fpm php-gd php-intl php-redis php-sqlite
+
+sudo systemctl enable php-fpm
+sudo systemctl start php-fpm
 
 echo "===================================="
 echo "Installing Composer and system utilities..."
