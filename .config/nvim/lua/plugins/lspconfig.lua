@@ -1,43 +1,3 @@
-local servers = {
-    -- JavaScript
-    vtsls = require "settings.vtsls", -- TypeScript
-    astro = {}, -- Astro
-
-    -- PHP
-    intelephense = {}, -- PHP
-
-    -- Rust
-    rust_analyzer = {}, -- Rust
-
-    -- C/C++
-    clangd = {}, -- C/C++
-
-    -- Others
-    lua_ls = require "settings.lua_ls", -- Lua
-    html = {}, -- HTML
-    marksman = {}, -- Markdown
-    cssls = {}, -- CSS
-    css_variables = {}, -- CSS
-    tailwindcss = require "settings.tailwindcss", -- TailwindCSS
-    jsonls = {}, -- Json
-    yamlls = {}, -- YAML
-    bashls = {}, -- Bash
-
-    -- sqls = {}, -- SQL
-    -- dockerls = {}, -- Docker
-    -- docker_compose_language_service = {}, -- Docker
-    -- volar = require "settings.volar", -- Vue
-    -- htmx = {}, -- HTMX
-    -- angularls = {}, -- Angular
-    -- svelte = {}, -- Svelte
-    -- ruby_lsp = {}, -- Ruby
-    -- pyright = require "settings.pyright", -- Python
-    -- elixirls = {}, -- Elixir
-    -- gopls = require "settings.gopls", -- Go
-    -- templ = {}, -- Go
-    -- zls = {}, -- Zig
-}
-
 return {
     "neovim/nvim-lspconfig",
     dependencies = {
@@ -49,6 +9,46 @@ return {
         "nvim-lua/plenary.nvim",
     },
     config = function()
+        local servers = {
+            -- JavaScript
+            vtsls = require "settings.vtsls", -- TypeScript
+            astro = {}, -- Astro
+
+            -- PHP
+            intelephense = {}, -- PHP
+
+            -- Rust
+            rust_analyzer = {}, -- Rust
+
+            -- C/C++
+            clangd = {}, -- C/C++
+
+            -- Others
+            lua_ls = require "settings.lua_ls", -- Lua
+            html = {}, -- HTML
+            marksman = {}, -- Markdown
+            cssls = {}, -- CSS
+            css_variables = {}, -- CSS
+            tailwindcss = require "settings.tailwindcss", -- TailwindCSS
+            jsonls = {}, -- Json
+            yamlls = {}, -- YAML
+            bashls = {}, -- Bash
+
+            -- sqls = {}, -- SQL
+            -- dockerls = {}, -- Docker
+            -- docker_compose_language_service = {}, -- Docker
+            -- volar = require "settings.volar", -- Vue
+            -- htmx = {}, -- HTMX
+            -- angularls = {}, -- Angular
+            -- svelte = {}, -- Svelte
+            -- ruby_lsp = {}, -- Ruby
+            -- pyright = require "settings.pyright", -- Python
+            -- elixirls = {}, -- Elixir
+            -- gopls = require "settings.gopls", -- Go
+            -- templ = {}, -- Go
+            -- zls = {}, -- Zig
+        }
+
         local lspconfig = require "lspconfig"
         local mason = require "mason"
         local mason_lspconfig = require "mason-lspconfig"
@@ -61,8 +61,6 @@ return {
 
         local capabilities = cmp_nvim_lsp.default_capabilities()
 
-        -- Modify handler for textDocument/definition
-        ---@diagnostic disable: duplicate-set-field
         vim.lsp.handlers["textDocument/definition"] = function(_, result, _, _)
             if not result or vim.tbl_isempty(result) then
                 vim.notify("No definition found", vim.log.levels.WARN)
@@ -84,46 +82,39 @@ return {
             ),
         })
 
-        local on_attach = function(_, bufnr)
+        local on_attach = function()
             local opts = function(opts)
-                return vim.tbl_extend("force", {
-                    noremap = true,
-                    silent = true,
-                    buffer = bufnr,
-                }, opts or {})
+                return vim.tbl_extend("force", { noremap = true, silent = true }, opts or {})
             end
 
-            vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts { desc = "go to definition (lspconfig)" })
-            vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts { desc = "go to declaration (lspconfig)" })
-            vim.keymap.set("n", "gr", vim.lsp.buf.references, opts { desc = "go to references (lspconfig)" })
-            vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts { desc = "go to implementation (lspconfig)" })
+            local map = vim.keymap.set
+            local buf = vim.lsp.buf
+            local diagnostic = vim.diagnostic
 
-            vim.keymap.set("n", "K", vim.lsp.buf.hover, opts { desc = "show hover documentation (lspconfig)" })
-            vim.keymap.set(
-                "n",
-                "<C-k>",
-                vim.diagnostic.open_float,
-                opts { desc = "show hover diagnostics (lspconfig)" }
-            )
+            map("n", "gd", buf.definition, opts { desc = "go to definition (lspconfig)" })
+            map("n", "gD", buf.declaration, opts { desc = "go to declaration (lspconfig)" })
+            map("n", "gi", buf.implementation, opts { desc = "go to implementation (lspconfig)" })
+            map("n", "gr", buf.references, opts { desc = "go to references (lspconfig)" })
 
-            vim.keymap.set("n", "<leader>h", vim.lsp.buf.signature_help, opts { desc = "signature help (lspconfig)" })
-            vim.keymap.set(
-                "n",
-                "<leader>a",
-                vim.lsp.buf.code_action,
-                { noremap = true, silent = true, desc = "code actions (lspconfig)" }
-            )
-            vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, opts { desc = "rename symbol (lspconfig)" })
+            map("n", "K", buf.hover, opts { desc = "show hover documentation (lspconfig)" })
+            map("n", "<C-k>", diagnostic.open_float, opts { desc = "show hover diagnostics (lspconfig)" })
 
-            vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts { desc = "go to prev diagnostic (lspconfig)" })
-            vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts { desc = "go to next diagnostic (lspconfig)" })
+            map("n", "<leader>h", buf.signature_help, opts { desc = "signature help (lspconfig)" })
+            map("n", "<leader>a", buf.code_action, opts { desc = "code actions (lspconfig)" })
+            map("n", "<leader>r", buf.rename, opts { desc = "rename symbol (lspconfig)" })
+
+            map("n", "[d", diagnostic.goto_prev, opts { desc = "go to prev diagnostic (lspconfig)" })
+            map("n", "]d", diagnostic.goto_next, opts { desc = "go to next diagnostic (lspconfig)" })
         end
 
         for server_name, server_settings in pairs(servers) do
-            lspconfig[server_name].setup(vim.tbl_deep_extend("force", {
-                capabilities = capabilities,
-                on_attach = on_attach,
-            }, server_settings or {}))
+            lspconfig[server_name].setup(
+                vim.tbl_deep_extend(
+                    "force",
+                    { capabilities = capabilities, on_attach = on_attach },
+                    server_settings or {}
+                )
+            )
         end
     end,
 }
