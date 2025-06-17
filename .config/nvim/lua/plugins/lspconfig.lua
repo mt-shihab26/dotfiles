@@ -29,6 +29,7 @@ return {
 
             -- C/C++
             clangd = {}, -- C/C++
+            autotools_ls = {}, -- Makefile
 
             -- Others
             lua_ls = require "settings.lua_ls", -- Lua
