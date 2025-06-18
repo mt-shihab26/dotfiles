@@ -8,11 +8,9 @@ return {
     config = function()
         local dap = require "dap"
         local dap_ui = require "dapui"
-        local dap_go = require "dap-go"
         local dap_ui_widgets = require "dap.ui.widgets"
 
         dap_ui.setup()
-        dap_go.setup()
 
         dap.listeners.before.attach.dapui_config = dap_ui.open
         dap.listeners.before.launch.dapui_config = dap_ui.open
@@ -57,5 +55,12 @@ return {
         map({ "n", "v" }, "<leader>dp", dap_ui_widgets.preview, opts "preview widgets (dap)")
         map("n", "<leader>df", show_frames, opts "show frames (dap)")
         map("n", "<leader>ds", show_scopes, opts "show scopes (dap)")
+
+        -- connects server
+
+        -- go
+        require("dap-go").setup()
+        -- rust
+        require("utils.dap-rust").setup()
     end,
 }
