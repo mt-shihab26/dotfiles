@@ -58,9 +58,7 @@ return {
 
         -- connects server
 
-        -- go
         require("dap-go").setup()
-        -- rust
         require("utils.dap-rust").setup()
     end,
 }

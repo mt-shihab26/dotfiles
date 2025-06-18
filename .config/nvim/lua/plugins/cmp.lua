@@ -11,9 +11,15 @@ return {
         "saadparwaiz1/cmp_luasnip",
         "roobert/tailwindcss-colorizer-cmp.nvim",
         "zbirenbaum/copilot-cmp",
+        {
+            "saecki/crates.nvim",
+            tag = "stable",
+            event = { "BufRead Cargo.toml" },
+        },
     },
     config = function()
         require("copilot_cmp").setup()
+        require("crates").setup { completion = { cmp = { enabled = true } } }
 
         local sources = {
             nvim_lsp = "lsp",
@@ -23,6 +29,7 @@ return {
             calc = "calc",
             luasnip = "snippet",
             copilot = "copilot",
+            crates = "crates",
         }
 
         ---@type table
@@ -76,13 +83,14 @@ return {
                 end, { "i", "s" }),
             },
             sources = {
-                { name = "copilot" }, -- Add Copilot as first source for priority
                 { name = "nvim_lsp" },
                 { name = "nvim_lsp_signature_help" },
                 { name = "luasnip" },
                 { name = "buffer" },
                 { name = "path" },
+                { name = "crates" },
                 { name = "calc" },
+                { name = "copilot" },
             },
             formatting = {
                 fields = { "abbr", "kind", "menu" },
