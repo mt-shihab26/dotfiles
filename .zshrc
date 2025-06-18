@@ -105,7 +105,7 @@ export PATH="$PATH:$HOME/.local/share/nvim/mason/bin"
 # Aliases
 ############################
 
-alias ls="ls --color"
+alias ls="ls --color -h"
 
 alias init="$HOME/.scripts/tmux/init.sh"
 alias sessionizer="$HOME/.scripts/tmux/sessionizer.sh"
