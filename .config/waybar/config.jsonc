@@ -14,8 +14,10 @@
         "network",
         "pulseaudio",
         "cpu",
-        "battery",
         "power-profiles-daemon",
+        "battery",
+        "battery#bat2",
+        "backlight",
         "clock",
         "custom/power"
     ],
@@ -67,46 +69,6 @@
         "nospacing": 1,
         "on-click": "alacritty -e iwctl"
     },
-    "battery": {
-        "format": "{capacity}% {icon}",
-        "format-discharging": "{icon}",
-        "format-charging": "{icon}",
-        "format-plugged": "",
-        "format-icons": {
-            "charging": [
-                "󰢜",
-                "󰂆",
-                "󰂇",
-                "󰂈",
-                "󰢝",
-                "󰂉",
-                "󰢞",
-                "󰂊",
-                "󰂋",
-                "󰂅"
-            ],
-            "default": [
-                "󰁺",
-                "󰁻",
-                "󰁼",
-                "󰁽",
-                "󰁾",
-                "󰁿",
-                "󰂀",
-                "󰂁",
-                "󰂂",
-                "󰁹"
-            ]
-        },
-        "format-full": "Charged ",
-        "tooltip-format-discharging": "{power:>1.0f}W↓ {capacity}%",
-        "tooltip-format-charging": "{power:>1.0f}W↑ {capacity}%",
-        "interval": 5,
-        "states": {
-            "warning": 20,
-            "critical": 10
-        }
-    },
     "bluetooth": {
         "format": "",
         "format-disabled": "󰂲",
@@ -143,6 +105,64 @@
         "interval": 5,
         "tooltip": true,
         "tooltip-format": "{}"
+    },
+    "battery": {
+        "interval": 1,
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format-icons": {
+            "charging": [
+                "󰢜",
+                "󰂆",
+                "󰂇",
+                "󰂈",
+                "󰢝",
+                "󰂉",
+                "󰢞",
+                "󰂊",
+                "󰂋",
+                "󰂅"
+            ],
+            "default": [
+                "󰁺",
+                "󰁻",
+                "󰁼",
+                "󰁽",
+                "󰁾",
+                "󰁿",
+                "󰂀",
+                "󰂁",
+                "󰂂",
+                "󰁹"
+            ]
+        },
+        "format": "{capacity}% {icon}",
+        "tooltip-format-discharging": "{power:>1.0f}W↓ {capacity}%",
+        "tooltip-format-charging": "{power:>1.0f}W↑ {capacity}%"
+    },
+    "battery#bat2": {
+        "interval": 1,
+        "bat": "BAT2"
+    },
+    "backlight": {
+        "format": "{percent}% {icon}",
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "on-scroll-up": "brightnessctl set 1%- && [ $(brightnessctl get) -lt $(brightnessctl max | awk '{printf \"%d\", $1 * 0.05}') ] && brightnessctl set 5%",
+        "on-scroll-down": "brightnessctl set +1%",
+        "on-click": "~/.scripts/waybar/nightlight.sh",
+        "tooltip": false
     },
     "clock": {
         "interval": 1,

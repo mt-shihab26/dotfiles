@@ -6,7 +6,7 @@ sudo pacman -S waybar
 yay -S wlogout wayland-logout
 
 # Birghtness Control
-# sudo pacman -S brightnessctl gammastep
+sudo pacman -S brightnessctl gammastep
 
 # # Bluetooth Manager
 # sudo pacman -S blueman
