@@ -12,5 +12,8 @@ sudo pacman -S okular
 # Audio Player
 sudo pacman -S elisa
 
+# Video Camera
+sudo pacman -S kamoso
+
 # Video Player
 sudo pacman -S vlc
