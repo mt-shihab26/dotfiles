@@ -14,11 +14,11 @@
         "network",
         "pulseaudio",
         "cpu",
-        "power-profiles-daemon",
         "battery",
         "battery#bat2",
         "backlight",
         "clock",
+        "power-profiles-daemon",
         "custom/power"
     ],
     "hyprland/workspaces": {
@@ -86,16 +86,6 @@
         "ignored-sinks": [
             "Easy Effects Sink"
         ]
-    },
-    "power-profiles-daemon": {
-        "format": "{icon}",
-        "tooltip-format": "Power profile: {profile}",
-        "tooltip": true,
-        "format-icons": {
-            "power-saver": "󰡳",
-            "balanced": "󰊚",
-            "performance": "󰡴"
-        }
     },
     "custom/dropbox": {
         "format": "",
@@ -169,6 +159,15 @@
         "format": "{:%a %Y %m %d %I:%M:%S %p}",
         "format-alt": "{:%A, %B %d %Y | %I:%M:%S %p (%Z)}",
         "tooltip-format": "<tt><small>{calendar}</small></tt>"
+    },
+    "power-profiles-daemon": {
+        "format": "{icon}",
+        "tooltip-format": "Power profile: {profile}",
+        "format-icons": {
+            "power-saver": "󰡳",
+            "balanced": "󰊚",
+            "performance": "󰡴"
+        }
     },
     "custom/power": {
         "format": "",
