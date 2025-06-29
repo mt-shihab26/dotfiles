@@ -45,13 +45,8 @@
     },
     "cpu": {
         "interval": 5,
-        "format": "󰍛",
+        "format": "{usage}% 󰍛",
         "on-click": "alacritty -e btop"
-    },
-    "clock": {
-        "format": "{:%A %H:%M}",
-        "format-alt": "{:%d %B W%V %Y}",
-        "tooltip": false
     },
     "network": {
         "format-icons": [
@@ -73,7 +68,6 @@
         "on-click": "alacritty -e iwctl"
     },
     "battery": {
-        "interval": 5,
         "format": "{capacity}% {icon}",
         "format-discharging": "{icon}",
         "format-charging": "{icon}",
@@ -150,11 +144,16 @@
         "tooltip": true,
         "tooltip-format": "{}"
     },
+    "clock": {
+        "interval": 1,
+        "format": "{:%a %Y %m %d %I:%M:%S %p}",
+        "format-alt": "{:%A, %B %d %Y | %I:%M:%S %p (%Z)}",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>"
+    },
     "custom/power": {
         "format": "",
         "on-click": "wlogout",
         "on-click-right": "hyprlock",
         "tooltip-format": "Left: Power menu\nRight: Lock screen",
-        "tooltip": true
     }
 }
