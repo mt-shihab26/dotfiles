@@ -7,9 +7,7 @@
         "hyprland/workspaces",
         "hyprland/window"
     ],
-    "modules-center": [],
     "modules-right": [
-        "custom/dropbox",
         "cpu",
         "bluetooth",
         "pulseaudio#microphone",
@@ -50,15 +48,6 @@
         "interval": 5,
         "format": "{usage}% ",
         "on-click": "kitty -e btop"
-    },
-    "custom/dropbox": {
-        "format": "",
-        "on-click": "nautilus ~/Dropbox",
-        "exec": "dropbox-cli status",
-        "return-type": "text",
-        "interval": 5,
-        "tooltip": true,
-        "tooltip-format": "{}"
     },
     "bluetooth": {
         "format": "{status} ",
@@ -184,7 +173,7 @@
         "tooltip-format-wifi": "{essid} ({frequency} GHz)\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
         "tooltip-format-ethernet": "⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
         "tooltip-format-disconnected": "Disconnected",
-        "on-click": "nm-connection-editor",
+        "on-click": "nm-connection-editor"
     },
     "clock": {
         "interval": 1,
