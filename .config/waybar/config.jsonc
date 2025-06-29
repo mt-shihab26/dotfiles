@@ -11,12 +11,13 @@
     "modules-right": [
         "custom/dropbox",
         "cpu",
-        "network",
         "bluetooth",
+        "pulseaudio#microphone",
         "pulseaudio",
         "battery",
         "battery#bat2",
         "backlight",
+        "network",
         "clock",
         "power-profiles-daemon",
         "custom/power"
@@ -59,25 +60,6 @@
         "tooltip": true,
         "tooltip-format": "{}"
     },
-    "network": {
-        "format-icons": [
-            "󰤯",
-            "󰤟",
-            "󰤢",
-            "󰤥",
-            "󰤨"
-        ],
-        "format": "{icon}",
-        "format-wifi": "{icon}",
-        "format-ethernet": "󰀂",
-        "format-disconnected": "󰖪",
-        "tooltip-format-wifi": "{essid} ({frequency} GHz)\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
-        "tooltip-format-ethernet": "⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
-        "tooltip-format-disconnected": "Disconnected",
-        "interval": 3,
-        "nospacing": 1,
-        "on-click": "kitty -e iwctl"
-    },
     "bluetooth": {
         "format": "{status} ",
         "format-disabled": "󰂲",
@@ -88,6 +70,16 @@
         "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
         "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
         "on-click": "blueberry"
+    },
+    "pulseaudio#microphone": {
+        "format": "{format_source}",
+        "format-source": "{volume}% ",
+        "format-source-muted": "muted  ",
+        "on-click": "pavucontrol -t 4",
+        "on-scroll-up": "pamixer --default-source -d 5",
+        "on-scroll-down": "pamixer --default-source -i 5",
+        "scroll-step": 5,
+        "tooltip": true
     },
     "pulseaudio": {
         "format": "{volume}% {icon}",
@@ -172,6 +164,27 @@
         "on-scroll-down": "brightnessctl set +1%",
         "on-click": "~/.scripts/waybar/nightlight.sh",
         "tooltip": false
+    },
+    "network": {
+        "format-icons": [
+            "󰤯",
+            "󰤟",
+            "󰤢",
+            "󰤥",
+            "󰤨"
+        ],
+        "interval": 3,
+        "nospacing": 1,
+        "format": "{icon}",
+        "format-wifi": "{essid} {signalStrength}% ",
+        "format-ethernet": "{ipaddr}/{cidr} ",
+        "format-linked": "{ifname} ",
+        "format-disconnected": "disconnected ",
+        "tooltip-format": "{ifname} via {gwaddr} ",
+        "tooltip-format-wifi": "{essid} ({frequency} GHz)\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+        "tooltip-format-ethernet": "⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+        "tooltip-format-disconnected": "Disconnected",
+        "on-click": "nm-connection-editor",
     },
     "clock": {
         "interval": 1,
