@@ -13,7 +13,7 @@ configuration {
 @theme "tokyo"
 
 * {
-    font: "Iosevka Nerd Font 12";
+    font: "CaskaydiaMono Nerd Font 12";
 
     background-color:   transparent;
     text-color:         @fg0;
@@ -74,7 +74,7 @@ listview {
     background-color:   transparent;
     margin:     12px 0 0;
     columns:    1;
-    lines:      2;
+    lines:      10;
 
     fixed-height: false;
 }
