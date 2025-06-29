@@ -1,6 +1,6 @@
 #!/bin/sh
 
-sudo pacman -S git github-cli
+sudo pacman -S git github-cli less
 
 git config --global pull.rebase true
 git config --global init.defaultBranch "main"

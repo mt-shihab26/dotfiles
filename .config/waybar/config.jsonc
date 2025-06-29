@@ -15,7 +15,6 @@
         "pulseaudio#microphone",
         "pulseaudio",
         "battery",
-        "battery#bat2",
         "backlight",
         "network",
         "clock",
@@ -149,10 +148,6 @@
         "tooltip-format-discharging": "{power:>1.0f}W↓ {capacity}%",
         "tooltip-format-charging": "{power:>1.0f}W↑ {capacity}%"
     },
-    "battery#bat2": {
-        "interval": 1,
-        "bat": "BAT2"
-    },
     "backlight": {
         "format": "{percent}% {icon}",
         "format-icons": [
@@ -182,7 +177,7 @@
         "interval": 3,
         "nospacing": 1,
         "format": "{icon}",
-        "format-wifi": "{essid} {signalStrength}% ",
+        "format-wifi": "{essid} {bandwidthDownBytes} ",
         "format-ethernet": "{ipaddr}/{cidr} ",
         "format-linked": "{ifname} ",
         "format-disconnected": "disconnected ",
