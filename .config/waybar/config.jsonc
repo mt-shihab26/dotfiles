@@ -20,6 +20,7 @@
         "network",
         "clock",
         "power-profiles-daemon",
+        "hyprland/language",
         "custom/power"
     ],
     "hyprland/workspaces": {
@@ -201,10 +202,16 @@
         "format": "{icon}",
         "tooltip-format": "Power profile: {profile}",
         "format-icons": {
-            "power-saver": "󰡳 Saver",
-            "balanced": "󰊚 Balace",
-            "performance": "󰡴 Perform"
+            "power-saver": "󰡳",
+            "balanced": "󰊚",
+            "performance": "󰡴"
         }
+    },
+    "hyprland/language": {
+        "min-length": 2,
+        "format-en": "EN",
+        "format-bn": "BD",
+        "on-click": "hyprctl switchxkblayout at-translated-set-2-keyboard next"
     },
     "custom/power": {
         "format": "",
