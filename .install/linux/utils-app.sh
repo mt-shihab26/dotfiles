@@ -1,19 +1,16 @@
 #!/bin/sh
 
 # Torrent Client
-sudo pacman -S fragments
-
-# Document Viewer
-sudo pacman -S evince
-
-# Audio Player
-sudo pacman -S decibels
+sudo pacman -S ktorrent
 
 # Image Previewer
-sudo pacman -S loupe
+sudo pacman -S gwenview
 
-# Image Editor
-sudo pacman -S gimp
+# Document Viewer
+sudo pacman -S okular
+
+# Audio Player
+sudo pacman -S elisa
 
 # Video Player
-sudo pacman -S mpv
+sudo pacman -S vlc
