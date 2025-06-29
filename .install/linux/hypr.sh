@@ -1,3 +1,3 @@
 #!/bin/sh
 
-sudo pacman -S hyprland swaync hyprshot hyprpicker hyprlock hypridle hyprpolkitagent
+sudo pacman -S hyprland swaync hyprshot hyprpicker hyprlock hypridle hyprpolkitagent btop fastfetch
