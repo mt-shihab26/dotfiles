@@ -1,10 +1,14 @@
 #!/bin/sh
 
+# File Browser
+sudo pacman -Rns dolphin
+sudo pacman -S nautilus
+
 # Torrent Client
 sudo pacman -S ktorrent
 
 # Image Previewer
-sudo pacman -S gwenview
+sudo pacman -S loupe
 
 # Document Viewer
 sudo pacman -S okular
