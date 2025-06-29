@@ -12,8 +12,8 @@
         "custom/dropbox",
         "bluetooth",
         "network",
-        "pulseaudio",
         "cpu",
+        "pulseaudio",
         "battery",
         "battery#bat2",
         "backlight",
@@ -47,8 +47,8 @@
     },
     "cpu": {
         "interval": 5,
-        "format": "{usage}% 󰍛",
-        "on-click": "alacritty -e btop"
+        "format": "{usage}% ",
+        "on-click": "kitty -e btop"
     },
     "network": {
         "format-icons": [
@@ -76,17 +76,6 @@
         "tooltip-format": "Devices connected: {num_connections}",
         "on-click": "GTK_THEME=Adwaita-dark blueberry"
     },
-    "pulseaudio": {
-        "format": "",
-        "format-muted": "󰝟",
-        "scroll-step": 5,
-        "on-click": "GTK_THEME=Adwaita-dark pavucontrol",
-        "tooltip-format": "Playing at {volume}%",
-        "on-click-right": "pamixer -t",
-        "ignored-sinks": [
-            "Easy Effects Sink"
-        ]
-    },
     "custom/dropbox": {
         "format": "",
         "on-click": "nautilus ~/Dropbox",
@@ -95,6 +84,32 @@
         "interval": 5,
         "tooltip": true,
         "tooltip-format": "{}"
+    },
+    "pulseaudio": {
+        "format": "{volume}% {icon}",
+        "format-muted": "muted ",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "speaker": "",
+            "hdmi": "",
+            "usb": "",
+            "default": [
+                "",
+                "",
+                ""
+            ]
+        },
+        "scroll-step": 5,
+        "on-click": "pavucontrol -t 3",
+        "tooltip-format": "Playing at {volume}%",
+        "on-click-right": "pamixer -t",
+        "ignored-sinks": [
+            "Easy Effects Sink"
+        ]
     },
     "battery": {
         "interval": 1,
