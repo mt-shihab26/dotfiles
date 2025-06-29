@@ -43,6 +43,9 @@
             "6": []
         }
     },
+    "hyprland/window": {
+        "separate-outputs": true
+    },
     "memory": {
         "format": "{}% ",
         "tooltip": true
