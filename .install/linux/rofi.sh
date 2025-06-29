@@ -1,3 +1,3 @@
 #!/bin/sh
 
-sudo pacman -S rofi
+sudo pacman -S rofi-wayland rofi-emoji
