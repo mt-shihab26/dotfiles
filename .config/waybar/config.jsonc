@@ -1,14 +1,16 @@
 {
     "layer": "top",
     "position": "bottom",
-    "spacing": 0,
+    "spacing": 6,
     "height": 24,
     "modules-left": [
         "hyprland/workspaces",
         "hyprland/window"
     ],
     "modules-right": [
+        "memory",
         "cpu",
+        "temperature",
         "bluetooth",
         "pulseaudio#microphone",
         "pulseaudio",
@@ -30,24 +32,38 @@
             "3": "3",
             "4": "4",
             "5": "5",
-            "6": "6",
-            "7": "7",
-            "8": "8",
-            "9": "9",
-            "active": "󱓻"
+            "6": "6"
         },
         "persistent_workspaces": {
             "1": [],
             "2": [],
             "3": [],
             "4": [],
-            "5": []
+            "5": [],
+            "6": []
         }
+    },
+    "memory": {
+        "format": "{}% ",
+        "tooltip": true
     },
     "cpu": {
         "interval": 5,
         "format": "{usage}% ",
         "on-click": "kitty -e btop"
+    },
+    "temperature": {
+        "critical-threshold": 80,
+        "format": "{temperatureC}°C {icon}",
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "tooltip": true
     },
     "bluetooth": {
         "format": "{status} ",
