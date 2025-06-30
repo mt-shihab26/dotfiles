@@ -48,7 +48,7 @@ vim.api.nvim_create_user_command("Exe", function()
     local term_cmd = ""
 
     if ft == "sh" then
-        term_cmd = "./" .. filename
+        term_cmd = filename
     elseif ft == "c" then
         term_cmd = "gcc " .. filename .. " -o ~/.tmp/gcc.out && ~/.tmp/gcc.out"
     elseif ft == "cpp" then
