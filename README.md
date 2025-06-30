@@ -16,7 +16,7 @@ $ stow .
 
 - Color: `Tokyo Night`
 - Font: `CaskaydiaMono Nerd Font`
-- Windows: `Darwin + OS X + AeroSpace`, `Linux + Arch + KDE Plasma`
+- Windows: `Darwin + OS X + AeroSpace`, `Linux + Arch + Hyprland`
 -   1. Browser:
     -   1. `Chrome`
     -   2. `Firefox`
@@ -39,4 +39,4 @@ $ stow .
     -   3. `Obsidian`
     -   4. `Asana`
 -   6. Files & Others:
-    -   1. `Dolphin`
+    -   1. `Nautilus`
