@@ -45,17 +45,21 @@ end, {})
 vim.api.nvim_create_user_command("Exe", function()
     local ft = vim.bo.filetype
     local filename = vim.fn.expand "%"
-    local basename = vim.fn.expand "%:r"
+    local term_cmd = ""
 
     if ft == "c" then
-        vim.cmd("!gcc " .. filename .. " -o " .. basename .. " && ./" .. basename)
+        term_cmd = "gcc " .. filename .. " -o ~/.tmp/gcc.out && ~/.tmp/gcc.out"
     elseif ft == "cpp" then
-        vim.cmd("!g++ " .. filename .. " -o " .. basename .. " && ./" .. basename)
+        term_cmd = "g++ " .. filename .. " -o ~/.tmp/gpp.out && ~/.tmp/gpp.out"
     elseif ft == "rust" then
-        vim.cmd "!cargo run"
+        term_cmd = "cargo run"
     elseif ft == "go" then
-        vim.cmd("!go run " .. filename)
+        term_cmd = "go run " .. filename
     else
         print("Unsupported filetype: " .. ft)
+        return
     end
+
+    -- Open terminal in a horizontal split and run the command
+    vim.cmd("split | terminal bash -c '" .. term_cmd .. "; exec bash'")
 end, {})
