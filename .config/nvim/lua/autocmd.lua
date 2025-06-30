@@ -13,7 +13,7 @@ vim.api.nvim_create_user_command("ToggleIndenChar", function()
     else
         print "using tabs for indentation"
     end
-end)
+end, {})
 
 vim.api.nvim_create_user_command("ToggleWrap", function()
     if vim.wo.wrap then
@@ -23,7 +23,7 @@ vim.api.nvim_create_user_command("ToggleWrap", function()
         vim.wo.wrap = true
         vim.notify("Wrap ON", vim.log.levels.INFO)
     end
-end)
+end, {})
 
 vim.api.nvim_create_user_command("ToggleCopilot", function()
     -- Check if Copilot is already disabled
@@ -40,7 +40,7 @@ vim.api.nvim_create_user_command("ToggleCopilot", function()
         vim.cmd "Copilot disable"
         print "copilot disabled"
     end
-end)
+end, {})
 
 vim.api.nvim_create_user_command("Exe", function()
     local ft = vim.bo.filetype
