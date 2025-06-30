@@ -13,7 +13,34 @@ vim.api.nvim_create_user_command("ToggleIndenChar", function()
     else
         print "using tabs for indentation"
     end
-end, { desc = "toggle tabs/spaces for indentation" })
+end)
+
+vim.api.nvim_create_user_command("ToggleWrap", function()
+    if vim.wo.wrap then
+        vim.wo.wrap = false
+        vim.notify("Wrap OFF", vim.log.levels.INFO)
+    else
+        vim.wo.wrap = true
+        vim.notify("Wrap ON", vim.log.levels.INFO)
+    end
+end)
+
+vim.api.nvim_create_user_command("ToggleCopilot", function()
+    -- Check if Copilot is already disabled
+    local is_disabled = vim.g.copilot_enabled == false
+
+    if is_disabled then
+        -- Enable Copilot
+        vim.g.copilot_enabled = true
+        vim.cmd "Copilot enable"
+        print "copilot enabled"
+    else
+        -- Disable Copilot
+        vim.g.copilot_enabled = false
+        vim.cmd "Copilot disable"
+        print "copilot disabled"
+    end
+end)
 
 vim.api.nvim_create_user_command("Exe", function()
     local ft = vim.bo.filetype

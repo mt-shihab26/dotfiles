@@ -2,6 +2,8 @@ vim.keymap.set("n", "<esc>", "<cmd>nohlsearch<cr>", { desc = "clear search highl
 
 vim.keymap.set("x", "p", '"_dP', { desc = "paste without yanking selected text", noremap = true })
 
+vim.keymap.set("n", "<leader>x", "<cmd>Exe<cr>", { desc = "execute current file based on language" })
+
 -- moving around nvim windows
 vim.keymap.set("n", "<leader>h", "<C-w>h", { desc = "move to left window", noremap = true, silent = true })
 vim.keymap.set("n", "<leader>j", "<C-w>j", { desc = "move to below window", noremap = true, silent = true })
@@ -10,33 +12,5 @@ vim.keymap.set("n", "<leader>l", "<C-w>l", { desc = "move to right window", nore
 
 -- toggle things
 vim.keymap.set("n", "<leader>ti", "<cmd>ToggleIndenChar<cr>", { desc = "toggle tabs/spaces for indentation" })
-
-vim.keymap.set("n", "<leader>tw", function()
-    if vim.wo.wrap then
-        vim.wo.wrap = false
-        vim.notify("Wrap OFF", vim.log.levels.INFO)
-    else
-        vim.wo.wrap = true
-        vim.notify("Wrap ON", vim.log.levels.INFO)
-    end
-end, { desc = "toggle line wrapping on/off" })
-
-vim.keymap.set("n", "<leader>tc", function()
-    -- Check if Copilot is already disabled
-    local is_disabled = vim.g.copilot_enabled == false
-
-    if is_disabled then
-        -- Enable Copilot
-        vim.g.copilot_enabled = true
-        vim.cmd "Copilot enable"
-        print "copilot enabled"
-    else
-        -- Disable Copilot
-        vim.g.copilot_enabled = false
-        vim.cmd "Copilot disable"
-        print "copilot disabled"
-    end
-end, { desc = "toggle gitHub copilot on/off" })
-
---
-vim.keymap.set("n", "<leader>r", run_current_file, { desc = "execute current file based on language" })
+vim.keymap.set("n", "<leader>tw", "<cmd>ToggleWrap<cr>", { desc = "toggle line wrapping on/off" })
+vim.keymap.set("n", "<leader>tc", "<cmd>ToggleCopilot<cr>", { desc = "toggle gitHub copilot on/off" })
