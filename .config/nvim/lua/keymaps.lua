@@ -9,16 +9,7 @@ vim.keymap.set("n", "<leader>k", "<C-w>k", { desc = "move to above window", nore
 vim.keymap.set("n", "<leader>l", "<C-w>l", { desc = "move to right window", noremap = true, silent = true })
 
 -- toggle things
-vim.keymap.set("n", "<leader>ti", function()
-    local current_expand = vim.api.nvim_get_option "expandtab"
-    vim.opt.expandtab = not current_expand
-
-    if vim.api.nvim_get_option "expandtab" then
-        print "using spaces for indentation"
-    else
-        print "using tabs for indentation"
-    end
-end, { desc = "toggle tabs/spaces for indentation" })
+vim.keymap.set("n", "<leader>ti", "<cmd>ToggleIndenChar<cr>", { desc = "toggle tabs/spaces for indentation" })
 
 vim.keymap.set("n", "<leader>tw", function()
     if vim.wo.wrap then
@@ -46,3 +37,6 @@ vim.keymap.set("n", "<leader>tc", function()
         print "copilot disabled"
     end
 end, { desc = "toggle gitHub copilot on/off" })
+
+--
+vim.keymap.set("n", "<leader>r", run_current_file, { desc = "execute current file based on language" })
