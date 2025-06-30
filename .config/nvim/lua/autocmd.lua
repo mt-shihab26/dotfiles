@@ -62,4 +62,7 @@ vim.api.nvim_create_user_command("Exe", function()
 
     -- Open terminal in a horizontal split and run the command
     vim.cmd("split | terminal bash -c '" .. term_cmd .. "; exec bash'")
+
+    -- Enter insert mode automatically
+    vim.cmd "startinsert"
 end, {})
