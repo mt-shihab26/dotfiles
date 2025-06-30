@@ -47,7 +47,9 @@ vim.api.nvim_create_user_command("Exe", function()
     local filename = vim.fn.expand "%"
     local term_cmd = ""
 
-    if ft == "c" then
+    if ft == "sh" then
+        term_cmd = "./" .. filename
+    elseif ft == "c" then
         term_cmd = "gcc " .. filename .. " -o ~/.tmp/gcc.out && ~/.tmp/gcc.out"
     elseif ft == "cpp" then
         term_cmd = "g++ " .. filename .. " -o ~/.tmp/gpp.out && ~/.tmp/gpp.out"
@@ -56,7 +58,7 @@ vim.api.nvim_create_user_command("Exe", function()
     elseif ft == "go" then
         term_cmd = "go run " .. filename
     else
-        print("Unsupported filetype: " .. ft)
+        print("unsupported filetype: " .. ft)
         return
     end
 
