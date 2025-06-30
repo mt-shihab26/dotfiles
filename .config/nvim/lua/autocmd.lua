@@ -66,3 +66,10 @@ vim.api.nvim_create_user_command("Exe", function()
     -- Enter insert mode automatically
     vim.cmd "startinsert"
 end, {})
+
+vim.api.nvim_create_autocmd("TermOpen", {
+    pattern = "*",
+    callback = function()
+        vim.keymap.set("t", "<leader>q", "<C-\\><C-n>:close<CR>", { buffer = true, desc = "close terminal window" })
+    end,
+})
