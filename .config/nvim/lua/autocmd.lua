@@ -54,7 +54,7 @@ vim.api.nvim_create_user_command("Exe", function()
     elseif ft == "cpp" then
         term_cmd = "g++ " .. filename .. " -o ~/.tmp/gpp.out && ~/.tmp/gpp.out"
     elseif ft == "rust" then
-        term_cmd = "cargo run"
+        term_cmd = "rustc " .. filename .. " -o ~/.tmp/rust.out && ~/.tmp/rust.out"
     elseif ft == "go" then
         term_cmd = "go run " .. filename
     else
