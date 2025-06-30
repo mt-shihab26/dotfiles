@@ -70,6 +70,6 @@ end, {})
 vim.api.nvim_create_autocmd("TermOpen", {
     pattern = "*",
     callback = function()
-        vim.keymap.set("t", "<leader>q", "<C-\\><C-n>:close<CR>", { buffer = true, desc = "close terminal window" })
+        vim.keymap.set("t", "<leader>q", "<C-\\><C-n>:bd!<CR>", { buffer = true, desc = "close terminal buffer" })
     end,
 })
