@@ -3,6 +3,10 @@
     "contributes": {
         "snippets": [
             {
+                "language": "c",
+                "path": "./c.json"
+            },
+            {
                 "language": "typescriptreact",
                 "path": "./tsx.json"
             },
