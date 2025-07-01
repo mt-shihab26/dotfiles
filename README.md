@@ -36,7 +36,7 @@ $ stow .
 -   5. Productivity:
     -   1. `Pomatez`
     -   2. `Todoist`
-    -   3. `Obsidian`
+    -   3. `Keep`
     -   4. `Asana`
 -   6. Files & Others:
     -   1. `Nautilus`
