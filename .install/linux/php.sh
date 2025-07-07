@@ -15,6 +15,8 @@ echo "===================================="
 
 sudo pacman -S composer nginx dnsmasq inotify-tools rsync nss jq xsel networkmanager
 
+composer config --global process-timeout 0
+
 echo "===================================="
 echo "Installing frankenphp from frankenphp.dev..."
 echo "===================================="
