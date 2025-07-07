@@ -16,18 +16,21 @@ echo "===================================="
 sudo pacman -S composer nginx dnsmasq inotify-tools rsync nss jq xsel networkmanager
 
 echo "===================================="
+echo "Installing frankenphp from frankenphp.dev..."
+echo "===================================="
+
+cd /tmp
+curl https://frankenphp.dev/install.sh | sh
+sudo mv frankenphp /usr/local/bin/
+cd ~
+
+echo "===================================="
 echo "Installing Laravel tools globally..."
 echo "===================================="
 
 composer global require laravel/pint
 composer global require laravel/installer
 composer global require cpriego/valet-linux
-
-# echo "===================================="
-# echo "Running Valet installation..."
-# echo "===================================="
-
-# valet install
 
 echo "===================================="
 echo "PHP loaded modules:"
@@ -62,6 +65,12 @@ echo "extension=igbinary"
 echo "extension=redis"
 echo "extension=iconv"
 echo "===================================="
+
+# echo "===================================="
+# echo "Running Valet installation..."
+# echo "===================================="
+
+# valet install
 
 echo "===================================="
 echo " Then run '\$ valet install'"
