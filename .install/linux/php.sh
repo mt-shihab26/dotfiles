@@ -16,6 +16,12 @@ echo "===================================="
 sudo pacman -S composer nginx dnsmasq inotify-tools rsync nss jq xsel networkmanager
 
 echo "===================================="
+echo "Installing frankenphp from aur..."
+echo "===================================="
+
+yay -S frankenphp
+
+echo "===================================="
 echo "Installing Laravel tools globally..."
 echo "===================================="
 
