@@ -66,6 +66,7 @@ echo "extension=bcmath"
 echo "extension=igbinary"
 echo "extension=redis"
 echo "extension=iconv"
+echo "extension=sodium"
 echo "===================================="
 
 # echo "===================================="
