@@ -4,7 +4,7 @@ echo "===================================="
 echo "Installing PHP and essential extensions..."
 echo "===================================="
 
-sudo pacman -S php php-fpm php-gd php-intl php-redis php-sqlite
+sudo pacman -S php php-fpm php-gd php-intl php-redis php-sqlite php-sodium
 
 sudo systemctl enable php-fpm
 sudo systemctl start php-fpm
