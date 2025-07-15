@@ -34,7 +34,7 @@ $ stow .
     -   3. `Discord`
     -   4. `Zoom`
 -   5. Productivity:
-    -   1. `Pomatez`
+    -   1. `Termodoro`
     -   2. `Todoist`
     -   3. `Keep`
     -   4. `Asana`
