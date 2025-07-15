@@ -50,7 +50,6 @@ local formatters = {
         "pint",
 
         "gofmt",
-        "goimports",
         "templ",
 
         "cmake_format",
