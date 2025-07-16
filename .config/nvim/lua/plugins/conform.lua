@@ -25,7 +25,6 @@ local formatters = {
         -- C/C++
         c = { "clang-format" },
         cpp = { "clang-format" },
-        cmake = { "cmake_format" },
 
         -- Others
         lua = { "stylua" },
@@ -51,8 +50,6 @@ local formatters = {
 
         "gofmt",
         "templ",
-
-        "cmake_format",
     },
 }
 
