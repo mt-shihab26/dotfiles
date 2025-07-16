@@ -98,8 +98,9 @@ bindkey '^[w' kill-region
 # export XDG_SESSION_TYPE=wayland
 
 export PATH="$PATH:$HOME/.config/composer/vendor/bin"
-export PATH="$PATH:$HOME/go/bin"
 export PATH="$PATH:$HOME/.local/share/nvim/mason/bin"
+export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:$HOME/go/bin"
 
 ############################
 # Aliases
