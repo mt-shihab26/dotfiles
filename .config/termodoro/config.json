@@ -1,3 +1,4 @@
 {
-    "work_session_duration": 55
+    "work_session_duration": 55,
+    "long_break_session_interval": 2
 }
