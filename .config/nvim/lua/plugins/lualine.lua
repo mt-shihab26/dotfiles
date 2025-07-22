@@ -44,7 +44,7 @@ return {
             lualine_x = {
                 {
                     "copilot",
-                    show_colors = false,
+                    show_colors = true,
                     show_loading = true,
                 },
                 "encoding",
