@@ -45,6 +45,8 @@ return {
         { "<S-h>", "<cmd>BufferLineCyclePrev<cr>", desc = "prev buffer (bufferline)" },
         { "<S-l>", "<cmd>BufferLineCycleNext<cr>", desc = "next buffer (bufferline)" },
         { "<leader>Q", "<cmd>bp<bar>sp<bar>bn<bar>bd<cr>", mode = "n", desc = "close current buffer (bufferline)" },
-        { "<leader>q", "<Cmd>BufferLineCloseOthers<CR>", desc = "delete other buffers (bufferline)" },
+        { "<leader>qo", "<Cmd>BufferLineCloseOthers<CR>", desc = "delete other buffers (bufferline)" },
+        { "<leader>ql", "<Cmd>BufferLineCloseRight<CR>", desc = "delete buffers to the right (bufferline)" },
+        { "<leader>qh", "<Cmd>BufferLineCloseLeft<CR>", desc = "delete buffers to the left (bufferline)" },
     },
 }
