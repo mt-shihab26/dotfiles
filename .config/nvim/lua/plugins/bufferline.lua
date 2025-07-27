@@ -1,16 +1,26 @@
 return {
     "akinsho/bufferline.nvim",
-    event = "VeryLazy",
-    version = "*",
     dependencies = {
         "nvim-tree/nvim-web-devicons",
     },
+    event = "VeryLazy",
+    keys = {
+        { "<S-h>", "<cmd>BufferLineCyclePrev<cr>", desc = "prev buffer (bufferline)" },
+        { "<S-l>", "<cmd>BufferLineCycleNext<cr>", desc = "next buffer (bufferline)" },
+        { "<leader>Q", "<cmd>bp<bar>sp<bar>bn<bar>bd<cr>", mode = "n", desc = "close current buffer (bufferline)" },
+        { "<leader>q", "<Cmd>BufferLineCloseOthers<CR>", desc = "delete other buffers (bufferline)" },
+        { "<leader>cl", "<Cmd>BufferLineCloseRight<CR>", desc = "delete buffers to the right (bufferline)" },
+        { "<leader>ch", "<Cmd>BufferLineCloseLeft<CR>", desc = "delete buffers to the left (bufferline)" },
+    },
     opts = {
         options = {
-            mode = "buffers",
-            numbers = "none",
             close_command = "bdelete! %d",
             right_mouse_command = "bdelete! %d",
+            diagnostics = "nvim_lsp",
+            diagnostics_update_in_insert = false,
+            always_show_bufferline = false,
+            mode = "buffers",
+            numbers = "none",
             left_mouse_command = "buffer %d",
             middle_mouse_command = nil,
             indicator = {
@@ -21,8 +31,6 @@ return {
             close_icon = "",
             left_trunc_marker = "",
             right_trunc_marker = "",
-            diagnostics = "nvim_lsp",
-            diagnostics_update_in_insert = false,
             exclude_ft = { "dashboard" },
             offsets = {
                 {
@@ -38,15 +46,6 @@ return {
             show_tab_indicators = true,
             separator_style = "thin",
             enforce_regular_tabs = false,
-            always_show_bufferline = false,
         },
-    },
-    keys = {
-        { "<S-h>", "<cmd>BufferLineCyclePrev<cr>", desc = "prev buffer (bufferline)" },
-        { "<S-l>", "<cmd>BufferLineCycleNext<cr>", desc = "next buffer (bufferline)" },
-        { "<leader>Q", "<cmd>bp<bar>sp<bar>bn<bar>bd<cr>", mode = "n", desc = "close current buffer (bufferline)" },
-        { "<leader>qo", "<Cmd>BufferLineCloseOthers<CR>", desc = "delete other buffers (bufferline)" },
-        { "<leader>ql", "<Cmd>BufferLineCloseRight<CR>", desc = "delete buffers to the right (bufferline)" },
-        { "<leader>qh", "<Cmd>BufferLineCloseLeft<CR>", desc = "delete buffers to the left (bufferline)" },
     },
 }
