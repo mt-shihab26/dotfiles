@@ -4,6 +4,8 @@ if [[ $1 == "projects" ]]; then
     selected=$(find ~/projects -mindepth 1 -maxdepth 1 -type d | fzf)
 elif [[ $1 == "learns" ]]; then
     selected=$(find ~/learns -mindepth 1 -maxdepth 2 -type d -not -path "*/.git*" | fzf)
+elif [[ $1 == "playground" ]]; then
+    selected=$(find ~/playground/wp-content/plugins -mindepth 1 -maxdepth 1 -type d -not -path "*/.git*" | fzf)
 elif [[ $# -eq 1 ]]; then
     selected=$1
 else
