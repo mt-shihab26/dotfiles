@@ -15,7 +15,7 @@ return {
             astro = {}, -- Astro
 
             -- PHP
-            intelephense = {}, -- PHP
+            intelephense = require "settings.intelephense", -- PHP
 
             -- Python
             pyright = require "settings.pyright", -- Python
