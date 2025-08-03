@@ -3,12 +3,15 @@
 | Category           | Task                           | Command                           | 
 | -----------------  | ------------------------------ | --------------------------------- |
 |                    | Open a file inside neovim      | `:e <filename>`                   |
-|                    | Source current lua file        | `:so`                             |
+|                    | Source current lua file        | `:so` `:source`                   |
 
 
 ## Neovim Keymaps 
 
 | Category           | Task                           | Command                           | 
 | -----------------  | ------------------------------ | --------------------------------- |
-| **Compleation**    | Complete with onmi completion      | `ctrl + xo`                   |
+|                    | Complete with onmi completion  | `ctrl + xo`                       |
+|                    | Sourc current lua file         | `<leader>+o`                      |
+|                    | Save current buffer            | `<leader>+w`                      |
+|                    | quit current buffer            | `<leader>+q`                      |
 
