@@ -1,3 +1,5 @@
+# Keymaps
+
 ## Window Management Keymaps
 
 | Keybinding                  | Action                                         |
