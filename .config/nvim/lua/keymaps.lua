@@ -2,7 +2,7 @@ vim.keymap.set("n", "<esc>", "<cmd>nohlsearch<cr>", { desc = "clear search highl
 
 vim.keymap.set("x", "p", '"_dP', { desc = "paste without yanking selected text", noremap = true })
 
-vim.keymap.set("n", "<leader>x", "<cmd>Exe<cr>", { desc = "execute current file based on language" })
+vim.keymap.set("n", "<leader>x", "<cmd>CFExe<cr>", { desc = "execute current file based on language of cp" })
 
 -- moving around nvim windows
 vim.keymap.set("n", "<leader>h", "<C-w>h", { desc = "move to left window", noremap = true, silent = true })
