@@ -29,9 +29,4 @@
 | **Miscellaneous** | Show config                    | _Edit `/etc/pacman.conf`_     | `yay -P`                   |
 |                   | Download AUR PKGBUILD          | _N/A_                         | `yay -G <aur-package>`     |
 
-# Neovim Commands
-
-| Category           | Task                           | Command                           | 
-| -----------------  | ------------------------------ | --------------------------------- |
-| **Files Browsing** | Open a file inside neovim      | `:e <filename>`                   |
 
