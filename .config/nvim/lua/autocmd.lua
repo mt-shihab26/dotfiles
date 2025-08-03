@@ -72,30 +72,23 @@ end, {})
 vim.api.nvim_create_user_command("CFExe", function()
     local ft = vim.bo.filetype
     local filename = vim.fn.expand "%"
-    local cmd = ""
+    local term_cmd = ""
 
     if ft == "c" then
-        cmd = "gcc " .. filename .. " -o ~/.tmp/gcc.out && ~/.tmp/gcc.out < input.txt > output.txt"
+        term_cmd = "gcc " .. filename .. " -o ~/.tmp/gcc.out && ~/.tmp/gcc.out < input.txt > output.txt"
     elseif ft == "cpp" then
-        cmd = "g++ " .. filename .. " -o ~/.tmp/gpp.out && ~/.tmp/gpp.out < input.txt > output.txt"
+        term_cmd = "g++ " .. filename .. " -o ~/.tmp/gpp.out && ~/.tmp/gpp.out < input.txt > output.txt"
     elseif ft == "rust" then
-        cmd = "rustc " .. filename .. " -o ~/.tmp/rust.out && ~/.tmp/rust.out < input.txt > output.txt"
+        term_cmd = "rustc " .. filename .. " -o ~/.tmp/rust.out && ~/.tmp/rust.out < input.txt > output.txt"
     elseif ft == "go" then
-        cmd = "go run " .. filename .. " < input.txt > output.txt"
+        term_cmd = "go run " .. filename .. " < input.txt > output.txt"
     else
         print("unsupported filetype: " .. ft)
         return
     end
 
-    vim.fn.jobstart(cmd, {
-        on_exit = function(_, exit_code)
-            if exit_code == 0 then
-                print "Execution successful. Output written to output.txt"
-            else
-                print "Execution failed. Check output.txt or error output."
-            end
-        end,
-    })
+    -- Open terminal in a horizontal split and run the command
+    vim.cmd("split | terminal bash -c '" .. term_cmd .. "; exec bash'")
 
     -- Enter insert mode automatically
     vim.cmd "startinsert"
