@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-TARGET_DIR="$(realpath ../nvim-v1)"
+TARGET_DIR="$(realpath ../nvim-v2)"
 LINK_NAME="$(realpath ../)/nvim"
 
 rm "$LINK_NAME"
