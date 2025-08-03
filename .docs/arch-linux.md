@@ -1,6 +1,4 @@
-# Commands
-
-## Arch Linux Package Management
+# Arch Linux Package Management
 
 | Category          | Task                           | `pacman` Command              | `yay` Command              |
 | ----------------- | ------------------------------ | ----------------------------- | -------------------------- |
@@ -28,5 +26,3 @@
 |                   | Clean all cached packages      | `pacman -Scc`                 | `yay -Scc`                 |
 | **Miscellaneous** | Show config                    | _Edit `/etc/pacman.conf`_     | `yay -P`                   |
 |                   | Download AUR PKGBUILD          | _N/A_                         | `yay -G <aur-package>`     |
-
-
