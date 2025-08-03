@@ -29,3 +29,9 @@
 | `Ctrl + Shift + W` | Launch new window: `~/.scripts/tmux/sessionizer.sh projects`   |
 | `Ctrl + Shift + L` | Launch new window: `~/.scripts/tmux/sessionizer.sh learns`     |
 | `Ctrl + Shift + P` | Launch new window: `~/.scripts/tmux/sessionizer.sh playground` |
+
+## Neovim Keymaps
+
+| Keybinding | Action |
+| ---------- | ------ |
+| world      | hello  |
