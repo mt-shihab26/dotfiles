@@ -76,7 +76,7 @@
             "󰤨"
         ],
         "format": "{icon}",
-        "format-wifi": "{icon}",
+        "format-wifi": "{icon} {essid} {bandwidthDownBytes}",
         "format-ethernet": "󰀂",
         "format-disconnected": "󰖪",
         "tooltip-format-wifi": "{essid} ({frequency} GHz)\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
@@ -129,8 +129,8 @@
     "bluetooth": {
         "format": "",
         "format-disabled": "󰂲",
-        "format-connected": "",
-        "tooltip-format": "Devices connected: {num_connections}",
+        "format-connected": " {device_alias}",
+        "tooltip-format": "{controller_address} {num_connections} connected",
         "on-click": "blueberry"
     },
     "pulseaudio": {
