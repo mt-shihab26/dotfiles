@@ -1,5 +1,5 @@
 return {
-    {
-        dir = "~/projects/competitive-companion.nvim",
-    },
+    -- {
+    --    dir = "~/projects/competitive-companion.nvim",
+    -- },
 }
