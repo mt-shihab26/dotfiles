@@ -101,6 +101,7 @@ export PATH="$PATH:$HOME/.config/composer/vendor/bin"
 export PATH="$PATH:$HOME/.local/share/nvim/mason/bin"
 export PATH="$PATH:$HOME/.local/share/bob/nvim-bin"
 export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:$HOME/.local/share/gem/ruby/3.4.0/bin"
 export PATH="$PATH:$HOME/go/bin"
 
 ############################
