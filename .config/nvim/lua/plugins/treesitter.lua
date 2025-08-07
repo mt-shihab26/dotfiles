@@ -15,6 +15,10 @@ return {
                 "astro",
                 "vue",
 
+                -- Ruby
+                "ruby",
+                "embedded_template",
+
                 -- PHP
                 "php",
                 "php_only",
@@ -61,7 +65,6 @@ return {
                 "gitignore",
                 "gitattributes",
 
-                -- "ruby",
                 -- "elixir",
                 -- "heex",
                 -- "eex",

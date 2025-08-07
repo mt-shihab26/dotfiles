@@ -13,24 +13,20 @@ return {
             -- JavaScript
             vtsls = require "settings.vtsls", -- TypeScript
             astro = {}, -- Astro
-
+            -- Ruby
+            ruby_lsp = {},
             -- PHP
             intelephense = require "settings.intelephense", -- PHP
-
             -- Python
             pyright = require "settings.pyright", -- Python
-
             -- Go
             gopls = require "settings.gopls", -- Go
             templ = {}, -- Go Templ
-
             -- Rust
             rust_analyzer = {}, -- Rust
-
             -- C/C++
             clangd = {}, -- C/C++
             autotools_ls = {}, -- Makefile
-
             -- Others
             lua_ls = require "settings.lua_ls", -- Lua
             html = {}, -- HTML
@@ -41,7 +37,6 @@ return {
             jsonls = {}, -- Json
             yamlls = {}, -- YAML
             bashls = {}, -- Bash
-
             -- sqls = {}, -- SQL
             -- dockerls = {}, -- Docker
             -- docker_compose_language_service = {}, -- Docker
@@ -49,7 +44,6 @@ return {
             -- htmx = {}, -- HTMX
             -- angularls = {}, -- Angular
             -- svelte = {}, -- Svelte
-            -- ruby_lsp = {}, -- Ruby
             -- elixirls = {}, -- Elixir
             -- zls = {}, -- Zig
         }
