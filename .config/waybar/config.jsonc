@@ -20,6 +20,11 @@
         "cpu",
         "battery"
     ],
+    "custom/omarchy": {
+        "format": "",
+        "on-click": "~/.local/share/omarchy/bin/omarchy-menu",
+        "tooltip-format": "SUPER + ALT + SPACE"
+    },
     "hyprland/workspaces": {
         "on-click": "activate",
         "format": "{icon}",
@@ -45,10 +50,11 @@
             "6": []
         }
     },
-    "custom/omarchy": {
-        "format": "",
-        "on-click": "~/.local/share/omarchy/bin/omarchy-menu",
-        "tooltip-format": "SUPER + ALT + SPACE"
+    "clock": {
+        "format": "{:%A %H:%M}",
+        "format-alt": "{:%d %B W%V %Y}",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "on-click-right": "~/.local/share/omarchy/bin/omarchy-cmd-tzupdate"
     },
     "custom/update": {
         "format": "",
@@ -56,16 +62,23 @@
         "on-click": "alacritty --class Omarchy --title Omarchy -e omarchy-update",
         "interval": 3600
     },
-    "cpu": {
-        "interval": 5,
-        "format": "󰍛",
-        "on-click": "alacritty -e btop"
+    "group/tray-expander": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 600,
+            "children-class": "tray-group-item"
+        },
+        "modules": [
+            "custom/expand-icon",
+            "tray"
+        ]
     },
-    "clock": {
-        "format": "{:%A %H:%M}",
-        "format-alt": "{:%d %B W%V %Y}",
-        "tooltip": false,
-        "on-click-right": "~/.local/share/omarchy/bin/omarchy-cmd-tzupdate"
+    "bluetooth": {
+        "format": "",
+        "format-disabled": "󰂲",
+        "format-connected": " {device_alias}",
+        "tooltip-format": "{controller_address} {num_connections} connected",
+        "on-click": "blueberry"
     },
     "network": {
         "format-icons": [
@@ -77,20 +90,37 @@
         ],
         "format": "{icon}",
         "format-wifi": "{icon} {essid} {bandwidthDownBytes}",
-        "format-ethernet": "󰀂",
+        "format-ethernet": "󰀂 {ipaddr}/{cidr} {bandwidthDownBytes}",
+        "format-linked": " {ifname} {bandwidthDownBytes}",
         "format-disconnected": "󰖪",
         "tooltip-format-wifi": "{essid} ({frequency} GHz)\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
-        "tooltip-format-ethernet": "⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
-        "tooltip-format-disconnected": "Disconnected",
+        "tooltip-format-ethernet": "{ipaddr}/{cidr} ⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+        "tooltip-format-disconnected": "disconnected",
         "interval": 3,
         "nospacing": 1,
         "on-click": "alacritty --class=Impala -e impala"
     },
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": "󰝟",
+        "on-click": "alacritty --class=Wiremix -e wiremix",
+        "on-click-right": "pamixer -t",
+        "tooltip-format": "Playing at {volume}%",
+        "scroll-step": 5,
+        "format-icons": {
+            "default": [
+                "",
+                "",
+                ""
+            ]
+        }
+    },
+    "cpu": {
+        "interval": 5,
+        "format": "󰍛 {usage}%",
+        "on-click": "alacritty -e btop"
+    },
     "battery": {
-        "format": "{capacity}% {icon}",
-        "format-discharging": "{icon}",
-        "format-charging": "{icon}",
-        "format-plugged": "",
         "format-icons": {
             "charging": [
                 "󰢜",
@@ -117,7 +147,8 @@
                 "󰁹"
             ]
         },
-        "format-full": "󰂅",
+        "format": "{icon} {capacity}%",
+        "format-full": "󰂅 {capacity}%",
         "tooltip-format-discharging": "{power:>1.0f}W↓ {capacity}%",
         "tooltip-format-charging": "{power:>1.0f}W↑ {capacity}%",
         "interval": 5,
@@ -125,39 +156,6 @@
             "warning": 20,
             "critical": 10
         }
-    },
-    "bluetooth": {
-        "format": "",
-        "format-disabled": "󰂲",
-        "format-connected": " {device_alias}",
-        "tooltip-format": "{controller_address} {num_connections} connected",
-        "on-click": "blueberry"
-    },
-    "pulseaudio": {
-        "format": "{icon}",
-        "on-click": "alacritty --class=Wiremix -e wiremix",
-        "on-click-right": "pamixer -t",
-        "tooltip-format": "Playing at {volume}%",
-        "scroll-step": 5,
-        "format-muted": "󰝟",
-        "format-icons": {
-            "default": [
-                "",
-                "",
-                ""
-            ]
-        }
-    },
-    "group/tray-expander": {
-        "orientation": "inherit",
-        "drawer": {
-            "transition-duration": 600,
-            "children-class": "tray-group-item"
-        },
-        "modules": [
-            "custom/expand-icon",
-            "tray"
-        ]
     },
     "custom/expand-icon": {
         "format": " ",
