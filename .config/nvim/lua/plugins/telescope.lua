@@ -150,19 +150,19 @@ return {
             end,
             desc = "grep all files (telescope)",
         },
-        -- {
-        --     "<leader>h",
-        --     function()
-        --         require("telescope.builtin").help_tags()
-        --     end,
-        --     desc = "help tags (telescope)",
-        -- },
-        -- {
-        --     "<leader>H",
-        --     function()
-        --         require("telescope.builtin").lsp_document_symbols()
-        --     end,
-        --     desc = "lsp document symbols (telescope)",
-        -- },
+        {
+            "<leader>h",
+            function()
+                require("telescope.builtin").help_tags()
+            end,
+            desc = "help tags (telescope)",
+        },
+        {
+            "<leader>H",
+            function()
+                require("telescope.builtin").lsp_document_symbols()
+            end,
+            desc = "lsp document symbols (telescope)",
+        },
     },
 }
