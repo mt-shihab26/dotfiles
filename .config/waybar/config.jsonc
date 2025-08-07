@@ -17,8 +17,12 @@
         "bluetooth",
         "network",
         "pulseaudio",
+        "memory",
         "cpu",
-        "battery"
+        "temperature",
+        "backlight",
+        "battery",
+        "hyprland/language"
     ],
     "custom/omarchy": {
         "format": "",
@@ -115,10 +119,42 @@
             ]
         }
     },
+    "memory": {
+        "format": " {}%"
+    },
     "cpu": {
         "interval": 5,
         "format": "󰍛 {usage}%",
         "on-click": "alacritty -e btop"
+    },
+    "temperature": {
+        "critical-threshold": 80,
+        "format": "{icon} {temperatureC}°C",
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    "backlight": {
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "format": "{percent}% {icon}",
+        "on-scroll-up": "brightnessctl set 1%- && [ $(brightnessctl get) -lt $(brightnessctl max | awk '{printf \"%d\", $1 * 0.05}') ] && brightnessctl set 5%",
+        "on-scroll-down": "brightnessctl set +1%",
+        "on-click": "~/.scripts/waybar/nightlight.sh"
     },
     "battery": {
         "format-icons": {
@@ -156,6 +192,12 @@
             "warning": 20,
             "critical": 10
         }
+    },
+    "hyprland/language": {
+        "min-length": 2,
+        "format-en": "EN",
+        "format-bn": "BD",
+        "on-click": "hyprctl switchxkblayout at-translated-set-2-keyboard next"
     },
     "custom/expand-icon": {
         "format": " ",

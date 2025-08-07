@@ -37,6 +37,10 @@
 #bluetooth,
 #pulseaudio,
 #clock,
+#hyprland-language,
+#memory,
+#temperature,
+#backlight,
 #custom-omarchy {
     min-width: 12px;
     margin: 0 7.5px;
