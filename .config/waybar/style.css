@@ -46,6 +46,10 @@
     margin: 0 7.5px;
 }
 
+#window {
+    margin-left: 7.5px;
+}
+
 #custom-expand-icon {
     margin-right: 12px;
 }
