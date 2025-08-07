@@ -92,17 +92,16 @@ bindkey '^[w' kill-region
 # Environment Variables
 ############################
 
-# export MOZ_ENABLE_WAYLAND=1
-# export QT_QPA_PLATFORM=wayland
-# export SDL_VIDEODRIVER=wayland
-# export XDG_SESSION_TYPE=wayland
+export GO_HOME="$HOME/go"
+export GEM_HOME="$(gem env user_gemhome)"
+export COMPOSER_HOME="$HOME/.config/composer"
 
-export PATH="$PATH:$HOME/.config/composer/vendor/bin"
+export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/.local/share/nvim/mason/bin"
 export PATH="$PATH:$HOME/.local/share/bob/nvim-bin"
-export PATH="$PATH:$HOME/.local/bin"
-export PATH="$PATH:$HOME/.local/share/gem/ruby/3.4.0/bin"
-export PATH="$PATH:$HOME/go/bin"
+export PATH="$PATH:$GEM_HOME/bin"
+export PATH="$PATH:$COMPOSER_HOME/vendor/bin"
+export PATH="$PATH:$GO_HOME/bin"
 
 ############################
 # Aliases
