@@ -1,3 +1,8 @@
 #!/bin/sh
 
-pacman -Ss openjdk
+sudo pacman -S jdk-openjdk
+
+java -version
+javac -version
+
+echo "$JAVA_HOME"

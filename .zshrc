@@ -95,6 +95,7 @@ bindkey '^[w' kill-region
 export GO_HOME="$HOME/go"
 export GEM_HOME="$(gem env user_gemhome)"
 export COMPOSER_HOME="$HOME/.config/composer"
+export JAVA_HOME="/usr/lib/jvm/default"
 
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/.local/share/nvim/mason/bin"
@@ -102,6 +103,7 @@ export PATH="$PATH:$HOME/.local/share/bob/nvim-bin"
 export PATH="$PATH:$GEM_HOME/bin"
 export PATH="$PATH:$COMPOSER_HOME/vendor/bin"
 export PATH="$PATH:$GO_HOME/bin"
+export PATH="$PATH:$JAVA_HOME/bin"
 
 ############################
 # Aliases
