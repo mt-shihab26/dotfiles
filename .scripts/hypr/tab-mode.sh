@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 
 # Map this script to a key to toggle "tab mode" (ON and OFF), where all windows
 # are placed inside one same (tabbed) group
