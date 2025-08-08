@@ -24,11 +24,12 @@ _darcs
 
 .DS_Store
 
+# Additional
+
 .luarc.json
 .stylua.toml
 
-.install
-.docs
-
+docs
+install
 LICENSE
 README.md
