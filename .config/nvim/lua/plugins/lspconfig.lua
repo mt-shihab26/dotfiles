@@ -104,6 +104,18 @@ return {
 
             map("n", "[d", diagnostic.goto_prev, opts { desc = "go to prev diagnostic (lspconfig)" })
             map("n", "]d", diagnostic.goto_next, opts { desc = "go to next diagnostic (lspconfig)" })
+
+            map("n", "<leader>ls", function()
+                vim.cmd "LspStart"
+            end, opts { desc = "start LSP server" })
+
+            map("n", "<leader>lS", function()
+                vim.cmd "LspStop"
+            end, opts { desc = "stop LSP server" })
+
+            map("n", "<leader>lr", function()
+                vim.cmd "LspRestart"
+            end, opts { desc = "restart LSP server" })
         end
 
         for server_name, server_settings in pairs(servers) do
