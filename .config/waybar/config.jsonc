@@ -82,7 +82,7 @@
     "bluetooth": {
         "format": "",
         "format-disabled": "󰂲",
-        "format-connected": " {device_alias}",
+        "format-connected": " {device_alias}",
         "tooltip-format": "{controller_address} {num_connections} connected",
         "on-click": "blueberry"
     },
