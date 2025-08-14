@@ -31,7 +31,7 @@ ADMIN_PASSWORD="adminpass"
 ADMIN_EMAIL="admin@example.com"
 DB_NAME="${DB_NAME}"
 DB_USER="root"
-DB_PASSWORD="root"
+DB_PASSWORD="2611"
 
 # Create target directory
 mkdir -p "$TARGET_PATH/$PLUGIN_SLUG"
@@ -58,7 +58,8 @@ wp core install \
     --title="$SITE_TITLE" \
     --admin_user="$ADMIN_USER" \
     --admin_password="$ADMIN_PASSWORD" \
-    --admin_email="$ADMIN_EMAIL"
+    --admin_email="$ADMIN_EMAIL" \
+    --skip-email
 
 # Remove all plugins
 wp plugin delete --all
