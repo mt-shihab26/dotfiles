@@ -4,18 +4,26 @@ set -e
 
 # Check at least 2 parameters
 if [ "$#" -lt 2 ]; then
-    echo "Usage: $0 <plugin_title> <target_path> [--elementor]"
+    echo "Usage: $0 <plugin_title> <target_path> [--elementor] [--valet]"
     exit 1
 fi
 
 PLUGIN_TITLE="$1"
 TARGET_PATH="$2"
 INSTALL_ELEMENTOR=false
+USE_VALET=false
 
-# Check for optional --elementor flag
-if [[ "$3" == "--elementor" ]]; then
-    INSTALL_ELEMENTOR=true
-fi
+# Check optional flags
+for arg in "${@:3}"; do
+    case "$arg" in
+    --elementor)
+        INSTALL_ELEMENTOR=true
+        ;;
+    --valet)
+        USE_VALET=true
+        ;;
+    esac
+done
 
 # Slugify the plugin title: lowercase, replace spaces with hyphens, remove special chars
 PLUGIN_SLUG=$(echo "$PLUGIN_TITLE" | tr '[:upper:]' '[:lower:]' | sed -E 's/[^a-z0-9]+/-/g' | sed -E 's/^-+|-+$//g')
@@ -26,10 +34,9 @@ DB_NAME=$(echo "$PLUGIN_TITLE" | tr '[:upper:]' '[:lower:]' | sed -E 's/[^a-z0-9
 # WordPress configuration
 SITE_URL="https://${PLUGIN_SLUG}.test"
 SITE_TITLE="$PLUGIN_TITLE"
-ADMIN_USER="admin"
-ADMIN_PASSWORD="adminpass"
-ADMIN_EMAIL="admin@example.com"
-DB_NAME="${DB_NAME}"
+ADMIN_USER="shihab"
+ADMIN_PASSWORD="2611"
+ADMIN_EMAIL="mt.shihab26@gmail.com"
 DB_USER="root"
 DB_PASSWORD="2611"
 
@@ -69,7 +76,8 @@ EOL
 # Append debug settings
 append_wp_debug_config
 
-wp db create # Create database
+# Create database
+wp db create
 
 # Install WordPress
 wp core install \
@@ -98,5 +106,15 @@ fi
 # Remove all other themes
 wp theme delete --all
 
+# Run Valet commands if flag is set
+if [ "$USE_VALET" = true ]; then
+    echo "Running Valet commands..."
+    valet link
+    valet secure
+    valet open
+fi
+
 echo "WordPress site created successfully!"
 echo "Login at: $SITE_URL/wp-admin"
+
+cd ~
