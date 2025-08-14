@@ -19,6 +19,10 @@ return {
             intelephense = require "settings.intelephense", -- PHP
             -- Python
             pyright = require "settings.pyright", -- Python
+            -- Java
+            java_language_server = {}, -- Java
+            kotlin_lsp = {}, -- Kotlin
+            gradle_ls = {}, -- Gradle
             -- Go
             gopls = require "settings.gopls", -- Go
             templ = {}, -- Go Templ

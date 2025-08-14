@@ -27,6 +27,11 @@ return {
                 -- Python
                 "python",
 
+                -- Java
+                "java",
+                "kotlin",
+                "gradle",
+
                 -- Go
                 "go",
                 "gomod",

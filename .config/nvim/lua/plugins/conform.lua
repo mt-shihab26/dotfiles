@@ -21,6 +21,8 @@ return {
                 blade = { "prettier" },
                 -- Python
                 python = { "ruff" },
+                -- Java
+                -- java = {}, -- TODO
                 -- Go
                 go = { "goimports", "gofmt" },
                 templ = { "templ" },
