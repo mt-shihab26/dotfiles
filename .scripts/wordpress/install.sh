@@ -20,13 +20,16 @@ fi
 # Slugify the plugin title: lowercase, replace spaces with hyphens, remove special chars
 PLUGIN_SLUG=$(echo "$PLUGIN_TITLE" | tr '[:upper:]' '[:lower:]' | sed -E 's/[^a-z0-9]+/-/g' | sed -E 's/^-+|-+$//g')
 
+# Underscore version for DB name
+DB_NAME=$(echo "$PLUGIN_TITLE" | tr '[:upper:]' '[:lower:]' | sed -E 's/[^a-z0-9]+/_/g' | sed -E 's/^_+|_+$//g')
+
 # WordPress configuration
 SITE_URL="https://${PLUGIN_SLUG}.test"
 SITE_TITLE="$PLUGIN_TITLE"
 ADMIN_USER="admin"
 ADMIN_PASSWORD="adminpass"
 ADMIN_EMAIL="admin@example.com"
-DB_NAME="${PLUGIN_SLUG}_db"
+DB_NAME="${DB_NAME}"
 DB_USER="root"
 DB_PASSWORD="root"
 
