@@ -67,8 +67,15 @@ return {
         }
         lsp_file_operations.setup()
 
-        local capabilities = cmp_nvim_lsp.default_capabilities()
+        -- Fixed capabilities configuration
+        local capabilities = vim.tbl_deep_extend(
+            "force",
+            vim.lsp.protocol.make_client_capabilities(),
+            cmp_nvim_lsp.default_capabilities(),
+            lsp_file_operations.default_capabilities()
+        )
 
+        -- Fixed handler syntax
         vim.lsp.handlers["textDocument/definition"] = function(_, result, _, _)
             if not result or vim.tbl_isempty(result) then
                 vim.notify("No definition found", vim.log.levels.WARN)
@@ -81,14 +88,6 @@ return {
                 vim.lsp.util.jump_to_location(result, "utf-8")
             end
         end
-
-        lspconfig.util.default_config = vim.tbl_extend("force", lspconfig.util.default_config, {
-            capabilities = vim.tbl_deep_extend(
-                "force",
-                vim.lsp.protocol.make_client_capabilities(),
-                lsp_file_operations.default_capabilities()
-            ),
-        })
 
         local on_attach = function()
             local opts = function(opts)
