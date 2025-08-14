@@ -30,7 +30,7 @@ return {
                 -- Java
                 "java",
                 "kotlin",
-                "gradle",
+                -- "gradle", -- Parser not available
 
                 -- Go
                 "go",
