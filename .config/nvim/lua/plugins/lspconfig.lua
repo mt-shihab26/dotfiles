@@ -57,6 +57,7 @@ return {
         local mason_lspconfig = require "mason-lspconfig"
         local cmp_nvim_lsp = require "cmp_nvim_lsp"
         local lsp_file_operations = require "lsp-file-operations"
+        local lsp_func = require "utils.lsp-func"
 
         mason.setup {}
         mason_lspconfig.setup {
@@ -113,17 +114,9 @@ return {
             map("n", "[d", diagnostic.goto_prev, opts { desc = "go to prev diagnostic (lspconfig)" })
             map("n", "]d", diagnostic.goto_next, opts { desc = "go to next diagnostic (lspconfig)" })
 
-            map("n", "<leader>ls", function()
-                vim.cmd "LspStart"
-            end, opts { desc = "start LSP server" })
-
-            map("n", "<leader>lS", function()
-                vim.cmd "LspStop"
-            end, opts { desc = "stop LSP server" })
-
-            map("n", "<leader>lr", function()
-                vim.cmd "LspRestart"
-            end, opts { desc = "restart LSP server" })
+            map("n", "<leader>ls", lsp_func.lsp_start, opts { desc = "start LSP server" })
+            map("n", "<leader>lS", lsp_func.lsp_stop, opts { desc = "stop LSP server" })
+            map("n", "<leader>lr", lsp_func.lsp_restart, opts { desc = "restart LSP server" })
         end
 
         for server_name, server_settings in pairs(servers) do
