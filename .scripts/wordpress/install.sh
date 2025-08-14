@@ -49,8 +49,27 @@ wp config create \
     --dbpass="$DB_PASSWORD" \
     --skip-check
 
-# Create database
-wp db create
+# Function to append WP debug settings to wp-config.php
+append_wp_debug_config() {
+    cat <<'EOL' >>wp-config.php
+
+// Enable WP_DEBUG mode
+define('WP_DEBUG', true);
+
+// Enable Debug logging to the /wp-content/debug.log file
+define('WP_DEBUG_LOG', true);
+
+// Disable display of errors and warnings
+define('WP_DEBUG_DISPLAY', false);
+@ini_set('display_errors', 0);
+EOL
+    echo "Debug configuration added to wp-config.php"
+}
+
+# Append debug settings
+append_wp_debug_config
+
+wp db create # Create database
 
 # Install WordPress
 wp core install \
