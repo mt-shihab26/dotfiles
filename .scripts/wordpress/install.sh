@@ -33,8 +33,17 @@ wp core install \
 echo "Removing all plugins..."
 wp plugin delete --all
 
+echo "Installing Elementor..."
+wp plugin install elementor --activate
+
+echo "Installing Duplicate Page plugin..."
+wp plugin install duplicate-page --activate
+
+echo "Installing and activating Hello Elementor theme..."
+wp theme install hello-elementor --activate
+
 echo "Removing all other themes..."
 wp theme delete --all
 
-echo "✅ WordPress site created successfully!"
+echo "WordPress site created successfully!"
 echo "Login at: $SITE_URL/wp-admin"
