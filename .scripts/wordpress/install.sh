@@ -2,27 +2,54 @@
 
 set -e
 
-SITE_URL="https://atlas.test"
-SITE_TITLE="Atlas"
-ADMIN_USER="shihab"
-ADMIN_PASSWORD="2611"
-ADMIN_EMAIL="mt.shihab26@gmail.com"
-DB_NAME="atlas"
+# Check at least 2 parameters
+if [ "$#" -lt 2 ]; then
+    echo "Usage: $0 <plugin_title> <target_path> [--elementor]"
+    exit 1
+fi
+
+PLUGIN_TITLE="$1"
+TARGET_PATH="$2"
+INSTALL_ELEMENTOR=false
+
+# Check for optional --elementor flag
+if [[ "$3" == "--elementor" ]]; then
+    INSTALL_ELEMENTOR=true
+fi
+
+# Slugify the plugin title: lowercase, replace spaces with hyphens, remove special chars
+PLUGIN_SLUG=$(echo "$PLUGIN_TITLE" | tr '[:upper:]' '[:lower:]' | sed -E 's/[^a-z0-9]+/-/g' | sed -E 's/^-+|-+$//g')
+
+# WordPress configuration
+SITE_URL="https://${PLUGIN_SLUG}.test"
+SITE_TITLE="$PLUGIN_TITLE"
+ADMIN_USER="admin"
+ADMIN_PASSWORD="adminpass"
+ADMIN_EMAIL="admin@example.com"
+DB_NAME="${PLUGIN_SLUG}_db"
 DB_USER="root"
-DB_PASSWORD="2611"
+DB_PASSWORD="root"
+
+# Create target directory
+mkdir -p "$TARGET_PATH/$PLUGIN_SLUG"
+cd "$TARGET_PATH/$PLUGIN_SLUG"
 
 echo "Creating WordPress site in $(pwd)..."
 
+# Download WordPress
 wp core download
 
+# Create wp-config.php
 wp config create \
     --dbname="$DB_NAME" \
     --dbuser="$DB_USER" \
     --dbpass="$DB_PASSWORD" \
     --skip-check
 
+# Create database
 wp db create
 
+# Install WordPress
 wp core install \
     --url="$SITE_URL" \
     --title="$SITE_TITLE" \
@@ -30,19 +57,22 @@ wp core install \
     --admin_password="$ADMIN_PASSWORD" \
     --admin_email="$ADMIN_EMAIL"
 
-echo "Removing all plugins..."
+# Remove all plugins
 wp plugin delete --all
 
-echo "Installing Elementor..."
-wp plugin install elementor --activate
+# Install Elementor only if flag is set
+if [ "$INSTALL_ELEMENTOR" = true ]; then
+    echo "Installing Elementor..."
+    wp plugin install elementor --activate
 
-echo "Installing Duplicate Page plugin..."
-wp plugin install duplicate-page --activate
+    # Install Duplicate Page plugin
+    wp plugin install duplicate-page --activate
 
-echo "Installing and activating Hello Elementor theme..."
-wp theme install hello-elementor --activate
+    # Install Hello Elementor theme
+    wp theme install hello-elementor --activate
+fi
 
-echo "Removing all other themes..."
+# Remove all other themes
 wp theme delete --all
 
 echo "WordPress site created successfully!"
