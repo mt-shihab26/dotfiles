@@ -59,7 +59,11 @@ return {
         local lsp_file_operations = require "lsp-file-operations"
 
         mason.setup {}
-        mason_lspconfig.setup { ensure_installed = vim.tbl_keys(servers), automatic_installation = true }
+        mason_lspconfig.setup {
+            ensure_installed = vim.tbl_keys(servers),
+            automatic_installation = true,
+            automatic_enable = false,
+        }
         lsp_file_operations.setup()
 
         local capabilities = cmp_nvim_lsp.default_capabilities()
