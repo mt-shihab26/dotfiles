@@ -3,18 +3,18 @@
 set -e
 
 # Check at least 2 parameters
-if [ "$#" -lt 2 ]; then
-    echo "Usage: $0 <plugin_title> <target_path> [--elementor] [--valet]"
+if [ "$#" -lt 1 ]; then
+    echo "Usage: $0 <plugin_title> [--elementor] [--valet]"
     exit 1
 fi
 
 PLUGIN_TITLE="$1"
-TARGET_PATH="$2"
+TARGET_PATH="$(pwd)" # Use current working directory
 INSTALL_ELEMENTOR=false
-USE_VALET=false
+USE_VALET=falseP
 
-# Check optional flags
-for arg in "${@:3}"; do
+# Check optional flags (start from 2nd param)
+for arg in "${@:2}"; do
     case "$arg" in
     --elementor)
         INSTALL_ELEMENTOR=true
