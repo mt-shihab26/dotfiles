@@ -4,14 +4,15 @@ set -e
 
 # Check at least 2 parameters
 if [ "$#" -lt 1 ]; then
-    echo "Usage: $0 <plugin_title> [--elementor] [--valet]"
+    echo "Usage: $0 <plugin_title> [--elementor] [--valet] [--updraftplus]"
     exit 1
 fi
 
 PLUGIN_TITLE="$1"
 TARGET_PATH="$(pwd)" # Use current working directory
 INSTALL_ELEMENTOR=false
-USE_VALET=falseP
+USE_VALET=false
+INSTALL_UPDRAFTPLUS=false
 
 # Check optional flags (start from 2nd param)
 for arg in "${@:2}"; do
@@ -20,6 +21,9 @@ for arg in "${@:2}"; do
         INSTALL_ELEMENTOR=true
         ;;
     --valet)
+        USE_VALET=true
+        ;;
+    --updraftplus)
         USE_VALET=true
         ;;
     esac
@@ -101,6 +105,11 @@ if [ "$INSTALL_ELEMENTOR" = true ]; then
 
     # Install Hello Elementor theme
     wp theme install hello-elementor --activate
+fi
+
+if [ "$INSTALL_UPDRAFTPLUS" = true ]; then
+    echo "Installing UpdraftPlus..."
+    wp plugin install updraftplus --activate
 fi
 
 # Remove all other themes
