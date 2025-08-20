@@ -1,3 +1,3 @@
 #!/bin/sh
 
-bun install -g @anthropic-ai/claude-code
+yay -S claude-code
