@@ -29,8 +29,8 @@ return {
             -- Rust
             rust_analyzer = {}, -- Rust
             -- C/C++
-            -- clangd = {}, -- C/C++
-            -- autotools_ls = {}, -- Makefile
+            clangd = {}, -- C/C++
+            autotools_ls = {}, -- Makefile
             -- Others
             lua_ls = require "settings.lua_ls", -- Lua
             html = {}, -- HTML
