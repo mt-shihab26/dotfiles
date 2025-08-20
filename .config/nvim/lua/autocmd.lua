@@ -100,3 +100,27 @@ vim.api.nvim_create_autocmd("TermOpen", {
         vim.keymap.set("t", "<leader>q", "<C-\\><C-n>:bd!<CR>", { buffer = true, desc = "close terminal buffer" })
     end,
 })
+
+-- Auto disable/enable Copilot based on .no_copilot file presence
+local function check_copilot_file()
+    local cwd = vim.fn.getcwd()
+    local no_copilot_file = cwd .. "/.no_copilot"
+
+    if vim.fn.filereadable(no_copilot_file) == 1 then
+        if vim.g.copilot_enabled ~= false then
+            vim.g.copilot_enabled = false
+            vim.cmd "Copilot disable"
+            vim.notify("Copilot disabled (.no_copilot file found)", vim.log.levels.INFO)
+        end
+    else
+        if vim.g.copilot_enabled == false then
+            vim.g.copilot_enabled = true
+            vim.cmd "Copilot enable"
+            vim.notify("Copilot enabled", vim.log.levels.INFO)
+        end
+    end
+end
+
+vim.api.nvim_create_autocmd({ "DirChanged", "VimEnter" }, {
+    callback = check_copilot_file,
+})
