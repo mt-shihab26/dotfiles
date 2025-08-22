@@ -1,3 +1,3 @@
 #!/bin/sh
 
-yay -S claude-code
+sudo npm install -g @anthropic-ai/claude-code
