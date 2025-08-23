@@ -15,11 +15,13 @@ vim.keymap.set("n", "<leader>ti", "<cmd>ToggleIndenChar<cr>", { desc = "toggle t
 vim.keymap.set("n", "<leader>tw", "<cmd>ToggleWrap<cr>", { desc = "toggle line wrapping on/off" })
 vim.keymap.set("n", "<leader>tc", "<cmd>ToggleCopilot<cr>", { desc = "toggle gitHub copilot on/off" })
 
--- copy current file relative path
+-- copy current file relative path from file's directory
 vim.api.nvim_create_user_command("CopyFilePath", function()
-	local relative_path = vim.fn.expand("%")
+	local full_path = vim.fn.expand("%:p")
+	local current_dir = vim.fn.getcwd()
+	local relative_path = vim.fn.fnamemodify(full_path, ":." .. current_dir)
 	vim.fn.setreg("+", relative_path)
 	print("Copied to clipboard: " .. relative_path)
-end, { desc = "Copy current file relative path to clipboard" })
+end, { desc = "Copy current file path relative to cwd" })
 
 vim.keymap.set("n", "<leader>cp", "<cmd>CopyFilePath<cr>", { desc = "copy current file relative path" })
