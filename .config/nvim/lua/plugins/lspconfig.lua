@@ -10,46 +10,64 @@ return {
     },
     config = function()
         local servers = {
-            -- JavaScript
-            vtsls = require "settings.vtsls", -- TypeScript
-            astro = {}, -- Astro
-            -- Ruby
-            ruby_lsp = {},
-            -- PHP
-            intelephense = require "settings.intelephense", -- PHP
-            -- Python
-            pyright = require "settings.pyright", -- Python
-            -- Java
-            java_language_server = {}, -- Java
-            kotlin_lsp = {}, -- Kotlin
-            gradle_ls = {}, -- Gradle
-            -- Go
-            gopls = require "settings.gopls", -- Go
-            templ = {}, -- Go Templ
-            -- Rust
-            rust_analyzer = {}, -- Rust
-            -- C/C++
-            clangd = {}, -- C/C++
-            autotools_ls = {}, -- Makefile
-            -- Others
-            lua_ls = require "settings.lua_ls", -- Lua
+            -- Markup
             html = {}, -- HTML
             marksman = {}, -- Markdown
+            jsonls = {}, -- Json
+            yamlls = {}, -- YAML
+            -- dockerls = {}, -- Docker
+            -- docker_compose_language_service = {}, -- Docker
+
+            -- Sheets
             cssls = {}, -- CSS
             css_variables = {}, -- CSS
             tailwindcss = require "settings.tailwindcss", -- TailwindCSS
-            jsonls = {}, -- Json
-            yamlls = {}, -- YAML
-            bashls = {}, -- Bash
             -- sqls = {}, -- SQL
-            -- dockerls = {}, -- Docker
-            -- docker_compose_language_service = {}, -- Docker
-            -- volar = require "settings.volar", -- Vue
+
+            -- Shell
+            bashls = {}, -- Bash
+
+            -- Lua
+            lua_ls = require "settings.lua_ls", -- Lua
+
+            -- JavaScript
+            vtsls = require "settings.vtsls", -- TypeScript
+            astro = {}, -- Astro
             -- htmx = {}, -- HTMX
+            -- volar = require "settings.volar", -- Vue
             -- angularls = {}, -- Angular
             -- svelte = {}, -- Svelte
+
+            -- Ruby
+            -- ruby_lsp = {},
+
+            -- PHP
+            intelephense = require "settings.intelephense", -- PHP
+
+            -- Python
+            -- pyright = require "settings.pyright", -- Python
+
+            -- Java
+            -- java_language_server = {}, -- Java
+            -- kotlin_lsp = {}, -- Kotlin
+            -- gradle_ls = {}, -- Gradle
+
+            -- Elixir
             -- elixirls = {}, -- Elixir
+
+            -- Go
+            gopls = require "settings.gopls", -- Go
+            templ = {}, -- Go Templ
+
+            -- Rust
+            -- rust_analyzer = {}, -- Rust
+
+            -- Zig
             -- zls = {}, -- Zig
+
+            -- C/C++
+            clangd = {}, -- C/C++
+            autotools_ls = {}, -- Makefile
         }
 
         local lspconfig = require "lspconfig"
