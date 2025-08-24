@@ -18,7 +18,7 @@ return {
             -- dockerls = {}, -- Docker
             -- docker_compose_language_service = {}, -- Docker
 
-            -- Sheets
+            -- Sheet
             cssls = {}, -- CSS
             css_variables = {}, -- CSS
             tailwindcss = require "settings.tailwindcss", -- TailwindCSS

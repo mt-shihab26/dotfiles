@@ -1,5 +1,6 @@
 return {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
+    enabled = false,
     dependencies = {
         "williamboman/mason.nvim",
     },

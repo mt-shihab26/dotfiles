@@ -7,17 +7,47 @@ return {
         end,
         opts = {
             ensure_installed = {
+                -- Markup
+                "html",
+                "xml",
+                "markdown",
+                "markdown_inline",
+                "json",
+                "jsonc",
+                "yaml",
+                "toml",
+                "dockerfile",
+                "diff",
+                "git_config",
+                "gitcommit",
+                "git_rebase",
+                "gitignore",
+                "gitattributes",
+
+                -- Sheet
+                "css",
+
+                -- Shell
+                "bash",
+
+                -- Lua
+                "lua",
+                "luadoc",
+                "luap",
+                "vimdoc",
+                "vim",
+
                 -- JavaScript
                 "javascript",
                 "jsdoc",
                 "typescript",
                 "tsx",
                 "astro",
-                "vue",
+                -- "vue",
 
                 -- Ruby
-                "ruby",
-                "embedded_template",
+                -- "ruby",
+                -- "embedded_template",
 
                 -- PHP
                 "php",
@@ -25,12 +55,17 @@ return {
                 "twig",
 
                 -- Python
-                "python",
+                -- "python",
 
                 -- Java
-                "java",
-                "kotlin",
+                -- "java",
+                -- "kotlin",
                 -- "gradle", -- Parser not available
+
+                -- Elixir
+                -- "elixir",
+                -- "heex",
+                -- "eex",
 
                 -- Go
                 "go",
@@ -40,40 +75,14 @@ return {
                 "templ",
 
                 -- Rust
-                "rust",
+                -- "rust",
+
+                -- Zig
+                -- "zig",
 
                 -- C/C++
                 "c",
                 "cpp",
-
-                -- Others
-                "lua",
-                "luadoc",
-                "luap",
-                "html",
-                "xml",
-                "markdown",
-                "markdown_inline",
-                "css",
-                "json",
-                "jsonc",
-                "yaml",
-                "toml",
-                "vimdoc",
-                "vim",
-                "bash",
-                "dockerfile",
-                "diff",
-                "git_config",
-                "gitcommit",
-                "git_rebase",
-                "gitignore",
-                "gitattributes",
-
-                -- "elixir",
-                -- "heex",
-                -- "eex",
-                -- "zig",
             },
             auto_install = true,
             highlight = { enable = true },
