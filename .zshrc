@@ -121,6 +121,7 @@ alias projects="sessionizer projects"
 alias learns="sessionizer learns"
 
 alias pa="php artisan"
+alias wip="git add . && git commit -m 'wip'"
 
 ############################
 # Shell Integrations
