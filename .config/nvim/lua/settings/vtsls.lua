@@ -1,11 +1,11 @@
 return {
+    enabled = true,
     filetypes = {
         "javascript",
         "javascriptreact",
-        "javascript.jsx",
         "typescript",
         "typescriptreact",
-        "typescript.tsx",
+        "vue",
     },
     settings = {
         complete_function_calls = true,
@@ -15,6 +15,18 @@ return {
             experimental = {
                 completion = {
                     enableServerSideFuzzyMatch = true,
+                },
+            },
+            tsserver = {
+                globalPlugins = {
+                    {
+                        name = "@vue/typescript-plugin",
+                        location = vim.fn.stdpath "data"
+                            .. "/mason/packages/vue-language-server/node_modules/@vue/language-server",
+                        languages = { "vue" },
+                        configNamespace = "typescript",
+                        enableForWorkspaceTypeScriptVersions = true,
+                    },
                 },
             },
         },
