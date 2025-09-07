@@ -56,7 +56,7 @@ return {
                 "typescript",
                 "tsx",
                 "astro",
-                -- "vue",
+                "vue",
 
                 -- Ruby
                 -- "ruby",

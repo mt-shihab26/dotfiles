@@ -33,8 +33,8 @@ return {
                 javascriptreact = { "prettier" },
                 typescript = { "prettier" },
                 typescriptreact = { "prettier" },
+                vue = { "prettier" },
                 astro = { "prettier" },
-                -- vue = { "prettier" },
 
                 -- Ruby
                 -- ruby = { "rubocop" },
