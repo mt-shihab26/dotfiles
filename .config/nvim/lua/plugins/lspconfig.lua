@@ -32,6 +32,7 @@ return {
 
             -- JavaScript
             vtsls = require "settings.vtsls", -- TypeScript
+            ts_ls = {},
             vue_ls = {}, -- Vue
             astro = {}, -- Astro
             -- htmx = {}, -- HTMX
@@ -145,5 +146,22 @@ return {
                 )
             )
         end
+
+        local vue_language_server =
+            "/home/shihab/.local/share/nvim/mason/packages/vue-language-server/node_modules/@vue/language-server"
+
+        lspconfig.ts_ls.setup {
+            capabilities = capabilities,
+            init_options = {
+                plugins = {
+                    {
+                        name = "@vue/typescript-plugin",
+                        location = vue_language_server,
+                        languages = { "vue" },
+                    },
+                },
+            },
+            filetypes = { "vue" },
+        }
     end,
 }
