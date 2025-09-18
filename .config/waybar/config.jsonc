@@ -104,7 +104,7 @@
         "on-click": "iwgtk"
     },
     "pulseaudio": {
-        "format": "{icon} {volume}%",
+        "format": "{icon}  {volume}%",
         "format-muted": "󰝟",
         "on-click": "alacritty --class=Wiremix -e wiremix",
         "on-click-right": "pamixer -t",
