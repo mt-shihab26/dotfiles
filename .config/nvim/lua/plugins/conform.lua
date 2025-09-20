@@ -44,7 +44,7 @@ return {
                 blade = { "prettier" },
 
                 -- Python
-                python = { "ruff" },
+                python = { "ruff_format" },
 
                 -- Swift
                 -- swift = { "swiftformat" },

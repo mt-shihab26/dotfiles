@@ -11,6 +11,7 @@ return {
             ensure_installed = {
                 "delve",
                 "codelldb",
+                "ruff",
             },
             auto_update = false,
             run_on_start = true,
