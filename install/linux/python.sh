@@ -1,3 +1,3 @@
 #!/bin/sh
 
-sudo pacman -S python python-pip
+sudo pacman -S python python-pip uv
