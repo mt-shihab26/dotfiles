@@ -45,7 +45,7 @@ return {
             intelephense = require "settings.intelephense", -- PHP
 
             -- Python
-            -- pyright = require "settings.pyright", -- Python
+            pyright = require "settings.pyright", -- Python
 
             -- Java
             -- java_language_server = {}, -- Java

@@ -68,7 +68,7 @@ return {
                 "twig",
 
                 -- Python
-                -- "python",
+                "python",
 
                 -- Java
                 -- "java",
