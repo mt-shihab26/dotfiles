@@ -132,7 +132,7 @@ alias pa="php artisan"
 wip() {
     git add .
     git commit -m "${1:-wip}"
-    git push
+    git push origin HEAD
 }
 
 ############################
