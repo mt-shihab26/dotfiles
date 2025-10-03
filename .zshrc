@@ -130,8 +130,9 @@ alias pa="php artisan"
 ############################
 
 wip() {
-    local message="${1:-wip}"
-    git add . && git commit -m "$message" && git push
+    git add .
+    git commit -m "${1:-wip}"
+    git push
 }
 
 ############################
