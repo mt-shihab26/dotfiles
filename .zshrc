@@ -123,7 +123,11 @@ alias projects="sessionizer projects"
 alias learns="sessionizer learns"
 
 alias pa="php artisan"
-alias wip="git add . && git commit -m 'wip' && git push"
+
+wip() {
+    local message="${1:-wip}"
+    git add . && git commit -m "$message" && git push
+}
 
 ############################
 # Shell Integrations
