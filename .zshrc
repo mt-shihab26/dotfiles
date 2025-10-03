@@ -129,6 +129,7 @@ alias pa="php artisan"
 # Functions 
 ############################
 
+unalias wip 2>/dev/null
 wip() {
     git add .
     git commit -m "${1:-wip}"
