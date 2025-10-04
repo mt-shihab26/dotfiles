@@ -4,7 +4,7 @@ echo "===================================="
 echo "Installing PHP and essential extensions..."
 echo "===================================="
 
-sudo pacman -S php php-fpm php-gd php-intl php-redis php-sqlite php-sodium
+sudo pacman -S php php-fpm php-gd php-intl php-redis php-sqlite php-sodium php-xdebug
 
 sudo systemctl enable php-fpm
 sudo systemctl start php-fpm
@@ -68,6 +68,13 @@ echo "extension=igbinary"
 echo "extension=redis"
 echo "extension=iconv"
 echo "extension=sodium"
+echo "===================================="
+
+echo "===================================="
+echo "Please add the following settings to your /etc/php/conf.d/xdebug.ini file:"
+echo "------------------------------------"
+echo "zend_extension=xdebug.so"
+echo "xdebug.mode=debug,coverage"
 echo "===================================="
 
 # echo "===================================="
