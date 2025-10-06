@@ -44,7 +44,7 @@ return {
                 documentation = cmp.config.window.bordered(),
             },
             mapping = {
-                ["<C-n>"] = cmp.mapping(function(fallback)
+                ["<Tab>"] = cmp.mapping(function(fallback)
                     if cmp.visible() then
                         cmp.select_next_item()
                     elseif luasnip.locally_jumpable(1) then
@@ -55,7 +55,7 @@ return {
                         fallback()
                     end
                 end, { "i", "s" }),
-                ["<C-p>"] = cmp.mapping(function(fallback)
+                ["<S-Tab>"] = cmp.mapping(function(fallback)
                     if cmp.visible() then
                         cmp.select_prev_item()
                     elseif luasnip.locally_jumpable(-1) then
@@ -64,7 +64,7 @@ return {
                         fallback()
                     end
                 end, { "i", "s" }),
-                ["<C-y>"] = cmp.mapping.confirm { select = true },
+                ["<CR>"] = cmp.mapping.confirm { select = true },
                 ["<C-Space>"] = cmp.mapping.complete(),
             },
             sources = {
