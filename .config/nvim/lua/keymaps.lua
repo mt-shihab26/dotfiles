@@ -34,3 +34,12 @@ vim.api.nvim_create_user_command("CopyFileAbsPath", function()
 end, { desc = "Copy current file absolute path" })
 
 vim.keymap.set("n", "<leader>ca", "<cmd>CopyFileAbsPath<cr>", { desc = "copy current file absolute path" })
+
+-- copy current file name with extension
+vim.api.nvim_create_user_command("CopyFileName", function()
+    local file_name = vim.fn.expand "%:t"
+    vim.fn.setreg("+", file_name)
+    print("Copied to clipboard: " .. file_name)
+end, { desc = "Copy current file name with extension" })
+
+vim.keymap.set("n", "<leader>cf", "<cmd>CopyFileName<cr>", { desc = "copy current file name with extension" })
