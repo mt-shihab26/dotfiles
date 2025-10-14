@@ -9,6 +9,8 @@ sudo pacman -Syy
 echo "==> Installing PostgreSQL..."
 sudo pacman -S --noconfirm postgresql
 
+yay -S --noconfirm --needed pgvector
+
 # Initialize PostgreSQL database
 echo "==> Initializing PostgreSQL database..."
 sudo -u postgres initdb --locale en_US.UTF-8 -D /var/lib/postgres/data

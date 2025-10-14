@@ -4,7 +4,7 @@ echo "===================================="
 echo "Installing PHP and essential extensions..."
 echo "===================================="
 
-sudo pacman -S php php-fpm php-gd php-intl php-redis php-sqlite php-sodium php-xdebug
+sudo pacman -S php php-fpm php-gd php-intl php-redis php-sqlite php-sodium php-xdebug php-pgsql
 
 sudo systemctl enable php-fpm
 sudo systemctl start php-fpm
@@ -68,6 +68,8 @@ echo "extension=igbinary"
 echo "extension=redis"
 echo "extension=iconv"
 echo "extension=sodium"
+echo "extension=pgsql"
+echo "extension=pdo_pgsql"
 echo "===================================="
 
 echo "===================================="
