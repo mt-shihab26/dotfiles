@@ -1,3 +1,3 @@
-sudo pacman -S pnpm
+sudo pacman -S nodejs pnpm
 
 yay -S bun-bin
