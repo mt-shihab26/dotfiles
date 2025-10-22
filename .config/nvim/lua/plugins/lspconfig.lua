@@ -32,7 +32,7 @@ return {
 
             -- JavaScript
             vtsls = require "settings.vtsls", -- TypeScript
-            vue_ls = {}, -- Vue
+            -- vue_ls = {}, -- Vue
             astro = {}, -- Astro
             -- htmx = {}, -- HTMX
             -- angularls = {}, -- Angular
