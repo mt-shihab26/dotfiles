@@ -1,6 +1,6 @@
 return {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
-    enabled = false,
+    enabled = true,
     dependencies = {
         "williamboman/mason.nvim",
     },
@@ -9,9 +9,10 @@ return {
 
         require("mason-tool-installer").setup {
             ensure_installed = {
-                "delve",
-                "codelldb",
-                "ruff",
+                -- "delve",
+                -- "codelldb",
+                -- "ruff",
+                "vue-language-server",
             },
             auto_update = false,
             run_on_start = true,
