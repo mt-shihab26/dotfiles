@@ -93,7 +93,7 @@ bindkey '^[w' kill-region
 ############################
 
 export GO_HOME="$HOME/go"
-export GEM_HOME="$(gem env user_gemhome)"
+# export GEM_HOME="$(gem env user_gemhome)"
 export COMPOSER_HOME="$HOME/.config/composer"
 export JAVA_HOME="/usr/lib/jvm/default"
 export OMARCHY_HOME="$HOME/.local/share/omarchy"
