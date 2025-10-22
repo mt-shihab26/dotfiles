@@ -44,7 +44,7 @@ return {
                 blade = { "prettier" },
 
                 -- Python
-                python = { "ruff_format" },
+                -- python = { "ruff_format" },
 
                 -- Swift
                 -- swift = { "swiftformat" },
@@ -53,8 +53,8 @@ return {
                 -- java = {}, -- TODO
 
                 -- Go
-                go = { "goimports", "gofmt" },
-                templ = { "templ" },
+                -- go = { "goimports", "gofmt" },
+                -- templ = { "templ" },
 
                 -- Rust
                 -- rust = { "rustfmt" },
@@ -63,8 +63,8 @@ return {
                 -- zig = { "zigfmt" },
 
                 -- C/C++
-                c = { "clang-format" },
-                cpp = { "clang-format" },
+                -- c = { "clang-format" },
+                -- cpp = { "clang-format" },
             },
             format_on_save = { timeout_ms = 5000, lsp_format = "fallback" },
         }

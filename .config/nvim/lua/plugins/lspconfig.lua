@@ -45,7 +45,7 @@ return {
             intelephense = require "settings.intelephense", -- PHP
 
             -- Python
-            pyright = require "settings.pyright", -- Python
+            -- pyright = require "settings.pyright", -- Python
 
             -- Java
             -- java_language_server = {}, -- Java
@@ -56,8 +56,8 @@ return {
             -- elixirls = {}, -- Elixir
 
             -- Go
-            gopls = require "settings.gopls", -- Go
-            templ = {}, -- Go Templ
+            -- gopls = require "settings.gopls", -- Go
+            -- templ = {}, -- Go Templ
 
             -- Rust
             -- rust_analyzer = {}, -- Rust
@@ -66,8 +66,8 @@ return {
             -- zls = {}, -- Zig
 
             -- C/C++
-            clangd = {}, -- C/C++
-            autotools_ls = {}, -- Makefile
+            -- clangd = {}, -- C/C++
+            -- autotools_ls = {}, -- Makefile
         }
 
         local lspconfig = require "lspconfig"

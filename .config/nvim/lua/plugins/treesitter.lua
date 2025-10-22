@@ -68,7 +68,7 @@ return {
                 "twig",
 
                 -- Python
-                "python",
+                -- "python",
 
                 -- Java
                 -- "java",
@@ -81,11 +81,11 @@ return {
                 -- "eex",
 
                 -- Go
-                "go",
-                "gomod",
-                "gowork",
-                "gosum",
-                "templ",
+                -- "go",
+                -- "gomod",
+                -- "gowork",
+                -- "gosum",
+                -- "templ",
 
                 -- Rust
                 -- "rust",
@@ -94,8 +94,8 @@ return {
                 -- "zig",
 
                 -- C/C++
-                "c",
-                "cpp",
+                -- "c",
+                -- "cpp",
             },
             auto_install = true,
             highlight = { enable = true },
