@@ -1,4 +1,5 @@
 return {
+    filetypes = { "php" },
     root_dir = function(fname)
         -- Priority order: wp-config.php > .composer.json > index.php > file dir
 

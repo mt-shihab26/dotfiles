@@ -70,7 +70,6 @@ return {
             -- autotools_ls = {}, -- Makefile
         }
 
-        local lspconfig = require "lspconfig"
         local mason = require "mason"
         local mason_lspconfig = require "mason-lspconfig"
         local cmp_nvim_lsp = require "cmp_nvim_lsp"
@@ -136,14 +135,24 @@ return {
             map("n", "<leader>lr", lsp_func.lsp_restart, opts { desc = "restart LSP server" })
         end
 
+        -- Use the new vim.lsp.config API instead of lspconfig
         for server_name, server_settings in pairs(servers) do
-            lspconfig[server_name].setup(
-                vim.tbl_deep_extend(
-                    "force",
-                    { capabilities = capabilities, on_attach = on_attach },
-                    server_settings or {}
-                )
+            local config = vim.tbl_deep_extend(
+                "force",
+                { capabilities = capabilities, on_attach = on_attach },
+                server_settings or {}
             )
+
+            -- Register the LSP server configuration
+            vim.lsp.config[server_name] = config
+
+            -- Enable the server for the appropriate filetypes
+            vim.api.nvim_create_autocmd("FileType", {
+                pattern = config.filetypes or "*",
+                callback = function(args)
+                    vim.lsp.enable(server_name)
+                end,
+            })
         end
     end,
 }
