@@ -21,14 +21,14 @@ return {
             -- Sheet
             cssls = {}, -- CSS
             css_variables = {}, -- CSS
-            tailwindcss = require "settings.tailwindcss", -- TailwindCSS
+            tailwindcss = {}, -- TailwindCSS
             -- sqls = {}, -- SQL
 
             -- Shell
             bashls = {}, -- Bash
 
             -- Lua
-            lua_ls = require "settings.lua_ls", -- Lua
+            lua_ls = {}, -- Lua
 
             -- JavaScript
             vtsls = require "settings.vtsls", -- TypeScript
@@ -42,7 +42,7 @@ return {
             -- ruby_lsp = {},
 
             -- PHP
-            intelephense = require "settings.intelephense", -- PHP
+            intelephense = {}, -- PHP
 
             -- Python
             -- pyright = require "settings.pyright", -- Python
@@ -56,7 +56,7 @@ return {
             -- elixirls = {}, -- Elixir
 
             -- Go
-            -- gopls = require "settings.gopls", -- Go
+            gopls = {}, -- Go
             -- templ = {}, -- Go Templ
 
             -- Rust
@@ -77,11 +77,8 @@ return {
         local lsp_func = require "utils.lsp-func"
 
         mason.setup {}
-        mason_lspconfig.setup {
-            ensure_installed = vim.tbl_keys(servers),
-            automatic_installation = true,
-        }
-        lsp_file_operations.setup()
+        mason_lspconfig.setup { ensure_installed = vim.tbl_keys(servers), automatic_installation = true }
+        lsp_file_operations.setup {}
 
         -- Capabilities configuration
         local capabilities = vim.tbl_deep_extend(
