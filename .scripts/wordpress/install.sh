@@ -4,7 +4,7 @@ set -e
 
 # Check at least 2 parameters
 if [ "$#" -lt 1 ]; then
-    echo "Usage: $0 <plugin_title> [--elementor] [--valet] [--updraftplus]"
+    echo "Usage: $0 <site title> [--elementor] [--valet] [--updraftplus]"
     exit 1
 fi
 
