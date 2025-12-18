@@ -33,7 +33,7 @@ return {
             lua_ls = {},
             vtsls = require "settings.vtsls",
             astro = {},
-            intelephense = require "settings.intelephense",
+            intelephense = {},
             pyright = {},
             gopls = {},
             templ = {},
