@@ -50,7 +50,7 @@ vim.api.nvim_create_user_command("Wip", function(opts)
     if opts.args ~= "" then
         message = opts.args
     else
-        message = vim.fn.input("Commit message (empty for 'wip'): ")
+        message = vim.fn.input "commit message (empty for 'wip'): "
         if message == "" then
             message = "wip"
         end
@@ -59,7 +59,7 @@ vim.api.nvim_create_user_command("Wip", function(opts)
     if vim.v.shell_error == 0 then
         print("committed and pushed: " .. message)
     else
-        print "Error running git wip"
+        print "error running git wip"
     end
 end, { nargs = "?", desc = "Quick WIP commit and push" })
 
