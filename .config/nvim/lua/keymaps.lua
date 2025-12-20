@@ -57,9 +57,9 @@ vim.api.nvim_create_user_command("Wip", function(opts)
     end
     vim.fn.system(string.format("git add . && git commit -m '%s' && git push origin HEAD", message))
     if vim.v.shell_error == 0 then
-        print("committed and pushed: " .. message)
+        print("\ncommitted and pushed: " .. message)
     else
-        print "error running git wip"
+        print "\nerror running git wip"
     end
 end, { nargs = "?", desc = "Quick WIP commit and push" })
 
