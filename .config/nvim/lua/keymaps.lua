@@ -46,7 +46,15 @@ vim.keymap.set("n", "<leader>cf", "<cmd>CopyFileName<cr>", { desc = "copy curren
 
 -- git wip commit
 vim.api.nvim_create_user_command("Wip", function(opts)
-    local message = opts.args ~= "" and opts.args or "wip"
+    local message
+    if opts.args ~= "" then
+        message = opts.args
+    else
+        message = vim.fn.input("Commit message (empty for 'wip'): ")
+        if message == "" then
+            message = "wip"
+        end
+    end
     vim.fn.system(string.format("git add . && git commit -m '%s' && git push origin HEAD", message))
     if vim.v.shell_error == 0 then
         print("committed and pushed: " .. message)
