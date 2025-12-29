@@ -46,7 +46,6 @@ return {
                 "twig",
                 -- Ruby
                 "ruby",
-                "erb",
                 -- Python
                 "python",
                 -- Go
