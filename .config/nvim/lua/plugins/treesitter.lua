@@ -7,6 +7,7 @@ return {
         end,
         opts = {
             ensure_installed = {
+                -- Markup
                 "html",
                 "xml",
                 "markdown",
@@ -23,28 +24,38 @@ return {
                 "gitignore",
                 "gitattributes",
                 "css",
+                -- Shell
                 "bash",
+                -- Lua
                 "lua",
                 "luadoc",
                 "luap",
                 "vimdoc",
                 "vim",
+                -- JavaScript
                 "javascript",
                 "jsdoc",
                 "typescript",
                 "tsx",
                 "astro",
                 "vue",
+                -- PHP
                 "php",
                 "php_only",
                 "blade",
                 "twig",
+                -- Ruby
+                "ruby",
+                "erb",
+                -- Python
                 "python",
+                -- Go
                 "go",
                 "gomod",
                 "gowork",
                 "gosum",
                 "templ",
+                -- C/C++
                 "c",
                 "cpp",
             },

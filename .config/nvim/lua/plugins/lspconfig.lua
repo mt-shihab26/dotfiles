@@ -22,6 +22,7 @@ return {
     },
     config = function()
         local servers = {
+            -- Markup
             html = {},
             marksman = {},
             jsonls = {},
@@ -29,14 +30,23 @@ return {
             cssls = {},
             css_variables = {},
             tailwindcss = {},
+            -- Shell
             bashls = {},
+            -- Lua
             lua_ls = {},
+            -- JavaScript
             vtsls = require "settings.vtsls",
             astro = {},
+            -- PHP
             intelephense = {},
+            -- Ruby
+            ruby_lsp = {},
+            -- Python
             pyright = {},
+            -- Go
             gopls = {},
             templ = {},
+            -- C/C++
             clangd = {},
         }
 
