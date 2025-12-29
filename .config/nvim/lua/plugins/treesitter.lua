@@ -46,6 +46,7 @@ return {
                 "twig",
                 -- Ruby
                 "ruby",
+                "embedded_template",
                 -- Python
                 "python",
                 -- Go
