@@ -97,6 +97,7 @@ export GO_HOME="$HOME/go"
 export COMPOSER_HOME="$HOME/.config/composer"
 export JAVA_HOME="/usr/lib/jvm/default"
 export OMARCHY_HOME="$HOME/.local/share/omarchy"
+export ANDROID_HOME="$HOME/Android/Sdk"
 
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/.local/share/nvim/mason/bin"
@@ -108,6 +109,9 @@ export PATH="$PATH:$COMPOSER_HOME/vendor/bin"
 export PATH="$PATH:$GO_HOME/bin"
 export PATH="$PATH:$JAVA_HOME/bin"
 export PATH="$PATH:$OMARCHY_HOME/bin"
+export PATH="$PATH:$ANDROID_HOME/platform-tools"
+export PATH="$PATH:$ANDROID_HOME/emulator"
+export PATH="$PATH:$ANDROID_HOME/cmdline-tools/latest/bin"
 
 ############################
 # Aliases
