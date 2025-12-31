@@ -126,7 +126,7 @@ alias kill-session="$HOME/.scripts/tmux/kill-session.sh"
 alias projects="sessionizer projects"
 alias learns="sessionizer learns"
 
-alias pa="php artisan"
+alias artisan="php artisan"
 
 
 ############################
