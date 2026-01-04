@@ -1,0 +1,19 @@
+[Unit]
+Description=Qdrant Vector Search Engine
+Documentation=https://qdrant.tech/documentation/
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/qdrant
+Restart=on-failure
+RestartSec=5s
+StandardOutput=journal
+StandardError=journal
+
+# Environment
+Environment="QDRANT__SERVICE__HTTP_PORT=6333"
+Environment="QDRANT__SERVICE__GRPC_PORT=6334"
+
+[Install]
+WantedBy=default.target
