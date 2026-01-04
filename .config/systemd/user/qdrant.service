@@ -14,6 +14,8 @@ StandardError=journal
 # Environment
 Environment="QDRANT__SERVICE__HTTP_PORT=6333"
 Environment="QDRANT__SERVICE__GRPC_PORT=6334"
+Environment="QDRANT__SERVICE__ENABLE_STATIC_CONTENT=true"
+Environment="QDRANT__SERVICE__STATIC_CONTENT_DIR=/home/shihab/.local/share/qdrant/static/dist"
 
 [Install]
 WantedBy=default.target
