@@ -4,7 +4,13 @@ echo "===================================="
 echo "Installing PHP and essential extensions..."
 echo "===================================="
 
-sudo pacman -S php php-fpm php-gd php-intl php-redis php-sqlite php-sodium xdebug php-pgsql
+sudo pacman -S php php-fpm php-gd php-intl php-redis php-sqlite php-sodium xdebug php-pgsql imagemagick
+
+echo "===================================="
+echo "Installing PHP ImageMagick extension from AUR..."
+echo "===================================="
+
+yay -S php-imagick --noconfirm
 
 sudo systemctl enable php-fpm
 sudo systemctl start php-fpm
