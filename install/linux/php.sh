@@ -76,6 +76,8 @@ echo "extension=iconv"
 echo "extension=sodium"
 echo "extension=pgsql"
 echo "extension=pdo_pgsql"
+echo "extension=exif"
+echo "extension=imagick"
 echo "===================================="
 
 echo "===================================="
