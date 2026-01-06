@@ -146,6 +146,10 @@ wip() {
 source <(fzf --zsh)
 eval "$(zoxide init --cmd cd zsh)"
 
+if command -v mise &> /dev/null; then
+  eval "$(mise activate bash)"
+fi
+
 
 ############################
 # Injected Configs
