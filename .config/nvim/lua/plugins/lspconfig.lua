@@ -49,7 +49,7 @@ return {
             gopls = {},
             templ = {},
             -- C/C++
-            clangd = {},
+            -- clangd = {},
         }
 
         local mason = require "mason"
