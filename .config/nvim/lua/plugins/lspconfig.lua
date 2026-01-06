@@ -40,7 +40,9 @@ return {
             -- PHP
             intelephense = {},
             -- Ruby
-            ruby_lsp = {},
+            ruby_lsp = {
+                enabled = true,
+            },
             -- Python
             pyright = {},
             -- Go
