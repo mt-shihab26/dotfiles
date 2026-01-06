@@ -1,3 +1,3 @@
 #!/bin/sh
 
-sudo pacman -S ruby ruby-bundler
+# sudo pacman -Rns ruby ruby-bundler
