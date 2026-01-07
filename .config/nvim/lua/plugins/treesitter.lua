@@ -2,6 +2,7 @@ return {
     {
         "nvim-treesitter/nvim-treesitter",
         event = "VeryLazy",
+        run = ":TSUpdate",
         build = function()
             require("nvim-treesitter.install").update { with_sync = true }
         end,
