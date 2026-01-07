@@ -56,10 +56,16 @@ return {
         local lsp_file_operations = require "lsp-file-operations"
 
         mason.setup {}
+
+        local mason_servers = {}
+        for name, cfg in pairs(servers) do
+            if cfg.mason ~= false then
+                table.insert(mason_servers, name)
+            end
+        end
+
         mason_lspconfig.setup {
-            ensure_installed = vim.tbl_keys(vim.tbl_filter(function(c)
-                return c.mason ~= false
-            end, servers)),
+            ensure_installed = mason_servers,
             automatic_installation = true,
         }
         lsp_file_operations.setup {}
