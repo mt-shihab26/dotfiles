@@ -1,1 +1,1 @@
-sudo pacman -S ruby-erb ruby-bundler
+gem install ruby-lsp rubocop

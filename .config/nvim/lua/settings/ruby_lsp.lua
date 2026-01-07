@@ -1,5 +1,6 @@
 return {
     enabled = true,
+    cmd = { "ruby-lsp" },
     init_options = {
         enabledFeatures = {
             diagnostics = false,

@@ -53,6 +53,8 @@ return {
 
                 "gofmt",
                 "templ",
+
+                "rubocop",
             },
         }
     end,

@@ -55,8 +55,15 @@ return {
         local cmp_nvim_lsp = require "cmp_nvim_lsp"
         local lsp_file_operations = require "lsp-file-operations"
 
+        local ignore_install = {
+            "ruby_lsp",
+        }
+
         mason.setup {}
-        mason_lspconfig.setup { ensure_installed = vim.tbl_keys(servers), automatic_installation = true }
+        mason_lspconfig.setup {
+            ensure_installed = vim.tbl_keys(servers),
+            automatic_installation = { exclude = ignore_install },
+        }
         lsp_file_operations.setup {}
 
         local capabilities = vim.tbl_deep_extend(
