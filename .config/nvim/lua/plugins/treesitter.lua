@@ -1,8 +1,8 @@
 return {
     {
         "nvim-treesitter/nvim-treesitter",
-        event = "VeryLazy",
-        run = ":TSUpdate",
+        branch = "master",
+        event = "BufReadPre",
         build = function()
             require("nvim-treesitter.install").update { with_sync = true }
         end,
@@ -65,9 +65,9 @@ return {
             indent = { enable = true, disable = { "yaml" } },
             rainbow = { enable = true },
         },
-        -- config = function(_, opts)
-        --     require("nvim-treesitter.configs").setup(opts)
-        -- end,
+        config = function(_, opts)
+            require("nvim-treesitter.configs").setup(opts)
+        end,
     },
     {
         "windwp/nvim-ts-autotag",
