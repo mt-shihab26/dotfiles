@@ -152,5 +152,38 @@ fi
 
 
 ############################
+# Rails / Ruby Bin Stubs
+############################
+
+_use_bin_or_system() {
+  local cmd="$1"
+  shift
+
+  if [[ -x "./bin/$cmd" ]]; then
+    print -u2 -- "./bin/$cmd $*"
+    ./bin/$cmd "$@"
+  else
+    command "$cmd" "$@"
+  fi
+}
+
+rails() {
+  _use_bin_or_system rails "$@"
+}
+
+bundle() {
+  _use_bin_or_system bundle "$@"
+}
+
+gem() {
+  _use_bin_or_system gem "$@"
+}
+
+dev() {
+  _use_bin_or_system dev "$@"
+}
+
+
+############################
 # Injected Configs
 ############################
