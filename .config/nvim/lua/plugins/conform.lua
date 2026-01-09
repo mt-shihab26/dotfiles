@@ -34,7 +34,7 @@ return {
                 blade = { "prettier" },
                 -- Ruby
                 ruby = { "rubocop" },
-                eruby = { "erb_format" },
+                -- eruby = { "erb_format" },
                 -- Python
                 python = { "ruff_format" },
                 -- Go
