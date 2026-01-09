@@ -188,8 +188,5 @@ dev() {
 # Injected Configs
 ############################
 
-export PHPENV_ROOT="/home/shihab/.phpenv"
-if [ -d "${PHPENV_ROOT}" ]; then
-  export PATH="${PHPENV_ROOT}/bin:${PATH}"
-  eval "$(phpenv init -)"
-fi
+export PATH="/home/shihab/.config/herd-lite/bin:$PATH"
+export PHP_INI_SCAN_DIR="/home/shihab/.config/herd-lite/bin:$PHP_INI_SCAN_DIR"
