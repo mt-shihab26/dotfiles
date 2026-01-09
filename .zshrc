@@ -188,5 +188,3 @@ dev() {
 # Injected Configs
 ############################
 
-export PATH="/home/shihab/.config/herd-lite/bin:$PATH"
-export PHP_INI_SCAN_DIR="/home/shihab/.config/herd-lite/bin:$PHP_INI_SCAN_DIR"
