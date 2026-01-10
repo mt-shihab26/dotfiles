@@ -38,30 +38,25 @@ return {
             -- clangd = {},
         }
 
-        local mason = require "mason"
-        local mason_lspconfig = require "mason-lspconfig"
-        local cmp_nvim_lsp = require "cmp_nvim_lsp"
         local lsp_file_operations = require "lsp-file-operations"
 
-        mason.setup {}
+        require("mason").setup {}
 
-        local mason_servers = {}
+        local ensure_installed = {}
         for name, cfg in pairs(servers) do
             if cfg.mason ~= false then
-                table.insert(mason_servers, name)
+                table.insert(ensure_installed, name)
             end
         end
 
-        mason_lspconfig.setup {
-            ensure_installed = mason_servers,
-            automatic_installation = true,
-        }
+        require("mason-lspconfig").setup { ensure_installed = ensure_installed, automatic_installation = true }
+
         lsp_file_operations.setup {}
 
         local capabilities = vim.tbl_deep_extend(
             "force",
             vim.lsp.protocol.make_client_capabilities(),
-            cmp_nvim_lsp.default_capabilities(),
+            require("cmp_nvim_lsp").default_capabilities(),
             lsp_file_operations.default_capabilities()
         )
 
