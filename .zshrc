@@ -128,6 +128,9 @@ alias learns="sessionizer learns"
 
 alias artisan="php artisan"
 
+# Tree command that respects .gitignore files
+alias tree='tree --gitignore'
+
 
 ############################
 # Functions 
