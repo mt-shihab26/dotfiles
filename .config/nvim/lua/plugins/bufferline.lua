@@ -1,8 +1,9 @@
 return {
     "akinsho/bufferline.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    enabled = false,
     event = "VeryLazy",
+    dependencies = {
+        "nvim-tree/nvim-web-devicons",
+    },
     keys = {
         { "<S-h>", "<cmd>BufferLineCyclePrev<cr>", desc = "prev buffer (bufferline)" },
         { "<S-l>", "<cmd>BufferLineCycleNext<cr>", desc = "next buffer (bufferline)" },
@@ -22,15 +23,23 @@ return {
             numbers = "none",
             left_mouse_command = "buffer %d",
             middle_mouse_command = nil,
-            indicator = {
-                icon = "▎",
-                style = "icon",
-            },
             modified_icon = "●",
             close_icon = "",
             left_trunc_marker = "",
             right_trunc_marker = "",
-            exclude_ft = { "dashboard" },
+            show_buffer_icons = true,
+            show_buffer_close_icons = true,
+            show_close_icon = true,
+            show_tab_indicators = true,
+            separator_style = "thin",
+            enforce_regular_tabs = false,
+            exclude_ft = {
+                "dashboard",
+            },
+            indicator = {
+                icon = "▎",
+                style = "icon",
+            },
             offsets = {
                 {
                     filetype = "neo-tree",
@@ -39,12 +48,6 @@ return {
                     text_align = "left",
                 },
             },
-            show_buffer_icons = true,
-            show_buffer_close_icons = true,
-            show_close_icon = true,
-            show_tab_indicators = true,
-            separator_style = "thin",
-            enforce_regular_tabs = false,
         },
     },
 }
