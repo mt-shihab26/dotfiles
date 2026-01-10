@@ -1,5 +1,8 @@
 vim.keymap.set("n", "<esc>", "<cmd>nohlsearch<cr>", { desc = "clear search highlighting" })
 
+-- disable macro recording
+vim.keymap.set("n", "q", "<nop>", { desc = "disabled macro recording", noremap = true })
+
 vim.keymap.set("x", "p", '"_dP', { desc = "paste without yanking selected text", noremap = true })
 
 vim.keymap.set("n", "l", function()
