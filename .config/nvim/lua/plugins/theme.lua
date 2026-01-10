@@ -1,18 +1,15 @@
 return {
     {
         "folke/tokyonight.nvim",
-        enabled = true,
         lazy = false,
         priority = 1000,
         opts = {},
         init = function()
             vim.cmd.colorscheme "tokyonight-night"
-            -- vim.cmd.colorscheme "tokyonight-day"
         end,
     },
     {
         "xiyaowong/transparent.nvim",
-        -- enabled = false,
         config = function()
             require("transparent").setup {
                 groups = {
