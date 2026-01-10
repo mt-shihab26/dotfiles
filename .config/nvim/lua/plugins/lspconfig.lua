@@ -29,15 +29,12 @@ local enabled_servers = {
 return {
     "neovim/nvim-lspconfig",
     dependencies = {
-        "williamboman/mason.nvim",
         "hrsh7th/cmp-nvim-lsp",
         "antosha417/nvim-lsp-file-operations",
         "folke/which-key.nvim",
         "nvim-lua/plenary.nvim",
     },
     config = function()
-        require("mason").setup {}
-
         local lsp_file_operations = require "lsp-file-operations"
 
         lsp_file_operations.setup {}
