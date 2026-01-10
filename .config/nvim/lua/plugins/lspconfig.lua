@@ -1,4 +1,4 @@
-local enabled_lsps = {
+local enabled_servers = {
     -- Markup
     "html",
     "marksman",
@@ -101,7 +101,7 @@ return {
             end,
         })
 
-        for _, server_name in ipairs(enabled_lsps) do
+        for _, server_name in ipairs(enabled_servers) do
             local server_settings = {}
             local ok, settings = pcall(require, "settings." .. server_name)
             if ok then
