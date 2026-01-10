@@ -1,5 +1,31 @@
 local ensure_installed = {
+    -- Markup
+    "html",
+    "marksman",
+    "jsonls",
+    "yamlls",
+    "cssls",
+    "css_variables",
+    "tailwindcss",
+    -- Shell
+    "bashls",
+    -- Lua
+    "lua_ls",
+    -- JavaScript
+    "vtsls",
+    "astro",
     "vue-language-server",
+    -- PHP
+    "intelephense",
+    -- Ruby
+    -- "ruby_lsp",
+    -- Python
+    "pyright",
+    -- Go
+    "gopls",
+    "templ",
+    -- C/C++
+    -- clangd = {},
 }
 
 return {
