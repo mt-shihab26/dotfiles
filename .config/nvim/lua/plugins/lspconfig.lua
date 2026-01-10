@@ -1,15 +1,3 @@
-local lsp_start = function()
-    vim.cmd "LspStart"
-end
-
-local lsp_stop = function()
-    vim.cmd "LspStop"
-end
-
-local lsp_restart = function()
-    vim.cmd "LspRestart"
-end
-
 return {
     "neovim/nvim-lspconfig",
     dependencies = {
@@ -115,9 +103,17 @@ return {
                 map("n", "[d", diagnostic.goto_prev, opts "go to prev diagnostic (lspconfig)")
                 map("n", "]d", diagnostic.goto_next, opts "go to next diagnostic (lspconfig)")
 
-                map("n", "<leader>ls", lsp_start, opts "start LSP server")
-                map("n", "<leader>lS", lsp_stop, opts "stop LSP server")
-                map("n", "<leader>lr", lsp_restart, opts "restart LSP server")
+                map("n", "<leader>ls", function()
+                    vim.cmd "LspStart"
+                end, opts "start LSP server")
+
+                map("n", "<leader>lS", function()
+                    vim.cmd "LspStop"
+                end, opts "stop LSP server")
+
+                map("n", "<leader>lr", function()
+                    vim.cmd "LspRestart"
+                end, opts "restart LSP server")
             end,
         })
 

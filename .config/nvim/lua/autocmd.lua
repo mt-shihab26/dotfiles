@@ -107,7 +107,7 @@ local function check_copilot_file()
     local no_copilot_file = cwd .. "/.no_copilot"
 
     -- Check if Copilot commands are available
-    if vim.fn.exists(":Copilot") == 0 then
+    if vim.fn.exists ":Copilot" == 0 then
         return
     end
 
