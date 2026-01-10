@@ -9,20 +9,27 @@ local ensure_installed = {
     "tailwindcss",
     -- Shell
     "bashls",
+    "shfmt",
     -- Lua
     "lua_ls",
+    "stylua",
     -- JavaScript
     "vtsls",
     "astro",
     "vue-language-server",
+    "prettier",
     -- PHP
     "intelephense",
     -- Python
     "pyright",
+    "ruff",
     -- Go
     "gopls",
     "templ",
+    "goimports",
     -- C/C++
+    -- clangd = {},
+    "clang-format",
 }
 
 return {
