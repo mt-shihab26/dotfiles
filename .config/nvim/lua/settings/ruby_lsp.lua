@@ -1,6 +1,5 @@
 return {
     enabled = true,
-    mason = false,
     cmd = { "ruby-lsp" },
     init_options = {
         enabledFeatures = {

@@ -1,55 +1,44 @@
+local enabled_lsps = {
+    -- Markup
+    "html",
+    "marksman",
+    "jsonls",
+    "yamlls",
+    "cssls",
+    "css_variables",
+    "tailwindcss",
+    -- Shell
+    "bashls",
+    -- Lua
+    "lua_ls",
+    -- JavaScript
+    "vtsls",
+    "astro",
+    -- PHP
+    "intelephense",
+    -- Ruby
+    "ruby_lsp",
+    -- Python
+    "pyright",
+    -- Go
+    "gopls",
+    "templ",
+    -- C/C++
+}
+
 return {
     "neovim/nvim-lspconfig",
     dependencies = {
         "williamboman/mason.nvim",
-        "williamboman/mason-lspconfig.nvim",
         "hrsh7th/cmp-nvim-lsp",
         "antosha417/nvim-lsp-file-operations",
         "folke/which-key.nvim",
         "nvim-lua/plenary.nvim",
     },
     config = function()
-        local servers = {
-            -- Markup
-            html = {},
-            marksman = {},
-            jsonls = {},
-            yamlls = {},
-            cssls = {},
-            css_variables = {},
-            tailwindcss = {},
-            -- Shell
-            bashls = {},
-            -- Lua
-            lua_ls = {},
-            -- JavaScript
-            vtsls = require "settings.vtsls",
-            astro = {},
-            -- PHP
-            intelephense = {},
-            -- Ruby
-            ruby_lsp = require "settings.ruby_lsp",
-            -- Python
-            pyright = {},
-            -- Go
-            gopls = {},
-            templ = {},
-            -- C/C++
-            -- clangd = {},
-        }
-
-        local lsp_file_operations = require "lsp-file-operations"
-
         require("mason").setup {}
 
-        local ensure_installed = {}
-        for name, cfg in pairs(servers) do
-            if cfg.mason ~= false then
-                table.insert(ensure_installed, name)
-            end
-        end
-
-        require("mason-lspconfig").setup { ensure_installed = ensure_installed, automatic_installation = true }
+        local lsp_file_operations = require "lsp-file-operations"
 
         lsp_file_operations.setup {}
 
@@ -112,8 +101,15 @@ return {
             end,
         })
 
-        for server_name, server_settings in pairs(servers) do
-            local config = vim.tbl_deep_extend("force", { capabilities = capabilities }, server_settings or {})
+        for _, server_name in ipairs(enabled_lsps) do
+            local server_settings = {}
+            local ok, settings = pcall(require, "settings." .. server_name)
+            if ok then
+                server_settings = settings
+            end
+
+            local config = vim.tbl_deep_extend("force", { capabilities = capabilities }, server_settings)
+
             vim.lsp.config(server_name, config)
             vim.lsp.enable(server_name)
         end
