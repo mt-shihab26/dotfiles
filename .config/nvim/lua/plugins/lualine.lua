@@ -47,9 +47,7 @@ return {
                 --     show_colors = true,
                 --     show_loading = true,
                 -- },
-                "encoding",
                 -- "fileformat",
-                "filetype",
                 {
                     function()
                         local buf_clients = vim.lsp.get_clients { bufnr = 0 }
@@ -70,6 +68,7 @@ return {
                         return #vim.lsp.get_clients { bufnr = 0 } > 0
                     end,
                 },
+                "filetype",
             },
             lualine_y = {
                 "diff",
