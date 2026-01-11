@@ -33,8 +33,17 @@ return {
         "antosha417/nvim-lsp-file-operations",
         "folke/which-key.nvim",
         "nvim-lua/plenary.nvim",
+        "j-hui/fidget.nvim",
     },
     config = function()
+        require("fidget").setup {
+            notification = {
+                window = {
+                    winblend = 0,
+                },
+            },
+        }
+
         local lsp_file_operations = require "lsp-file-operations"
 
         lsp_file_operations.setup {}

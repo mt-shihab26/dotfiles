@@ -50,6 +50,22 @@ return {
                 "encoding",
                 "fileformat",
                 "filetype",
+                {
+                    function()
+                        local buf_clients = vim.lsp.get_clients { bufnr = 0 }
+                        if #buf_clients == 0 then
+                            return ""
+                        end
+
+                        local buf_client_names = {}
+                        for _, client in pairs(buf_clients) do
+                            table.insert(buf_client_names, client.name)
+                        end
+
+                        return table.concat(buf_client_names, ", ")
+                    end,
+                    icon = "",
+                },
             },
             lualine_y = {
                 "diff",
