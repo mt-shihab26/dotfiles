@@ -66,6 +66,7 @@ return {
                     cond = function()
                         return #vim.lsp.get_clients { bufnr = 0 } > 0
                     end,
+                    color = { fg = "#7aa2f7" },
                 },
                 "filetype",
             },
