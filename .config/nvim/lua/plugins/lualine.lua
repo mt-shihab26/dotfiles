@@ -29,26 +29,26 @@ return {
                 },
             },
             lualine_c = {
-                {
-                    "b:gitsigns_blame_line",
-                    cond = function()
-                        return vim.b.gitsigns_blame_line ~= nil
-                    end,
-                    fmt = function(str)
-                        -- Trim the string to show only author and date
-                        local blame = str:gsub("%s*%(.*%)%s*$", "")
-                        return blame
-                    end,
-                },
+                -- {
+                --     "b:gitsigns_blame_line",
+                --     cond = function()
+                --         return vim.b.gitsigns_blame_line ~= nil
+                --     end,
+                --     fmt = function(str)
+                --         -- Trim the string to show only author and date
+                --         local blame = str:gsub("%s*%(.*%)%s*$", "")
+                --         return blame
+                --     end,
+                -- },
             },
             lualine_x = {
-                {
-                    "copilot",
-                    show_colors = true,
-                    show_loading = true,
-                },
+                -- {
+                --     "copilot",
+                --     show_colors = true,
+                --     show_loading = true,
+                -- },
                 "encoding",
-                "fileformat",
+                -- "fileformat",
                 "filetype",
                 {
                     function()
