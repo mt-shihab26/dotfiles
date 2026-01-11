@@ -62,9 +62,13 @@ return {
                             table.insert(buf_client_names, client.name)
                         end
 
-                        return table.concat(buf_client_names, ", ")
+                        local lsp_names = table.concat(buf_client_names, " ")
+                        return " " .. lsp_names
                     end,
-                    icon = "",
+                    color = { fg = "#7aa2f7", gui = "bold" },
+                    cond = function()
+                        return #vim.lsp.get_clients { bufnr = 0 } > 0
+                    end,
                 },
             },
             lualine_y = {
