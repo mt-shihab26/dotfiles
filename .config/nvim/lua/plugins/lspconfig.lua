@@ -36,13 +36,7 @@ return {
         "j-hui/fidget.nvim",
     },
     config = function()
-        require("fidget").setup {
-            notification = {
-                window = {
-                    winblend = 0,
-                },
-            },
-        }
+        require("fidget").setup { notification = { window = { winblend = 0 } } }
 
         local lsp_file_operations = require "lsp-file-operations"
 
