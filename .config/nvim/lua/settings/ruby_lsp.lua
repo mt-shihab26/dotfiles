@@ -3,7 +3,7 @@ return {
     cmd = { "ruby-lsp" },
     filetypes = { "ruby", "eruby" },
     root_markers = { "Gemfile" },
-    root_dir = require("_utils").root_dir { "Gemfile" },
+    root_dir = require("lspconfig.util").root_pattern "Gemfile",
     init_options = {
         formatter = "none",
         enabledFeatures = {
