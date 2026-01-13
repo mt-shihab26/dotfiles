@@ -1,5 +1,5 @@
 return {
     enabled = true,
+    root_dir = { "Gemfile" },
     filetypes = { "eruby", "javascript" },
-    root_markers = { "Gemfile" },
 }
