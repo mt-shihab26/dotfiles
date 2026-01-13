@@ -28,7 +28,7 @@ local ensure_installed = {
     -- "pyright",
     -- "ruff",
     -- C/C++
-    -- clangd = {},
+    -- "clangd"
     -- "clang-format",
     -- Go
     -- "gopls",

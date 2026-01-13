@@ -34,13 +34,13 @@ return {
             -- Ruby
             ruby = { "rubocop" },
             -- Python
-            python = { "ruff_format" },
+            -- python = { "ruff_format" },
             -- Go
-            go = { "goimports", "gofmt" },
-            templ = { "templ" },
+            -- go = { "goimports", "gofmt" },
+            -- templ = { "templ" },
             -- C/C++
-            c = { "clang-format" },
-            cpp = { "clang-format" },
+            -- c = { "clang-format" },
+            -- cpp = { "clang-format" },
         },
     },
 }

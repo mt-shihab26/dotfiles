@@ -18,12 +18,15 @@ local enabled_servers = {
     "intelephense",
     -- Ruby
     "ruby_lsp",
+    "turbo_ls",
+    "stimulus_ls",
     -- Python
-    "pyright",
+    -- "pyright",
     -- Go
-    "gopls",
-    "templ",
+    -- "gopls",
+    -- "templ",
     -- C/C++
+    -- "clangd"
 }
 
 return {
