@@ -20,16 +20,20 @@ local ensure_installed = {
     "prettier",
     -- PHP
     "intelephense",
+    -- Ruby
+    -- "ruby_lsp",
+    "turbo_ls",
+    "stimulus_ls",
     -- Python
-    "pyright",
-    "ruff",
-    -- Go
-    "gopls",
-    "templ",
-    "goimports",
+    -- "pyright",
+    -- "ruff",
     -- C/C++
     -- clangd = {},
-    "clang-format",
+    -- "clang-format",
+    -- Go
+    -- "gopls",
+    -- "templ",
+    -- "goimports",
 }
 
 return {
