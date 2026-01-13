@@ -1,7 +1,7 @@
 return {
     filetypes = {
+        "ruby",
         "eruby",
-        "javascript",
     },
     root_markers = {
         "Gemfile",
