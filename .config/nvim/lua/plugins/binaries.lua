@@ -21,9 +21,7 @@ local ensure_installed = {
     -- PHP
     "intelephense",
     -- Ruby
-    -- "ruby_lsp",
-    "turbo_ls",
-    "stimulus_ls",
+    "stimulus-language-server",
     -- Python
     -- "pyright",
     -- "ruff",
