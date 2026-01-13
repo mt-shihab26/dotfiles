@@ -1,9 +1,5 @@
 return {
-    filetypes = {
-        "eruby",
-        "javascript",
-    },
-    root_markers = {
-        "Gemfile",
-    },
+    enabled = true,
+    filetypes = { "eruby", "javascript" },
+    root_markers = { "Gemfile" },
 }

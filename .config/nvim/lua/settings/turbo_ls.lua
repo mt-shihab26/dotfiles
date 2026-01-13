@@ -1,9 +1,5 @@
 return {
-    filetypes = {
-        "ruby",
-        "eruby",
-    },
-    root_markers = {
-        "Gemfile",
-    },
+    enabled = true,
+    filetypes = { "ruby", "eruby" },
+    root_markers = { "Gemfile" },
 }
