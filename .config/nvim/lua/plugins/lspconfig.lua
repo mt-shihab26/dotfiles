@@ -1,34 +1,3 @@
-local enabled_servers = {
-    -- Markup
-    "html",
-    "marksman",
-    "jsonls",
-    "yamlls",
-    "cssls",
-    "css_variables",
-    "tailwindcss",
-    -- Shell
-    "bashls",
-    -- Lua
-    "lua_ls",
-    -- JavaScript
-    "vtsls",
-    "astro",
-    -- PHP
-    "intelephense",
-    -- Ruby
-    "ruby_lsp",
-    "turbo_ls",
-    "stimulus_ls",
-    -- Python
-    -- "pyright",
-    -- Go
-    -- "gopls",
-    -- "templ",
-    -- C/C++
-    -- "clangd"
-}
-
 return {
     "neovim/nvim-lspconfig",
     dependencies = {
@@ -104,7 +73,7 @@ return {
             end,
         })
 
-        for _, server_name in ipairs(enabled_servers) do
+        for _, server_name in ipairs(require "lists.servers") do
             local server_settings = {}
             local ok, settings = pcall(require, "settings." .. server_name)
             if ok then
