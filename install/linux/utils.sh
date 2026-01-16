@@ -1,1 +1,1 @@
-sudo pacman -S cloc tree
+sudo pacman -S htop stow cloc tree
