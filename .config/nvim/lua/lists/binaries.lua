@@ -20,6 +20,7 @@ return {
     "prettier",
     -- PHP
     "intelephense",
+    -- "laravel-ls",
     -- Ruby
     "stimulus-language-server",
     -- Python
