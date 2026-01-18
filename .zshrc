@@ -119,9 +119,9 @@ export PATH="$PATH:$ANDROID_HOME/cmdline-tools/latest/bin"
 
 alias ls="ls --color -h"
 
-alias init="$HOME/.scripts/tmux/init.sh"
-alias sessionizer="$HOME/.scripts/tmux/sessionizer.sh"
-alias kill-session="$HOME/.scripts/tmux/kill-session.sh"
+alias init="$HOME/.bin/tmux-init.sh"
+alias sessionizer="$HOME/.bin/tmux-sessionizer.sh"
+alias kill-session="$HOME/.bin/tmux-kill-session.sh"
 
 alias projects="sessionizer projects"
 alias learns="sessionizer learns"
