@@ -14,6 +14,8 @@ return {
     keys = {
         { "<leader>do", "<cmd>DiffviewOpen<cr>", desc = "open git diff view (diffview)" },
         { "<leader>dc", "<cmd>DiffviewClose<cr>", desc = "close git diff view (diffview)" },
+        { "<leader>de", "<cmd>DiffviewToggleFiles<cr>", desc = "open the file panel (diffview)" },
+        { "<leader>dp", "<cmd>DiffviewToggleFiles<cr>", desc = "close the file panel (diffview)" },
         { "<leader>dh", "<cmd>DiffviewFileHistory<cr>", desc = "open git file history (diffview)" },
         { "<leader>df", "<cmd>DiffviewFileHistory %<cr>", desc = "open current file history (diffview)" },
     },
