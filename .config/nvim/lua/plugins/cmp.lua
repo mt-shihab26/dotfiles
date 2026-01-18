@@ -13,10 +13,7 @@ return {
         "zbirenbaum/copilot-cmp",
     },
     config = function()
-        require("copilot_cmp").setup {}
-
         local cmp = require "cmp"
-        local luasnip = require "luasnip"
 
         cmp.setup {
             preselect = cmp.PreselectMode.Item,
@@ -26,7 +23,7 @@ return {
             },
             snippet = {
                 expand = function(args)
-                    luasnip.lsp_expand(args.body)
+                    require("luasnip").lsp_expand(args.body)
                 end,
             },
             window = {
@@ -58,19 +55,23 @@ return {
             formatting = {
                 fields = { "abbr", "kind", "menu" },
                 format = function(entry, item)
-                    local sources = {
-                        nvim_lsp = "lsp",
-                        nvim_lsp_signature_help = "signature",
-                        buffer = "buffer",
-                        path = "path",
-                        calc = "calc",
-                        luasnip = "snippet",
-                        copilot = "copilot",
-                    }
+                    local source_label = ""
                     local source_name = entry.source.name or ""
-                    local source_label = sources[source_name] or source_name
-                    local kind_text = item.kind or ""
-                    item.kind = string.format("[%s] %s", source_label, kind_text)
+                    if source_name == "nvim_lsp" then
+                        local client = vim.lsp.get_client_by_id(entry.source.source.client.id)
+                        source_label = "lsp->" .. (client and client.name or "unknown")
+                    else
+                        local sources = {
+                            nvim_lsp_signature_help = "signature",
+                            buffer = "buffer",
+                            path = "path",
+                            calc = "calc",
+                            luasnip = "snippet",
+                            copilot = "copilot",
+                        }
+                        source_label = sources[source_name] or source_name
+                    end
+                    item.kind = string.format("[%s] %s", source_label, item.kind or "")
                     return require("tailwindcss-colorizer-cmp").formatter(entry, item)
                 end,
             },
@@ -79,5 +80,7 @@ return {
         require("luasnip.loaders.from_vscode").lazy_load {
             paths = { vim.fn.stdpath "config" .. "/snippets" },
         }
+
+        require("copilot_cmp").setup {}
     end,
 }
