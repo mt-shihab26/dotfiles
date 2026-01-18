@@ -29,7 +29,5 @@ _darcs
 .luarc.json
 .stylua.toml
 
-docs
-install
-LICENSE
+.install
 README.md
