@@ -12,7 +12,7 @@ return {
         "DiffviewFileHistory",
     },
     keys = {
-        { "<leader>do", "<cmd>DiffviewOpen<cr>", desc = "open git diff view (diffview)" },
+        { "<leader>do", "<cmd>DiffviewOpen<cr><cmd>DiffviewToggleFiles<cr>", desc = "open git diff view (diffview)" },
         { "<leader>dc", "<cmd>DiffviewClose<cr>", desc = "close git diff view (diffview)" },
         { "<leader>de", "<cmd>DiffviewToggleFiles<cr>", desc = "open the file panel (diffview)" },
         { "<leader>dp", "<cmd>DiffviewToggleFiles<cr>", desc = "close the file panel (diffview)" },
