@@ -1,4 +1,4 @@
-;; extends
+; extends
 
 ; AlpineJS attributes (x-*)
 (attribute
