@@ -133,16 +133,6 @@ alias tree='tree --gitignore'
 
 
 ############################
-# Functions 
-############################
-
-wip() {
-    git add .
-    git commit -m "${1:-wip}"
-    git push origin HEAD
-}
-
-############################
 # Shell Integrations
 ############################
 

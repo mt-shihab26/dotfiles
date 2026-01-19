@@ -11,8 +11,8 @@ create_tmp() {
     touch "$HOME/$1/.tmp"
 }
 
-create_keep ".ssh"
-create_keep ".local/bin"
+create_tmp ".ssh"
+create_tmp ".local/bin"
 
 cd "$HOME/dotfiles"
 
