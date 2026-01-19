@@ -1,0 +1,5 @@
+#!/usr/bin/env zsh
+
+git add .
+git commit -m "${1:-wip}"
+git push origin HEAD
