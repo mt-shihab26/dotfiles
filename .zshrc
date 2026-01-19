@@ -119,13 +119,6 @@ export PATH="$PATH:$ANDROID_HOME/cmdline-tools/latest/bin"
 
 alias ls="ls --color -h"
 
-alias init="$HOME/.bin/tmux-init.sh"
-alias sessionizer="$HOME/.bin/tmux-sessionizer.sh"
-alias kill-session="$HOME/.bin/tmux-kill-session.sh"
-
-alias projects="sessionizer projects"
-alias learns="sessionizer learns"
-
 alias artisan="php artisan"
 
 # Tree command that respects .gitignore files
