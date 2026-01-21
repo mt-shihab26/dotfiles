@@ -123,6 +123,7 @@ alias artisan="php artisan"
 
 # Tree command that respects .gitignore files
 alias tree='tree --gitignore'
+alias cloc='cloc --vcs=git'
 
 
 ############################
