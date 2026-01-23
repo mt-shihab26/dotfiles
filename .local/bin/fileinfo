@@ -16,12 +16,15 @@ for file in "$@"; do
     perms=$(stat -c '%A' "$file")
     owner=$(stat -c '%U:%G' "$file")
     modified=$(stat -c '%y' "$file" | cut -d. -f1)
+    created=$(stat -c '%w' "$file" | cut -d. -f1)
+    [ "$created" = "-" ] && created="N/A"
 
     echo "File:     $file"
     echo "Size:     $size"
-    echo "Type:     $type"
     echo "Perms:    $perms"
     echo "Owner:    $owner"
+    echo "Created:  $created"
     echo "Modified: $modified"
+    echo "Type:     $type"
     [ $# -gt 1 ] && echo "---"
 done
