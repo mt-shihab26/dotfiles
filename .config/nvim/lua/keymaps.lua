@@ -7,7 +7,7 @@ vim.keymap.set("n", "<leader>j", "<C-w>j", { desc = "move to below window", nore
 vim.keymap.set("n", "<leader>k", "<C-w>k", { desc = "move to above window", noremap = true, silent = true })
 vim.keymap.set("n", "<leader>l", "<C-w>l", { desc = "move to right window", noremap = true, silent = true })
 
-vim.keymap.set("n", "l", require "lib.open_last_file", { desc = "open last file or move right", noremap = true })
+vim.keymap.set("n", "l", require "utils.open_last_file", { desc = "open last file or move right", noremap = true })
 vim.keymap.set("n", "<leader>ti", "<cmd>ToggleIndenChar<cr>", { desc = "toggle tabs/spaces for indentation" })
 vim.keymap.set("n", "<leader>tw", "<cmd>ToggleWrap<cr>", { desc = "toggle line wrapping on/off" })
 
