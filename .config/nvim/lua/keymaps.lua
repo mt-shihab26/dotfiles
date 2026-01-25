@@ -11,25 +11,8 @@ vim.keymap.set("n", "l", require "utils.open_last_file", { desc = "open last fil
 vim.keymap.set("n", "<leader>ti", require "utils.toggle_indent_char", { desc = "toggle tabs/spaces for indentation" })
 vim.keymap.set("n", "<leader>tw", require "utils.toggle_wrap", { desc = "toggle line wrapping on/off" })
 
--- copy current file relative path from file's directory
-vim.api.nvim_create_user_command("CopyFilePath", function()
-    local full_path = vim.fn.expand "%:p"
-    local current_dir = vim.fn.getcwd()
-    local relative_path = vim.fn.fnamemodify(full_path, ":." .. current_dir)
-    vim.fn.setreg("+", relative_path)
-    print("Copied to clipboard: " .. relative_path)
-end, { desc = "Copy current file path relative to cwd" })
-
-vim.keymap.set("n", "<leader>cp", "<cmd>CopyFilePath<cr>", { desc = "copy current file relative path" })
-
--- copy current file absolute path
-vim.api.nvim_create_user_command("CopyFileAbsPath", function()
-    local full_path = vim.fn.expand "%:p"
-    vim.fn.setreg("+", full_path)
-    print("Copied to clipboard: " .. full_path)
-end, { desc = "Copy current file absolute path" })
-
-vim.keymap.set("n", "<leader>ca", "<cmd>CopyFileAbsPath<cr>", { desc = "copy current file absolute path" })
+vim.keymap.set("n", "<leader>cp", require "utils.copy_file_path", { desc = "copy current file relative path" })
+vim.keymap.set("n", "<leader>ca", require "utils.copy_file_abs_path", { desc = "copy current file absolute path" })
 
 -- copy current file name with extension
 vim.api.nvim_create_user_command("CopyFileName", function()
