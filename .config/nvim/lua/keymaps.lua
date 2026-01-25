@@ -8,8 +8,8 @@ vim.keymap.set("n", "<leader>k", "<C-w>k", { desc = "move to above window", nore
 vim.keymap.set("n", "<leader>l", "<C-w>l", { desc = "move to right window", noremap = true, silent = true })
 
 vim.keymap.set("n", "l", require "utils.open_last_file", { desc = "open last file or move right", noremap = true })
-vim.keymap.set("n", "<leader>ti", "<cmd>ToggleIndenChar<cr>", { desc = "toggle tabs/spaces for indentation" })
-vim.keymap.set("n", "<leader>tw", "<cmd>ToggleWrap<cr>", { desc = "toggle line wrapping on/off" })
+vim.keymap.set("n", "<leader>ti", require "utils.toggle_indent_char", { desc = "toggle tabs/spaces for indentation" })
+vim.keymap.set("n", "<leader>tw", require "utils.toggle_wrap", { desc = "toggle line wrapping on/off" })
 
 -- copy current file relative path from file's directory
 vim.api.nvim_create_user_command("CopyFilePath", function()
