@@ -13,6 +13,9 @@ return {
     -- Lua
     "lua_ls",
     "stylua",
+    -- C/C++
+    "clangd",
+    "clang-format",
     -- JavaScript
     "vtsls",
     "astro",
@@ -26,9 +29,6 @@ return {
     -- Python
     -- "pyright",
     -- "ruff",
-    -- C/C++
-    -- "clangd"
-    -- "clang-format",
     -- Go
     -- "gopls",
     -- "templ",

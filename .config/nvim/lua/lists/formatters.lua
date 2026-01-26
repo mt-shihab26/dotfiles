@@ -14,6 +14,9 @@ return {
     zsh = { "shfmt" },
     -- Lua
     lua = { "stylua" },
+    -- C/C++
+    c = { "clang-format" },
+    cpp = { "clang-format" },
     -- JavaScript
     javascript = { "prettier" },
     javascriptreact = { "prettier" },
@@ -31,7 +34,4 @@ return {
     -- Go
     -- go = { "goimports", "gofmt" },
     -- templ = { "templ" },
-    -- C/C++
-    -- c = { "clang-format" },
-    -- cpp = { "clang-format" },
 }

@@ -11,6 +11,8 @@ return {
     "bashls",
     -- Lua
     "lua_ls",
+    -- C/C++
+    "clangd",
     -- JavaScript
     "vtsls",
     "astro",
@@ -26,6 +28,4 @@ return {
     -- Go
     -- "gopls",
     -- "templ",
-    -- C/C++
-    -- "clangd"
 }

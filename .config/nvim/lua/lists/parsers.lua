@@ -24,6 +24,9 @@ return {
     "luap",
     "vimdoc",
     "vim",
+    -- C/C++
+    "c",
+    "cpp",
     -- JavaScript
     "javascript",
     "jsdoc",
@@ -47,7 +50,4 @@ return {
     -- "gowork",
     -- "gosum",
     -- "templ",
-    -- C/C++
-    -- "c",
-    -- "cpp",
 }
