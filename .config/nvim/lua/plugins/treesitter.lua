@@ -17,13 +17,11 @@ return {
     {
         "windwp/nvim-autopairs",
         event = "InsertEnter",
-        enabled = false,
         config = true,
     },
     {
         "windwp/nvim-ts-autotag",
         event = "VeryLazy",
-        enabled = false,
         ft = {
             "html",
             "javascript",
