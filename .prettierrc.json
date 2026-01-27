@@ -10,6 +10,15 @@
                 "parser": "html",
                 "htmlWhitespaceSensitivity": "ignore"
             }
+        },
+        {
+            "files": ["*.blade.php"],
+            "options": {
+                "parser": "blade"
+            }
         }
+    ],
+    "plugins": [
+        "prettier-plugin-blade"
     ]
 }
