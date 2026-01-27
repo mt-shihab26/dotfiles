@@ -1,3 +1,3 @@
 return function()
-  vim.cmd("!php artisan test " .. vim.fn.expand("%:."))
+  vim.cmd("split | terminal php artisan test " .. vim.fn.expand("%:."))
 end
