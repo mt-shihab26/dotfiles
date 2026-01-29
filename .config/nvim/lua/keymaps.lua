@@ -14,6 +14,6 @@ vim.keymap.set("n", "<leader>tw", require "utils.toggle_wrap", { desc = "toggle 
 vim.keymap.set("n", "<leader>cp", require "utils.copy_file_path", { desc = "copy current file relative path" })
 vim.keymap.set("n", "<leader>ca", require "utils.copy_file_abs_path", { desc = "copy current file absolute path" })
 vim.keymap.set("n", "<leader>cf", require "utils.copy_file_name", { desc = "copy current file name with extension" })
-vim.keymap.set("n", "<leader>w", require "utils.wip", { desc = "git wip commit and push" })
+-- vim.keymap.set("n", "<leader>w", require "utils.wip", { desc = "git wip commit and push" })
 
 vim.keymap.set("n", "<leader>pt", require "utils.run_php_test", { desc = "run php artisan test on current file" })
