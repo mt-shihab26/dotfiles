@@ -9,7 +9,7 @@ elif [[ $1 == "learns" ]]; then
 elif [[ $# -eq 1 ]]; then
     selected=$1
 else
-    echo "Invalid argument. Usage: $0 [directory|learns|projects]"
+    echo "invalid argument. Usage: $0 [projects|tmp|learns]"
     exit 1
 fi
 
