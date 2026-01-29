@@ -1,0 +1,13 @@
+#!/usr/bin/env zsh
+
+# Set the current tmux session's working directory to pwd
+# New windows/panes will open in this directory
+
+if [[ -z $TMUX ]]; then
+    echo "Not in a tmux session"
+    exit 1
+fi
+
+session_name=$(tmux display-message -p '#S')
+tmux attach-session -t "$session_name" -c "$(pwd)"
+echo "Session '$session_name' working directory set to: $(pwd)"
