@@ -19,10 +19,11 @@ return {
     -- PHP
     "intelephense",
     -- "laravel_ls",
+    -- Unused
     -- Ruby
-    "ruby_lsp",
-    "turbo_ls",
-    "stimulus_ls",
+    -- "ruby_lsp",
+    -- "turbo_ls",
+    -- "stimulus_ls",
     -- Python
     -- "pyright",
     -- Go

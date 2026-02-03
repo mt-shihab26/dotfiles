@@ -24,8 +24,9 @@ return {
     -- PHP
     "intelephense",
     -- "laravel-ls",
+    -- Unused
     -- Ruby
-    "stimulus-language-server",
+    -- "stimulus-language-server",
     -- Python
     -- "pyright",
     -- "ruff",

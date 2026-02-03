@@ -27,8 +27,9 @@ return {
     -- PHP
     php = { "pint" },
     blade = { "prettier" },
+    -- Unused
     -- Ruby
-    ruby = { "rubocop" },
+    -- ruby = { "rubocop" },
     -- Python
     -- python = { "ruff_format" },
     -- Go

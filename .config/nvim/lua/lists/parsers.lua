@@ -39,9 +39,10 @@ return {
     "php_only",
     "blade",
     "twig",
+    -- Unused
     -- Ruby
-    "ruby",
-    "embedded_template",
+    -- "ruby",
+    -- "embedded_template",
     -- Python
     -- "python",
     -- Go
