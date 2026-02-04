@@ -7,6 +7,7 @@ return {
     json = { "prettier" },
     yaml = { "prettier" },
     toml = { "prettier" },
+    -- CSS
     css = { "prettier" },
     -- Shell
     sh = { "shfmt" },

@@ -4,6 +4,7 @@ return {
     "marksman",
     "jsonls",
     "yamlls",
+    -- CSS
     "cssls",
     "css_variables",
     "tailwindcss",

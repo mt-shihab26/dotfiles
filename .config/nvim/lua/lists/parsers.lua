@@ -15,6 +15,7 @@ return {
     "git_rebase",
     "gitignore",
     "gitattributes",
+    -- CSS
     "css",
     -- Shell
     "bash",
