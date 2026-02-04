@@ -7,7 +7,6 @@ return {
     "json",
     "jsonc",
     "yaml",
-    "toml",
     "dockerfile",
     "diff",
     "git_config",
@@ -42,6 +41,7 @@ return {
     "twig",
     -- Rust
     "rust",
+    "toml",
     -- Unused
     -- Ruby
     -- "ruby",
