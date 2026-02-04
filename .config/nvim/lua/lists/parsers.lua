@@ -40,6 +40,8 @@ return {
     "php_only",
     "blade",
     "twig",
+    -- Rust
+    "rust",
     -- Unused
     -- Ruby
     -- "ruby",

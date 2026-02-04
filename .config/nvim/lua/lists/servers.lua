@@ -19,6 +19,8 @@ return {
     "astro",
     -- PHP
     "intelephense",
+    -- Rust
+    "rust_analyzer",
     -- "laravel_ls",
     -- Unused
     -- Ruby

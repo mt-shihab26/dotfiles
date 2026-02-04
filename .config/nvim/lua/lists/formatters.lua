@@ -28,6 +28,8 @@ return {
     -- PHP
     php = { "pint" },
     blade = { "prettier" },
+    -- Rust
+    rust = { "rustfmt" },
     -- Unused
     -- Ruby
     -- ruby = { "rubocop" },

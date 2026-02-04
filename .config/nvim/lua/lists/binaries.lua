@@ -24,6 +24,8 @@ return {
     "prettier",
     -- PHP
     "intelephense",
+    -- Rust
+    "rust-analyzer",
     -- "laravel-ls",
     -- Unused
     -- Ruby
