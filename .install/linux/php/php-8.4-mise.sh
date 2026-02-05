@@ -11,7 +11,9 @@ echo "Build and install extension with pecl"
 pecl install igbinary
 pecl install redis
 
+echo "------------------------------------"
 echo "Please add the following settings to your php.ini file:"
 echo "------------------------------------"
 echo "extension=igbinary"
 echo "extension=redis"
+echo "------------------------------------"
