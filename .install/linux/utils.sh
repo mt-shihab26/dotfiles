@@ -1,1 +1,1 @@
-sudo pacman -S htop stow cloc tree
+sudo pacman -S htop stow cloc tree wget
