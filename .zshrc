@@ -1,11 +1,19 @@
 ############################
+# mise MUST load first
+############################
+if command -v mise &> /dev/null; then
+  eval "$(mise activate zsh)"
+fi
+
+# Ensure mise shims always have priority
+export PATH="$HOME/.local/share/mise/shims:$PATH"
+
+
+############################
 # Prompt & Theme Setup
 ############################
 
-# Silence Powerlevel10k's instant prompt
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
-
-# Load Powerlevel10k configuration (run `p10k configure` to update)
 [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
 
 
@@ -13,23 +21,18 @@ typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 # Plugin Manager: Zinit
 ############################
 
-# Define Zinit path
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
-# Install Zinit if missing
 if [ ! -d "$ZINIT_HOME" ]; then
    mkdir -p "$(dirname $ZINIT_HOME)"
    git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 fi
 
-# Load Zinit
 source "${ZINIT_HOME}/zinit.zsh"
 
-# Initialize completion BEFORE plugin loading
 autoload -Uz compinit && compinit
-
-# Replay compdefs now that compinit is active
 zinit cdreplay -q
+
 
 ############################
 # Completion Settings
@@ -54,7 +57,6 @@ zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
 
-# OMZ plugin snippets
 zinit snippet OMZP::git
 zinit snippet OMZP::sudo
 zinit snippet OMZP::command-not-found
@@ -93,35 +95,37 @@ bindkey '^[w' kill-region
 ############################
 
 export GO_HOME="$HOME/go"
-# export GEM_HOME="$(gem env user_gemhome)"
 export COMPOSER_HOME="$HOME/.config/composer"
 export JAVA_HOME="/usr/lib/jvm/default"
 export OMARCHY_HOME="$HOME/.local/share/omarchy"
 export ANDROID_HOME="$HOME/Android/Sdk"
 
-export PATH="$PATH:$HOME/.local/bin"
-export PATH="$PATH:$HOME/.local/share/nvim/mason/bin"
-export PATH="$PATH:$HOME/.local/share/bob/nvim-bin"
-export PATH="$PATH:$HOME/.local/share/omarchy/bin"
-export PATH="$PATH:$HOME/.cache/.bun/bin"
-export PATH="$PATH:$GEM_HOME/bin"
-export PATH="$PATH:$COMPOSER_HOME/vendor/bin"
-export PATH="$PATH:$GO_HOME/bin"
-export PATH="$PATH:$JAVA_HOME/bin"
-export PATH="$PATH:$OMARCHY_HOME/bin"
-export PATH="$PATH:$ANDROID_HOME/platform-tools"
-export PATH="$PATH:$ANDROID_HOME/emulator"
-export PATH="$PATH:$ANDROID_HOME/cmdline-tools/latest/bin"
+
+############################
+# PATH (append safely — do not override mise)
+############################
+
+path_add() { export PATH="$PATH:$1"; }
+
+path_add "$HOME/.local/bin"
+path_add "$HOME/.local/share/nvim/mason/bin"
+path_add "$HOME/.local/share/bob/nvim-bin"
+path_add "$HOME/.local/share/omarchy/bin"
+path_add "$HOME/.cache/.bun/bin"
+path_add "$COMPOSER_HOME/vendor/bin"
+path_add "$GO_HOME/bin"
+path_add "$JAVA_HOME/bin"
+path_add "$ANDROID_HOME/platform-tools"
+path_add "$ANDROID_HOME/emulator"
+path_add "$ANDROID_HOME/cmdline-tools/latest/bin"
+
 
 ############################
 # Aliases
 ############################
 
 alias ls="ls --color -h"
-
 alias artisan="php artisan"
-
-# Tree command that respects .gitignore files
 alias tree='tree --gitignore'
 alias cloc='cloc --vcs=git'
 
@@ -133,11 +137,7 @@ alias cloc='cloc --vcs=git'
 source <(fzf --zsh)
 eval "$(zoxide init --cmd cd zsh)"
 
-if command -v mise &> /dev/null; then
-  eval "$(mise activate bash)"
-fi
 
 ############################
-# Injected Configs
+# End
 ############################
-
