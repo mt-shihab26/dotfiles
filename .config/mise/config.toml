@@ -1,0 +1,7 @@
+[tools]
+node = "25.2.1"
+php = "8.4"
+ruby = "latest"
+
+[settings]
+idiomatic_version_file_enable_tools = ["ruby"]
