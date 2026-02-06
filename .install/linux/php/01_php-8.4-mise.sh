@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 echo "Install dependencies for building php8.4 with mise"
 sudo pacman -S re2c gd
 
