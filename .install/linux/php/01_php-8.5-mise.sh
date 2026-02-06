@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "Install dependencies for building php8.5 with mise"
-sudo pacman -Syu re2c gd zlib curl
+sudo pacman -S re2c gd zlib curl
 
 echo "Build and install php8.5 with mise"
 mise install php@8.5
