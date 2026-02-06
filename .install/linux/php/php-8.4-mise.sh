@@ -1,5 +1,5 @@
 echo "Install dependencies for building php8.4 with mise"
-sudo pacman -Syu re2c autoconf automake libtool bison pkgconf openssl libxml2 sqlite curl oniguruma libzip icu
+sudo pacman -Syu re2c gd
 
 echo "Build and install php8.4 with mise"
 mise install php@8.4
