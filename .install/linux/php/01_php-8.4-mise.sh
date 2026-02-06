@@ -13,6 +13,10 @@ echo "Build and install extension with pecl"
 pecl install igbinary
 pecl install redis
 
+echo "Create a real PHP binary symlink in /usr/local/bin"
+sudo ln -sf ~/.local/share/mise/shims/php /usr/local/bin/php
+sudo ln -sf ~/.local/share/mise/shims/php-fpm /usr/local/bin/php-fpm
+
 echo "PHP configuration paths:"
 php --ini
 
