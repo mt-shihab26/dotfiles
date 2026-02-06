@@ -1,7 +1,8 @@
 [tools]
-bun = "latest"
-node = "latest"
+bun = "1"
+node = "25"
 php = "8.4"
+pnpm = "10"
 ruby = "latest"
 
 [settings]
