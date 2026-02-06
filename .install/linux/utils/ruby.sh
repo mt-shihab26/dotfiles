@@ -1,3 +1,5 @@
+#!/bin/bash
+
 sudo pacman -S libvips # for action text in rails
 sudo pacman -S openslide
 

@@ -1,3 +1,5 @@
+#!/bin/bash
+
 yay -S typesense-bin
 
 sudo systemctl start typesense-server.service

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 MYSQL_ROOT_PASSWORD="2611"
 

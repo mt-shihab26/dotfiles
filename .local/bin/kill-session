@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/bin/bash
 
 # Check if tmux is running
 tmux_running=$(pgrep tmux)

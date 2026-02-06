@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 POSTGRES_PASSWORD="2611"
 

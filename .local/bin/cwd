@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/bin/bash
 
 # Set the current tmux session's working directory to pwd
 # New windows/panes will open in this directory

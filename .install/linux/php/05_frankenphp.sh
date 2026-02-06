@@ -1,3 +1,5 @@
+#!/bin/bash
+
 echo "Installing frankenphp from frankenphp.dev..."
 
 cd /tmp
