@@ -2,7 +2,6 @@
 if command -v mise &> /dev/null; then
   eval "$(mise activate zsh)" 
 fi
-export PATH="$HOME/.local/share/mise/shims:$PATH" # Ensure mise shims always have priority
 
 # Prompt & Theme Setup
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet 
