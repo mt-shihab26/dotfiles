@@ -28,14 +28,14 @@ return {
     -- PHP
     php = { "pint" },
     blade = { "prettier" },
+    -- Go
+    go = { "goimports", "gofmt" },
+    templ = { "templ" },
     -- Rust
-    rust = { "rustfmt" },
+    -- rust = { "rustfmt" },
     -- Unused
     -- Ruby
     -- ruby = { "rubocop" },
     -- Python
     -- python = { "ruff_format" },
-    -- Go
-    -- go = { "goimports", "gofmt" },
-    -- templ = { "templ" },
 }

@@ -7,6 +7,7 @@ return {
     "json",
     "jsonc",
     "yaml",
+    "toml",
     "dockerfile",
     "diff",
     "git_config",
@@ -39,9 +40,13 @@ return {
     "php_only",
     "blade",
     "twig",
+    -- "go",
+    "gomod",
+    "gowork",
+    "gosum",
+    "templ",
     -- Rust
-    "rust",
-    "toml",
+    -- "rust",
     -- Unused
     -- Ruby
     -- "ruby",
@@ -49,9 +54,4 @@ return {
     -- Python
     -- "python",
     -- Go
-    -- "go",
-    -- "gomod",
-    -- "gowork",
-    -- "gosum",
-    -- "templ",
 }

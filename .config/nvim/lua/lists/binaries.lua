@@ -24,17 +24,17 @@ return {
     "prettier",
     -- PHP
     "intelephense",
-    -- Rust
-    "rust-analyzer",
+    -- Go
+    "gopls",
+    "templ",
+    "goimports",
     -- "laravel-ls",
+    -- Rust
+    -- "rust-analyzer",
     -- Unused
     -- Ruby
     -- "stimulus-language-server",
     -- Python
     -- "pyright",
     -- "ruff",
-    -- Go
-    -- "gopls",
-    -- "templ",
-    -- "goimports",
 }

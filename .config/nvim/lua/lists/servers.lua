@@ -19,8 +19,11 @@ return {
     "astro",
     -- PHP
     "intelephense",
+    -- Go
+    "gopls",
+    "templ",
     -- Rust
-    "rust_analyzer",
+    -- "rust_analyzer",
     -- "laravel_ls",
     -- Unused
     -- Ruby
@@ -29,7 +32,4 @@ return {
     -- "stimulus_ls",
     -- Python
     -- "pyright",
-    -- Go
-    -- "gopls",
-    -- "templ",
 }
