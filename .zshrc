@@ -83,9 +83,9 @@ path_add "$ANDROID_HOME/cmdline-tools/latest/bin"
 
 # Aliases
 alias ls="ls --color -h"
-alias artisan="php artisan"
-alias rebase="bash rebase.sh"
-alias deploy="bash deploy.sh"
+alias artisan="./artisan"
+alias rebase="./rebase"
+alias deploy="./deploy"
 alias tree='tree --gitignore'
 alias cloc='cloc --vcs=git'
 
