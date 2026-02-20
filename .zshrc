@@ -86,7 +86,7 @@ alias ls="ls --color -h"
 alias artisan="./artisan"
 alias rebase="./rebase"
 alias deploy="./deploy"
-alias tree='tree --gitignore'
+alias tree='tree -a --gitignore'
 alias cloc='cloc --vcs=git'
 
 # Shell Integrations
