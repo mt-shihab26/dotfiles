@@ -12,6 +12,13 @@ return {
         },
         config = function(_, opts)
             require("nvim-treesitter.configs").setup(opts)
+
+            -- Use the markdown parser (CommonMark) for MDX filetypes.
+            -- This is the stable Neovim API; it avoids nvim-treesitter internals.
+            if vim.treesitter and vim.treesitter.language and vim.treesitter.language.register then
+                vim.treesitter.language.register("markdown", "mdx")
+                vim.treesitter.language.register("markdown", "markdown.mdx")
+            end
         end,
     },
     {
