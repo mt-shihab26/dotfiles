@@ -14,22 +14,22 @@ return {
     "lua_ls",
     -- C/C++
     "clangd",
+    -- Rust
+    "rust_analyzer",
+    -- PHP
+    "intelephense",
     -- JavaScript
     "vtsls",
     "astro",
-    -- PHP
-    "intelephense",
-    -- Go
-    "gopls",
-    "templ",
-    -- Rust
-    -- "rust_analyzer",
-    -- "laravel_ls",
+    -- Python
+    "pyright",
     -- Unused
+    -- Go
+    -- "gopls",
+    -- "templ",
+    -- "laravel_ls",
     -- Ruby
     -- "ruby_lsp",
     -- "turbo_ls",
     -- "stimulus_ls",
-    -- Python
-    -- "pyright",
 }

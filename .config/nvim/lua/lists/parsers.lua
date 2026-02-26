@@ -28,6 +28,13 @@ return {
     -- C/C++
     "c",
     "cpp",
+    -- Rust
+    "rust",
+    -- PHP
+    "php",
+    "php_only",
+    "blade",
+    "twig",
     -- JavaScript
     "javascript",
     "jsdoc",
@@ -35,23 +42,16 @@ return {
     "tsx",
     "astro",
     "vue",
-    -- PHP
-    "php",
-    "php_only",
-    "blade",
-    "twig",
-    -- "go",
-    "gomod",
-    "gowork",
-    "gosum",
-    "templ",
-    -- Rust
-    -- "rust",
+    -- Python
+    "python",
     -- Unused
+    -- Go
+    -- "go",
+    -- "gomod",
+    -- "gowork",
+    -- "gosum",
+    -- "templ",
     -- Ruby
     -- "ruby",
     -- "embedded_template",
-    -- Python
-    -- "python",
-    -- Go
 }

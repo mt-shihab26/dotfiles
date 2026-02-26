@@ -17,24 +17,24 @@ return {
     -- C/C++
     "clangd",
     "clang-format",
+    -- Rust
+    "rust-analyzer",
+    -- PHP
+    "intelephense",
     -- JavaScript
     "vtsls",
     "astro",
     "vue-language-server",
     "prettier",
-    -- PHP
-    "intelephense",
-    -- Go
-    "gopls",
-    "templ",
-    "goimports",
-    -- "laravel-ls",
-    -- Rust
-    -- "rust-analyzer",
+    -- Python
+    "pyright",
+    "ruff",
     -- Unused
+    -- Go
+    -- "gopls",
+    -- "templ",
+    -- "goimports",
+    -- "laravel-ls",
     -- Ruby
     -- "stimulus-language-server",
-    -- Python
-    -- "pyright",
-    -- "ruff",
 }

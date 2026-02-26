@@ -18,6 +18,11 @@ return {
     -- C/C++
     c = { "clang-format" },
     cpp = { "clang-format" },
+    -- Rust
+    rust = { "rustfmt" },
+    -- PHP
+    php = { "pint" },
+    blade = { "prettier" },
     -- JavaScript
     javascript = { "prettier" },
     javascriptreact = { "prettier" },
@@ -25,17 +30,12 @@ return {
     typescriptreact = { "prettier" },
     vue = { "prettier" },
     astro = { "prettier" },
-    -- PHP
-    php = { "pint" },
-    blade = { "prettier" },
-    -- Go
-    go = { "goimports", "gofmt" },
-    templ = { "templ" },
-    -- Rust
-    -- rust = { "rustfmt" },
+    -- Python
+    python = { "ruff_format" },
     -- Unused
+    -- Go
+    -- go = { "goimports", "gofmt" },
+    -- templ = { "templ" },
     -- Ruby
     -- ruby = { "rubocop" },
-    -- Python
-    -- python = { "ruff_format" },
 }
