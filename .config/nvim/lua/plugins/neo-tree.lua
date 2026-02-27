@@ -20,6 +20,7 @@ return {
                 hide_dotfiles = false,
                 hide_gitignored = false,
                 hide_hidden = false,
+                never_show = { ".git" },
             },
             follow_current_file = {
                 enabled = true,
