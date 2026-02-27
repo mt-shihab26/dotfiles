@@ -31,7 +31,7 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 
 # Tools
-alias t='./.local/bin/init'
+alias t='./.bin/init'
 alias c='opencode'
 n() { if [ "$#" -eq 0 ]; then command nvim .; else command nvim "$@"; fi; }
 
