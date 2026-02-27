@@ -35,23 +35,17 @@ alias t='./.local/bin/init'
 alias c='opencode'
 n() { if [ "$#" -eq 0 ]; then command nvim .; else command nvim "$@"; fi; }
 
-# Git Aliases
-alias g='git'
-alias gcm='git commit -m'
-alias gcam='git commit -a -m'
-alias gcad='git commit -a --amend'
-
 # File Operations
 open() (
     xdg-open "$@" >/dev/null 2>&1 &
 )
 
 # Compression
+compress() { tar -czf "${1%/}.tar.gz" "${1%/}"; }
 alias decompress="tar -xzf"
 
-# Custom project aliases (add your own here)
+# Custom project aliases
 alias artisan="./artisan"
 alias rebase="./rebase"
 alias deploy="./deploy"
-alias tree='tree -a --gitignore'
 alias cloc='cloc --vcs=git'
