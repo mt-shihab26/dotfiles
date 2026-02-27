@@ -12,30 +12,3 @@ $ stow .
 
 ```
 
-## What I used across OSs
-
-- Color: `Tokyo Night`
-- Font: `CaskaydiaMono Nerd Font`
-- Windows: `Darwin + OS X + AeroSpace`, `Linux + Arch + KDE Plasma`
--   1. Browser:
-    -   1. `Chrome`
-    -   2. `Firefox`
--   2. Terminal:
-    -   1. `Kitty + Tmux + ZSH + fzf + zoxide`, `Lazygit`, `Lazydocker`, `Neovim`
-    -   2. `VSCode`
--   3. Tools:
-    -   1. `TablePlus`
-    -   3. `Claude`
-    -   4. `Chatgpt`
--   4. Messengers:
-    -   1. `Thunderbird`
-    -   2. `Whatsapp`
-    -   3. `Discord`
-    -   4. `Zoom`
--   5. Productivity:
-    -   1. `Termodoro`
-    -   2. `Todoist`
-    -   3. `Keep`
-    -   4. `Asana`
--   6. Files & Others:
-    -   1. `Dolphin`
