@@ -31,3 +31,5 @@ _darcs
 
 .install
 README.md
+link.sh
+unlink.sh
