@@ -1,28 +1,28 @@
 # File System Aliases
-if command -v eza &> /dev/null; then
-  alias ls='eza -lh --group-directories-first --icons=auto'
-  alias lsa='ls -a'
-  alias lt='eza --tree --level=2 --long --icons --git'
-  alias lta='lt -a'
+if command -v eza &>/dev/null; then
+    alias ls='eza -lh --group-directories-first --icons=auto'
+    alias lsa='ls -a'
+    alias lt='eza --tree --level=2 --long --icons --git'
+    alias lta='lt -a'
 else
-  alias ls="ls --color -h"
+    alias ls="ls --color -h"
 fi
 
 alias ff="fzf --preview 'bat --style=numbers --color=always {}'"
 alias eff='$EDITOR "$(ff)"'
 
 # Custom cd function with zoxide
-if command -v zoxide &> /dev/null; then
-  alias cd="zd"
-  zd() {
-    if [ $# -eq 0 ]; then
-      builtin cd ~ && return
-    elif [ -d "$1" ]; then
-      builtin cd "$1"
-    else
-      z "$@" && printf "\U000F17A9 " && pwd || echo "Error: Directory not found"
-    fi
-  }
+if command -v zoxide &>/dev/null; then
+    alias cd="zd"
+    zd() {
+        if [ $# -eq 0 ]; then
+            builtin cd ~ && return
+        elif [ -d "$1" ]; then
+            builtin cd "$1"
+        else
+            z "$@" && printf "\U000F17A9 " && pwd || echo "Error: Directory not found"
+        fi
+    }
 fi
 
 # Navigation Aliases
@@ -31,12 +31,9 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 
 # Tools
+alias t='./.local/bin/init'
 alias c='opencode'
-alias cx='printf "\033[2J\033[3J\033[H" && claude --allow-dangerously-skip-permissions'
-alias d='docker'
-alias r='rails'
-alias t='tmux attach || tmux new -s Work'
-n() { if [ "$#" -eq 0 ]; then command nvim . ; else command nvim "$@"; fi; }
+n() { if [ "$#" -eq 0 ]; then command nvim .; else command nvim "$@"; fi; }
 
 # Git Aliases
 alias g='git'
@@ -46,7 +43,7 @@ alias gcad='git commit -a --amend'
 
 # File Operations
 open() (
-  xdg-open "$@" >/dev/null 2>&1 &
+    xdg-open "$@" >/dev/null 2>&1 &
 )
 
 # Compression
