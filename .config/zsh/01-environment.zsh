@@ -14,9 +14,10 @@ path_add() {
     fi
 }
 
+path_add "$HOME/.bin"
+path_add "$HOME/.local/bin"
 path_add "$HOME/.local/share/omarchy/bin"
 path_add "$HOME/.local/share/nvim/mason/bin"
-path_add "$HOME/.local/bin"
 path_add "$COMPOSER_HOME/vendor/bin"
 path_add "$HOME/.cache/.bun/bin"
 path_add "$GO_HOME/bin"
