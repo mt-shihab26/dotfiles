@@ -1,9 +1,22 @@
-# mise MUST load first
-if command -v mise &> /dev/null; then
-  eval "$(mise activate zsh)" 
+# ZSH Configuration Entry Point
+# This file sources all modular configuration from .config/zsh/
+
+# Ensure XDG base directory is set
+export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+export XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
+export XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"
+
+# Source all zsh configuration files from .config/zsh/
+# Files are sourced in numerical order (00, 01, 02, etc.)
+if [[ -d "$XDG_CONFIG_HOME/zsh" ]]; then
+  for config_file in "$XDG_CONFIG_HOME"/zsh/[0-9][0-9]-*.zsh; do
+    [[ -f "$config_file" ]] && source "$config_file"
+  done
+  unset config_file
 fi
 
-# Prompt & Theme Setup
+# Prompt & Theme Setup (after all configs are loaded)
+# Using Powerlevel10k theme
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet 
 [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
 
@@ -20,13 +33,6 @@ source "${ZINIT_HOME}/zinit.zsh"
 autoload -Uz compinit && compinit
 zinit cdreplay -q
 
-# Completion Settings
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
-zstyle ':completion:*' menu no
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
-zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
-
 # Load Plugins with Zinit
 zinit ice depth=1
 zinit light romkatv/powerlevel10k
@@ -37,60 +43,3 @@ zinit light Aloxaf/fzf-tab
 zinit snippet OMZP::git
 zinit snippet OMZP::sudo
 zinit snippet OMZP::command-not-found
-
-# History Settings
-HISTSIZE=5000
-HISTFILE=~/.zsh_history
-SAVEHIST=$HISTSIZE
-HISTDUP=erase
-setopt appendhistory
-setopt sharehistory
-setopt hist_ignore_space
-setopt hist_ignore_all_dups
-setopt hist_save_no_dups
-setopt hist_ignore_dups
-setopt hist_find_no_dups
-
-# Keybindings
-bindkey -e
-bindkey '^p' history-search-backward
-bindkey '^n' history-search-forward
-bindkey '^[w' kill-region
-
-
-# Environment Variables
-export GO_HOME="$HOME/go"
-export COMPOSER_HOME="$HOME/.config/composer"
-export JAVA_HOME="/usr/lib/jvm/default"
-export OMARCHY_HOME="$HOME/.local/share/omarchy"
-export ANDROID_HOME="$HOME/Android/Sdk"
-
-
-# PATH (append safely — do not override mise)
-path_add() { export PATH="$PATH:$1"; }
-
-path_add "$HOME/.local/bin"
-path_add "$HOME/.local/share/nvim/mason/bin"
-path_add "$HOME/.local/share/bob/nvim-bin"
-path_add "$HOME/.local/share/omarchy/bin"
-path_add "$HOME/.cache/.bun/bin"
-path_add "$COMPOSER_HOME/vendor/bin"
-path_add "$GO_HOME/bin"
-path_add "$JAVA_HOME/bin"
-path_add "$ANDROID_HOME/platform-tools"
-path_add "$ANDROID_HOME/emulator"
-path_add "$ANDROID_HOME/cmdline-tools/latest/bin"
-
-# Aliases
-alias ls="ls --color -h"
-alias artisan="./artisan"
-alias rebase="./rebase"
-alias deploy="./deploy"
-alias tree='tree -a --gitignore'
-alias cloc='cloc --vcs=git'
-
-# Shell Integrations
-source <(fzf --zsh)
-eval "$(zoxide init --cmd cd zsh)"
-
-# End
