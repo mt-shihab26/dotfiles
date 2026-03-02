@@ -1,5 +1,6 @@
 return {
     "stevearc/conform.nvim",
+    enabled = true,
     opts = {
         formatters_by_ft = require "lists.formatters",
         format_on_save = {
