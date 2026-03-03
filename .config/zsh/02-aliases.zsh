@@ -30,11 +30,6 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 
-# Tools
-alias t='./.bin/init'
-alias c='opencode'
-n() { if [ "$#" -eq 0 ]; then command nvim .; else command nvim "$@"; fi; }
-
 # File Operations
 open() (
     xdg-open "$@" >/dev/null 2>&1 &
@@ -44,8 +39,14 @@ open() (
 compress() { tar -czf "${1%/}.tar.gz" "${1%/}"; }
 alias decompress="tar -xzf"
 
-# Custom project aliases
+# Tools
+alias t='./.bin/init'
+alias c='opencode'
+alias n="nvim"
+
+# Projects
 alias artisan="./artisan"
 alias rebase="./rebase"
 alias deploy="./deploy"
+alias tree='tree --gitignore'
 alias cloc='cloc --vcs=git'
