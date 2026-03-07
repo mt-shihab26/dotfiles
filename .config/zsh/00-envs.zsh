@@ -12,8 +12,8 @@ export OMARCHY_HOME=$HOME/.local/share/omarchy
 export PATH=$PATH:$OMARCHY_PATH/bin
 
 # Rust
-export CARGO_HOME=$HOME/.cargo
-export PATH=$PATH:$CARGO_HOME/bin
+export RUST_HOME=$HOME/.cargo
+export PATH=$PATH:$RUST_HOME/bin
 
 # PHP
 export COMPOSER_HOME=$HOME/.config/composer
