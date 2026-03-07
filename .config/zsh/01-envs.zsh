@@ -20,12 +20,15 @@ export COMPOSER_HOME=$HOME/.config/composer
 export PATH=$PATH:$COMPOSER_HOME/vendor/bin
 
 # JavaScript
+export BUN_HOME=$HOME/.bun
+export PATH=$PATH:$BUN_HOME/bin
 export PATH=$PATH:$HOME/.cache/.bun/bin
-
-# Go
-export GO_HOME=$HOME/go
-export PATH=$PATH:$GO_HOME/bin
+[ -s "$BUN_HOME/_bun" ] && source "$BUN_HOME/_bun"
 
 # Java
 export JAVA_HOME=/usr/lib/jvm/default
 export PATH=$PATH:$JAVA_HOME/bin
+
+# Go
+export GO_HOME=$HOME/go
+export PATH=$PATH:$GO_HOME/bin
