@@ -16,6 +16,10 @@ create_tmp ".local/bin"
 
 cd "$HOME/dotfiles"
 
+if ! command -v stow &> /dev/null; then
+    sudo pacman -S stow
+fi
+
 stow .
 
 hyprctl reload
