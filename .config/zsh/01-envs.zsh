@@ -25,6 +25,10 @@ export PATH=$PATH:$BUN_HOME/bin
 export PATH=$PATH:$HOME/.cache/.bun/bin
 [ -s "$BUN_HOME/_bun" ] && source "$BUN_HOME/_bun"
 
+# Python
+eval "$(uv generate-shell-completion zsh)"
+eval "$(uvx --generate-shell-completion zsh)"
+
 # Java
 export JAVA_HOME=/usr/lib/jvm/default
 export PATH=$PATH:$JAVA_HOME/bin
