@@ -35,10 +35,6 @@ open() (
     xdg-open "$@" >/dev/null 2>&1 &
 )
 
-# Compression
-compress() { tar -czf "${1%/}.tar.gz" "${1%/}"; }
-alias decompress="tar -xzf"
-
 # Tools
 alias t='./.bin/init'
 alias c='opencode'

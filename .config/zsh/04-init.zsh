@@ -1,17 +1,17 @@
 # Tool Integrations
 # mise - version manager (MUST load first)
-if command -v mise &> /dev/null; then
-  eval "$(mise activate zsh)" 
+if command -v mise &>/dev/null; then
+    eval "$(mise activate zsh)"
 fi
 
 # fzf - fuzzy finder
-if command -v fzf &> /dev/null; then
-  source <(fzf --zsh)
+if command -v fzf &>/dev/null; then
+    source <(fzf --zsh)
 fi
 
 # zoxide - smart directory navigation
-if command -v zoxide &> /dev/null; then
-  eval "$(zoxide init --cmd cd zsh)"
+if command -v zoxide &>/dev/null; then
+    eval "$(zoxide init --cmd cd zsh)"
 fi
 
 # starship - cross-shell prompt (optional, only if configured)
