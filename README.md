@@ -2,16 +2,15 @@
 
 Finally organizing config with dotfiles
 
-## Install dot files
+## Install dotfiles
 
 ```sh
-cd ~
-git clone https://github.com/mt-shihab26/dotfiles.git
-cd dotfiles
+git clone https://github.com/mt-shihab26/dotfiles.git ~/dotfiles
+cd ~/dotfiles
 ./link.sh
 ```
 
-## Uninstall dot files
+## Uninstall dotfiles
 
 ```sh
 cd ~/dotfiles
