@@ -1,0 +1,31 @@
+# Editor
+export SUDO_EDITOR="$EDITOR"
+export BAT_THEME=ansi
+
+# Bin
+export PATH=$PATH:$HOME/.bin
+export PATH=$PATH:$HOME/.local/bin
+export PATH=$PATH:$HOME/.local/share/nvim/mason/bin
+
+# Omarchy
+export OMARCHY_HOME=$HOME/.local/share/omarchy
+export PATH=$PATH:$OMARCHY_PATH/bin
+
+# Rust
+export CARGO_HOME=$HOME/.cargo
+export PATH=$PATH:$CARGO_HOME/bin
+
+# PHP
+export COMPOSER_HOME=$HOME/.config/composer
+export PATH=$PATH:$COMPOSER_HOME/vendor/bin
+
+# JavaScript
+export PATH=$PATH:$HOME/.cache/.bun/bin
+
+# Go
+export GO_HOME=$HOME/go
+export PATH=$PATH:$GO_HOME/bin
+
+# Java
+export JAVA_HOME=/usr/lib/jvm/default
+export PATH=$PATH:$JAVA_HOME/bin
