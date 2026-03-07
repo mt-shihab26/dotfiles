@@ -16,13 +16,13 @@ return {
         vim.api.nvim_create_user_command("FormatToggle", function()
             if vim.g.disable_autoformat then
                 vim.g.disable_autoformat = false
-                print("Format on save enabled")
+                print "format on save enabled"
             else
                 vim.g.disable_autoformat = true
-                print("Format on save disabled")
+                print "format on save disabled"
             end
         end, {
-            desc = "Toggle format on save",
+            desc = "toggle format on save",
         })
 
         -- Modify format_on_save to respect the toggle
