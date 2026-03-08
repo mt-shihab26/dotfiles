@@ -1,0 +1,13 @@
+export PATH="$PATH:$HOME/.local/share/nvim/mason/bin"
+
+# Tools
+alias t='./.bin/init'
+alias c='opencode'
+alias n='nvim'
+
+# Projects
+alias artisan='./artisan'
+alias rebase='./rebase'
+alias deploy='./deploy'
+alias tree='tree --gitignore'
+alias cloc='cloc --vcs=git'
