@@ -24,14 +24,18 @@ bindkey '^[w' kill-region
 # Completion Settings
 # Add custom completion directory to fpath
 fpath=("${XDG_DATA_HOME:-$HOME/.local/share}/zsh/site-functions" $fpath)
-autoload -Uz compinit && compinit
 
-# Zsh completion configuration
+# Zsh completion configuration (set BEFORE compinit)
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
-zstyle ':completion:*' menu no
+
+# fzf-tab configuration (set BEFORE loading fzf-tab plugin)
+zstyle ':fzf-tab:*' fzf-command fzf
+zstyle ':fzf-tab:*' switch-group '<' '>'
+zstyle ':fzf-tab:*' fzf-flags --height=60% --layout=reverse --info=inline
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
+zstyle ':fzf-tab:complete:*:*' fzf-preview 'echo $word'
 
 # Prompt & Theme Setup
 # Powerlevel10k theme configuration
@@ -49,17 +53,28 @@ fi
 
 source "${ZINIT_HOME}/zinit.zsh"
 
+# Initialize completion system
 autoload -Uz compinit && compinit
-zinit cdreplay -q
 
 # Load Plugins with Zinit
 zinit ice depth=1
 zinit light romkatv/powerlevel10k
-zinit light zsh-users/zsh-syntax-highlighting
+
+# Load completions first
 zinit light zsh-users/zsh-completions
-zinit light zsh-users/zsh-autosuggestions
+
+# Load fzf-tab before other completion-related plugins
 zinit light Aloxaf/fzf-tab
+
+# Load other plugins
+zinit light zsh-users/zsh-syntax-highlighting
+zinit light zsh-users/zsh-autosuggestions
+
+# Load OMZ plugins
 zinit snippet OMZP::git
 zinit snippet OMZP::sudo
 zinit snippet OMZP::command-not-found
+
+# Replay compdefs from plugins
+zinit cdreplay -q
 

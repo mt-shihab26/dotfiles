@@ -21,15 +21,19 @@ fi
 #   eval "$(starship init zsh)"
 # fi
 
-# Shell completions (after compinit)
-# Generate rustup/cargo completions and add to fpath
+# Shell completions
+# Generate rustup/cargo completions if they don't exist
 if command -v rustup &>/dev/null; then
-    # Create completion directory if it doesn't exist
-    mkdir -p "${XDG_DATA_HOME:-$HOME/.local/share}/zsh/site-functions"
-    
-    # Generate completion files
-    rustup completions zsh rustup > "${XDG_DATA_HOME:-$HOME/.local/share}/zsh/site-functions/_rustup"
-    rustup completions zsh cargo > "${XDG_DATA_HOME:-$HOME/.local/share}/zsh/site-functions/_cargo"
+    COMPLETION_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/zsh/site-functions"
+
+    # Generate completion files if they don't exist
+    if [[ ! -f "$COMPLETION_DIR/_rustup" ]] || [[ ! -f "$COMPLETION_DIR/_cargo" ]]; then
+        mkdir -p "$COMPLETION_DIR"
+        rustup completions zsh rustup >"$COMPLETION_DIR/_rustup"
+        rustup completions zsh cargo >"$COMPLETION_DIR/_cargo"
+    fi
+
+    unset COMPLETION_DIR
 fi
 
 # Disable command hashing for mise
