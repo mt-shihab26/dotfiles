@@ -22,8 +22,15 @@ fi
 # fi
 
 # Shell completions (after compinit)
-eval "$(rustup completions zsh rustup)"
-eval "$(rustup completions zsh cargo)"
+# Generate rustup/cargo completions and add to fpath
+if command -v rustup &>/dev/null; then
+    # Create completion directory if it doesn't exist
+    mkdir -p "${XDG_DATA_HOME:-$HOME/.local/share}/zsh/site-functions"
+    
+    # Generate completion files
+    rustup completions zsh rustup > "${XDG_DATA_HOME:-$HOME/.local/share}/zsh/site-functions/_rustup"
+    rustup completions zsh cargo > "${XDG_DATA_HOME:-$HOME/.local/share}/zsh/site-functions/_cargo"
+fi
 
 # Disable command hashing for mise
 set +h

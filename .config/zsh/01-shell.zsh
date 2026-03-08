@@ -22,6 +22,8 @@ bindkey '^n' history-search-forward
 bindkey '^[w' kill-region
 
 # Completion Settings
+# Add custom completion directory to fpath
+fpath=("${XDG_DATA_HOME:-$HOME/.local/share}/zsh/site-functions" $fpath)
 autoload -Uz compinit && compinit
 
 # Zsh completion configuration
