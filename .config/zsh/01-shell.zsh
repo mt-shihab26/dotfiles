@@ -33,9 +33,9 @@ zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':fzf-tab:*' fzf-command fzf
 zstyle ':fzf-tab:*' switch-group '<' '>'
 zstyle ':fzf-tab:*' fzf-flags --height=60% --layout=reverse --info=inline
+# Enable preview only for cd and zoxide
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
-zstyle ':fzf-tab:complete:*:*' fzf-preview 'echo $word'
 
 # Prompt & Theme Setup
 # Powerlevel10k theme configuration
