@@ -12,8 +12,8 @@ set -x OMARCHY_HOME $HOME/.local/share/omarchy
 set -x PATH $PATH $OMARCHY_PATH/bin
 
 # Rust
-set -x RUST_HOME $HOME/.cargo
-set -x PATH $PATH $RUST_HOME/bin
+set -x CARGO_HOME $HOME/.cargo
+set -x PATH $PATH $CARGO_HOME/bin
 
 # PHP
 set -x COMPOSER_HOME $HOME/.config/composer
