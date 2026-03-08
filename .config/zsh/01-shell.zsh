@@ -33,9 +33,17 @@ zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':fzf-tab:*' fzf-command fzf
 zstyle ':fzf-tab:*' switch-group '<' '>'
 zstyle ':fzf-tab:*' fzf-flags --height=60% --layout=reverse --info=inline
-# Enable preview only for cd and zoxide
+
+# Show command completions first, then files/directories
+# This ensures rustup, cargo, etc show their subcommands
+zstyle ':fzf-tab:*' accept-line enter
+zstyle ':completion:*:*:-command-:*:*' group-order commands builtins functions
+
+# Enable preview only for file/directory completions
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
+# Show preview for general file/directory completions
+zstyle ':fzf-tab:complete:*:*' fzf-preview '[[ -d $realpath ]] && ls --color $realpath || [[ -f $realpath ]] && bat -n --color=always $realpath 2>/dev/null || ls --color $realpath'
 
 # Prompt & Theme Setup
 # Powerlevel10k theme configuration
