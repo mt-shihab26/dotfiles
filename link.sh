@@ -12,11 +12,12 @@ create_tmp() {
 }
 
 create_tmp ".ssh"
+create_tmp ".config/opencode"
 create_tmp ".local/bin"
 
 cd "$HOME/dotfiles"
 
-if ! command -v stow &> /dev/null; then
+if ! command -v stow &>/dev/null; then
     sudo pacman -S stow
 fi
 
