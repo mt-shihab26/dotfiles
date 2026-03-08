@@ -21,5 +21,9 @@ fi
 #   eval "$(starship init zsh)"
 # fi
 
+# Shell completions (after compinit)
+eval "$(rustup completions zsh rustup)"
+eval "$(rustup completions zsh cargo)"
+
 # Disable command hashing for mise
 set +h

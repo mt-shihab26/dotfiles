@@ -14,7 +14,6 @@ export PATH=$PATH:$OMARCHY_PATH/bin
 # Rust
 export RUST_HOME=$HOME/.cargo
 export PATH=$PATH:$RUST_HOME/bin
-eval "$(rustup completions zsh)"
 
 # PHP
 export COMPOSER_HOME=$HOME/.config/composer
