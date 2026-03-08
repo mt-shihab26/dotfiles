@@ -13,6 +13,7 @@ return {
     sh = { "shfmt" },
     bash = { "shfmt" },
     zsh = { "shfmt" },
+    fish = { "shfmt" },
     -- Lua
     lua = { "stylua" },
     -- C/C++
