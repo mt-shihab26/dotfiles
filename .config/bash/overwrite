@@ -1,3 +1,5 @@
+# source ~/.config/bash/overwrite
+
 export PATH="$PATH:$HOME/.local/share/nvim/mason/bin"
 
 # Tools
