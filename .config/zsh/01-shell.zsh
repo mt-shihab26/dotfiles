@@ -35,10 +35,15 @@ zstyle ':fzf-tab:*' switch-group '<' '>'
 zstyle ':fzf-tab:*' fzf-flags --height=60% --layout=reverse --info=inline
 zstyle ':fzf-tab:*' continuous-trigger '/'
 
-# Enable preview for file/directory completions
+# Enable preview ONLY for file/directory completions
+# Disable general preview to avoid showing directories for command arguments
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
-zstyle ':fzf-tab:complete:*:*' fzf-preview '[[ -d $realpath ]] && ls --color $realpath || [[ -f $realpath ]] && bat -n --color=always $realpath 2>/dev/null || ls --color $realpath'
+zstyle ':fzf-tab:complete:ls:*' fzf-preview '[[ -f $realpath ]] && bat -n --color=always $realpath 2>/dev/null || [[ -d $realpath ]] && ls --color $realpath'
+zstyle ':fzf-tab:complete:cat:*' fzf-preview '[[ -f $realpath ]] && bat -n --color=always $realpath 2>/dev/null'
+zstyle ':fzf-tab:complete:bat:*' fzf-preview '[[ -f $realpath ]] && bat -n --color=always $realpath 2>/dev/null'
+zstyle ':fzf-tab:complete:vim:*' fzf-preview '[[ -f $realpath ]] && bat -n --color=always $realpath 2>/dev/null'
+zstyle ':fzf-tab:complete:nvim:*' fzf-preview '[[ -f $realpath ]] && bat -n --color=always $realpath 2>/dev/null'
 
 # Prompt & Theme Setup
 # Powerlevel10k theme configuration
