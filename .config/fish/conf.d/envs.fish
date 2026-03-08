@@ -23,9 +23,6 @@ set -x PATH $PATH $COMPOSER_HOME/vendor/bin
 set -x BUN_HOME $HOME/.bun
 set -x PATH $PATH $BUN_HOME/bin
 set -x PATH $PATH $HOME/.cache/.bun/bin
-if test -s "$BUN_HOME/_bun"
-    source "$BUN_HOME/_bun"
-end
 
 # Java
 set -x JAVA_HOME /usr/lib/jvm/default
