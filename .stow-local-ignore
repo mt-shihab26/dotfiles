@@ -33,3 +33,5 @@ _darcs
 README.md
 link.sh
 unlink.sh
+.config/starship.toml
+

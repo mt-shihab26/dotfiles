@@ -2,7 +2,7 @@
 # Based on .p10k.zsh configuration with Snazzy colors
 
 # Don't print a new line at the start of the prompt
-add_newline = true
+add_newline = false
 
 # Use custom format for the prompt
 format = """
@@ -272,7 +272,4 @@ disabled = true
 disabled = true
 
 [haxe]
-disabled = true
-
-[ocaml]
 disabled = true
