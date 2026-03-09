@@ -1,5 +1,7 @@
 # source ~/.config/bash/overwrite
 
+[ -f "$HOME/dotfiles/.config/starship.toml" ] && export STARSHIP_CONFIG="$HOME/dotfiles/.config/starship.toml"
+
 export PATH="$PATH:$HOME/.local/share/nvim/mason/bin"
 
 # Tools
@@ -13,3 +15,4 @@ alias rebase='./rebase'
 alias deploy='./deploy'
 alias tree='tree --gitignore'
 alias cloc='cloc --vcs=git'
+
