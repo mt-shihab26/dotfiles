@@ -3,33 +3,34 @@
 add_newline = false 
 
 format = """
-[┌─](#9A9A10A)$directory$git_branch$git_status$cmd_duration$python$status
-[└─](#9A9A9A)$character"""
+[┌─](#bb9af7)$directory$git_branch$git_status$cmd_duration$python$status
+[└─](#bb9af7)$character"""
 
 [character]
-error_symbol = "[✗](bold cyan)"
-success_symbol = "[❯](bold cyan)"
+error_symbol = "[✗](bold #ff5370)"
+success_symbol = "[❯](bold #73daca)"
 
 [directory]
 truncation_length = 2
 truncation_symbol = "…/"
-repo_root_style = "bold cyan"
+style = "bold #73daca"
+repo_root_style = "bold #82aaff"
 repo_root_format = "[$repo_root]($repo_root_style)[$path]($style)[$read_only]($read_only_style) "
 
 [git_branch]
 format = "[$branch]($style) "
-style = "italic cyan"
+style = "italic bold #c099ff"
 
 [git_status]
 format     = '[$all_status]($style)'
-style      = "cyan"
+style      = "bold #ffc777"
 ahead      = "⇡${count} "
 diverged   = "⇕⇡${ahead_count}⇣${behind_count} "
 behind     = "⇣${count} "
-conflicted = " "
-up_to_date = " "
+conflicted = " "
+up_to_date = " "
 untracked  = "? "
-modified   = " "
+modified   = " "
 stashed    = ""
 staged     = ""
 renamed    = ""
@@ -39,5 +40,5 @@ deleted    = ""
 disabled = false
 format = "[$symbol$status]($style) "
 symbol = "✗ "
-style = "bold #FF5C57"
+style = "bold #ff5370"
 
