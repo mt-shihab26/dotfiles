@@ -1,13 +1,11 @@
 # source ~/.config/bash/overwrite
 
-[ -f "$HOME/dotfiles/.config/starship.toml" ] && export STARSHIP_CONFIG="$HOME/dotfiles/.config/starship.toml"
+export STARSHIP_CONFIG="$HOME/dotfiles/.config/starship.toml"
 
 export PATH="$PATH:$HOME/.local/share/nvim/mason/bin"
 
 # Tools
 alias t='./.bin/init'
-alias c='opencode'
-alias n='nvim'
 
 # Projects
 alias artisan='./artisan'
