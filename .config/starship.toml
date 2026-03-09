@@ -1,9 +1,9 @@
 add_newline = false # Don't print a new line at the start of the prompt
 
 # Use custom format for the prompt
-format = """ 
-[┌─](#9A9A10A)$time$directory$git_branch$git_status$cmd_duration$python
-[└─](#9A9A9A)$character"""  
+format = """
+[┌─](#9A9A10A)$time$directory$git_branch$git_status$cmd_duration$python$status
+[└─](#9A9A9A)$character"""
 
 # Configure the character (prompt symbol)
 [character]
@@ -94,6 +94,13 @@ detect_extensions = []
 detect_files = []
 detect_folders = []
 disabled = false
+
+# Exit code status
+[status]
+disabled = false
+format = "[$symbol$status]($style) "
+symbol = "✗ "
+style = "bold #FF5C57"       # Red
 
 # Disable modules that aren't in p10k config
 [aws]
