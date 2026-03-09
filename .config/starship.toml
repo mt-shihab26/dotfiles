@@ -1,19 +1,9 @@
-# Starship configuration matching Powerlevel10k Pure style
-# Based on .p10k.zsh configuration with Snazzy colors
-
-# Don't print a new line at the start of the prompt
-add_newline = false
+add_newline = false # Don't print a new line at the start of the prompt
 
 # Use custom format for the prompt
-format = """
-[┌─](#9A9A9A)$username$hostname$directory$git_branch$git_status$cmd_duration
-[└─](#9A9A9A)$python$character"""
-
-# Right-aligned modules
-right_format = """$time"""
-
-# Timeout for commands (in milliseconds)
-command_timeout = 500
+format = """ 
+[┌─](#9A9A10A)$time$directory$git_branch$git_status$cmd_duration$python
+[└─](#9A9A9A)$character"""  
 
 # Configure the character (prompt symbol)
 [character]
