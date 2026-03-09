@@ -1,0 +1,278 @@
+# Starship configuration matching Powerlevel10k Pure style
+# Based on .p10k.zsh configuration with Snazzy colors
+
+# Don't print a new line at the start of the prompt
+add_newline = true
+
+# Use custom format for the prompt
+format = """
+[┌─](#9A9A9A)$username$hostname$directory$git_branch$git_status$cmd_duration
+[└─](#9A9A9A)$python$character"""
+
+# Right-aligned modules
+right_format = """$time"""
+
+# Timeout for commands (in milliseconds)
+command_timeout = 500
+
+# Configure the character (prompt symbol)
+[character]
+success_symbol = "[❯](bold #FF6AC1)"  # Magenta ❯ on success
+error_symbol = "[❯](bold #FF5C57)"    # Red ❯ on error
+vimcmd_symbol = "[❮](bold #FF6AC1)"   # Magenta ❮ in vim command mode
+vimcmd_visual_symbol = "[❮](bold #FF6AC1)"
+vimcmd_replace_symbol = "[❮](bold #FF6AC1)"
+vimcmd_replace_one_symbol = "[❮](bold #FF6AC1)"
+
+# Username configuration (context)
+[username]
+style_user = "#9A9A9A"      # Grey for regular user
+style_root = "white bold"    # White for root
+format = "[$user]($style)"
+disabled = false
+show_always = false          # Only show in SSH or as root
+
+# Hostname configuration (context)
+[hostname]
+ssh_only = false
+ssh_symbol = ""
+format = "[@$hostname]($style) "
+style = "#9A9A9A"            # Grey
+disabled = false
+
+# Directory configuration
+[directory]
+style = "#57C7FF bold"       # Blue
+format = "[$path]($style)[$read_only]($read_only_style) "
+truncation_length = 100
+truncate_to_repo = false
+read_only = " "
+read_only_style = "#FF5C57"
+
+# Git branch
+[git_branch]
+symbol = ""
+style = "#9A9A9A"            # Grey
+format = "[$symbol$branch(:$remote_branch)]($style) "
+
+# Git status
+[git_status]
+style = "#9A9A9A"            # Grey
+format = "([$all_status$ahead_behind]($style) )"
+conflicted = "*"
+ahead = ":⇡"
+behind = ":⇣"
+diverged = ":⇣⇡"
+up_to_date = ""
+untracked = "*"
+stashed = ""
+modified = "*"
+staged = "*"
+renamed = "*"
+deleted = "*"
+
+# Git commit
+[git_commit]
+tag_symbol = ""
+tag_disabled = false
+only_detached = true
+format = "[@$hash( $tag)]($style) "
+style = "#9A9A9A"            # Grey
+
+# Command execution time
+[cmd_duration]
+min_time = 5_000             # Show only if >= 5 seconds
+show_milliseconds = false
+format = "[$duration]($style) "
+style = "#F3F99D"            # Yellow
+
+# Time (right-aligned)
+[time]
+disabled = false
+format = "[$time]($style)"
+style = "#9A9A9A"            # Grey
+time_format = "%I:%M:%S %p"  # 12-hour format with AM/PM
+use_12hr = true
+
+# Python virtual environment
+[python]
+symbol = ""
+style = "#9A9A9A"            # Grey
+format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
+pyenv_version_name = false
+detect_extensions = []
+detect_files = []
+detect_folders = []
+disabled = false
+
+# Disable modules that aren't in p10k config
+[aws]
+disabled = true
+
+[conda]
+disabled = true
+
+[docker_context]
+disabled = true
+
+[elixir]
+disabled = true
+
+[elm]
+disabled = true
+
+[erlang]
+disabled = true
+
+[golang]
+disabled = true
+
+[haskell]
+disabled = true
+
+[java]
+disabled = true
+
+[julia]
+disabled = true
+
+[kotlin]
+disabled = true
+
+[lua]
+disabled = true
+
+[nodejs]
+disabled = true
+
+[nim]
+disabled = true
+
+[nix_shell]
+disabled = true
+
+[ocaml]
+disabled = true
+
+[perl]
+disabled = true
+
+[php]
+disabled = true
+
+[pulumi]
+disabled = true
+
+[purescript]
+disabled = true
+
+[ruby]
+disabled = true
+
+[rust]
+disabled = true
+
+[scala]
+disabled = true
+
+[swift]
+disabled = true
+
+[terraform]
+disabled = true
+
+[vagrant]
+disabled = true
+
+[zig]
+disabled = true
+
+[package]
+disabled = true
+
+[helm]
+disabled = true
+
+[gcloud]
+disabled = true
+
+[openstack]
+disabled = true
+
+[azure]
+disabled = true
+
+[env_var]
+disabled = true
+
+[crystal]
+disabled = true
+
+[cmake]
+disabled = true
+
+[cobol]
+disabled = true
+
+[daml]
+disabled = true
+
+[dart]
+disabled = true
+
+[deno]
+disabled = true
+
+[dotnet]
+disabled = true
+
+[red]
+disabled = true
+
+[vlang]
+disabled = true
+
+[buf]
+disabled = true
+
+[guix_shell]
+disabled = true
+
+[rlang]
+disabled = true
+
+[typst]
+disabled = true
+
+[solidity]
+disabled = true
+
+[bun]
+disabled = true
+
+[fennel]
+disabled = true
+
+[raku]
+disabled = true
+
+[meson]
+disabled = true
+
+[odin]
+disabled = true
+
+[pijul_channel]
+disabled = true
+
+[quarto]
+disabled = true
+
+[gradle]
+disabled = true
+
+[haxe]
+disabled = true
+
+[ocaml]
+disabled = true
