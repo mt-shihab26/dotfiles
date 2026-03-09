@@ -2,8 +2,10 @@ add_newline = false # Don't print a new line at the start of the prompt
 
 # Use custom format for the prompt
 format = """
-[┌─](#9A9A10A)$time$directory$git_branch$git_status$cmd_duration$python$status
+[┌─](#9A9A10A)$directory$git_branch$git_status$cmd_duration$python$status
 [└─](#9A9A9A)$character"""
+
+right_format = """$time"""
 
 # Configure the character (prompt symbol)
 [character]
