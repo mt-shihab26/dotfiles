@@ -6,10 +6,6 @@ format = """
 [┌─](#bb9af7)$directory$git_branch$git_status$cmd_duration$python$status
 [└─](#bb9af7)$character"""
 
-[character]
-error_symbol = "[✗](bold #f7768e)"
-success_symbol = "[❯](bold #9ece6a)"
-
 [directory]
 truncation_length = 2
 truncation_symbol = "…/"
