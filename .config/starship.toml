@@ -14,7 +14,7 @@ success_symbol = "[❯](bold #9ece6a)"
 truncation_length = 2
 truncation_symbol = "…/"
 style = "bold #7dcfff"
-repo_root_style = "bold #7aa2f7"
+repo_root_style = "bold #7dcfff"
 repo_root_format = "[$repo_root]($repo_root_style)[$path]($style)[$read_only]($read_only_style) "
 
 [git_branch]
