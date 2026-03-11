@@ -19,21 +19,21 @@ return {
     "clang-format",
     -- Rust
     "rust-analyzer",
-    -- PHP
-    "intelephense",
+    -- Go
+    "gopls",
+    "templ",
+    "goimports",
+    -- Python
+    "pyright",
+    "ruff",
     -- JavaScript
     "vtsls",
     "astro",
     "vue-language-server",
     "prettier",
-    -- Python
-    "pyright",
-    "ruff",
+    -- PHP
+    "intelephense",
     -- Unused
-    -- Go
-    -- "gopls",
-    -- "templ",
-    -- "goimports",
     -- "laravel-ls",
     -- Ruby
     -- "stimulus-language-server",

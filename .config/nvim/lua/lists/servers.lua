@@ -16,17 +16,17 @@ return {
     "clangd",
     -- Rust
     "rust_analyzer",
-    -- PHP
-    "intelephense",
+    -- Go
+    "gopls",
+    "templ",
+    -- Python
+    "pyright",
     -- JavaScript
     "vtsls",
     "astro",
-    -- Python
-    "pyright",
+    -- PHP
+    "intelephense",
     -- Unused
-    -- Go
-    -- "gopls",
-    -- "templ",
     -- "laravel_ls",
     -- Ruby
     -- "ruby_lsp",

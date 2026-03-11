@@ -21,9 +21,11 @@ return {
     cpp = { "clang-format" },
     -- Rust
     rust = { "rustfmt" },
-    -- PHP
-    php = { "pint" },
-    blade = { "prettier" },
+    -- Go
+    go = { "goimports", "gofmt" },
+    templ = { "templ" },
+    -- Python
+    python = { "ruff_format" },
     -- JavaScript
     javascript = { "prettier" },
     javascriptreact = { "prettier" },
@@ -31,12 +33,10 @@ return {
     typescriptreact = { "prettier" },
     vue = { "prettier" },
     astro = { "prettier" },
-    -- Python
-    python = { "ruff_format" },
+    -- PHP
+    php = { "pint" },
+    blade = { "prettier" },
     -- Unused
-    -- Go
-    -- go = { "goimports", "gofmt" },
-    -- templ = { "templ" },
     -- Ruby
     -- ruby = { "rubocop" },
 }

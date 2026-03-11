@@ -30,11 +30,14 @@ return {
     "cpp",
     -- Rust
     "rust",
-    -- PHP
-    "php",
-    "php_only",
-    "blade",
-    "twig",
+    -- Go
+    "go",
+    "gomod",
+    "gowork",
+    "gosum",
+    "templ",
+    -- Python
+    "python",
     -- JavaScript
     "javascript",
     "jsdoc",
@@ -42,15 +45,12 @@ return {
     "tsx",
     "astro",
     "vue",
-    -- Python
-    "python",
+    -- PHP
+    "php",
+    "php_only",
+    "blade",
+    "twig",
     -- Unused
-    -- Go
-    -- "go",
-    -- "gomod",
-    -- "gowork",
-    -- "gosum",
-    -- "templ",
     -- Ruby
     -- "ruby",
     -- "embedded_template",
