@@ -1,0 +1,5 @@
+#!/bin/bash
+
+if [ -f "Cargo.toml" ]; then
+    cargo run
+fi

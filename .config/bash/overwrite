@@ -12,6 +12,7 @@ export PATH="$PATH:$HOME/.opencode/bin"
 alias t='./.bin/init'
 alias c='opencode'
 alias n='nvim'
+alias r='run'
 
 # Projects
 alias artisan='./artisan'
