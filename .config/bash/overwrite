@@ -2,7 +2,7 @@
 
 # [[ $- == *i* ]] && source /usr/share/blesh/ble.sh
 
-export STARSHIP_CONFIG="$HOME/dotfiles/.config/starship.toml"
+# export STARSHIP_CONFIG="$HOME/dotfiles/.config/starship.toml"
 
 export PATH="$PATH:$HOME/.local/share/nvim/mason/bin"
 
