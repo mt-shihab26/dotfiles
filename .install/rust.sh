@@ -7,3 +7,4 @@ rustup default stable
 rustup toolchain install
 
 rustup component add rustfmt
+rustup component add rust-analyzer
