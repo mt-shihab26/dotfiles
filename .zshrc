@@ -2,6 +2,7 @@ source "$HOME/.config/zsh/envs.zsh"
 source "$HOME/.config/zsh/shells.zsh"
 source "$HOME/.config/zsh/aliases.zsh"
 source "$HOME/.config/zsh/functions.zsh"
+source "$HOME/.config/zsh/init.zsh"
 
 # --------------------------------------
 # mise MUST load first
