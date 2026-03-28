@@ -1,4 +1,6 @@
 source "$HOME/.config/zsh/envs.zsh"
+source "$HOME/.config/zsh/shells.zsh"
+source "$HOME/.config/zsh/aliases.zsh"
 
 
 # --------------------------------------
