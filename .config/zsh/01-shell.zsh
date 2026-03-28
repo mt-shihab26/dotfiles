@@ -61,17 +61,17 @@ fi
 
 source "${ZINIT_HOME}/zinit.zsh"
 
-# Initialize completion system
-autoload -Uz compinit && compinit
-
 # Load Plugins with Zinit
 zinit ice depth=1
 zinit light romkatv/powerlevel10k
 
-# Load completions first
+# Load completions first (must be before compinit to populate fpath)
 zinit light zsh-users/zsh-completions
 
-# Load fzf-tab before other completion-related plugins
+# Initialize completion system (after fpath is populated)
+autoload -Uz compinit && compinit
+
+# Load fzf-tab after compinit so it can hook into the completion system
 zinit light Aloxaf/fzf-tab
 
 # Load other plugins
