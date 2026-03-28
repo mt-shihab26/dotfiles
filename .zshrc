@@ -6,13 +6,6 @@ source "$HOME/.config/zsh/init.zsh"
 
 # --------------------------------------
 
-# Environment Variables
-export GO_HOME="$HOME/go"
-export COMPOSER_HOME="$HOME/.config/composer"
-export JAVA_HOME="/usr/lib/jvm/default"
-export OMARCHY_HOME="$HOME/.local/share/omarchy"
-export ANDROID_HOME="$HOME/Android/Sdk"
-
 # PATH (append safely — do not override mise)
 path_add() { export PATH="$PATH:$1"; }
 
