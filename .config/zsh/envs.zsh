@@ -28,13 +28,6 @@ export PATH=$PATH:$RUST_HOME/bin
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$JAVA_HOME/bin
 
-# Auto completions
-
-[ -s "$BUN_HOME/_bun" ] && source "$BUN_HOME/_bun"
-
-eval "$(uv generate-shell-completion zsh)"
-eval "$(uvx --generate-shell-completion zsh)"
-
 # Generate rustup/cargo completions if they don't exist
 if command -v rustup &>/dev/null; then
     COMPLETION_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/zsh/site-functions"
