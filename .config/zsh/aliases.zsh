@@ -38,8 +38,11 @@ alias t='./.bin/init'
 alias n='nvim'
 alias r='run'
 alias co='opencode'
+alias cox='opencode'
 alias ca='claude'
-alias cx='claude --allow-dangerously-skip-permissions'
+alias cax='claude --allow-dangerously-skip-permissions'
+alias cx='codex'
+alias cxx='codex'
 
 # Projects
 alias artisan="php artisan"
