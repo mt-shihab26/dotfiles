@@ -37,20 +37,22 @@ alias ....='cd ../../..'
 alias t='./.bin/init'
 alias n='nvim'
 alias r='run'
+
+# Coding Agent
 alias co='opencode'
 alias cox='opencode'
 alias ca='claude'
 alias cax='claude --allow-dangerously-skip-permissions'
 alias cx='codex'
-alias cxx='codex'
+alias cxx='codex --dangerously-bypass-approvals-and-sandbox'
 
-# Projects
+# Tools with options
 alias artisan="php artisan"
+alias tree='tree --gitignore'
+alias cloc='cloc --vcs=git'
 
+# Projects scripts
 alias build="./build"
 alias rebase="./rebase"
 alias deploy="./deploy"
 alias preview="./preview"
-
-alias tree='tree --gitignore'
-alias cloc='cloc --vcs=git'
