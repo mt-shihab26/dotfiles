@@ -1,0 +1,19 @@
+# Orivo configuration
+#
+# Get your Turso credentials:
+#   turso auth login
+#   turso db create orivo
+#   turso db show orivo --url
+#   turso db tokens create orivo
+
+[db]
+url   = "libsql://your-db-name.turso.io"
+token = "your-auth-token"
+
+[timer]
+show_millis         = true
+work_duration       = 55
+break_duration      = 5
+long_break_duration = 15
+long_break_interval = 2
+
