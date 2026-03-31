@@ -1,19 +1,25 @@
+```toml
 # Orivo configuration
-#
+
+show_fps = true # show the FPS counter in the TUI header on startup
+
+
+# Database connection — Orivo uses Turso (libSQL/SQLite) for syncing todos across machines.
+[db]
+url   = "libsql://your-db-name.turso.io"   # libSQL URL from: turso db show orivo --url
+token = "your-auth-token"                  # auth token from: turso db tokens create orivo
 # Get your Turso credentials:
 #   turso auth login
 #   turso db create orivo
 #   turso db show orivo --url
 #   turso db tokens create orivo
 
-[db]
-url   = "libsql://your-db-name.turso.io"
-token = "your-auth-token"
 
+# Pomodoro timer settings — controls session lengths and when long breaks are triggered.
 [timer]
-show_millis         = true
-work_duration       = 55
-break_duration      = 5
-long_break_duration = 15
-long_break_interval = 2
-
+show_millis         = true   # show milliseconds in the timer display
+work_duration       = 55     # work session length in minutes
+break_duration      = 5      # short break length in minutes
+long_break_duration = 15     # long break length in minutes
+long_break_interval = 2      # number of work sessions before a long break
+```
