@@ -1,5 +1,6 @@
 # Orivo configuration
 
+
 show_fps = true # show the FPS counter in the TUI header on startup
 
 
