@@ -22,3 +22,4 @@ work_duration       = 55     # work session length in minutes
 break_duration      = 5      # short break length in minutes
 long_break_duration = 15     # long break length in minutes
 long_break_interval = 2      # number of work sessions before a long break
+daily_session_goal  = 8     # target work sessions to complete today (min: 1, max: 24)
