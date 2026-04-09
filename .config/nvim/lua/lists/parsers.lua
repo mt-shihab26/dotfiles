@@ -35,6 +35,7 @@ return {
     "gomod",
     "gowork",
     "gosum",
+    "gotmpl",
     "templ",
     -- Python
     "python",
