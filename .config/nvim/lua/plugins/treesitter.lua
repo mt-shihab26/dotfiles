@@ -1,24 +1,29 @@
 return {
     {
         "nvim-treesitter/nvim-treesitter",
-        branch = "master",
+        branch = "main",
         lazy = false,
         build = ":TSUpdate",
-        opts = {
-            ensure_installed = require "lists.parsers",
-            auto_install = true,
-            highlight = { enable = true },
-            indent = { enable = true, disable = { "yaml" } },
-        },
-        config = function(_, opts)
-            require("nvim-treesitter.configs").setup(opts)
+        config = function()
+            -- Deferred so it runs after lazy finishes loading (no-op if parsers are current)
+            vim.schedule(function()
+                local ts = require "nvim-treesitter"
+                if ts.install then
+                    ts.install(require "lists.parsers")
+                end
+            end)
 
-            -- Use the markdown parser (CommonMark) for MDX filetypes.
-            -- This is the stable Neovim API; it avoids nvim-treesitter internals.
-            if vim.treesitter and vim.treesitter.language and vim.treesitter.language.register then
-                vim.treesitter.language.register("markdown", "mdx")
-                vim.treesitter.language.register("markdown", "markdown.mdx")
-            end
+            vim.api.nvim_create_autocmd("FileType", {
+                callback = function(args)
+                    pcall(vim.treesitter.start)
+                    if args.match ~= "yaml" then
+                        vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+                    end
+                end,
+            })
+
+            vim.treesitter.language.register("markdown", "mdx")
+            vim.treesitter.language.register("markdown", "markdown.mdx")
         end,
     },
     {
