@@ -3,3 +3,6 @@ source "$HOME/.config/zsh/shells.zsh"
 source "$HOME/.config/zsh/aliases.zsh"
 source "$HOME/.config/zsh/functions.zsh"
 source "$HOME/.config/zsh/init.zsh"
+
+# Turso
+export PATH="$PATH:/home/shihab/.turso"
