@@ -4,5 +4,6 @@
     "pr": ""
   },
   "enabledPlugins": {},
-  "extraKnownMarketplaces": {}
+  "extraKnownMarketplaces": {},
+  "tui": "fullscreen"
 }
