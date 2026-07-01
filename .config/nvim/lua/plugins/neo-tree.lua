@@ -3,9 +3,15 @@ vim.pack.add({
     src = 'https://github.com/nvim-neo-tree/neo-tree.nvim',
     version = vim.version.range('3')
   },
-  "https://github.com/nvim-lua/plenary.nvim",
-  "https://github.com/MunifTanjim/nui.nvim",
-  "https://github.com/nvim-tree/nvim-web-devicons",
+  { 
+      src = "https://github.com/nvim-lua/plenary.nvim", version = vim.version.range("0.1")
+  },
+  { 
+      src = "https://github.com/MunifTanjim/nui.nvim", version = vim.version.range("0.4") 
+  },
+  { 
+      src = "https://github.com/nvim-tree/nvim-web-devicons"
+  },
 })
 
 require("neo-tree").setup({

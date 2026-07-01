@@ -42,7 +42,11 @@ vim.api.nvim_create_user_command("PackRemoveAll", function()
   local names = vim.tbl_map(function(p) return p.spec.name end, plugins)
   local choice = vim.fn.confirm(("Remove all %d plugins?"):format(#names), "&Yes\n&No", 2)
   if choice ~= 1 then return end
-  vim.pack.del(names, { force = true })
-  vim.notify(("Removed %d plugins"):format(#names), vim.log.levels.INFO)
+  local removed = {}
+  for _, name in ipairs(names) do
+    vim.pack.del({ name }, { force = true })
+    removed[#removed + 1] = "- " .. name
+  end
+  vim.notify("Removed plugins:\n" .. table.concat(removed, "\n"), vim.log.levels.INFO)
 end, { desc = "remove all plugins from disk (including active)" })
 
