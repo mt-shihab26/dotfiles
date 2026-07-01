@@ -18,7 +18,7 @@ vim.opt.cursorline = true
 vim.opt.list = true
 vim.opt.listchars = { space = "·", trail = "·", tab = "→ ", eol = "↲", nbsp = "␣" }
 vim.opt.signcolumn = "yes"
-vim.o.cmdheight = 0
+vim.opt.cmdheight = 0
 
 -- splits
 vim.opt.splitright = true
