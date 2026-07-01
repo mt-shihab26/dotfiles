@@ -33,3 +33,16 @@ vim.api.nvim_create_user_command("PackCheck", function()
   end
 end, { desc = "check for pending plugin updates (online)" })
 
+vim.api.nvim_create_user_command("PackRemoveAll", function()
+  local plugins = vim.pack.get()
+  if #plugins == 0 then
+    vim.notify("No plugins to remove", vim.log.levels.INFO)
+    return
+  end
+  local names = vim.tbl_map(function(p) return p.spec.name end, plugins)
+  local choice = vim.fn.confirm(("Remove all %d plugins?"):format(#names), "&Yes\n&No", 2)
+  if choice ~= 1 then return end
+  vim.pack.del(names, { force = true })
+  vim.notify(("Removed %d plugins"):format(#names), vim.log.levels.INFO)
+end, { desc = "remove all plugins from disk (including active)" })
+

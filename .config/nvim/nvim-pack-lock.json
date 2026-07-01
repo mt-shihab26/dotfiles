@@ -18,7 +18,7 @@
       "src": "https://github.com/nvim-lua/plenary.nvim"
     },
     "tokyonight.nvim": {
-      "rev": "cdc07ac78467a233fd62c493de29a17e0cf2b2b6",
+      "rev": "545d72cde6400835d895160ecb5853874fd5156d",
       "src": "https://github.com/folke/tokyonight.nvim",
       "version": "4.0.0 - 5.0.0"
     }
