@@ -35,7 +35,7 @@ return {
     astro = { "prettier" },
     -- PHP
     php = { "pint" },
-    blade = { "prettier" },
+    -- blade = { "prettier" },
     -- Unused
     -- Ruby
     -- ruby = { "rubocop" },
