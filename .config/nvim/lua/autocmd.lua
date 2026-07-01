@@ -1,5 +1,7 @@
 -- LSP sends malformed colors (float > 1.0 → >255 → 7-digit hex), disable until upstream fix.
-vim.lsp.document_color.enable(false)
+if vim.lsp.document_color then
+    vim.lsp.document_color.enable(false)
+end
 -- Suppress handler for in-flight responses that arrive after disable.
 vim.lsp.handlers["textDocument/documentColor"] = function() end
 
