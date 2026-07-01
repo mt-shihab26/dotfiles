@@ -33,6 +33,7 @@ vim.opt.inccommand = "split"
 vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.undofile = true
+vim.opt.confirm = true
 vim.opt.isfname:append("@-@")
 
 -- spell
