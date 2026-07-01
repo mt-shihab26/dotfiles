@@ -24,8 +24,6 @@ vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.undofile = true
 
-vim.opt.clipboard:append("unnamedplus")
-
 vim.opt.isfname:append("@-@")
 
 vim.opt.cursorline = true
@@ -41,6 +39,10 @@ vim.opt.mouse = "a"
 vim.opt.spell = true
 vim.opt.spelllang = "en_us"
 vim.opt.termguicolors = true
+
+vim.schedule(function()
+    vim.opt.clipboard:append("unnamedplus")
+end)
 
 vim.api.nvim_create_autocmd("TextYankPost", {
     callback = function()
