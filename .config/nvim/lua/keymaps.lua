@@ -47,6 +47,8 @@ vim.keymap.set("n", "<leader>G", telescope.grep_all_files, { desc = "grep all fi
 vim.keymap.set("n", "<leader>h", telescope.help_tags, { desc = "help tags (telescope)" })
 vim.keymap.set("n", "<leader>H", telescope.lsp_document_symbols, { desc = "lsp document symbols (telescope)" })
 
+vim.keymap.set("n", "<leader>L", "<cmd>LazyGit<cr>", { desc = "open lazygit window (lazygit)", remap = true })
+
 vim.keymap.set("n", "]h", "<cmd>silent Gitsigns next_hunk<cr>", { desc = "navigate to the next git hunk (gitsigns)" })
 vim.keymap.set(
     "n",
