@@ -17,7 +17,8 @@
     },
     "nvim-treesitter": {
       "rev": "4916d6592ede8c07973490d9322f187e07dfefac",
-      "src": "https://github.com/nvim-treesitter/nvim-treesitter"
+      "src": "https://github.com/nvim-treesitter/nvim-treesitter",
+      "version": "'main'"
     },
     "nvim-ts-autotag": {
       "rev": "88c1453db4ba7dd24131086fe51fdf74e587d275",
@@ -25,7 +26,8 @@
     },
     "nvim-web-devicons": {
       "rev": "dad71387de386a946b123079d0e53f23028f3abd",
-      "src": "https://github.com/nvim-tree/nvim-web-devicons"
+      "src": "https://github.com/nvim-tree/nvim-web-devicons",
+      "version": "'master'"
     },
     "plenary.nvim": {
       "rev": "50012918b2fc8357b87cff2a7f7f0446e47da174",

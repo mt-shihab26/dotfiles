@@ -10,8 +10,8 @@ vim.pack.add({
       src = "https://github.com/MunifTanjim/nui.nvim", version = vim.version.range("0.4") 
   },
   { 
-      src = "https://github.com/nvim-tree/nvim-web-devicons"
-      version="master"
+      src = "https://github.com/nvim-tree/nvim-web-devicons",
+      version = "master",
   },
 })
 

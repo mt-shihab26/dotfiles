@@ -5,16 +5,20 @@ vim.pack.add({
   },
 })
 
+vim.schedule(function()
+  local ok, treesitter = pcall(require, "nvim-treesitter")
+  if not ok then return end
 
-local treesitter = require("nvim-treesitter")
-
-local ensure_installed = {
+  local ensure_installed = {
     "go", "rust", "typescript", "javascript", "tsx",
     "html", "css", "json", "bash",
-    "http", "dockerfile",
-}
+    "http", "dockerfile", "blade"
+  }
 
-treesitter.install(ensure_installed)
+  if treesitter.install then
+    treesitter.install(ensure_installed)
+  end
+end)
 
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "*",
