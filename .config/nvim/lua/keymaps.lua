@@ -28,3 +28,12 @@ vim.keymap.set("n", "<leader>q", require "utils.close_terminals_or_others", { de
 vim.keymap.set("n", "<leader>cl", "<cmd>BufferLineCloseRight<cr>", { desc = "delete buffers to the right (bufferline)" })
 vim.keymap.set("n", "<leader>ch", "<cmd>BufferLineCloseLeft<cr>", { desc = "delete buffers to the left (bufferline)" })
 
+local telescope = require "utils.telescope"
+
+vim.keymap.set("n", "<leader>f", telescope.find_files, { desc = "find files (telescope)" })
+vim.keymap.set("n", "<leader>F", telescope.find_all_files, { desc = "find all files (telescope)" })
+vim.keymap.set("n", "<leader>g", telescope.grep_files, { desc = "grep files (telescope)" })
+vim.keymap.set("n", "<leader>G", telescope.grep_all_files, { desc = "grep all files (telescope)" })
+vim.keymap.set("n", "<leader>h", telescope.help_tags, { desc = "help tags (telescope)" })
+vim.keymap.set("n", "<leader>H", telescope.lsp_document_symbols, { desc = "lsp document symbols (telescope)" })
+

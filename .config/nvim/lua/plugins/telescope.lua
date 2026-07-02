@@ -1,0 +1,86 @@
+vim.api.nvim_create_autocmd("PackChanged", {
+  callback = function(ev)
+    if ev.data.spec.name == "telescope-fzf-native.nvim" and vim.fn.executable("make") == 1 then
+      vim.system({ "make" }, { cwd = ev.data.path })
+    end
+  end,
+})
+
+vim.pack.add({
+  {
+    src = "https://github.com/nvim-telescope/telescope.nvim",
+    version = "master",
+  },
+  "https://github.com/nvim-telescope/telescope-live-grep-args.nvim",
+  "https://github.com/nvim-telescope/telescope-ui-select.nvim",
+  "https://github.com/nvim-telescope/telescope-fzf-native.nvim",
+})
+
+local actions = require "telescope.actions"
+
+require("telescope").setup({
+  defaults = {
+    path_display = { truncate = 1 },
+    prompt_prefix = "   ",
+    selection_caret = "  ",
+    layout_config = {
+      prompt_position = "top",
+    },
+    preview = {
+      filesize_limit = 1,
+      timeout = 200,
+      msg_bg_fillchar = " ",
+    },
+    sorting_strategy = "ascending",
+    mappings = {
+      i = {
+        ["<esc>"] = actions.close,
+        ["<C-Down>"] = actions.cycle_history_next,
+        ["<C-Up>"] = actions.cycle_history_prev,
+        ["<M-n>"] = actions.move_selection_next,
+        ["<M-p>"] = actions.move_selection_previous,
+        ["<M-y>"] = actions.select_default,
+      },
+    },
+    file_ignore_patterns = { ".git/" },
+  },
+  extensions = {
+    live_grep_args = {
+      mappings = {
+        i = {
+          ["<C-k>"] = require("telescope-live-grep-args.actions").quote_prompt(),
+          ["<C-space>"] = actions.to_fuzzy_refine,
+        },
+      },
+    },
+    ["ui-select"] = {
+      require("telescope.themes").get_dropdown(),
+    },
+  },
+  pickers = {
+    find_files = {
+      hidden = true,
+    },
+    buffers = {
+      previewer = false,
+      layout_config = {
+        width = 80,
+      },
+    },
+    oldfiles = {
+      prompt_title = "History",
+    },
+    lsp_references = {
+      previewer = false,
+    },
+    lsp_definitions = {
+      previewer = false,
+    },
+    lsp_document_symbols = {
+      symbol_width = 55,
+    },
+  },
+})
+
+require("telescope").load_extension "fzf"
+require("telescope").load_extension "ui-select"
