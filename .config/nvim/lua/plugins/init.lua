@@ -1,5 +1,6 @@
-require "plugins.tokyonight"
+require "plugins.theme"
 require "plugins.neo-tree"
 require "plugins.bufferline"
 require "plugins.treesitter"
 require "plugins.telescope"
+require "plugins.cmp"

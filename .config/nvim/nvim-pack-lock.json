@@ -17,7 +17,8 @@
     },
     "nvim-autopairs": {
       "rev": "7b9923abad60b903ece7c52940e1321d39eccc79",
-      "src": "https://github.com/windwp/nvim-autopairs"
+      "src": "https://github.com/windwp/nvim-autopairs",
+      "version": "0.10.0 - 0.11.0"
     },
     "nvim-treesitter": {
       "rev": "4916d6592ede8c07973490d9322f187e07dfefac",
