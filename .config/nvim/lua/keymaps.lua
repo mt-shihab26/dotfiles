@@ -16,12 +16,16 @@ vim.keymap.set("n", "<C-l>", "<cmd><C-U>TmuxNavigateRight<cr>", { desc = "naviga
 
 vim.keymap.set("n", "l", require "utils.open_last_file", { desc = "open last file or move right" })
 
-vim.keymap.set("n", "<leader>ti", require "utils.toggle_indent_char", { desc = "toggle tabs/spaces for indentation" })
-vim.keymap.set("n", "<leader>tw", require "utils.toggle_wrap", { desc = "toggle line wrapping on/off" })
+local toggle = require "utils.toggle"
 
-vim.keymap.set("n", "<leader>cp", require "utils.copy_file_path", { desc = "copy current file relative path" })
-vim.keymap.set("n", "<leader>ca", require "utils.copy_file_abs_path", { desc = "copy current file absolute path" })
-vim.keymap.set("n", "<leader>cf", require "utils.copy_file_name", { desc = "copy current file name with extension" })
+vim.keymap.set("n", "<leader>ti", toggle.indent_char, { desc = "toggle tabs/spaces for indentation" })
+vim.keymap.set("n", "<leader>tw", toggle.wrap, { desc = "toggle line wrapping on/off" })
+
+local copy_file = require "utils.copy_file"
+
+vim.keymap.set("n", "<leader>cp", copy_file.path, { desc = "copy current file relative path" })
+vim.keymap.set("n", "<leader>ca", copy_file.abs_path, { desc = "copy current file absolute path" })
+vim.keymap.set("n", "<leader>cf", copy_file.name, { desc = "copy current file name with extension" })
 
 vim.keymap.set("n", "<leader>e", "<cmd>Neotree action=focus<cr>", { desc = "focus file tree (neo-tree)", remap = true })
 vim.keymap.set("n", "<leader>p", "<cmd>Neotree action=close<cr>", { desc = "close file tree (neo-tree)", remap = true })
