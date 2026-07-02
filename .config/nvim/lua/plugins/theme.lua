@@ -9,9 +9,9 @@ vim.pack.add {
     {
         src = "https://github.com/lukas-reineke/indent-blankline.nvim",
     },
-    {
-        src = "https://github.com/xiyaowong/transparent.nvim",
-    },
+    -- {
+    --     src = "https://github.com/xiyaowong/transparent.nvim",
+    -- },
 }
 
 require("colorizer").setup {
@@ -30,28 +30,27 @@ require("ibl").setup {
     exclude = { filetypes = { "dashboard" } },
 }
 
-require("transparent").setup {
-    groups = {
-        "Normal",
-        "NormalNC",
-        "NeoTreeNormal",
-        "NeoTreeNormalNC",
-        "TelescopeNormal",
-        "TelescopeBorder",
-        "TelescopePromptNormal",
-        "TelescopePromptBorder",
-        "TelescopePromptTitle",
-        "TelescopePreviewTitle",
-        "TelescopeResultsTitle",
-        "TelescopePreviewNormal",
-        "TelescopePreviewBorder",
-        "TelescopeResultsNormal",
-        "TelescopeResultsBorder",
-        "TelescopeMatching",
-    },
-    extra_groups = {},
-    exclude_groups = {},
-    on_clear = function() end,
-}
-
-vim.cmd "TransparentEnable"
+-- require("transparent").setup {
+--     groups = {
+--         "Normal",
+--         "NormalNC",
+--         "NeoTreeNormal",
+--         "NeoTreeNormalNC",
+--         "TelescopeNormal",
+--         "TelescopeBorder",
+--         "TelescopePromptNormal",
+--         "TelescopePromptBorder",
+--         "TelescopePromptTitle",
+--         "TelescopePreviewTitle",
+--         "TelescopeResultsTitle",
+--         "TelescopePreviewNormal",
+--         "TelescopePreviewBorder",
+--         "TelescopeResultsNormal",
+--         "TelescopeResultsBorder",
+--         "TelescopeMatching",
+--     },
+--     extra_groups = {},
+--     exclude_groups = {},
+--     on_clear = function() end,
+-- }
+-- vim.g.transparent_enabled = true
