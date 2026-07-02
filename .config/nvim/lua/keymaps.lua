@@ -24,8 +24,18 @@ vim.keymap.set("n", "<leader>p", "<cmd>Neotree action=close<cr>", { desc = "clos
 vim.keymap.set("n", "<S-h>", "<cmd>BufferLineCyclePrev<cr>", { desc = "prev buffer (bufferline)" })
 vim.keymap.set("n", "<S-l>", "<cmd>BufferLineCycleNext<cr>", { desc = "next buffer (bufferline)" })
 vim.keymap.set("n", "<leader>Q", "<cmd>bp<bar>sp<bar>bn<bar>bd<cr>", { desc = "close current buffer (bufferline)" })
-vim.keymap.set("n", "<leader>q", require "utils.close_terminals_or_others", { desc = "close terminals or other buffers (bufferline)" })
-vim.keymap.set("n", "<leader>cl", "<cmd>BufferLineCloseRight<cr>", { desc = "delete buffers to the right (bufferline)" })
+vim.keymap.set(
+    "n",
+    "<leader>q",
+    require "utils.close_terminals_or_others",
+    { desc = "close terminals or other buffers (bufferline)" }
+)
+vim.keymap.set(
+    "n",
+    "<leader>cl",
+    "<cmd>BufferLineCloseRight<cr>",
+    { desc = "delete buffers to the right (bufferline)" }
+)
 vim.keymap.set("n", "<leader>ch", "<cmd>BufferLineCloseLeft<cr>", { desc = "delete buffers to the left (bufferline)" })
 
 local telescope = require "utils.telescope"
@@ -37,3 +47,10 @@ vim.keymap.set("n", "<leader>G", telescope.grep_all_files, { desc = "grep all fi
 vim.keymap.set("n", "<leader>h", telescope.help_tags, { desc = "help tags (telescope)" })
 vim.keymap.set("n", "<leader>H", telescope.lsp_document_symbols, { desc = "lsp document symbols (telescope)" })
 
+vim.keymap.set("n", "]h", "<cmd>silent Gitsigns next_hunk<cr>", { desc = "navigate to the next git hunk (gitsigns)" })
+vim.keymap.set(
+    "n",
+    "[h",
+    "<cmd>silent Gitsigns prev_hunk<cr>",
+    { desc = "navigate to the previous git hunk (gitsigns)" }
+)
