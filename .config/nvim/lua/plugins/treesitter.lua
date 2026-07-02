@@ -3,7 +3,7 @@ vim.pack.add({
     src = "https://github.com/nvim-treesitter/nvim-treesitter",
     version = "main",
   },
-  { src = "https://github.com/windwp/nvim-autopairs", version = vim.version.range("0.11") },
+  { src = "https://github.com/windwp/nvim-autopairs" },
   {src= "https://github.com/windwp/nvim-ts-autotag"},
   { src = "https://github.com/folke/ts-comments.nvim", version = vim.version.range("1") },
 })

@@ -15,6 +15,10 @@
       "src": "https://github.com/MunifTanjim/nui.nvim",
       "version": "0.4.0 - 0.5.0"
     },
+    "nvim-autopairs": {
+      "rev": "7b9923abad60b903ece7c52940e1321d39eccc79",
+      "src": "https://github.com/windwp/nvim-autopairs"
+    },
     "nvim-treesitter": {
       "rev": "4916d6592ede8c07973490d9322f187e07dfefac",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter",
@@ -58,7 +62,8 @@
     },
     "ts-comments.nvim": {
       "rev": "79e4337e4231ff8ca33dab85162b5ee8e78f22ce",
-      "src": "https://github.com/folke/ts-comments.nvim"
+      "src": "https://github.com/folke/ts-comments.nvim",
+      "version": "1.0.0 - 2.0.0"
     }
   }
 }

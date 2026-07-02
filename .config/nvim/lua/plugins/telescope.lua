@@ -48,7 +48,7 @@ require("telescope").setup({
     live_grep_args = {
       mappings = {
         i = {
-          ["<C-k>"] = require("telescope-live-grep-args.actions").quote_prompt(),
+          ["<C-k>"] = function(...) return require("telescope-live-grep-args.actions").quote_prompt()(...) end,
           ["<C-space>"] = actions.to_fuzzy_refine,
         },
       },
