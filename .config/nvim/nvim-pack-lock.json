@@ -41,6 +41,10 @@
       "rev": "15fc12af3d0109fa76b60b5cffa1373697e261d1",
       "src": "https://github.com/zbirenbaum/copilot-cmp"
     },
+    "copilot.lua": {
+      "rev": "760912b5992e1d6437378a9c7f2b0cb950966cf5",
+      "src": "https://github.com/zbirenbaum/copilot.lua"
+    },
     "mason-lspconfig.nvim": {
       "rev": "47059d71b42d74b0a1e9f61c1d99d301039c3b5b",
       "src": "https://github.com/williamboman/mason-lspconfig.nvim"

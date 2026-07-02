@@ -9,7 +9,7 @@ vim.pack.add {
     "https://github.com/saadparwaiz1/cmp_luasnip",
     "https://github.com/roobert/tailwindcss-colorizer-cmp.nvim",
     "https://github.com/zbirenbaum/copilot-cmp",
-    "https://github.com/zbirenbaum/copilot.lua",
+    -- "https://github.com/zbirenbaum/copilot.lua",
 }
 
 local cmp = require "cmp"
@@ -80,9 +80,9 @@ require("luasnip.loaders.from_vscode").lazy_load {
 
 require("copilot_cmp").setup {}
 
-require("copilot").setup {
-    suggestion = { enabled = false },
-    panel = { enabled = false },
-}
+-- require("copilot").setup {
+--    suggestion = { enabled = false },
+--    panel = { enabled = false },
+-- }
 
-vim.cmd "Copilot disable"
+-- vim.cmd "Copilot disable"
