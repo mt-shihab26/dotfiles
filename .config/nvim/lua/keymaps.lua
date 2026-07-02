@@ -9,6 +9,11 @@ vim.keymap.set("n", "<leader>j", "<C-w>j", { desc = "move to below window" })
 vim.keymap.set("n", "<leader>k", "<C-w>k", { desc = "move to above window" })
 vim.keymap.set("n", "<leader>l", "<C-w>l", { desc = "move to right window" })
 
+vim.keymap.set("n", "<C-h>", "<cmd><C-U>TmuxNavigateLeft<cr>", { desc = "navigate left window (tmux)" })
+vim.keymap.set("n", "<C-j>", "<cmd><C-U>TmuxNavigateDown<cr>", { desc = "navigate down window (tmux)" })
+vim.keymap.set("n", "<C-k>", "<cmd><C-U>TmuxNavigateUp<cr>", { desc = "navigate up window (tmux)" })
+vim.keymap.set("n", "<C-l>", "<cmd><C-U>TmuxNavigateRight<cr>", { desc = "navigate right window (tmux)" })
+
 vim.keymap.set("n", "l", require "utils.open_last_file", { desc = "open last file or move right" })
 
 vim.keymap.set("n", "<leader>ti", require "utils.toggle_indent_char", { desc = "toggle tabs/spaces for indentation" })
