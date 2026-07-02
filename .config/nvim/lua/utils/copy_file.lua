@@ -2,8 +2,7 @@ local M = {}
 
 function M.path()
     local full_path = vim.fn.expand "%:p"
-    local current_dir = vim.fn.getcwd()
-    local relative_path = vim.fn.fnamemodify(full_path, ":." .. current_dir)
+    local relative_path = vim.fn.fnamemodify(full_path, ":.")
     vim.fn.setreg("+", relative_path)
     print("copied to clipboard: " .. relative_path)
 end

@@ -4,7 +4,6 @@ vim.keymap.set("n", "<esc>", "<cmd>nohlsearch<cr>", { desc = "clear search highl
 
 vim.keymap.set("x", "p", '"_dP', { desc = "paste without yanking selected text" })
 
-vim.keymap.set("n", "<leader>h", "<C-w>h", { desc = "move to left window" })
 vim.keymap.set("n", "<leader>j", "<C-w>j", { desc = "move to below window" })
 vim.keymap.set("n", "<leader>k", "<C-w>k", { desc = "move to above window" })
 vim.keymap.set("n", "<leader>l", "<C-w>l", { desc = "move to right window" })
@@ -56,13 +55,21 @@ vim.keymap.set("n", "<leader>G", telescope.grep_all_files, { desc = "grep all fi
 vim.keymap.set("n", "<leader>h", telescope.help_tags, { desc = "help tags (telescope)" })
 vim.keymap.set("n", "<leader>H", telescope.lsp_document_symbols, { desc = "lsp document symbols (telescope)" })
 
-vim.keymap.set("n", "<leader>?", function() require("which-key").show { global = false } end, { desc = "buffer local keymaps (which-key)" })
+vim.keymap.set("n", "<leader>?", function()
+    require("which-key").show { global = false }
+end, { desc = "buffer local keymaps (which-key)" })
 
 vim.keymap.set("n", "<leader>L", "<cmd>LazyGit<cr>", { desc = "open lazygit window (lazygit)", remap = true })
 
-vim.keymap.set("n", "<leader>s", function() require("spectre").open_file_search { select_word = true } end, { desc = "search on current buffer (spectre)" })
-vim.keymap.set("n", "<leader>S", function() require("spectre").open_visual { select_word = true } end, { desc = "search on multi buffers (spectre)" })
-vim.keymap.set("v", "<leader>S", function() require("spectre").open_visual() end, { desc = "search on multi buffers (spectre)" })
+vim.keymap.set("n", "<leader>s", function()
+    require("spectre").open_file_search { select_word = true }
+end, { desc = "search on current buffer (spectre)" })
+vim.keymap.set("n", "<leader>S", function()
+    require("spectre").open_visual { select_word = true }
+end, { desc = "search on multi buffers (spectre)" })
+vim.keymap.set("v", "<leader>S", function()
+    require("spectre").open_visual()
+end, { desc = "search on multi buffers (spectre)" })
 
 vim.api.nvim_create_autocmd("LspAttach", {
     callback = function(args)
@@ -80,7 +87,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
         map("n", "gr", buf.references, opts "go to references (lspconfig)")
 
         map("n", "K", buf.hover, opts "show hover documentation (lspconfig)")
-        map("n", "<C-k>", diagnostic.open_float, opts "show hover diagnostics (lspconfig)")
+        map("n", "<leader>d", diagnostic.open_float, opts "show hover diagnostics (lspconfig)")
 
         map("n", "<leader>h", buf.signature_help, opts "signature help (lspconfig)")
         map("n", "<leader>a", buf.code_action, opts "code actions (lspconfig)")
@@ -89,9 +96,15 @@ vim.api.nvim_create_autocmd("LspAttach", {
         map("n", "[d", diagnostic.goto_prev, opts "go to prev diagnostic (lspconfig)")
         map("n", "]d", diagnostic.goto_next, opts "go to next diagnostic (lspconfig)")
 
-        map("n", "<leader>ls", function() vim.cmd "LspStart" end, opts "start LSP server")
-        map("n", "<leader>lS", function() vim.cmd "LspStop" end, opts "stop LSP server")
-        map("n", "<leader>lr", function() vim.cmd "LspRestart" end, opts "restart LSP server")
+        map("n", "<leader>ls", function()
+            vim.cmd "LspStart"
+        end, opts "start LSP server")
+        map("n", "<leader>lS", function()
+            vim.cmd "LspStop"
+        end, opts "stop LSP server")
+        map("n", "<leader>lr", function()
+            vim.cmd "LspRestart"
+        end, opts "restart LSP server")
     end,
 })
 

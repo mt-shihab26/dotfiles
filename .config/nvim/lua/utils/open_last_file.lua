@@ -1,7 +1,7 @@
 return function()
     local bufname = vim.api.nvim_buf_get_name(0)
-    local buftype = vim.api.nvim_buf_get_option(0, "buftype")
-    local modified = vim.api.nvim_buf_get_option(0, "modified")
+    local buftype = vim.bo.buftype
+    local modified = vim.bo.modified
 
     if bufname == "" and buftype == "" and not modified then
         local oldfiles = vim.v.oldfiles

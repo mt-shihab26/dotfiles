@@ -1,10 +1,10 @@
 local M = {}
 
 function M.indent_char()
-    local current_expand = vim.api.nvim_get_option "expandtab"
+    local current_expand = vim.o.expandtab
     vim.opt.expandtab = not current_expand
 
-    if vim.api.nvim_get_option "expandtab" then
+    if vim.o.expandtab then
         print "using spaces for indentation"
     else
         print "using tabs for indentation"

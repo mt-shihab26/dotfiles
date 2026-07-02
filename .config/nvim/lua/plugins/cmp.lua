@@ -8,8 +8,6 @@ vim.pack.add {
     "https://github.com/L3MON4D3/LuaSnip",
     "https://github.com/saadparwaiz1/cmp_luasnip",
     "https://github.com/roobert/tailwindcss-colorizer-cmp.nvim",
-    "https://github.com/zbirenbaum/copilot-cmp",
-    -- "https://github.com/zbirenbaum/copilot.lua",
 }
 
 local cmp = require "cmp"
@@ -47,7 +45,6 @@ cmp.setup {
         { name = "buffer" },
         { name = "path" },
         { name = "calc" },
-        { name = "copilot" },
     },
     formatting = {
         fields = { "abbr", "kind", "menu" },
@@ -64,7 +61,6 @@ cmp.setup {
                     path = "path",
                     calc = "calc",
                     luasnip = "snippet",
-                    copilot = "copilot",
                 }
                 source_label = sources[source_name] or source_name
             end
@@ -77,12 +73,3 @@ cmp.setup {
 require("luasnip.loaders.from_vscode").lazy_load {
     paths = { vim.fn.stdpath "config" .. "/snippets" },
 }
-
-require("copilot_cmp").setup {}
-
--- require("copilot").setup {
---    suggestion = { enabled = false },
---    panel = { enabled = false },
--- }
-
--- vim.cmd "Copilot disable"
