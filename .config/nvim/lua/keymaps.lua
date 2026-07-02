@@ -52,6 +52,8 @@ vim.keymap.set("n", "<leader>G", telescope.grep_all_files, { desc = "grep all fi
 vim.keymap.set("n", "<leader>h", telescope.help_tags, { desc = "help tags (telescope)" })
 vim.keymap.set("n", "<leader>H", telescope.lsp_document_symbols, { desc = "lsp document symbols (telescope)" })
 
+vim.keymap.set("n", "<leader>?", function() require("which-key").show { global = false } end, { desc = "buffer local keymaps (which-key)" })
+
 vim.keymap.set("n", "<leader>L", "<cmd>LazyGit<cr>", { desc = "open lazygit window (lazygit)", remap = true })
 
 vim.keymap.set("n", "<leader>s", function() require("spectre").open_file_search { select_word = true } end, { desc = "search on current buffer (spectre)" })

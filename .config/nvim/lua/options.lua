@@ -47,11 +47,25 @@ vim.opt.mouse = "a"
 
 -- clipboard (deferred to avoid startup latency)
 vim.schedule(function()
-    vim.opt.clipboard:append "unnamedplus"
+    vim.opt.clipboard = "unnamedplus"
 end)
+
+-- LSP sends malformed colors (float > 1.0 → >255 → 7-digit hex), disable until upstream fix.
+if vim.lsp.document_color then
+    vim.lsp.document_color.enable(false)
+end
+-- Suppress handler for in-flight responses that arrive after disable.
+vim.lsp.handlers["textDocument/documentColor"] = function() end
 
 vim.api.nvim_create_autocmd("TextYankPost", {
     callback = function()
         vim.highlight.on_yank()
     end,
 })
+
+-- Treat .mdx files as the "mdx" filetype.
+vim.filetype.add {
+    extension = {
+        mdx = "mdx",
+    },
+}
