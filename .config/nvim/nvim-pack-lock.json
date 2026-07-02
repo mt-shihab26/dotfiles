@@ -15,6 +15,14 @@
       "src": "https://github.com/MunifTanjim/nui.nvim",
       "version": "0.4.0 - 0.5.0"
     },
+    "nvim-treesitter": {
+      "rev": "4916d6592ede8c07973490d9322f187e07dfefac",
+      "src": "https://github.com/nvim-treesitter/nvim-treesitter"
+    },
+    "nvim-ts-autotag": {
+      "rev": "88c1453db4ba7dd24131086fe51fdf74e587d275",
+      "src": "https://github.com/windwp/nvim-ts-autotag"
+    },
     "nvim-web-devicons": {
       "rev": "dad71387de386a946b123079d0e53f23028f3abd",
       "src": "https://github.com/nvim-tree/nvim-web-devicons"
@@ -28,6 +36,10 @@
       "rev": "545d72cde6400835d895160ecb5853874fd5156d",
       "src": "https://github.com/folke/tokyonight.nvim",
       "version": "4.0.0 - 5.0.0"
+    },
+    "ts-comments.nvim": {
+      "rev": "79e4337e4231ff8ca33dab85162b5ee8e78f22ce",
+      "src": "https://github.com/folke/ts-comments.nvim"
     }
   }
 }

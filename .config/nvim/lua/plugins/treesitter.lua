@@ -3,37 +3,35 @@ vim.pack.add({
     src = "https://github.com/nvim-treesitter/nvim-treesitter",
     version = "main",
   },
-  { 
-    src = "https://github.com/windwp/nvim-autopairs", 
-    version = vim.version.range("0.11") 
-  },
-  {
-      src = "https://github.com/windwp/nvim-ts-autotag"
-      version = "main"
-  }
-  { src = "https://github.com/folke/ts-comments.nvim", version = vim.version.range("1") },
 })
 
-vim.schedule(function()
-  local ts = require "nvim-treesitter"
-  if ts.install then
-    ts.install(require "lists.parsers")
-  end
-end)
+
+local treesitter = require("nvim-treesitter")
+
+local ensure_installed = {
+    "go", "rust", "typescript", "javascript", "tsx",
+    "html", "css", "json", "bash",
+    "http", "dockerfile",
+}
+
+treesitter.install(ensure_installed)
 
 vim.api.nvim_create_autocmd("FileType", {
-  callback = function(args)
-    pcall(vim.treesitter.start)
-    if args.match ~= "yaml" then
-      vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-    end
-  end,
+	pattern = "*",
+	callback = function(args)
+		local buf = args.buf
+		local ft = vim.bo[buf].filetype
+
+		local lang = vim.treesitter.language.get_lang(ft)
+		if not lang then
+			return
+		end
+
+		local ok_add = pcall(vim.treesitter.language.add, lang)
+		if not ok_add then
+			return
+		end
+
+		pcall(vim.treesitter.start, buf, lang)
+	end,
 })
-
-vim.treesitter.language.register("markdown", "mdx")
-vim.treesitter.language.register("markdown", "markdown.mdx")
-
-require("nvim-autopairs").setup({})
-require("nvim-ts-autotag").setup({})
-require("ts-comments").setup({})
-
