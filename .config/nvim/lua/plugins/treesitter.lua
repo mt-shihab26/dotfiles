@@ -9,14 +9,8 @@ vim.schedule(function()
   local ok, treesitter = pcall(require, "nvim-treesitter")
   if not ok then return end
 
-  local ensure_installed = {
-    "go", "rust", "typescript", "javascript", "tsx",
-    "html", "css", "json", "bash",
-    "http", "dockerfile", "blade"
-  }
-
   if treesitter.install then
-    treesitter.install(ensure_installed)
+    treesitter.install(require "lists.parsers")
   end
 end)
 
