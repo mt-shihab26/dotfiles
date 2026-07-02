@@ -1,0 +1,19 @@
+{
+    "name": "snippets",
+    "contributes": {
+        "snippets": [
+            {
+                "language": "c",
+                "path": "./c.json"
+            },
+            {
+                "language": "typescriptreact",
+                "path": "./tsx.json"
+            },
+            {
+                "language": "typescript",
+                "path": "./ts.json"
+            }
+        ]
+    }
+}

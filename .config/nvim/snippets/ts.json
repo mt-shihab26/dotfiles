@@ -1,0 +1,14 @@
+{
+    "Try Catch Block": {
+        "prefix": "trycatch",
+        "body": [
+            "try {",
+            "    ",
+            "} catch (e: any) {",
+            "    console.error(\"${1}:\", e);",
+            "    return ${2}",
+            "}"
+        ],
+        "description": "Adds a try-catch block with error handling"
+    }
+}
