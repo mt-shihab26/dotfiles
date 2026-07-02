@@ -1,7 +1,7 @@
 vim.api.nvim_create_autocmd("PackChanged", {
     callback = function(ev)
         if ev.data.spec.name == "telescope-fzf-native.nvim" and vim.fn.executable "make" == 1 then
-            vim.system({ "make" }, { cwd = ev.data.path })
+            vim.system({ "make" }, { cwd = ev.data.path }):wait()
         end
     end,
 })
