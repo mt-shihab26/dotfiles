@@ -84,5 +84,13 @@ require("telescope").setup {
     },
 }
 
+local fzf_plugins = vim.pack.get { "telescope-fzf-native.nvim" }
+if #fzf_plugins > 0 then
+    local so = fzf_plugins[1].path .. "/build/libfzf.so"
+    if vim.fn.filereadable(so) == 0 and vim.fn.executable "make" == 1 then
+        vim.system({ "make" }, { cwd = fzf_plugins[1].path }):wait()
+    end
+end
+
 require("telescope").load_extension "fzf"
 require("telescope").load_extension "ui-select"
