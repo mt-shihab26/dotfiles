@@ -1,5 +1,10 @@
 {
   "plugins": {
+    "bufferline.nvim": {
+      "rev": "655133c3b4c3e5e05ec549b9f8cc2894ac6f51b3",
+      "src": "https://github.com/akinsho/bufferline.nvim",
+      "version": "4.0.0 - 5.0.0"
+    },
     "neo-tree.nvim": {
       "rev": "83e7a2982fd12b9c3d35bc39dd5877cd91a02a61",
       "src": "https://github.com/nvim-neo-tree/neo-tree.nvim",

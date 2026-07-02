@@ -21,3 +21,10 @@ vim.keymap.set("n", "<leader>cf", require "utils.copy_file_name", { desc = "copy
 vim.keymap.set("n", "<leader>e", "<cmd>Neotree action=focus<cr>", { desc = "focus file tree (neo-tree)", remap = true })
 vim.keymap.set("n", "<leader>p", "<cmd>Neotree action=close<cr>", { desc = "close file tree (neo-tree)", remap = true })
 
+vim.keymap.set("n", "<S-h>", "<cmd>BufferLineCyclePrev<cr>", { desc = "prev buffer (bufferline)" })
+vim.keymap.set("n", "<S-l>", "<cmd>BufferLineCycleNext<cr>", { desc = "next buffer (bufferline)" })
+vim.keymap.set("n", "<leader>Q", "<cmd>bp<bar>sp<bar>bn<bar>bd<cr>", { desc = "close current buffer (bufferline)" })
+vim.keymap.set("n", "<leader>q", function() close_terminals_or_others() end, { desc = "close terminals or other buffers (bufferline)" })
+vim.keymap.set("n", "<leader>cl", "<cmd>BufferLineCloseRight<cr>", { desc = "delete buffers to the right (bufferline)" })
+vim.keymap.set("n", "<leader>ch", "<cmd>BufferLineCloseLeft<cr>", { desc = "delete buffers to the left (bufferline)" })
+

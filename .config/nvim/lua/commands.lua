@@ -50,3 +50,15 @@ vim.api.nvim_create_user_command("PackRemoveAll", function()
   vim.notify("Removed plugins:\n" .. table.concat(removed, "\n"), vim.log.levels.INFO)
 end, { desc = "remove all plugins from disk (including active)" })
 
+vim.api.nvim_create_user_command("PackUpdate", function(opts)
+	-- checks if any argument is passed
+    if opts.args:match("%S") then
+        -- update specific plugins
+        local plugins = vim.split(opts.args, "%s+", { trimempty = true })
+		-- update only specified plugins
+        vim.pack.update(plugins)
+    else
+        -- update all
+        vim.pack.update()
+    end
+end, { nargs = "*", desc = "Update all plugins or specific ones" })
