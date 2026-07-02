@@ -9,7 +9,7 @@ vim.pack.add({
   "https://github.com/saadparwaiz1/cmp_luasnip",
   "https://github.com/roobert/tailwindcss-colorizer-cmp.nvim",
   "https://github.com/zbirenbaum/copilot-cmp",
-}, { confirm = false })
+})
 
 local cmp = require "cmp"
 
