@@ -49,6 +49,10 @@ vim.keymap.set("n", "<leader>H", telescope.lsp_document_symbols, { desc = "lsp d
 
 vim.keymap.set("n", "<leader>L", "<cmd>LazyGit<cr>", { desc = "open lazygit window (lazygit)", remap = true })
 
+vim.keymap.set("n", "<leader>s", function() require("spectre").open_file_search { select_word = true } end, { desc = "search on current buffer (spectre)" })
+vim.keymap.set("n", "<leader>S", function() require("spectre").open_visual { select_word = true } end, { desc = "search on multi buffers (spectre)" })
+vim.keymap.set("v", "<leader>S", function() require("spectre").open_visual() end, { desc = "search on multi buffers (spectre)" })
+
 vim.api.nvim_create_autocmd("LspAttach", {
     callback = function(args)
         local opts = function(desc)
