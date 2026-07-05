@@ -26,6 +26,7 @@ require("neo-tree").setup {
             hide_dotfiles = false,
             hide_gitignored = false,
             hide_hidden = false,
+            always_show = { ".DS_Store" },
             never_show = { ".git" },
         },
         follow_current_file = {
