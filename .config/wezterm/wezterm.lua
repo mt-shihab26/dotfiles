@@ -4,12 +4,12 @@ local config = wezterm.config_builder()
 -- Run via XWayland to avoid Wayland/Hyprland launch issues
 config.enable_wayland = false
 
--- Font: match Kitty setup
-config.font = wezterm.font('JetBrainsMono Nerd Font')
+-- Font with explicit Bengali fallback so HarfBuzz shapes the full run correctly
+config.font = wezterm.font_with_fallback({
+  'JetBrainsMono Nerd Font',
+  'Noto Sans Bengali',
+})
 config.font_size = 12.0
-
--- Bengali complex script shaping is handled automatically by WezTerm's
--- HarfBuzz integration -- no symbol_map needed unlike Kitty
 
 -- Window
 config.window_padding = { left = 2, right = 2, top = 2, bottom = 2 }
