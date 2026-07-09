@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+
 set -e
 
 # Install WezTerm nightly from AUR (better Wayland/Hyprland compatibility
