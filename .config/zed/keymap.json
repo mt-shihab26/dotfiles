@@ -1,0 +1,9 @@
+[
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      "space e": "project_panel::ToggleFocus",
+      "space p": "workspace::ToggleLeftDock"
+    }
+  }
+]
