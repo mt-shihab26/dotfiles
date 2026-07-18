@@ -3,6 +3,7 @@
     "commit": "",
     "pr": ""
   },
+  "model": "claude-fable-5[1m]",
   "enabledPlugins": {},
   "extraKnownMarketplaces": {},
   "tui": "fullscreen",
