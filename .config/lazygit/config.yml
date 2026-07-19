@@ -1,7 +1,8 @@
 keybinding:
-  universal:
-    remove: <disabled> # 'd' — discard changes (also delete branch / drop stash)
   files:
     viewResetOptions: <disabled> # 'D' — nuke working tree / reset menu
     stashAllChanges: <disabled> # 's' — stash all changes
     viewStashOptions: <disabled> # 'S' — stash options menu
+  # universal:
+  #   remove: <disabled> # 'd' — discard changes (also delete branch / drop stash)
+
