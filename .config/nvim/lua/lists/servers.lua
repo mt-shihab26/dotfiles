@@ -26,6 +26,7 @@ return {
     "astro",
     -- PHP
     "intelephense",
+    "laravel_lsp",
     -- Unused
     -- "laravel_ls",
     -- Ruby
