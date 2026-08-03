@@ -22,9 +22,7 @@ return {
     -- Python
     "pyright",
     -- JavaScript
-    -- "vtsls",
-    "ts_ls",
-    "vue_ls",
+    "vtsls",
     "astro",
     -- PHP
     "intelephense",
