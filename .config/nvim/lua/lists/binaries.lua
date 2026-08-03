@@ -26,6 +26,7 @@ return {
     "ruff",
     -- JavaScript
     "vtsls",
+    "typescript-language-server",
     "astro",
     "vue-language-server",
     "prettier",

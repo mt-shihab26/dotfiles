@@ -22,13 +22,13 @@ return {
     -- Python
     "pyright",
     -- JavaScript
-    "vtsls",
+    -- "vtsls",
+    "ts_ls",
+    "vue_ls",
     "astro",
     -- PHP
     "intelephense",
     "laravel_lsp",
-    -- Unused
-    -- "laravel_ls",
     -- Ruby
     -- "ruby_lsp",
     -- "turbo_ls",
