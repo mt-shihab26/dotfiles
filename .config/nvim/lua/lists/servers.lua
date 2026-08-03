@@ -23,6 +23,7 @@ return {
     "pyright",
     -- JavaScript
     "vtsls",
+    "vue_ls",
     "astro",
     -- PHP
     "intelephense",
