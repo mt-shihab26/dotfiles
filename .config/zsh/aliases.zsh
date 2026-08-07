@@ -42,7 +42,7 @@ alias r='run'
 alias co='opencode'
 alias cox='opencode'
 alias ca='claude'
-alias cax='claude --allow-dangerously-skip-permissions'
+alias cax='claude --dangerously-skip-permissions'
 alias cx='codex'
 alias cxx='codex --dangerously-bypass-approvals-and-sandbox'
 
