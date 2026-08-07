@@ -52,7 +52,12 @@ alias tree='tree --gitignore'
 alias cloc='cloc --vcs=git'
 
 # Projects scripts
-alias build="./build"
-alias rebase="./rebase"
-alias deploy="./deploy"
-alias preview="./preview"
+_run_script() {
+    local s="$1"
+    [[ -f "./$s" ]] && "./$s" || "./${s}.sh"
+}
+
+build() { _run_script build; }
+rebase() { _run_script rebase; }
+deploy() { _run_script deploy; }
+preview() { _run_script preview; }
