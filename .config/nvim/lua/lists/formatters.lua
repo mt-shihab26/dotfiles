@@ -35,4 +35,5 @@ return {
     astro = { "prettier" },
     -- PHP
     php = { "pint" },
+    blade = { "prettier" },
 }
