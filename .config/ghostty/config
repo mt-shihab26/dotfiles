@@ -1,5 +1,5 @@
 # Dynamic theme colors (omarchy managed)
-config-file = ?"~/.config/omarchy/current/theme/ghostty.conf"
+config-file = ?"~/.local/state/omarchy/current/theme/ghostty.conf"
 
 # Font
 # Ghostty 1.3.0+ natively fixes Brahmic/Bengali script rendering.

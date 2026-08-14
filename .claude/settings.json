@@ -3,8 +3,10 @@
     "commit": "",
     "pr": ""
   },
+  "model": "sonnet",
   "enabledPlugins": {},
   "extraKnownMarketplaces": {},
   "tui": "fullscreen",
-  "skipDangerousModePermissionPrompt": true
+  "skipDangerousModePermissionPrompt": true,
+  "agentPushNotifEnabled": true
 }
