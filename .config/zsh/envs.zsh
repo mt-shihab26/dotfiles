@@ -1,32 +1,16 @@
 # Editor used by CLI
+export EDITOR="${EDITOR:-omarchy-launch-editor --inline}"
 export SUDO_EDITOR="$EDITOR"
+
+# Used by terminal programs (like gh) to open URLs detached from the terminal
+# process tree. Shell-scoped on purpose: exporting BROWSER session-wide makes
+# xdg-settings refuse to change the default browser.
+export BROWSER="${BROWSER:-omarchy-launch-browser}"
 export BAT_THEME=ansi
 
-# Defining Home
-export OMARCHY_PATH=$HOME/.local/share/omarchy
-export OPENCODE_PATH=$HOME/.opencode
-export COMPOSER_PATH="$HOME/.config/composer"
-export BUN_PATH=$HOME/.bun
-export RUST_PATH=$HOME/.cargo
-
-export GOPATH="$HOME/go"
-
-export JAVA_HOME="/usr/lib/jvm/default"
-
-# Defining Paths
-export PATH=$PATH:$HOME/.bin
-export PATH=$PATH:$HOME/.local/bin
-export PATH=$PATH:$HOME/.local/share/nvim/mason/bin
-export PATH=$PATH:$HOME/.local/share/mise/shims
-export PATH=$PATH:$HOME/.cache/.bun/bin
-
-export PATH=$PATH:$OMARCHY_PATH/bin
-export PATH=$PATH:$OPENCODE_PATH/bin
-export PATH=$PATH:$COMPOSER_PATH/vendor/bin
-export PATH=$PATH:$BUN_PATH/bin
-export PATH=$PATH:$RUST_HOME/bin
-export PATH=$PATH:$GOPATH/bin
-export PATH=$PATH:$JAVA_HOME/bin
+# Color man pages with bat
+export MANROFFOPT="-c"
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 # Generate rustup/cargo completions if they don't exist
 if command -v rustup &>/dev/null; then

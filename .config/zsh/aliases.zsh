@@ -8,8 +8,20 @@ else
     alias ls="ls --color -h"
 fi
 
-alias ff="fzf --preview 'bat --style=numbers --color=always {}'"
+if [[ "$TERM" == "xterm-kitty" ]]; then
+    alias ff="fzf --preview 'case \$(file --mime-type -b {}) in image/*) kitty icat --clear --transfer-mode=memory --stdin=no --place=\${FZF_PREVIEW_COLUMNS}x\${FZF_PREVIEW_LINES}@0x0 {} ;; *) bat --style=numbers --color=always {} ;; esac'"
+else
+    alias ff="fzf --preview 'bat --style=numbers --color=always {}'"
+fi
 alias eff='$EDITOR "$(ff)"'
+sff() {
+    if [ $# -eq 0 ]; then
+        echo "Usage: sff <destination> (e.g. sff host:/tmp/)"
+        return 1
+    fi
+    local file
+    file=$(find . -type f -printf '%T@\t%p\n' | sort -rn | cut -f2- | ff) && [ -n "$file" ] && scp "$file" "$1"
+}
 
 if command -v zoxide &>/dev/null; then
     alias cd="zd"
@@ -33,6 +45,14 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 
+# Git
+alias g='git'
+alias gcm='git commit -m'
+alias gcam='git commit -a -m'
+alias gcad='git commit -a --amend'
+
+# Custom
+
 # Tools
 alias t='./.bin/init'
 alias n='nvim'
@@ -44,7 +64,7 @@ alias cox='opencode'
 alias ca='claude'
 alias cax='claude --dangerously-skip-permissions'
 alias cx='codex'
-alias cxx='codex --dangerously-bypass-approvals-and-sandbox'
+alias cxx='codex -s danger-full-access -a never'
 
 # Tools with options
 alias artisan="php artisan"

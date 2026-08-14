@@ -1,4 +1,4 @@
-# Drive Functions
+# Write iso file to sd card
 iso2sd() {
     if (($# < 1)); then
         echo "Usage: iso2sd <input_file> [output_device]"
@@ -29,6 +29,7 @@ iso2sd() {
     sudo eject "$drive"
 }
 
+# Format an entire drive for a single partition using exFAT
 format-drive() {
     if (($# != 2)); then
         echo "Usage: format-drive <device> <name>"
