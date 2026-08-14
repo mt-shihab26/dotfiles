@@ -14,6 +14,12 @@ if [[ -z "$LANG" ]]; then
         LC_IDENTIFICATION
 fi
 
+# Editor used by CLI tools (git commit, sudoedit, crontab -e, ...), which can
+# run from non-interactive/non-login shells too (e.g. a bare `ssh host git
+# commit`).
+export EDITOR="${EDITOR:-omarchy-launch-editor --inline}"
+export SUDO_EDITOR="$EDITOR"
+
 # Omarchy environment (OMARCHY_PATH + PATH), needed even for non-interactive
 # shells. /etc/omarchy.conf is written by omarchy-dev-link and reset by
 # omarchy-dev-unlink; when absent, force the packaged default instead of

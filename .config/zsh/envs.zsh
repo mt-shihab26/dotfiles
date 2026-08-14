@@ -1,7 +1,3 @@
-# Editor used by CLI
-export EDITOR="${EDITOR:-omarchy-launch-editor --inline}"
-export SUDO_EDITOR="$EDITOR"
-
 # Used by terminal programs (like gh) to open URLs detached from the terminal
 # process tree. Shell-scoped on purpose: exporting BROWSER session-wide makes
 # xdg-settings refuse to change the default browser.
