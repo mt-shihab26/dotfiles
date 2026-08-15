@@ -60,7 +60,7 @@ alias r='run'
 
 # Coding Agent
 alias co='opencode'
-alias cox='opencode'
+alias cox='opencode --auto'
 alias ca='claude'
 alias cax='claude --dangerously-skip-permissions'
 alias cx='codex'
