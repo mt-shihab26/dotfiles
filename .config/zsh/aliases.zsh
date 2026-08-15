@@ -65,6 +65,8 @@ alias ca='claude'
 alias cax='claude --dangerously-skip-permissions'
 alias cx='codex'
 alias cxx='codex -s danger-full-access -a never'
+alias cg="copilot"
+alias cgx="copilot --allow-all"
 
 # Tools with options
 alias artisan="php artisan"
