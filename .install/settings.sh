@@ -2,4 +2,4 @@
 
 git config --global init.defaultBranch main
 
-sudo pacman -S github-cli
+omarchy bar set omarchy.clock format "dddd h:mm AP"

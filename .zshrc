@@ -7,3 +7,5 @@ source "$HOME/.config/zsh/keybindings.zsh"
 
 # Turso
 export PATH="$PATH:/home/shihab/.turso"
+
+. "$HOME/.local/share/../bin/env"
