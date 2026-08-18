@@ -1,9 +1,9 @@
 #!/bin/bash
 
-yay -S typesense-bin
+yay -S --noconfirm typesense-bin
 
 sudo systemctl start typesense-server.service
 sudo systemctl enable typesense-server.service
 
-cat /etc/typesense/typesense.ini
+sudo cat /etc/typesense/typesense-server.ini
 

@@ -2,7 +2,7 @@
 
 set -e
 
-sudo pacman -S zsh fzf zoxide
+sudo pacman -S --noconfirm zsh fzf zoxide
 
 chsh -s "$(which zsh)"
 
