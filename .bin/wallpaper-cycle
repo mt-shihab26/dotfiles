@@ -1,6 +1,6 @@
 #!/bin/bash
 
-INTERVAL=1 # 10 Minutes between wallpaper changes.
+INTERVAL=1 # Minutes between wallpaper changes.
 
 while true; do
     omarchy-theme-bg-next
