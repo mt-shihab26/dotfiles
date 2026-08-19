@@ -17,6 +17,8 @@ return {
     -- C/C++
     "clangd",
     "clang-format",
+    -- Rust
+    "rust-analyzer",
     -- Go
     "gopls",
     "templ",
