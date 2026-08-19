@@ -1,0 +1,8 @@
+#!/bin/bash
+
+INTERVAL=1 # 10 Minutes between wallpaper changes.
+
+while true; do
+    omarchy-theme-bg-next
+    sleep "$((INTERVAL * 60))"
+done

@@ -25,3 +25,6 @@ o.bind("ALT + code:15", "Switch to workspace 6", hl.dsp.focus({ workspace = "6" 
 o.bind("ALT + code:15", "Switch to workspace 7", hl.dsp.focus({ workspace = "7" }))
 o.bind("ALT + code:15", "Switch to workspace 8", hl.dsp.focus({ workspace = "8" }))
 o.bind("ALT + code:15", "Switch to workspace 9", hl.dsp.focus({ workspace = "9" }))
+
+-- Cycle wallpaper on startup.
+o.launch_on_start("wallpaper-cycle")
