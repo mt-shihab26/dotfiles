@@ -1,10 +1,10 @@
 -- require("hypr.overwrite")
 
-hl.config({
+hl.config {
     input = {
         kb_layout = "us,bd",
         kb_variant = ",probhat",
-        kb_options = "grp:alt_shift_toggle",
+        -- kb_options = "grp:alt_shift_toggle",
 
         touchpad = {
             tap_to_click = true,
@@ -13,18 +13,18 @@ hl.config({
             drag_3fg = 1,
         },
     },
-})
+}
 
 -- Switch workspaces with ALT + [1-9] (code:10-code:18 are the number-row keys).
-o.bind("ALT + code:10", "Switch to workspace 1", hl.dsp.focus({ workspace = "1" }))
-o.bind("ALT + code:11", "Switch to workspace 2", hl.dsp.focus({ workspace = "2" }))
-o.bind("ALT + code:12", "Switch to workspace 3", hl.dsp.focus({ workspace = "3" }))
-o.bind("ALT + code:13", "Switch to workspace 4", hl.dsp.focus({ workspace = "4" }))
-o.bind("ALT + code:14", "Switch to workspace 5", hl.dsp.focus({ workspace = "5" }))
-o.bind("ALT + code:15", "Switch to workspace 6", hl.dsp.focus({ workspace = "6" }))
-o.bind("ALT + code:15", "Switch to workspace 7", hl.dsp.focus({ workspace = "7" }))
-o.bind("ALT + code:15", "Switch to workspace 8", hl.dsp.focus({ workspace = "8" }))
-o.bind("ALT + code:15", "Switch to workspace 9", hl.dsp.focus({ workspace = "9" }))
+o.bind("ALT + code:10", "Switch to workspace 1", hl.dsp.focus { workspace = "1" })
+o.bind("ALT + code:11", "Switch to workspace 2", hl.dsp.focus { workspace = "2" })
+o.bind("ALT + code:12", "Switch to workspace 3", hl.dsp.focus { workspace = "3" })
+o.bind("ALT + code:13", "Switch to workspace 4", hl.dsp.focus { workspace = "4" })
+o.bind("ALT + code:14", "Switch to workspace 5", hl.dsp.focus { workspace = "5" })
+o.bind("ALT + code:15", "Switch to workspace 6", hl.dsp.focus { workspace = "6" })
+o.bind("ALT + code:15", "Switch to workspace 7", hl.dsp.focus { workspace = "7" })
+o.bind("ALT + code:15", "Switch to workspace 8", hl.dsp.focus { workspace = "8" })
+o.bind("ALT + code:15", "Switch to workspace 9", hl.dsp.focus { workspace = "9" })
 
 -- Cycle wallpaper on startup.
-o.launch_on_start("wallpaper-cycle")
+o.launch_on_start "wallpaper-cycle"
