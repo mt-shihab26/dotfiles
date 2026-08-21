@@ -22,7 +22,7 @@ return {
     -- Python
     "pyright",
     -- JavaScript
-    "tsc_ls",
+    "tsc",
     "vtsls",
     "vue_ls",
     "astro",

@@ -1,4 +1,5 @@
 return {
+    enabled = true,
     settings = {
         tailwindCSS = {
             lint = {
