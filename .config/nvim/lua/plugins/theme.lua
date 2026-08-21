@@ -2,6 +2,11 @@ local omarchy_theme = require "utils.omarchy_theme"
 
 local last_mtime = nil
 
+local function current_mtime()
+    local stat = vim.uv.fs_stat(omarchy_theme.THEME_FILE)
+    return stat and stat.mtime.sec
+end
+
 local function setup_fallback()
     vim.pack.add {
         {
@@ -36,17 +41,13 @@ end
 setup_fallback()
 apply_theme()
 
-do
-    local stat = vim.uv.fs_stat(omarchy_theme.THEME_FILE)
-    last_mtime = stat and stat.mtime.sec
-end
+last_mtime = current_mtime()
 
 -- Pick up theme changes made via `omarchy theme set` without restarting Neovim.
 vim.api.nvim_create_autocmd({ "FocusGained", "VimResume" }, {
     group = vim.api.nvim_create_augroup("OmarchyThemeSync", { clear = true }),
     callback = function()
-        local stat = vim.uv.fs_stat(omarchy_theme.THEME_FILE)
-        local mtime = stat and stat.mtime.sec
+        local mtime = current_mtime()
         if mtime and mtime ~= last_mtime then
             last_mtime = mtime
             apply_theme()
