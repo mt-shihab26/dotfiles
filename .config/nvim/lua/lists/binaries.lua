@@ -30,8 +30,9 @@ return {
     "tsc",
     "vtsls",
     "vue-language-server",
-    "astro",
+    "astro-language-server",
     "prettier",
     -- PHP
     "intelephense",
+    "pint",
 }
