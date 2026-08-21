@@ -38,12 +38,35 @@ local function apply_theme()
     end
 end
 
+-- Install every Omarchy theme's colorscheme plugin ahead of time (without
+-- loading it) so switching themes only has to activate an already-cloned
+-- plugin instead of cloning one from GitHub.
+local function preinstall_all_theme_plugins()
+    local specs, seen = {}, {}
+    for _, file in ipairs(omarchy_theme.spec_files()) do
+        local theme = omarchy_theme.parse(file)
+        if theme then
+            for _, spec in ipairs(theme.pack_specs) do
+                local key = spec.name or spec.src
+                if not seen[key] then
+                    seen[key] = true
+                    table.insert(specs, spec)
+                end
+            end
+        end
+    end
+    if #specs > 0 then
+        vim.pack.add(specs, { load = false })
+    end
+end
+
 setup_fallback()
 apply_theme()
 
 last_mtime = current_mtime()
 
--- Pick up theme changes made via `omarchy theme set` without restarting Neovim.
+vim.defer_fn(preinstall_all_theme_plugins, 0)
+
 vim.api.nvim_create_autocmd({ "FocusGained", "VimResume" }, {
     group = vim.api.nvim_create_augroup("OmarchyThemeSync", { clear = true }),
     callback = function()
@@ -55,6 +78,6 @@ vim.api.nvim_create_autocmd({ "FocusGained", "VimResume" }, {
     end,
 })
 
-vim.api.nvim_create_user_command("OmarchyThemeSync", apply_theme, {
-    desc = "Re-apply the current Omarchy theme's Neovim colorscheme",
-})
+vim.api.nvim_create_user_command("OmarchyThemeSync", apply_theme,
+    { desc = "Re-apply the current Omarchy theme's Neovim colorscheme", }
+)

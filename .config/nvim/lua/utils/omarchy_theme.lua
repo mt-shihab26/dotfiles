@@ -2,6 +2,30 @@ local M = {}
 
 M.THEME_FILE = vim.fn.expand "~/.local/state/omarchy/current/theme/neovim.lua"
 
+-- Mirrors `omarchy-theme-dir`: a user theme overrides a system theme of the same name.
+M.USER_THEMES_DIR = vim.fn.expand "~/.config/omarchy/themes"
+M.SYSTEM_THEMES_DIR = (os.getenv "OMARCHY_PATH" or "/usr/share/omarchy") .. "/themes"
+
+-- Every installed theme's `neovim.lua` spec file, user themes taking precedence
+-- over a system theme of the same name.
+function M.spec_files()
+    local files, seen = {}, {}
+    for _, dir in ipairs { M.USER_THEMES_DIR, M.SYSTEM_THEMES_DIR } do
+        if vim.uv.fs_stat(dir) then
+            for name, kind in vim.fs.dir(dir) do
+                if kind == "directory" and not seen[name] then
+                    seen[name] = true
+                    local file = dir .. "/" .. name .. "/neovim.lua"
+                    if vim.uv.fs_stat(file) then
+                        table.insert(files, file)
+                    end
+                end
+            end
+        end
+    end
+    return files
+end
+
 local function plugin_module_name(entry)
     if entry.name then
         return entry.name
@@ -12,8 +36,8 @@ end
 -- Omarchy always writes this file in the same LazyVim-spec shape:
 -- one or more plugin specs, plus a `LazyVim/LazyVim` spec carrying
 -- `opts.colorscheme`. We don't use lazy.nvim, so translate it by hand.
-function M.parse()
-    local ok, spec = pcall(dofile, M.THEME_FILE)
+function M.parse(path)
+    local ok, spec = pcall(dofile, path or M.THEME_FILE)
     if not ok or type(spec) ~= "table" then
         return nil
     end
