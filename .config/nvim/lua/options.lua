@@ -1,3 +1,5 @@
+require("config.remote_clipboard").setup()
+
 -- netrw
 vim.g.netrw_banner = 0
 
