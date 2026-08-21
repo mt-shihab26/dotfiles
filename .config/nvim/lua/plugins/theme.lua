@@ -1,12 +1,24 @@
-local backup_theme = require "utils.backup_theme"
 local omarchy_theme = require "utils.omarchy_theme"
 
 local last_mtime = nil
 
-local function apply()
+local function setup_fallback()
+    vim.pack.add {
+        {
+            src = "https://github.com/folke/tokyonight.nvim",
+            version = vim.version.range "4",
+        },
+    }
+end
+
+local function apply_fallback()
+    pcall(vim.cmd.colorscheme, "tokyonight-night")
+end
+
+local function apply_theme()
     local theme = omarchy_theme.parse()
     if not theme then
-        backup_theme.apply()
+        apply_fallback()
         return
     end
     vim.pack.add(theme.pack_specs, { load = true })
@@ -17,13 +29,12 @@ local function apply()
         end
     end
     if not pcall(vim.cmd.colorscheme, theme.colorscheme) then
-        backup_theme.apply()
+        apply_fallback()
     end
 end
 
-backup_theme.setup()
-
-apply()
+setup_fallback()
+apply_theme()
 
 do
     local stat = vim.uv.fs_stat(omarchy_theme.THEME_FILE)
@@ -38,11 +49,11 @@ vim.api.nvim_create_autocmd({ "FocusGained", "VimResume" }, {
         local mtime = stat and stat.mtime.sec
         if mtime and mtime ~= last_mtime then
             last_mtime = mtime
-            apply()
+            apply_theme()
         end
     end,
 })
 
-vim.api.nvim_create_user_command("OmarchyThemeSync", apply, {
+vim.api.nvim_create_user_command("OmarchyThemeSync", apply_theme, {
     desc = "Re-apply the current Omarchy theme's Neovim colorscheme",
 })
