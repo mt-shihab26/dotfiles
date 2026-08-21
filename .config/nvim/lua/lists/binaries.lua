@@ -1,18 +1,18 @@
 return {
     -- Markup
-    "html",
+    "html-lsp",
     "marksman",
-    "jsonls",
-    "yamlls",
+    "json-lsp",
+    "yaml-language-server",
     -- CSS
-    "cssls",
-    "css_variables",
-    "tailwindcss",
+    "css-lsp",
+    "css-variables-language-server",
+    "tailwindcss-language-server",
     -- Shell
-    "bashls",
+    "bash-language-server",
     "shfmt",
     -- Lua
-    "lua_ls",
+    "lua-language-server",
     "stylua",
     -- C/C++
     "clangd",
@@ -27,6 +27,7 @@ return {
     "pyright",
     "ruff",
     -- JavaScript
+    "tsc",
     "vtsls",
     "vue-language-server",
     "astro",
