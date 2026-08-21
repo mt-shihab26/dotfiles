@@ -1,4 +1,5 @@
 require "plugins.theme"
+require "plugins.colorizer"
 require "plugins.neo-tree"
 require "plugins.bufferline"
 require "plugins.treesitter"
