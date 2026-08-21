@@ -6,7 +6,8 @@
     },
     "aether": {
       "rev": "02af9ba1ef9d6f136a6b20404d39f2a4e3857e16",
-      "src": "https://github.com/bjarneo/aether.nvim"
+      "src": "https://github.com/bjarneo/aether.nvim",
+      "version": "'v3'"
     },
     "ashen.nvim": {
       "rev": "bfb04bd50b69d863469b2deb9fb361cf0d945ba7",
@@ -98,6 +99,10 @@
       "src": "https://github.com/nvim-neo-tree/neo-tree.nvim",
       "version": "3.0.0 - 4.0.0"
     },
+    "nightfox.nvim": {
+      "rev": "4dacd3f0185a2227bdf3b6c0975a8f0bf87cac9a",
+      "src": "https://github.com/EdenEast/nightfox.nvim"
+    },
     "nui.nvim": {
       "rev": "f535005e6ad1016383f24e39559833759453564e",
       "src": "https://github.com/MunifTanjim/nui.nvim",
@@ -170,8 +175,7 @@
     },
     "tokyonight.nvim": {
       "rev": "545d72cde6400835d895160ecb5853874fd5156d",
-      "src": "https://github.com/folke/tokyonight.nvim",
-      "version": "4.0.0 - 5.0.0"
+      "src": "https://github.com/folke/tokyonight.nvim"
     },
     "ts-comments.nvim": {
       "rev": "79e4337e4231ff8ca33dab85162b5ee8e78f22ce",
