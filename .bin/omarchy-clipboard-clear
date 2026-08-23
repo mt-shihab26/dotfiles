@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Clears the Omarchy clipboard manager's history. The plugin's FileView
+# watches this file (watchChanges: true), so writing an empty array here
+# reloads the in-memory history the same way its own "Delete entire
+# clipboard history?" confirmation does.
+
+set -euo pipefail
+
+history_path="${XDG_STATE_HOME:-$HOME/.local/state}/omarchy/clipboard-history.json"
+
+mkdir -p "$(dirname "$history_path")"
+printf '[]\n' >"$history_path"
