@@ -4,16 +4,18 @@ vim.pack.add {
     { src = "https://github.com/j-hui/fidget.nvim" },
 }
 
-require("fidget").setup { notification = { window = { winblend = 0 } } }
-
+local fidget = require "fidget"
 local lsp_file_operations = require "lsp-file-operations"
+local cmp_nvim_lsp = require "cmp_nvim_lsp"
+
+fidget.setup { notification = { window = { winblend = 0 } } }
 
 lsp_file_operations.setup {}
 
 local capabilities = vim.tbl_deep_extend(
     "force",
     vim.lsp.protocol.make_client_capabilities(),
-    require("cmp_nvim_lsp").default_capabilities(),
+    cmp_nvim_lsp.default_capabilities(),
     lsp_file_operations.default_capabilities()
 )
 
@@ -30,7 +32,9 @@ vim.lsp.handlers["textDocument/definition"] = function(_, result, _, _)
     end
 end
 
-for _, server_name in ipairs(require "lists.servers") do
+local servers = require "lists.servers"
+
+for _, server_name in ipairs(servers) do
     local server_settings = {}
     local ok, settings = pcall(require, "settings." .. server_name)
     if ok then

@@ -5,7 +5,9 @@ vim.pack.add {
     },
 }
 
-require("bufferline").setup {
+local bufferline = require "bufferline";
+
+bufferline.setup {
     options = {
         close_command = "bdelete! %d",
         right_mouse_command = "bdelete! %d",

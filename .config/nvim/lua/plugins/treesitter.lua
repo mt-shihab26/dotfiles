@@ -23,7 +23,8 @@ vim.schedule(function()
     end
 
     if treesitter.install then
-        treesitter.install(require "lists.parsers")
+        local parsers = require "lists.parsers"
+        treesitter.install(parsers)
     end
 end)
 
@@ -47,6 +48,10 @@ vim.api.nvim_create_autocmd("FileType", {
     end,
 })
 
-require("nvim-autopairs").setup {}
-require("nvim-ts-autotag").setup {}
-require("ts-comments").setup {}
+local autopairs = require "nvim-autopairs"
+local ts_autotag = require "nvim-ts-autotag"
+local ts_comments = require "ts-comments"
+
+autopairs.setup {}
+ts_autotag.setup {}
+ts_comments.setup {}

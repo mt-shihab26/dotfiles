@@ -4,10 +4,15 @@ vim.pack.add {
     "https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim",
 }
 
-require("mason").setup {}
-require("mason-lspconfig").setup { automatic_enable = false }
-require("mason-tool-installer").setup {
-    ensure_installed = require "lists.binaries",
+local mason = require "mason"
+local mason_lspconfig = require "mason-lspconfig"
+local mason_tool_installer = require "mason-tool-installer"
+local binaries = require "lists.binaries"
+
+mason.setup {}
+mason_lspconfig.setup { automatic_enable = false }
+mason_tool_installer.setup {
+    ensure_installed = binaries,
     auto_update = false,
     run_on_start = true,
     integrations = { ["mason-lspconfig"] = true },

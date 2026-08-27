@@ -7,14 +7,17 @@ vim.pack.add {
     },
 }
 
-require("colorizer").setup {
+local colorizer = require "colorizer"
+local ibl = require "ibl"
+
+colorizer.setup {
     user_default_options = {
         names = false,
         tailwind = true,
     },
 }
 
-require("ibl").setup {
+ibl.setup {
     scope = { show_start = false },
     exclude = { filetypes = { "dashboard" } },
 }

@@ -2,4 +2,6 @@ vim.pack.add {
     { src = "https://github.com/nvim-pack/nvim-spectre" },
 }
 
-require("spectre").setup {}
+local spectre = require "spectre"
+
+spectre.setup {}

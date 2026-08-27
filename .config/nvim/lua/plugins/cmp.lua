@@ -11,32 +11,25 @@ vim.pack.add {
 }
 
 local cmp = require "cmp"
+local cmp_default = require "cmp.config.default"
+local luasnip = require "luasnip"
+local luasnip_vscode_loader = require "luasnip.loaders.from_vscode"
+local tailwindcss_cmp = require "tailwindcss-colorizer-cmp"
 
 cmp.setup {
     preselect = cmp.PreselectMode.Item,
-    sorting = (require "cmp.config.default")().sorting,
+    sorting = cmp_default().sorting,
     completion = {
         completeopt = "menu,menuone,noinsert",
-    },
-    snippet = {
-        expand = function(args)
-            require("luasnip").lsp_expand(args.body)
-        end,
     },
     window = {
         completion = cmp.config.window.bordered(),
         documentation = cmp.config.window.bordered(),
     },
-    mapping = {
-        ["<M-n>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert },
-        ["<M-p>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert },
-        ["<M-y>"] = cmp.mapping(
-            cmp.mapping.confirm {
-                behavior = cmp.ConfirmBehavior.Insert,
-                select = true,
-            },
-            { "i", "c" }
-        ),
+    snippet = {
+        expand = function(args)
+            luasnip.lsp_expand(args.body)
+        end,
     },
     sources = {
         { name = "nvim_lsp" },
@@ -65,11 +58,17 @@ cmp.setup {
                 source_label = sources[source_name] or source_name
             end
             item.kind = string.format("[%s] %s", source_label, item.kind or "")
-            return require("tailwindcss-colorizer-cmp").formatter(entry, item)
+            return tailwindcss_cmp.formatter(entry, item)
         end,
+    },
+    mapping = {
+        ["<M-n>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert },
+        ["<M-p>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert },
+        ["<M-y>"] = cmp.mapping(cmp.mapping.confirm { behavior = cmp.ConfirmBehavior.Insert, select = true }, { "i", "c" }),
     },
 }
 
-require("luasnip.loaders.from_vscode").lazy_load {
+
+luasnip_vscode_loader.lazy_load {
     paths = { vim.fn.stdpath "config" .. "/snippets" },
 }

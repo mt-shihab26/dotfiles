@@ -2,7 +2,9 @@ vim.pack.add {
     { src = "https://github.com/nvim-lualine/lualine.nvim" },
 }
 
-require("lualine").setup {
+local lualine = require "lualine"
+
+lualine.setup {
     options = {
         section_separators = "",
         component_separators = "",

@@ -16,9 +16,11 @@ vim.pack.add {
     "https://github.com/nvim-telescope/telescope-fzf-native.nvim",
 }
 
+local telescope = require "telescope"
 local actions = require "telescope.actions"
+local telescope_themes = require "telescope.themes"
 
-require("telescope").setup {
+telescope.setup {
     defaults = {
         path_display = { truncate = 1 },
         prompt_prefix = "   ",
@@ -49,14 +51,15 @@ require("telescope").setup {
             mappings = {
                 i = {
                     ["<C-k>"] = function(...)
-                        return require("telescope-live-grep-args.actions").quote_prompt()(...)
+                        local live_grep_args_actions = require "telescope-live-grep-args.actions"
+                        return live_grep_args_actions.quote_prompt()(...)
                     end,
                     ["<C-space>"] = actions.to_fuzzy_refine,
                 },
             },
         },
         ["ui-select"] = {
-            require("telescope.themes").get_dropdown(),
+            telescope_themes.get_dropdown(),
         },
     },
     pickers = {
@@ -92,5 +95,5 @@ if #fzf_plugins > 0 then
     end
 end
 
-require("telescope").load_extension "fzf"
-require("telescope").load_extension "ui-select"
+telescope.load_extension "fzf"
+telescope.load_extension "ui-select"

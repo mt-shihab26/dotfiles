@@ -1,6 +1,7 @@
 vim.pack.add { "https://github.com/stevearc/conform.nvim" }
 
 local conform = require "conform"
+local formatters_by_ft = require "lists.formatters"
 
 local format_on_save = {
     timeout_ms = 5000,
@@ -8,7 +9,7 @@ local format_on_save = {
 }
 
 conform.setup {
-    formatters_by_ft = require "lists.formatters",
+    formatters_by_ft = formatters_by_ft,
     format_on_save = function(bufnr)
         if vim.g.disable_autoformat then
             return

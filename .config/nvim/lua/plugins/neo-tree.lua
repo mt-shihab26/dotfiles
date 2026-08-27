@@ -17,7 +17,9 @@ vim.pack.add {
     },
 }
 
-require("neo-tree").setup {
+local neo_tree = require "neo-tree"
+
+neo_tree.setup {
     filesystem = {
         use_libuv_file_watcher = true,
         hijack_netrw_behavior = "open_current",
