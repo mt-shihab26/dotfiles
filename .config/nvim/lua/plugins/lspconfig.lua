@@ -42,3 +42,7 @@ for _, server_name in ipairs(require "lists.servers") do
     vim.lsp.config(server_name, config)
     vim.lsp.enable(server_name)
 end
+
+local lsp = require "lib.lsp"
+
+vim.api.nvim_create_autocmd("LspAttach", { callback = lsp.on_attach })
