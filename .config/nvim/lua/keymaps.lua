@@ -1,11 +1,11 @@
 local map = vim.keymap.set
 
+-- general
 map("n", "q", "<nop>", { desc = "disable macro recording" })
-
 map("n", "<esc>", "<cmd>nohlsearch<cr>", { desc = "clear search highlighting" })
-
 map("x", "p", '"_dP', { desc = "paste without yanking selected text" })
 
+-- window navigation
 map("n", "<leader>j", "<C-w>j", { desc = "move to below window" })
 map("n", "<leader>k", "<C-w>k", { desc = "move to above window" })
 map("n", "<leader>l", "<C-w>l", { desc = "move to right window" })
@@ -15,31 +15,13 @@ map("n", "<C-j>", "<cmd><C-U>TmuxNavigateDown<cr>", { desc = "navigate down wind
 map("n", "<C-k>", "<cmd><C-U>TmuxNavigateUp<cr>", { desc = "navigate up window (tmux)" })
 map("n", "<C-l>", "<cmd><C-U>TmuxNavigateRight<cr>", { desc = "navigate right window (tmux)" })
 
-map("n", "l", require "utils.open_last_file", { desc = "open last file or move right" })
-
-local toggle = require "lib.toggle"
-
-map("n", "<leader>ti", toggle.indent_char, { desc = "toggle tabs/spaces for indentation" })
-map("n", "<leader>tw", toggle.wrap, { desc = "toggle line wrapping on/off" })
-
-local copy_path = require "lib.copy_path"
-
-map("n", "<leader>cp", copy_path.path, { desc = "copy current file relative path" })
-map("n", "<leader>ca", copy_path.abs_path, { desc = "copy current file absolute path" })
-map("n", "<leader>cf", copy_path.name, { desc = "copy current file name with extension" })
-
-map("n", "<leader>e", "<cmd>Neotree action=focus<cr>", { desc = "focus file tree (neo-tree)", remap = true })
-map("n", "<leader>p", "<cmd>Neotree action=close<cr>", { desc = "close file tree (neo-tree)", remap = true })
+-- buffers (bufferline)
+local close_terminals_or_others = require "utils.close_terminals_or_others"
 
 map("n", "<S-h>", "<cmd>BufferLineCyclePrev<cr>", { desc = "prev buffer (bufferline)" })
 map("n", "<S-l>", "<cmd>BufferLineCycleNext<cr>", { desc = "next buffer (bufferline)" })
 map("n", "<leader>Q", "<cmd>bp<bar>sp<bar>bn<bar>bd<cr>", { desc = "close current buffer (bufferline)" })
-map(
-    "n",
-    "<leader>q",
-    require "utils.close_terminals_or_others",
-    { desc = "close terminals or other buffers (bufferline)" }
-)
+map("n", "<leader>q", close_terminals_or_others, { desc = "close terminals or other buffers (bufferline)" })
 map(
     "n",
     "<leader>cl",
@@ -48,6 +30,29 @@ map(
 )
 map("n", "<leader>ch", "<cmd>BufferLineCloseLeft<cr>", { desc = "delete buffers to the left (bufferline)" })
 
+-- file tree (neo-tree)
+map("n", "<leader>e", "<cmd>Neotree action=focus<cr>", { desc = "focus file tree (neo-tree)", remap = true })
+map("n", "<leader>p", "<cmd>Neotree action=close<cr>", { desc = "close file tree (neo-tree)", remap = true })
+
+-- file utilities
+local open_last_file = require "utils.open_last_file"
+
+map("n", "l", open_last_file, { desc = "open last file or move right" })
+
+-- clipboard
+local clipboard = require "lib.clipboard"
+
+map("n", "<leader>cp", clipboard.path, { desc = "copy current file relative path" })
+map("n", "<leader>ca", clipboard.abs_path, { desc = "copy current file absolute path" })
+map("n", "<leader>cf", clipboard.name, { desc = "copy current file name with extension" })
+
+-- toggle
+local toggle = require "lib.toggle"
+
+map("n", "<leader>ti", toggle.indent_char, { desc = "toggle tabs/spaces for indentation" })
+map("n", "<leader>tw", toggle.wrap, { desc = "toggle line wrapping on/off" })
+
+-- fuzzy finding (telescope)
 local telescope = require "utils.telescope"
 
 map("n", "<leader>f", telescope.find_files, { desc = "find files (telescope)" })
@@ -57,13 +62,7 @@ map("n", "<leader>G", telescope.grep_all_files, { desc = "grep all files (telesc
 map("n", "<leader>h", telescope.help_tags, { desc = "help tags (telescope)" })
 map("n", "<leader>H", telescope.lsp_document_symbols, { desc = "lsp document symbols (telescope)" })
 
-
-map("n", "<leader>?", function()
-    require("which-key").show { global = false }
-end, { desc = "buffer local keymaps (which-key)" })
-
-map("n", "<leader>L", "<cmd>LazyGit<cr>", { desc = "open lazygit window (lazygit)", remap = true })
-
+-- search and replace (spectre)
 map("n", "<leader>s", function()
     require("spectre").open_file_search { select_word = true }
 end, { desc = "search on current buffer (spectre)" })
@@ -74,6 +73,23 @@ map("v", "<leader>S", function()
     require("spectre").open_visual()
 end, { desc = "search on multi buffers (spectre)" })
 
+-- git (lazygit, gitsigns)
+map("n", "<leader>L", "<cmd>LazyGit<cr>", { desc = "open lazygit window (lazygit)", remap = true })
+
+map("n", "]h", "<cmd>silent Gitsigns next_hunk<cr>", { desc = "navigate to the next git hunk (gitsigns)" })
+map(
+    "n",
+    "[h",
+    "<cmd>silent Gitsigns prev_hunk<cr>",
+    { desc = "navigate to the previous git hunk (gitsigns)" }
+)
+
+-- discoverability (which-key)
+map("n", "<leader>?", function()
+    require("which-key").show { global = false }
+end, { desc = "buffer local keymaps (which-key)" })
+
+-- lsp
 vim.api.nvim_create_autocmd("LspAttach", {
     callback = function(args)
         local opts = function(desc)
@@ -110,11 +126,3 @@ vim.api.nvim_create_autocmd("LspAttach", {
         end, opts "restart LSP server")
     end,
 })
-
-map("n", "]h", "<cmd>silent Gitsigns next_hunk<cr>", { desc = "navigate to the next git hunk (gitsigns)" })
-map(
-    "n",
-    "[h",
-    "<cmd>silent Gitsigns prev_hunk<cr>",
-    { desc = "navigate to the previous git hunk (gitsigns)" }
-)
