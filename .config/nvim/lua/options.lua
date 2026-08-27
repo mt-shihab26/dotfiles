@@ -1,4 +1,11 @@
-require("config.remote_clipboard").setup()
+-- new UI (cmdline, messages, popupmenu)
+local ui2 = require "vim._core.ui2"
+
+ui2.enable {}
+
+-- leader keys
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
 
 -- netrw
 vim.g.netrw_banner = 0
@@ -59,6 +66,7 @@ end
 -- Suppress handler for in-flight responses that arrive after disable.
 vim.lsp.handlers["textDocument/documentColor"] = function() end
 
+-- highlight yanked text briefly
 vim.api.nvim_create_autocmd("TextYankPost", {
     callback = function()
         vim.highlight.on_yank()
