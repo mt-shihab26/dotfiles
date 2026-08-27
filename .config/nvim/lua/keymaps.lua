@@ -5,6 +5,12 @@ map("n", "q", "<nop>", { desc = "disable macro recording" })
 map("n", "<esc>", "<cmd>nohlsearch<cr>", { desc = "clear search highlighting" })
 map("x", "p", '"_dP', { desc = "paste without yanking selected text" })
 
+-- toggle
+local toggle = require "lib.toggle"
+
+map("n", "<leader>ti", toggle.indent_char, { desc = "toggle tabs/spaces for indentation" })
+map("n", "<leader>tw", toggle.wrap, { desc = "toggle line wrapping on/off" })
+
 -- window navigation
 map("n", "<leader>j", "<C-w>j", { desc = "move to below window" })
 map("n", "<leader>k", "<C-w>k", { desc = "move to above window" })
@@ -16,28 +22,20 @@ map("n", "<C-k>", "<cmd><C-U>TmuxNavigateUp<cr>", { desc = "navigate up window (
 map("n", "<C-l>", "<cmd><C-U>TmuxNavigateRight<cr>", { desc = "navigate right window (tmux)" })
 
 -- buffers (bufferline)
-local close_terminals_or_others = require "utils.close_terminals_or_others"
+local buffer = require "lib.buffer"
 
 map("n", "<S-h>", "<cmd>BufferLineCyclePrev<cr>", { desc = "prev buffer (bufferline)" })
 map("n", "<S-l>", "<cmd>BufferLineCycleNext<cr>", { desc = "next buffer (bufferline)" })
 map("n", "<leader>Q", "<cmd>bp<bar>sp<bar>bn<bar>bd<cr>", { desc = "close current buffer (bufferline)" })
-map("n", "<leader>q", close_terminals_or_others, { desc = "close terminals or other buffers (bufferline)" })
-map(
-    "n",
-    "<leader>cl",
-    "<cmd>BufferLineCloseRight<cr>",
-    { desc = "delete buffers to the right (bufferline)" }
-)
+map("n", "<leader>q", buffer.close_terminals_or_others, { desc = "close terminals or other buffers (bufferline)" })
+map("n", "<leader>cl", "<cmd>BufferLineCloseRight<cr>", { desc = "delete buffers to the right (bufferline)" })
 map("n", "<leader>ch", "<cmd>BufferLineCloseLeft<cr>", { desc = "delete buffers to the left (bufferline)" })
+
+map("n", "l", buffer.open_last_file, { desc = "open last file or move right" })
 
 -- file tree (neo-tree)
 map("n", "<leader>e", "<cmd>Neotree action=focus<cr>", { desc = "focus file tree (neo-tree)", remap = true })
 map("n", "<leader>p", "<cmd>Neotree action=close<cr>", { desc = "close file tree (neo-tree)", remap = true })
-
--- file utilities
-local open_last_file = require "utils.open_last_file"
-
-map("n", "l", open_last_file, { desc = "open last file or move right" })
 
 -- clipboard
 local clipboard = require "lib.clipboard"
@@ -46,14 +44,8 @@ map("n", "<leader>cp", clipboard.path, { desc = "copy current file relative path
 map("n", "<leader>ca", clipboard.abs_path, { desc = "copy current file absolute path" })
 map("n", "<leader>cf", clipboard.name, { desc = "copy current file name with extension" })
 
--- toggle
-local toggle = require "lib.toggle"
-
-map("n", "<leader>ti", toggle.indent_char, { desc = "toggle tabs/spaces for indentation" })
-map("n", "<leader>tw", toggle.wrap, { desc = "toggle line wrapping on/off" })
-
 -- fuzzy finding (telescope)
-local telescope = require "utils.telescope"
+local telescope = require "lib.telescope"
 
 map("n", "<leader>f", telescope.find_files, { desc = "find files (telescope)" })
 map("n", "<leader>F", telescope.find_all_files, { desc = "find all files (telescope)" })

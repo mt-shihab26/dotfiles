@@ -1,4 +1,25 @@
-return function()
+local M = {}
+
+function M.open_last_file()
+    local bufname = vim.api.nvim_buf_get_name(0)
+    local buftype = vim.bo.buftype
+    local modified = vim.bo.modified
+
+    if bufname == "" and buftype == "" and not modified then
+        local oldfiles = vim.v.oldfiles
+        if #oldfiles > 0 then
+            local lastfile = oldfiles[1]
+            lastfile = vim.fn.fnameescape(lastfile)
+            vim.cmd("edit " .. lastfile)
+        else
+            vim.notify("No recently opened files found", vim.log.levels.WARN)
+        end
+    else
+        vim.cmd "normal! l"
+    end
+end
+
+function M.close_terminals_or_others()
     local bufs = vim.api.nvim_list_bufs()
     local current = vim.api.nvim_get_current_buf()
     local terminals = {}
@@ -24,3 +45,5 @@ return function()
         vim.cmd("bdelete! " .. buf)
     end
 end
+
+return M
