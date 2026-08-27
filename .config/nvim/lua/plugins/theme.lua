@@ -1,4 +1,4 @@
-local omarchy_theme = require "utils.omarchy_theme"
+local omarchy_theme = require "lib.omarchy_theme"
 
 local last_mtime = nil
 
