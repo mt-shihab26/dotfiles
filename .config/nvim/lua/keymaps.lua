@@ -55,15 +55,11 @@ map("n", "<leader>h", telescope.help_tags, { desc = "help tags (telescope)" })
 map("n", "<leader>H", telescope.lsp_document_symbols, { desc = "lsp document symbols (telescope)" })
 
 -- search and replace (spectre)
-map("n", "<leader>s", function()
-    require("spectre").open_file_search { select_word = true }
-end, { desc = "search on current buffer (spectre)" })
-map("n", "<leader>S", function()
-    require("spectre").open_visual { select_word = true }
-end, { desc = "search on multi buffers (spectre)" })
-map("v", "<leader>S", function()
-    require("spectre").open_visual()
-end, { desc = "search on multi buffers (spectre)" })
+local spectre = require "lib.spectre"
+
+map("n", "<leader>s", spectre.search_buffer, { desc = "search on current buffer (spectre)" })
+map("n", "<leader>S", spectre.search_word, { desc = "search on multi buffers (spectre)" })
+map("v", "<leader>S", spectre.search_selection, { desc = "search on multi buffers (spectre)" })
 
 -- git (lazygit, gitsigns)
 map("n", "<leader>L", "<cmd>LazyGit<cr>", { desc = "open lazygit window (lazygit)", remap = true })
