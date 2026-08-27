@@ -1,5 +1,22 @@
 local M = {}
 
+
+function M.list(opts)
+    local names = opts.args:match "%S" and vim.split(opts.args, "%s+", { trimempty = true }) or nil
+    local plugins = vim.pack.get(names)
+    local lines = {}
+    for _, p in ipairs(plugins) do
+        local status = p.active and "active" or "inactive"
+        local rev = p.rev and p.rev:sub(1, 7) or "?"
+        local tag = vim.fn
+            .system("git -C " .. vim.fn.shellescape(p.path) .. " describe --tags --exact-match HEAD 2>/dev/null")
+            :gsub("\n", "")
+        local version = tag ~= "" and tag or rev
+        lines[#lines + 1] = ("[%s] %s @ %s"):format(status, p.spec.name, version)
+    end
+    vim.notify(table.concat(lines, "\n"), vim.log.levels.INFO)
+end
+
 function M.check(opts)
     local names = opts.args:match "%S" and vim.split(opts.args, "%s+", { trimempty = true }) or nil
     vim.notify("Checking for updates...", vim.log.levels.INFO)
@@ -21,7 +38,16 @@ function M.check(opts)
     end
 end
 
-function M.clean(opts)
+function M.update(opts)
+    if opts.args:match "%S" then
+        local plugins = vim.split(opts.args, "%s+", { trimempty = true })
+        vim.pack.update(plugins)
+    else
+        vim.pack.update()
+    end
+end
+
+function M.prune(opts)
     local names = opts.args:match "%S" and vim.split(opts.args, "%s+", { trimempty = true }) or nil
     local plugins = vim.pack.get(names)
     local inactive = {}
@@ -37,23 +63,7 @@ function M.clean(opts)
     vim.pack.del(inactive)
 end
 
-function M.list(opts)
-    local names = opts.args:match "%S" and vim.split(opts.args, "%s+", { trimempty = true }) or nil
-    local plugins = vim.pack.get(names)
-    local lines = {}
-    for _, p in ipairs(plugins) do
-        local status = p.active and "active" or "inactive"
-        local rev = p.rev and p.rev:sub(1, 7) or "?"
-        local tag = vim.fn
-            .system("git -C " .. vim.fn.shellescape(p.path) .. " describe --tags --exact-match HEAD 2>/dev/null")
-            :gsub("\n", "")
-        local version = tag ~= "" and tag or rev
-        lines[#lines + 1] = ("[%s] %s @ %s"):format(status, p.spec.name, version)
-    end
-    vim.notify(table.concat(lines, "\n"), vim.log.levels.INFO)
-end
-
-function M.remove_all(opts)
+function M.purge(opts)
     local names
     if opts.args:match "%S" then
         names = vim.split(opts.args, "%s+", { trimempty = true })
@@ -77,15 +87,6 @@ function M.remove_all(opts)
         removed[#removed + 1] = "- " .. name
     end
     vim.notify("Removed plugins:\n" .. table.concat(removed, "\n"), vim.log.levels.INFO)
-end
-
-function M.update(opts)
-    if opts.args:match "%S" then
-        local plugins = vim.split(opts.args, "%s+", { trimempty = true })
-        vim.pack.update(plugins)
-    else
-        vim.pack.update()
-    end
 end
 
 return M
