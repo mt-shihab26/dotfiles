@@ -56,6 +56,8 @@ vim.opt.mouse = "a"
 
 -- clipboard (deferred to avoid startup latency)
 vim.schedule(function()
+    local omarchy_remote_clipboard = require "lib.omarchy_remote_clipboard"
+    omarchy_remote_clipboard.setup()
     vim.opt.clipboard = "unnamedplus"
 end)
 
