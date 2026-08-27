@@ -62,15 +62,9 @@ map("n", "<leader>S", spectre.search_word, { desc = "search on multi buffers (sp
 map("v", "<leader>S", spectre.search_selection, { desc = "search on multi buffers (spectre)" })
 
 -- git (lazygit, gitsigns)
-map("n", "<leader>L", "<cmd>LazyGit<cr>", { desc = "open lazygit window (lazygit)", remap = true })
-
 map("n", "]h", "<cmd>silent Gitsigns next_hunk<cr>", { desc = "navigate to the next git hunk (gitsigns)" })
-map(
-    "n",
-    "[h",
-    "<cmd>silent Gitsigns prev_hunk<cr>",
-    { desc = "navigate to the previous git hunk (gitsigns)" }
-)
+map("n", "[h", "<cmd>silent Gitsigns prev_hunk<cr>", { desc = "navigate to the previous git hunk (gitsigns)" })
+map("n", "<leader>L", "<cmd>LazyGit<cr>", { desc = "open lazygit window (lazygit)", remap = true })
 
 -- discoverability (which-key)
 map("n", "<leader>?", function()
