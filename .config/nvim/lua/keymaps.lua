@@ -67,9 +67,9 @@ map("n", "[h", "<cmd>silent Gitsigns prev_hunk<cr>", { desc = "navigate to the p
 map("n", "<leader>L", "<cmd>LazyGit<cr>", { desc = "open lazygit window (lazygit)", remap = true })
 
 -- discoverability (which-key)
-map("n", "<leader>?", function()
-    require("which-key").show { global = false }
-end, { desc = "buffer local keymaps (which-key)" })
+local which_key = require "lib.which_key"
+
+map("n", "<leader>?", which_key.show_buffer_local, { desc = "buffer local keymaps (which-key)" })
 
 -- lsp
 vim.api.nvim_create_autocmd("LspAttach", {

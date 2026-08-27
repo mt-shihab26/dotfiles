@@ -8,6 +8,7 @@
         "deprecated",
         "missing-fields",
         "duplicate-set-field",
-        "undefined-field"
+        "undefined-field",
+        "redefined-local"
     ]
 }
