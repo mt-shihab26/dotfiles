@@ -7,3 +7,7 @@ command("PackCheck", pack.check, { nargs = "*", desc = "check for pending plugin
 command("PackUpdate", pack.update, { nargs = "*", desc = "update all plugins or specific ones" })
 command("PackPrune", pack.prune, { nargs = "*", desc = "remove inactive plugins from disk" })
 command("PackPurge", pack.purge, { nargs = "*", desc = "remove plugins from disk (including active)" })
+
+local toggle = require "lib.toggle"
+
+command("FormatToggle", toggle.format_on_save, { desc = "toggle format on save" })

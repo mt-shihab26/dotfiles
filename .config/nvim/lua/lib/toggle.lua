@@ -21,4 +21,14 @@ function M.wrap()
     end
 end
 
+function M.format_on_save()
+    if vim.g.disable_autoformat then
+        vim.g.disable_autoformat = false
+        print "format on save enabled"
+    else
+        vim.g.disable_autoformat = true
+        print "format on save disabled"
+    end
+end
+
 return M

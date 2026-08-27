@@ -10,6 +10,7 @@ local toggle = require "lib.toggle"
 
 map("n", "<leader>ti", toggle.indent_char, { desc = "toggle tabs/spaces for indentation" })
 map("n", "<leader>tw", toggle.wrap, { desc = "toggle line wrapping on/off" })
+map("n", "<leader>tf", "<cmd>FormatToggle<cr>", { desc = "toggle format on save" })
 
 -- window navigation
 map("n", "<leader>j", "<C-w>j", { desc = "move to below window" })
