@@ -1,5 +1,7 @@
 vim.pack.add {
-    { src = "https://github.com/folke/which-key.nvim" },
+    {
+        src = "https://github.com/folke/which-key.nvim",
+    },
 }
 
 local which_key = require "which-key"

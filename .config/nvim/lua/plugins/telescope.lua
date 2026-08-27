@@ -11,9 +11,15 @@ vim.pack.add {
         src = "https://github.com/nvim-telescope/telescope.nvim",
         version = "master",
     },
-    "https://github.com/nvim-telescope/telescope-live-grep-args.nvim",
-    "https://github.com/nvim-telescope/telescope-ui-select.nvim",
-    "https://github.com/nvim-telescope/telescope-fzf-native.nvim",
+    {
+        src = "https://github.com/nvim-telescope/telescope-live-grep-args.nvim",
+    },
+    {
+        src = "https://github.com/nvim-telescope/telescope-ui-select.nvim",
+    },
+    {
+        src = "https://github.com/nvim-telescope/telescope-fzf-native.nvim",
+    },
 }
 
 local telescope = require "telescope"

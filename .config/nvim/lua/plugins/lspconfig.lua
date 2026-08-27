@@ -1,7 +1,13 @@
 vim.pack.add {
-    { src = "https://github.com/neovim/nvim-lspconfig" },
-    { src = "https://github.com/antosha417/nvim-lsp-file-operations" },
-    { src = "https://github.com/j-hui/fidget.nvim" },
+    {
+        src = "https://github.com/neovim/nvim-lspconfig",
+    },
+    {
+        src = "https://github.com/antosha417/nvim-lsp-file-operations",
+    },
+    {
+        src = "https://github.com/j-hui/fidget.nvim",
+    },
 }
 
 local fidget = require "fidget"

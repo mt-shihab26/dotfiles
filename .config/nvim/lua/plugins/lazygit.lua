@@ -1,5 +1,7 @@
 vim.pack.add {
-    { src = "https://github.com/kdheepak/lazygit.nvim" },
+    {
+        src = "https://github.com/kdheepak/lazygit.nvim",
+    },
 }
 
 vim.schedule(function()

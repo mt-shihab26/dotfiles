@@ -1,4 +1,8 @@
-vim.pack.add { "https://github.com/stevearc/conform.nvim" }
+vim.pack.add {
+    {
+        src = "https://github.com/stevearc/conform.nvim",
+    },
+}
 
 local conform = require "conform"
 local formatters_by_ft = require "lists.formatters"

@@ -1,5 +1,7 @@
 vim.pack.add {
-    { src = "https://github.com/nvim-lualine/lualine.nvim" },
+    {
+        src = "https://github.com/nvim-lualine/lualine.nvim",
+    },
 }
 
 local lualine = require "lualine"
