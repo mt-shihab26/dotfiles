@@ -1,15 +1,18 @@
 local M = {}
 
 function M.find_files()
-    require("telescope.builtin").find_files { prompt_title = "Find Files" }
+    local builtin = require "telescope.builtin"
+    builtin.find_files { prompt_title = "Find Files" }
 end
 
 function M.find_all_files()
-    require("telescope.builtin").find_files { prompt_title = "Find All Files", no_ignore = true }
+    local builtin = require "telescope.builtin"
+    builtin.find_files { prompt_title = "Find All Files", no_ignore = true }
 end
 
 function M.grep_files()
-    require("telescope").extensions.live_grep_args.live_grep_args {
+    local live_grep_args = require("telescope").extensions.live_grep_args.live_grep_args
+    live_grep_args {
         prompt_title = "Grep Files",
         vimgrep_arguments = {
             "rg",
@@ -32,7 +35,8 @@ function M.grep_files()
 end
 
 function M.grep_all_files()
-    require("telescope").extensions.live_grep_args.live_grep_args {
+    local live_grep_args = require("telescope").extensions.live_grep_args.live_grep_args
+    live_grep_args {
         prompt_title = "Grep All Files",
         vimgrep_arguments = {
             "rg",
@@ -51,11 +55,13 @@ function M.grep_all_files()
 end
 
 function M.help_tags()
-    require("telescope.builtin").help_tags()
+    local builtin = require "telescope.builtin"
+    builtin.help_tags()
 end
 
 function M.lsp_document_symbols()
-    require("telescope.builtin").lsp_document_symbols()
+    local builtin = require "telescope.builtin"
+    builtin.lsp_document_symbols()
 end
 
 return M
