@@ -11,3 +11,5 @@ command("PackPurge", pack.purge, { nargs = "*", desc = "remove plugins from disk
 local toggle = require "lib.toggle"
 
 command("FormatToggle", toggle.format_on_save, { desc = "toggle format on save" })
+command("FormatDisable", toggle.format_disable, { desc = "disable format on save", bar = true })
+

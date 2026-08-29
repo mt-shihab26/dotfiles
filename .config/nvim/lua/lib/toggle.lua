@@ -31,4 +31,9 @@ function M.format_on_save()
     end
 end
 
+function M.format_disable()
+    vim.g.disable_autoformat = true
+    print "format on save disabled"
+end
+
 return M
