@@ -10,16 +10,6 @@
                 "parser": "html",
                 "htmlWhitespaceSensitivity": "ignore"
             }
-        },
-        {
-            "files": ["*.blade.php"],
-            "options": {
-                "parser": "blade",
-                "phpFormatter": "pint"
-            }
         }
-    ],
-    "plugins": [
-        "prettier-plugin-blade"
     ]
 }
