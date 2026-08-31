@@ -3,6 +3,6 @@
 INTERVAL=10 # Minutes between wallpaper changes.
 
 while true; do
-    omarchy-theme-bg-next
+    wallpaper-next
     sleep "$((INTERVAL * 60))"
 done

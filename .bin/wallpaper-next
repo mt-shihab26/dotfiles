@@ -1,0 +1,51 @@
+#!/bin/bash
+
+# Reimplements omarchy-theme-bg-next's cycling, but compares backgrounds by
+# realpath instead of raw symlink target. omarchy-theme-bg-set resolves the
+# background to its realpath before storing it, while omarchy-theme-bg-next
+# compares against the unresolved find() paths -- if any background in the
+# theme dir is itself a symlink (e.g. into ~/wallpapers/), that mismatch
+# means the current background never matches an entry, so INDEX is always
+# -1 and it keeps resetting to the first background instead of advancing.
+
+CURRENT_BACKGROUND_LINK="$HOME/.local/state/omarchy/current/background"
+
+next_background() {
+    local theme_name theme_backgrounds_path user_backgrounds_path
+    theme_name=$(cat "$HOME/.local/state/omarchy/current/theme.name" 2>/dev/null)
+    theme_backgrounds_path="$HOME/.local/state/omarchy/current/theme/backgrounds/"
+    user_backgrounds_path="$HOME/.config/omarchy/backgrounds/$theme_name/"
+
+    local backgrounds=()
+    mapfile -d '' -t backgrounds < <(
+        find -L "$user_backgrounds_path" "$theme_backgrounds_path" -maxdepth 1 -type f \
+            \( -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.png' -o -iname '*.gif' -o -iname '*.bmp' -o -iname '*.webp' \) \
+            -print0 2>/dev/null | sort -z
+    )
+    local total=${#backgrounds[@]}
+    if (( total == 0 )); then
+        return 1
+    fi
+
+    local current_background=""
+    if [[ -L $CURRENT_BACKGROUND_LINK ]]; then
+        current_background=$(realpath "$CURRENT_BACKGROUND_LINK" 2>/dev/null)
+    fi
+
+    local index=-1 i
+    for i in "${!backgrounds[@]}"; do
+        if [[ "$(realpath "${backgrounds[$i]}" 2>/dev/null)" == "$current_background" ]]; then
+            index=$i
+            break
+        fi
+    done
+
+    local next_index=0
+    if (( index != -1 )); then
+        next_index=$(((index + 1) % total))
+    fi
+
+    printf '%s' "${backgrounds[$next_index]}"
+}
+
+background=$(next_background) && [[ -n $background ]] && omarchy-theme-bg-set "$background"
