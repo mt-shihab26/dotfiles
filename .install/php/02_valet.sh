@@ -1,7 +1,8 @@
 #!/bin/bash
 
 echo "Installing Dependencies..."
-sudo pacman -S nss jq xsel networkmanager
+# sudo pacman -S nss jq xsel networkmanager
+sudo pacman -S xsel
 
 echo "Installing Valet Linux globally..."
 composer global require cpriego/valet-linux
