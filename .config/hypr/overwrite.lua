@@ -2,9 +2,10 @@
 
 hl.config {
     input = {
+        -- Use multiple keyboard layouts and switch between them with Left Alt + Right Alt.
         kb_layout = "us,bd",
         kb_variant = ",probhat",
-        -- kb_options = "grp:alt_shift_toggle",
+        kb_options = "compose:caps,shift:both_capslock_cancel,grp:alts_toggle",
 
         touchpad = {
             tap_to_click = true,
@@ -30,4 +31,4 @@ o.bind("ALT + code:18", "Switch to workspace 9", hl.dsp.focus { workspace = "9" 
 o.launch_on_start "wallpaper-cycle"
 
 -- Clear clipboard manager history.
-o.bind("CTRL + SHIFT + DELETE", "Clear clipboard history", "omarchy-clipboard-clear")
+o.bind("CTRL + SHIFT + DELETE", "Clear clipboard history", "clipboard-clear")
