@@ -1,7 +1,0 @@
-#!/bin/bash
-
-set -e
-
-if [ -f "Cargo.toml" ]; then
-    cargo run
-fi
