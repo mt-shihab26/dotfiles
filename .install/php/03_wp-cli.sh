@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 
 php wp-cli.phar --info

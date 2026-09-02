@@ -1,11 +1,13 @@
 #!/bin/bash
 
+set -e
+
 if [[ $1 == "projects" ]]; then
-    selected=$(find ~/projects -mindepth 1 -maxdepth 1 -type d | fzf)
+    selected=$(find ~/projects -mindepth 1 -maxdepth 1 -type d | fzf || true)
 elif [[ $1 == "tmp" ]]; then
-    selected=$(find ~/tmp -mindepth 1 -maxdepth 1 -type d | fzf)
+    selected=$(find ~/tmp -mindepth 1 -maxdepth 1 -type d | fzf || true)
 elif [[ $1 == "learns" ]]; then
-    selected=$(find ~/learns -mindepth 1 -maxdepth 2 -type d -not -path "*/.git*" | fzf)
+    selected=$(find ~/learns -mindepth 1 -maxdepth 2 -type d -not -path "*/.git*" | fzf || true)
 elif [[ $# -eq 1 ]]; then
     selected=$1
 else
@@ -18,7 +20,7 @@ if [[ -z $selected ]]; then
 fi
 
 selected_name=$(basename "$selected" | tr . _)
-tmux_running=$(pgrep tmux)
+tmux_running=$(pgrep tmux || true)
 
 if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
     tmux new-session -s $selected_name -c $selected

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 POSTGRES_PASSWORD="2611"
 
 echo "==> Installing PostgreSQL..."
@@ -20,10 +22,6 @@ sudo -u postgres psql -c "ALTER USER postgres PASSWORD '${POSTGRES_PASSWORD}';"
 echo "==> Verifying PostgreSQL connection..."
 PGPASSWORD="${POSTGRES_PASSWORD}" psql -U postgres -h localhost -c '\l'
 
-if [ $? -eq 0 ]; then
-    echo "✅ PostgreSQL installed and password set to '${POSTGRES_PASSWORD}'"
-else
-    echo "❌ PostgreSQL setup failed."
-fi
+echo "✅ PostgreSQL installed and password set to '${POSTGRES_PASSWORD}'"
 
 # psql -U postgres -h localhost -W

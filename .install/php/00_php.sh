@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 echo "Installing PHP and essential packages..."
 sudo pacman -S php php-fpm php-gd php-intl php-redis php-sqlite php-sodium php-pgsql \
     xdebug imagemagick composer nginx dnsmasq inotify-tools rsync nss jq xsel networkmanager

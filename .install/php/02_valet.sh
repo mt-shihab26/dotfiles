@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 echo "Installing Dependencies..."
 # sudo pacman -S nss jq xsel networkmanager
 sudo pacman -S xsel

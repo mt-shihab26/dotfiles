@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 sudo pacman -S --noconfirm htop stow cloc tree wget gedit
 
 # Set gedit as default application for markdown files

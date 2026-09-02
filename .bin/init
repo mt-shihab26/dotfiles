@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 # Check if a tmux session named "init" exists
 if tmux has-session -t init 2>/dev/null; then
     # If it exists, attach to the session

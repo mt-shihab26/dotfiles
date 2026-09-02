@@ -1,7 +1,9 @@
 #!/bin/bash
 
+set -e
+
 # Check if tmux is running
-tmux_running=$(pgrep tmux)
+tmux_running=$(pgrep tmux || true)
 
 if [[ -z $tmux_running ]]; then
     echo "tmux is not running. no sessions to kill."
@@ -17,7 +19,7 @@ if [[ -z $sessions ]]; then
 fi
 
 # Use fzf to select a session
-selected=$(echo "$sessions" | fzf)
+selected=$(echo "$sessions" | fzf || true)
 
 if [[ -z $selected ]]; then
     echo "no session selected. exiting."

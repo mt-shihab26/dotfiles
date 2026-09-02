@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 # Reimplements omarchy-theme-bg-next's cycling, but compares backgrounds by
 # realpath instead of raw symlink target. omarchy-theme-bg-set resolves the
 # background to its realpath before storing it, while omarchy-theme-bg-next

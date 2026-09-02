@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 INTERVAL=10 # Minutes between wallpaper changes.
 
 while true; do

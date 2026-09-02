@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 MYSQL_ROOT_PASSWORD="2611"
 
 echo "==> Installing MariaDB..."
@@ -19,8 +21,4 @@ sudo mariadb -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '${MYSQL_ROOT_PASSW
 echo "==> Verifying root login..."
 mysql -u root -p${MYSQL_ROOT_PASSWORD} -e "STATUS"
 
-if [ $? -eq 0 ]; then
-    echo "✅ MariaDB installed and root password set to '${MYSQL_ROOT_PASSWORD}'"
-else
-    echo "❌ Something went wrong."
-fi
+echo "✅ MariaDB installed and root password set to '${MYSQL_ROOT_PASSWORD}'"
