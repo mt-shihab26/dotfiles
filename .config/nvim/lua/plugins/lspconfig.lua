@@ -78,8 +78,8 @@ local function on_attach(args)
     map("n", "[d", diagnostic.goto_prev, opts "go to prev diagnostic (lspconfig)")
     map("n", "]d", diagnostic.goto_next, opts "go to next diagnostic (lspconfig)")
 
-    map("n", "<leader>ls", lsp.start, opts "start LSP server")
-    map("n", "<leader>lS", lsp.stop, opts "stop LSP server")
+    map("n", "<leader>ls", lsp.start, opts "start LSP server (lspconfig)")
+    map("n", "<leader>lS", lsp.stop, opts "stop LSP server (lspconfig)")
     map("n", "<leader>lr", lsp.restart, opts "restart LSP server (lspconfig)")
 end
 
