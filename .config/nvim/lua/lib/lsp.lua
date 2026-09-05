@@ -2,27 +2,20 @@ local M = {}
 
 function M.start()
     local bufnr = vim.api.nvim_get_current_buf()
-    for _, client in ipairs(vim.lsp.get_clients { bufnr = bufnr }) do
-        local name = client.name
-
-        vim.lsp.enable(name, false)
-        client:stop(true)
-        vim.defer_fn(function()
+    local ft = vim.bo[bufnr].filetype
+    for _, name in ipairs(require "lists.servers") do
+        local config = vim.lsp.config[name]
+        if config and vim.tbl_contains(config.filetypes or {}, ft) then
             vim.lsp.enable(name)
-        end, 500)
+        end
     end
 end
 
 function M.stop()
     local bufnr = vim.api.nvim_get_current_buf()
     for _, client in ipairs(vim.lsp.get_clients { bufnr = bufnr }) do
-        local name = client.name
-
-        vim.lsp.enable(name, false)
+        vim.lsp.enable(client.name, false)
         client:stop(true)
-        vim.defer_fn(function()
-            vim.lsp.enable(name)
-        end, 500)
     end
 end
 
