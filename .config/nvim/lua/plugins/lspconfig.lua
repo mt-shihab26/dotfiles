@@ -13,6 +13,7 @@ vim.pack.add {
 local fidget = require "fidget"
 local lsp_file_operations = require "lsp-file-operations"
 local cmp_nvim_lsp = require "cmp_nvim_lsp"
+local lsp = require "lib.lsp"
 
 fidget.setup { notification = { window = { winblend = 0 } } }
 
@@ -77,15 +78,9 @@ local function on_attach(args)
     map("n", "[d", diagnostic.goto_prev, opts "go to prev diagnostic (lspconfig)")
     map("n", "]d", diagnostic.goto_next, opts "go to next diagnostic (lspconfig)")
 
-    map("n", "<leader>ls", function()
-        vim.cmd "LspStart"
-    end, opts "start LSP server")
-    map("n", "<leader>lS", function()
-        vim.cmd "LspStop"
-    end, opts "stop LSP server")
-    map("n", "<leader>lr", function()
-        vim.cmd "LspRestart"
-    end, opts "restart LSP server")
+    map("n", "<leader>ls", lsp.start, opts "start LSP server")
+    map("n", "<leader>lS", lsp.stop, opts "stop LSP server")
+    map("n", "<leader>lr", lsp.restart, opts "restart LSP server (lspconfig)")
 end
 
 vim.api.nvim_create_autocmd("LspAttach", { callback = on_attach })
