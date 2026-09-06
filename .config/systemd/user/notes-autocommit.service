@@ -1,0 +1,6 @@
+[Unit]
+Description=Commit and push Notes repo if there are changes
+
+[Service]
+Type=oneshot
+ExecStart=%h/.bin/notes-autocommit

@@ -1,0 +1,11 @@
+[Unit]
+Description=Run notes-autocommit every hour
+
+[Timer]
+Unit=notes-autocommit.service
+OnBootSec=5m
+OnUnitActiveSec=1h
+Persistent=true
+
+[Install]
+WantedBy=timers.target
