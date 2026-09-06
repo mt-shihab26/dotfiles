@@ -29,4 +29,12 @@ rm -rf "$HOME/.config/valet"
 echo "Removing Valet Linux composer package..."
 composer global remove cpriego/valet-linux 2>/dev/null || true
 
+# valet-linux's DnsMasq::uninstall() force-symlinks /etc/resolv.conf to
+# /run/systemd/resolve/resolv.conf (uplink mode) instead of restoring
+# systemd-resolved's stub resolver (/run/systemd/resolve/stub-resolv.conf).
+# Uplink mode skips systemd-resolved's stub listener and can race with
+# NetworkManager's connectivity check on networks with broken IPv6, showing
+# "limited" connectivity at boot. Switch back to stub mode:
+#   sudo ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
+
 echo "Valet Linux fully removed."

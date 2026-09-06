@@ -35,3 +35,4 @@ link.sh
 unlink.sh
 .config/starship.toml
 
+.tmp
