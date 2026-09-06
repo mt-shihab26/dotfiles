@@ -11,7 +11,6 @@ create_tmp() {
     touch "$HOME/$1/.tmp"
 }
 
-create_tmp ".ssh"
 create_tmp ".config/opencode"
 create_tmp ".local/bin"
 
