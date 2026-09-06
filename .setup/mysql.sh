@@ -21,4 +21,4 @@ sudo mariadb -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '${MYSQL_ROOT_PASSW
 echo "==> Verifying root login..."
 mysql -u root -p${MYSQL_ROOT_PASSWORD} -e "STATUS"
 
-echo "✅ MariaDB installed and root password set to '${MYSQL_ROOT_PASSWORD}'"
+echo "MariaDB installed and root password set to '${MYSQL_ROOT_PASSWORD}'"
