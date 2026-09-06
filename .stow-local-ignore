@@ -29,7 +29,7 @@ _darcs
 .luarc.json
 .stylua.toml
 
-.install
+.setup
 README.md
 link.sh
 unlink.sh
