@@ -36,6 +36,11 @@ return {
     "tsx",
     "astro",
     "vue",
+    -- PHP
+    "php",
+    "php_only",
+    "blade",
+    "twig",
     -- Go
     "go",
     "gomod",
@@ -43,11 +48,6 @@ return {
     "gosum",
     "gotmpl",
     "templ",
-    -- PHP
-    "php",
-    "php_only",
-    "blade",
-    "twig",
     -- Rust
     "rust",
 }

@@ -7,25 +7,19 @@ return {
     json = { "prettier" },
     yaml = { "prettier" },
     toml = { "prettier" },
-    -- CSS
     css = { "prettier" },
-    -- Shell
     sh = { "shfmt" },
     bash = { "shfmt" },
     zsh = { "shfmt" },
     fish = { "shfmt" },
-    -- Lua
     lua = { "stylua" },
     -- C/C++
     c = { "clang-format" },
     cpp = { "clang-format" },
-    -- Rust
-    rust = { "rustfmt" },
-    -- Go
-    go = { "goimports", "gofmt" },
-    templ = { "templ" },
     -- Python
     python = { "ruff_format" },
+    -- Java
+    java = { "google-java-format" },
     -- JavaScript
     javascript = { "prettier" },
     javascriptreact = { "prettier" },
@@ -36,4 +30,9 @@ return {
     -- PHP
     php = { "pint" },
     blade = { "prettier" },
+    -- Go
+    go = { "goimports", "gofmt" },
+    templ = { "templ" },
+    -- Rust
+    rust = { "rustfmt" }
 }

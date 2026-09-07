@@ -4,28 +4,22 @@ return {
     "marksman",
     "json-lsp",
     "yaml-language-server",
-    -- CSS
     "css-lsp",
     "css-variables-language-server",
     "tailwindcss-language-server",
-    -- Shell
     "bash-language-server",
     "shfmt",
-    -- Lua
     "lua-language-server",
     "stylua",
     -- C/C++
     "clangd",
     "clang-format",
-    -- Rust
-    "rust-analyzer",
-    -- Go
-    "gopls",
-    "templ",
-    "goimports",
     -- Python
     "pyright",
     "ruff",
+    -- Java
+    "java-language-server",
+    "google-java-format",
     -- JavaScript
     "tsc",
     "vtsls",
@@ -35,4 +29,10 @@ return {
     -- PHP
     "intelephense",
     "pint",
+    -- Go
+    "gopls",
+    "templ",
+    "goimports",
+    -- Rust
+    "rust-analyzer",
 }
