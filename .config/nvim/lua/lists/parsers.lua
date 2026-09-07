@@ -14,11 +14,8 @@ return {
     "git_rebase",
     "gitignore",
     "gitattributes",
-    -- CSS
     "css",
-    -- Shell
     "bash",
-    -- Lua
     "lua",
     "luadoc",
     "luap",
@@ -27,17 +24,11 @@ return {
     -- C/C++
     "c",
     "cpp",
-    -- Rust
-    "rust",
-    -- Go
-    "go",
-    "gomod",
-    "gowork",
-    "gosum",
-    "gotmpl",
-    "templ",
     -- Python
     "python",
+    -- Java
+    "java",
+    "javadoc",
     -- JavaScript
     "javascript",
     "jsdoc",
@@ -45,9 +36,18 @@ return {
     "tsx",
     "astro",
     "vue",
+    -- Go
+    "go",
+    "gomod",
+    "gowork",
+    "gosum",
+    "gotmpl",
+    "templ",
     -- PHP
     "php",
     "php_only",
     "blade",
     "twig",
+    -- Rust
+    "rust",
 }
