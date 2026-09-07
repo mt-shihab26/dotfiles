@@ -18,7 +18,7 @@ return {
     "pyright",
     "ruff",
     -- Java
-    "java-language-server",
+    "jdtls",
     "google-java-format",
     -- JavaScript
     "tsc",

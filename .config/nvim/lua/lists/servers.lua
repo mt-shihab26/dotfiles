@@ -14,7 +14,7 @@ return {
     -- Python
     "pyright",
     -- Java
-    "java_language_server",
+    "jdtls",
     -- JavaScript
     "tsc",
     "vtsls",
