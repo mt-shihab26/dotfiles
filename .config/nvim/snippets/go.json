@@ -1,0 +1,23 @@
+{
+    "Go Struct": {
+        "prefix": "struct",
+        "body": [
+            "type ${1:Name} struct {",
+            "\t${2:Field} ${3:string}",
+            "}"
+        ],
+        "description": "Generate a Go struct declaration"
+    },
+    "Go Switch": {
+        "prefix": "switch",
+        "body": [
+            "switch ${1:expression} {",
+            "case ${2:value}:",
+            "\t${3}",
+            "default:",
+            "\t${0}",
+            "}"
+        ],
+        "description": "Generate a Go switch statement"
+    }
+}
