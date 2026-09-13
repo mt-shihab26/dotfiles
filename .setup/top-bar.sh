@@ -18,3 +18,5 @@ omarchy plugin enable omarchy.microphone --section center --after omarchy.weathe
 omarchy plugin enable omarchy.clock --section center --after omarchy.microphone
 omarchy plugin enable omarchy-orivo-plugin --section center --after omarchy.clock
 omarchy plugin enable omarchy.keyboard-layout --section center --after omarchy-orivo-plugin
+
+omarchy bar set omarchy.clock format "ddd d MMM h:mm AP"
