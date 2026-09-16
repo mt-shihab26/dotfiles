@@ -31,8 +31,8 @@ return {
     "pint",
     -- Go
     "gopls",
-    "templ",
     "goimports",
+    "templ",
     -- Rust
     "rust-analyzer",
     -- Ruby
