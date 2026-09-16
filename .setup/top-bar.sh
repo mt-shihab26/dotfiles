@@ -16,4 +16,9 @@ omarchy plugin enable omarchy.keyboard-layout --section center --after omarchy.w
 omarchy plugin enable omarchy.microphone --section center --after omarchy.keyboard-layout
 omarchy plugin enable omarchy.system-update --section center --after omarchy.microphone
 
+# Enabling/moving the widget doesn't make it re-check for updates, so it can
+# sit hidden (stale updateAvailable=false) until its 6h timer next fires.
+omarchy-shell -q omarchy.system-update refresh
+
 omarchy bar set omarchy.clock format "ddd d MMM h:mm AP"
+
