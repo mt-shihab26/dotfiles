@@ -50,4 +50,7 @@ return {
     "templ",
     -- Rust
     "rust",
+    -- Ruby
+    "ruby",
+    "embedded_template"
 }

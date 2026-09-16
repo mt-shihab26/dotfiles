@@ -22,14 +22,14 @@ return {
     "astro",
     -- PHP
     "intelephense",
-    "laravel_lsp",
+    "laravel_lsp", -- composer global require laravel/lsp
     -- Go
     "gopls",
     "templ",
     -- Rust
     "rust_analyzer",
     -- Ruby
-    -- "ruby_lsp",
-    -- "turbo_ls",
-    -- "stimulus_ls",
+    "ruby_lsp",
+    "turbo_ls", -- bun install -g turbo-language-server
+    "stimulus_ls",
 }

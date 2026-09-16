@@ -34,5 +34,8 @@ return {
     go = { "goimports", "gofmt" },
     templ = { "templ" },
     -- Rust
-    rust = { "rustfmt" }
+    rust = { "rustfmt" },
+    -- Ruby
+    ruby = { "rubocop" },
+    eruby = { "erb_format" }
 }
