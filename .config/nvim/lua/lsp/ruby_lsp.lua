@@ -5,13 +5,12 @@
 -- Reinstall with: gem install ruby-lsp ruby-lsp-rails (after `mise use ruby <version>`).
 return {
     enabled = true,
-    cmd = { "ruby-lsp" },
     root_markers = { "Gemfile" },
+    filetypes = { 'ruby', 'eruby' },
+    cmd = { "ruby-lsp" },
     init_options = {
         formatter = "none",
         enabledFeatures = {
-            diagnostics = false,
-            codeActions = false,
             formatting = false,
         },
     },
