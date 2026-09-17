@@ -37,6 +37,5 @@ return {
     "rust-analyzer",
     -- Ruby
     "stimulus-language-server",
-    "rubocop",
     "erb-formatter"
 }

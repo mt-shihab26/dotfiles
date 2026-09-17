@@ -36,6 +36,6 @@ return {
     -- Rust
     rust = { "rustfmt" },
     -- Ruby
-    ruby = { "rubocop" },
+    ruby = { "rubocop" }, -- gem install rubocop rubocop-rails
     eruby = { "erb_format" }
 }
