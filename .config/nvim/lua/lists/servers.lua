@@ -29,7 +29,7 @@ return {
     -- Rust
     "rust_analyzer",
     -- Ruby
-    "ruby_lsp",
+    "ruby_lsp", -- gem install ruby-lsp ruby-lsp-rails
     "turbo_ls", -- bun install -g turbo-language-server
     "stimulus_ls",
 }

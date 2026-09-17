@@ -36,7 +36,6 @@ return {
     -- Rust
     "rust-analyzer",
     -- Ruby
-    "ruby-lsp",
     "stimulus-language-server",
     "rubocop",
     "erb-formatter"
