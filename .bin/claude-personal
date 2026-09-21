@@ -1,0 +1,4 @@
+#!/bin/bash
+
+CLAUDE_CONFIG_DIR=~/.config/claude/personal claude
+
