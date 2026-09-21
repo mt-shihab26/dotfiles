@@ -11,8 +11,13 @@ create_tmp() {
     touch "$HOME/$1/.tmp"
 }
 
-create_tmp ".config/opencode"
 create_tmp ".local/bin"
+
+create_tmp ".config/claude"
+create_tmp ".config/claude/personal"
+create_tmp ".config/claude/professional"
+
+create_tmp ".config/opencode"
 
 cd "$HOME/dotfiles"
 
