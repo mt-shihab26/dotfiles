@@ -59,21 +59,25 @@ alias n='nvim'
 alias r='run'
 
 # Coding Agent
-alias co='opencode'
-alias cox='opencode --auto'
-
 alias claude='claude-personal'
 
-alias ca='claude-personal'
-alias cax='claude-personal --dangerously-skip-permissions'
-alias ca2='claude-professional'
-alias ca2x='claude-professional --dangerously-skip-permissions'
+alias ca='claude-professional'
+alias cax='claude-professional --dangerously-skip-permissions'
 
-alias cx='codex'
-alias cxx='codex -s danger-full-access -a never'
+# alias ca='claude-personal'
+# alias cax='claude-personal --dangerously-skip-permissions'
+# alias ca2='claude-professional'
+# alias ca2x='claude-professional --dangerously-skip-permissions'
 
-alias cg="copilot"
-alias cgx="copilot --allow-all"
+
+# alias co='opencode'
+# alias cox='opencode --auto'
+
+# alias cx='codex'
+# alias cxx='codex -s danger-full-access -a never'
+#
+# alias cg="copilot"
+# alias cgx="copilot --allow-all"
 
 # Tools with options
 alias artisan="php artisan"
