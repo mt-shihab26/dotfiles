@@ -1,4 +1,9 @@
 #!/bin/bash
 
-CLAUDE_CONFIG_DIR=~/.config/claude/personal claude
+# Label the tmux tab (pane_current_command would just say "bash")
+if [ -n "$TMUX" ]; then
+    tmux set-option -w -t "$TMUX_PANE" @app "claude (personal)"
+    trap 'tmux set-option -wu -t "$TMUX_PANE" @app' EXIT
+fi
 
+CLAUDE_CONFIG_DIR=~/.config/claude/personal claude "$@"
