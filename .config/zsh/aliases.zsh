@@ -61,14 +61,10 @@ alias r='run'
 # Coding Agent
 alias claude='claude-personal'
 
-alias ca='claude-professional'
-alias cax='claude-professional --dangerously-skip-permissions'
-
-# alias ca='claude-personal'
-# alias cax='claude-personal --dangerously-skip-permissions'
-# alias ca2='claude-professional'
-# alias ca2x='claude-professional --dangerously-skip-permissions'
-
+alias ca='claude-personal'
+alias cax='claude-personal --dangerously-skip-permissions'
+alias ca2='claude-professional'
+alias ca2x='claude-professional --dangerously-skip-permissions'
 
 # alias co='opencode'
 # alias cox='opencode --auto'
