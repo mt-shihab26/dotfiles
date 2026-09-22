@@ -52,5 +52,7 @@ return {
     "rust",
     -- Ruby
     "ruby",
-    "embedded_template"
+    "embedded_template",
+    -- Lisp
+    "commonlisp",
 }
