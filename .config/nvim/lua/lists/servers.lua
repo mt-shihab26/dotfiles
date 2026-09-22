@@ -22,7 +22,7 @@ return {
     "astro",
     -- PHP
     "intelephense",
-    "laravel_lsp", -- composer global require laravel/lsp
+    "laravel_lsp",
     -- Go
     "gopls",
     "templ",

@@ -28,6 +28,7 @@ return {
     "prettier",
     -- PHP
     "intelephense",
+    "laravel_lsp",
     "pint",
     -- Go
     "gopls",

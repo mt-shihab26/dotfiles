@@ -1,4 +1,3 @@
--- composer global require laravel/lsp
 return {
     cmd = { "laravel-lsp" },
     filetypes = { "php", "blade" },
