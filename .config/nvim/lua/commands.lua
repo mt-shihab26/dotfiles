@@ -17,6 +17,6 @@ cmd("Wa", toggle.write_all_no_format, { desc = "write all buffers without format
 
 local case = require "lib.case"
 
-local caseDesc = "convert text case: upper, lower, capitalize, snake, kebab, dot, constant, pascal, camel";
+local case_desc = "convert text case: upper, lower, capitalize, snake, kebab, dot, constant, pascal, camel";
 
-cmd("Case", case.convert, { nargs = 1, range = true, complete = case.complete, desc = caseDesc })
+cmd("Case", case.convert, { nargs = 1, range = true, complete = case.complete, desc = case_desc })
