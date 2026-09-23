@@ -37,5 +37,7 @@ return {
     rust = { "rustfmt" },
     -- Ruby
     ruby = { "rubocop" }, -- gem install rubocop rubocop-rails
-    eruby = { "erb_format" }
+    eruby = { "erb_format" },
+    -- Lisp
+    -- no formatter listed, formatted by the sextant LSP (conform lsp_format = "fallback")
 }
