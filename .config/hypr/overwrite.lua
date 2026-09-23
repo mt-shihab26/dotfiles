@@ -32,3 +32,6 @@ o.launch_on_start "wallpaper-cycle"
 
 -- Clear clipboard manager history.
 o.bind("CTRL + SHIFT + DELETE", "Clear clipboard history", "clipboard-clear")
+
+-- Restart the Omarchy shell.
+o.bind("SUPER + CTRL + ALT + S", "Restart Omarchy shell", "omarchy-restart-shell")
