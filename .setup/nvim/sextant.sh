@@ -8,27 +8,31 @@ set -e
 SEXTANT_DIR="$HOME/.local/share/sextant"
 
 if ! command -v sbcl >/dev/null 2>&1; then
-  sudo pacman -S --noconfirm sbcl
+    sudo pacman -S --noconfirm sbcl
 fi
 
 if ! pacman -Q quicklisp >/dev/null 2>&1; then
-  sudo pacman -S --noconfirm quicklisp
+    sudo pacman -S --noconfirm quicklisp
 fi
 
 # The pacman package only ships the bootstrap file, so set up ~/quicklisp once.
 if [[ ! -f "$HOME/quicklisp/setup.lisp" ]]; then
-  sbcl --non-interactive \
-    --load /usr/share/quicklisp/quicklisp.lisp \
-    --eval '(quicklisp-quickstart:install)'
+    sbcl --non-interactive \
+        --load /usr/share/quicklisp/quicklisp.lisp \
+        --eval '(quicklisp-quickstart:install)'
 fi
 
 if [[ -d "$SEXTANT_DIR/.git" ]]; then
-  git -C "$SEXTANT_DIR" pull --ff-only
+    git -C "$SEXTANT_DIR" pull --ff-only
 else
-  git clone https://github.com/parenworks/sextant "$SEXTANT_DIR"
+    git clone https://github.com/parenworks/sextant "$SEXTANT_DIR"
 fi
 
 make -C "$SEXTANT_DIR"
 
-mkdir -p "$HOME/.local/bin"
-ln -sf "$SEXTANT_DIR/sextant" "$HOME/.local/bin/sextant"
+if [[ ! -d "$HOME/.local/bin" ]]; then
+  mkdir -p "$HOME/.local/bin"
+fi
+if [[ ! -e "$HOME/.local/bin/sextant" && ! -L "$HOME/.local/bin/sextant" ]]; then
+    ln -s "$SEXTANT_DIR/sextant" "$HOME/.local/bin/sextant"
+fi
