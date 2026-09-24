@@ -31,7 +31,7 @@ fi
 make -C "$SEXTANT_DIR"
 
 if [[ ! -d "$HOME/.local/bin" ]]; then
-  mkdir -p "$HOME/.local/bin"
+    mkdir -p "$HOME/.local/bin"
 fi
 if [[ ! -e "$HOME/.local/bin/sextant" && ! -L "$HOME/.local/bin/sextant" ]]; then
     ln -s "$SEXTANT_DIR/sextant" "$HOME/.local/bin/sextant"
