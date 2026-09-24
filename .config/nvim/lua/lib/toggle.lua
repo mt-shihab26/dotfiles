@@ -44,4 +44,11 @@ function M.write_all_no_format()
     vim.g.disable_autoformat = false
 end
 
+-- lsp semantic tokens (priority 125) override treesitter highlights; toggle to compare
+function M.semantic_tokens()
+    local enable = not vim.lsp.semantic_tokens.is_enabled()
+    vim.lsp.semantic_tokens.enable(enable)
+    vim.notify("Semantic tokens " .. (enable and "ON" or "OFF"), vim.log.levels.INFO)
+end
+
 return M
