@@ -1,5 +1,5 @@
--- sextant is built and symlinked to ~/.local/bin by .setup/sextant.sh (not Mason).
--- Rebuild/update with: .setup/sextant.sh
+-- sextant is built and symlinked to ~/.local/bin by .setup/nvim/sextant.sh (not Mason).
+-- Rebuild/update with: .setup/nvim/sextant.sh
 -- Debug logging: SEXTANT_LOG=1 nvim
 return {
     enabled = true,

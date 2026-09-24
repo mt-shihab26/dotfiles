@@ -33,5 +33,5 @@ return {
     "turbo_ls", -- bun install -g turbo-language-server
     "stimulus_ls",
     -- Lisp
-    "sextant", -- .setup/sextant.sh
+    "sextant", -- .setup/nvim/sextant.sh
 }

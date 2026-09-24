@@ -13,7 +13,7 @@ if ! command -v turbo-language-server >/dev/null 2>&1; then
 fi
 
 # Image preview (snacks.nvim)
-"$(dirname "$0")/snacks.sh"
+"$(dirname "$0")/image.sh"
 
 # Common Lisp
 "$(dirname "$0")/sextant.sh"
