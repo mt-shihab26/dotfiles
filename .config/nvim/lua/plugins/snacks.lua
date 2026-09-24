@@ -7,17 +7,33 @@ snacks.setup {
     image = { enabled = true },
 }
 
+local util = snacks.image.util
+local placement = snacks.image.placement
+
 -- Lua has no round(), and a 0 cell image can't be placed
 local function round(n)
     return math.max(1, math.floor(n + 0.5))
 end
 
+-- Snacks sizes images in whole cells, so a small image can get stretched by the rounding.
+-- Find the largest whole-cell size inside the window that keeps the aspect ratio within a
+-- small tolerance. It's fine to leave some space unused when no exact size fits.
+---@param ratio number width / height of the image in cells
+local function contain_cells(ratio, max_width, max_height)
+    local tolerance = 0.02
+    local width = math.max(1, math.min(max_width, math.floor(max_height * ratio)))
+    for w = width, 1, -1 do
+        local h = round(w / ratio)
+        if h <= max_height and math.abs(w / h - ratio) <= ratio * tolerance then
+            return { width = w, height = h }
+        end
+    end
+    return { width = width, height = math.min(max_height, round(width / ratio)) }
+end
+
 -- Snacks only shrinks large images to fit the window. For image buffers, also scale small
 -- images up so they always fill the window's width or height (like css `object-fit: contain`).
 local function contain_images()
-    local util = snacks.image.util
-    local placement = snacks.image.placement
-
     local fit = util.fit
     local state = placement.state
     local contain = false
@@ -26,12 +42,10 @@ local function contain_images()
         if not contain then
             return fit(file, cells, opts)
         end
-        local natural = fit(file, { width = math.huge, height = math.huge }, opts)
-        local scale = math.min(cells.width / natural.width, cells.height / natural.height)
-        return {
-            width = round(natural.width * scale),
-            height = round(natural.height * scale),
-        }
+        local pixels = opts and opts.info and opts.info.size or util.dim(file)
+        local cell = snacks.image.terminal.size()
+        local ratio = (pixels.width / pixels.height) * (cell.cell_height / cell.cell_width)
+        return contain_cells(ratio, cells.width, cells.height)
     end
 
     placement.state = function(self, ...)
