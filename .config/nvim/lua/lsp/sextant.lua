@@ -6,7 +6,6 @@ return {
     cmd = { "sextant" },
     filetypes = { "lisp" },
     -- Let treesitter handle highlighting: semantic tokens (priority 125) override
-    -- treesitter captures such as the ~% format directive inside strings.
     on_init = function(client)
         client.server_capabilities.semanticTokensProvider = nil
     end,
