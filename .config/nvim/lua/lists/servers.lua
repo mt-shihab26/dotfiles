@@ -21,7 +21,8 @@ return {
     "vue_ls",
     "astro",
     -- PHP
-    "intelephense",
+    -- "intelephense",
+    "phpantom_lsp",
     "laravel_lsp",
     -- Go
     "gopls",

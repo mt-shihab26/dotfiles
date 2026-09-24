@@ -27,7 +27,8 @@ return {
     "astro-language-server",
     "prettier",
     -- PHP
-    "intelephense",
+    -- "intelephense",
+    "phpantom_lsp",
     "laravel_lsp",
     "pint",
     -- Go
