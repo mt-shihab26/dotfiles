@@ -10,6 +10,9 @@ snacks.setup {
 local util = snacks.image.util
 local placement = snacks.image.placement
 
+-- Cells the border takes on each side of the image
+local border_size = 1
+
 -- Lua has no round(), and a 0 cell image can't be placed
 local function round(n)
     return math.max(1, math.floor(n + 0.5))
@@ -46,7 +49,8 @@ local function contain_images()
         local cell = snacks.image.terminal.size()
         local ratio = (pixels.width / pixels.height) * (cell.cell_height / cell.cell_width)
         -- leave room for the border around the image
-        return contain_cells(ratio, math.max(1, cells.width - 2), math.max(1, cells.height - 2))
+        local room = 2 * border_size
+        return contain_cells(ratio, math.max(1, cells.width - room), math.max(1, cells.height - room))
     end
 
     placement.state = function(self, ...)
@@ -85,7 +89,7 @@ local function border_images()
         local first, rest = extmarks[1], extmarks[2]
         if vim.bo[self.buf].filetype == "image" and #extmarks == 2 and first.virt_text and rest.virt_lines then
             local hl = "FloatBorder"
-            local bar = { "│", hl }
+            local bar = { ("│"):rep(border_size), hl }
             local function row(cells)
                 return { { "" }, bar, cells, bar }
             end
