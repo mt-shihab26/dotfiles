@@ -72,30 +72,66 @@ local function reshow_images(snacks)
     end
 end
 
--- Draw a square border around image buffers. Snacks renders the first image row over the
--- buffer's only line and the remaining rows as virtual lines below it, so the top border takes
--- the place of that first row and everything else moves down into the virtual lines.
+-- Size of the smallest window showing the buffer, as snacks uses to size the image
+local function win_area(placement)
+    local width, height = vim.o.columns, vim.o.lines
+    for _, win in ipairs(placement:wins()) do
+        local info = vim.fn.getwininfo(win)[1]
+        width = math.min(width, info.width - info.textoff)
+        height = math.min(height, info.height)
+    end
+    return width, height
+end
+
+-- Draw a square border around image buffers and center them in the window. Snacks renders the
+-- first image row over the buffer's only line and the remaining rows as virtual lines below it,
+-- so the top border takes the place of that first row and everything else moves down into the
+-- virtual lines. Centering pads the left with spaces and the top with blank virtual lines.
 local function border_images(snacks)
     local placement = snacks.image.placement
 
     local render = placement._render
+    local state = placement.state
+
+    -- Snacks skips re-rendering when the image size is unchanged, but resizing the window
+    -- still moves the center, so make the window size part of the state.
+    placement.state = function(self, ...)
+        local result = state(self, ...)
+        if vim.bo[self.buf].filetype == "image" then
+            local width, height = win_area(self)
+            result.area = { width = width, height = height }
+        end
+        return result
+    end
 
     placement._render = function(self, extmarks)
         local first, rest = extmarks[1], extmarks[2]
         if vim.bo[self.buf].filetype == "image" and #extmarks == 2 and first.virt_text and rest.virt_lines then
             local hl = "FloatBorder"
             local bar = { ("│"):rep(border_size), hl }
+            local width, height = self._state.loc.width, self._state.loc.height
+            local area_width, area_height = win_area(self)
+            local left = math.max(0, math.floor((area_width - width - 2 * border_size) / 2))
+            local top = math.max(0, math.floor((area_height - height - 2 * border_size) / 2))
+            local pad = { (" "):rep(left) }
             local function row(cells)
-                return { { "" }, bar, cells, bar }
+                return { pad, bar, cells, bar }
             end
-            local width = self._state.loc.width
             local lines = { row(first.virt_text[1]) }
             for _, line in ipairs(rest.virt_lines) do
                 lines[#lines + 1] = row(line[2])
             end
-            lines[#lines + 1] = { { "└" .. ("─"):rep(width) .. "┘", hl } }
+            lines[#lines + 1] = { pad, { "└" .. ("─"):rep(width) .. "┘", hl } }
             first.virt_text = { { "┌" .. ("─"):rep(width) .. "┐", hl } }
+            first.virt_text_win_col = left
             rest.virt_lines = lines
+            if top > 0 then
+                local blank = {}
+                for i = 1, top do
+                    blank[i] = { { "" } }
+                end
+                extmarks[#extmarks + 1] = { row = first.row, col = 0, virt_lines = blank, virt_lines_above = true }
+            end
         end
         return render(self, extmarks)
     end
