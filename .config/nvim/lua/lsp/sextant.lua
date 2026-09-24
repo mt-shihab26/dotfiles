@@ -6,9 +6,8 @@ return {
     cmd = { "sextant" },
     filetypes = { "lisp" },
     root_dir = function(bufnr, on_dir)
-        local root = vim.fs.root(bufnr, function(name)
-            return name:match "%.asd$" ~= nil
-        end) or vim.fs.root(bufnr, { ".git" }) or vim.fn.getcwd()
-        on_dir(root)
+        local util = require "lspconfig.util"
+        local root = util.root_pattern("*.asd", "*.asdf", ".git")(vim.api.nvim_buf_get_name(bufnr))
+        on_dir(root or vim.fn.getcwd())
     end,
 }
