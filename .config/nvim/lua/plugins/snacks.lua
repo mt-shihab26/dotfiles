@@ -45,7 +45,8 @@ local function contain_images()
         local pixels = opts and opts.info and opts.info.size or util.dim(file)
         local cell = snacks.image.terminal.size()
         local ratio = (pixels.width / pixels.height) * (cell.cell_height / cell.cell_width)
-        return contain_cells(ratio, cells.width, cells.height)
+        -- leave room for the border around the image
+        return contain_cells(ratio, math.max(1, cells.width - 2), math.max(1, cells.height - 2))
     end
 
     placement.state = function(self, ...)
@@ -74,5 +75,33 @@ local function reshow_images()
     end
 end
 
+-- Draw a square border around image buffers. Snacks renders the first image row over the
+-- buffer's only line and the remaining rows as virtual lines below it, so the top border takes
+-- the place of that first row and everything else moves down into the virtual lines.
+local function border_images()
+    local render = placement._render
+
+    placement._render = function(self, extmarks)
+        local first, rest = extmarks[1], extmarks[2]
+        if vim.bo[self.buf].filetype == "image" and #extmarks == 2 and first.virt_text and rest.virt_lines then
+            local hl = "FloatBorder"
+            local bar = { "│", hl }
+            local function row(cells)
+                return { { "" }, bar, cells, bar }
+            end
+            local width = self._state.loc.width
+            local lines = { row(first.virt_text[1]) }
+            for _, line in ipairs(rest.virt_lines) do
+                lines[#lines + 1] = row(line[2])
+            end
+            lines[#lines + 1] = { { "└" .. ("─"):rep(width) .. "┘", hl } }
+            first.virt_text = { { "┌" .. ("─"):rep(width) .. "┐", hl } }
+            rest.virt_lines = lines
+        end
+        return render(self, extmarks)
+    end
+end
+
 contain_images()
 reshow_images()
+border_images()
