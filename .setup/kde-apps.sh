@@ -20,6 +20,17 @@ omarchy-pkg-drop sushi nautilus-python nautilus evince gedit gnome-disk-utility
 echo -e "\n==> Setting KDE apps as defaults..."
 xdg-mime default org.kde.dolphin.desktop inode/directory
 xdg-mime default org.kde.okular.desktop application/pdf application/epub+zip image/vnd.djvu application/postscript
+# Kate opens text, code and config files (Omarchy's nvim defaults plus common extras).
+kate_types=(
+    text/plain text/english text/markdown text/x-markdown application/x-zerosize
+    text/x-makefile text/x-c text/x-c++ text/x-csrc text/x-chdr text/x-c++src text/x-c++hdr
+    text/x-java text/x-moc text/x-pascal text/x-tcl text/x-tex text/x-python text/x-go
+    text/rust text/x-php application/x-php text/x-ruby application/x-ruby text/x-lua
+    application/javascript text/javascript application/typescript text/css text/csv
+    application/json application/x-yaml application/yaml application/toml
+    application/xml text/xml application/x-shellscript text/x-log
+)
+xdg-mime default org.kde.kate.desktop "${kate_types[@]}"
 
 echo -e "\n==> Rebuilding the KDE service cache for Open With menus..."
 XDG_MENU_PREFIX=arch- kbuildsycoca6 --noincremental &>/dev/null
