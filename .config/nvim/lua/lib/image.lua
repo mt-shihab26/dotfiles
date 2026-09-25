@@ -432,8 +432,16 @@ local function zoom_images(image)
     end
 end
 
+-- Each part wraps a snacks function, so running setup again (like re-sourcing the config)
+-- would wrap them twice and draw the border around the border instead of the image
+local did_setup = false
+
 ---@param image table the loaded snacks.image module
 function M.setup(image)
+    if did_setup then
+        return
+    end
+    did_setup = true
     contain_images(image)
     reshow_images(image)
     border_images(image)
