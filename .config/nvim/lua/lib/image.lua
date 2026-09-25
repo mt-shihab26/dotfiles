@@ -21,6 +21,9 @@ local max_cells = 297
 -- How much each zoom in or out scales the image
 local zoom_step = 1.2
 
+-- Fraction of the window each hjkl press moves a zoomed image by
+local pan_step = 0.1
+
 -- Lua has no round(), and a 0 cell image can't be placed
 local function round(n)
     return math.max(1, math.floor(n + 0.5))
@@ -34,6 +37,14 @@ end
 -- Offset that centers a bordered image of `size` cells within `area` cells
 local function center(area, size)
     return math.max(0, math.floor((area - size - 2 * border_size) / 2))
+end
+
+-- The first of `size` image cells to show in `area` cells: the middle ones, moved `pan` cells
+-- but never past the image's edge. Also returns the pan that was actually applied.
+local function visible_start(size, area, pan)
+    local centered = math.floor((size - area) / 2)
+    local start = math.max(0, math.min(size - area, centered + pan))
+    return start, start - centered
 end
 
 -- A horizontal border line spanning `width` image cells between two corners
@@ -170,12 +181,13 @@ local function border_images(image)
     local state = placement.state
 
     -- Snacks skips re-rendering when the image size is unchanged, but resizing the window
-    -- still moves the center, so make the window size part of the state.
+    -- still moves the center and panning moves the visible part, so add both to the state.
     placement.state = function(self, ...)
         local result = state(self, ...)
         if is_image(self.buf) then
             local width, height = win_area(self)
             result.area = { width = width, height = height }
+            result.pan = self.pan and { x = self.pan.x, y = self.pan.y }
         end
         return result
     end
@@ -189,21 +201,30 @@ local function border_images(image)
             -- it can encode, which can be less than the size in the state
             local width, height = vim.fn.strchars(rows[1][1]) / chars_per_cell, #rows
             local area_width, area_height = win_area(self)
-            -- a zoomed in image can be larger than the window, so show only its center
+            -- a zoomed in image can be larger than the window, so show only the part panned to,
+            -- keeping the pan within the image so moving back responds right away
             local max_width = math.max(1, area_width - 2 * border_size)
             local max_height = math.max(1, area_height - 2 * border_size)
+            local pan = self.pan or { x = 0, y = 0 }
+            self.pan = pan
             if width > max_width then
-                local skip = math.floor((width - max_width) / 2)
+                local skip
+                skip, pan.x = visible_start(width, max_width, pan.x)
                 for i, cells in ipairs(rows) do
                     local text = vim.fn.strcharpart(cells[1], skip * chars_per_cell, max_width * chars_per_cell)
                     rows[i] = { text, cells[2] }
                 end
                 width = max_width
+            else
+                pan.x = 0
             end
             if height > max_height then
-                local skip = math.floor((height - max_height) / 2)
+                local skip
+                skip, pan.y = visible_start(height, max_height, pan.y)
                 rows = vim.list_slice(rows, skip + 1, skip + max_height)
                 height = max_height
+            else
+                pan.y = 0
             end
             local left, top = center(area_width, width), center(area_height, height)
             local pad = { (" "):rep(left) }
@@ -242,8 +263,8 @@ local function border_images(image)
 end
 
 -- Zoom image buffers in and out with the scroll wheel (or a trackpad) and with shift + / shift -,
--- and reset the zoom with r.
--- The zoom level lives on the placement, so reopening the image resets it. r stays a
+-- move around a zoomed image with hjkl or by dragging it, and reset both with r.
+-- The zoom and pan live on the placement, so reopening the image resets them. r stays a
 -- reset rather than replace, since image buffers are not modifiable.
 local function zoom_images(image)
     local placement = image.placement
@@ -258,10 +279,24 @@ local function zoom_images(image)
     local function zoom(self, factor)
         local limits = self.zoom_limits
         local current = self.zoom or 1
+        local target = current * factor
         if limits then
             current = math.max(limits.min, math.min(current, limits.max))
+            target = current * factor
+            factor = math.max(limits.min, math.min(target, limits.max)) / current
         end
-        self.zoom = current * factor
+        self.zoom = target
+        -- scale the pan with the image so the same part stays in the middle of the window
+        if self.pan then
+            self.pan = { x = math.floor(self.pan.x * factor + 0.5), y = math.floor(self.pan.y * factor + 0.5) }
+        end
+        self:update()
+    end
+
+    -- Move the visible part of a zoomed image by `dx`, `dy` cells
+    local function pan(self, dx, dy)
+        local current = self.pan or { x = 0, y = 0 }
+        self.pan = { x = current.x + dx, y = current.y + dy }
         self:update()
     end
 
@@ -304,8 +339,63 @@ local function zoom_images(image)
 
         map("+", zoom_step, "Zoom image in")
         map("_", 1 / zoom_step, "Zoom image out")
+
+        local function map_pan(lhs, dx, dy, desc)
+            vim.keymap.set("n", lhs, function()
+                local width, height = win_area(self)
+                local step_x, step_y = math.max(1, math.floor(width * pan_step)), math.max(1, math.floor(height * pan_step))
+                pan(self, dx * step_x * vim.v.count1, dy * step_y * vim.v.count1)
+            end, { buffer = buf, desc = desc })
+        end
+
+        map_pan("h", -1, 0, "Move to the left of the image")
+        map_pan("l", 1, 0, "Move to the right of the image")
+        map_pan("k", 0, -1, "Move up the image")
+        map_pan("j", 0, 1, "Move down the image")
+
+        -- Dragging moves the image with the mouse. Clicks and drags that don't start on this
+        -- image (like resizing a window) work as usual.
+        local drag
+        local function map_mouse(lhs, handle, desc)
+            vim.keymap.set("n", lhs, function()
+                if not handle(vim.fn.getmousepos()) then
+                    vim.api.nvim_feedkeys(vim.keycode(lhs), "n", false)
+                end
+            end, { buffer = buf, desc = desc })
+        end
+
+        map_mouse("<LeftMouse>", function(mouse)
+            drag = nil
+            -- the image is drawn in virtual lines, so check the window rows rather than buffer lines
+            local win = mouse.winid
+            if win == 0 or vim.api.nvim_win_get_buf(win) ~= buf then
+                return false
+            end
+            if mouse.winrow < 1 or mouse.winrow > vim.api.nvim_win_get_height(win) then
+                return false
+            end
+            vim.api.nvim_set_current_win(win)
+            local current = self.pan or { x = 0, y = 0 }
+            drag = { col = mouse.screencol, row = mouse.screenrow, x = current.x, y = current.y }
+            return true
+        end, "Start dragging the image")
+        map_mouse("<LeftDrag>", function(mouse)
+            if not drag then
+                return false
+            end
+            self.pan = { x = drag.x - (mouse.screencol - drag.col), y = drag.y - (mouse.screenrow - drag.row) }
+            self:update()
+            return true
+        end, "Drag the image")
+        map_mouse("<LeftRelease>", function()
+            local dragging = drag ~= nil
+            drag = nil
+            return dragging
+        end, "Stop dragging the image")
+
         vim.keymap.set("n", "r", function()
             self.zoom = 1
+            self.pan = nil
             self:update()
         end, { buffer = buf, desc = "Reset image zoom" })
         return self
