@@ -3,21 +3,21 @@
 set -e
 
 if [[ $1 == "projects" ]]; then
+    selected=$(find ~/projects -mindepth 1 -maxdepth 1 -type d | fzf || true)
+elif [[ $1 == "other" ]]; then
     selected=$(
         {
-            find ~/projects -mindepth 1 -maxdepth 1 -type d
+            find ~/scratch -mindepth 1 -maxdepth 1 -type d
             printf '%s\n' "$HOME/dotfiles"
             printf '%s\n' "$HOME/Work"
         } | fzf || true
     )
-elif [[ $1 == "tmp" ]]; then
-    selected=$(find ~/tmp -mindepth 1 -maxdepth 1 -type d | fzf || true)
 elif [[ $1 == "learns" ]]; then
     selected=$(find ~/learns -mindepth 1 -maxdepth 2 -type d -not -path "*/.git*" | fzf || true)
 elif [[ $# -eq 1 ]]; then
     selected=$1
 else
-    echo "invalid argument. Usage: $0 [projects|tmp|learns]"
+    echo "invalid argument. Usage: $0 [projects|other|learns]"
     exit 1
 fi
 
