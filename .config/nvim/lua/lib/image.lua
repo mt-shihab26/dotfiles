@@ -320,6 +320,16 @@ local function zoom_images(image)
     map_wheel("<ScrollWheelUp>", zoom_step, "Scroll up, or zoom in the image under the mouse")
     map_wheel("<ScrollWheelDown>", 1 / zoom_step, "Scroll down, or zoom out the image under the mouse")
 
+    -- Where the last left click happened. A click in another window never reaches the image's
+    -- mappings, so this is how a drag that follows it knows whether it started on the image.
+    local press
+    local left_mouse = vim.keycode("<LeftMouse>")
+    vim.on_key(function(_, typed)
+        if typed == left_mouse then
+            press = vim.fn.getmousepos()
+        end
+    end)
+
     placement.new = function(buf, ...)
         local self = new(buf, ...)
         if not is_image(buf) then
@@ -372,9 +382,9 @@ local function zoom_images(image)
             end, { buffer = buf, desc = desc })
         end
 
-        map_mouse("<LeftMouse>", function(mouse)
-            drag = nil
-            -- the image is drawn in virtual lines, so check the window rows rather than buffer lines
+        -- Start dragging if the mouse is over this image, returning whether it is. The image is
+        -- drawn in virtual lines, so check the window rows rather than buffer lines.
+        local function start_drag(mouse)
             local win = mouse.winid
             if win == 0 or vim.api.nvim_win_get_buf(win) ~= buf then
                 return false
@@ -387,10 +397,18 @@ local function zoom_images(image)
             drag = { col = mouse.screencol, row = mouse.screenrow, x = current.x, y = current.y }
             pointer(drag_pointer)
             return true
+        end
+
+        map_mouse("<LeftMouse>", function(mouse)
+            drag = nil
+            return start_drag(mouse)
         end, "Start dragging the image")
         map_mouse("<LeftDrag>", function(mouse)
+            -- a click from another window focuses the image without these mappings seeing it,
+            -- so start the drag on the first move if that click was on the image, instead of
+            -- selecting text. Drags that started elsewhere, like on a window separator, go on.
             if not drag then
-                return false
+                return press ~= nil and start_drag(press)
             end
             self.pan = { x = drag.x - (mouse.screencol - drag.col), y = drag.y - (mouse.screenrow - drag.row) }
             self:update()
@@ -409,7 +427,7 @@ local function zoom_images(image)
             self.zoom = 1
             self.pan = nil
             self:update()
-        end, { buffer = buf, desc = "Reset image zoom" })
+        end, { buffer = buf, desc = "Reset image zoom and position" })
         return self
     end
 end
