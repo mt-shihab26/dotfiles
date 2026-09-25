@@ -26,6 +26,7 @@ These work in normal mode in an image buffer.
   focused. Over anything else it scrolls as usual. `+`, `_`, `hjkl` and dragging only work
   in the focused image window.
 - Clicks and drags that don't start on the image (like resizing a window) work as usual.
+- While dragging, the mouse pointer changes to a grabbing hand (kitty, through tmux passthrough).
 - Moving stops at the image's edges, and zooming keeps the same part of the image in the
   middle of the window.
 - Zooming in stops once the image is 297 cells wide or tall, the most snacks can encode.

@@ -24,6 +24,9 @@ local zoom_step = 1.2
 -- Fraction of the window each hjkl press moves a zoomed image by
 local pan_step = 0.1
 
+-- Mouse pointer shown while dragging an image, a CSS cursor name the terminal understands
+local drag_pointer = "grabbing"
+
 -- Lua has no round(), and a 0 cell image can't be placed
 local function round(n)
     return math.max(1, math.floor(n + 0.5))
@@ -356,6 +359,11 @@ local function zoom_images(image)
         -- Dragging moves the image with the mouse. Clicks and drags that don't start on this
         -- image (like resizing a window) work as usual.
         local drag
+
+        -- Set the terminal's mouse pointer (OSC 22), or reset it to the default with ""
+        local function pointer(shape)
+            image.terminal.write("\27]22;" .. shape .. "\27\\")
+        end
         local function map_mouse(lhs, handle, desc)
             vim.keymap.set("n", lhs, function()
                 if not handle(vim.fn.getmousepos()) then
@@ -377,6 +385,7 @@ local function zoom_images(image)
             vim.api.nvim_set_current_win(win)
             local current = self.pan or { x = 0, y = 0 }
             drag = { col = mouse.screencol, row = mouse.screenrow, x = current.x, y = current.y }
+            pointer(drag_pointer)
             return true
         end, "Start dragging the image")
         map_mouse("<LeftDrag>", function(mouse)
@@ -390,6 +399,9 @@ local function zoom_images(image)
         map_mouse("<LeftRelease>", function()
             local dragging = drag ~= nil
             drag = nil
+            if dragging then
+                pointer("")
+            end
             return dragging
         end, "Stop dragging the image")
 
