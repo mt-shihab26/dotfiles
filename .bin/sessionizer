@@ -2,18 +2,28 @@
 
 set -e
 
+select_projects() {
+    find ~/projects -mindepth 1 -maxdepth 1 -type d | fzf || true
+}
+
+select_other() {
+    {
+        find ~/scratch -mindepth 1 -maxdepth 1 -type d
+        printf '%s\n' "$HOME/dotfiles"
+        printf '%s\n' "$HOME/Work"
+    } | fzf || true
+}
+
+select_learns() {
+    find ~/learns -mindepth 1 -maxdepth 2 -type d -not -path "*/.git*" | fzf || true
+}
+
 if [[ $1 == "projects" ]]; then
-    selected=$(find ~/projects -mindepth 1 -maxdepth 1 -type d | fzf || true)
+    selected=$(select_projects)
 elif [[ $1 == "other" ]]; then
-    selected=$(
-        {
-            find ~/scratch -mindepth 1 -maxdepth 1 -type d
-            printf '%s\n' "$HOME/dotfiles"
-            printf '%s\n' "$HOME/Work"
-        } | fzf || true
-    )
+    selected=$(select_other)
 elif [[ $1 == "learns" ]]; then
-    selected=$(find ~/learns -mindepth 1 -maxdepth 2 -type d -not -path "*/.git*" | fzf || true)
+    selected=$(select_learns)
 elif [[ $# -eq 1 ]]; then
     selected=$1
 else
