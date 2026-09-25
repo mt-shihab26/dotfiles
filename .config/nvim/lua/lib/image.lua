@@ -88,10 +88,14 @@ local function contain_images(image)
         local room = 2 * border_size
         local max_width, max_height = math.max(1, cells.width - room), math.max(1, cells.height - room)
         local base = contain_cells(ratio, max_width, max_height)
-        -- keep the zoom where it changes the image: at least 1 cell and at most what snacks can encode
-        local zoom = math.min(current.zoom or 1, max_cells / math.max(base.width, base.height))
-        zoom = math.max(zoom, 1 / math.min(base.width, base.height))
-        current.zoom = zoom
+        -- keep the zoom where it changes the image: at least 1 cell and at most what snacks can encode.
+        -- The limits depend on the window size, so only clamp here and remember them for the next
+        -- zoom step, leaving the requested zoom as is for when the window is resized.
+        current.zoom_limits = {
+            min = 1 / math.min(base.width, base.height),
+            max = max_cells / math.max(base.width, base.height),
+        }
+        local zoom = math.max(current.zoom_limits.min, math.min(current.zoom or 1, current.zoom_limits.max))
         if zoom == 1 then
             return base
         end
@@ -239,45 +243,67 @@ end
 
 -- Zoom image buffers in and out with the scroll wheel (or a trackpad) and with shift + / shift -,
 -- and reset the zoom with r.
--- The zoom level lives on the placement, so reopening the image resets it.
+-- The zoom level lives on the placement, so reopening the image resets it. r stays a
+-- reset rather than replace, since image buffers are not modifiable.
 local function zoom_images(image)
     local placement = image.placement
 
     local new = placement.new
+
+    -- the placement of each image buffer, so the scroll wheel can find the image under the mouse
+    local images = {}
+
+    -- Scale the zoom by `factor`, starting from the last zoom the image could show so that
+    -- zooming past a limit doesn't need as many steps back before the image changes again
+    local function zoom(self, factor)
+        local limits = self.zoom_limits
+        local current = self.zoom or 1
+        if limits then
+            current = math.max(limits.min, math.min(current, limits.max))
+        end
+        self.zoom = current * factor
+        self:update()
+    end
+
+    -- The wheel zooms the image under the mouse even when its window isn't focused, so map it
+    -- everywhere and scroll other windows as usual.
+    local function map_wheel(lhs, factor, desc)
+        vim.keymap.set("n", lhs, function()
+            local win = vim.fn.getmousepos().winid
+            local self = win ~= 0 and images[vim.api.nvim_win_get_buf(win)]
+            if self and not self.closed then
+                zoom(self, factor)
+            else
+                vim.api.nvim_feedkeys(vim.keycode(lhs), "n", false)
+            end
+        end, { desc = desc })
+    end
+
+    map_wheel("<ScrollWheelUp>", zoom_step, "Scroll up, or zoom in the image under the mouse")
+    map_wheel("<ScrollWheelDown>", 1 / zoom_step, "Scroll down, or zoom out the image under the mouse")
 
     placement.new = function(buf, ...)
         local self = new(buf, ...)
         if not is_image(buf) then
             return self
         end
-
-        local function zoom(factor)
-            self.zoom = (self.zoom or 1) * factor
-            self:update()
-        end
+        images[buf] = self
+        vim.api.nvim_create_autocmd("BufWipeout", {
+            buffer = buf,
+            once = true,
+            callback = function()
+                images[buf] = nil
+            end,
+        })
 
         local function map(lhs, factor, desc)
             vim.keymap.set("n", lhs, function()
-                zoom(factor)
-            end, { buffer = buf, desc = desc })
-        end
-
-        -- scroll other windows as usual when the mouse isn't over this image
-        local function map_wheel(lhs, factor, desc)
-            vim.keymap.set("n", lhs, function()
-                local win = vim.fn.getmousepos().winid
-                if win ~= 0 and vim.api.nvim_win_get_buf(win) == buf then
-                    zoom(factor)
-                else
-                    vim.api.nvim_feedkeys(vim.keycode(lhs), "n", false)
-                end
+                zoom(self, factor)
             end, { buffer = buf, desc = desc })
         end
 
         map("+", zoom_step, "Zoom image in")
         map("_", 1 / zoom_step, "Zoom image out")
-        map_wheel("<ScrollWheelUp>", zoom_step, "Zoom image in")
-        map_wheel("<ScrollWheelDown>", 1 / zoom_step, "Zoom image out")
         vim.keymap.set("n", "r", function()
             self.zoom = 1
             self:update()
