@@ -2,11 +2,11 @@
 
 set -e
 
-# Open the nautilus file manager, forwarding all args (defaults to the cwd)
+# Open the dolphin file manager, forwarding all args (defaults to the cwd)
 
 if [[ $# -eq 0 ]]; then
     set -- .
 fi
 
-nohup nautilus "$@" &>/dev/null &
+nohup dolphin "$@" &>/dev/null &
 disown
