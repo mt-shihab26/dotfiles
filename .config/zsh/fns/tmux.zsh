@@ -74,6 +74,7 @@ tdlm() {
   local ai2="$2"
   local base_dir="$PWD"
   local first=true
+  local tdl_command
 
   # Rename the session to the current directory name (replace dots/colons which tmux disallows)
   tmux rename-session "$(basename "$base_dir" | tr '.:' '--')"
@@ -82,13 +83,16 @@ tdlm() {
     [[ -d $dir ]] || continue
     local dirpath="${dir%/}"
 
+    printf -v tdl_command 'tdl %q' "$ai"
+    [[ -n $ai2 ]] && printf -v tdl_command '%s %q' "$tdl_command" "$ai2"
+
     if $first; then
       # Reuse the current window for the first project
-      tmux send-keys -t "$TMUX_PANE" "cd '$dirpath' && tdl $ai $ai2" C-m
+      tmux send-keys -t "$TMUX_PANE" "$(printf 'cd %q && %s' "$dirpath" "$tdl_command")" C-m
       first=false
     else
       local pane_id=$(tmux new-window -c "$dirpath" -P -F '#{pane_id}')
-      tmux send-keys -t "$pane_id" "tdl $ai $ai2" C-m
+      tmux send-keys -t "$pane_id" "$tdl_command" C-m
     fi
   done
 }
@@ -113,12 +117,12 @@ tsl() {
     local split_target="${panes[-1]}"
     new_pane=$(tmux split-window -h -t "$split_target" -c "$current_dir" -P -F '#{pane_id}')
     panes+=("$new_pane")
-    tmux select-layout -t "${panes[0]}" tiled
+    tmux select-layout -t "${panes[1]}" tiled
   done
 
   for pane in "${panes[@]}"; do
     tmux send-keys -t "$pane" "$cmd" C-m
   done
 
-  tmux select-pane -t "${panes[0]}"
+  tmux select-pane -t "${panes[1]}"
 }

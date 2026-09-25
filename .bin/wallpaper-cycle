@@ -5,6 +5,6 @@ set -e
 INTERVAL=10 # Minutes between wallpaper changes.
 
 while true; do
-    wallpaper-next
+    wallpaper-next || true
     sleep "$((INTERVAL * 60))"
 done

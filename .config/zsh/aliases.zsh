@@ -31,7 +31,7 @@ if command -v zoxide &>/dev/null; then
         elif [ -d "$1" ]; then
             builtin cd "$1"
         else
-            z "$@" && printf "\U000F17A9 " && pwd || echo "Error: Directory not found"
+            __zoxide_z "$@" && printf "\U000F17A9 " && pwd || echo "Error: Directory not found"
         fi
     }
 fi
@@ -83,7 +83,11 @@ alias cloc='cloc --vcs=git'
 # Projects scripts
 _run_script() {
     local s="$1"
-    [[ -f "./$s" ]] && "./$s" || "./${s}.sh"
+    if [[ -f "./$s" ]]; then
+        "./$s"
+    else
+        "./${s}.sh"
+    fi
 }
 
 build() { _run_script build; }

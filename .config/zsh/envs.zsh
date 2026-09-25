@@ -19,5 +19,8 @@ if command -v rustup &>/dev/null; then
         rustup completions zsh cargo >"$COMPLETION_DIR/_cargo"
     fi
 
+    # compinit only finds completion files on fpath
+    [[ ${fpath[(Ie)$COMPLETION_DIR]} -eq 0 ]] && fpath=("$COMPLETION_DIR" $fpath)
+
     unset COMPLETION_DIR
 fi

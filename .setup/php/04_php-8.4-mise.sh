@@ -29,4 +29,4 @@ echo "extension=igbinary"
 echo "extension=redis"
 echo "------------------------------------"
 
-mise unuse -g php@8.4
+mise unuse -g --no-prune php@8.4

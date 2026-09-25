@@ -108,4 +108,3 @@ export PATH
 # Some tools (e.g. gh) pick up a stray GITHUB_TOKEN from the environment and
 # use it over an interactive login; keep it unset unless a shell opts in.
 unset GITHUB_TOKEN
-. "$HOME/.cargo/env"
