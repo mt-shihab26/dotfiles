@@ -50,7 +50,7 @@ telescope.setup {
                 ["<M-y>"] = actions.select_default,
             },
         },
-        file_ignore_patterns = { ".git/" },
+        file_ignore_patterns = { "%.git/" },
     },
     extensions = {
         live_grep_args = {

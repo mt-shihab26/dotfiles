@@ -26,19 +26,6 @@ local capabilities = vim.tbl_deep_extend(
     lsp_file_operations.default_capabilities()
 )
 
-vim.lsp.handlers["textDocument/definition"] = function(_, result, _, _)
-    if not result or vim.tbl_isempty(result) then
-        vim.notify("No definition found", vim.log.levels.WARN)
-        return
-    end
-
-    if vim.tbl_islist(result) and #result > 0 then
-        vim.lsp.util.jump_to_location(result[1], "utf-8")
-    else
-        vim.lsp.util.jump_to_location(result, "utf-8")
-    end
-end
-
 local servers = require "lists.servers"
 
 for _, server_name in ipairs(servers) do
@@ -71,7 +58,7 @@ local function on_attach(args)
     map("n", "K", buf.hover, opts "show hover documentation (lspconfig)")
     map("n", "<leader>d", diagnostic.open_float, opts "show hover diagnostics (lspconfig)")
 
-    map("n", "<leader>h", buf.signature_help, opts "signature help (lspconfig)")
+    map("n", "gK", buf.signature_help, opts "signature help (lspconfig)")
     map("n", "<leader>a", buf.code_action, opts "code actions (lspconfig)")
     map("n", "<leader>r", buf.rename, opts "rename symbol (lspconfig)")
 

@@ -15,7 +15,7 @@ function M.open_last_file()
             vim.notify("No recently opened files found", vim.log.levels.WARN)
         end
     else
-        vim.cmd "normal! l"
+        vim.cmd("normal! " .. vim.v.count1 .. "l")
     end
 end
 

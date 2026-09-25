@@ -39,9 +39,13 @@ end
 -- disable format on save only for :wa itself, so writing all buffers doesn't
 -- reformat everything at once, without permanently turning off format on save
 function M.write_all_no_format()
+    local previous = vim.g.disable_autoformat
     vim.g.disable_autoformat = true
-    vim.cmd.wa()
-    vim.g.disable_autoformat = false
+    local ok, err = pcall(vim.cmd.wa)
+    vim.g.disable_autoformat = previous
+    if not ok then
+        error(err, 0)
+    end
 end
 
 -- lsp semantic tokens (priority 125) override treesitter highlights; toggle to compare

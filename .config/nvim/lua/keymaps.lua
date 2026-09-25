@@ -3,7 +3,7 @@ local map = vim.keymap.set
 -- general
 map("n", "q", "<nop>", { desc = "disable macro recording" })
 map("n", "<esc>", "<cmd>nohlsearch<cr>", { desc = "clear search highlighting" })
-map("x", "p", '"_dP', { desc = "paste without yanking selected text" })
+map("x", "p", "P", { desc = "paste without yanking selected text" })
 
 -- toggle
 local toggle = require "lib.toggle"
@@ -17,11 +17,6 @@ map("n", "<leader>ts", toggle.semantic_tokens, { desc = "toggle lsp semantic tok
 map("n", "<leader>j", "<C-w>j", { desc = "move to below window" })
 map("n", "<leader>k", "<C-w>k", { desc = "move to above window" })
 map("n", "<leader>l", "<C-w>l", { desc = "move to right window" })
-
-map("n", "<C-h>", "<cmd><C-U>TmuxNavigateLeft<cr>", { desc = "navigate left window (tmux)" })
-map("n", "<C-j>", "<cmd><C-U>TmuxNavigateDown<cr>", { desc = "navigate down window (tmux)" })
-map("n", "<C-k>", "<cmd><C-U>TmuxNavigateUp<cr>", { desc = "navigate up window (tmux)" })
-map("n", "<C-l>", "<cmd><C-U>TmuxNavigateRight<cr>", { desc = "navigate right window (tmux)" })
 
 -- buffers (bufferline)
 local buffer = require "lib.buffer"

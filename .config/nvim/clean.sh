@@ -2,5 +2,5 @@
 
 set -e
 
-rm -rf ~/.local/slate/nvim
+rm -rf ~/.local/state/nvim
 rm -rf ~/.local/share/nvim
