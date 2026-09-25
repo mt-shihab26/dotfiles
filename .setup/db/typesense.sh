@@ -2,7 +2,7 @@
 
 set -e
 
-yay -S --noconfirm typesense-bin
+omarchy pkg aur add typesense-bin
 
 sudo systemctl start typesense-server.service
 sudo systemctl enable typesense-server.service

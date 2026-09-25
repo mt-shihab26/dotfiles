@@ -2,7 +2,7 @@ local M = {}
 
 M.THEME_FILE = vim.fn.expand "~/.local/state/omarchy/current/theme/neovim.lua"
 
--- Mirrors `omarchy-theme-dir`: a user theme overrides a system theme of the same name.
+-- Mirrors `omarchy theme dir`: a user theme overrides a system theme of the same name.
 M.USER_THEMES_DIR = vim.fn.expand "~/.config/omarchy/themes"
 M.SYSTEM_THEMES_DIR = (os.getenv "OMARCHY_PATH" or "/usr/share/omarchy") .. "/themes"
 

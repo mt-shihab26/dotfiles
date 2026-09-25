@@ -3,7 +3,7 @@
 set -e
 
 echo -e "Installing tmux..."
-sudo pacman -Sy --noconfirm tmux
+omarchy pkg add tmux
 
 rm -rf ~/.tmux
 

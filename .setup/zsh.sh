@@ -2,7 +2,7 @@
 
 set -e
 
-sudo pacman -S --noconfirm zsh fzf zoxide
+omarchy pkg add zsh fzf zoxide
 
 chsh -s "$(which zsh)"
 

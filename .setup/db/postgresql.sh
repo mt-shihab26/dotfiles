@@ -5,9 +5,9 @@ set -e
 POSTGRES_PASSWORD="2611"
 
 echo "==> Installing PostgreSQL..."
-sudo pacman -S --noconfirm postgresql
+omarchy pkg add postgresql
 
-yay -S --noconfirm --needed pgvector
+omarchy pkg aur add pgvector
 
 echo "==> Initializing PostgreSQL database..."
 sudo -u postgres initdb --locale en_US.UTF-8 -D /var/lib/postgres/data

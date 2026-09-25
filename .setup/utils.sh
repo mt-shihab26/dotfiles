@@ -2,7 +2,6 @@
 
 set -e
 
-sudo pacman -S --noconfirm htop stow cloc tree wget
+omarchy pkg add htop stow cloc tree wget
 
-yay -S --noconfirm todoist-appimage
-yay -S --noconfirm tableplus
+omarchy pkg aur add todoist-appimage tableplus

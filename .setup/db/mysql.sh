@@ -5,7 +5,7 @@ set -e
 MYSQL_ROOT_PASSWORD="2611"
 
 echo "==> Installing MariaDB..."
-sudo pacman -Sy --noconfirm mariadb
+omarchy pkg add mariadb
 
 echo "==> Initializing database..."
 sudo mariadb-install-db --user=mysql --basedir=/usr --datadir=/var/lib/mysql

@@ -7,13 +7,7 @@ set -e
 
 SEXTANT_DIR="$HOME/.local/share/sextant"
 
-if ! command -v sbcl >/dev/null 2>&1; then
-    sudo pacman -S --noconfirm sbcl
-fi
-
-if ! pacman -Q quicklisp >/dev/null 2>&1; then
-    sudo pacman -S --noconfirm quicklisp
-fi
+omarchy pkg add sbcl quicklisp
 
 # The pacman package only ships the bootstrap file, so set up ~/quicklisp once.
 if [[ ! -f "$HOME/quicklisp/setup.lisp" ]]; then

@@ -34,7 +34,7 @@ o.launch_on_start "wallpaper-cycle"
 o.bind("CTRL + SHIFT + DELETE", "Clear clipboard history", "clipboard-clear")
 
 -- Restart the Omarchy shell.
-o.bind("SUPER + CTRL + ALT + S", "Restart Omarchy shell", "omarchy-restart-shell")
+o.bind("SUPER + CTRL + ALT + S", "Restart Omarchy shell", "omarchy restart shell")
 
 -- Use KDE apps in place of Omarchy's GNOME defaults (installed by .setup/kde-apps.sh).
 -- Dolphin needs the arch- menu prefix to populate "Open With" outside Plasma.
@@ -43,7 +43,7 @@ hl.env("XDG_MENU_PREFIX", "arch-")
 hl.unbind("SUPER + SHIFT + F")
 hl.unbind("SUPER + ALT + SHIFT + F")
 o.bind("SUPER + SHIFT + F", "File manager", "setsid uwsm-app -- dolphin --new-window")
-o.bind("SUPER + ALT + SHIFT + F", "File manager (cwd)", 'setsid uwsm-app -- dolphin --new-window "$(omarchy-cmd-terminal-cwd)"')
+o.bind("SUPER + ALT + SHIFT + F", "File manager (cwd)", 'setsid uwsm-app -- dolphin --new-window "$(omarchy cmd terminal cwd)"')
 
 -- Float Okular like Omarchy floats Evince.
 o.window("org.kde.okular", { tag = "+floating-window" })

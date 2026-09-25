@@ -25,7 +25,7 @@ omarchy plugin disable omarchy.agents
 
 omarchy plugin enable omarchy-agents-plugin --section right --after omarchy.tray
 
-omarchy-shell -q omarchy.system-update refresh
+omarchy shell -q omarchy.system-update refresh
 
 omarchy bar set omarchy.clock format "ddd d MMM h:mm AP"
 

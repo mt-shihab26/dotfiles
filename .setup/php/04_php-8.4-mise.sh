@@ -3,7 +3,7 @@
 set -e
 
 echo "Install dependencies for building php8.4 with mise"
-sudo pacman -S re2c gd
+omarchy pkg add re2c gd
 
 echo "Build and install php8.4 with mise"
 CONFIGURE_OPTS="--with-gmp" mise install php@8.4

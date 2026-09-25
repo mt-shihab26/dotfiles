@@ -2,7 +2,7 @@
 
 set -e
 
-sudo pacman -S --noconfirm valkey
+omarchy pkg add valkey
 
 sudo systemctl enable valkey
 sudo systemctl start valkey

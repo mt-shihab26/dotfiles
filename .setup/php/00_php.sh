@@ -3,11 +3,11 @@
 set -e
 
 echo "Installing PHP and essential packages..."
-sudo pacman -S php php-fpm php-gd php-intl php-redis php-sqlite php-sodium php-pgsql \
+omarchy pkg add php php-fpm php-gd php-intl php-redis php-sqlite php-sodium php-pgsql \
     xdebug imagemagick composer nginx dnsmasq inotify-tools rsync nss jq xsel networkmanager
 
 echo "Installing PHP ImageMagick extension from AUR..."
-yay -S php-imagick --noconfirm
+omarchy pkg aur add php-imagick
 
 echo "Enable php fpm on systemd..."
 sudo systemctl enable php-fpm

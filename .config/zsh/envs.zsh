@@ -1,7 +1,7 @@
 # Used by terminal programs (like gh) to open URLs detached from the terminal
 # process tree. Shell-scoped on purpose: exporting BROWSER session-wide makes
 # xdg-settings refuse to change the default browser.
-export BROWSER="${BROWSER:-omarchy-launch-browser}"
+export BROWSER="${BROWSER:-omarchy launch browser}"
 export BAT_THEME=ansi
 
 # Color man pages with bat

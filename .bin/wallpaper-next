@@ -2,9 +2,9 @@
 
 set -e
 
-# Reimplements omarchy-theme-bg-next's cycling, but compares backgrounds by
-# realpath instead of raw symlink target. omarchy-theme-bg-set resolves the
-# background to its realpath before storing it, while omarchy-theme-bg-next
+# Reimplements `omarchy theme bg next`'s cycling, but compares backgrounds by
+# realpath instead of raw symlink target. `omarchy theme bg set` resolves the
+# background to its realpath before storing it, while `omarchy theme bg next`
 # compares against the unresolved find() paths -- if any background in the
 # theme dir is itself a symlink (e.g. into ~/wallpapers/), that mismatch
 # means the current background never matches an entry, so INDEX is always
@@ -50,4 +50,4 @@ next_background() {
     printf '%s' "${backgrounds[$next_index]}"
 }
 
-background=$(next_background) && [[ -n $background ]] && omarchy-theme-bg-set "$background"
+background=$(next_background) && [[ -n $background ]] && omarchy theme bg set "$background"
