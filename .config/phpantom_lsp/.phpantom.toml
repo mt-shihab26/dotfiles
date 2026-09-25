@@ -1,0 +1,25 @@
+#:schema https://github.com/PHPantom-dev/phpantom_lsp/raw/main/config-schema.json
+
+# Global PHPantom config, inherited by every project.
+# A project's own .phpantom.toml is merged over this key by key.
+# Full reference: https://phpantom-dev.github.io/phpantom_lsp/configuration/
+
+# Disable Mago entirely (lint and analyze). Its analyzer reports false positives
+# and stale line numbers in Neovim after edits
+# (https://github.com/PHPantom-dev/phpantom_lsp/discussions/131).
+[mago]
+command = ""
+
+# Disable the other external linters so they don't run on save.
+[phpstan]
+command = ""
+
+[phpcs]
+command = ""
+
+# Disable the external formatters PHPantom would otherwise auto-detect from
+# composer.json require-dev. Formatting is handled by conform/pint in Neovim.
+[formatting]
+pint = ""
+php-cs-fixer = ""
+phpcbf = ""
