@@ -225,7 +225,8 @@ local function border_images(snacks)
     end
 end
 
--- Zoom image buffers in and out with the scroll wheel (or a trackpad) and with shift + / shift -.
+-- Zoom image buffers in and out with the scroll wheel (or a trackpad) and with shift + / shift -,
+-- and reset the zoom with r.
 -- The zoom level lives on the placement, so reopening the image resets it.
 local function zoom_images(snacks)
     local placement = snacks.image.placement
@@ -265,6 +266,10 @@ local function zoom_images(snacks)
         map("_", 1 / zoom_step, "Zoom image out")
         map_wheel("<ScrollWheelUp>", zoom_step, "Zoom image in")
         map_wheel("<ScrollWheelDown>", 1 / zoom_step, "Zoom image out")
+        vim.keymap.set("n", "r", function()
+            self.zoom = 1
+            self:update()
+        end, { buffer = buf, desc = "Reset image zoom" })
         return self
     end
 end
