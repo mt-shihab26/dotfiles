@@ -220,6 +220,18 @@ local function border_images(snacks)
                 end
                 extmarks[#extmarks + 1] = { row = first.row, col = 0, virt_lines = blank, virt_lines_above = true }
             end
+            -- snacks leaves its last "loading …" spinner on the line once the image is ready,
+            -- which shows next to the centered image, so clear it before drawing
+            vim.api.nvim_buf_clear_namespace(self.buf, placement.ns, 0, -1)
+            render(self, extmarks)
+            -- windows keep their old count of virtual lines shown above the first line when the
+            -- padding changes, which pushes the image to the top, so scroll them all into view
+            for _, win in ipairs(self:wins()) do
+                vim.api.nvim_win_call(win, function()
+                    vim.fn.winrestview { topline = 1, topfill = top }
+                end)
+            end
+            return
         end
         return render(self, extmarks)
     end
