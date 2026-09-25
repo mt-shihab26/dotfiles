@@ -65,9 +65,9 @@ end
 -- Snacks only shrinks large images to fit the window. For image buffers, also scale small
 -- images up so they always fill the window's width or height (like css `object-fit: contain`),
 -- then scale that by the image's zoom level.
-local function contain_images(snacks)
-    local util = snacks.image.util
-    local placement = snacks.image.placement
+local function contain_images(image)
+    local util = image.util
+    local placement = image.placement
 
     local fit = util.fit
     local state = placement.state
@@ -82,7 +82,7 @@ local function contain_images(snacks)
         local pixels = info
             and { width = info.size.width / info.dpi.width, height = info.size.height / info.dpi.height }
             or util.dim(file)
-        local cell = snacks.image.terminal.size()
+        local cell = image.terminal.size()
         local ratio = (pixels.width / pixels.height) * (cell.cell_height / cell.cell_width)
         -- leave room for the border around the image
         local room = 2 * border_size
@@ -114,8 +114,8 @@ end
 
 -- Snacks hides an image once its buffer leaves every window, but only inline docs ever show
 -- it again. Un-hide image buffers when they are displayed so switching back re-renders them.
-local function reshow_images(snacks)
-    local placement = snacks.image.placement
+local function reshow_images(image)
+    local placement = image.placement
 
     local state = placement.state
 
@@ -159,8 +159,8 @@ end
 -- first image row over the buffer's only line and the remaining rows as virtual lines below it,
 -- so the top border takes the place of that first row and everything else moves down into the
 -- virtual lines. Centering pads the left with spaces and the top with blank virtual lines.
-local function border_images(snacks)
-    local placement = snacks.image.placement
+local function border_images(image)
+    local placement = image.placement
 
     local render = placement._render
     local state = placement.state
@@ -240,8 +240,8 @@ end
 -- Zoom image buffers in and out with the scroll wheel (or a trackpad) and with shift + / shift -,
 -- and reset the zoom with r.
 -- The zoom level lives on the placement, so reopening the image resets it.
-local function zoom_images(snacks)
-    local placement = snacks.image.placement
+local function zoom_images(image)
+    local placement = image.placement
 
     local new = placement.new
 
@@ -286,12 +286,12 @@ local function zoom_images(snacks)
     end
 end
 
----@param snacks table the loaded snacks module
-function M.setup(snacks)
-    contain_images(snacks)
-    reshow_images(snacks)
-    border_images(snacks)
-    zoom_images(snacks)
+---@param image table the loaded snacks.image module
+function M.setup(image)
+    contain_images(image)
+    reshow_images(image)
+    border_images(image)
+    zoom_images(image)
 end
 
 return M

@@ -8,4 +8,4 @@ snacks.setup {
     image = { enabled = true },
 }
 
-image.setup(snacks)
+image.setup(snacks.image)
