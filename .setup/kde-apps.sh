@@ -32,11 +32,14 @@ kate_types=(
 )
 xdg-mime default org.kde.kate.desktop "${kate_types[@]}"
 
-echo -e "\n==> Disabling Kate plugins..."
-# Kate reads enabled plugins from its session, not katerc, so seed the session
-# with the [Kate Plugins] list from the dotfiles katerc.
+echo -e "\n==> Disabling Kate plugins, sidebars and menu bar..."
+# Kate reads these from its session, not katerc, so seed the session with the
+# [Kate Plugins] list from the dotfiles katerc plus hidden sidebars and menu bar.
 mkdir -p ~/.local/share/kate
-awk '/^\[Kate Plugins\]/{p=1} p&&/^$/{exit} p' ~/dotfiles/.config/katerc >~/.local/share/kate/anonymous.katesession
+{
+    awk '/^\[Kate Plugins\]/{p=1} p&&/^$/{exit} p' ~/dotfiles/.config/katerc
+    printf '\n[MainWindow0]\nKate-MDI-Sidebar-Visible=false\n\n[MainWindow0 Settings]\nMenuBar=Disabled\n'
+} >~/.local/share/kate/anonymous.katesession
 
 echo -e "\n==> Rebuilding the KDE service cache for Open With menus..."
 XDG_MENU_PREFIX=arch- kbuildsycoca6 --noincremental &>/dev/null

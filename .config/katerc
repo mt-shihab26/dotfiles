@@ -1,6 +1,8 @@
 [General]
 Days Meta Infos=30
 PinnedDocuments=
+Quickopen Filter Mode=0
+Quickopen List Mode=true
 Save Meta Infos=true
 Show Full Path in Title=false
 Show Menu Bar=false
@@ -8,7 +10,6 @@ Show Status Bar=false
 Show Tab Bar=true
 Show Url Nav Bar=false
 Show welcome view for new window=false
-Restore Window Configuration=false
 Startup Session=new
 
 [KTextEditor Renderer]
@@ -73,5 +74,9 @@ tabswitcherplugin=false
 templateplugin=false
 textfilterplugin=false
 
-[MainWindow][Toolbar mainToolBar]
-Hidden=true
+[MainWindow]
+1536x864 screen: Window-Maximized=true
+MenuBar=Disabled
+
+[MainWindow][Toolbar hamburgerBar]
+ToolButtonStyle=TextOnly
