@@ -1,0 +1,76 @@
+[General]
+Days Meta Infos=30
+PinnedDocuments=
+Save Meta Infos=true
+Show Full Path in Title=false
+Show Menu Bar=false
+Show Status Bar=false
+Show Tab Bar=true
+Show Url Nav Bar=false
+Show welcome view for new window=false
+Startup Session=new
+
+[KTextEditor Renderer]
+Animate Bracket Matching=false
+Auto Color Theme Selection=true
+Color Theme=Breeze Dark
+Line Height Multiplier=1
+Show Indentation Lines=false
+Show Whole Bracket Expression=false
+Text Font=monospace,11,-1,5,400,0,0,0,1,0,0,0,0,0,0,1,,0,0
+Text Font Features=
+Word Wrap Marker=false
+
+[KTextEditor View]
+Auto Completion=false
+Dynamic Word Wrap=true
+Folding Bar=false
+Folding Preview=false
+Icon Bar=false
+Line Numbers=false
+Scroll Bar Marks=false
+Scroll Bar MiniMap=false
+Scroll Bar Preview=false
+Show Line Count=false
+Show Word Count=false
+
+[Kate Plugins]
+bookmarksplugin=false
+cmaketoolsplugin=false
+compilerexplorer=false
+eslintplugin=false
+externaltoolsplugin=false
+formatplugin=false
+katebacktracebrowserplugin=false
+katebuildplugin=false
+katecloseexceptplugin=false
+katecolorpickerplugin=false
+katectagsplugin=false
+katefilebrowserplugin=false
+katefiletreeplugin=false
+kategdbplugin=false
+kategitblameplugin=false
+kategpgplugin=false
+katekonsoleplugin=false
+kateprojectplugin=false
+katereplicodeplugin=false
+katesearchplugin=false
+kateshownonprintableplugin=false
+katesnippetsplugin=false
+katesqlplugin=false
+katesymbolviewerplugin=false
+katexmlcheckplugin=false
+katexmltoolsplugin=false
+keyboardmacrosplugin=false
+ktexteditorpreviewplugin=false
+latexcompletionplugin=false
+lspclientplugin=false
+openlinkplugin=false
+rainbowparens=false
+rbqlplugin=false
+tabswitcherplugin=false
+templateplugin=false
+textfilterplugin=false
+
+[MainWindow][Toolbar mainToolBar]
+Hidden=true
