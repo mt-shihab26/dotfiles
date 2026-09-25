@@ -2,7 +2,8 @@
 
 set -e
 
-# Add a Change Colors button (with the color mode dropdown) to Okular's main toolbar.
+# Add a Change Colors button (with the color mode dropdown) to Okular's main toolbar
+# and hide its menu bar.
 # Okular reads toolbar layout only from its UI file, so write a local copy of the
 # built-in part.rc (extracted from the installed Okular) with the button added.
 # Re-run after an Okular update that bumps the file's version. Close Okular first.
@@ -38,4 +39,7 @@ if ! grep -q '<Action name="color_mode_menu"/>' "$RC"; then
     exit 1
 fi
 
-echo "Change Colors button added to Okular's toolbar. Restart Okular to see it."
+# Hide the menu bar like Kate; the toolbar's hamburger button still has every menu.
+kwriteconfig6 --file okularrc --group MainWindow --key MenuBar Disabled
+
+echo "Change Colors button added and menu bar hidden in Okular. Restart Okular to see it."

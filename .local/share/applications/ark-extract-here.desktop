@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Extract Here
+Comment=Extract next to the archive, into a subfolder only when needed (like macOS)
+Icon=ark
+Exec=ark --batch --autodestination --autosubfolder %U
+MimeType=application/zip;application/x-tar;application/x-compressed-tar;application/x-bzip-compressed-tar;application/x-bzip2-compressed-tar;application/x-xz-compressed-tar;application/x-zstd-compressed-tar;application/x-lzma-compressed-tar;application/x-7z-compressed;application/vnd.rar;application/gzip;
+NoDisplay=true
+Terminal=false

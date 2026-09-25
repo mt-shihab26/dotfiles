@@ -13,7 +13,8 @@ echo "==> Installing KDE apps..."
 # kio-extras, ffmpegthumbs, kdegraphics-thumbnailers: Dolphin MTP/SMB access and previews.
 # archlinux-xdg-menu: Dolphin's "Open With" list is empty outside Plasma without it.
 # breeze: Qt widget style KDE apps ask for; without it they fall back to GTK's Yaru bits (orange tab close button).
-omarchy pkg add dolphin kio-extras ffmpegthumbs kdegraphics-thumbnailers archlinux-xdg-menu okular kate partitionmanager breeze
+# ark, 7zip: extract archives from Dolphin (7zip adds 7z support).
+omarchy pkg add dolphin kio-extras ffmpegthumbs kdegraphics-thumbnailers archlinux-xdg-menu okular kate partitionmanager breeze ark 7zip
 
 echo -e "\n==> Removing GNOME apps..."
 omarchy pkg drop sushi nautilus-python nautilus evince gedit gnome-disk-utility
@@ -32,6 +33,14 @@ kate_types=(
     application/xml text/xml application/x-shellscript text/x-log
 )
 xdg-mime default org.kde.kate.desktop "${kate_types[@]}"
+# Clicking an archive extracts it next to itself, like macOS
+# (ark-extract-here.desktop lives in the dotfiles under .local/share/applications).
+archive_types=(
+    application/zip application/x-tar application/x-compressed-tar application/x-bzip-compressed-tar
+    application/x-bzip2-compressed-tar application/x-xz-compressed-tar application/x-zstd-compressed-tar
+    application/x-lzma-compressed-tar application/x-7z-compressed application/vnd.rar application/gzip
+)
+xdg-mime default ark-extract-here.desktop "${archive_types[@]}"
 
 echo -e "\n==> Disabling Kate plugins, sidebars and menu bar..."
 # Kate reads these from its session, not katerc, so seed the session with the
