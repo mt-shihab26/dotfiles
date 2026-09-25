@@ -47,3 +47,6 @@ o.bind("SUPER + ALT + SHIFT + F", "File manager (cwd)", 'setsid uwsm-app -- dolp
 
 -- Float Okular like Omarchy floats Evince.
 o.window("org.kde.okular", { tag = "+floating-window" })
+
+-- Float Kate like a gedit-style scratch editor.
+o.window("org.kde.kate", { tag = "+floating-window" })
