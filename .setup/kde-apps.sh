@@ -13,10 +13,10 @@ echo "==> Installing KDE apps..."
 # kio-extras, ffmpegthumbs, kdegraphics-thumbnailers: Dolphin MTP/SMB access and previews.
 # archlinux-xdg-menu: Dolphin's "Open With" list is empty outside Plasma without it.
 # breeze: Qt widget style KDE apps ask for; without it they fall back to GTK's Yaru bits (orange tab close button).
-sudo pacman -S --noconfirm --needed dolphin kio-extras ffmpegthumbs kdegraphics-thumbnailers archlinux-xdg-menu okular kate partitionmanager breeze
+omarchy pkg add dolphin kio-extras ffmpegthumbs kdegraphics-thumbnailers archlinux-xdg-menu okular kate partitionmanager breeze
 
 echo -e "\n==> Removing GNOME apps..."
-omarchy-pkg-drop sushi nautilus-python nautilus evince gedit gnome-disk-utility
+omarchy pkg drop sushi nautilus-python nautilus evince gedit gnome-disk-utility
 
 echo -e "\n==> Setting KDE apps as defaults..."
 xdg-mime default org.kde.dolphin.desktop inode/directory
