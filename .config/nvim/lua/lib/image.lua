@@ -3,9 +3,36 @@ local M = {}
 -- Cells the border takes on each side of the image
 local border_size = 1
 
+-- Highlight group the border is drawn with
+local border_hl = "FloatBorder"
+
+-- How far the image's aspect ratio may drift from the real one after rounding to whole cells
+local ratio_tolerance = 0.02
+
+-- Smallest fraction of the fitting size to shrink to while looking for a better aspect ratio
+local min_scale = 0.75
+
+-- Snacks writes each image cell as a placeholder character followed by two diacritics encoding its row and column
+local chars_per_cell = 3
+
 -- Lua has no round(), and a 0 cell image can't be placed
 local function round(n)
     return math.max(1, math.floor(n + 0.5))
+end
+
+-- Snacks shows image files in buffers with this filetype, the only ones changed here
+local function is_image(buf)
+    return vim.bo[buf].filetype == "image"
+end
+
+-- Offset that centers a bordered image of `size` cells within `area` cells
+local function center(area, size)
+    return math.max(0, math.floor((area - size - 2 * border_size) / 2))
+end
+
+-- A horizontal border line spanning `width` image cells between two corners
+local function border_line(left, right, width)
+    return { left .. ("─"):rep(width) .. right, border_hl }
 end
 
 -- Snacks sizes images in whole cells, so a small image can get stretched by the rounding.
@@ -14,13 +41,12 @@ end
 -- shrink down to 3/4 of the window looking for one, then settle for the closest ratio.
 ---@param ratio number width / height of the image in cells
 local function contain_cells(ratio, max_width, max_height)
-    local tolerance = 0.02
     local width = math.max(1, math.min(max_width, math.floor(max_height * ratio)))
     local best, best_error
-    for w = width, math.ceil(width * 0.75), -1 do
+    for w = width, math.ceil(width * min_scale), -1 do
         local size = { width = w, height = math.min(max_height, round(w / ratio)) }
         local err = math.abs(size.width / size.height - ratio) / ratio
-        if err <= tolerance then
+        if err <= ratio_tolerance then
             return size
         end
         if not best_error or err < best_error then
@@ -46,7 +72,7 @@ local function contain_images(snacks)
         end
         local info = opts and opts.info
         local pixels = info
-                and { width = info.size.width / info.dpi.width, height = info.size.height / info.dpi.height }
+            and { width = info.size.width / info.dpi.width, height = info.size.height / info.dpi.height }
             or util.dim(file)
         local cell = snacks.image.terminal.size()
         local ratio = (pixels.width / pixels.height) * (cell.cell_height / cell.cell_width)
@@ -56,7 +82,7 @@ local function contain_images(snacks)
     end
 
     placement.state = function(self, ...)
-        contain = vim.bo[self.buf].filetype == "image"
+        contain = is_image(self.buf)
         local ok, result = pcall(state, self, ...)
         contain = false
         if not ok then
@@ -74,7 +100,7 @@ local function reshow_images(snacks)
     local state = placement.state
 
     placement.state = function(self, ...)
-        if vim.bo[self.buf].filetype == "image" and self.hidden and #self:wins() > 0 then
+        if is_image(self.buf) and self.hidden and #self:wins() > 0 then
             self.hidden = false
         end
         return state(self, ...)
@@ -123,7 +149,7 @@ local function border_images(snacks)
     -- still moves the center, so make the window size part of the state.
     placement.state = function(self, ...)
         local result = state(self, ...)
-        if vim.bo[self.buf].filetype == "image" then
+        if is_image(self.buf) then
             local width, height = win_area(self)
             result.area = { width = width, height = height }
         end
@@ -131,24 +157,22 @@ local function border_images(snacks)
     end
 
     placement._render = function(self, extmarks)
-        local rows = vim.bo[self.buf].filetype == "image" and image_rows(extmarks)
+        local rows = is_image(self.buf) and image_rows(extmarks)
         if rows then
             local first = extmarks[1]
-            local hl = "FloatBorder"
-            local bar = { ("│"):rep(border_size), hl }
+            local bar = { ("│"):rep(border_size), border_hl }
             -- measure the rendered rows, as snacks caps them at the number of cell positions
             -- it can encode, which can be less than the size in the state
-            local width, height = vim.fn.strchars(rows[1][1]) / 3, #rows
+            local width, height = vim.fn.strchars(rows[1][1]) / chars_per_cell, #rows
             local area_width, area_height = win_area(self)
-            local left = math.max(0, math.floor((area_width - width - 2 * border_size) / 2))
-            local top = math.max(0, math.floor((area_height - height - 2 * border_size) / 2))
+            local left, top = center(area_width, width), center(area_height, height)
             local pad = { (" "):rep(left) }
             local lines = {}
             for i, cells in ipairs(rows) do
                 lines[i] = { pad, bar, cells, bar }
             end
-            lines[#lines + 1] = { pad, { "└" .. ("─"):rep(width) .. "┘", hl } }
-            first.virt_text = { { "┌" .. ("─"):rep(width) .. "┐", hl } }
+            lines[#lines + 1] = { pad, border_line("└", "┘", width) }
+            first.virt_text = { border_line("┌", "┐", width) }
             first.virt_text_pos = "overlay"
             first.virt_text_hide = false
             first.virt_text_win_col = left
