@@ -8,6 +8,7 @@ Show Status Bar=false
 Show Tab Bar=true
 Show Url Nav Bar=false
 Show welcome view for new window=false
+Restore Window Configuration=false
 Startup Session=new
 
 [KTextEditor Renderer]
