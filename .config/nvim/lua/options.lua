@@ -54,6 +54,9 @@ vim.opt.laststatus = 3
 vim.opt.termguicolors = true
 vim.opt.mouse = "a"
 
+-- block cursor in every mode
+vim.opt.guicursor = "a:block"
+
 -- clipboard (deferred to avoid startup latency)
 vim.schedule(function()
     local omarchy_remote_clipboard = require "lib.omarchy_remote_clipboard"
