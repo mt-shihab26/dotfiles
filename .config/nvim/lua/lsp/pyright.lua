@@ -9,6 +9,15 @@ end
 -- Point pyright at the .venv of the project it attaches to, so imports resolve
 -- even when the file lives in a different project than the one nvim opened in.
 return {
+    settings = {
+        python = {
+            analysis = {
+                diagnosticSeverityOverrides = {
+                    reportWildcardImportFromLibrary = "none",
+                },
+            },
+        },
+    },
     before_init = function(_, config)
         local venv = find_venv(config.root_dir)
         if not venv then return end
