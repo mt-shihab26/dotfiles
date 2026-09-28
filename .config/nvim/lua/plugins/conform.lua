@@ -50,3 +50,30 @@ conform.setup {
         }
     end,
 }
+
+-- Echo the formatter that ran, with its resolved arguments, after each format
+vim.api.nvim_create_autocmd("User", {
+    pattern = "ConformFormatPost",
+    callback = function(event)
+        local bufnr = event.buf
+        local name = event.data.formatter.name
+        local runner = require "conform.runner"
+        local config = conform.get_formatter_config(name, bufnr)
+        if not config then
+            return
+        end
+        local cmd = runner.build_cmd(name, runner.build_context(bufnr, config), config)
+        if type(cmd) == "table" then
+            cmd = table.concat(
+                vim.tbl_map(function(arg)
+                    return vim.fn.fnamemodify(arg, ":~:.")
+                end, cmd),
+                " "
+            )
+        end
+        local highlight = event.data.err and "ErrorMsg" or "Comment"
+        vim.schedule(function()
+            vim.api.nvim_echo({ { "[" .. name .. "] " .. cmd, highlight } }, false, {})
+        end)
+    end,
+})
