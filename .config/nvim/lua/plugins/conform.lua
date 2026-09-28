@@ -64,13 +64,9 @@ vim.api.nvim_create_autocmd("User", {
         end
         local cmd = runner.build_cmd(name, runner.build_context(bufnr, config), config)
         if type(cmd) == "table" then
-            cmd = table.concat(
-                vim.tbl_map(function(arg)
-                    return vim.fn.fnamemodify(arg, ":~:.")
-                end, cmd),
-                " "
-            )
+            cmd = table.concat(cmd, " ")
         end
+        cmd = cmd:gsub(vim.pesc(vim.env.HOME), "~")
         local highlight = event.data.err and "ErrorMsg" or "Comment"
         vim.schedule(function()
             vim.api.nvim_echo({ { "[" .. name .. "] " .. cmd, highlight } }, false, {})
