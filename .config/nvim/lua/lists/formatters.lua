@@ -1,13 +1,13 @@
 return {
     -- Markup
-    html = { "prettier" },
-    markdown = { "prettier" },
-    mdx = { "prettier" },
+    html = { "vp", "prettier", stop_after_first = true },
+    markdown = { "vp", "prettier", stop_after_first = true },
+    mdx = { "vp", "prettier", stop_after_first = true },
     svg = { "prettier" },
-    json = { "prettier" },
-    yaml = { "prettier" },
-    toml = { "prettier" },
-    css = { "prettier" },
+    json = { "vp", "prettier", stop_after_first = true },
+    yaml = { "vp", "prettier", stop_after_first = true },
+    toml = { "vp", "prettier", stop_after_first = true },
+    css = { "vp", "prettier", stop_after_first = true },
     sh = { "shfmt" },
     bash = { "shfmt" },
     zsh = { "shfmt" },
@@ -21,11 +21,11 @@ return {
     -- Java
     java = { "google-java-format" },
     -- JavaScript
-    javascript = { "prettier" },
-    javascriptreact = { "prettier" },
-    typescript = { "prettier" },
-    typescriptreact = { "prettier" },
-    vue = { "prettier" },
+    javascript = { "vp", "prettier", stop_after_first = true },
+    javascriptreact = { "vp", "prettier", stop_after_first = true },
+    typescript = { "vp", "prettier", stop_after_first = true },
+    typescriptreact = { "vp", "prettier", stop_after_first = true },
+    vue = { "vp", "prettier", stop_after_first = true },
     astro = { "prettier" },
     -- PHP
     php = { "pint" },
