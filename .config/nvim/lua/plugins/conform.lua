@@ -62,9 +62,17 @@ vim.api.nvim_create_autocmd("User", {
         if not config then
             return
         end
-        local cmd = runner.build_cmd(name, runner.build_context(bufnr, config), config)
+        local ctx = runner.build_context(bufnr, config)
+        local cmd = runner.build_cmd(name, ctx, config)
         if type(cmd) == "table" then
-            cmd = table.concat(cmd, " ")
+            cmd = table.concat(
+                vim.tbl_filter(function(arg)
+                    return arg ~= ctx.filename
+                end, cmd),
+                " "
+            )
+        else
+            cmd = cmd:gsub("%s*" .. vim.pesc(ctx.filename), "")
         end
         cmd = cmd:gsub(vim.pesc(vim.env.HOME), "~")
         local highlight = event.data.err and "ErrorMsg" or "Comment"
