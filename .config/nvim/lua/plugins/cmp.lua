@@ -34,7 +34,13 @@ local luasnip = require "luasnip"
 local luasnip_vscode_loader = require "luasnip.loaders.from_vscode"
 local tailwindcss_cmp = require "tailwindcss-colorizer-cmp"
 
+-- completion is off by default; toggle with <leader>tc
+vim.g.cmp_enabled = false
+
 cmp.setup {
+    enabled = function()
+        return vim.g.cmp_enabled
+    end,
     preselect = cmp.PreselectMode.Item,
     sorting = cmp_default().sorting,
     completion = {

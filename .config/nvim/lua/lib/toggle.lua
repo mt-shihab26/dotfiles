@@ -48,6 +48,14 @@ function M.write_all_no_format()
     end
 end
 
+function M.completion()
+    vim.g.cmp_enabled = not vim.g.cmp_enabled
+    if not vim.g.cmp_enabled then
+        require("cmp").close()
+    end
+    vim.notify("Completion " .. (vim.g.cmp_enabled and "ON" or "OFF"), vim.log.levels.INFO)
+end
+
 -- lsp semantic tokens (priority 125) override treesitter highlights; toggle to compare
 function M.semantic_tokens()
     local enable = not vim.lsp.semantic_tokens.is_enabled()
