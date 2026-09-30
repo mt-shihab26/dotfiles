@@ -35,7 +35,7 @@ local luasnip_vscode_loader = require "luasnip.loaders.from_vscode"
 local tailwindcss_cmp = require "tailwindcss-colorizer-cmp"
 
 -- completion is off by default; toggle with <leader>tc
-vim.g.cmp_enabled = false
+vim.g.cmp_enabled = true
 
 cmp.setup {
     enabled = function()
