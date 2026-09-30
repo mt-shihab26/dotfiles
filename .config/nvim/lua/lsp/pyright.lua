@@ -9,6 +9,10 @@ end
 -- Point pyright at the .venv of the project it attaches to, so imports resolve
 -- even when the file lives in a different project than the one nvim opened in.
 return {
+    -- use nvim's working directory as the project root instead of root markers
+    root_dir = function(_, on_dir)
+        on_dir(vim.fn.getcwd())
+    end,
     settings = {
         python = {
             analysis = {
