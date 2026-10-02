@@ -12,7 +12,7 @@ own changes on top of it and is linked into `~` with [GNU Stow](https://www.gnu.
 - **Omarchy overrides**: Hyprland keybindings and window rules (`.config/hypr/overwrite.lua`),
   bar plugins (`.setup/os/top-bar.sh`).
 - **KDE apps instead of Omarchy's GNOME ones**: Dolphin, Okular, Kate (set up as a minimal
-  gedit-style editor) and Partition Manager (`.setup/kde/kde-apps.sh`).
+  gedit-style editor) and Partition Manager (`.setup/os/kde-apps.sh`).
 - **Shell and terminals**: zsh, tmux with a sessionizer, kitty and ghostty.
 - **Scripts** (`.bin`): sessionizer, wallpaper cycling, notes autocommit and other helpers.
 
@@ -24,7 +24,7 @@ cd ~/dotfiles
 ./link.sh
 ```
 
-Then run whichever setup scripts you need from `.setup/`, e.g. `.setup/kde/kde-apps.sh`.
+Then run whichever setup scripts you need from `.setup/`, e.g. `.setup/os/kde-apps.sh`.
 Packages are installed through the Omarchy CLI (`omarchy pkg add`).
 
 ## Uninstall
