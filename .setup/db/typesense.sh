@@ -2,6 +2,8 @@
 
 set -e
 
+# https://github.com/typesense/typesense
+# https://aur.archlinux.org/packages/typesense-bin
 omarchy pkg aur add typesense-bin
 
 sudo systemctl start typesense-server.service

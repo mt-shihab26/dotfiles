@@ -2,4 +2,10 @@
 
 set -e
 
-omarchy pkg aur add todoist-appimage todoist-cli
+# https://todoist.com
+# https://aur.archlinux.org/packages/todoist-appimage
+omarchy pkg aur add todoist-appimage
+
+# https://github.com/Doist/todoist-cli
+# https://aur.archlinux.org/packages/todoist-cli
+omarchy pkg aur add todoist-cli
