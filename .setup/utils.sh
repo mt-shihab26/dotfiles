@@ -4,4 +4,4 @@ set -e
 
 omarchy pkg add htop stow cloc tree wget
 
-omarchy pkg aur add todoist-appimage tableplus
+omarchy pkg aur add tableplus
