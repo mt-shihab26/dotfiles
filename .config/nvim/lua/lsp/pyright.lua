@@ -6,8 +6,8 @@ local function find_venv(path)
     end
 end
 
--- Point pyright at the .venv of the project it attaches to, so imports resolve
--- even when the file lives in a different project than the one nvim opened in.
+-- Point pyright at the nearest .venv walking up from nvim's working directory,
+-- so imports resolve against the project nvim was opened in.
 return {
     -- use nvim's working directory as the project root instead of root markers
     root_dir = function(_, on_dir)

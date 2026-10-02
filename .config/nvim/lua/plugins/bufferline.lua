@@ -9,8 +9,8 @@ local bufferline = require "bufferline";
 
 bufferline.setup {
     options = {
-        close_command = "bdelete! %d",
-        right_mouse_command = "bdelete! %d",
+        close_command = "bdelete %d",
+        right_mouse_command = "bdelete %d",
         diagnostics = "nvim_lsp",
         diagnostics_update_in_insert = false,
         always_show_bufferline = false,

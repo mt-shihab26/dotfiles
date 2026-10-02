@@ -62,8 +62,8 @@ local function on_attach(args)
     map("n", "<leader>a", buf.code_action, opts "code actions (lspconfig)")
     map("n", "<leader>r", buf.rename, opts "rename symbol (lspconfig)")
 
-    map("n", "[d", diagnostic.goto_prev, opts "go to prev diagnostic (lspconfig)")
-    map("n", "]d", diagnostic.goto_next, opts "go to next diagnostic (lspconfig)")
+    map("n", "[d", function() diagnostic.jump { count = -1, float = true } end, opts "go to prev diagnostic (lspconfig)")
+    map("n", "]d", function() diagnostic.jump { count = 1, float = true } end, opts "go to next diagnostic (lspconfig)")
 
     map("n", "<leader>xs", lsp.start, opts "start lsp server (lspconfig)")
     map("n", "<leader>xS", lsp.stop, opts "stop lsp server (lspconfig)")

@@ -76,7 +76,7 @@ vim.lsp.handlers["textDocument/documentColor"] = function() end
 -- highlight yanked text briefly
 vim.api.nvim_create_autocmd("TextYankPost", {
     callback = function()
-        vim.highlight.on_yank()
+        vim.hl.on_yank()
     end,
 })
 

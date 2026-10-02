@@ -1,5 +1,58 @@
 local M = {}
 
+-- run git in `path` and return its trimmed output, or nil when it fails
+local function git(path, args)
+    local res = vim.system(vim.list_extend({ "git" }, args), { cwd = path, text = true }):wait()
+    return res.code == 0 and vim.trim(res.stdout) or nil
+end
+
+-- the commit vim.pack.update() would move `p` to, resolved from the fetched refs the
+-- same way vim.pack does: default branch, branch/tag/commit, or highest matching semver tag
+local function update_target(p)
+    local version = p.spec.version
+    local ref
+    if version == nil then
+        ref = "origin/HEAD"
+    elseif type(version) == "string" then
+        local is_branch = git(p.path, { "rev-parse", "--verify", "--quiet", "origin/" .. version }) ~= nil
+        ref = is_branch and "origin/" .. version or version
+    else
+        local best
+        for _, tag in ipairs(vim.split(git(p.path, { "tag", "--list" }) or "", "\n", { trimempty = true })) do
+            local ver = vim.version.parse(tag, { strict = true })
+            if ver and version:has(ver) and (not best or ver > best.ver) then
+                best = { tag = tag, ver = ver }
+            end
+        end
+        ref = best and best.tag
+    end
+    return ref and git(p.path, { "rev-list", "-1", ref })
+end
+
+-- notify which of the fetched plugins have a newer target than their installed revision
+local function report_pending(plugins, failed)
+    local pending, errors = {}, {}
+    for _, p in ipairs(plugins) do
+        local target = not failed[p.spec.name] and update_target(p)
+        if not target then
+            errors[#errors + 1] = p.spec.name
+        elseif target ~= p.rev then
+            pending[#pending + 1] = ("%s: %s → %s"):format(p.spec.name, (p.rev or "?"):sub(1, 7), target:sub(1, 7))
+        end
+    end
+    local lines = {}
+    if #pending == 0 then
+        lines[#lines + 1] = "All plugins are up to date"
+    else
+        lines[#lines + 1] = "Pending updates (apply with :PackUpdate):"
+        vim.list_extend(lines, pending)
+    end
+    if #errors > 0 then
+        lines[#lines + 1] = "Could not check: " .. table.concat(errors, ", ")
+    end
+    local level = (#pending > 0 or #errors > 0) and vim.log.levels.WARN or vim.log.levels.INFO
+    vim.notify(table.concat(lines, "\n"), level)
+end
 
 function M.list(opts)
     local names = opts.args:match "%S" and vim.split(opts.args, "%s+", { trimempty = true }) or nil
@@ -19,22 +72,28 @@ end
 
 function M.check(opts)
     local names = opts.args:match "%S" and vim.split(opts.args, "%s+", { trimempty = true }) or nil
-    vim.notify("Checking for updates...", vim.log.levels.INFO)
-    local plugins = vim.pack.get(names, { offline = false })
-    local pending = {}
-    for _, p in ipairs(plugins) do
-        if p.rev_to and p.rev_to ~= p.rev then
-            pending[#pending + 1] = ("%s: %s → %s"):format(
-                p.spec.name,
-                p.rev and p.rev:sub(1, 7) or "?",
-                p.rev_to:sub(1, 7)
-            )
-        end
+    local plugins = vim.pack.get(names, { info = false })
+    if #plugins == 0 then
+        vim.notify("No plugins to check", vim.log.levels.INFO)
+        return
     end
-    if #pending == 0 then
-        vim.notify("All plugins are up to date", vim.log.levels.INFO)
-    else
-        vim.notify("Pending updates:\n" .. table.concat(pending, "\n"), vim.log.levels.WARN)
+    vim.notify("Checking for updates...", vim.log.levels.INFO)
+
+    -- fetch every plugin in parallel; this only updates origin refs, checkouts stay as they are
+    local remaining = #plugins
+    local failed = {}
+    for _, p in ipairs(plugins) do
+        vim.system({ "git", "fetch", "--quiet", "--tags", "--force", "origin" }, { cwd = p.path }, function(res)
+            if res.code ~= 0 then
+                failed[p.spec.name] = true
+            end
+            remaining = remaining - 1
+            if remaining == 0 then
+                vim.schedule(function()
+                    report_pending(plugins, failed)
+                end)
+            end
+        end)
     end
 end
 

@@ -14,7 +14,7 @@ bindkey '^[[B' history-search-forward
 
 # Immediately add a trailing slash when completing symlinks to directories
 # (inputrc: set mark-symlinked-directories on)
-setopt MARK_DIRS
+setopt AUTO_PARAM_SLASH
 
 # Not ported: inputrc's "TAB: menu-complete" / "\e[Z": menu-complete-backward
 # cycling. shell.zsh sets `zstyle ':completion:*' menu no` so fzf-tab owns

@@ -41,8 +41,10 @@ function M.close_terminals_or_others()
         return
     end
 
+    -- force only for terminals; modified buffers go through 'confirm' instead of losing changes
+    local bdelete = #terminals > 0 and "bdelete! " or "bdelete "
     for _, buf in ipairs(targets) do
-        vim.cmd("bdelete! " .. buf)
+        pcall(vim.cmd, bdelete .. buf)
     end
 end
 

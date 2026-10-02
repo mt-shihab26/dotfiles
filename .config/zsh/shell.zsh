@@ -1,5 +1,5 @@
 # Ensure command hashing is off for mise
-set +h
+unsetopt HASH_CMDS
 
 # Prompt & Theme Setup
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
@@ -28,10 +28,11 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 # Load Plugins with Zinit
 zinit ice depth=1
 zinit light romkatv/powerlevel10k
-zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
-zinit light zsh-users/zsh-autosuggestions
+# fzf-tab must load after compinit but before plugins that wrap widgets
 zinit light Aloxaf/fzf-tab
+zinit light zsh-users/zsh-autosuggestions
+zinit light zsh-users/zsh-syntax-highlighting
 zinit snippet OMZP::sudo
 zinit snippet OMZP::command-not-found
 

@@ -13,7 +13,7 @@ if [[ "$TERM" == "xterm-kitty" ]]; then
 else
     alias ff="fzf --preview 'bat --style=numbers --color=always {}'"
 fi
-alias eff='$EDITOR "$(ff)"'
+alias eff='${=EDITOR} "$(ff)"'
 sff() {
     if [ $# -eq 0 ]; then
         echo "Usage: sff <destination> (e.g. sff host:/tmp/)"

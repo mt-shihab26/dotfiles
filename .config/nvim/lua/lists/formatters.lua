@@ -11,7 +11,7 @@ return {
     sh = { "shfmt" },
     bash = { "shfmt" },
     zsh = { "shfmt" },
-    fish = { "shfmt" },
+    fish = { "fish_indent" },
     lua = { "stylua" },
     -- C/C++
     c = { "clang-format" },
