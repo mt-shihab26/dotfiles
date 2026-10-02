@@ -10,7 +10,7 @@ own changes on top of it and is linked into `~` with [GNU Stow](https://www.gnu.
 - **Neovim** (`.config/nvim`): built from scratch, not a distro. Plugins via the built-in
   `vim.pack`, plus custom LSP, formatter, Treesitter, Telescope and snippet setup.
 - **Omarchy overrides**: Hyprland keybindings and window rules (`.config/hypr/overwrite.lua`),
-  bar plugins (`.setup/top-bar.sh`).
+  bar plugins (`.setup/os/top-bar.sh`).
 - **KDE apps instead of Omarchy's GNOME ones**: Dolphin, Okular, Kate (set up as a minimal
   gedit-style editor) and Partition Manager (`.setup/kde/kde-apps.sh`).
 - **Shell and terminals**: zsh, tmux with a sessionizer, kitty and ghostty.
