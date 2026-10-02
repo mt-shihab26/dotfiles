@@ -53,6 +53,8 @@ vim.opt.spelllang = "en_us"
 vim.opt.laststatus = 3
 vim.opt.termguicolors = true
 vim.opt.mouse = "a"
+-- scroll one line per wheel event, a trackpad sends many of them per swipe
+vim.opt.mousescroll = "ver:1,hor:2"
 
 -- block cursor in every mode
 vim.opt.guicursor = "a:block"
