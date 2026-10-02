@@ -5,8 +5,12 @@ set -e
 POSTGRES_PASSWORD="2611"
 
 echo "==> Installing PostgreSQL..."
+# https://www.postgresql.org/
+# https://archlinux.org/packages/extra/x86_64/postgresql/
 omarchy pkg add postgresql
 
+# https://github.com/pgvector/pgvector
+# https://archlinux.org/packages/extra/x86_64/pgvector/
 omarchy pkg aur add pgvector
 
 echo "==> Initializing PostgreSQL database..."

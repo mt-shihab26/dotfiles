@@ -5,6 +5,8 @@ set -e
 MYSQL_ROOT_PASSWORD="2611"
 
 echo "==> Installing MariaDB..."
+# https://mariadb.org/
+# https://archlinux.org/packages/extra/x86_64/mariadb/
 omarchy pkg add mariadb
 
 echo "==> Initializing database..."

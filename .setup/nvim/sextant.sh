@@ -7,6 +7,8 @@ set -e
 
 SEXTANT_DIR="$HOME/.local/share/sextant"
 
+# sbcl: https://www.sbcl.org/ https://archlinux.org/packages/extra/x86_64/sbcl/
+# quicklisp: https://www.quicklisp.org https://archlinux.org/packages/extra/any/quicklisp/
 omarchy pkg add sbcl quicklisp
 
 # The pacman package only ships the bootstrap file, so set up ~/quicklisp once.

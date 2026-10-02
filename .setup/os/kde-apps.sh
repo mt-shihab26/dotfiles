@@ -14,6 +14,17 @@ echo "==> Installing KDE apps..."
 # archlinux-xdg-menu: Dolphin's "Open With" list is empty outside Plasma without it.
 # breeze: Qt widget style KDE apps ask for; without it they fall back to GTK's Yaru bits (orange tab close button).
 # ark, 7zip: extract archives from Dolphin (7zip adds 7z support).
+# dolphin: https://apps.kde.org/dolphin/ https://archlinux.org/packages/extra/x86_64/dolphin/
+# kio-extras: https://www.kde.org/ https://archlinux.org/packages/extra/x86_64/kio-extras/
+# ffmpegthumbs: https://apps.kde.org/ffmpegthumbs/ https://archlinux.org/packages/extra/x86_64/ffmpegthumbs/
+# kdegraphics-thumbnailers: https://apps.kde.org/kdegraphics_thumbnailers/ https://archlinux.org/packages/extra/x86_64/kdegraphics-thumbnailers/
+# archlinux-xdg-menu: https://wiki.archlinux.org/index.php/XdgMenu https://archlinux.org/packages/extra/any/archlinux-xdg-menu/
+# okular: https://apps.kde.org/okular/ https://archlinux.org/packages/extra/x86_64/okular/
+# kate: https://apps.kde.org/kate/ https://archlinux.org/packages/extra/x86_64/kate/
+# partitionmanager: https://apps.kde.org/partitionmanager/ https://archlinux.org/packages/extra/x86_64/partitionmanager/
+# breeze: https://kde.org/plasma-desktop/ https://archlinux.org/packages/extra/x86_64/breeze/
+# ark: https://apps.kde.org/ark/ https://archlinux.org/packages/extra/x86_64/ark/
+# 7zip: https://www.7-zip.org https://archlinux.org/packages/extra/x86_64/7zip/
 omarchy pkg add dolphin kio-extras ffmpegthumbs kdegraphics-thumbnailers archlinux-xdg-menu okular kate partitionmanager breeze ark 7zip
 
 echo -e "\n==> Removing GNOME apps..."

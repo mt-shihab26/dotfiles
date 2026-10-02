@@ -3,6 +3,8 @@
 set -e
 
 echo "Install dependencies for building php8.4 with mise"
+# re2c: https://re2c.org https://archlinux.org/packages/extra/x86_64/re2c/
+# gd: https://libgd.github.io/ https://archlinux.org/packages/extra/x86_64/gd/
 omarchy pkg add re2c gd
 
 echo "Build and install php8.4 with mise"

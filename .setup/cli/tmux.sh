@@ -3,6 +3,8 @@
 set -e
 
 echo -e "Installing tmux..."
+# https://github.com/tmux/tmux/wiki
+# https://archlinux.org/packages/extra/x86_64/tmux/
 omarchy pkg add tmux
 
 rm -rf ~/.tmux
