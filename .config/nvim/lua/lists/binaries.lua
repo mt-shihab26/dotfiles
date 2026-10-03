@@ -1,9 +1,11 @@
 return {
-    -- Markup
-    "html-lsp",
-    "marksman",
+    -- Conf
     "json-lsp",
     "yaml-language-server",
+    -- HTML
+    "html-lsp",
+    "marksman",
+    -- CSS
     "css-lsp",
     "css-variables-language-server",
     "tailwindcss-language-server",

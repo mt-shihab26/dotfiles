@@ -1,12 +1,14 @@
 return {
-    -- Markup
+    -- Conf
+    json = { "vp", "prettier", stop_after_first = true },
+    yaml = { "vp", "prettier", stop_after_first = true },
+    toml = { "vp", "prettier", stop_after_first = true },
+    -- HTML
     html = { "vp", "prettier", stop_after_first = true },
     markdown = { "vp", "prettier", stop_after_first = true },
     mdx = { "vp", "prettier", stop_after_first = true },
     svg = { "prettier" },
-    json = { "vp", "prettier", stop_after_first = true },
-    yaml = { "vp", "prettier", stop_after_first = true },
-    toml = { "vp", "prettier", stop_after_first = true },
+    -- CSS
     css = { "vp", "prettier", stop_after_first = true },
     -- Bash
     sh = { "shfmt" },

@@ -1,9 +1,11 @@
 return {
-    -- Markup
-    "html",
-    "marksman",
+    -- Conf
     "jsonls",
     "yamlls",
+    -- HTML
+    "html",
+    "marksman",
+    -- CSS
     "cssls",
     "css_variables",
     "tailwindcss",

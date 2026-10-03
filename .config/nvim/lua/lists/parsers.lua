@@ -1,19 +1,22 @@
 return {
-    -- Markup
-    "html",
-    "xml",
-    "markdown",
-    "markdown_inline",
+    -- Conf
     "json",
     "yaml",
     "toml",
     "dockerfile",
+    -- Git
     "diff",
     "git_config",
     "gitcommit",
     "git_rebase",
     "gitignore",
     "gitattributes",
+    -- HTML
+    "html",
+    "xml",
+    "markdown",
+    "markdown_inline",
+    -- CSS
     "css",
     -- Bash
     "bash",
