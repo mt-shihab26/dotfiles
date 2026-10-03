@@ -64,6 +64,25 @@ map("n", "]h", "<cmd>silent Gitsigns next_hunk<cr>", { desc = "navigate to the n
 map("n", "[h", "<cmd>silent Gitsigns prev_hunk<cr>", { desc = "navigate to the previous git hunk (gitsigns)" })
 map("n", "<leader>L", "<cmd>LazyGit<cr>", { desc = "open lazygit window (lazygit)", remap = true })
 
+-- debugging (dap)
+local dap = require "lib.dap"
+
+map("n", "<leader>bp", "<cmd>DapContinue<cr>", { desc = "start or continue debugging (dap)" })
+map("n", "<leader>bP", "<cmd>DapPause<cr>", { desc = "pause debugging (dap)" })
+map("n", "<leader>bi", "<cmd>DapStepInto<cr>", { desc = "step into (dap)" })
+map("n", "<leader>bo", "<cmd>DapStepOver<cr>", { desc = "step over (dap)" })
+map("n", "<leader>bO", "<cmd>DapStepOut<cr>", { desc = "step out (dap)" })
+map("n", "<leader>bB", dap.step_back, { desc = "step back (dap)" })
+map("n", "<leader>bl", dap.run_last, { desc = "run last debug session again (dap)" })
+map("n", "<leader>bq", "<cmd>DapTerminate<cr>", { desc = "stop debugging (dap)" })
+map("n", "<leader>bd", "<cmd>DapDisconnect<cr>", { desc = "disconnect from debug session (dap)" })
+map("n", "<leader>bb", "<cmd>DapToggleBreakpoint<cr>", { desc = "toggle breakpoint (dap)" })
+map("n", "<leader>bc", dap.conditional_breakpoint, { desc = "set conditional breakpoint (dap)" })
+map("n", "<leader>bx", "<cmd>DapClearBreakpoints<cr>", { desc = "clear all breakpoints (dap)" })
+map("n", "<leader>bu", dap.toggle_ui, { desc = "toggle debugger ui (dap-ui)" })
+map({ "n", "v" }, "<leader>be", dap.eval, { desc = "evaluate expression under cursor (dap-ui)" })
+map("n", "<leader>bt", dap.debug_go_test, { desc = "debug nearest go test (dap-go)" })
+
 -- discoverability (which-key)
 local which_key = require "lib.which_key"
 

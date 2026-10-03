@@ -34,6 +34,7 @@ return {
     -- Go
     "gopls",
     "goimports",
+    "delve",
     "templ",
     -- Rust
     "rust-analyzer",
