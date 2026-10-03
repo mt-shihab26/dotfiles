@@ -7,7 +7,9 @@ return {
     "cssls",
     "css_variables",
     "tailwindcss",
+    -- Bash
     "bashls",
+    -- Lua
     "lua_ls",
     -- C/C++
     "clangd",

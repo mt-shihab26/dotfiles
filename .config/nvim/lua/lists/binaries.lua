@@ -7,9 +7,11 @@ return {
     "css-lsp",
     "css-variables-language-server",
     "tailwindcss-language-server",
+    -- Bash
     "bash-language-server",
     "shfmt",
     "bash-debug-adapter",
+    -- Lua
     "lua-language-server",
     "stylua",
     -- C/C++

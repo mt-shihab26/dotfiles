@@ -15,10 +15,13 @@ return {
     "gitignore",
     "gitattributes",
     "css",
+    -- Bash
     "bash",
+    -- Lua
     "lua",
     "luadoc",
     "luap",
+    -- Vim
     "vimdoc",
     "vim",
     -- C/C++

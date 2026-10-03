@@ -8,10 +8,12 @@ return {
     yaml = { "vp", "prettier", stop_after_first = true },
     toml = { "vp", "prettier", stop_after_first = true },
     css = { "vp", "prettier", stop_after_first = true },
+    -- Bash
     sh = { "shfmt" },
     bash = { "shfmt" },
     zsh = { "shfmt" },
     fish = { "fish_indent" },
+    -- Lua
     lua = { "stylua" },
     -- C/C++
     c = { "clang-format" },
