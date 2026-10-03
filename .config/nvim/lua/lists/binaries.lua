@@ -9,28 +9,34 @@ return {
     "tailwindcss-language-server",
     "bash-language-server",
     "shfmt",
+    "bash-debug-adapter",
     "lua-language-server",
     "stylua",
     -- C/C++
     "clangd",
     "clang-format",
+    "codelldb",
     -- Python
     "pyright",
     "ruff",
+    "debugpy",
     -- Java
     "jdtls",
     "google-java-format",
+    "java-debug-adapter",
     -- JavaScript
     "tsc",
     "vtsls",
     "vue-language-server",
     "astro-language-server",
     "prettier",
+    "js-debug-adapter",
     -- PHP
     -- "intelephense",
     "phpantom_lsp",
     "laravel_lsp",
     "pint",
+    "php-debug-adapter",
     -- Go
     "gopls",
     "goimports",

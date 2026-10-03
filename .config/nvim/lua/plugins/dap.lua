@@ -11,15 +11,21 @@ vim.pack.add {
     {
         src = "https://github.com/leoluz/nvim-dap-go",
     },
+    {
+        src = "https://github.com/mfussenegger/nvim-jdtls",
+    },
 }
 
 local dap = require "dap"
 local dapui = require "dapui"
-local dap_go = require "dap-go"
+local debuggers = require "lists.debuggers"
 
 dapui.setup {}
--- delve (dlv) is installed by Mason, see lists/binaries.lua
-dap_go.setup {}
+
+-- debug adapters (dlv, codelldb, debugpy, ...) are installed by Mason, see lists/binaries.lua
+for _, debugger_name in ipairs(debuggers) do
+    require("debuggers." .. debugger_name)
+end
 
 vim.fn.sign_define("DapBreakpoint", { text = "●", texthl = "DiagnosticError" })
 vim.fn.sign_define("DapBreakpointCondition", { text = "◆", texthl = "DiagnosticError" })
