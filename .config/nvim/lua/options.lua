@@ -1,14 +1,11 @@
--- new UI (cmdline, messages, popupmenu)
-local ui2 = require "vim._core.ui2"
-
-ui2.enable {}
-
 -- leader keys
-vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
+vim.g.mapleader = " " -- space is the prefix for <leader> mappings
+vim.g.maplocalleader = "\\" -- backslash is the prefix for <localleader> (filetype-specific) mappings
+
+require "vim._core.ui2".enable {} -- new UI (cmdline, messages, popupmenu)
 
 -- netrw
-vim.g.netrw_banner = 0
+vim.g.netrw_banner = 0 -- hide the help banner above the file list (toggle with I)
 
 -- line numbers
 vim.opt.number = true

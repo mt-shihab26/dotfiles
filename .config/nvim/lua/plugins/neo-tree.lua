@@ -22,7 +22,7 @@ local neo_tree = require "neo-tree"
 neo_tree.setup {
     filesystem = {
         use_libuv_file_watcher = true,
-        hijack_netrw_behavior = "open_current",
+        hijack_netrw_behavior = "disabled",
         filtered_items = {
             visible = false,
             hide_dotfiles = false,
