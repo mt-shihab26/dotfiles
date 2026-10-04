@@ -25,7 +25,7 @@ elif [[ $1 == "other" ]]; then
 elif [[ $1 == "learns" ]]; then
     selected=$(select_learns)
 elif [[ $# -eq 1 ]]; then
-    selected=$1
+    selected=$(cd "$1" && pwd)
 else
     echo "invalid argument. Usage: $0 [projects|other|learns]"
     exit 1
