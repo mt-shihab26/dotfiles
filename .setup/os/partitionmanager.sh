@@ -9,3 +9,5 @@ echo "==> Installing KDE Partition Manager..."
 # partitionmanager: https://apps.kde.org/partitionmanager/ https://archlinux.org/packages/extra/x86_64/partitionmanager/
 # breeze: https://kde.org/plasma-desktop/ https://archlinux.org/packages/extra/x86_64/breeze/
 omarchy pkg add partitionmanager breeze
+
+omarchy pkg drop gnome-disk-utility
