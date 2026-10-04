@@ -20,12 +20,19 @@ vim.opt.expandtab = true   -- Tab inserts spaces instead of a tab character
 vim.opt.smartindent = true -- indent new lines automatically, one level deeper after {
 
 -- line display
-vim.opt.wrap = false
-vim.opt.cursorline = true
-vim.opt.list = true
-vim.opt.listchars = { space = "·", trail = "·", tab = "→ ", eol = "↲", nbsp = "␣" }
-vim.opt.signcolumn = "yes"
-vim.opt.cmdheight = 0
+vim.opt.wrap = false       -- long lines run off the screen instead of wrapping
+vim.opt.cursorline = true  -- highlight the line the cursor is on
+vim.opt.signcolumn = "yes" -- always keep the sign column, so text doesn't shift when signs appear
+vim.opt.cmdheight = 0      -- hide the command line until it is in use
+vim.opt.list = true        -- draw invisible characters using listchars below
+
+vim.opt.listchars = {
+    space = "·", -- every space
+    trail = "·", -- spaces at the end of a line
+    tab = "→ ", -- a tab character: arrow, then padding up to the tab width
+    eol = "↲", -- the end of each line
+    nbsp = "␣", -- non-breaking spaces, which otherwise look like normal ones
+}
 
 -- splits
 vim.opt.splitright = true
