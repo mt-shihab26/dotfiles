@@ -30,6 +30,8 @@ return {
     -- C/C++
     "c",
     "cpp",
+    -- GLSL
+    "glsl",
     -- Python
     "python",
     -- Java
