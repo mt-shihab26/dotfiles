@@ -1,22 +1,23 @@
 -- leader keys
-vim.g.mapleader = " " -- space is the prefix for <leader> mappings
+vim.g.mapleader = " "       -- space is the prefix for <leader> mappings
 vim.g.maplocalleader = "\\" -- backslash is the prefix for <localleader> (filetype-specific) mappings
 
-require "vim._core.ui2".enable {} -- new UI (cmdline, messages, popupmenu)
+-- experimental ui
+require "vim._core.ui2".enable {} -- redrawn cmdline and messages: no "Press ENTER" prompts, long output opens in a pager
 
 -- netrw
 vim.g.netrw_banner = 0 -- hide the help banner above the file list (toggle with I)
 
 -- line numbers
-vim.opt.number = true
-vim.opt.relativenumber = true
+vim.opt.number = true         -- show the real line number on the cursor line
+vim.opt.relativenumber = true -- show the distance from the cursor on every other line, for jumps like 5j
 
 -- indentation
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.expandtab = true
-vim.opt.smartindent = true
+vim.opt.tabstop = 4        -- a tab character in a file is shown 4 columns wide
+vim.opt.softtabstop = 4    -- Tab and Backspace move 4 columns at a time in insert mode
+vim.opt.shiftwidth = 4     -- one indent level is 4 columns for >>, << and auto-indent
+vim.opt.expandtab = true   -- Tab inserts spaces instead of a tab character
+vim.opt.smartindent = true -- indent new lines automatically, one level deeper after {
 
 -- line display
 vim.opt.wrap = false
