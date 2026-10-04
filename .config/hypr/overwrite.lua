@@ -5,7 +5,8 @@ hl.config {
         -- Use multiple keyboard layouts and switch between them with Left Alt + Right Alt.
         kb_layout = "us,bd",
         kb_variant = ",probhat",
-        kb_options = "compose:caps,shift:both_capslock_cancel,grp:alts_toggle",
+        -- caps:escape makes the Caps Lock key an extra Escape.
+        kb_options = "caps:escape,grp:alts_toggle",
 
         touchpad = {
             tap_to_click = true,
