@@ -56,8 +56,8 @@ vim.opt.mouse = "a"
 -- scroll one line per wheel event, a trackpad sends many of them per swipe
 vim.opt.mousescroll = "ver:1,hor:2"
 
--- block cursor in every mode
-vim.opt.guicursor = "a:block"
+-- block cursor, a thin bar while inserting, an underline while replacing
+-- vim.opt.guicursor = "n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20"
 
 -- clipboard (deferred to avoid startup latency)
 vim.schedule(function()
