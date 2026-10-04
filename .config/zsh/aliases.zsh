@@ -58,6 +58,12 @@ alias t='./.bin/init'
 alias n='nvim'
 alias r='run'
 
+# Sessionizer
+alias s='~/.bin/sessionizer'
+alias sp='s projects'
+alias so='s other'
+alias sl='s learns'
+
 # Coding Agent
 alias claude='claude-personal'
 
