@@ -193,7 +193,8 @@ Item {
         id: remapGuard
         window: panel
       }
-      color: "transparent"
+      // Letterbox bars around a contained image take the theme background.
+      color: Color.background
       // Keep render updates enabled. The background layer has been observed to
       // lose its committed buffer while parked with updatesEnabled=false,
       // leaving a black desktop until omarchy-shell is restarted. The wallpaper
@@ -222,7 +223,7 @@ Item {
         id: base
         anchors.fill: parent
         source: root.imageUrl(root.displayedBackground)
-        fillMode: Image.PreserveAspectCrop
+        fillMode: Image.PreserveAspectFit
         asynchronous: true
         cache: true
         onStatusChanged: {
@@ -234,11 +235,18 @@ Item {
         }
       }
 
+      // Opaque backing so the previous image never shows through the bars.
+      Rectangle {
+        anchors.fill: parent
+        color: Color.background
+        visible: oldFrame.visible
+      }
+
       Image {
         id: oldFrame
         anchors.fill: parent
         source: root.imageUrl(root.oldBackground)
-        fillMode: Image.PreserveAspectCrop
+        fillMode: Image.PreserveAspectFit
         asynchronous: true
         cache: false
         smooth: true
@@ -260,11 +268,16 @@ Item {
           maskSpreadAtMin: 0.02
         }
 
+        Rectangle {
+          anchors.fill: parent
+          color: Color.background
+        }
+
         Image {
           id: incomingFrame
           anchors.fill: parent
           source: root.imageUrl(root.incomingBackground)
-          fillMode: Image.PreserveAspectCrop
+          fillMode: Image.PreserveAspectFit
           asynchronous: true
           cache: false
           smooth: true
