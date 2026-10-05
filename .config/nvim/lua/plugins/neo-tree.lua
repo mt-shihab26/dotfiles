@@ -28,11 +28,20 @@ neo_tree.setup {
     },
     filesystem = {
         components = {
-            -- keep the root (cwd) path out of the auto-expand width measurement
             name = function(config, node, state)
                 local result = require("neo-tree.sources.filesystem.components").name(config, node, state)
-                if state._in_pre_render and node:get_depth() == 1 and node.type ~= "message" then
-                    result.text = ""
+                if node:get_depth() == 1 and node.type ~= "message" then
+                    if state._in_pre_render then
+                        -- keep the root (cwd) path out of the auto-expand width measurement
+                        result.text = ""
+                    else
+                        -- show the root as ~/--/--/folder, hiding the middle folders
+                        local parts = vim.split(node.name, "/", { plain = true })
+                        for i = 2, #parts - 1 do
+                            parts[i] = "--"
+                        end
+                        result.text = table.concat(parts, "/") .. result.text:sub(#node.name + 1)
+                    end
                 end
                 return result
             end,
