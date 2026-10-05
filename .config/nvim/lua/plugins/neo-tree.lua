@@ -27,6 +27,16 @@ neo_tree.setup {
         created = { enabled = false },
     },
     filesystem = {
+        components = {
+            -- keep the root (cwd) path out of the auto-expand width measurement
+            name = function(config, node, state)
+                local result = require("neo-tree.sources.filesystem.components").name(config, node, state)
+                if state._in_pre_render and node:get_depth() == 1 and node.type ~= "message" then
+                    result.text = ""
+                end
+                return result
+            end,
+        },
         use_libuv_file_watcher = true,
         hijack_netrw_behavior = "disabled",
         filtered_items = {
