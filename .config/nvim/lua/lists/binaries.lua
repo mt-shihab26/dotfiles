@@ -50,5 +50,7 @@ return {
     "rust-analyzer",
     -- Ruby
     "stimulus-language-server",
-    "erb-formatter"
+    "erb-formatter",
+    -- GLSL
+    "glsl_analyzer"
 }

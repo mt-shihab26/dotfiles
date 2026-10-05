@@ -39,4 +39,6 @@ return {
     "stimulus_ls",
     -- Lisp
     "sextant", -- .setup/nvim/sextant.sh
+    -- GLSL
+    "glsl_analyzer",
 }

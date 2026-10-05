@@ -30,8 +30,6 @@ return {
     -- C/C++
     "c",
     "cpp",
-    -- GLSL
-    "glsl",
     -- Python
     "python",
     -- Java
@@ -63,4 +61,6 @@ return {
     "embedded_template",
     -- Lisp
     "commonlisp",
+    -- GLSL
+    "glsl",
 }
