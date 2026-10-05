@@ -1,6 +1,7 @@
 vim.pack.add {
     {
         src = "https://github.com/folke/which-key.nvim",
+        version = vim.version.range "3",
     },
 }
 

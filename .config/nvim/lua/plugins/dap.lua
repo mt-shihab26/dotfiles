@@ -1,18 +1,23 @@
 vim.pack.add {
     {
         src = "https://github.com/mfussenegger/nvim-dap",
+        version = "master",
     },
     {
         src = "https://github.com/nvim-neotest/nvim-nio",
+        version = vim.version.range "1",
     },
     {
         src = "https://github.com/rcarriga/nvim-dap-ui",
+        version = "master",
     },
     {
         src = "https://github.com/leoluz/nvim-dap-go",
+        version = "main",
     },
     {
         src = "https://github.com/mfussenegger/nvim-jdtls",
+        version = "master",
     },
 }
 

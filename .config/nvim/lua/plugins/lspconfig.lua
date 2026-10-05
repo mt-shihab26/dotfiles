@@ -1,12 +1,15 @@
 vim.pack.add {
     {
         src = "https://github.com/neovim/nvim-lspconfig",
+        version = vim.version.range "2",
     },
     {
         src = "https://github.com/antosha417/nvim-lsp-file-operations",
+        version = vim.version.range "1",
     },
     {
         src = "https://github.com/j-hui/fidget.nvim",
+        version = vim.version.range "2",
     },
 }
 

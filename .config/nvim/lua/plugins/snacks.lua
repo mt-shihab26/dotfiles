@@ -1,4 +1,9 @@
-vim.pack.add { "https://github.com/folke/snacks.nvim" }
+vim.pack.add {
+    {
+        src = "https://github.com/folke/snacks.nvim",
+        version = vim.version.range "2",
+    },
+}
 
 local snacks = require "snacks"
 local image = require "lib.image"

@@ -1,12 +1,15 @@
 vim.pack.add {
     {
         src = "https://github.com/williamboman/mason.nvim",
+        version = vim.version.range "2",
     },
     {
         src = "https://github.com/williamboman/mason-lspconfig.nvim",
+        version = vim.version.range "2",
     },
     {
         src = "https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim",
+        version = "main",
     },
 }
 

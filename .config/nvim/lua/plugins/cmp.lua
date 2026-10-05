@@ -1,30 +1,39 @@
 vim.pack.add {
     {
         src = "https://github.com/hrsh7th/nvim-cmp",
+        version = "main",
     },
     {
         src = "https://github.com/hrsh7th/cmp-nvim-lsp",
+        version = "main",
     },
     {
         src = "https://github.com/hrsh7th/cmp-nvim-lsp-signature-help",
+        version = "main",
     },
     {
         src = "https://github.com/hrsh7th/cmp-buffer",
+        version = "main",
     },
     {
         src = "https://github.com/hrsh7th/cmp-path",
+        version = "main",
     },
     {
         src = "https://github.com/hrsh7th/cmp-calc",
+        version = "main",
     },
     {
         src = "https://github.com/L3MON4D3/LuaSnip",
+        version = vim.version.range "2",
     },
     {
         src = "https://github.com/saadparwaiz1/cmp_luasnip",
+        version = "master",
     },
     {
         src = "https://github.com/roobert/tailwindcss-colorizer-cmp.nvim",
+        version = "main",
     },
 }
 

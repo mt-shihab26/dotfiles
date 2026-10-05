@@ -9,6 +9,7 @@ vim.pack.add {
     },
     {
         src = "https://github.com/windwp/nvim-ts-autotag",
+        version = "main",
     },
     {
         src = "https://github.com/folke/ts-comments.nvim",
