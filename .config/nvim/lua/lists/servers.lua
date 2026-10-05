@@ -38,7 +38,7 @@ return {
     "turbo_ls", -- bun install -g turbo-language-server
     "stimulus_ls",
     -- Lisp
-    "sextant", -- .setup/nvim/sextant.sh
+    "sextant", -- setup/nvim/sextant.sh
     -- GLSL
     "glsl_analyzer",
 }

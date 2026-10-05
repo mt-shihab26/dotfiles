@@ -37,7 +37,7 @@ o.bind("CTRL + SHIFT + DELETE", "Clear clipboard history", "clipboard-clear")
 -- Restart the Omarchy shell.
 o.bind("SUPER + CTRL + ALT + S", "Restart Omarchy shell", "omarchy restart shell")
 
--- Use KDE apps in place of Omarchy's GNOME defaults (installed by the per-app scripts in .setup/os).
+-- Use KDE apps in place of Omarchy's GNOME defaults (installed by the per-app scripts in setup/os).
 -- Dolphin needs the arch- menu prefix to populate "Open With" outside Plasma.
 hl.env("XDG_MENU_PREFIX", "arch-")
 

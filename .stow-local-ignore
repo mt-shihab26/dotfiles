@@ -29,7 +29,8 @@ _darcs
 .luarc.json
 .stylua.toml
 
-.setup
+setup
+samples
 README.md
 AGENTS.md
 link.sh

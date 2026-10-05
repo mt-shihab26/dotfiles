@@ -1,6 +1,6 @@
 local dap = require "dap"
 
--- needs the xdebug extension with xdebug.mode=debug, see .setup/php/00_php.sh
+-- needs the xdebug extension with xdebug.mode=debug, see setup/php/00_php.sh
 dap.adapters.php = {
     type = "executable",
     command = "php-debug-adapter",
