@@ -9,6 +9,15 @@ function M.mdx()
     }
 end
 
+--- treat *.gitconfig files (like config fragments pulled in by [include]) as "gitconfig"
+function M.gitconfig()
+    vim.filetype.add {
+        extension = {
+            gitconfig = "gitconfig",
+        },
+    }
+end
+
 local glsl_patterns = {
     "^%s*#version%s",
     "^%s*precision%s+%a+%s+%a+%s*;",

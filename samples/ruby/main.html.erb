@@ -1,0 +1,14 @@
+<h1><%= @title %></h1>
+
+<% if @people.empty? %>
+  <p>No one here.</p>
+<% else %>
+  <ul>
+    <% @people.each do |person| %>
+      <li class="<%= "first" if person == @people.first %>">Hello, <%= person.name %>!</li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%# a comment %>
+<%= render "button", label: "Save" %>

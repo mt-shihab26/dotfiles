@@ -1,0 +1,14 @@
+# sample git config
+[user]
+    name = Sample User
+    email = sample@example.com
+
+[init]
+    defaultBranch = main
+
+[alias]
+    st = status --short
+    lg = log --oneline --graph
+
+[pull]
+    rebase = true

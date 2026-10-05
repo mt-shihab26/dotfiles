@@ -88,4 +88,5 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 -- custom filetype detection
 local filetype = require "lib.filetype"
 filetype.mdx()
+filetype.gitconfig()
 filetype.glsl()

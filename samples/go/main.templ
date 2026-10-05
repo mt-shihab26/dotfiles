@@ -1,0 +1,28 @@
+package main
+
+type Person struct {
+	Name string
+	Age  int
+}
+
+templ Greeting(person Person) {
+	<p class="greeting">Hello, { person.Name }!</p>
+}
+
+templ Page(title string, people []Person) {
+	<html lang="en">
+		<head>
+			<title>{ title }</title>
+		</head>
+		<body>
+			<h1>{ title }</h1>
+			if len(people) == 0 {
+				<p>No one here.</p>
+			} else {
+				for _, person := range people {
+					@Greeting(person)
+				}
+			}
+		</body>
+	</html>
+}

@@ -1,0 +1,20 @@
+{% extends "layout.twig" %}
+
+{% block title %}Sample{% endblock %}
+
+{% block content %}
+    <h1>{{ title|upper }}</h1>
+
+    {% if people is empty %}
+        <p>No one here.</p>
+    {% else %}
+        <ul>
+            {% for person in people %}
+                <li class="{{ loop.first ? 'first' : '' }}">Hello, {{ person.name }}!</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    {# a comment #}
+    {{ include("button.twig", { label: "Save" }) }}
+{% endblock %}

@@ -1,7 +1,7 @@
 #version 450 core
 
 // tessellation control shader: runs once per patch vertex, sets how finely the patch is subdivided
-layout (vertices = 3) out;
+layout(vertices = 3) out;
 
 uniform float uLevel;
 

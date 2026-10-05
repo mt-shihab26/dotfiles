@@ -1,0 +1,12 @@
+{
+    "name": "sample",
+    "version": "1.0.0",
+    "private": true,
+    "tags": ["neovim", "sample"],
+    "limits": {
+        "retries": 3,
+        "timeout": 2.5,
+        "strict": false,
+        "fallback": null
+    }
+}

@@ -1,5 +1,5 @@
 return {
-    -- Conf
+    -- Data
     "jsonls",
     "yamlls",
     -- HTML

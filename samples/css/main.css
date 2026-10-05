@@ -1,0 +1,28 @@
+:root {
+    --accent: #7aa2f7;
+    --gap: 1rem;
+}
+
+body {
+    margin: 0;
+    font-family: system-ui, sans-serif;
+    color: #1a1b26;
+}
+
+.card {
+    display: grid;
+    gap: var(--gap);
+    padding: calc(var(--gap) * 2);
+    border: 1px solid var(--accent);
+    border-radius: 0.5rem;
+}
+
+.card:hover > .title {
+    color: var(--accent);
+}
+
+@media (max-width: 600px) {
+    .card {
+        padding: var(--gap);
+    }
+}

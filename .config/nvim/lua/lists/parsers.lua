@@ -1,9 +1,8 @@
 return {
-    -- Conf
+    -- Data
     "json",
     "yaml",
     "toml",
-    "dockerfile",
     -- Git
     "diff",
     "git_config",
@@ -18,15 +17,12 @@ return {
     "markdown_inline",
     -- CSS
     "css",
-    -- Bash
+    -- Shell
     "bash",
     -- Lua
     "lua",
     "luadoc",
     "luap",
-    -- Vim
-    "vimdoc",
-    "vim",
     -- C/C++
     "c",
     "cpp",

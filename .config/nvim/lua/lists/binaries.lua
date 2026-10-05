@@ -1,5 +1,5 @@
 return {
-    -- Conf
+    -- Data
     "json-lsp",
     "yaml-language-server",
     -- HTML
@@ -9,7 +9,7 @@ return {
     "css-lsp",
     "css-variables-language-server",
     "tailwindcss-language-server",
-    -- Bash
+    -- Shell
     "bash-language-server",
     "shfmt",
     "bash-debug-adapter",

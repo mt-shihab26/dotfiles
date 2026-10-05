@@ -1,5 +1,5 @@
 return {
-    -- Conf
+    -- Data
     json = { "vp", "prettier", stop_after_first = true },
     yaml = { "vp", "prettier", stop_after_first = true },
     toml = { "vp", "prettier", stop_after_first = true },
@@ -10,11 +10,10 @@ return {
     svg = { "prettier" },
     -- CSS
     css = { "vp", "prettier", stop_after_first = true },
-    -- Bash
+    -- Shell
     sh = { "shfmt" },
     bash = { "shfmt" },
     zsh = { "shfmt" },
-    fish = { "fish_indent" },
     -- Lua
     lua = { "stylua" },
     -- C/C++

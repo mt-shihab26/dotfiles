@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- sample catalog -->
+<catalog xmlns:x="https://example.com/x">
+    <book id="b1" available="true">
+        <title>Sample Book</title>
+        <price currency="USD">9.99</price>
+        <x:note><![CDATA[kept <as is>]]></x:note>
+    </book>
+    <book id="b2" available="false">
+        <title>Another &amp; Better Book</title>
+        <price currency="EUR">12.50</price>
+    </book>
+</catalog>

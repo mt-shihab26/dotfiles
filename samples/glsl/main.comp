@@ -1,9 +1,9 @@
 #version 450 core
 
 // compute shader: general-purpose GPU work, not part of the rendering pipeline
-layout (local_size_x = 8, local_size_y = 8) in;
+layout(local_size_x = 8, local_size_y = 8) in;
 
-layout (rgba32f, binding = 0) uniform image2D uImage;
+layout(rgba32f, binding = 0) uniform image2D uImage;
 
 void main() {
     ivec2 pixel = ivec2(gl_GlobalInvocationID.xy);

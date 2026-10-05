@@ -1,0 +1,27 @@
+---
+interface Props {
+    title?: string;
+}
+
+const { title = "Sample" } = Astro.props;
+const names = ["world", "Neovim"];
+---
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>{title}</title>
+    </head>
+    <body>
+        <h1>{title}</h1>
+        <ul>
+            {names.map(name => <li>Hello, {name}!</li>)}
+        </ul>
+    </body>
+</html>
+
+<style>
+    h1 {
+        color: #7aa2f7;
+    }
+</style>
