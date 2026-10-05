@@ -23,6 +23,7 @@ return {
     "lua",
     "luadoc",
     "luap",
+    "vimdoc",
     -- C/C++
     "c",
     "cpp",
