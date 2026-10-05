@@ -44,4 +44,6 @@ return {
     eruby = { "erb_format" },
     -- Lisp
     -- no formatter listed, formatted by the sextant LSP (conform lsp_format = "fallback")
+    -- GLSL
+    -- no formatter listed, formatted by the glsl_analyzer LSP (conform lsp_format = "fallback")
 }

@@ -85,26 +85,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     end,
 })
 
--- Treat .mdx files as the "mdx" filetype, and .fs/.vs files that open with a
--- #version directive as GLSL shaders (.fs otherwise stays F#/Forth).
-local function is_glsl(bufnr)
-    local first = vim.api.nvim_buf_get_lines(bufnr, 0, 1, false)[1] or ""
-    return first:match "^#version" ~= nil
-end
-
-vim.filetype.add {
-    extension = {
-        mdx = "mdx",
-        fs = function(path, bufnr)
-            if is_glsl(bufnr) then
-                return "glsl"
-            end
-            return require("vim.filetype.detect").fs(path, bufnr)
-        end,
-        vs = function(_, bufnr)
-            if is_glsl(bufnr) then
-                return "glsl"
-            end
-        end,
-    },
-}
+-- custom filetype detection
+local filetype = require "lib.filetype"
+filetype.mdx()
+filetype.glsl()
