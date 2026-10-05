@@ -20,6 +20,12 @@ vim.pack.add {
 local neo_tree = require "neo-tree"
 
 neo_tree.setup {
+    default_component_configs = {
+        file_size = { enabled = false },
+        type = { enabled = false },
+        last_modified = { enabled = false },
+        created = { enabled = false },
+    },
     filesystem = {
         use_libuv_file_watcher = true,
         hijack_netrw_behavior = "disabled",
