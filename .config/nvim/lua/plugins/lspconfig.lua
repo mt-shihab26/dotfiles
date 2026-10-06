@@ -17,6 +17,7 @@ local fidget = require "fidget"
 local lsp_file_operations = require "lsp-file-operations"
 local cmp_nvim_lsp = require "cmp_nvim_lsp"
 local lsp = require "lib.lsp"
+local buffer = require "lib.buffer"
 
 fidget.setup { notification = { window = { winblend = 0 } } }
 
@@ -34,7 +35,7 @@ local lsp_start = vim.lsp.start
 ---@diagnostic disable-next-line: duplicate-set-field
 vim.lsp.start = function(config, opts)
     local bufnr = vim._resolve_bufnr(opts and opts.bufnr)
-    if lsp.is_stopped(bufnr) then
+    if buffer.is_stopped(bufnr, "lsp") then
         return nil
     end
     return lsp_start(config, opts)

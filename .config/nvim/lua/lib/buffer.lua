@@ -48,4 +48,21 @@ function M.close_terminals_or_others()
     end
 end
 
+-- true when the comments opening the buffer (after a shebang, if any) include "stop: <feature>",
+-- one per line, e.g. "-- stop: lsp" followed by "-- stop: format"
+function M.is_stopped(bufnr, feature)
+    local lines = vim.api.nvim_buf_get_lines(bufnr, 0, 10, false)
+    local first = (lines[1] or ""):match "^#!" and 2 or 1
+    for i = first, #lines do
+        local name = lines[i]:match "^%s*%p+%s*stop:%s*(%w+)%s*%p*%s*$"
+        if not name then
+            return false
+        end
+        if name == feature then
+            return true
+        end
+    end
+    return false
+end
+
 return M

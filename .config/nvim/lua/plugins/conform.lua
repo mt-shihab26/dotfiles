@@ -7,6 +7,7 @@ vim.pack.add {
 
 local conform = require "conform"
 local formatters_by_ft = require "lists.formatters"
+local buffer = require "lib.buffer"
 
 --- Walk up from the buffer's directory to find a project-local vite-plus binary.
 local function find_local_vp(dirname)
@@ -42,7 +43,7 @@ conform.setup {
         },
     },
     format_on_save = function(bufnr)
-        if vim.g.disable_autoformat then
+        if vim.g.disable_autoformat or buffer.is_stopped(bufnr, "format") then
             return
         end
         return {
