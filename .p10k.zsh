@@ -53,6 +53,7 @@
     dir                       # current directory
     vcs                       # git status
     command_execution_time    # previous command duration
+    status                    # exit code of the previous command, if non-zero
     # =========================[ Line #2 ]=========================
     newline                   # \n
     virtualenv                # python virtual environment
@@ -118,6 +119,17 @@
   typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_FORMAT='d h m s'
   # Yellow previous command duration.
   typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_FOREGROUND=$yellow
+
+  # Show the previous command's exit code only when it's non-zero.
+  typeset -g POWERLEVEL9K_STATUS_OK=false
+  typeset -g POWERLEVEL9K_STATUS_OK_PIPE=false
+  typeset -g POWERLEVEL9K_STATUS_ERROR=true
+  # Show the numeric code (130) rather than the signal name (INT).
+  typeset -g POWERLEVEL9K_STATUS_ERROR_SIGNAL=false
+  # Show every exit code of a failed pipeline: 1|0.
+  typeset -g POWERLEVEL9K_STATUS_ERROR_PIPE=true
+  # Red exit code.
+  typeset -g POWERLEVEL9K_STATUS_ERROR{,_PIPE}_FOREGROUND=$red
 
   # Grey Git prompt. This makes stale prompts indistinguishable from up-to-date ones.
   typeset -g POWERLEVEL9K_VCS_FOREGROUND=$grey
