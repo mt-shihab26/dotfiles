@@ -29,6 +29,17 @@ local capabilities = vim.tbl_deep_extend(
     lsp_file_operations.default_capabilities()
 )
 
+-- every client start (including vim.lsp.enable) goes through vim.lsp.start
+local lsp_start = vim.lsp.start
+---@diagnostic disable-next-line: duplicate-set-field
+vim.lsp.start = function(config, opts)
+    local bufnr = vim._resolve_bufnr(opts and opts.bufnr)
+    if lsp.is_stopped(bufnr) then
+        return nil
+    end
+    return lsp_start(config, opts)
+end
+
 local servers = require "lists.servers"
 
 for _, server_name in ipairs(servers) do

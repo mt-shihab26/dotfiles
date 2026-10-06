@@ -31,6 +31,16 @@ function M.restart()
     end
 end
 
+-- true when the buffer's first line (the one after a shebang, if any) is a "stop: lsp" comment
+function M.is_stopped(bufnr)
+    local lines = vim.api.nvim_buf_get_lines(bufnr, 0, 2, false)
+    local line = lines[1] or ""
+    if line:match "^#!" then
+        line = lines[2] or ""
+    end
+    return line:match "^%s*%p+%s*stop:%s*lsp%s*%p*%s*$" ~= nil
+end
+
 function M.has_ts7(root)
     local pkg = vim.fs.joinpath(root, "node_modules/typescript/package.json")
     local f = io.open(pkg, "r")
