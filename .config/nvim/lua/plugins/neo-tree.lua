@@ -19,6 +19,18 @@ vim.pack.add {
 
 local neo_tree = require "neo-tree"
 
+-- a buffer whose file was deleted outside neovim can't be revealed; scanning its missing
+-- folder makes neo-tree error on focus/follow, so reveal nothing for it
+local manager = require "neo-tree.sources.manager"
+local get_path_to_reveal = manager.get_path_to_reveal
+manager.get_path_to_reveal = function(...)
+    local path = get_path_to_reveal(...)
+    if path and not vim.uv.fs_stat(path) then
+        return nil
+    end
+    return path
+end
+
 neo_tree.setup {
     default_component_configs = {
         file_size = { enabled = false },
