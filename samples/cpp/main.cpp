@@ -7,7 +7,8 @@ class Person {
   public:
     Person(std::string name, int age) : name_(std::move(name)), age_(age) {}
 
-    void greet() const {
+    void
+    greet() const {
         std::cout << "Hello, " << name_ << "! You are " << age_ << ".\n";
     }
 
