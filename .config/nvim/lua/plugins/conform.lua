@@ -41,6 +41,15 @@ conform.setup {
             -- AOSP style uses 4-space indentation instead of Google's default 2-space
             prepend_args = { "--aosp" },
         },
+        pint = {
+            -- pint has no user-level config; fall back to ours when the project has no pint.json
+            prepend_args = function(_, ctx)
+                if vim.fs.find("pint.json", { path = ctx.dirname, upward = true })[1] then
+                    return {}
+                end
+                return { "--config", vim.fn.expand "~/.config/pint/pint.json" }
+            end,
+        },
     },
     format_on_save = function(bufnr)
         if vim.g.disable_autoformat or buffer.is_stopped(bufnr, "format") then

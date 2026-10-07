@@ -1,0 +1,10 @@
+root = true
+
+# shfmt
+[[shell]]
+indent_style = space
+indent_size = 4
+binary_next_line = false
+switch_case_indent = false
+space_redirects = false
+function_next_line = false
