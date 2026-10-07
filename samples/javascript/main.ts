@@ -5,7 +5,8 @@ interface Person {
 
 type Greeter = (person: Person) => string;
 
-const greet: Greeter = person => `Hello, ${person.name}! You are ${person.age}.`;
+const greet: Greeter = person =>
+    `Hello, ${person.name}! You are ${person.age}.`;
 
 function sum(numbers: readonly number[]): number {
     return numbers.reduce((total, n) => total + n, 0);

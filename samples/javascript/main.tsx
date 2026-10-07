@@ -9,7 +9,10 @@ function Counter({ label, step = 1 }: CounterProps) {
     const [count, setCount] = useState<number>(0);
 
     return (
-        <button type="button" onClick={() => setCount(count + step)}>
+        <button
+            type="button"
+            onClick={() => setCount(count + step)}
+        >
             {label}: {count}
         </button>
     );

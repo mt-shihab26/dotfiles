@@ -4,7 +4,10 @@ function Counter({ label, step = 1 }) {
     const [count, setCount] = useState(0);
 
     return (
-        <button type="button" onClick={() => setCount(count + step)}>
+        <button
+            type="button"
+            onClick={() => setCount(count + step)}
+        >
             {label}: {count}
         </button>
     );

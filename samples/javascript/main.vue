@@ -14,7 +14,12 @@ function increment() {
 <template>
     <main class="counter">
         <p v-if="count > 0">doubled: {{ doubled }}</p>
-        <button type="button" @click="increment">{{ label }}: {{ count }}</button>
+        <button
+            type="button"
+            @click="increment"
+        >
+            {{ label }}: {{ count }}
+        </button>
     </main>
 </template>
 
