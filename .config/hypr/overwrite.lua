@@ -15,6 +15,10 @@ hl.config {
             drag_3fg = 1,
         },
     },
+    misc = {
+        -- No "Application Not Responding" dialog: it pops up whenever a program is paused in a debugger.
+        enable_anr_dialog = false,
+    },
 }
 
 -- Switch workspaces with ALT + [1-9] (code:10-code:18 are the number-row keys).
