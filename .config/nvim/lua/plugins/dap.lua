@@ -27,6 +27,26 @@ local debuggers = require "lists.debuggers"
 
 dapui.setup {}
 
+-- closing a window next to the debugger sidebar (e.g. neo-tree) hands its space to the sidebar, which
+-- dap-ui then remembers, so it grows every time; put the sidebar back to its width after a window closes
+vim.api.nvim_create_autocmd("WinClosed", {
+    callback = function()
+        local widths = {}
+        for _, win in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
+            if vim.bo[vim.api.nvim_win_get_buf(win)].filetype:match "^dapui_" then
+                widths[win] = vim.api.nvim_win_get_width(win)
+            end
+        end
+        vim.schedule(function()
+            for win, width in pairs(widths) do
+                if vim.api.nvim_win_is_valid(win) then
+                    vim.api.nvim_win_set_width(win, width)
+                end
+            end
+        end)
+    end,
+})
+
 -- debug adapters (dlv, codelldb, debugpy, ...) are installed by Mason, see lists/binaries.lua
 for _, debugger_name in ipairs(debuggers) do
     require("debuggers." .. debugger_name)
