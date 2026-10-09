@@ -36,7 +36,21 @@ vim.fn.sign_define("DapBreakpoint", { text = "●", texthl = "DiagnosticError" }
 vim.fn.sign_define("DapBreakpointCondition", { text = "◆", texthl = "DiagnosticError" })
 vim.fn.sign_define("DapBreakpointRejected", { text = "○", texthl = "DiagnosticError" })
 vim.fn.sign_define("DapLogPoint", { text = "◉", texthl = "DiagnosticInfo" })
-vim.fn.sign_define("DapStopped", { text = "→", texthl = "DiagnosticWarn", linehl = "CursorLine" })
+vim.fn.sign_define("DapStopped", { text = "→", texthl = "DiagnosticWarn", linehl = "DapStoppedLine" })
+
+-- yellow tinted background for the line the debugger stopped on (like visual studio), mixed from the
+-- colorscheme's warning color so it fits every theme, and recomputed when the colorscheme changes
+local function set_stopped_line_highlight()
+    local warn = vim.api.nvim_get_hl(0, { name = "DiagnosticWarn", link = false }).fg or 0xe0af68
+    local normal = vim.api.nvim_get_hl(0, { name = "Normal", link = false }).bg or 0x000000
+    local function mix(shift)
+        local a, b = bit.band(bit.rshift(warn, shift), 0xff), bit.band(bit.rshift(normal, shift), 0xff)
+        return bit.lshift(math.floor(a * 0.3 + b * 0.7), shift)
+    end
+    vim.api.nvim_set_hl(0, "DapStoppedLine", { bg = mix(16) + mix(8) + mix(0) })
+end
+set_stopped_line_highlight()
+vim.api.nvim_create_autocmd("ColorScheme", { callback = set_stopped_line_highlight })
 
 -- per-project configurations from .dap/debug.json (same format as .vscode/launch.json)
 dap.providers.configs["project-debug-json"] = function()
