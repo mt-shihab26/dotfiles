@@ -73,8 +73,10 @@ map("n", "<leader>bi", "<cmd>DapStepInto<cr>", { desc = "step into (dap)" })
 map("n", "<leader>bo", "<cmd>DapStepOver<cr>", { desc = "step over (dap)" })
 map("n", "<leader>bO", "<cmd>DapStepOut<cr>", { desc = "step out (dap)" })
 map("n", "<leader>bB", dap.step_back, { desc = "step back (dap)" })
+map("n", "<leader>br", dap.run_to_cursor, { desc = "run to cursor (dap)" })
 map("n", "<leader>bl", dap.run_last, { desc = "run last debug session again (dap)" })
 map("n", "<leader>bq", "<cmd>DapTerminate<cr>", { desc = "stop debugging (dap)" })
+map("n", "<leader>bQ", dap.close, { desc = "stop debugging and close the debugger ui (dap)" })
 map("n", "<leader>bd", "<cmd>DapDisconnect<cr>", { desc = "disconnect from debug session (dap)" })
 map("n", "<leader>bb", "<cmd>DapToggleBreakpoint<cr>", { desc = "toggle breakpoint (dap)" })
 map("n", "<leader>bc", dap.conditional_breakpoint, { desc = "set conditional breakpoint (dap)" })
@@ -82,6 +84,7 @@ map("n", "<leader>bx", "<cmd>DapClearBreakpoints<cr>", { desc = "clear all break
 map("n", "<leader>bu", dap.toggle_ui, { desc = "toggle debugger ui (dap-ui)" })
 map({ "n", "v" }, "<leader>be", dap.eval, { desc = "evaluate expression under cursor (dap-ui)" })
 map("n", "<leader>bt", dap.debug_go_test, { desc = "debug nearest go test (dap-go)" })
+map("n", "<LeftMouse>", dap.click_breakpoint, { expr = true, desc = "click the margin to toggle a breakpoint (dap)" })
 
 -- discoverability (which-key)
 local which_key = require "lib.which_key"
