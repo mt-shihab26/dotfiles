@@ -52,7 +52,7 @@ end
 
 function M.toggle_ui()
     local dapui = require "dapui"
-    dapui.toggle()
+    dapui.toggle { reset = true }
 end
 
 function M.eval()

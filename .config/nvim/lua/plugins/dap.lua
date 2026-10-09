@@ -114,7 +114,11 @@ dap.listeners.on_config["pre-launch-command"] = function(config)
 end
 
 -- open the ui when a session starts and close it when the session ends
-dap.listeners.before.attach.dapui_config = dapui.open
-dap.listeners.before.launch.dapui_config = dapui.open
+-- (reset: always open at the configured size, not a size left over from an earlier session)
+local function open_ui()
+    dapui.open { reset = true }
+end
+dap.listeners.before.attach.dapui_config = open_ui
+dap.listeners.before.launch.dapui_config = open_ui
 dap.listeners.before.event_terminated.dapui_config = dapui.close
 dap.listeners.before.event_exited.dapui_config = dapui.close
