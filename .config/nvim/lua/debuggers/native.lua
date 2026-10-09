@@ -1,5 +1,9 @@
 local dap = require "dap"
 
+-- the debugger used for C/C++/Rust: "gdb" or "codelldb"
+-- configurations with `type = "native"` (also in .dap/debug.json) use it
+local native_debugger = "codelldb" -- change to "gdb" to switch
+
 -- compile the current file with debug info and return the path of the executable
 local function build(compiler)
     return function()
@@ -21,14 +25,14 @@ end
 local function configurations(compiler)
     return {
         {
-            type = "codelldb",
+            type = "native",
             request = "launch",
             name = "Build and launch file",
             program = build(compiler),
             cwd = "${workspaceFolder}",
         },
         {
-            type = "codelldb",
+            type = "native",
             request = "launch",
             name = "Launch executable",
             program = pick_executable,
@@ -41,6 +45,17 @@ dap.adapters.codelldb = {
     type = "executable",
     command = "codelldb",
 }
+
+-- gdb 14+ has a built-in debug adapter
+dap.adapters.gdb = {
+    type = "executable",
+    command = "gdb",
+    args = { "--interpreter=dap" },
+}
+
+dap.adapters.native = function(callback)
+    callback(dap.adapters[native_debugger])
+end
 
 dap.configurations.c = configurations { "cc", "-g" }
 dap.configurations.cpp = configurations { "c++", "-g" }

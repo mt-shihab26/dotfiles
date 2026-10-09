@@ -57,6 +57,18 @@ dap.providers.configs["project-debug-json"] = function()
     return require("dap.ext.vscode").getconfigs(vim.fn.getcwd() .. "/.dap/debug.json")
 end
 
+-- ask for function parameters in the call stack (e.g. "draw(int count = 6)") when the debugger supports it
+-- (gdb does, codelldb doesn't), nvim-dap doesn't request them by itself
+local Session = require "dap.session"
+local session_request = Session.request
+function Session:request(command, arguments, on_result)
+    if command == "stackTrace" and arguments and not arguments.format and self.capabilities.supportsValueFormattingOptions then
+        local format = { parameters = true, parameterTypes = true, parameterNames = true, parameterValues = true }
+        arguments = vim.tbl_extend("force", arguments, { format = format })
+    end
+    return session_request(self, command, arguments, on_result)
+end
+
 -- run a configuration's `preLaunchCommand` (e.g. a build script from .vscode/launch.json) before launching,
 -- and abort the launch if it fails
 dap.listeners.on_config["pre-launch-command"] = function(config)

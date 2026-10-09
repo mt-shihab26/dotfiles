@@ -1,8 +1,8 @@
 return {
     -- Bash
     "bash",
-    -- C/C++, Rust
-    "codelldb",
+    -- C/C++, Rust (gdb or codelldb, see debuggers/native.lua)
+    "native",
     -- Python
     "python",
     -- Java
