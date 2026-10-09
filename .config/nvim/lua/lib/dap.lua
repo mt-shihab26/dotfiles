@@ -1,5 +1,20 @@
 local M = {}
 
+-- start debugging, or continue if a session is already running.
+-- when the project's .dap/debug.json defines exactly one configuration, start it without asking,
+-- otherwise show the usual configuration menu
+function M.continue()
+    local dap = require "dap"
+    if not dap.session() then
+        local configs = dap.providers.configs["project-debug-json"](vim.api.nvim_get_current_buf())
+        if #configs == 1 then
+            dap.run(configs[1])
+            return
+        end
+    end
+    dap.continue()
+end
+
 function M.conditional_breakpoint()
     local dap = require "dap"
     vim.ui.input({ prompt = "Breakpoint condition: " }, function(condition)

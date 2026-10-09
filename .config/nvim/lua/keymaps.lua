@@ -67,7 +67,7 @@ map("n", "<leader>L", "<cmd>LazyGit<cr>", { desc = "open lazygit window (lazygit
 -- debugging (dap)
 local dap = require "lib.dap"
 
-map("n", "<leader>bp", "<cmd>DapContinue<cr>", { desc = "start or continue debugging (dap)" })
+map("n", "<leader>bp", dap.continue, { desc = "start or continue debugging (dap)" })
 map("n", "<leader>bP", "<cmd>DapPause<cr>", { desc = "pause debugging (dap)" })
 map("n", "<leader>bi", "<cmd>DapStepInto<cr>", { desc = "step into (dap)" })
 map("n", "<leader>bo", "<cmd>DapStepOver<cr>", { desc = "step over (dap)" })
