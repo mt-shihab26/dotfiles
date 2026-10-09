@@ -38,6 +38,35 @@ vim.fn.sign_define("DapBreakpointRejected", { text = "○", texthl = "Diagnostic
 vim.fn.sign_define("DapLogPoint", { text = "◉", texthl = "DiagnosticInfo" })
 vim.fn.sign_define("DapStopped", { text = "→", texthl = "DiagnosticWarn", linehl = "CursorLine" })
 
+-- per-project configurations from .dap/debug.json (same format as .vscode/launch.json)
+dap.providers.configs["project-debug-json"] = function()
+    return require("dap.ext.vscode").getconfigs(vim.fn.getcwd() .. "/.dap/debug.json")
+end
+
+-- run a configuration's `preLaunchCommand` (e.g. a build script from .vscode/launch.json) before launching,
+-- and abort the launch if it fails
+dap.listeners.on_config["pre-launch-command"] = function(config)
+    if not config.preLaunchCommand then
+        return config
+    end
+    config = vim.deepcopy(config)
+
+    local co = coroutine.running()
+    vim.notify("Running " .. config.preLaunchCommand)
+    vim.system({ "sh", "-c", config.preLaunchCommand }, { text = true, cwd = vim.fn.getcwd() }, function(res)
+        vim.schedule(function()
+            coroutine.resume(co, res)
+        end)
+    end)
+    local res = coroutine.yield()
+
+    if res.code ~= 0 then
+        vim.notify(res.stdout .. res.stderr, vim.log.levels.ERROR)
+        config.program = dap.ABORT
+    end
+    return config
+end
+
 -- open the ui when a session starts and close it when the session ends
 dap.listeners.before.attach.dapui_config = dapui.open
 dap.listeners.before.launch.dapui_config = dapui.open
