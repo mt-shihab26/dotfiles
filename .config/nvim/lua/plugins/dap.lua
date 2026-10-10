@@ -72,9 +72,9 @@ end
 set_stopped_line_highlight()
 vim.api.nvim_create_autocmd("ColorScheme", { callback = set_stopped_line_highlight })
 
--- per-project configurations from .dap/debug.json (same format as .vscode/launch.json)
+-- per-project configurations from debug.json (same format as .vscode/launch.json)
 dap.providers.configs["project-debug-json"] = function()
-    return require("dap.ext.vscode").getconfigs(vim.fn.getcwd() .. "/.dap/debug.json")
+    return require("dap.ext.vscode").getconfigs(vim.fn.getcwd() .. "/debug.json")
 end
 
 -- ask for function parameters in the call stack (e.g. "draw(int count = 6)") when the debugger supports it

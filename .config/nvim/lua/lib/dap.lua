@@ -1,7 +1,7 @@
 local M = {}
 
 -- start debugging, or continue if a session is already running.
--- when the project's .dap/debug.json defines exactly one configuration, start it without asking,
+-- when the project's debug.json defines exactly one configuration, start it without asking,
 -- otherwise show the usual configuration menu
 function M.continue()
     local dap = require "dap"

@@ -1,7 +1,7 @@
 local dap = require "dap"
 
 -- the debugger used for C/C++/Rust: "gdb" or "codelldb"
--- configurations with `type = "native"` (also in .dap/debug.json) use it
+-- configurations with `type = "native"` (also in debug.json) use it
 local native_debugger = "codelldb" -- change to "gdb" to switch
 -- local native_debugger = "gdb" -- change to "codelldb" to switch
 
