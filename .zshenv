@@ -14,6 +14,18 @@ if [[ -z "$LANG" ]]; then
         LC_IDENTIFICATION
 fi
 
+# Unlike sh, zsh's `export NAME` creates an unset NAME as an empty string, so
+# the export above leaves every LC_* that locale.conf doesn't assign as "".
+# libc treats that as unset, but programs that only test getenv() for NULL
+# (e.g. GLFW picking its xkbcommon compose locale) take the empty value over
+# LANG. Drop the empty ones, including any inherited from a parent shell.
+for _locale_var in LANGUAGE LC_ALL LC_CTYPE LC_NUMERIC LC_TIME LC_COLLATE \
+    LC_MONETARY LC_MESSAGES LC_PAPER LC_NAME LC_ADDRESS LC_TELEPHONE \
+    LC_MEASUREMENT LC_IDENTIFICATION; do
+    [[ -v $_locale_var && -z ${(P)_locale_var} ]] && unset $_locale_var
+done
+unset _locale_var
+
 # Editor used by CLI tools (git commit, sudoedit, crontab -e, ...), which can
 # run from non-interactive/non-login shells too (e.g. a bare `ssh host git
 # commit`).
