@@ -33,6 +33,7 @@ return {
     "vtsls",
     "vue-language-server",
     "astro-language-server",
+    "prisma-language-server",
     "prettier",
     "js-debug-adapter",
     -- PHP
@@ -52,5 +53,5 @@ return {
     "stimulus-language-server",
     "erb-formatter",
     -- GLSL
-    "glsl_analyzer"
+    "glsl_analyzer",
 }

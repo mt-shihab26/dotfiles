@@ -39,6 +39,7 @@ return {
     "tsx",
     "astro",
     "vue",
+    "prisma",
     -- PHP
     "php",
     "php_only",

@@ -24,6 +24,7 @@ return {
     "vtsls",
     "vue_ls",
     "astro",
+    "prismals",
     -- PHP
     -- "intelephense",
     "phpantom_lsp",

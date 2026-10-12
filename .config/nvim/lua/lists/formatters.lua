@@ -30,6 +30,7 @@ return {
     typescriptreact = { "vp", "prettier", stop_after_first = true },
     vue = { "vp", "prettier", stop_after_first = true },
     astro = { "prettier" },
+    -- prisma: no formatter listed, formatted by the prismals LSP (conform lsp_format = "fallback")
     -- PHP
     php = { "pint" },
     blade = { "prettier" },
