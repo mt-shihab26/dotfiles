@@ -1,0 +1,13 @@
+# Global clangd config. A project's own .clangd overrides these.
+
+# Parse as if built with gcc. clangd only queries it when the path is
+# whitelisted with --query-driver (see nvim/lua/lsp/clangd.lua).
+CompileFlags:
+  Compiler: gcc
+
+---
+# Default to the latest stable C standard for C sources.
+If:
+  PathMatch: .*\.c
+CompileFlags:
+  Add: [-std=c23]
