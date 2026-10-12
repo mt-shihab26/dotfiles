@@ -4,3 +4,4 @@ source "$HOME/.config/zsh/aliases.zsh"
 source "$HOME/.config/zsh/functions.zsh"
 source "$HOME/.config/zsh/init.zsh"
 source "$HOME/.config/zsh/keybindings.zsh"
+export SHOPIFY_CLI_CLOUDFLARED_PATH=/usr/bin/cloudflared
