@@ -55,3 +55,11 @@ o.window("org.kde.okular", { tag = "+floating-window" })
 
 -- Float Kate like a gedit-style scratch editor.
 o.window("org.kde.kate", { tag = "+floating-window" })
+
+-- Open Blender's file picker (File > Open / Import / Export) large and centered instead of its small default.
+-- It opens titled "File Browser" and renames itself to "Blender File View" afterwards, so match both.
+o.window({ class = "blender", title = "^(File Browser|Blender File View)$" }, {
+    float = true,
+    center = true,
+    size = { "monitor_w*0.8", "monitor_h*0.8" },
+})
