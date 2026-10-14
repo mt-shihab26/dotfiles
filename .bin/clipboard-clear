@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Clears the Omarchy clipboard manager's history. The plugin's FileView
 # watches this file (watchChanges: true), so writing an empty array here

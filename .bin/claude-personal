@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Label the tmux tab (pane_current_command would just say "bash")
 if [ -n "$TMUX" ]; then
