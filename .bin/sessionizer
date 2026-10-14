@@ -9,6 +9,7 @@ select_projects() {
 select_other() {
     {
         find ~/scratch -mindepth 1 -maxdepth 1 -type d
+        printf '%s\n' "$HOME/scratch"
         printf '%s\n' "$HOME/dotfiles"
         printf '%s\n' "$HOME/Work"
     } | fzf || true
