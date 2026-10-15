@@ -1,12 +1,14 @@
 local M = {}
 
---- treat .mdx files as the "mdx" filetype
+--- treat .mdx files as the "mdx" filetype, highlighted with the markdown parser
+--- (code fences, JSX blocks and frontmatter get their own languages through injections)
 function M.mdx()
     vim.filetype.add {
         extension = {
             mdx = "mdx",
         },
     }
+    vim.treesitter.language.register("markdown", "mdx")
 end
 
 --- treat *.gitconfig files (like config fragments pulled in by [include]) as "gitconfig"

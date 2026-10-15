@@ -13,6 +13,7 @@ map("n", "<leader>tw", toggle.wrap, { desc = "toggle line wrapping on/off" })
 map("n", "<leader>tf", toggle.format_on_save, { desc = "toggle format on save" })
 map("n", "<leader>tc", toggle.completion, { desc = "toggle completion (cmp)" })
 map("n", "<leader>ts", toggle.semantic_tokens, { desc = "toggle lsp semantic tokens highlighting" })
+map("n", "<leader>tm", toggle.markdown_render, { desc = "toggle markdown rendering (render-markdown)" })
 
 -- window navigation
 map("n", "<leader>j", "<C-w>j", { desc = "move to below window" })

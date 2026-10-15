@@ -58,4 +58,9 @@ function M.semantic_tokens()
     vim.notify("Semantic tokens " .. (enable and "ON" or "OFF"), vim.log.levels.INFO)
 end
 
+-- switch between the rendered view (render-markdown) and the raw markdown
+function M.markdown_render()
+    require("render-markdown").toggle()
+end
+
 return M
