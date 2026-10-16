@@ -35,9 +35,9 @@ end
 
 vim.api.nvim_create_autocmd("WinClosed", { callback = lib_dap.keep_sidebar_width })
 
--- tooltips on the dap-ui toolbar buttons, nvim only reports mouse movement with mousemoveevent on
+-- tooltips on the dap-ui toolbar buttons (the <MouseMove> keymap is in keymaps.lua), nvim only reports mouse
+-- movement with mousemoveevent on
 vim.opt.mousemoveevent = true
-vim.keymap.set({ "n", "i", "v" }, "<MouseMove>", lib_dap.hover_controls, { desc = "show what a debugger toolbar button does on hover (dap-ui)" })
 vim.api.nvim_create_autocmd("WinClosed", {
     callback = function(args)
         lib_dap.close_tooltip_after(tonumber(args.match))
