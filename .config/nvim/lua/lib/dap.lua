@@ -1,10 +1,11 @@
+local dap = require "dap"
+
 local M = {}
 
 -- start debugging, or continue if a session is already running.
 -- when the project's debug.json defines exactly one configuration, start it without asking,
 -- otherwise show the usual configuration menu
 function M.continue()
-    local dap = require "dap"
     if not dap.session() then
         local configs = dap.providers.configs["project-debug-json"](vim.api.nvim_get_current_buf())
         if #configs == 1 then
@@ -15,8 +16,39 @@ function M.continue()
     dap.continue()
 end
 
+function M.pause()
+    dap.pause()
+end
+
+function M.step_into()
+    dap.step_into()
+end
+
+function M.step_over()
+    dap.step_over()
+end
+
+function M.step_out()
+    dap.step_out()
+end
+
+function M.terminate()
+    dap.terminate()
+end
+
+function M.disconnect()
+    dap.disconnect()
+end
+
+function M.toggle_breakpoint()
+    dap.toggle_breakpoint()
+end
+
+function M.clear_breakpoints()
+    dap.clear_breakpoints()
+end
+
 function M.conditional_breakpoint()
-    local dap = require "dap"
     vim.ui.input({ prompt = "Breakpoint condition: " }, function(condition)
         if condition and condition ~= "" then
             dap.set_breakpoint(condition)
@@ -91,13 +123,13 @@ end
 
 local forward_steps = {
     next = function()
-        require("dap").step_over()
+        dap.step_over()
     end,
     stepIn = function()
-        require("dap").step_into()
+        dap.step_into()
     end,
     stepOut = function()
-        require("dap").step_out()
+        dap.step_out()
     end,
 }
 
@@ -125,7 +157,6 @@ end
 -- step back one line; gdb can do it (reverse-next) while recording, but its debug adapter doesn't say it
 -- supports stepping back, so nvim-dap would refuse with "Debug Adapter does not support stepping backwards"
 function M.step_back()
-    local dap = require "dap"
     local session = dap.session()
     if session and session.stopped_thread_id and not session.capabilities.supportsStepBack and is_gdb(session) then
         if not session.gdb_recording then
@@ -140,18 +171,15 @@ function M.step_back()
 end
 
 function M.run_to_cursor()
-    local dap = require "dap"
     dap.run_to_cursor()
 end
 
 function M.run_last()
-    local dap = require "dap"
     dap.run_last()
 end
 
 -- stop the debug session (if any) and close every debugger window
 function M.close()
-    local dap = require "dap"
     local dapui = require "dapui"
     if dap.session() then
         dap.terminate()
@@ -193,7 +221,7 @@ function M.click_breakpoint()
     vim.schedule(function()
         vim.api.nvim_set_current_win(pos.winid)
         vim.api.nvim_win_set_cursor(pos.winid, { pos.line, 0 })
-        require("dap").toggle_breakpoint()
+        dap.toggle_breakpoint()
     end)
     return ""
 end
@@ -240,7 +268,7 @@ function M.hover_controls()
         return
     end
 
-    local session = require("dap").session()
+    local session = dap.session()
     if name == "play" and session and not session.stopped_thread_id then
         name = "pause"
     end
@@ -322,7 +350,7 @@ function M.run_pre_launch_command(config)
 
     if res.code ~= 0 then
         vim.notify(res.stdout .. res.stderr, vim.log.levels.ERROR)
-        config.program = require("dap").ABORT
+        config.program = dap.ABORT
     end
     return config
 end
@@ -362,7 +390,7 @@ M.error_log_path = vim.fn.stdpath "log" .. "/dap-errors.log"
 
 -- append a line to the error log with the time, the debugger type and the given messages or values
 function M.log_error(...)
-    local session = require("dap").session()
+    local session = dap.session()
     local parts = { os.date "%Y-%m-%d %H:%M:%S", session and session.config.type or "-" }
     for _, part in ipairs { ... } do
         parts[#parts + 1] = type(part) == "string" and part or vim.inspect(part, { newline = " ", indent = "" })

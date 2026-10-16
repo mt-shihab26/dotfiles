@@ -85,12 +85,12 @@ map("n", "<leader>s", spectre.search_buffer, { desc = "search on current buffer 
 map("n", "<leader>S", spectre.search_word, { desc = "search on multi buffers (spectre)" })
 map("v", "<leader>S", spectre.search_selection, { desc = "search on multi buffers (spectre)" })
 
--- clipboard
-local clipboard = require "lib.clipboard"
+-- copy file path or name
+local copy = require "lib.copy"
 
-map("n", "<leader>cp", clipboard.path, { desc = "copy current file relative path" })
-map("n", "<leader>ca", clipboard.abs_path, { desc = "copy current file absolute path" })
-map("n", "<leader>cf", clipboard.name, { desc = "copy current file name with extension" })
+map("n", "<leader>cp", copy.path, { desc = "copy current file relative path" })
+map("n", "<leader>ca", copy.abs_path, { desc = "copy current file absolute path" })
+map("n", "<leader>cf", copy.name, { desc = "copy current file name with extension" })
 
 -- toggle
 local toggle = require "lib.toggle"
@@ -124,24 +124,20 @@ vim.api.nvim_create_autocmd("LspAttach", {
         local opts = function(desc)
             return { buffer = args.buf, noremap = true, silent = true, desc = desc }
         end
-        local buf = vim.lsp.buf
-        local diagnostic = vim.diagnostic
 
-        map("n", "gd", buf.definition, opts "go to definition (lspconfig)")
-        map("n", "gD", buf.declaration, opts "go to declaration (lspconfig)")
-        map("n", "gi", buf.implementation, opts "go to implementation (lspconfig)")
-        map("n", "gr", buf.references, opts "go to references (lspconfig)")
+        map("n", "gd", lsp.definition, opts "go to definition (lspconfig)")
+        map("n", "gD", lsp.declaration, opts "go to declaration (lspconfig)")
+        map("n", "gi", lsp.implementation, opts "go to implementation (lspconfig)")
+        map("n", "gr", lsp.references, opts "go to references (lspconfig)")
 
-        map("n", "K", buf.hover, opts "show hover documentation (lspconfig)")
-        map("n", "gK", buf.signature_help, opts "signature help (lspconfig)")
-        map("n", "<leader>a", buf.code_action, opts "code actions (lspconfig)")
-        map("n", "<leader>r", buf.rename, opts "rename symbol (lspconfig)")
+        map("n", "K", lsp.hover, opts "show hover documentation (lspconfig)")
+        map("n", "gK", lsp.signature_help, opts "signature help (lspconfig)")
+        map("n", "<leader>a", lsp.code_action, opts "code actions (lspconfig)")
+        map("n", "<leader>r", lsp.rename, opts "rename symbol (lspconfig)")
 
-        map("n", "<leader>d", diagnostic.open_float, opts "show hover diagnostics (lspconfig)")
-        map("n", "[d", function() diagnostic.jump { count = -1, float = true } end,
-            opts "go to prev diagnostic (lspconfig)")
-        map("n", "]d", function() diagnostic.jump { count = 1, float = true } end,
-            opts "go to next diagnostic (lspconfig)")
+        map("n", "<leader>d", lsp.diagnostic_float, opts "show hover diagnostics (lspconfig)")
+        map("n", "[d", lsp.prev_diagnostic, opts "go to prev diagnostic (lspconfig)")
+        map("n", "]d", lsp.next_diagnostic, opts "go to next diagnostic (lspconfig)")
 
         map("n", "<leader>xs", lsp.start, opts "start lsp server (lspconfig)")
         map("n", "<leader>xS", lsp.stop, opts "stop lsp server (lspconfig)")
@@ -154,33 +150,32 @@ local dap = require "lib.dap"
 
 -- session
 map("n", "<leader>bp", dap.continue, { desc = " start or continue debugging (dap)" })
-map("n", "<leader>bP", "<cmd>DapPause<cr>", { desc = " pause debugging (dap)" })
+map("n", "<leader>bP", dap.pause, { desc = " pause debugging (dap)" })
 map("n", "<leader>bl", dap.run_last, { desc = " run last debug session again (dap)" })
 map("n", "<leader>br", dap.run_to_cursor, { desc = "run to cursor (dap)" })
 map("n", "<leader>bt", dap.debug_go_test, { desc = "debug nearest go test (dap-go)" })
 
 -- stepping
-map("n", "<leader>bi", "<cmd>DapStepInto<cr>", { desc = " step into (dap)" })
-map("n", "<leader>bo", "<cmd>DapStepOver<cr>", { desc = " step over (dap)" })
-map("n", "<leader>bO", "<cmd>DapStepOut<cr>", { desc = " step out (dap)" })
+map("n", "<leader>bi", dap.step_into, { desc = " step into (dap)" })
+map("n", "<leader>bo", dap.step_over, { desc = " step over (dap)" })
+map("n", "<leader>bO", dap.step_out, { desc = " step out (dap)" })
 map("n", "<leader>bB", dap.step_back, { desc = " step back (dap)" })
 
 -- stopping
-map("n", "<leader>bq", "<cmd>DapTerminate<cr>", { desc = " stop debugging (dap)" })
+map("n", "<leader>bq", dap.terminate, { desc = " stop debugging (dap)" })
 map("n", "<leader>bQ", dap.close, { desc = "stop debugging and close the debugger ui (dap)" })
-map("n", "<leader>bd", "<cmd>DapDisconnect<cr>", { desc = " disconnect from debug session (dap)" })
+map("n", "<leader>bd", dap.disconnect, { desc = " disconnect from debug session (dap)" })
 
 -- breakpoints
-map("n", "<leader>bb", "<cmd>DapToggleBreakpoint<cr>", { desc = "toggle breakpoint (dap)" })
+map("n", "<leader>bb", dap.toggle_breakpoint, { desc = "toggle breakpoint (dap)" })
 map("n", "<leader>bc", dap.conditional_breakpoint, { desc = "set conditional breakpoint (dap)" })
-map("n", "<leader>bx", "<cmd>DapClearBreakpoints<cr>", { desc = "clear all breakpoints (dap)" })
+map("n", "<leader>bx", dap.clear_breakpoints, { desc = "clear all breakpoints (dap)" })
 map("n", "<LeftMouse>", dap.click_breakpoint, { expr = true, desc = "click the margin to toggle a breakpoint (dap)" })
 
 -- ui
 map("n", "<leader>bu", dap.toggle_ui, { desc = "toggle debugger ui (dap-ui)" })
 map({ "n", "v" }, "<leader>be", dap.eval, { desc = "evaluate expression under cursor (dap-ui)" })
-map({ "n", "i", "v" }, "<MouseMove>", dap.hover_controls,
-    { desc = "show what a debugger toolbar button does on hover (dap-ui)" })
+map({ "n", "i", "v" }, "<MouseMove>", dap.hover_controls, { desc = "debugger toolbar tooltips (dap-ui)" })
 
 -- discoverability (which-key)
 local which_key = require "lib.which_key"

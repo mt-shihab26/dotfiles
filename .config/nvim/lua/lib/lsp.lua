@@ -1,5 +1,50 @@
 local M = {}
 
+function M.definition()
+    vim.lsp.buf.definition()
+end
+
+function M.declaration()
+    vim.lsp.buf.declaration()
+end
+
+function M.implementation()
+    vim.lsp.buf.implementation()
+end
+
+function M.references()
+    vim.lsp.buf.references()
+end
+
+function M.hover()
+    vim.lsp.buf.hover()
+end
+
+function M.signature_help()
+    vim.lsp.buf.signature_help()
+end
+
+function M.code_action()
+    vim.lsp.buf.code_action()
+end
+
+function M.rename()
+    vim.lsp.buf.rename()
+end
+
+function M.diagnostic_float()
+    vim.diagnostic.open_float()
+end
+
+-- jump to the previous / next diagnostic and show it in a float
+function M.prev_diagnostic()
+    vim.diagnostic.jump { count = -1, float = true }
+end
+
+function M.next_diagnostic()
+    vim.diagnostic.jump { count = 1, float = true }
+end
+
 function M.start()
     local bufnr = vim.api.nvim_get_current_buf()
     local ft = vim.bo[bufnr].filetype
