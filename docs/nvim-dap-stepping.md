@@ -1,6 +1,6 @@
 # nvim-dap: step out / step back / step in break with gdb
 
-Status: **partly fixed, still open.** Written 2026-10-16.
+Status: **fixed in this config** (cases 1-4), upstream report still to do. Written 2026-10-16.
 
 Debugging C/C++ in Neovim with nvim-dap + nvim-dap-ui and gdb's built-in debug adapter (`gdb --interpreter=dap`,
 gdb 17.2), stepping gets stuck: after a step out, step in and step over stop working and show
@@ -54,8 +54,9 @@ support it either.
 
 Workaround in `lib/dap.lua`:
 
-- `start_gdb_recording`: on the first stop of a gdb session, runs `record full` and
-  `set record full stop-at-limit off`
+- `update_gdb_recording` (on every `stackTrace` reply for the top frame, while stopped): runs `record full` and
+  `set record full stop-at-limit off` when the program is stopped in code with source, `record stop` otherwise
+  (case 3)
 - `step_back`: sends `reverse-next` as a repl `evaluate` (also used by the toolbar button through
   `_G._dapui.step_back`)
 - `stop_gdb_recording`: runs `record stop` before every `continue`, otherwise continue stops at the end of the
@@ -64,7 +65,7 @@ Workaround in `lib/dap.lua`:
 Limitation: you can only step back through what was stepped since the last stop that followed a continue. This is
 not full history.
 
-### 3. Stepping off the end of `main` while recording leaves gdb running (open)
+### 3. Stepping off the end of `main` while recording leaves gdb running (fixed)
 
 Reproduced on `samples/c/main.c`:
 
@@ -77,14 +78,28 @@ Reproduced on `samples/c/main.c`:
 
 Without recording, stepping off the end of `main` just lets the program exit and the session ends.
 
-### 4. Forward steps after a step back behave oddly (open)
+Fix: `update_gdb_recording` stops recording when the stop frame has no source. Stepping off the end of `main` now
+stops in `_exit()` with recording off, step back there says `Cannot step back here: gdb only records while stopped
+in code with source`, and the next step lets the program exit and ends the session.
+
+### 4. Forward steps after a step back stop early (fixed)
 
 After a step back gdb is replaying the recorded history, and forward steps replay it too. Seen on `samples/c/main.c`:
 
 - step out of `sum` stopped at `sum:10` instead of returning to `main`
 - step into at `main:25` (`printf("sum: %d\n", sum(numbers, 3));`) went to `main:26` instead of into `sum`
 
-Ordinary steps (step over through history and past its end) worked.
+Cause: this is plain gdb behaviour, also seen with `gdb -batch` and no Neovim. While replaying, any forward
+execution stops at "Reached end of recorded history", which the adapter reports as a stop with reason `"stopped"`
+instead of `"step"`. So step out of `sum` stopped where the history ended (`sum:10`), not in `main`.
+
+Fix: `track_forward_step` remembers each step over/into/out, `step_past_history_end` notes when one stopped with
+reason `"stopped"`, and `update_gdb_recording` sends the same step once more, live, but only if the stop is in code
+with source (the recorder stopping before the exit syscall also reports `"stopped"`, and retrying there hung gdb).
+Verified: after a step back, step out of `sum` returns to `main:25`.
+
+Remaining quirk: the retried step starts where the history ended, so a step over from a replayed line that ends
+inside a called function finishes inside that function, not on the next line of the caller.
 
 ## Reproduce
 
@@ -101,12 +116,6 @@ Compile with `cc -g samples/c/main.c -o main`.
 
 ## Next steps
 
-- [ ] Case 3: don't record (or `record stop`) once the program leaves frames with source, e.g. when the stop
-      frame has no `source`; or stop recording when stepping from the last line of `main`
-- [ ] Case 3: when a step gets no stop event within a few seconds, show a clear message instead of leaving the
-      session in a "running" state nobody can step out of
-- [ ] Case 4: decide whether forward steps while replaying should first `record goto end` (jump back to live) so
-      step in / step out behave normally, at the cost of losing the replay position
 - [ ] Report case 1 upstream to [mfussenegger/nvim-dap](https://github.com/mfussenegger/nvim-dap): `_step` should
       restore the stopped thread when the step request fails
 - [ ] Alternative for real reverse debugging: [nvim-dap-rr](https://github.com/jonboh/nvim-dap-rr) records with
