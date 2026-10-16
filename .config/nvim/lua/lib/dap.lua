@@ -24,8 +24,54 @@ function M.conditional_breakpoint()
     end)
 end
 
+---@param session dap.Session
+local function is_gdb(session)
+    return session.adapter.command ~= nil and vim.fs.basename(session.adapter.command) == "gdb"
+end
+
+-- run a gdb cli command (e.g. "reverse-next") in a gdb debug session, errors are shown and logged like dap's own
+---@param session dap.Session
+---@param command string
+local function gdb_command(session, command)
+    local frame = session.current_frame
+    session:request("evaluate", { expression = command, context = "repl", frameId = frame and frame.id }, function(err)
+        if err then
+            require("dap.utils").notify(("Error on %s: %s"):format(command, err.message), vim.log.levels.ERROR)
+        end
+    end)
+end
+
+-- gdb can only step back through what it recorded, so start recording the first time a gdb session stops
+-- (old entries are dropped instead of stopping the program when the record buffer is full)
+---@param session dap.Session
+function M.start_gdb_recording(session)
+    if not is_gdb(session) or session.gdb_recording then
+        return
+    end
+    session.gdb_recording = true
+    gdb_command(session, "record full")
+    gdb_command(session, "set record full stop-at-limit off")
+end
+
+-- while recording, continue stops at the end of the recorded history and again before the program exits,
+-- so stop recording before continuing; it starts again at the next stop
+---@param session dap.Session
+function M.stop_gdb_recording(session)
+    if session.gdb_recording then
+        session.gdb_recording = false
+        gdb_command(session, "record stop")
+    end
+end
+
+-- step back one line; gdb can do it (reverse-next) while recording, but its debug adapter doesn't say it
+-- supports stepping back, so nvim-dap would refuse with "Debug Adapter does not support stepping backwards"
 function M.step_back()
     local dap = require "dap"
+    local session = dap.session()
+    if session and session.stopped_thread_id and not session.capabilities.supportsStepBack and is_gdb(session) then
+        gdb_command(session, "reverse-next")
+        return
+    end
     dap.step_back()
 end
 
