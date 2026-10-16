@@ -23,11 +23,9 @@ return {
     -- Python
     "pyright",
     "ruff",
-    "debugpy",
     -- Java
     "jdtls",
     "google-java-format",
-    "java-debug-adapter",
     -- JavaScript
     "tsc",
     "vtsls",

@@ -13,7 +13,7 @@ Two things keep it fast:
 
 | When                                  | Plugins                                                                                                   |
 | ------------------------------------- | --------------------------------------------------------------------------------------------------------- |
-| At startup                            | theme, snacks (bigfile has to see files as they open), gitsigns, conform, nvim-treesitter (its queries highlight the first file), lazygit, tmux-navigator, plenary, nui, devicons, lsp-file-operations, nvim-jdtls (it also extends the java language server) |
+| At startup                            | theme, snacks (bigfile has to see files as they open), gitsigns, conform, nvim-treesitter (its queries highlight the first file), lazygit, tmux-navigator, plenary, nui, devicons, lsp-file-operations |
 | Right after the first screen is drawn | cmp + luasnip, mason, lspconfig + fidget, lualine, bufferline, which-key, colorizer + indent-blankline, autopairs, ts-autotag, ts-comments |
 | On first use                          | neo-tree, telescope, spectre, nvim-dap (+ dap-ui, dap-go, dap-rr)                                  |
 

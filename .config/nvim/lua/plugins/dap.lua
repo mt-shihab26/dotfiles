@@ -1,12 +1,3 @@
--- not lazy: besides debugging java (debuggers/java.lua) it extends the jdtls language server, its lsp/jdtls.lua
--- adds client capabilities, and its plugin/ attaches jdtls commands and opens jdt:// class files
-vim.pack.add {
-    {
-        src = "https://github.com/mfussenegger/nvim-jdtls",
-        version = "master",
-    },
-}
-
 local lazy = require "lib.lazy"
 
 -- loads on the first debugger keymap (<leader>b...), :Dap... command or require of a dap module
@@ -59,7 +50,7 @@ lazy.add({
 
         dapui.setup {}
 
-        -- debug adapters (dlv, codelldb, debugpy, ...) are installed by Mason, see lists/binaries.lua
+        -- debug adapters (dlv, codelldb, js-debug-adapter, ...) are installed by Mason, see lists/binaries.lua
         for _, debugger_name in ipairs(debuggers) do
             require("debuggers." .. debugger_name)
         end
