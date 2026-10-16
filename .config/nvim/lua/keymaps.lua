@@ -87,11 +87,6 @@ map({ "n", "v" }, "<leader>be", dap.eval, { desc = "evaluate expression under cu
 map("n", "<leader>bt", dap.debug_go_test, { desc = "debug nearest go test (dap-go)" })
 map("n", "<LeftMouse>", dap.click_breakpoint, { expr = true, desc = "click the margin to toggle a breakpoint (dap)" })
 
--- discoverability (which-key)
-local which_key = require "lib.which_key"
-
-map("n", "<leader>?", which_key.show_buffer_local, { desc = "buffer local keymaps (which-key)" })
-
 -- text case conversion
 local case = require "lib.case"
 
@@ -104,3 +99,9 @@ map("v", "<leader>uS", case.visual "constant", { desc = "convert selection to HE
 map("v", "<leader>up", case.visual "pascal", { desc = "convert selection to HelloWorld" })
 map("v", "<leader>uk", case.visual "kebab", { desc = "convert selection to hello-world" })
 map("v", "<leader>ud", case.visual "dot", { desc = "convert selection to hello.world" })
+map("v", "<leader>uw", case.visual "space", { desc = "convert selection to hello world" })
+
+-- discoverability (which-key)
+local which_key = require "lib.which_key"
+
+map("n", "<leader>?", which_key.show_buffer_local, { desc = "buffer local keymaps (which-key)" })

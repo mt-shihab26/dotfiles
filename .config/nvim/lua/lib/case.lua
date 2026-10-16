@@ -48,6 +48,7 @@ end
 --- example: converters.snake("helloWorld")       --> "hello_world"
 --- example: converters.kebab("hello_world")      --> "hello-world"
 --- example: converters.dot("hello world")        --> "hello.world"
+--- example: converters.space("helloWorld")       --> "hello world"
 --- example: converters.constant("helloWorld")    --> "HELLO_WORLD"
 --- example: converters.pascal("hello_world")     --> "HelloWorld"
 --- example: converters.camel("hello-world")      --> "helloWorld"
@@ -67,6 +68,9 @@ local converters = {
     dot = function(text)
         return table.concat(words(text), ".")
     end,
+    space = function(text)
+        return table.concat(words(text), " ")
+    end,
     constant = function(text)
         return upper(table.concat(words(text), "_"))
     end,
@@ -84,7 +88,7 @@ local converters = {
 
 --- sorted names of all supported case styles, used for completion and error messages
 ---
---- example: M.kinds --> { "camel", "capitalize", "constant", "dot", "kebab", "lower", "pascal", "snake", "upper" }
+--- example: M.kinds --> { "camel", "capitalize", "constant", "dot", "kebab", "lower", "pascal", "snake", "space", "upper" }
 ---@type string[]
 M.kinds = vim.tbl_keys(converters)
 table.sort(M.kinds)
