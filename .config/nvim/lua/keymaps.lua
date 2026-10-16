@@ -24,6 +24,18 @@ local map = vim.keymap.set
 --   h / j / k / l                         move around the zoomed image
 --   <LeftMouse> + <LeftDrag>              drag the zoomed image
 --   r                                     reset zoom and position
+--
+-- file tree, inside the neo-tree window (neo-tree defaults, plugins/neo-tree.lua sets none; ? lists them all):
+--   open:      <cr> / <2-LeftMouse> open   s vsplit   S split   t new tab   w pick a window
+--   preview:   P toggle preview   l focus preview   <C-f> / <C-b> scroll preview   <esc> close preview
+--   folders:   <space> toggle   C close   z close all   <bs> go up a folder   . make it the root
+--   files:     a add (end with / for a folder)   A add folder   d delete   r rename   b rename without extension
+--              c copy   m move   y copy to clipboard   x cut to clipboard   p paste   <C-r> clear clipboard
+--   find:      / fuzzy find   D fuzzy find folders   # fuzzy sort   f filter   <C-x> clear filter
+--              (in the find prompt: <C-n> / <C-p> or <down> / <up> move, <esc> close)
+--   view:      H toggle hidden files   i file details   [g / ]g prev / next git change   R refresh
+--              o then c / d / g / m / n / s / t order by created, diagnostics, git, modified, name, size, type
+--   window:    e toggle auto width   < / > previous / next source   q close   ? help
 
 -- general
 map("n", "q", "<nop>", { desc = "disable macro recording" })
