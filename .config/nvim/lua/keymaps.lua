@@ -42,13 +42,13 @@ map("n", "[H", git.prev_staged_hunk, { desc = "navigate to the previous staged g
 -- buffers (bufferline)
 local buffer = require "lib.buffer"
 
-map("n", "<S-h>", "<cmd>BufferLineCyclePrev<cr>", { desc = "prev buffer (bufferline)" })
-map("n", "<S-l>", "<cmd>BufferLineCycleNext<cr>", { desc = "next buffer (bufferline)" })
+map("n", "<S-h>", buffer.prev, { desc = "prev buffer (bufferline)" })
+map("n", "<S-l>", buffer.next, { desc = "next buffer (bufferline)" })
 map("n", "l", buffer.open_last_file, { desc = "open last file or move right" })
 map("n", "<leader>q", buffer.close_terminals_or_others, { desc = "close terminals or other buffers (bufferline)" })
-map("n", "<leader>k", "<cmd>bp<bar>sp<bar>bn<bar>bd<cr>", { desc = "close (kill) current buffer (bufferline)" })
-map("n", "<leader>ch", "<cmd>BufferLineCloseLeft<cr>", { desc = "delete buffers to the left (bufferline)" })
-map("n", "<leader>cl", "<cmd>BufferLineCloseRight<cr>", { desc = "delete buffers to the right (bufferline)" })
+map("n", "<leader>k", buffer.close_current, { desc = "close (kill) current buffer (bufferline)" })
+map("n", "<leader>ch", buffer.close_left, { desc = "delete buffers to the left (bufferline)" })
+map("n", "<leader>cl", buffer.close_right, { desc = "delete buffers to the right (bufferline)" })
 
 -- file tree (neo-tree)
 map("n", "<leader>e", "<cmd>Neotree action=focus<cr>", { desc = "focus file tree (neo-tree)", remap = true })

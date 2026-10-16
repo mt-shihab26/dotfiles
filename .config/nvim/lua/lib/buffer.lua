@@ -1,5 +1,26 @@
 local M = {}
 
+function M.prev()
+    vim.cmd "BufferLineCyclePrev"
+end
+
+function M.next()
+    vim.cmd "BufferLineCycleNext"
+end
+
+-- close the current buffer but keep its window: show the previous buffer in it first
+function M.close_current()
+    vim.cmd "bp|sp|bn|bd"
+end
+
+function M.close_left()
+    vim.cmd "BufferLineCloseLeft"
+end
+
+function M.close_right()
+    vim.cmd "BufferLineCloseRight"
+end
+
 function M.open_last_file()
     local bufname = vim.api.nvim_buf_get_name(0)
     local buftype = vim.bo.buftype
