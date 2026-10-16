@@ -23,34 +23,26 @@ vim.pack.add {
 
 local dap = require "dap"
 local dapui = require "dapui"
+local lib_dap = require "lib.dap"
 local debuggers = require "lists.debuggers"
 
 dapui.setup {}
-
--- closing a window next to the debugger sidebar (e.g. neo-tree) hands its space to the sidebar, which
--- dap-ui then remembers, so it grows every time; put the sidebar back to its width after a window closes
-vim.api.nvim_create_autocmd("WinClosed", {
-    callback = function()
-        local widths = {}
-        for _, win in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
-            if vim.bo[vim.api.nvim_win_get_buf(win)].filetype:match "^dapui_" then
-                widths[win] = vim.api.nvim_win_get_width(win)
-            end
-        end
-        vim.schedule(function()
-            for win, width in pairs(widths) do
-                if vim.api.nvim_win_is_valid(win) then
-                    vim.api.nvim_win_set_width(win, width)
-                end
-            end
-        end)
-    end,
-})
 
 -- debug adapters (dlv, codelldb, debugpy, ...) are installed by Mason, see lists/binaries.lua
 for _, debugger_name in ipairs(debuggers) do
     require("debuggers." .. debugger_name)
 end
+
+vim.api.nvim_create_autocmd("WinClosed", { callback = lib_dap.keep_sidebar_width })
+
+-- tooltips on the dap-ui toolbar buttons, nvim only reports mouse movement with mousemoveevent on
+vim.opt.mousemoveevent = true
+vim.keymap.set({ "n", "i", "v" }, "<MouseMove>", lib_dap.hover_controls, { desc = "show what a debugger toolbar button does on hover (dap-ui)" })
+vim.api.nvim_create_autocmd("WinClosed", {
+    callback = function(args)
+        lib_dap.close_tooltip_after(tonumber(args.match))
+    end,
+})
 
 vim.fn.sign_define("DapBreakpoint", { text = "●", texthl = "DiagnosticError" })
 vim.fn.sign_define("DapBreakpointCondition", { text = "◆", texthl = "DiagnosticError" })
@@ -58,86 +50,52 @@ vim.fn.sign_define("DapBreakpointRejected", { text = "○", texthl = "Diagnostic
 vim.fn.sign_define("DapLogPoint", { text = "◉", texthl = "DiagnosticInfo" })
 vim.fn.sign_define("DapStopped", { text = "→", texthl = "DiagnosticWarn", linehl = "DapStoppedLine" })
 
--- yellow tinted background for the line the debugger stopped on (like visual studio), mixed from the
--- colorscheme's warning color so it fits every theme, and recomputed when the colorscheme changes
-local function set_stopped_line_highlight()
-    local warn = vim.api.nvim_get_hl(0, { name = "DiagnosticWarn", link = false }).fg or 0xe0af68
-    local normal = vim.api.nvim_get_hl(0, { name = "Normal", link = false }).bg or 0x000000
-    local function mix(shift)
-        local a, b = bit.band(bit.rshift(warn, shift), 0xff), bit.band(bit.rshift(normal, shift), 0xff)
-        return bit.lshift(math.floor(a * 0.3 + b * 0.7), shift)
-    end
-    vim.api.nvim_set_hl(0, "DapStoppedLine", { bg = mix(16) + mix(8) + mix(0) })
-end
-set_stopped_line_highlight()
-vim.api.nvim_create_autocmd("ColorScheme", { callback = set_stopped_line_highlight })
+lib_dap.set_stopped_line_highlight()
+vim.api.nvim_create_autocmd("ColorScheme", { callback = lib_dap.set_stopped_line_highlight })
 
--- per-project configurations from debug.json (same format as .vscode/launch.json)
-dap.providers.configs["project-debug-json"] = function()
-    return require("dap.ext.vscode").getconfigs(vim.fn.getcwd() .. "/debug.json")
-end
+dap.providers.configs["project-debug-json"] = lib_dap.debug_json_configs
+dap.listeners.on_config["pre-launch-command"] = lib_dap.run_pre_launch_command
 
--- ask for function parameters in the call stack (e.g. "draw(int count = 6)") when the debugger supports it
--- (gdb does, codelldb doesn't), nvim-dap doesn't request them by itself
 local Session = require "dap.session"
-local session_request = Session.request
 local step_commands = { next = true, stepIn = true, stepOut = true, stepBack = true, continue = true, reverseContinue = true }
+local session_request = Session.request
 function Session:request(command, arguments, on_result)
-    if command == "stackTrace" and arguments and not arguments.format and self.capabilities.supportsValueFormattingOptions then
-        local format = { parameters = true, parameterTypes = true, parameterNames = true, parameterValues = true }
-        arguments = vim.tbl_extend("force", arguments, { format = format })
+    if command == "stackTrace" and arguments then
+        arguments = lib_dap.stack_trace_with_parameters(self, arguments)
     end
-
-    -- nvim-dap marks the thread as running before sending a step, and doesn't undo it when the adapter refuses
-    -- (e.g. gdb's "finish not meaningful in the outermost frame" when stepping out of main), so every later
-    -- step fails with "No stopped threads"; the program is still paused, so mark it stopped again
     if step_commands[command] and on_result and arguments and arguments.threadId then
         local callback = on_result
         on_result = function(err, result)
-            local thread = self.threads[arguments.threadId]
-            if err and thread and not self.stopped_thread_id then
-                self.stopped_thread_id = thread.id
-                thread.stopped = true
-                self:_frame_set(self.current_frame)
-                require("dapui.controls").refresh_control_panel()
+            if err then
+                lib_dap.restore_stopped_thread(self, arguments.threadId)
             end
             return callback(err, result)
         end
     end
-
     return session_request(self, command, arguments, on_result)
 end
 
--- run a configuration's `preLaunchCommand` (e.g. a build script from .vscode/launch.json) before launching,
--- and abort the launch if it fails
-dap.listeners.on_config["pre-launch-command"] = function(config)
-    if not config.preLaunchCommand then
-        return config
+-- log every dap error to lib_dap.error_log_path: errors nvim-dap shows to the user (e.g. "Error on stepOut: ..."
+-- or "No stopped threads. Cannot move") and requests the debug adapter answered with a failure
+local dap_utils = require "dap.utils"
+local dap_notify = dap_utils.notify
+function dap_utils.notify(msg, level)
+    if level and level >= vim.log.levels.WARN then
+        lib_dap.log_error(msg)
     end
-    config = vim.deepcopy(config)
-
-    local co = coroutine.running()
-    vim.notify("Running " .. config.preLaunchCommand)
-    vim.system({ "sh", "-c", config.preLaunchCommand }, { text = true, cwd = vim.fn.getcwd() }, function(res)
-        vim.schedule(function()
-            coroutine.resume(co, res)
-        end)
-    end)
-    local res = coroutine.yield()
-
-    if res.code ~= 0 then
-        vim.notify(res.stdout .. res.stderr, vim.log.levels.ERROR)
-        config.program = dap.ABORT
-    end
-    return config
+    return dap_notify(msg, level)
 end
+
+local handle_body = Session.handle_body
+function Session:handle_body(body)
+    lib_dap.log_failed_response(self, body)
+    return handle_body(self, body)
+end
+
+vim.api.nvim_create_user_command("DapErrorLog", lib_dap.open_error_log, { desc = "open the log of dap errors" })
 
 -- open the ui when a session starts and close it when the session ends
--- (reset: always open at the configured size, not a size left over from an earlier session)
-local function open_ui()
-    dapui.open { reset = true }
-end
-dap.listeners.before.attach.dapui_config = open_ui
-dap.listeners.before.launch.dapui_config = open_ui
+dap.listeners.before.attach.dapui_config = lib_dap.open_ui
+dap.listeners.before.launch.dapui_config = lib_dap.open_ui
 dap.listeners.before.event_terminated.dapui_config = dapui.close
 dap.listeners.before.event_exited.dapui_config = dapui.close
