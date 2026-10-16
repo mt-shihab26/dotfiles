@@ -14,9 +14,3 @@ cmd("FormatToggle", toggle.format_on_save, { desc = "toggle format on save" })
 cmd("FormatDisable", toggle.format_disable, { desc = "disable format on save", bar = true })
 
 cmd("Wa", toggle.write_all_no_format, { desc = "write all buffers without formatting" })
-
-local case = require "lib.case"
-
-local case_desc = "convert text case: upper, lower, capitalize, snake, kebab, dot, space, constant, pascal, camel";
-
-cmd("Case", case.convert, { nargs = 1, range = true, complete = case.complete, desc = case_desc })

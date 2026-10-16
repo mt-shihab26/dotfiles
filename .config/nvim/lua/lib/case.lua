@@ -86,19 +86,12 @@ local converters = {
     end,
 }
 
---- sorted names of all supported case styles, used for completion and error messages
----
---- example: M.kinds --> { "camel", "capitalize", "constant", "dot", "kebab", "lower", "pascal", "snake", "space", "upper" }
----@type string[]
-M.kinds = vim.tbl_keys(converters)
-table.sort(M.kinds)
-
 --- convert text while leaving surrounding whitespace untouched, so selections that
 --- include a trailing space or newline do not get glued to the next word
 ---
 --- example: convert_text("snake", "  fooBar ") --> "  foo_bar "
 --- example: convert_text("upper", "   ")       --> "   "
----@param kind string one of M.kinds
+---@param kind string a key of converters
 ---@param text string
 ---@return string
 local function convert_text(kind, text)
@@ -116,7 +109,7 @@ end
 ---
 --- example: kind "kebab", "hello world" selected with `V` --> "hello-world"
 --- example: kind "upper", block over columns 1-2 of "abc" and "def" --> "ABc" and "DEf"
----@param kind string one of M.kinds
+---@param kind string a key of converters
 ---@param pos1 integer[] start position as returned by getpos()
 ---@param pos2 integer[] end position as returned by getpos()
 ---@param mode string "v" (charwise), "V" (linewise) or "\22" (blockwise)
@@ -142,50 +135,12 @@ local function convert_region(kind, pos1, pos2, mode)
     end
 end
 
---- convert the last visual selection (or the given line range when the command
---- was not run from a selection) using the case style in the command argument,
---- with no range it converts the word under the cursor
----
---- example: `:'<,'>Case kebab` on the selection "helloWorld" --> "hello-world"
---- example: `:Case upper` with the cursor on "hello" in "hello world" --> "HELLO world"
---- example: `:Case nope` --> error listing the supported styles
----@param opts { args: string, range: integer, line1: integer, line2: integer } user command options
-function M.convert(opts)
-    local kind = opts.args
-    if not converters[kind] then
-        vim.notify(
-            "Unknown case '" .. tostring(kind) .. "', use one of: " .. table.concat(M.kinds, ", "),
-            vim.log.levels.ERROR
-        )
-        return
-    end
-
-    local start = vim.fn.getpos "'<"
-    local finish = vim.fn.getpos "'>"
-    local from_visual = opts.range > 0 and start[2] == opts.line1 and finish[2] == opts.line2
-
-    if from_visual then
-        convert_region(kind, start, finish, vim.fn.visualmode())
-    elseif opts.range > 0 then
-        convert_region(kind, { 0, opts.line1, 1, 0 }, { 0, opts.line2, #vim.fn.getline(opts.line2), 0 }, "V")
-    else
-        -- no range: convert the word under the cursor
-        local pos = vim.fn.getpos "."
-        local line = vim.api.nvim_get_current_line()
-        local s = vim.fn.matchstrpos(line, [[\k*\%]] .. pos[3] .. [[c\k*]])
-        if s[2] < 0 or s[1] == "" then
-            return
-        end
-        convert_region(kind, { 0, pos[2], s[2] + 1, 0 }, { 0, pos[2], s[3], 0 }, "v")
-    end
-end
-
 --- build a visual mode keymap handler for a case style, it leaves visual mode
 --- first so the '< and '> marks are set, then converts the selection
 ---
 --- example: vim.keymap.set("v", "<leader>uk", M.visual "kebab")
 ---          selecting "helloWorld" and pressing <leader>uk --> "hello-world"
----@param kind string one of M.kinds
+---@param kind string a key of converters
 ---@return fun()
 function M.visual(kind)
     return function()
@@ -194,19 +149,6 @@ function M.visual(kind)
         local finish = vim.fn.getpos "'>"
         convert_region(kind, start, finish, vim.fn.visualmode())
     end
-end
-
---- command completion for the :Case argument, offers the styles starting with
---- what has been typed so far
----
---- example: M.complete("ca") --> { "camel", "capitalize" }
---- example: M.complete("")   --> all of M.kinds
----@param arglead string
----@return string[]
-function M.complete(arglead)
-    return vim.tbl_filter(function(kind)
-        return vim.startswith(kind, arglead)
-    end, M.kinds)
 end
 
 return M
