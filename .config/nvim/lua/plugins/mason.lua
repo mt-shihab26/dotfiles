@@ -45,5 +45,8 @@ lazy.add({
             run_on_start = true,
             integrations = { ["mason-lspconfig"] = true },
         }
+        -- run_on_start hooks VimEnter from the plugin/ file, which has already fired by the time this deferred
+        -- plugin loads, so start the install check here
+        mason_tool_installer.run_on_start()
     end,
 })
