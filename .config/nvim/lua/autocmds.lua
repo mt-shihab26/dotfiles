@@ -9,7 +9,17 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 })
 
 -- custom filetype detection
-local filetype = require "lib.filetype"
-filetype.mdx()
-filetype.gitconfig()
-filetype.glsl()
+vim.filetype.add {
+    extension = {
+        -- .mdx: highlighted with the markdown parser (registered below), code fences, JSX blocks and
+        -- frontmatter get their own languages through injections
+        mdx = "mdx",
+        -- *.gitconfig: config fragments pulled in by [include]
+        gitconfig = "gitconfig",
+        -- .glsl: one file holds every stage of a shader, each section opened by a "#type <stage>" line
+        -- such as "#type vertex" or "#type fragment"
+        glsl = "glsl",
+    },
+}
+
+vim.treesitter.language.register("markdown", "mdx")
