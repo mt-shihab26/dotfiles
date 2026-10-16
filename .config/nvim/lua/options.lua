@@ -77,16 +77,3 @@ if vim.lsp.document_color then
 end
 -- Suppress handler for in-flight responses that arrive after disable.
 vim.lsp.handlers["textDocument/documentColor"] = function() end
-
--- highlight yanked text briefly
-vim.api.nvim_create_autocmd("TextYankPost", {
-    callback = function()
-        vim.hl.on_yank()
-    end,
-})
-
--- custom filetype detection
-local filetype = require "lib.filetype"
-filetype.mdx()
-filetype.gitconfig()
-filetype.glsl()
