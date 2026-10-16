@@ -35,8 +35,8 @@ vim.opt.listchars = {
 }
 
 -- splits
-vim.opt.splitright = true
-vim.opt.splitbelow = true
+vim.opt.splitright = true -- :vsplit opens the new window to the right of the current one, not the left
+vim.opt.splitbelow = true -- :split opens the new window below the current one, not above
 
 -- search
 vim.opt.ignorecase = true
