@@ -53,8 +53,26 @@ vim.opt.confirm = true       -- ask to save instead of failing when quitting wit
 vim.opt.isfname:append "@-@" -- treat @ as part of a file name, so gf works on paths like node_modules/@scope/pkg
 
 -- spell
-vim.opt.spell = true        -- underline misspelled words (]s / [s to jump, z= for suggestions)
 vim.opt.spelllang = "en_us" -- check spelling against American English
+
+-- underline misspelled words (]s / [s to jump, z= for suggestions); turned on right after startup, since
+-- loading the spell file would delay the first screen by ~5ms. The windows opened at startup get it too,
+-- unless a script set it for them already (e.g. an ftplugin with nospell)
+vim.api.nvim_create_autocmd("VimEnter", {
+    once = true,
+    callback = function()
+        vim.schedule(function()
+            -- find them before setting the global value, which marks spell as set for every window
+            local unset = vim.tbl_filter(function(win)
+                return vim.api.nvim_get_option_info2("spell", { win = win }).last_set_sid == 0
+            end, vim.api.nvim_list_wins())
+            vim.go.spell = true
+            for _, win in ipairs(unset) do
+                vim.wo[win].spell = true
+            end
+        end)
+    end,
+})
 
 -- mouse
 vim.opt.mouse = "a"                 -- enable the mouse in all modes: click to move, drag to select, scroll, resize splits

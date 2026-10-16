@@ -66,7 +66,9 @@ lazy.add({
             local config = vim.tbl_deep_extend("force", { capabilities = capabilities }, server_settings)
 
             vim.lsp.config(server_name, config)
-            vim.lsp.enable(server_name)
         end
+
+        -- one call for all of them: after startup every vim.lsp.enable re-runs FileType for each open buffer
+        vim.lsp.enable(servers)
     end,
 })
