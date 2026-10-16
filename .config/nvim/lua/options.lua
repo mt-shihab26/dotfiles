@@ -63,8 +63,10 @@ vim.api.nvim_create_autocmd("VimEnter", {
     callback = function()
         vim.schedule(function()
             -- find them before setting the global value, which marks spell as set for every window
+            -- floating windows are skipped, their "minimal" style turns spell off
             local unset = vim.tbl_filter(function(win)
-                return vim.api.nvim_get_option_info2("spell", { win = win }).last_set_sid == 0
+                return vim.api.nvim_win_get_config(win).relative == ""
+                    and vim.api.nvim_get_option_info2("spell", { win = win }).last_set_sid == 0
             end, vim.api.nvim_list_wins())
             vim.go.spell = true
             for _, win in ipairs(unset) do

@@ -24,7 +24,8 @@ end)
 ---@class lib.lazy.Opts
 ---@field setup? fun()       configure the plugin, runs right after it loads
 ---@field modules? string[]  requiring one of these (or a submodule) loads the plugin
----@field commands? string[] running one of these commands loads the plugin, then runs the command
+---@field commands? string[] running one of these commands loads the plugin, then runs the command; list them
+---                          for `defer` plugins too, startup commands (nvim +Mason) run before those load
 ---@field defer? boolean     load right after startup, once the first screen is drawn
 
 ---@param specs (string|vim.pack.Spec)[]
@@ -70,7 +71,7 @@ function M.add(specs, opts)
         vim.api.nvim_create_user_command(command, function(args)
             load()
             local range = args.range > 0 and ("%d,%d"):format(args.line1, args.line2) or ""
-            vim.cmd(range .. command .. (args.bang and "!" or "") .. " " .. args.args)
+            vim.cmd(args.mods .. " " .. range .. command .. (args.bang and "!" or "") .. " " .. args.args)
         end, {
             nargs = "*",
             bang = true,

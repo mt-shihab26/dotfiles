@@ -8,6 +8,7 @@ lazy.add({
     },
 }, {
     modules = { "gitsigns" },
+    commands = { "Gitsigns" },
     defer = true,
     setup = function()
         local gitsigns = require "gitsigns"

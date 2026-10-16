@@ -7,6 +7,26 @@ lazy.add({
         version = vim.version.range "4",
     },
 }, {
+    commands = {
+        "BufferLineCloseLeft",
+        "BufferLineCloseOthers",
+        "BufferLineCloseRight",
+        "BufferLineCycleNext",
+        "BufferLineCyclePrev",
+        "BufferLineGoToBuffer",
+        "BufferLineGroupClose",
+        "BufferLineGroupToggle",
+        "BufferLineMoveNext",
+        "BufferLineMovePrev",
+        "BufferLinePick",
+        "BufferLinePickClose",
+        "BufferLineSortByDirectory",
+        "BufferLineSortByExtension",
+        "BufferLineSortByRelativeDirectory",
+        "BufferLineSortByTabs",
+        "BufferLineTabRename",
+        "BufferLineTogglePin",
+    },
     defer = true,
     setup = function()
         local bufferline = require "bufferline"

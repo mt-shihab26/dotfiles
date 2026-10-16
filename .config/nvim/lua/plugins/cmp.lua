@@ -40,6 +40,7 @@ lazy.add({
     },
 }, {
     modules = { "cmp", "cmp_nvim_lsp", "luasnip" },
+    commands = { "CmpStatus", "LuaSnipListAvailable", "LuaSnipUnlinkCurrent" },
     defer = true,
     setup = function()
         local cmp = require "cmp"

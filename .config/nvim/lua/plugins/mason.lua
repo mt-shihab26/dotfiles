@@ -16,6 +16,21 @@ lazy.add({
     },
 }, {
     defer = true,
+    commands = {
+        "Mason",
+        "MasonInstall",
+        "MasonLog",
+        "MasonUninstall",
+        "MasonUninstallAll",
+        "MasonUpdate",
+        "LspInstall",
+        "LspUninstall",
+        "MasonToolsClean",
+        "MasonToolsInstall",
+        "MasonToolsInstallSync",
+        "MasonToolsUpdate",
+        "MasonToolsUpdateSync",
+    },
     setup = function()
         local mason = require "mason"
         local mason_lspconfig = require "mason-lspconfig"

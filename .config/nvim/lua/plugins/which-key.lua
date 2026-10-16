@@ -8,6 +8,7 @@ lazy.add({
     },
 }, {
     modules = { "which-key" },
+    commands = { "WhichKey" },
     defer = true,
     setup = function()
         require("which-key").setup {}
