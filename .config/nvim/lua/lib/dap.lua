@@ -147,5 +147,13 @@ end
 -- nvim only reports mouse movement with mousemoveevent on
 vim.opt.mousemoveevent = true
 vim.keymap.set({ "n", "i", "v" }, "<MouseMove>", M.hover_controls, { desc = "show what a debugger toolbar button does on hover (dap-ui)" })
+-- the tooltip only closes on mouse movement, so also close it when the debugger windows go away
+vim.api.nvim_create_autocmd("WinClosed", {
+    callback = function(args)
+        if tonumber(args.match) ~= tooltip.win then
+            vim.schedule(close_tooltip)
+        end
+    end,
+})
 
 return M
