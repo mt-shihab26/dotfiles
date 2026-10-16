@@ -39,20 +39,20 @@ vim.opt.splitright = true -- :vsplit opens the new window to the right of the cu
 vim.opt.splitbelow = true -- :split opens the new window below the current one, not above
 
 -- search
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
-vim.opt.inccommand = "split"
+vim.opt.ignorecase = true    -- searches and :s match regardless of case, so /foo also finds Foo and FOO
+vim.opt.smartcase = true     -- but a pattern with an uppercase letter is case-sensitive (not for * and #)
+vim.opt.inccommand = "split" -- preview :s replacements live, with a split listing every affected line
 
 -- files & undo
-vim.opt.swapfile = false
-vim.opt.backup = false
-vim.opt.undofile = true
-vim.opt.confirm = true
-vim.opt.isfname:append "@-@"
+vim.opt.swapfile = false     -- don't write .swp files while editing (no crash recovery, no "swap file exists" warnings)
+vim.opt.backup = false       -- don't keep a backup copy of the file after saving it
+vim.opt.undofile = true      -- save undo history to disk, so u still works after closing and reopening a file
+vim.opt.confirm = true       -- ask to save instead of failing when quitting with unsaved changes
+vim.opt.isfname:append "@-@" -- treat @ as part of a file name, so gf works on paths like node_modules/@scope/pkg
 
 -- spell
-vim.opt.spell = true
-vim.opt.spelllang = "en_us"
+vim.opt.spell = true        -- underline misspelled words (]s / [s to jump, z= for suggestions)
+vim.opt.spelllang = "en_us" -- check spelling against American English
 
 -- ui & input
 vim.opt.laststatus = 3
