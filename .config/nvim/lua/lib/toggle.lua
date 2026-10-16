@@ -5,11 +5,11 @@ function M.wrap()
     vim.notify("Wrap " .. (vim.wo.wrap and "ON" or "OFF"), vim.log.levels.INFO)
 end
 
+-- only for the current buffer, other buffers keep their own setting
 function M.indent_char()
-    local current_expand = vim.o.expandtab
-    vim.opt.expandtab = not current_expand
+    vim.bo.expandtab = not vim.bo.expandtab
 
-    if vim.o.expandtab then
+    if vim.bo.expandtab then
         print "using spaces for indentation"
     else
         print "using tabs for indentation"

@@ -9,6 +9,7 @@ local map = vim.keymap.set
 -- completion menu, insert and command mode (plugins/cmp.lua, they must be passed to cmp.setup):
 --   <M-n> / <M-p>   select the next / previous item
 --   <M-y>           confirm the selected item (the first one when none is selected)
+--   <M-j> / <M-k>   jump to the next / previous snippet placeholder (insert and select mode)
 --
 -- telescope prompt, insert mode (plugins/telescope.lua, they must be passed to telescope.setup):
 --   <esc>              close the picker
@@ -155,7 +156,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
         map("n", "gd", lsp.definition, opts "go to definition (lspconfig)")
         map("n", "gD", lsp.declaration, opts "go to declaration (lspconfig)")
         map("n", "gi", lsp.implementation, opts "go to implementation (lspconfig)")
-        map("n", "gr", lsp.references, opts "go to references (lspconfig)")
+        -- nowait: don't wait to see if this is one of the built-in grn / gra / grr / gri lsp keymaps
+        map("n", "gr", lsp.references, vim.tbl_extend("force", opts "go to references (lspconfig)", { nowait = true }))
 
         map("n", "K", lsp.hover, opts "show hover documentation (lspconfig)")
         map("n", "gK", lsp.signature_help, opts "signature help (lspconfig)")
@@ -167,7 +169,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
         map("n", "]d", lsp.next_diagnostic, opts "go to next diagnostic (lspconfig)")
 
         map("n", "<leader>xs", lsp.start, opts "start lsp server (lspconfig)")
-        map("n", "<leader>xS", lsp.stop, opts "stop lsp server (lspconfig)")
+        map(
+            "n",
+            "<leader>xS",
+            lsp.stop,
+            opts "stop this buffer's lsp servers, everywhere until started again (lspconfig)"
+        )
         map("n", "<leader>xr", lsp.restart, opts "restart lsp server (lspconfig)")
     end,
 })

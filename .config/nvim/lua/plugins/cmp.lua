@@ -101,6 +101,21 @@ cmp.setup {
     },
 }
 
+-- jump between snippet placeholders (luasnip), also lsp snippets such as function call arguments
+local function next_placeholder()
+    if luasnip.jumpable(1) then
+        luasnip.jump(1)
+    end
+end
+
+local function prev_placeholder()
+    if luasnip.jumpable(-1) then
+        luasnip.jump(-1)
+    end
+end
+
+vim.keymap.set({ "i", "s" }, "<M-j>", next_placeholder, { desc = "jump to the next snippet placeholder (luasnip)" })
+vim.keymap.set({ "i", "s" }, "<M-k>", prev_placeholder, { desc = "jump to the previous snippet placeholder (luasnip)" })
 
 luasnip_vscode_loader.lazy_load {
     paths = { vim.fn.stdpath "config" .. "/snippets" },

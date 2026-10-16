@@ -1,7 +1,7 @@
 {
-    "Main Funtion": {
+    "Main Function": {
         "prefix": "main",
         "body": ["#include <stdio.h>", "", "int main() {", "    //", "    return 0;", "}"],
-        "description": "Generate c boilderplate main function"
+        "description": "Generate c boilerplate main function"
     }
 }

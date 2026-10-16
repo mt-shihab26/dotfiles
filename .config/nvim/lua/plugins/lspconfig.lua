@@ -33,7 +33,10 @@ local capabilities = vim.tbl_deep_extend(
 local lsp_start = vim.lsp.start
 ---@diagnostic disable-next-line: duplicate-set-field
 vim.lsp.start = function(config, opts)
-    local bufnr = vim._resolve_bufnr(opts and opts.bufnr)
+    local bufnr = opts and opts.bufnr or 0
+    if bufnr == 0 then
+        bufnr = vim.api.nvim_get_current_buf()
+    end
     if buffer.is_stopped(bufnr, "lsp") then
         return nil
     end

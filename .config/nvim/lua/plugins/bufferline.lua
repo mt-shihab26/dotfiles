@@ -5,7 +5,7 @@ vim.pack.add {
     },
 }
 
-local bufferline = require "bufferline";
+local bufferline = require "bufferline"
 
 bufferline.setup {
     options = {
