@@ -26,11 +26,6 @@ function M.format_on_save()
     end
 end
 
-function M.format_disable()
-    vim.g.disable_autoformat = true
-    print "format on save disabled"
-end
-
 -- disable format on save only for :wa itself, so writing all buffers doesn't
 -- reformat everything at once, without permanently turning off format on save
 function M.write_all_no_format()
