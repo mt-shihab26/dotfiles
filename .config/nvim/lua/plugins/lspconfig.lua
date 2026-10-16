@@ -41,6 +41,13 @@ vim.lsp.start = function(config, opts)
     return lsp_start(config, opts)
 end
 
+-- LSP sends malformed colors (float > 1.0 → >255 → 7-digit hex), disable until upstream fix.
+if vim.lsp.document_color then
+    vim.lsp.document_color.enable(false)
+end
+-- Suppress handler for in-flight responses that arrive after disable.
+vim.lsp.handlers["textDocument/documentColor"] = function() end
+
 local servers = require "lists.servers"
 
 for _, server_name in ipairs(servers) do
