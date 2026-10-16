@@ -58,6 +58,20 @@ dap.adapters.native = function(callback)
     callback(dap.adapters[native_debugger])
 end
 
+-- reverse debugging (step back, reverse continue) replays an rr recording through cpptools:
+--   rr record ./program          record a run
+--   rr replay -s 50505 -k        serve the last recording, then pick "rr" in the configuration menu
+dap.adapters.cppdbg = {
+    id = "cppdbg",
+    type = "executable",
+    command = "OpenDebugAD7",
+}
+
+local rr = require "nvim-dap-rr"
+
 dap.configurations.c = configurations { "cc", "-g" }
 dap.configurations.cpp = configurations { "c++", "-g" }
 dap.configurations.rust = configurations { "rustc", "-g" }
+table.insert(dap.configurations.c, rr.get_config())
+table.insert(dap.configurations.cpp, rr.get_config())
+table.insert(dap.configurations.rust, rr.get_rust_config())

@@ -168,6 +168,11 @@
       "src": "https://github.com/leoluz/nvim-dap-go",
       "version": "'main'"
     },
+    "nvim-dap-rr": {
+      "rev": "9d4cb40d04b7822b075482b4fad9742aa43a87b2",
+      "src": "https://github.com/jonboh/nvim-dap-rr",
+      "version": "'main'"
+    },
     "nvim-dap-ui": {
       "rev": "cc9dd33aade7f20bae414d0cba163bc60d4d4b43",
       "src": "https://github.com/rcarriga/nvim-dap-ui",

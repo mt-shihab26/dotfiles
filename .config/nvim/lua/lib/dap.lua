@@ -2,10 +2,21 @@ local dap = require "dap"
 
 local M = {}
 
+-- nvim-dap-rr when the current session replays an rr recording (the only cppdbg configuration, see
+-- debuggers/native.lua), its steps first tell gdb which direction to run in
+local function rr()
+    local session = dap.session()
+    return session and session.config.type == "cppdbg" and require "nvim-dap-rr" or nil
+end
+
 -- start debugging, or continue if a session is already running.
 -- when the project's debug.json defines exactly one configuration, start it without asking,
 -- otherwise show the usual configuration menu
 function M.continue()
+    if rr() then
+        rr().continue()
+        return
+    end
     if not dap.session() then
         local configs = dap.providers.configs["project-debug-json"](vim.api.nvim_get_current_buf())
         if #configs == 1 then
@@ -16,20 +27,60 @@ function M.continue()
     dap.continue()
 end
 
+-- continue, or pause while running, like dap-ui's play button
+function M.play()
+    local session = dap.session()
+    if session and not session.stopped_thread_id then
+        dap.pause()
+    else
+        M.continue()
+    end
+end
+
 function M.pause()
     dap.pause()
 end
 
 function M.step_into()
-    dap.step_into()
+    if rr() then
+        rr().step_into()
+    else
+        dap.step_into()
+    end
 end
 
 function M.step_over()
-    dap.step_over()
+    if rr() then
+        rr().step_over()
+    else
+        dap.step_over()
+    end
 end
 
 function M.step_out()
-    dap.step_out()
+    if rr() then
+        rr().step_out()
+    else
+        dap.step_out()
+    end
+end
+
+-- step back one line, while replaying an rr recording (see debuggers/native.lua)
+function M.step_back()
+    if rr() then
+        rr().reverse_step_over()
+    else
+        dap.step_back()
+    end
+end
+
+-- run backwards to the previous breakpoint, while replaying an rr recording
+function M.reverse_continue()
+    if rr() then
+        rr().reverse_continue()
+    else
+        dap.reverse_continue()
+    end
 end
 
 function M.terminate()
@@ -54,120 +105,6 @@ function M.conditional_breakpoint()
             dap.set_breakpoint(condition)
         end
     end)
-end
-
----@param session dap.Session
-local function is_gdb(session)
-    return session.adapter.command ~= nil and vim.fs.basename(session.adapter.command) == "gdb"
-end
-
--- run a gdb cli command (e.g. "reverse-next") in a gdb debug session, errors are shown and logged like dap's own
----@param session dap.Session
----@param command string
-local function gdb_command(session, command)
-    local frame = session.current_frame
-    session:request("evaluate", { expression = command, context = "repl", frameId = frame and frame.id }, function(err)
-        if err then
-            require("dap.utils").notify(("Error on %s: %s"):format(command, err.message), vim.log.levels.ERROR)
-        end
-    end)
-end
-
--- gdb can only step back through what it recorded, so record while stopped in code with source
--- (old entries are dropped instead of stopping the program when the record buffer is full)
----@param session dap.Session
-local function start_gdb_recording(session)
-    if session.gdb_recording then
-        return
-    end
-    session.gdb_recording = true
-    gdb_command(session, "record full")
-    gdb_command(session, "set record full stop-at-limit off")
-end
-
--- while recording, continue stops at the end of the recorded history and again before the program exits,
--- so stop recording before continuing; it starts again at the next stop
----@param session dap.Session
-function M.stop_gdb_recording(session)
-    if session.gdb_recording then
-        session.gdb_recording = false
-        gdb_command(session, "record stop")
-    end
-end
-
--- start recording when a gdb session stops in code with source, and stop it when it stops somewhere without
--- (e.g. _exit after stepping off the end of main): there the recorder stops before the exit syscall, steps
--- back land in "???", and the next step never returns, leaving every step with "No stopped threads"
----@param session dap.Session
----@param err table|nil
----@param response table|nil stackTrace response
----@param request table stackTrace request arguments
-function M.update_gdb_recording(session, err, response, request)
-    -- a late reply arriving after the program was resumed must not start recording, gdb refuses while running
-    if err or not response or not is_gdb(session) or not session.stopped_thread_id or (request.startFrame or 0) ~= 0 then
-        return
-    end
-    local top = response.stackFrames[1]
-    local retry = session.retry_step
-    session.retry_step = nil
-    if top and top.source and top.source.path then
-        start_gdb_recording(session)
-        if retry then
-            session.forward_step_retried = true
-            vim.schedule(retry)
-        end
-    else
-        M.stop_gdb_recording(session)
-    end
-end
-
-local forward_steps = {
-    next = function()
-        dap.step_over()
-    end,
-    stepIn = function()
-        dap.step_into()
-    end,
-    stepOut = function()
-        dap.step_out()
-    end,
-}
-
--- remember a forward step (step over, into or out) sent to the adapter, see step_past_history_end
----@param session dap.Session
----@param command string the request command
-function M.track_forward_step(session, command)
-    session.forward_step = forward_steps[command] and command or nil
-end
-
--- after stepping back, gdb replays the recorded history and a forward step stops early with "Reached end of
--- recorded history" (reason "stopped" instead of "step"), e.g. step out of a function stays inside it;
--- send the same step once more, which then runs live from the end of the history; the recorder stopping before
--- the exit syscall also reports "stopped", so update_gdb_recording only retries when the stop is in code with source
----@param session dap.Session
----@param body table stopped event
-function M.step_past_history_end(session, body)
-    local command, retried = session.forward_step, session.forward_step_retried
-    session.forward_step, session.forward_step_retried = nil, nil
-    if body.reason == "stopped" and command and not retried and session.gdb_recording then
-        session.retry_step = forward_steps[command]
-    end
-end
-
--- step back one line; gdb can do it (reverse-next) while recording, but its debug adapter doesn't say it
--- supports stepping back, so nvim-dap would refuse with "Debug Adapter does not support stepping backwards"
-function M.step_back()
-    local session = dap.session()
-    if session and session.stopped_thread_id and not session.capabilities.supportsStepBack and is_gdb(session) then
-        if not session.gdb_recording then
-            local msg = "Cannot step back here: gdb only records while stopped in code with source"
-            require("dap.utils").notify(msg, vim.log.levels.WARN)
-            return
-        end
-        gdb_command(session, "reverse-next")
-        return
-    end
-    dap.step_back()
 end
 
 function M.run_to_cursor()

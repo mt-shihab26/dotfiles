@@ -19,6 +19,7 @@ return {
     "clangd",
     "clang-format",
     "codelldb",
+    "cpptools",
     -- Python
     "pyright",
     "ruff",

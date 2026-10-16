@@ -12,6 +12,10 @@ vim.pack.add {
         version = "master",
     },
     {
+        src = "https://github.com/jonboh/nvim-dap-rr",
+        version = "main",
+    },
+    {
         src = "https://github.com/leoluz/nvim-dap-go",
         version = "main",
     },
@@ -63,12 +67,6 @@ function Session:request(command, arguments, on_result)
     if command == "stackTrace" and arguments then
         arguments = lib_dap.stack_trace_with_parameters(self, arguments)
     end
-    if step_commands[command] then
-        lib_dap.track_forward_step(self, command)
-    end
-    if command == "continue" then
-        lib_dap.stop_gdb_recording(self)
-    end
     if step_commands[command] and on_result and arguments and arguments.threadId then
         local callback = on_result
         on_result = function(err, result)
@@ -106,8 +104,10 @@ dap.listeners.before.launch.dapui_config = lib_dap.open_ui
 dap.listeners.before.event_terminated.dapui_config = dapui.close
 dap.listeners.before.event_exited.dapui_config = dapui.close
 
--- step back with gdb (see lib_dap.step_back), also from the toolbar button
-dap.listeners.after.stackTrace["gdb-record"] = lib_dap.update_gdb_recording
-dap.listeners.after.event_stopped["gdb-record"] = lib_dap.step_past_history_end
+-- the toolbar buttons step like the keymaps, so they go the right direction while replaying an rr recording
 require "dapui.controls"
+_G._dapui.play = lib_dap.play
+_G._dapui.step_into = lib_dap.step_into
+_G._dapui.step_over = lib_dap.step_over
+_G._dapui.step_out = lib_dap.step_out
 _G._dapui.step_back = lib_dap.step_back

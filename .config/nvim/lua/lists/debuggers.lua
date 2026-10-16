@@ -1,5 +1,5 @@
 return {
-    -- C/C++, Rust (gdb or codelldb, see debuggers/native.lua)
+    -- C/C++, Rust (gdb or codelldb, rr for reverse debugging, see debuggers/native.lua)
     "native",
     -- Python
     "python",

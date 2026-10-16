@@ -194,6 +194,7 @@ map("n", "<leader>bi", dap.step_into, { desc = " step into (dap)" })
 map("n", "<leader>bo", dap.step_over, { desc = " step over (dap)" })
 map("n", "<leader>bO", dap.step_out, { desc = " step out (dap)" })
 map("n", "<leader>bB", dap.step_back, { desc = " step back (dap)" })
+map("n", "<leader>bR", dap.reverse_continue, { desc = "reverse continue to the previous breakpoint (dap-rr)" })
 
 -- stopping
 map("n", "<leader>bq", dap.terminate, { desc = " stop debugging (dap)" })
