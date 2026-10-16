@@ -3,7 +3,8 @@ local map = vim.keymap.set
 -- keymaps set elsewhere, listed here so every keymap can be found in this file
 --
 -- window navigation (vim-tmux-navigator defaults), crosses into tmux panes at the edge of nvim:
---   <C-h> / <C-j> / <C-k> / <C-l>   move to the window or tmux pane left / below / above / right
+--   <C-h> / <C-j> / <C-k> / <C-l>   move to the window or tmux pane left / below / above / right (also in terminals)
+--   <C-\>                           go back to the previous window or tmux pane
 --
 -- completion menu, insert and command mode (plugins/cmp.lua, they must be passed to cmp.setup):
 --   <M-n> / <M-p>   select the next / previous item
@@ -17,6 +18,12 @@ local map = vim.keymap.set
 --   grep files (<leader>g / <leader>G) only:
 --   <C-k>              wrap the prompt in quotes, to add rg flags after it (e.g. "foo" -t lua)
 --   <C-space>          fuzzy filter the current results
+--   telescope defaults, also in every picker:
+--   <C-n> / <C-p> or <Down> / <Up>   move the selection   <CR> open   <C-c> close
+--   <C-x> / <C-v> / <C-t>            open in a split / vsplit / new tab
+--   <C-u> / <C-d>                    scroll the preview up / down   <PageUp> / <PageDown> scroll the results
+--   <Tab> / <S-Tab>                  select entries for a multi-open   <C-q> / <M-q> send all / selected to quickfix
+--   <C-r><C-w>                       insert the word that was under the cursor   <C-/> list the picker's keys
 --
 -- image viewer, in a buffer showing an image (lib/image.lua, set when the image is opened):
 --   <ScrollWheelUp> / <ScrollWheelDown>   zoom in / out on the image under the mouse, scroll elsewhere
@@ -36,6 +43,26 @@ local map = vim.keymap.set
 --   view:      H toggle hidden files   i file details   [g / ]g prev / next git change   R refresh
 --              o then c / d / g / m / n / s / t order by created, diagnostics, git, modified, name, size, type
 --   window:    e toggle auto width   < / > previous / next source   q close   ? help
+--
+-- search and replace panel (spectre defaults, <leader>s / <leader>S open it; these only apply inside the panel):
+--   <Tab> / <S-Tab>       next / previous input (search, replace, path)
+--   <cr>                  open the file of the result under the cursor
+--   dd                    exclude / include the result under the cursor
+--   <leader>rc            replace the result under the cursor   <leader>R replace all
+--   <leader>q             send all results to quickfix   <leader>l repeat the last search
+--   ti / th               toggle ignore case / search hidden files   <leader>o show options
+--
+-- debugger panels (dap-ui defaults, in the scopes, watches, stacks and breakpoints windows):
+--   <cr> / <2-LeftMouse>  expand / collapse   o open (jump to the frame or breakpoint)   e edit a value or watch
+--   d remove   t toggle (breakpoint, or subtle frames)   r send to the repl
+--
+-- package manager window (mason defaults, :Mason):
+--   i install   u update   U update all   X uninstall   c / C check for a new version / all outdated
+--   <CR> expand the package   g? help
+--
+-- insert mode (nvim-autopairs defaults):
+--   typing an opening bracket or quote inserts the closing one, <CR> between a pair opens an indented line
+--   and <BS> on an empty pair deletes both
 
 -- general
 map("n", "q", "<nop>", { desc = "disable macro recording" })
