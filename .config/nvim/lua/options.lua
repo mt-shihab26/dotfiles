@@ -19,12 +19,14 @@ vim.opt.shiftwidth = 4     -- one indent level is 4 columns for >>, << and auto-
 vim.opt.expandtab = true   -- Tab inserts spaces instead of a tab character
 vim.opt.smartindent = true -- indent new lines automatically, one level deeper after {
 
--- line display
-vim.opt.wrap = false       -- long lines run off the screen instead of wrapping
-vim.opt.cursorline = true  -- highlight the line the cursor is on
-vim.opt.signcolumn = "yes" -- always keep the sign column, so text doesn't shift when signs appear
-vim.opt.cmdheight = 0      -- hide the command line until it is in use
-vim.opt.list = true        -- draw invisible characters using listchars below
+-- display
+vim.opt.wrap = false         -- long lines run off the screen instead of wrapping
+vim.opt.cursorline = true    -- highlight the line the cursor is on
+vim.opt.signcolumn = "yes"   -- always keep the sign column, so text doesn't shift when signs appear
+vim.opt.cmdheight = 0        -- hide the command line until it is in use
+vim.opt.laststatus = 3       -- one statusline at the bottom for all windows, instead of one per window
+vim.opt.termguicolors = true -- use 24-bit (true) colors, so colorschemes look as designed instead of the 256 color palette
+vim.opt.list = true          -- draw invisible characters using listchars below
 
 vim.opt.listchars = {
     space = "·", -- every space
@@ -54,15 +56,9 @@ vim.opt.isfname:append "@-@" -- treat @ as part of a file name, so gf works on p
 vim.opt.spell = true        -- underline misspelled words (]s / [s to jump, z= for suggestions)
 vim.opt.spelllang = "en_us" -- check spelling against American English
 
--- ui & input
-vim.opt.laststatus = 3
-vim.opt.termguicolors = true
-vim.opt.mouse = "a"
--- scroll one line per wheel event, a trackpad sends many of them per swipe
-vim.opt.mousescroll = "ver:1,hor:2"
-
--- block cursor, a thin bar while inserting, an underline while replacing
--- vim.opt.guicursor = "n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20"
+-- mouse
+vim.opt.mouse = "a"                 -- enable the mouse in all modes: click to move, drag to select, scroll, resize splits
+vim.opt.mousescroll = "ver:1,hor:2" -- scroll one line per wheel event, a trackpad sends many of them per swipe
 
 -- clipboard (deferred to avoid startup latency)
 vim.schedule(function()
