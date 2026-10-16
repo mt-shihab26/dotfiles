@@ -67,11 +67,14 @@ dap.adapters.cppdbg = {
     command = "OpenDebugAD7",
 }
 
-local rr = require "nvim-dap-rr"
-
 dap.configurations.c = configurations { "cc", "-g" }
 dap.configurations.cpp = configurations { "c++", "-g" }
 dap.configurations.rust = configurations { "rustc", "-g" }
-table.insert(dap.configurations.c, rr.get_config())
-table.insert(dap.configurations.cpp, rr.get_config())
-table.insert(dap.configurations.rust, rr.get_rust_config())
+
+-- a missing or half-installed nvim-dap-rr must not abort startup (and every config loaded after it)
+local ok, rr = pcall(require, "nvim-dap-rr")
+if ok then
+    table.insert(dap.configurations.c, rr.get_config())
+    table.insert(dap.configurations.cpp, rr.get_config())
+    table.insert(dap.configurations.rust, rr.get_rust_config())
+end
