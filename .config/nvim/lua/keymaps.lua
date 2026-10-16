@@ -173,7 +173,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
             "n",
             "<leader>xS",
             lsp.stop,
-            opts "stop this buffer's lsp servers, everywhere until started again (lspconfig)"
+            opts "stop lsp servers for this buffer (lspconfig)"
         )
         map("n", "<leader>xr", lsp.restart, opts "restart lsp server (lspconfig)")
     end,

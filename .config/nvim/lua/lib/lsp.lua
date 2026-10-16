@@ -56,11 +56,15 @@ function M.start()
     end
 end
 
+-- detach the current buffer's language servers from it, other buffers keep them; a server no other buffer
+-- uses is shut down instead of left idle. M.start (or reopening the buffer) attaches them again
 function M.stop()
     local bufnr = vim.api.nvim_get_current_buf()
     for _, client in ipairs(vim.lsp.get_clients { bufnr = bufnr }) do
-        vim.lsp.enable(client.name, false)
-        client:stop(true)
+        vim.lsp.buf_detach_client(bufnr, client.id)
+        if vim.tbl_isempty(client.attached_buffers) then
+            client:stop(true)
+        end
     end
 end
 
