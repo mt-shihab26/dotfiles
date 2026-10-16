@@ -63,8 +63,10 @@ map("n", "<leader>ch", buffer.close_left, { desc = "delete buffers to the left (
 map("n", "<leader>cl", buffer.close_right, { desc = "delete buffers to the right (bufferline)" })
 
 -- file tree (neo-tree)
-map("n", "<leader>e", "<cmd>Neotree action=focus<cr>", { desc = "focus file tree (neo-tree)", remap = true })
-map("n", "<leader>p", "<cmd>Neotree action=close<cr>", { desc = "close file tree (neo-tree)", remap = true })
+local tree = require "lib.tree"
+
+map("n", "<leader>e", tree.focus, { desc = "focus file tree (neo-tree)" })
+map("n", "<leader>p", tree.close, { desc = "close file tree (neo-tree)" })
 
 -- fuzzy finding (telescope)
 local telescope = require "lib.telescope"
