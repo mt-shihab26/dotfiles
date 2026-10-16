@@ -8,6 +8,15 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     end,
 })
 
+-- new C/C++ header files start with "#pragma once" (see lib/header.lua), this covers netrw's %
+-- and :e; neo-tree creates the file on disk first, so it calls the same function from its file_added event
+vim.api.nvim_create_autocmd("BufNewFile", {
+    pattern = { "*.h", "*.hpp" },
+    callback = function(args)
+        require("lib.header").add_pragma_once(vim.api.nvim_buf_get_name(args.buf))
+    end,
+})
+
 -- custom filetype detection
 vim.filetype.add {
     extension = {

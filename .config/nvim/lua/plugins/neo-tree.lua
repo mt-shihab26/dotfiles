@@ -52,6 +52,15 @@ lazy.add({
                 last_modified = { enabled = false },
                 created = { enabled = false },
             },
+            event_handlers = {
+                -- new C/C++ headers start with "#pragma once" (see lib/header.lua)
+                {
+                    event = "file_added",
+                    handler = function(path)
+                        require("lib.header").add_pragma_once(path)
+                    end,
+                },
+            },
             filesystem = {
                 components = {
                     name = function(config, node, state)
