@@ -30,6 +30,15 @@ map("n", "q", "<nop>", { desc = "disable macro recording" })
 map("n", "<esc>", "<cmd>nohlsearch<cr>", { desc = "clear search highlighting" })
 map("x", "p", "P", { desc = "paste without yanking selected text" })
 
+-- git (lazygit, gitsigns)
+map("n", "<leader>L", "<cmd>LazyGit<cr>", { desc = "open lazygit window (lazygit)", remap = true })
+map("n", "]h", "<cmd>silent Gitsigns next_hunk<cr>", { desc = "navigate to the next git hunk (gitsigns)" })
+map("n", "[h", "<cmd>silent Gitsigns prev_hunk<cr>", { desc = "navigate to the previous git hunk (gitsigns)" })
+map("n", "]H", "<cmd>silent Gitsigns nav_hunk next target=staged<cr>",
+    { desc = "navigate to the next staged git hunk (gitsigns)" })
+map("n", "[H", "<cmd>silent Gitsigns nav_hunk prev target=staged<cr>",
+    { desc = "navigate to the previous staged git hunk (gitsigns)" })
+
 -- buffers (bufferline)
 local buffer = require "lib.buffer"
 
@@ -44,15 +53,6 @@ map("n", "<leader>cl", "<cmd>BufferLineCloseRight<cr>", { desc = "delete buffers
 -- file tree (neo-tree)
 map("n", "<leader>e", "<cmd>Neotree action=focus<cr>", { desc = "focus file tree (neo-tree)", remap = true })
 map("n", "<leader>p", "<cmd>Neotree action=close<cr>", { desc = "close file tree (neo-tree)", remap = true })
-
--- git (lazygit, gitsigns)
-map("n", "<leader>L", "<cmd>LazyGit<cr>", { desc = "open lazygit window (lazygit)", remap = true })
-map("n", "]h", "<cmd>silent Gitsigns next_hunk<cr>", { desc = "navigate to the next git hunk (gitsigns)" })
-map("n", "[h", "<cmd>silent Gitsigns prev_hunk<cr>", { desc = "navigate to the previous git hunk (gitsigns)" })
-map("n", "]H", "<cmd>silent Gitsigns nav_hunk next target=staged<cr>",
-    { desc = "navigate to the next staged git hunk (gitsigns)" })
-map("n", "[H", "<cmd>silent Gitsigns nav_hunk prev target=staged<cr>",
-    { desc = "navigate to the previous staged git hunk (gitsigns)" })
 
 -- fuzzy finding (telescope)
 local telescope = require "lib.telescope"
