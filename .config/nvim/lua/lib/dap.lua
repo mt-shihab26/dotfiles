@@ -1,4 +1,9 @@
-local dap = require "dap"
+-- nvim-dap loads lazily (plugins/dap.lua), so look it up on use instead of when keymaps.lua requires this file
+local dap = setmetatable({}, {
+    __index = function(_, key)
+        return require("dap")[key]
+    end,
+})
 
 local M = {}
 

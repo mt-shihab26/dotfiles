@@ -1,19 +1,8 @@
+-- on the runtimepath from the start: its queries highlight the files opened at startup
 vim.pack.add {
     {
         src = "https://github.com/nvim-treesitter/nvim-treesitter",
         version = "main",
-    },
-    {
-        src = "https://github.com/windwp/nvim-autopairs",
-        version = vim.version.range "0.10",
-    },
-    {
-        src = "https://github.com/windwp/nvim-ts-autotag",
-        version = "main",
-    },
-    {
-        src = "https://github.com/folke/ts-comments.nvim",
-        version = vim.version.range "1",
     },
 }
 
@@ -49,10 +38,27 @@ vim.api.nvim_create_autocmd("FileType", {
     end,
 })
 
-local autopairs = require "nvim-autopairs"
-local ts_autotag = require "nvim-ts-autotag"
-local ts_comments = require "ts-comments"
+local lazy = require "lib.lazy"
 
-autopairs.setup {}
-ts_autotag.setup {}
-ts_comments.setup {}
+-- loads right after startup
+lazy.add({
+    {
+        src = "https://github.com/windwp/nvim-autopairs",
+        version = vim.version.range "0.10",
+    },
+    {
+        src = "https://github.com/windwp/nvim-ts-autotag",
+        version = "main",
+    },
+    {
+        src = "https://github.com/folke/ts-comments.nvim",
+        version = vim.version.range "1",
+    },
+}, {
+    defer = true,
+    setup = function()
+        require("nvim-autopairs").setup {}
+        require("nvim-ts-autotag").setup {}
+        require("ts-comments").setup {}
+    end,
+})

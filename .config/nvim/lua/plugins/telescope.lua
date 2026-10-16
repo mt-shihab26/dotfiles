@@ -6,7 +6,10 @@ vim.api.nvim_create_autocmd("PackChanged", {
     end,
 })
 
-vim.pack.add {
+local lazy = require "lib.lazy"
+
+-- loads on the first picker (<leader>f, <leader>g, ...), :Telescope or vim.ui.select menu
+local load = lazy.add({
     {
         src = "https://github.com/nvim-telescope/telescope.nvim",
         version = "master",
@@ -23,86 +26,102 @@ vim.pack.add {
         src = "https://github.com/nvim-telescope/telescope-fzf-native.nvim",
         version = "main",
     },
-}
+}, {
+    modules = { "telescope" },
+    commands = { "Telescope" },
+    setup = function()
+        local telescope = require "telescope"
+        local actions = require "telescope.actions"
+        local telescope_themes = require "telescope.themes"
 
-local telescope = require "telescope"
-local actions = require "telescope.actions"
-local telescope_themes = require "telescope.themes"
-
-telescope.setup {
-    defaults = {
-        path_display = { truncate = 1 },
-        prompt_prefix = "   ",
-        selection_caret = "  ",
-        layout_config = {
-            prompt_position = "top",
-        },
-        preview = {
-            filesize_limit = 1,
-            timeout = 200,
-            msg_bg_fillchar = " ",
-        },
-        sorting_strategy = "ascending",
-        mappings = {
-            i = {
-                ["<esc>"] = actions.close,
-                ["<C-Down>"] = actions.cycle_history_next,
-                ["<C-Up>"] = actions.cycle_history_prev,
-                ["<M-n>"] = actions.move_selection_next,
-                ["<M-p>"] = actions.move_selection_previous,
-                ["<M-y>"] = actions.select_default,
+        telescope.setup {
+            defaults = {
+                path_display = { truncate = 1 },
+                prompt_prefix = "   ",
+                selection_caret = "  ",
+                layout_config = {
+                    prompt_position = "top",
+                },
+                preview = {
+                    filesize_limit = 1,
+                    timeout = 200,
+                    msg_bg_fillchar = " ",
+                },
+                sorting_strategy = "ascending",
+                mappings = {
+                    i = {
+                        ["<esc>"] = actions.close,
+                        ["<C-Down>"] = actions.cycle_history_next,
+                        ["<C-Up>"] = actions.cycle_history_prev,
+                        ["<M-n>"] = actions.move_selection_next,
+                        ["<M-p>"] = actions.move_selection_previous,
+                        ["<M-y>"] = actions.select_default,
+                    },
+                },
+                file_ignore_patterns = { "%.git/" },
             },
-        },
-        file_ignore_patterns = { "%.git/" },
-    },
-    extensions = {
-        live_grep_args = {
-            mappings = {
-                i = {
-                    ["<C-k>"] = function(...)
-                        local live_grep_args_actions = require "telescope-live-grep-args.actions"
-                        return live_grep_args_actions.quote_prompt()(...)
-                    end,
-                    ["<C-space>"] = actions.to_fuzzy_refine,
+            extensions = {
+                live_grep_args = {
+                    mappings = {
+                        i = {
+                            ["<C-k>"] = function(...)
+                                local live_grep_args_actions = require "telescope-live-grep-args.actions"
+                                return live_grep_args_actions.quote_prompt()(...)
+                            end,
+                            ["<C-space>"] = actions.to_fuzzy_refine,
+                        },
+                    },
+                },
+                ["ui-select"] = {
+                    telescope_themes.get_dropdown(),
                 },
             },
-        },
-        ["ui-select"] = {
-            telescope_themes.get_dropdown(),
-        },
-    },
-    pickers = {
-        find_files = {
-            hidden = true,
-        },
-        buffers = {
-            previewer = false,
-            layout_config = {
-                width = 80,
+            pickers = {
+                find_files = {
+                    hidden = true,
+                },
+                buffers = {
+                    previewer = false,
+                    layout_config = {
+                        width = 80,
+                    },
+                },
+                oldfiles = {
+                    prompt_title = "History",
+                },
+                lsp_references = {
+                    previewer = false,
+                },
+                lsp_definitions = {
+                    previewer = false,
+                },
+                lsp_document_symbols = {
+                    symbol_width = 55,
+                },
             },
-        },
-        oldfiles = {
-            prompt_title = "History",
-        },
-        lsp_references = {
-            previewer = false,
-        },
-        lsp_definitions = {
-            previewer = false,
-        },
-        lsp_document_symbols = {
-            symbol_width = 55,
-        },
-    },
-}
+        }
 
-local fzf_plugins = vim.pack.get({ "telescope-fzf-native.nvim" }, { info = false })
-if #fzf_plugins > 0 then
-    local so = fzf_plugins[1].path .. "/build/libfzf.so"
-    if vim.fn.filereadable(so) == 0 and vim.fn.executable "make" == 1 then
-        vim.system({ "make" }, { cwd = fzf_plugins[1].path }):wait()
+        local fzf_plugins = vim.pack.get({ "telescope-fzf-native.nvim" }, { info = false })
+        if #fzf_plugins > 0 then
+            local so = fzf_plugins[1].path .. "/build/libfzf.so"
+            if vim.fn.filereadable(so) == 0 and vim.fn.executable "make" == 1 then
+                vim.system({ "make" }, { cwd = fzf_plugins[1].path }):wait()
+            end
+        end
+
+        telescope.load_extension "fzf"
+        telescope.load_extension "ui-select"
+        pcall(telescope.load_extension, "lazygit")
+    end,
+})
+
+-- telescope-ui-select takes over vim.ui.select once telescope loads, so the first menu loads it
+local ui_select = vim.ui.select
+local function select_after_load(...)
+    load()
+    if vim.ui.select == select_after_load then
+        vim.ui.select = ui_select
     end
+    return vim.ui.select(...)
 end
-
-telescope.load_extension "fzf"
-telescope.load_extension "ui-select"
+vim.ui.select = select_after_load
