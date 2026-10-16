@@ -12,7 +12,6 @@ return {
     -- Shell
     "bash-language-server",
     "shfmt",
-    "bash-debug-adapter",
     -- Lua
     "lua-language-server",
     "stylua",
