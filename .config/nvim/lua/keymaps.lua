@@ -31,13 +31,13 @@ map("n", "<esc>", "<cmd>nohlsearch<cr>", { desc = "clear search highlighting" })
 map("x", "p", "P", { desc = "paste without yanking selected text" })
 
 -- git (lazygit, gitsigns)
-map("n", "<leader>L", "<cmd>LazyGit<cr>", { desc = "open lazygit window (lazygit)", remap = true })
-map("n", "]h", "<cmd>silent Gitsigns next_hunk<cr>", { desc = "navigate to the next git hunk (gitsigns)" })
-map("n", "[h", "<cmd>silent Gitsigns prev_hunk<cr>", { desc = "navigate to the previous git hunk (gitsigns)" })
-map("n", "]H", "<cmd>silent Gitsigns nav_hunk next target=staged<cr>",
-    { desc = "navigate to the next staged git hunk (gitsigns)" })
-map("n", "[H", "<cmd>silent Gitsigns nav_hunk prev target=staged<cr>",
-    { desc = "navigate to the previous staged git hunk (gitsigns)" })
+local git = require "lib.git"
+
+map("n", "<leader>L", git.lazygit, { desc = "open lazygit window (lazygit)" })
+map("n", "]h", git.next_hunk, { desc = "navigate to the next git hunk (gitsigns)" })
+map("n", "[h", git.prev_hunk, { desc = "navigate to the previous git hunk (gitsigns)" })
+map("n", "]H", git.next_staged_hunk, { desc = "navigate to the next staged git hunk (gitsigns)" })
+map("n", "[H", git.prev_staged_hunk, { desc = "navigate to the previous staged git hunk (gitsigns)" })
 
 -- buffers (bufferline)
 local buffer = require "lib.buffer"
