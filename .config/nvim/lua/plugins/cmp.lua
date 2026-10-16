@@ -48,7 +48,8 @@ vim.g.cmp_enabled = true
 
 cmp.setup {
     enabled = function()
-        return vim.g.cmp_enabled
+        -- vim.b.completion is set to false in big files (snacks bigfile)
+        return vim.g.cmp_enabled and vim.b.completion ~= false
     end,
     preselect = cmp.PreselectMode.Item,
     sorting = cmp_default().sorting,

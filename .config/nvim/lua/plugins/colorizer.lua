@@ -13,6 +13,7 @@ local colorizer = require "colorizer"
 local ibl = require "ibl"
 
 colorizer.setup {
+    filetypes = { "*", "!bigfile" },
     user_default_options = {
         names = false,
         tailwind = true,
@@ -21,5 +22,5 @@ colorizer.setup {
 
 ibl.setup {
     scope = { show_start = false },
-    exclude = { filetypes = { "dashboard" } },
+    exclude = { filetypes = { "dashboard", "bigfile" } },
 }
