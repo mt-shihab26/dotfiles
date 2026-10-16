@@ -5,43 +5,20 @@ map("n", "q", "<nop>", { desc = "disable macro recording" })
 map("n", "<esc>", "<cmd>nohlsearch<cr>", { desc = "clear search highlighting" })
 map("x", "p", "P", { desc = "paste without yanking selected text" })
 
--- toggle
-local toggle = require "lib.toggle"
-
-map("n", "<leader>ti", toggle.indent_char, { desc = "toggle tabs/spaces for indentation" })
-map("n", "<leader>tw", toggle.wrap, { desc = "toggle line wrapping on/off" })
-map("n", "<leader>tf", toggle.format_on_save, { desc = "toggle format on save" })
-map("n", "<leader>tc", toggle.completion, { desc = "toggle completion (cmp)" })
-map("n", "<leader>ts", toggle.semantic_tokens, { desc = "toggle lsp semantic tokens highlighting" })
-map("n", "<leader>tm", toggle.markdown_render, { desc = "toggle markdown rendering (render-markdown)" })
-
--- window navigation
-map("n", "<leader>j", "<C-w>j", { desc = "move to below window" })
-map("n", "<leader>k", "<C-w>k", { desc = "move to above window" })
-map("n", "<leader>l", "<C-w>l", { desc = "move to right window" })
-
 -- buffers (bufferline)
 local buffer = require "lib.buffer"
 
 map("n", "<S-h>", "<cmd>BufferLineCyclePrev<cr>", { desc = "prev buffer (bufferline)" })
 map("n", "<S-l>", "<cmd>BufferLineCycleNext<cr>", { desc = "next buffer (bufferline)" })
-map("n", "<leader>Q", "<cmd>bp<bar>sp<bar>bn<bar>bd<cr>", { desc = "close current buffer (bufferline)" })
-map("n", "<leader>q", buffer.close_terminals_or_others, { desc = "close terminals or other buffers (bufferline)" })
-map("n", "<leader>cl", "<cmd>BufferLineCloseRight<cr>", { desc = "delete buffers to the right (bufferline)" })
-map("n", "<leader>ch", "<cmd>BufferLineCloseLeft<cr>", { desc = "delete buffers to the left (bufferline)" })
-
 map("n", "l", buffer.open_last_file, { desc = "open last file or move right" })
+map("n", "<leader>q", buffer.close_terminals_or_others, { desc = "close terminals or other buffers (bufferline)" })
+map("n", "<leader>Q", "<cmd>bp<bar>sp<bar>bn<bar>bd<cr>", { desc = "close current buffer (bufferline)" })
+map("n", "<leader>ch", "<cmd>BufferLineCloseLeft<cr>", { desc = "delete buffers to the left (bufferline)" })
+map("n", "<leader>cl", "<cmd>BufferLineCloseRight<cr>", { desc = "delete buffers to the right (bufferline)" })
 
 -- file tree (neo-tree)
 map("n", "<leader>e", "<cmd>Neotree action=focus<cr>", { desc = "focus file tree (neo-tree)", remap = true })
 map("n", "<leader>p", "<cmd>Neotree action=close<cr>", { desc = "close file tree (neo-tree)", remap = true })
-
--- clipboard
-local clipboard = require "lib.clipboard"
-
-map("n", "<leader>cp", clipboard.path, { desc = "copy current file relative path" })
-map("n", "<leader>ca", clipboard.abs_path, { desc = "copy current file absolute path" })
-map("n", "<leader>cf", clipboard.name, { desc = "copy current file name with extension" })
 
 -- fuzzy finding (telescope)
 local telescope = require "lib.telescope"
@@ -61,33 +38,42 @@ map("n", "<leader>S", spectre.search_word, { desc = "search on multi buffers (sp
 map("v", "<leader>S", spectre.search_selection, { desc = "search on multi buffers (spectre)" })
 
 -- git (lazygit, gitsigns)
+map("n", "<leader>L", "<cmd>LazyGit<cr>", { desc = "open lazygit window (lazygit)", remap = true })
 map("n", "]h", "<cmd>silent Gitsigns next_hunk<cr>", { desc = "navigate to the next git hunk (gitsigns)" })
 map("n", "[h", "<cmd>silent Gitsigns prev_hunk<cr>", { desc = "navigate to the previous git hunk (gitsigns)" })
 map("n", "]H", "<cmd>silent Gitsigns nav_hunk next target=staged<cr>", { desc = "navigate to the next staged git hunk (gitsigns)" })
 map("n", "[H", "<cmd>silent Gitsigns nav_hunk prev target=staged<cr>", { desc = "navigate to the previous staged git hunk (gitsigns)" })
-map("n", "<leader>L", "<cmd>LazyGit<cr>", { desc = "open lazygit window (lazygit)", remap = true })
 
 -- debugging (dap)
 local dap = require "lib.dap"
 
+-- session
 map("n", "<leader>bp", dap.continue, { desc = " start or continue debugging (dap)" })
 map("n", "<leader>bP", "<cmd>DapPause<cr>", { desc = " pause debugging (dap)" })
+map("n", "<leader>bl", dap.run_last, { desc = " run last debug session again (dap)" })
+map("n", "<leader>br", dap.run_to_cursor, { desc = "run to cursor (dap)" })
+map("n", "<leader>bt", dap.debug_go_test, { desc = "debug nearest go test (dap-go)" })
+
+-- stepping
 map("n", "<leader>bi", "<cmd>DapStepInto<cr>", { desc = " step into (dap)" })
 map("n", "<leader>bo", "<cmd>DapStepOver<cr>", { desc = " step over (dap)" })
 map("n", "<leader>bO", "<cmd>DapStepOut<cr>", { desc = " step out (dap)" })
 map("n", "<leader>bB", dap.step_back, { desc = " step back (dap)" })
-map("n", "<leader>br", dap.run_to_cursor, { desc = "run to cursor (dap)" })
-map("n", "<leader>bl", dap.run_last, { desc = " run last debug session again (dap)" })
+
+-- stopping
 map("n", "<leader>bq", "<cmd>DapTerminate<cr>", { desc = " stop debugging (dap)" })
 map("n", "<leader>bQ", dap.close, { desc = "stop debugging and close the debugger ui (dap)" })
 map("n", "<leader>bd", "<cmd>DapDisconnect<cr>", { desc = " disconnect from debug session (dap)" })
+
+-- breakpoints
 map("n", "<leader>bb", "<cmd>DapToggleBreakpoint<cr>", { desc = "toggle breakpoint (dap)" })
 map("n", "<leader>bc", dap.conditional_breakpoint, { desc = "set conditional breakpoint (dap)" })
 map("n", "<leader>bx", "<cmd>DapClearBreakpoints<cr>", { desc = "clear all breakpoints (dap)" })
+map("n", "<LeftMouse>", dap.click_breakpoint, { expr = true, desc = "click the margin to toggle a breakpoint (dap)" })
+
+-- ui
 map("n", "<leader>bu", dap.toggle_ui, { desc = "toggle debugger ui (dap-ui)" })
 map({ "n", "v" }, "<leader>be", dap.eval, { desc = "evaluate expression under cursor (dap-ui)" })
-map("n", "<leader>bt", dap.debug_go_test, { desc = "debug nearest go test (dap-go)" })
-map("n", "<LeftMouse>", dap.click_breakpoint, { expr = true, desc = "click the margin to toggle a breakpoint (dap)" })
 
 -- text case conversion
 local case = require "lib.case"
@@ -96,12 +82,29 @@ map("v", "<leader>uu", case.visual "upper", { desc = "convert selection to UPPER
 map("v", "<leader>ul", case.visual "lower", { desc = "convert selection to lowercase" })
 map("v", "<leader>uc", case.visual "capitalize", { desc = "convert selection to Capitalize Each Word" })
 map("v", "<leader>um", case.visual "camel", { desc = "convert selection to helloWorld" })
+map("v", "<leader>up", case.visual "pascal", { desc = "convert selection to HelloWorld" })
 map("v", "<leader>us", case.visual "snake", { desc = "convert selection to hello_world" })
 map("v", "<leader>uS", case.visual "constant", { desc = "convert selection to HELLO_WORLD" })
-map("v", "<leader>up", case.visual "pascal", { desc = "convert selection to HelloWorld" })
 map("v", "<leader>uk", case.visual "kebab", { desc = "convert selection to hello-world" })
 map("v", "<leader>ud", case.visual "dot", { desc = "convert selection to hello.world" })
 map("v", "<leader>uw", case.visual "space", { desc = "convert selection to hello world" })
+
+-- clipboard
+local clipboard = require "lib.clipboard"
+
+map("n", "<leader>cp", clipboard.path, { desc = "copy current file relative path" })
+map("n", "<leader>ca", clipboard.abs_path, { desc = "copy current file absolute path" })
+map("n", "<leader>cf", clipboard.name, { desc = "copy current file name with extension" })
+
+-- toggle
+local toggle = require "lib.toggle"
+
+map("n", "<leader>tc", toggle.completion, { desc = "toggle completion (cmp)" })
+map("n", "<leader>tf", toggle.format_on_save, { desc = "toggle format on save" })
+map("n", "<leader>ti", toggle.indent_char, { desc = "toggle tabs/spaces for indentation" })
+map("n", "<leader>tm", toggle.markdown_render, { desc = "toggle markdown rendering (render-markdown)" })
+map("n", "<leader>ts", toggle.semantic_tokens, { desc = "toggle lsp semantic tokens highlighting" })
+map("n", "<leader>tw", toggle.wrap, { desc = "toggle line wrapping on/off" })
 
 -- discoverability (which-key)
 local which_key = require "lib.which_key"
