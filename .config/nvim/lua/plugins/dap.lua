@@ -81,11 +81,30 @@ end
 -- (gdb does, codelldb doesn't), nvim-dap doesn't request them by itself
 local Session = require "dap.session"
 local session_request = Session.request
+local step_commands = { next = true, stepIn = true, stepOut = true, stepBack = true, continue = true, reverseContinue = true }
 function Session:request(command, arguments, on_result)
     if command == "stackTrace" and arguments and not arguments.format and self.capabilities.supportsValueFormattingOptions then
         local format = { parameters = true, parameterTypes = true, parameterNames = true, parameterValues = true }
         arguments = vim.tbl_extend("force", arguments, { format = format })
     end
+
+    -- nvim-dap marks the thread as running before sending a step, and doesn't undo it when the adapter refuses
+    -- (e.g. gdb's "finish not meaningful in the outermost frame" when stepping out of main), so every later
+    -- step fails with "No stopped threads"; the program is still paused, so mark it stopped again
+    if step_commands[command] and on_result and arguments and arguments.threadId then
+        local callback = on_result
+        on_result = function(err, result)
+            local thread = self.threads[arguments.threadId]
+            if err and thread and not self.stopped_thread_id then
+                self.stopped_thread_id = thread.id
+                thread.stopped = true
+                self:_frame_set(self.current_frame)
+                require("dapui.controls").refresh_control_panel()
+            end
+            return callback(err, result)
+        end
+    end
+
     return session_request(self, command, arguments, on_result)
 end
 
