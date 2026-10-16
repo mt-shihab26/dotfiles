@@ -13,9 +13,9 @@ Two things keep it fast:
 
 | When                                  | Plugins                                                                                                   |
 | ------------------------------------- | --------------------------------------------------------------------------------------------------------- |
-| At startup                            | theme, snacks (bigfile has to see files as they open), gitsigns, conform, render-markdown, nvim-treesitter (its queries highlight the first file), lazygit, tmux-navigator, plenary, nui, devicons, lsp-file-operations |
+| At startup                            | theme, snacks (bigfile has to see files as they open), gitsigns, conform, nvim-treesitter (its queries highlight the first file), lazygit, tmux-navigator, plenary, nui, devicons, lsp-file-operations, nvim-jdtls (it also extends the java language server) |
 | Right after the first screen is drawn | cmp + luasnip, mason, lspconfig + fidget, lualine, bufferline, which-key, colorizer + indent-blankline, autopairs, ts-autotag, ts-comments |
-| On first use                          | neo-tree, telescope, spectre, nvim-dap (+ dap-ui, dap-go, dap-rr, jdtls)                                  |
+| On first use                          | neo-tree, telescope, spectre, nvim-dap (+ dap-ui, dap-go, dap-rr)                                  |
 
 Plugins that load after the first screen still attach to the files opened at startup:
 `vim.lsp.enable` re-runs `FileType` for open buffers, and `plugins/colorizer.lua` attaches

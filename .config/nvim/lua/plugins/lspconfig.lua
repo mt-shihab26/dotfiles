@@ -20,7 +20,12 @@ lazy.add({
 
         fidget.setup { notification = { window = { winblend = 0 } } }
 
-        -- lsp-file-operations is set up with neo-tree (plugins/neo-tree.lua), its capabilities work without that
+        -- lsp-file-operations' setup hooks neo-tree, so it runs when neo-tree loads (plugins/neo-tree.lua); until
+        -- then its default config keeps :LFO working, it needs one for the request timeout
+        if not lsp_file_operations.get_config() then
+            lsp_file_operations.set_config(vim.deepcopy(require("lsp-file-operations.config").get_defaults()))
+        end
+
         local capabilities = vim.tbl_deep_extend(
             "force",
             vim.lsp.protocol.make_client_capabilities(),

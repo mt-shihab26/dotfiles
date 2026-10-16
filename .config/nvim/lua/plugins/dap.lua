@@ -1,3 +1,12 @@
+-- not lazy: besides debugging java (debuggers/java.lua) it extends the jdtls language server, its lsp/jdtls.lua
+-- adds client capabilities, and its plugin/ attaches jdtls commands and opens jdt:// class files
+vim.pack.add {
+    {
+        src = "https://github.com/mfussenegger/nvim-jdtls",
+        version = "master",
+    },
+}
+
 local lazy = require "lib.lazy"
 
 -- loads on the first debugger keymap (<leader>b...), :Dap... command or require of a dap module
@@ -22,12 +31,8 @@ lazy.add({
         src = "https://github.com/leoluz/nvim-dap-go",
         version = "main",
     },
-    {
-        src = "https://github.com/mfussenegger/nvim-jdtls",
-        version = "master",
-    },
 }, {
-    modules = { "dap", "dapui", "dap-go", "nvim-dap-rr", "jdtls", "nio" },
+    modules = { "dap", "dapui", "dap-go", "nvim-dap-rr", "nio" },
     commands = {
         "DapErrorLog",
         "DapSetLogLevel",
