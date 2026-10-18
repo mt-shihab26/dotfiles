@@ -87,8 +87,8 @@ map("n", "<S-l>", buffer.next, { desc = "next buffer (bufferline)" })
 map("n", "l", buffer.open_last_file, { desc = "open last file or move right" })
 map("n", "<leader>q", buffer.close_terminals_or_others, { desc = "close terminals or other buffers (bufferline)" })
 map("n", "<leader>k", buffer.close_current, { desc = "close (kill) current buffer (bufferline)" })
-map("n", "<leader>ch", buffer.close_left, { desc = "delete buffers to the left (bufferline)" })
-map("n", "<leader>cl", buffer.close_right, { desc = "delete buffers to the right (bufferline)" })
+map("n", "<leader>[", buffer.close_left, { desc = "delete buffers to the left (bufferline)" })
+map("n", "<leader>]", buffer.close_right, { desc = "delete buffers to the right (bufferline)" })
 
 -- file tree (neo-tree)
 local tree = require "lib.tree"
