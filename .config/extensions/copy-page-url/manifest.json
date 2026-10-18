@@ -1,0 +1,10 @@
+{
+  "manifest_version": 3,
+  "name": "Copy Page URL",
+  "version": "1.0",
+  "description": "Adds a right-click menu item that copies the current page's URL",
+  "permissions": ["contextMenus", "offscreen"],
+  "background": {
+    "service_worker": "background.js"
+  }
+}
