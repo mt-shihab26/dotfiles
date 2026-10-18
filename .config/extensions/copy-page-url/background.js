@@ -1,6 +1,6 @@
-// A service worker has no DOM, so it can't touch the clipboard. Hand the URL to an offscreen
-// document instead, which works on every page (unlike injecting a script into the tab, which
-// Chrome blocks on chrome:// pages and the Web Store).
+// Copy from inside the tab rather than an offscreen document: on Wayland, Chrome only reaches
+// the system clipboard from a focused surface, which an offscreen document never is. Clicking a
+// menu item grants activeTab, so no host permissions are needed to inject into the page.
 const MENU_ID = "copy-page-url";
 
 chrome.runtime.onInstalled.addListener(() => {
@@ -11,21 +11,13 @@ chrome.runtime.onInstalled.addListener(() => {
     });
 });
 
-const ensureOffscreen = async () => {
-    if (await chrome.offscreen.hasDocument()) return;
-    await chrome.offscreen.createDocument({
-        url: "offscreen.html",
-        reasons: ["CLIPBOARD"],
-        justification: "Write the page URL to the clipboard",
-    });
-};
+const copy = (text) => navigator.clipboard.writeText(text);
 
 chrome.contextMenus.onClicked.addListener(async (info, tab) => {
-    if (info.menuItemId !== MENU_ID) return;
+    if (info.menuItemId !== MENU_ID || !tab?.id) return;
 
-    const url = info.pageUrl || tab?.url;
+    const url = info.pageUrl || tab.url;
     if (!url) return;
 
-    await ensureOffscreen();
-    await chrome.runtime.sendMessage({ type: "copy", text: url });
+    await chrome.scripting.executeScript({ target: { tabId: tab.id }, func: copy, args: [url] });
 });

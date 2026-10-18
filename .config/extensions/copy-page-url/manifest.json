@@ -3,7 +3,7 @@
   "name": "Copy Page URL",
   "version": "1.0",
   "description": "Adds a right-click menu item that copies the current page's URL",
-  "permissions": ["contextMenus", "offscreen"],
+  "permissions": ["contextMenus", "activeTab", "scripting"],
   "background": {
     "service_worker": "background.js"
   }
