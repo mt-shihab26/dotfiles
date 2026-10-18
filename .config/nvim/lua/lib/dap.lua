@@ -268,9 +268,14 @@ function M.set_stopped_line_highlight()
     vim.api.nvim_set_hl(0, "DapStoppedLine", { bg = mix(16) + mix(8) + mix(0) })
 end
 
--- per-project configurations from debug.json (same format as .vscode/launch.json)
+-- per-project configurations from debug.json or scripts/linux/debug.json (same format as .vscode/launch.json)
 function M.debug_json_configs()
-    return require("dap.ext.vscode").getconfigs(vim.fn.getcwd() .. "/debug.json")
+    local vscode = require "dap.ext.vscode"
+    local configs = {}
+    for _, path in ipairs { "/debug.json", "/scripts/linux/debug.json" } do
+        vim.list_extend(configs, vscode.getconfigs(vim.fn.getcwd() .. path))
+    end
+    return configs
 end
 
 -- run a configuration's `preLaunchCommand` (e.g. a build script from .vscode/launch.json) before launching,
