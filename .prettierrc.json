@@ -1,9 +1,8 @@
 {
     "tabWidth": 4,
-    "printWidth": 80,
+    "printWidth": 1000000,
     "semi": true,
     "singleQuote": false,
-    "singleAttributePerLine": true,
     "arrowParens": "avoid",
     "overrides": [
         {
