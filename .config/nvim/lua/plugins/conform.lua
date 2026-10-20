@@ -41,6 +41,12 @@ conform.setup {
             -- AOSP style uses 4-space indentation instead of Google's default 2-space
             prepend_args = { "--aosp" },
         },
+        stylua = {
+            -- only format lua when the project has a stylua config
+            condition = function(_, ctx)
+                return vim.fs.find({ ".stylua.toml", "stylua.toml" }, { path = ctx.dirname, upward = true })[1] ~= nil
+            end,
+        },
         pint = {
             -- pint has no user-level config; fall back to ours when the project has no pint.json
             prepend_args = function(_, ctx)
