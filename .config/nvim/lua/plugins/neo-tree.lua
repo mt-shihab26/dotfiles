@@ -52,6 +52,21 @@ lazy.add({
                 last_modified = { enabled = false },
                 created = { enabled = false },
             },
+            window = {
+                mappings = {
+                    -- <space> is also <leader>, so it can fire after the tree lost its window, and nui's
+                    -- get_node then errors with "Invalid 'win'"; only toggle while the tree is on screen
+                    ["<space>"] = {
+                        function(state)
+                            if state.tree and #vim.fn.win_findbuf(state.tree.bufnr) > 0 then
+                                state.commands.toggle_node(state)
+                            end
+                        end,
+                        nowait = false,
+                        desc = "toggle_node",
+                    },
+                },
+            },
             event_handlers = {
                 -- new C/C++ headers start with "#pragma once" (see lib/header.lua)
                 {

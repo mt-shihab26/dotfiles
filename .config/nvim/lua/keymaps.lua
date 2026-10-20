@@ -33,7 +33,7 @@ local map = vim.keymap.set
 --   <LeftMouse> + <LeftDrag>              drag the zoomed image
 --   r                                     reset zoom and position
 --
--- file tree, inside the neo-tree window (neo-tree defaults, plugins/neo-tree.lua sets none; ? lists them all):
+-- file tree, inside the neo-tree window (neo-tree defaults, plugins/neo-tree.lua only guards <space>; ? lists them all):
 --   open:      <cr> / <2-LeftMouse> open   s vsplit   S split   t new tab   w pick a window
 --   preview:   P toggle preview   l focus preview   <C-f> / <C-b> scroll preview   <esc> close preview
 --   folders:   <space> toggle   C close   z close all   <bs> go up a folder   . make it the root
