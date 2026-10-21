@@ -169,12 +169,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
         map("n", "]d", lsp.next_diagnostic, opts "go to next diagnostic (lspconfig)")
 
         map("n", "<leader>xs", lsp.start, opts "start lsp server (lspconfig)")
-        map(
-            "n",
-            "<leader>xS",
-            lsp.stop,
-            opts "stop lsp servers for this buffer (lspconfig)"
-        )
+        map("n", "<leader>xS", lsp.stop, opts "stop lsp servers for this buffer (lspconfig)")
         map("n", "<leader>xr", lsp.restart, opts "restart lsp server (lspconfig)")
     end,
 })
