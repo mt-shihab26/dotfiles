@@ -13,7 +13,7 @@ Item {
   property var settings: ({})
 
   readonly property string home: Quickshell.env("HOME") || ""
-  readonly property string usageDir: (Quickshell.env("XDG_STATE_HOME") || home + "/.local/state") + "/omarchy-agents-plugin/usage"
+  readonly property string usageDir: (Quickshell.env("XDG_STATE_HOME") || home + "/.local/state") + "/mt-shihab26.agents-plugin/usage"
   readonly property string updateScript: String(Qt.resolvedUrl("scripts/update.sh")).replace(/^file:\/\//, "")
 
   // ------------------------------------------------------------- discovery

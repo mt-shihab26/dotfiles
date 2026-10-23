@@ -11,7 +11,9 @@ own changes on top of it and is linked into `~` with [GNU Stow](https://www.gnu.
   `vim.pack`, plus custom LSP, formatter, Treesitter, Telescope and snippet setup.
 - **Omarchy overrides**: Hyprland keybindings and window rules (`.config/hypr/overwrite.lua`),
   bar plugins (`setup/os/top-bar.sh`), wallpaper fitted without cropping
-  (`.config/omarchy/plugins/mt-shihab26.background`, enabled by `setup/os/background.sh`).
+  (`.config/omarchy/plugins/mt-shihab26.background`, enabled by `setup/os/background.sh`),
+  and my old multi-account agents plugin kept for reference
+  (`.config/omarchy/plugins/mt-shihab26.agents-plugin`, disabled in favor of `omarchy.agents`).
 - **KDE apps instead of Omarchy's GNOME ones**: Dolphin, Okular, Kate (set up as a minimal
   gedit-style editor), Partition Manager and Ark, one script each in `setup/os`.
 - **Shell and terminals**: zsh, tmux with a sessionizer, kitty and ghostty.

@@ -8,17 +8,18 @@ A customized copy of Omarchy's built-in agents plugin. The differences:
   `scripts/update.sh` does this by running Omarchy's stock Claude collector once
   per directory, each with its own cache so limits never bleed between accounts.
   pi/omp and opencode sessions are not attributed to any account.
-- **Own data directory**, `~/.local/state/omarchy-agents-plugin/usage/`, so it
+- **Own data directory**, `~/.local/state/mt-shihab26.agents-plugin/usage/`, so it
   can run beside (or replace) the built-in `omarchy.agents` widget.
-- The plugin id is `omarchy-agents-plugin`; use `./link.sh` to symlink it into
-  `~/.config/omarchy/plugins/` during development.
+- The plugin id is `mt-shihab26.agents-plugin`; it lives in my dotfiles and is linked into
+  `~/.config/omarchy/plugins/` by stow. It is disabled in favor of the built-in
+  `omarchy.agents` and kept for future reference.
 
 Everything below is the upstream documentation, with paths and ids updated
 where they changed.
 
 One bar icon and one panel for every AI coding subscription on the machine.
 The panel is strictly a display: it watches the usage records that
-`scripts/update.sh` writes to `~/.local/state/omarchy-agents-plugin/usage/`
+`scripts/update.sh` writes to `~/.local/state/mt-shihab26.agents-plugin/usage/`
 and draws whatever appears there. `Panel.qml` owns the bar button and the
 popup; `Main.qml` discovers and watches the records (and handles the optional
 cross-device aggregation); `Agent.qml` is the per-record file watcher.
@@ -52,7 +53,7 @@ shows up at the next refresh, so nothing polls the disk waiting for it.
 That self-hiding is why the widget ships in the default bar layout: a machine
 that has never run an AI coding agent draws nothing, and the icon arrives on
 its own the first time a scan finds usage. Drop it with
-`omarchy plugin disable omarchy-agents-plugin`.
+`omarchy plugin disable mt-shihab26.agents-plugin`.
 
 ## Data
 
@@ -115,13 +116,13 @@ only adds the meter and the spent-of-funded line under the real figure.
 - Bar icon: left = panel, right = launch agent, middle = next subscription.
 - Panel: `h`/`l` switch agent, `[`/`]` switch account, `j`/`k` scroll, `r` or Enter refresh,
   Tab moves to the neighboring bar panel, Esc closes.
-- IPC: `omarchy-shell omarchy-agents-plugin <open|close|toggle|refresh|next|nextAgent|nextAccount>`.
+- IPC: `omarchy-shell mt-shihab26.agents-plugin <open|close|toggle|refresh|next|nextAgent|nextAccount>`.
 
 ## Settings
 
 Settings live in the widget's entry in `~/.config/omarchy/shell.json`. The
 top-level keys can be set with
-`omarchy bar set omarchy-agents-plugin <key> <value>`:
+`omarchy bar set mt-shihab26.agents-plugin <key> <value>`:
 
 | Key | Default | What it does |
 |---|---|---|
@@ -134,8 +135,8 @@ top-level keys can be set with
 Numbers need `--json`, or they land in `shell.json` as strings:
 
 ```bash
-omarchy bar set omarchy-agents-plugin refreshIntervalSec 300 --json
-omarchy bar set omarchy-agents-plugin syncDir '~/Sync/agent-usage'
+omarchy bar set mt-shihab26.agents-plugin refreshIntervalSec 300 --json
+omarchy bar set mt-shihab26.agents-plugin syncDir '~/Sync/agent-usage'
 ```
 
 Per-agent enablement is nested, and `set` writes its key literally rather
@@ -143,7 +144,7 @@ than walking a dotted path — so pass the whole `providers` object as JSON (or
 edit `shell.json` directly):
 
 ```bash
-omarchy bar set omarchy-agents-plugin providers '{
+omarchy bar set mt-shihab26.agents-plugin providers '{
   "claude-personal": { "enabled": true },
   "claude-professional": { "enabled": false },
   "codex": { "enabled": false },

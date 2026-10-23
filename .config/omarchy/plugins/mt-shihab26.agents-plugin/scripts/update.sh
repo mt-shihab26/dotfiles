@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Regenerates the usage records this plugin displays, into its own usage
 # directory (never Omarchy's, so it can run beside the built-in agents plugin).
@@ -10,9 +10,9 @@
 # example `personal` and `professional`) is a CLAUDE_CONFIG_DIR and becomes its
 # own record, `claude-<dir>`, so the panel shows one tab per subscription.
 
-STATE_DIR="${XDG_STATE_HOME:-$HOME/.local/state}/omarchy-agents-plugin"
+STATE_DIR="${XDG_STATE_HOME:-$HOME/.local/state}/mt-shihab26.agents-plugin"
 USAGE_DIR="$STATE_DIR/usage"
-CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/omarchy-agents-plugin"
+CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/mt-shihab26.agents-plugin"
 CLAUDE_ACCOUNTS_DIR="${CLAUDE_ACCOUNTS_DIR:-$HOME/.config/claude}"
 OMARCHY_BIN="${OMARCHY_PATH:-/usr/share/omarchy}/bin"
 

@@ -17,7 +17,7 @@ omarchy plugin enable omarchy.weather --section center --after omarchy.keyboard-
 omarchy plugin enable omarchy.microphone --section center --after omarchy.weather
 omarchy plugin enable omarchy.system-update --section center --after omarchy.microphone
 
-omarchy plugin disable omarchy-agents-plugin
+omarchy plugin disable mt-shihab26.agents-plugin
 
 omarchy plugin enable omarchy.agents --section right --after omarchy.tray
 

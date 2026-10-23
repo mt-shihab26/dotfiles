@@ -7,8 +7,8 @@ import qs.Ui
 
 Panel {
   id: root
-  moduleName: "omarchy-agents-plugin"
-  ipcTarget: "omarchy-agents-plugin"
+  moduleName: "mt-shihab26.agents-plugin"
+  ipcTarget: "mt-shihab26.agents-plugin"
   manageIpc: false
 
   readonly property color foreground: bar ? bar.foreground : Color.foreground
