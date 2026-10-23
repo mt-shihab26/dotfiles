@@ -12,14 +12,8 @@ create_tmp() {
 }
 
 create_tmp ".local/bin"
-
-create_tmp ".config/claude"
-create_tmp ".config/claude/personal"
-create_tmp ".config/claude/professional"
-
+create_tmp ".claude"
 create_tmp ".config/opencode"
-
-# Keep applications a real dir so stow only links our .desktop files into it.
 create_tmp ".local/share/applications"
 
 cd "$HOME/dotfiles"

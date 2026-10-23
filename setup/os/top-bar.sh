@@ -9,10 +9,6 @@ if [[ ! -d "$HOME/.config/omarchy/plugins/omarchy-orivo-plugin" ]]; then
   omarchy plugin add https://github.com/mt-shihab26/omarchy-orivo-plugin --yes
 fi
 
-if [[ ! -d "$HOME/.config/omarchy/plugins/omarchy-agents-plugin" ]]; then
-  omarchy plugin add https://github.com/mt-shihab26/omarchy-agents-plugin --yes
-fi
-
 omarchy plugin enable omarchy.indicators --section center --index 0
 omarchy plugin enable omarchy-orivo-plugin --section center --after omarchy.indicators
 omarchy plugin enable omarchy.clock --section center --after omarchy-orivo-plugin
@@ -21,9 +17,9 @@ omarchy plugin enable omarchy.weather --section center --after omarchy.keyboard-
 omarchy plugin enable omarchy.microphone --section center --after omarchy.weather
 omarchy plugin enable omarchy.system-update --section center --after omarchy.microphone
 
-omarchy plugin disable omarchy.agents
+omarchy plugin disable omarchy-agents-plugin
 
-omarchy plugin enable omarchy-agents-plugin --section right --after omarchy.tray
+omarchy plugin enable omarchy.agents --section right --after omarchy.tray
 
 omarchy shell -q omarchy.system-update refresh
 
