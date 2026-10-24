@@ -45,10 +45,19 @@ lazy.add({
             return path
         end
 
+        local folder_size = require "lib.folder_size"
+
+        -- writes in folders the tree isn't watching, e.g. a file opened from telescope
+        vim.api.nvim_create_autocmd("BufWritePost", {
+            callback = function(args)
+                folder_size.changed(vim.fs.dirname(vim.fn.fnamemodify(args.file, ":p")))
+            end,
+        })
+
         neo_tree.setup {
             default_component_configs = {
-                -- human readable ("976.56 KB" is the widest), shown at any window width instead of only from 64 columns
-                file_size = { enabled = true, width = 9, required_width = 0 },
+                -- human readable ("976.56KB" is the widest), shown at any window width instead of only from 64 columns
+                file_size = { enabled = true, width = 8, required_width = 0 },
                 type = { enabled = false },
                 last_modified = { enabled = false },
                 created = { enabled = false },
@@ -76,6 +85,13 @@ lazy.add({
                         require("lib.header").add_pragma_once(path)
                     end,
                 },
+                -- a change in a watched (expanded) folder changes its size and the size of every folder above it
+                {
+                    event = "fs_event",
+                    handler = function(args)
+                        folder_size.changed(args.afile)
+                    end,
+                },
             },
             filesystem = {
                 components = {
@@ -97,13 +113,21 @@ lazy.add({
                         return result
                     end,
                     -- no "Size" header on the root line, and sizes left aligned within the column with
-                    -- lowercase units ("9.81 kb")
+                    -- lowercase units right after the number ("9.81kb")
                     file_size = function(config, node, state)
                         if node:get_depth() == 1 then
                             return { text = "" }
                         end
                         local result = require("neo-tree.sources.common.components").file_size(config, node, state)
-                        result.text = ("%-" .. config.width .. "s  "):format(vim.trim(result.text):lower())
+                        local text = vim.trim(result.text)
+                        -- folders show "-" until du has counted them in the background (see lib/folder_size.lua)
+                        if node.type == "directory" then
+                            local size = folder_size.get(node.path, function()
+                                require("neo-tree.sources.manager").redraw "filesystem"
+                            end)
+                            text = size and require("neo-tree.utils").human_size(size) or "-"
+                        end
+                        result.text = ("%-" .. config.width .. "s  "):format((text:lower():gsub(" ", "")))
                         return result
                     end,
                 },
