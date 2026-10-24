@@ -69,7 +69,13 @@ lazy.add({
         })
         -- another project: free the sizes of the old one
         vim.api.nvim_create_autocmd("DirChanged", {
-            callback = folder_size.clear,
+            callback = function()
+                folder_size.clear()
+            end,
+        })
+        -- keep the sizes shown for the next session (see lib/folder_size.lua)
+        vim.api.nvim_create_autocmd("VimLeavePre", {
+            callback = folder_size.save,
         })
 
         neo_tree.setup {

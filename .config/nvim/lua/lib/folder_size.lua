@@ -15,8 +15,28 @@ local settle_delay = 500
 -- at a huge folder like ~ from holding the size of every folder in it
 local max_depth = 3
 
+-- Sizes of the folders shown, kept between sessions as "<size>\t<time counted>\t<path>" lines, most
+-- recently shown first. A cached size is used without a du while the folder's date is older than
+-- when it was counted; that date only changes when something right inside it is added, removed or
+-- renamed, so a file edited or added deeper in it outside nvim keeps the old size until it changes
+-- in the tree, or sizes are turned off and on again (<leader>tS), which counts everything again
+local cache_file = vim.fn.stdpath "state" .. "/folder_sizes"
+
+-- How many folders the cache file keeps, the ones not shown this session are dropped first; 5000 lines are
+-- about 370KB, load in about 4ms and take about 1MB of memory
+local max_cached = 5000
+
 -- size in bytes of each folder du has counted, by path; false when du couldn't count it
 local sizes = {}
+
+-- when each size in `sizes` was counted, the time du started, by path
+local counted_at = {}
+
+-- { size, time counted } from the cache file by path, loaded when the first size is asked for
+local cached
+
+-- folders shown this session, so only they're saved to the cache file and not every folder du reported
+local shown = {}
 
 -- folders whose size is out of date, by path, with the change number that made them so; they
 -- keep showing the old size until they're counted again
@@ -60,7 +80,8 @@ local function is_current(path)
     return sizes[path] ~= nil and not outdated[path]
 end
 
-local function store(path, size, started)
+local function store(path, size, started, time)
+    counted_at[path] = time
     sizes[path] = size
     -- a change after this du started still needs a recount
     if outdated[path] and outdated[path] <= started then
@@ -94,7 +115,7 @@ local function pump()
         else
             table.remove(queue, i)
             running = running + 1
-            local started, started_epoch = change, epoch
+            local started, started_epoch, time = change, epoch, os.time()
             -- no -s: du walks the same files either way, and printing the folders below costs
             -- nothing extra, so opening them later shows their size right away without a du;
             -- -b: apparent size in bytes like the file sizes, -0: NUL ended, as names can hold newlines
@@ -111,11 +132,11 @@ local function pump()
                     for line in (result.stdout or ""):gmatch "%Z+" do
                         local size, dir = line:match "^(%d+)\t(.*)$"
                         if size then
-                            store(dir, tonumber(size), started)
+                            store(dir, tonumber(size), started, time)
                         end
                     end
                     if sizes[path] == nil then
-                        store(path, false, started)
+                        store(path, false, started, time)
                     end
                     redraw()
                     pump()
@@ -125,24 +146,101 @@ local function pump()
     end
 end
 
+local function load_cache()
+    cached = {}
+    local file = io.open(cache_file, "rb")
+    if not file then
+        return
+    end
+    for size, time, path in file:read("*a"):gmatch "(%d+)\t(%d+)\t([^\n]+)" do
+        cached[path] = { tonumber(size), tonumber(time) }
+    end
+    file:close()
+end
+
 -- the size of the folder at `path` in bytes, nil until it's counted; asking queues a du for it in
--- the background, and `update` (which redraws the tree) runs as soon as it's done. Out of date
--- folders keep returning their old size while they're counted again.
+-- the background, and `update` (which redraws the tree) runs as soon as it's done. A cached size
+-- is used as it is when the folder hasn't changed since (see `cache_file`); otherwise, and after a
+-- change, the old size shows while it's counted again.
 function M.get(path, update)
     on_update = update
+    if not cached then
+        load_cache()
+    end
+    shown[path] = true
+    local entry = cached[path]
+    if entry and sizes[path] == nil and not requested[path] then
+        local stat = vim.uv.fs_stat(path)
+        if stat and stat.mtime.sec < entry[2] then
+            sizes[path], counted_at[path] = entry[1], entry[2]
+        end
+    end
     if not is_current(path) and not requested[path] then
         requested[path] = true
         queue[#queue + 1] = path
         pump()
     end
-    return sizes[path] or nil
+    return sizes[path] or entry and entry[1]
 end
 
--- drop every size and every folder waiting for a du, freeing their memory; used when sizes are
--- turned off and when the working directory changes, as the old project's sizes won't be shown
-function M.clear()
+-- keep the counted sizes of the folders shown in the cache, as `sizes` is about to be dropped or saved
+local function update_cache()
+    for path in pairs(shown) do
+        if sizes[path] and counted_at[path] then
+            cached[path] = { sizes[path], counted_at[path] }
+        end
+    end
+end
+
+-- write the cache file, the folders shown this session first; written to a temporary file first,
+-- so a crash or another nvim saving at the same time can't leave half a file
+function M.save()
+    if not cached then
+        return
+    end
+    update_cache()
+    local lines = {}
+    for path in pairs(shown) do
+        local entry = cached[path]
+        if entry and not path:find("\n", 1, true) then
+            lines[#lines + 1] = entry[1] .. "\t" .. entry[2] .. "\t" .. path
+        end
+    end
+    for path, entry in pairs(cached) do
+        if #lines >= max_cached then
+            break
+        end
+        if not shown[path] then
+            lines[#lines + 1] = entry[1] .. "\t" .. entry[2] .. "\t" .. path
+        end
+    end
+    vim.fn.mkdir(vim.fs.dirname(cache_file), "p")
+    local temp = cache_file .. ".tmp" .. vim.uv.os_getpid()
+    local file = io.open(temp, "wb")
+    if not file then
+        return
+    end
+    file:write(table.concat(lines, "\n", 1, math.min(#lines, max_cached)), "\n")
+    file:close()
+    vim.uv.fs_rename(temp, cache_file)
+end
+
+-- drop every counted size and every folder waiting for a du, freeing their memory; used when sizes
+-- are turned off and when the working directory changes, as the old project's sizes won't be shown.
+-- The sizes of the folders shown move to the cache, which stays for the cache file. With `recount`,
+-- every cached size is counted again the next time it's shown, while still showing until then.
+function M.clear(recount)
+    if cached then
+        update_cache()
+        if recount then
+            -- counted at 0: older than any folder's date
+            for _, entry in pairs(cached) do
+                entry[2] = 0
+            end
+        end
+    end
     epoch = epoch + 1
-    sizes, outdated, requested, queue, changes = {}, {}, {}, {}, {}
+    sizes, counted_at, outdated, requested, queue, changes = {}, {}, {}, {}, {}, {}
     settle_timer:stop()
 end
 
