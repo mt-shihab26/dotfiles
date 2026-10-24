@@ -54,10 +54,9 @@ lazy.add({
             manager.redraw "filesystem"
         end
 
-        -- 3 digit whole numbers with an uppercase unit right after them like ls -h ("023K", bytes have no
-        -- unit: "512"), 1024 to a unit like neo-tree; a size needing a 4th digit goes up a unit, 1012K is
-        -- shown as 001M
-        local units = { "", "K", "M", "G", "T", "P" }
+        -- 3 digit whole numbers with an uppercase unit right after them like ls -h ("023K", "512B"), 1024
+        -- to a unit like neo-tree; a size needing a 4th digit goes up a unit, 1012K is shown as 001M
+        local units = { "B", "K", "M", "G", "T", "P" }
         local function human_size(size)
             local unit = 1
             while unit < #units and math.floor(size + 0.5) >= 1000 do
@@ -90,7 +89,7 @@ lazy.add({
 
         neo_tree.setup {
             default_component_configs = {
-                -- human readable ("023K", up to 4 wide), shown at any window width instead of only from 64 columns
+                -- human readable ("023K", always 4 wide), shown at any window width instead of only from 64 columns
                 file_size = { enabled = true, width = 4, required_width = 0 },
                 type = { enabled = false },
                 last_modified = { enabled = false },
