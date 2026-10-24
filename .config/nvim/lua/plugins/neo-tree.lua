@@ -47,7 +47,8 @@ lazy.add({
 
         neo_tree.setup {
             default_component_configs = {
-                file_size = { enabled = false },
+                -- human readable ("976.56 KB" is the widest), shown at any window width instead of only from 64 columns
+                file_size = { enabled = true, width = 9, required_width = 0 },
                 type = { enabled = false },
                 last_modified = { enabled = false },
                 created = { enabled = false },
@@ -94,6 +95,13 @@ lazy.add({
                             end
                         end
                         return result
+                    end,
+                    -- no "Size" header on the root line
+                    file_size = function(config, node, state)
+                        if node:get_depth() == 1 then
+                            return { text = "" }
+                        end
+                        return require("neo-tree.sources.common.components").file_size(config, node, state)
                     end,
                 },
                 use_libuv_file_watcher = true,
