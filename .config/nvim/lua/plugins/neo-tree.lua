@@ -47,6 +47,18 @@ lazy.add({
 
         local folder_size = require "lib.folder_size"
 
+        -- 3 digit whole numbers with a lowercase unit right after them ("023kb"), 1024 to a unit like
+        -- neo-tree; a size needing a 4th digit goes up a unit, 1012kb is shown as 001mb
+        local units = { "b", "kb", "mb", "gb", "tb", "pb" }
+        local function human_size(size)
+            local unit = 1
+            while unit < #units and math.floor(size + 0.5) >= 1000 do
+                size = size / 1024
+                unit = unit + 1
+            end
+            return ("%03d%s"):format(math.floor(size + 0.5), units[unit])
+        end
+
         -- writes in folders the tree isn't watching, e.g. a file opened from telescope
         vim.api.nvim_create_autocmd("BufWritePost", {
             callback = function(args)
@@ -56,8 +68,8 @@ lazy.add({
 
         neo_tree.setup {
             default_component_configs = {
-                -- human readable ("976.56KB" is the widest), shown at any window width instead of only from 64 columns
-                file_size = { enabled = true, width = 8, required_width = 0 },
+                -- human readable ("023kb", always 5 wide), shown at any window width instead of only from 64 columns
+                file_size = { enabled = true, width = 5, required_width = 0 },
                 type = { enabled = false },
                 last_modified = { enabled = false },
                 created = { enabled = false },
@@ -113,15 +125,15 @@ lazy.add({
                         end
                         return result
                     end,
-                    -- no "Size" header on the root line, and sizes left aligned within the column with
-                    -- lowercase units right after the number ("9.81kb")
+                    -- no "Size" header on the root line, and sizes left aligned within the column, rounded
+                    -- with lowercase units right after the number ("023kb", see human_size above)
                     file_size = function(config, node, state)
                         -- vim.g.tree_sizes off (options.lua, <leader>tS): no sizes, and no du runs
                         if node:get_depth() == 1 or not vim.g.tree_sizes then
                             return { text = "" }
                         end
-                        -- sized here and not by neo-tree's own component, which cuts "497.86 KB" to the
-                        -- column width before the space is taken out, showing "497.86…" one column off
+                        -- sized here and not by neo-tree's own component, which has decimals ("497.86 KB") and
+                        -- cuts them to the column width
                         local utils = require "neo-tree.utils"
                         local size
                         if node.type == "directory" then
@@ -133,7 +145,7 @@ lazy.add({
                             local stat = utils.get_stat(node)
                             size = stat and stat.size
                         end
-                        local text = size and utils.human_size(size):lower():gsub(" ", "") or "-"
+                        local text = size and human_size(size) or "-"
                         return {
                             text = ("%-" .. config.width .. "s  "):format(text),
                             highlight = config.highlight or require("neo-tree.ui.highlights").FILE_STATS,
