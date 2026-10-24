@@ -1,7 +1,13 @@
 local M = {}
 
+-- lazygit.nvim enters insert mode in its empty float and only starts the terminal on the next tick,
+-- so keys typed right after the mapping would edit the buffer and make jobstart fail with
+-- "requires unmodified buffer"; keep it unmodifiable until the terminal takes over
 function M.lazygit()
     vim.cmd "LazyGit"
+    if vim.bo.buftype ~= "terminal" then
+        vim.bo.modifiable = false
+    end
 end
 
 -- jump between hunks without the "Hunk 1 of 3" message
