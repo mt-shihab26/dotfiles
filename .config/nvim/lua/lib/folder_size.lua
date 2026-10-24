@@ -16,8 +16,8 @@ local settle_delay = 500
 local max_depth = 3
 
 -- Sizes of the folders shown, kept between sessions in one file per working directory, as
--- "<size>\t<time counted>\t<path>" lines with ~ for the home folder, most recently shown first,
--- so a project only loads its own.
+-- "<size> <time counted> <path>" lines with paths relative to that directory (see to_cache),
+-- most recently shown first, so a project only loads its own.
 -- A cached size is used without a du while the folder's date is older than when it was counted;
 -- that date only changes when something right inside it is added, removed or renamed, so a file
 -- edited or added deeper in it outside nvim keeps the old size until it changes in the tree, or
@@ -64,8 +64,8 @@ local epoch = 0
 local redraw_pending = false
 local settle_timer = assert(vim.uv.new_timer())
 
--- redraws the tree, the latest callback given to get()
-local on_update = function() end
+-- set by the tree to redraw itself once new sizes are in
+M.on_update = function() end
 
 local function redraw()
     if redraw_pending then
@@ -74,7 +74,7 @@ local function redraw()
     redraw_pending = true
     vim.defer_fn(function()
         redraw_pending = false
-        on_update()
+        M.on_update()
     end, redraw_delay)
 end
 
@@ -159,10 +159,30 @@ local function shorten_home(path)
     return path
 end
 
--- the counted paths are absolute, so only a path from the cache starts with ~
-local function expand_home(path)
-    if path:sub(1, 1) == "~" then
+-- a path as written in the cache file of `cache_cwd`: relative to it when inside it ("." for
+-- itself), as the file already names it, otherwise with ~ for the home folder
+local function to_cache(path)
+    if path == cache_cwd then
+        return "."
+    end
+    if vim.startswith(path, cache_cwd .. "/") then
+        return path:sub(#cache_cwd + 2)
+    end
+    return shorten_home(path)
+end
+
+-- back to the absolute path; counted paths are absolute, so only a path from the cache starts
+-- with ~ or doesn't start with /
+local function from_cache(path)
+    if path == "." then
+        return cache_cwd
+    end
+    local first = path:sub(1, 1)
+    if first == "~" then
         return home .. path:sub(2)
+    end
+    if first ~= "/" then
+        return cache_cwd .. "/" .. path
     end
     return path
 end
@@ -179,18 +199,21 @@ local function load_cache()
     if not file then
         return
     end
-    for size, time, path in file:read("*a"):gmatch "(%d+)\t(%d+)\t([^\n]+)" do
-        cached[expand_home(path)] = { tonumber(size), tonumber(time) }
+    for line in file:read("*a"):gmatch "[^\n]+" do
+        -- matched per line from its start, so a line in another format is skipped as a whole
+        local size, time, path = line:match "^(%d+) (%d+) (.+)$"
+        if size then
+            cached[from_cache(path)] = { tonumber(size), tonumber(time) }
+        end
     end
     file:close()
 end
 
 -- the size of the folder at `path` in bytes, nil until it's counted; asking queues a du for it in
--- the background, and `update` (which redraws the tree) runs as soon as it's done. A cached size
--- is used as it is when the folder hasn't changed since (see `cache_dir`); otherwise, and after a
--- change, the old size shows while it's counted again.
-function M.get(path, update)
-    on_update = update
+-- the background, and `M.on_update` runs as soon as it's done. A cached size is used as it is when
+-- the folder hasn't changed since (see `cache_dir`); otherwise, and after a change, the old size
+-- shows while it's counted again.
+function M.get(path)
     if not cached then
         load_cache()
     end
@@ -221,17 +244,13 @@ end
 
 -- write the cache file of the working directory it was loaded for, the folders shown this session
 -- first; written to a temporary file first, so a crash or another nvim saving at the same time
--- can't leave half a file
-function M.save()
-    if not cached then
-        return
-    end
-    update_cache()
+-- can't leave half a file. Writes `cached` as it is, see M.save for the sizes counted this session
+local function write_cache()
     local lines = {}
     for path in pairs(shown) do
         local entry = cached[path]
         if entry and not path:find("\n", 1, true) then
-            lines[#lines + 1] = entry[1] .. "\t" .. entry[2] .. "\t" .. shorten_home(path)
+            lines[#lines + 1] = entry[1] .. " " .. entry[2] .. " " .. to_cache(path)
         end
     end
     for path, entry in pairs(cached) do
@@ -239,7 +258,7 @@ function M.save()
             break
         end
         if not shown[path] then
-            lines[#lines + 1] = entry[1] .. "\t" .. entry[2] .. "\t" .. shorten_home(path)
+            lines[#lines + 1] = entry[1] .. " " .. entry[2] .. " " .. to_cache(path)
         end
     end
     -- a cache file that can't be written is only a slower start next time, not worth an error on quit
@@ -257,6 +276,15 @@ function M.save()
     vim.uv.fs_rename(temp, path)
 end
 
+-- save the sizes shown this session to the cache file, on quit; about 1ms for a full one
+function M.save()
+    if not cached then
+        return
+    end
+    update_cache()
+    write_cache()
+end
+
 -- drop every size and every folder waiting for a du, freeing their memory; used when sizes are
 -- turned off and when the working directory changes, as the old project's sizes won't be shown.
 -- The sizes of the folders shown are saved to the cache file first, the next size asked for loads
@@ -271,7 +299,8 @@ function M.clear(recount)
                 entry[2] = 0
             end
         end
-        M.save()
+        -- not M.save, which would copy the sizes counted this session back over the zeroed times
+        write_cache()
         cached, shown = nil, {}
     end
     epoch = epoch + 1
@@ -288,6 +317,11 @@ local function apply_changes()
             if sizes[dir] ~= nil then
                 outdated[dir] = change
             end
+            -- a cached size not shown yet this session: its folder's date may not have changed, as
+            -- the change can be deeper in it, so mark it as counted at 0 to count it again
+            if cached and cached[dir] then
+                cached[dir][2] = 0
+            end
             local parent = vim.fs.dirname(dir)
             dir = parent ~= dir and parent or nil
         end
@@ -297,8 +331,11 @@ local function apply_changes()
 end
 
 -- something in the folder at `path` changed; once changes stop for `settle_delay`, it and every
--- folder above it are counted again
+-- folder above it are counted again. Nothing to do while sizes are off (vim.g.tree_sizes)
 function M.changed(path)
+    if not vim.g.tree_sizes then
+        return
+    end
     changes[path] = true
     settle_timer:stop()
     settle_timer:start(settle_delay, 0, vim.schedule_wrap(apply_changes))

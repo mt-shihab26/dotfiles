@@ -46,6 +46,12 @@ lazy.add({
         end
 
         local folder_size = require "lib.folder_size"
+        local utils = require "neo-tree.utils"
+        local highlights = require "neo-tree.ui.highlights"
+
+        folder_size.on_update = function()
+            manager.redraw "filesystem"
+        end
 
         -- 3 digit whole numbers with a lowercase unit right after them ("023kb"), 1024 to a unit like
         -- neo-tree; a size needing a 4th digit goes up a unit, 1012kb is shown as 001mb
@@ -62,9 +68,8 @@ lazy.add({
         -- writes in folders the tree isn't watching, e.g. a file opened from telescope
         vim.api.nvim_create_autocmd("BufWritePost", {
             callback = function(args)
-                if vim.g.tree_sizes then
-                    folder_size.changed(vim.fs.dirname(vim.fn.fnamemodify(args.file, ":p")))
-                end
+                -- args.match is the full path of the file written
+                folder_size.changed(vim.fs.dirname(args.match))
             end,
         })
         -- another project: free the sizes of the old one
@@ -114,9 +119,7 @@ lazy.add({
                 {
                     event = "fs_event",
                     handler = function(args)
-                        if vim.g.tree_sizes then
-                            folder_size.changed(args.afile)
-                        end
+                        folder_size.changed(args.afile)
                     end,
                 },
             },
@@ -148,21 +151,18 @@ lazy.add({
                         end
                         -- sized here and not by neo-tree's own component, which has decimals ("497.86 KB") and
                         -- cuts them to the column width
-                        local utils = require "neo-tree.utils"
                         local size
                         if node.type == "directory" then
                             -- "-" until du has counted it in the background (see lib/folder_size.lua)
-                            size = folder_size.get(node.path, function()
-                                require("neo-tree.sources.manager").redraw "filesystem"
-                            end)
+                            size = folder_size.get(node.path)
                         elseif node.type == "file" then
                             local stat = utils.get_stat(node)
                             size = stat and stat.size
                         end
                         local text = size and human_size(size) or "-"
                         return {
-                            text = ("%-" .. config.width .. "s  "):format(text),
-                            highlight = config.highlight or require("neo-tree.ui.highlights").FILE_STATS,
+                            text = text .. (" "):rep(config.width - #text + 2),
+                            highlight = config.highlight or highlights.FILE_STATS,
                         }
                     end,
                 },
