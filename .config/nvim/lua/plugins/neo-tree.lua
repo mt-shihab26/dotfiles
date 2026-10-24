@@ -63,6 +63,7 @@ lazy.add({
                 created = { enabled = false },
             },
             window = {
+                width = 45, -- a little wider than the default 40, to fit the size column
                 mappings = {
                     -- <space> is also <leader>, so it can fire after the tree lost its window, and nui's
                     -- get_node then errors with "Invalid 'win'"; only toggle while the tree is on screen
@@ -119,17 +120,24 @@ lazy.add({
                         if node:get_depth() == 1 or not vim.g.tree_sizes then
                             return { text = "" }
                         end
-                        local result = require("neo-tree.sources.common.components").file_size(config, node, state)
-                        local text = vim.trim(result.text)
-                        -- folders show "-" until du has counted them in the background (see lib/folder_size.lua)
+                        -- sized here and not by neo-tree's own component, which cuts "497.86 KB" to the
+                        -- column width before the space is taken out, showing "497.86…" one column off
+                        local utils = require "neo-tree.utils"
+                        local size
                         if node.type == "directory" then
-                            local size = folder_size.get(node.path, function()
+                            -- "-" until du has counted it in the background (see lib/folder_size.lua)
+                            size = folder_size.get(node.path, function()
                                 require("neo-tree.sources.manager").redraw "filesystem"
                             end)
-                            text = size and require("neo-tree.utils").human_size(size) or "-"
+                        elseif node.type == "file" then
+                            local stat = utils.get_stat(node)
+                            size = stat and stat.size
                         end
-                        result.text = ("%-" .. config.width .. "s  "):format((text:lower():gsub(" ", "")))
-                        return result
+                        local text = size and utils.human_size(size):lower():gsub(" ", "") or "-"
+                        return {
+                            text = ("%-" .. config.width .. "s  "):format(text),
+                            highlight = config.highlight or require("neo-tree.ui.highlights").FILE_STATS,
+                        }
                     end,
                 },
                 use_libuv_file_watcher = true,
