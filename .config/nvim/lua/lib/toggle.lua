@@ -69,7 +69,13 @@ end
 
 -- switch between the rendered view (render-markdown) and the raw markdown
 function M.markdown_render()
-    require("render-markdown").toggle()
+    -- plugins/markdown.lua has it commented out, requiring it then is an error
+    local ok, render_markdown = pcall(require, "render-markdown")
+    if not ok then
+        vim.notify("render-markdown is disabled, see plugins/markdown.lua", vim.log.levels.WARN)
+        return
+    end
+    render_markdown.toggle()
 end
 
 return M

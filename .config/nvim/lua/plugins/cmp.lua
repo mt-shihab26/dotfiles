@@ -52,6 +52,15 @@ lazy.add({
         -- completion is on by default; toggle with <leader>tc
         vim.g.cmp_enabled = true
 
+        -- the label shown for each source in the menu, lsp items name their server instead
+        local source_labels = {
+            nvim_lsp_signature_help = "signature",
+            buffer = "buffer",
+            path = "path",
+            calc = "calc",
+            luasnip = "snippet",
+        }
+
         cmp.setup {
             enabled = function()
                 -- vim.b.completion is set to false in big files (snacks bigfile)
@@ -88,14 +97,7 @@ lazy.add({
                         local client = vim.lsp.get_client_by_id(entry.source.source.client.id)
                         source_label = "lsp->" .. (client and client.name or "unknown")
                     else
-                        local sources = {
-                            nvim_lsp_signature_help = "signature",
-                            buffer = "buffer",
-                            path = "path",
-                            calc = "calc",
-                            luasnip = "snippet",
-                        }
-                        source_label = sources[source_name] or source_name
+                        source_label = source_labels[source_name] or source_name
                     end
                     item.kind = string.format("[%s] %s", source_label, item.kind or "")
                     return tailwindcss_cmp.formatter(entry, item)

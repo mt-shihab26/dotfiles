@@ -172,6 +172,12 @@ lazy.add({
                         }
                     end,
                 },
+                window = {
+                    mappings = {
+                        -- search folders only, like D (neo-tree's default / matches files too)
+                        ["/"] = "fuzzy_finder_directory",
+                    },
+                },
                 use_libuv_file_watcher = true,
                 hijack_netrw_behavior = "disabled",
                 filtered_items = {

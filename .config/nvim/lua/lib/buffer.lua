@@ -8,9 +8,15 @@ function M.next()
     vim.cmd "BufferLineCycleNext"
 end
 
--- close the current buffer but keep its window: show the previous buffer in it first
+-- close the current buffer but keep its window: show the previous buffer in it first. With no other
+-- buffer, an empty one takes its place; the split trick would close every window showing the buffer
+-- and leave the file tree's window, when it's open, as the only one, showing that empty buffer
 function M.close_current()
-    vim.cmd "bp|sp|bn|bd"
+    if #vim.fn.getbufinfo { buflisted = 1 } > 1 then
+        vim.cmd "bp|sp|bn|bd"
+    else
+        vim.cmd "enew|bd #"
+    end
 end
 
 function M.close_left()

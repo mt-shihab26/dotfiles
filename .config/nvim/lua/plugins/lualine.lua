@@ -50,9 +50,8 @@ lazy.add({
                             local lsp_names = table.concat(buf_client_names, " ")
                             return " " .. lsp_names
                         end,
-                        cond = function()
-                            return #vim.lsp.get_clients { bufnr = 0 } > 0
-                        end,
+                        -- no cond: lualine already hides a component that returns "", a cond asking for
+                        -- the clients too would look them up twice on every statusline refresh
                     },
                     "filetype",
                 },

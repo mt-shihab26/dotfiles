@@ -54,16 +54,45 @@ function M.setup()
         and vim.fn.executable("wl-copy") == 1
         and vim.fn.executable("wl-paste") == 1
 
+    -- wl-copy runs in the background, a yank (or dd, x) waited ~4ms for it otherwise. One at a time
+    -- per register, so a quick run of yanks can't finish out of order and leave an older one on the
+    -- clipboard; only the latest yank made while one runs is copied after it
+    local copies = {} -- by register: { running = bool, pending = text, latest = text }
+
+    local function wl_copy(register, text)
+        local state = copies[register]
+        state.running = true
+        local cmd = { "wl-copy", "--sensitive", "--type", "text/plain" }
+        if register == "*" then
+            cmd[#cmd + 1] = "--primary"
+        end
+        vim.system(cmd, { stdin = text }, function()
+            vim.schedule(function()
+                state.running = false
+                local next_text = state.pending
+                if next_text then
+                    state.pending = nil
+                    wl_copy(register, next_text)
+                end
+            end)
+        end)
+    end
+
     local function copy(register)
         local emit = osc52.copy(register)
+        copies[register] = { running = false }
 
         return function(lines)
             if has_wayland then
-                local cmd = { "wl-copy", "--sensitive", "--type", "text/plain" }
-                if register == "*" then
-                    cmd[#cmd + 1] = "--primary"
+                -- the same bytes system() wrote: every line ends with a newline
+                local text = table.concat(lines, "\n") .. "\n"
+                local state = copies[register]
+                state.latest = text
+                if state.running then
+                    state.pending = text
+                else
+                    wl_copy(register, text)
                 end
-                vim.fn.system(cmd, lines)
             end
 
             if vim.g.omarchy_remote_clipboard_osc52 ~= false then
@@ -78,6 +107,13 @@ function M.setup()
         end
 
         return function()
+            -- a copy still on its way (a paste right after a yank, e.g. yyp in a macro) would read
+            -- the clipboard from before it, so hand out what's being copied, split like wl-paste's
+            local state = copies[register]
+            if state.running then
+                return vim.split(state.latest, "\n", { plain = true })
+            end
+
             local cmd = { "wl-paste", "--no-newline" }
             if register == "*" then
                 cmd[#cmd + 1] = "--primary"
