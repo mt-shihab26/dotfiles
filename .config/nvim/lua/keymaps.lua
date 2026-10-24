@@ -33,6 +33,9 @@ local map = vim.keymap.set
 --   <LeftMouse> + <LeftDrag>              drag the zoomed image
 --   r                                     reset zoom and position
 --
+-- binary files, in a buffer of a file with NUL bytes (lib/hex.lua, set when the file is opened):
+--   <leader>tx   toggle between the xxd hex view and the raw bytes, :w saves the bytes from either view
+--
 -- file tree, inside the neo-tree window (neo-tree defaults, plugins/neo-tree.lua only guards <space>; ? lists them all):
 --   open:      <cr> / <2-LeftMouse> open   s vsplit   S split   t new tab   w pick a window
 --   preview:   P toggle preview   l focus preview   <C-f> / <C-b> scroll preview   <esc> close preview

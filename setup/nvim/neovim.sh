@@ -15,5 +15,8 @@ fi
 # Image preview (snacks.nvim)
 "$(dirname "$0")/image.sh"
 
+# Hex view of binary files
+"$(dirname "$0")/hex.sh"
+
 # Common Lisp
 "$(dirname "$0")/sextant.sh"

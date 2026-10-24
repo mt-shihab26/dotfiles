@@ -17,6 +17,19 @@ vim.api.nvim_create_autocmd("BufNewFile", {
     end,
 })
 
+-- binary files open in hex view, or in normal view when large (see lib/hex.lua), images never get
+-- here since snacks reads them itself
+vim.api.nvim_create_autocmd("BufReadPre", {
+    callback = function(args)
+        require("lib.hex").prepare(args.buf)
+    end,
+})
+vim.api.nvim_create_autocmd("BufReadPost", {
+    callback = function(args)
+        require("lib.hex").attach(args.buf)
+    end,
+})
+
 -- custom filetype detection
 vim.filetype.add {
     extension = {
