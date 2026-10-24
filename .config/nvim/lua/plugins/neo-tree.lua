@@ -48,6 +48,7 @@ lazy.add({
         local folder_size = require "lib.folder_size"
         local utils = require "neo-tree.utils"
         local highlights = require "neo-tree.ui.highlights"
+        local components = require "neo-tree.sources.filesystem.components"
 
         folder_size.on_update = function()
             manager.redraw "filesystem"
@@ -68,14 +69,17 @@ lazy.add({
         -- writes in folders the tree isn't watching, e.g. a file opened from telescope
         vim.api.nvim_create_autocmd("BufWritePost", {
             callback = function(args)
-                -- args.match is the full path of the file written
-                folder_size.changed(vim.fs.dirname(args.match))
+                -- only files on disk, not buffers like "fugitive://..." that write elsewhere; args.match
+                -- is the full path of the file written
+                if vim.bo[args.buf].buftype == "" then
+                    folder_size.changed(vim.fs.dirname(args.match))
+                end
             end,
         })
-        -- another project: free the sizes of the old one
+        -- each working directory has its own cache file (see lib/folder_size.lua)
         vim.api.nvim_create_autocmd("DirChanged", {
             callback = function()
-                folder_size.clear()
+                folder_size.dir_changed()
             end,
         })
         -- keep the sizes shown for the next session (see lib/folder_size.lua)
@@ -90,6 +94,8 @@ lazy.add({
                 type = { enabled = false },
                 last_modified = { enabled = false },
                 created = { enabled = false },
+                -- no icon after gitignored files and folders, their dimmed name already shows it
+                git_status = { symbols = { ignored = "" } },
             },
             window = {
                 width = 45, -- a little wider than the default 40, to fit the size column
@@ -126,7 +132,7 @@ lazy.add({
             filesystem = {
                 components = {
                     name = function(config, node, state)
-                        local result = require("neo-tree.sources.filesystem.components").name(config, node, state)
+                        local result = components.name(config, node, state)
                         if node:get_depth() == 1 and node.type ~= "message" then
                             if state._in_pre_render then
                                 -- keep the root (cwd) path out of the auto-expand width measurement

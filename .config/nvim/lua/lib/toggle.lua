@@ -58,7 +58,7 @@ end
 function M.tree_sizes()
     vim.g.tree_sizes = not vim.g.tree_sizes
     if not vim.g.tree_sizes then
-        require("lib.folder_size").clear(true)
+        require("lib.folder_size").clear()
     end
     -- only redraw a tree that's loaded, so this doesn't load neo-tree
     if package.loaded["neo-tree"] then

@@ -121,8 +121,9 @@ local function pump()
             local started, started_epoch, time = change, epoch, os.time()
             -- no -s: du walks the same files either way, and printing the folders below costs
             -- nothing extra, so opening them later shows their size right away without a du;
-            -- -b: apparent size in bytes like the file sizes, -0: NUL ended, as names can hold newlines
-            vim.system({ "du", "-b0", "--max-depth=" .. max_depth, path }, { text = false }, function(result)
+            -- -b: apparent size in bytes like the file sizes, -0: NUL ended, as names can hold newlines,
+            -- -D: a symlinked folder counts what it links to, like a symlinked file shows its target's size
+            vim.system({ "du", "-b0D", "--max-depth=" .. max_depth, path }, { text = false }, function(result)
                 vim.schedule(function()
                     running = running - 1
                     -- everything was dropped meanwhile
@@ -285,19 +286,25 @@ function M.save()
     write_cache()
 end
 
--- drop every size and every folder waiting for a du, freeing their memory; used when sizes are
--- turned off and when the working directory changes, as the old project's sizes won't be shown.
--- The sizes of the folders shown are saved to the cache file first, the next size asked for loads
--- the file of the working directory then. With `recount`, every cached size is counted again the
--- next time it's shown, while still showing until then.
-function M.clear(recount)
+-- the working directory changed: save the sizes shown to the old one's cache file, the next size
+-- asked for loads the new one's. The counted sizes stay, they're still right, and moving the tree's
+-- root into or out of a folder (which changes the working directory) shows them without a du
+function M.dir_changed()
+    if cached then
+        M.save()
+        cached, shown = nil, {}
+    end
+end
+
+-- sizes turned off: drop every size and every folder waiting for a du, freeing their memory, and
+-- mark every cached size to be counted again the next time it's shown, while still showing until
+-- then, so turning sizes off and on again recounts everything
+function M.clear()
     if cached then
         update_cache()
-        if recount then
-            -- counted at 0: older than any folder's date
-            for _, entry in pairs(cached) do
-                entry[2] = 0
-            end
+        -- counted at 0: older than any folder's date
+        for _, entry in pairs(cached) do
+            entry[2] = 0
         end
         -- not M.save, which would copy the sizes counted this session back over the zeroed times
         write_cache()
