@@ -62,8 +62,14 @@ lazy.add({
         -- writes in folders the tree isn't watching, e.g. a file opened from telescope
         vim.api.nvim_create_autocmd("BufWritePost", {
             callback = function(args)
-                folder_size.changed(vim.fs.dirname(vim.fn.fnamemodify(args.file, ":p")))
+                if vim.g.tree_sizes then
+                    folder_size.changed(vim.fs.dirname(vim.fn.fnamemodify(args.file, ":p")))
+                end
             end,
+        })
+        -- another project: free the sizes of the old one
+        vim.api.nvim_create_autocmd("DirChanged", {
+            callback = folder_size.clear,
         })
 
         neo_tree.setup {
@@ -102,7 +108,9 @@ lazy.add({
                 {
                     event = "fs_event",
                     handler = function(args)
-                        folder_size.changed(args.afile)
+                        if vim.g.tree_sizes then
+                            folder_size.changed(args.afile)
+                        end
                     end,
                 },
             },

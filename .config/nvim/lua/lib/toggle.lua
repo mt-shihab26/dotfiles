@@ -53,11 +53,11 @@ function M.semantic_tokens()
     vim.notify("Semantic tokens " .. (enable and "ON" or "OFF"), vim.log.levels.INFO)
 end
 
--- file and folder sizes in neo-tree; off also stops counting folders that are still waiting for du
+-- file and folder sizes in neo-tree; off also stops counting folders and frees the sizes counted
 function M.tree_sizes()
     vim.g.tree_sizes = not vim.g.tree_sizes
     if not vim.g.tree_sizes then
-        require("lib.folder_size").stop()
+        require("lib.folder_size").clear()
     end
     -- only redraw a tree that's loaded, so this doesn't load neo-tree
     if package.loaded["neo-tree"] then
