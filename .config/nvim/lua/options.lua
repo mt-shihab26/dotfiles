@@ -8,6 +8,9 @@ require("vim._core.ui2").enable {} -- redrawn cmdline and messages: no "Press EN
 -- netrw
 vim.g.netrw_banner = 0 -- hide the help banner above the file list (toggle with I)
 
+-- file tree
+vim.g.tree_sizes = true -- show file and folder sizes in neo-tree, folders counted with du (toggle with <leader>tS)
+
 -- line numbers
 vim.opt.number = true -- show the real line number on the cursor line
 vim.opt.relativenumber = true -- show the distance from the cursor on every other line, for jumps like 5j

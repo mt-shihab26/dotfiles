@@ -53,6 +53,19 @@ function M.semantic_tokens()
     vim.notify("Semantic tokens " .. (enable and "ON" or "OFF"), vim.log.levels.INFO)
 end
 
+-- file and folder sizes in neo-tree; off also stops counting folders that are still waiting for du
+function M.tree_sizes()
+    vim.g.tree_sizes = not vim.g.tree_sizes
+    if not vim.g.tree_sizes then
+        require("lib.folder_size").stop()
+    end
+    -- only redraw a tree that's loaded, so this doesn't load neo-tree
+    if package.loaded["neo-tree"] then
+        require("neo-tree.sources.manager").redraw "filesystem"
+    end
+    vim.notify("Tree sizes " .. (vim.g.tree_sizes and "ON" or "OFF"), vim.log.levels.INFO)
+end
+
 -- switch between the rendered view (render-markdown) and the raw markdown
 function M.markdown_render()
     require("render-markdown").toggle()

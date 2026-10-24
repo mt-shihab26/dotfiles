@@ -115,7 +115,8 @@ lazy.add({
                     -- no "Size" header on the root line, and sizes left aligned within the column with
                     -- lowercase units right after the number ("9.81kb")
                     file_size = function(config, node, state)
-                        if node:get_depth() == 1 then
+                        -- vim.g.tree_sizes off (options.lua, <leader>tS): no sizes, and no du runs
+                        if node:get_depth() == 1 or not vim.g.tree_sizes then
                             return { text = "" }
                         end
                         local result = require("neo-tree.sources.common.components").file_size(config, node, state)

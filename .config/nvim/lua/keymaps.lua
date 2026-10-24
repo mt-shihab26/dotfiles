@@ -131,6 +131,7 @@ map("n", "<leader>tf", toggle.format_on_save, { desc = "toggle format on save" }
 map("n", "<leader>ti", toggle.indent_char, { desc = "toggle tabs/spaces for indentation" })
 map("n", "<leader>tm", toggle.markdown_render, { desc = "toggle markdown rendering (render-markdown)" })
 map("n", "<leader>ts", toggle.semantic_tokens, { desc = "toggle lsp semantic tokens highlighting" })
+map("n", "<leader>tS", toggle.tree_sizes, { desc = "toggle file and folder sizes (neo-tree)" })
 map("n", "<leader>tw", toggle.wrap, { desc = "toggle line wrapping on/off" })
 
 -- text case conversion
