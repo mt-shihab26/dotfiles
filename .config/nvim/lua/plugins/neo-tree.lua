@@ -54,9 +54,9 @@ lazy.add({
             manager.redraw "filesystem"
         end
 
-        -- 3 digit whole numbers with an uppercase unit right after them like ls -h ("023K", "512B"), 1024
-        -- to a unit like neo-tree; a size needing a 4th digit goes up a unit, 1012K is shown as 001M
-        local units = { "B", "K", "M", "G", "T", "P" }
+        -- 3 digit whole numbers with a unit right after them like eza ("023k", "001M", "512B"), 1024
+        -- to a unit like neo-tree; a size needing a 4th digit goes up a unit, 1012k is shown as 001M
+        local units = { "B", "k", "M", "G", "T", "P" }
         local function human_size(size)
             local unit = 1
             while unit < #units and math.floor(size + 0.5) >= 1000 do
@@ -89,7 +89,7 @@ lazy.add({
 
         neo_tree.setup {
             default_component_configs = {
-                -- human readable ("023K", always 4 wide), shown at any window width instead of only from 64 columns
+                -- human readable ("023k", always 4 wide), shown at any window width instead of only from 64 columns
                 file_size = { enabled = true, width = 4, required_width = 0 },
                 type = { enabled = false },
                 last_modified = { enabled = false },
@@ -149,7 +149,7 @@ lazy.add({
                         return result
                     end,
                     -- no "Size" header on the root line, and sizes left aligned within the column, rounded
-                    -- with uppercase units right after the number ("023K", see human_size above)
+                    -- with units right after the number ("023k", see human_size above)
                     file_size = function(config, node, state)
                         -- vim.g.tree_sizes off (options.lua, <leader>tS): no sizes, and no du runs
                         if node:get_depth() == 1 or not vim.g.tree_sizes then
