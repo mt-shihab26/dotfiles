@@ -96,12 +96,15 @@ lazy.add({
                         end
                         return result
                     end,
-                    -- no "Size" header on the root line
+                    -- no "Size" header on the root line, and sizes left aligned within the column with
+                    -- lowercase units ("9.81 kb")
                     file_size = function(config, node, state)
                         if node:get_depth() == 1 then
                             return { text = "" }
                         end
-                        return require("neo-tree.sources.common.components").file_size(config, node, state)
+                        local result = require("neo-tree.sources.common.components").file_size(config, node, state)
+                        result.text = ("%-" .. config.width .. "s  "):format(vim.trim(result.text):lower())
+                        return result
                     end,
                 },
                 use_libuv_file_watcher = true,
