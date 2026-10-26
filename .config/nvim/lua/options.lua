@@ -9,7 +9,7 @@ require("vim._core.ui2").enable {} -- redrawn cmdline and messages: no "Press EN
 vim.g.netrw_banner = 0 -- hide the help banner above the file list (toggle with I)
 
 -- file tree
-vim.g.tree_sizes = true -- show file and folder sizes in neo-tree, folders counted with du (toggle with <leader>tS)
+vim.g.tree_sizes = false -- show file and folder sizes in neo-tree, folders counted with du (toggle with <leader>tS)
 
 -- line numbers
 vim.opt.number = true -- show the real line number on the cursor line
