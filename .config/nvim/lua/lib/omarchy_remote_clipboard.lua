@@ -82,12 +82,13 @@ function M.setup()
         local emit = osc52.copy(register)
         copies[register] = { running = false }
 
-        return function(lines)
+        return function(lines, regtype)
             if has_wayland then
-                -- the same bytes system() wrote: every line ends with a newline
-                local text = table.concat(lines, "\n") .. "\n"
+                -- only a linewise yank ends with a newline, a trailing one makes a paste linewise
+                local text = table.concat(lines, "\n") .. (regtype == "V" and "\n" or "")
                 local state = copies[register]
                 state.latest = text
+                state.regtype = regtype
                 if state.running then
                     state.pending = text
                 else
@@ -111,7 +112,7 @@ function M.setup()
             -- the clipboard from before it, so hand out what's being copied, split like wl-paste's
             local state = copies[register]
             if state.running then
-                return vim.split(state.latest, "\n", { plain = true })
+                return { vim.split(state.latest, "\n", { plain = true }), state.regtype }
             end
 
             local cmd = { "wl-paste", "--no-newline" }
@@ -120,7 +121,16 @@ function M.setup()
             end
 
             local lines = vim.fn.systemlist(cmd, "", 1)
-            return vim.v.shell_error == 0 and lines or {}
+            if vim.v.shell_error ~= 0 then
+                return {}
+            end
+
+            -- still the last yank from here: keep its charwise/linewise/blockwise type, otherwise
+            -- nvim guesses it from a trailing newline
+            if state.latest and table.concat(lines, "\n") == state.latest then
+                return { lines, state.regtype }
+            end
+            return lines
         end
     end
 
