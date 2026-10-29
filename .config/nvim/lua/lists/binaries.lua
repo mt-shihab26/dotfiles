@@ -35,8 +35,8 @@ return {
     "prettier",
     "js-debug-adapter",
     -- PHP
-    -- "intelephense",
-    "phpantom_lsp",
+    "intelephense",
+    -- "phpantom_lsp",
     "laravel_lsp",
     "pint",
     "php-debug-adapter",
