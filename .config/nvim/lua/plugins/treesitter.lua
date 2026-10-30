@@ -58,6 +58,26 @@ lazy.add({
     defer = true,
     setup = function()
         require("nvim-autopairs").setup {}
+
+        -- autotag renames the closing tag to match the opening one just edited (and the other way around), but a
+        -- tag still being typed, like <Heading with no > yet, parses as the opening tag of the next element, whose
+        -- closing tag (</div>) then got renamed; only rename tags that parse. Replaced before setup, which hands
+        -- the function to the InsertLeave autocmds of the buffers it attaches to
+        local autotag = require "nvim-ts-autotag.internal"
+        local rename_tag = autotag.rename_tag
+        autotag.rename_tag = function()
+            local ok, parser = pcall(vim.treesitter.get_parser)
+            if not ok or not parser then
+                return
+            end
+            parser:parse(true)
+            -- the tag name under the cursor, and the tag it's the name of
+            local node = vim.treesitter.get_node { ignore_injections = false }
+            if node and (node:has_error() or (node:parent() and node:parent():has_error())) then
+                return
+            end
+            rename_tag()
+        end
         require("nvim-ts-autotag").setup {}
         require("ts-comments").setup {}
     end,
