@@ -10,7 +10,11 @@ lazy.add({
     modules = { "spectre" },
     commands = { "Spectre" },
     setup = function()
-        require("spectre").setup {}
+        require("spectre").setup {
+            -- leave insert mode off the search, replace and path lines, no <cr> in insert mode and no backspacing
+            -- into the line above, as any of those shifts the panel's lines and breaks it
+            is_block_ui_break = true,
+        }
 
         -- spectre colors the whole search and replace lines with a background (DiffChange/DiffDelete), which hides
         -- the visual selection on them, so selecting part of the text looks like the full line is selected; color
