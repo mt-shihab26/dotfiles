@@ -1,23 +1,23 @@
 {
-  "attribution": {
-    "commit": "",
-    "pr": "",
-    "sessionUrl": false
-  },
-  "model": "opus",
-  "enabledPlugins": {
-    "fizzy@37signals": true
-  },
-  "extraKnownMarketplaces": {
-    "37signals": {
-      "source": {
-        "source": "github",
-        "repo": "basecamp/claude-plugins"
-      }
+    "skipDangerousModePermissionPrompt": true,
+    "agentPushNotifEnabled": true,
+    "tui": "fullscreen",
+    "theme": "dark",
+    "model": "opus",
+    "attribution": {
+        "commit": "",
+        "pr": "",
+        "sessionUrl": false
+    },
+    "enabledPlugins": {
+        "fizzy@37signals": true
+    },
+    "extraKnownMarketplaces": {
+        "37signals": {
+            "source": {
+                "source": "github",
+                "repo": "basecamp/claude-plugins"
+            }
+        }
     }
-  },
-  "tui": "fullscreen",
-  "skipDangerousModePermissionPrompt": true,
-  "theme": "dark",
-  "agentPushNotifEnabled": true
 }
