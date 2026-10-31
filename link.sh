@@ -13,6 +13,7 @@ create_tmp() {
 
 create_tmp ".local/bin"
 create_tmp ".claude"
+create_tmp ".codex"
 create_tmp ".config/opencode"
 create_tmp ".local/share/applications"
 
