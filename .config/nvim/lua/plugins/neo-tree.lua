@@ -45,6 +45,16 @@ lazy.add({
             return path
         end
 
+        -- on rename, never ask "has been modified. Save under new name?", always answer yes
+        local inputs = require "neo-tree.ui.inputs"
+        local confirm = inputs.confirm
+        inputs.confirm = function(message, callback)
+            if callback and message:find("has been modified. Save under new name?", 1, true) then
+                return callback(true)
+            end
+            return confirm(message, callback)
+        end
+
         local folder_size = require "lib.folder_size"
         local utils = require "neo-tree.utils"
         local highlights = require "neo-tree.ui.highlights"
