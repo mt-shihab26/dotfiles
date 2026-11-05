@@ -32,6 +32,16 @@ o.bind("ALT + code:16", "Switch to workspace 7", hl.dsp.focus { workspace = "7" 
 o.bind("ALT + code:17", "Switch to workspace 8", hl.dsp.focus { workspace = "8" })
 o.bind("ALT + code:18", "Switch to workspace 9", hl.dsp.focus { workspace = "9" })
 
+-- Free Left Alt + Right Alt for the layout toggle (grp:alts_toggle) above:
+-- Omarchy binds it to push-to-talk dictation by default.
+hl.unbind("ALT + Alt_R")
+
+-- Dictation: hold F9 to talk, SUPER + CTRL + X to toggle (the pre-update keys).
+if o.dictation_installed and o.dictation_installed() then
+    o.bind("SUPER + CTRL + X", "Toggle dictation", "omarchy-dictation toggle")
+    o.bind_hold("F9", "Start dictation (push-to-talk)", "omarchy-dictation start", "Stop dictation (push-to-talk)", "omarchy-dictation stop")
+end
+
 -- Cycle wallpaper on startup.
 o.launch_on_start "wallpaper-cycle"
 
