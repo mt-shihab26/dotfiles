@@ -36,9 +36,10 @@ o.bind("ALT + code:18", "Switch to workspace 9", hl.dsp.focus { workspace = "9" 
 -- Omarchy binds it to push-to-talk dictation by default.
 hl.unbind("ALT + Alt_R")
 
--- Dictation: hold F9 to talk, SUPER + CTRL + X to toggle (the pre-update keys).
+-- Dictation: F9 only (hold to talk). Toggles disabled for now.
+hl.unbind("ALT + SPACE")
 if o.dictation_installed and o.dictation_installed() then
-    o.bind("SUPER + CTRL + X", "Toggle dictation", "omarchy-dictation toggle")
+    -- o.bind("SUPER + CTRL + X", "Toggle dictation", "omarchy-dictation toggle")
     o.bind_hold("F9", "Start dictation (push-to-talk)", "omarchy-dictation start", "Stop dictation (push-to-talk)", "omarchy-dictation stop")
 end
 
