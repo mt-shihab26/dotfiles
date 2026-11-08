@@ -41,6 +41,7 @@ vim.filetype.add {
         -- .glsl: one file holds every stage of a shader, each section opened by a "#type <stage>" line
         -- such as "#type vertex" or "#type fragment"
         glsl = "glsl",
+        -- .slang: built-in as "shaderslang" since Neovim 0.11, highlighted by the slang treesitter parser
     },
 }
 

@@ -46,4 +46,6 @@ return {
     -- no formatter listed, formatted by the sextant LSP (conform lsp_format = "fallback")
     -- GLSL
     -- no formatter listed, formatted by the glsl_analyzer LSP (conform lsp_format = "fallback")
+    -- Slang
+    -- no formatter listed, formatted by the slangd LSP (conform lsp_format = "fallback")
 }

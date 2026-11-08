@@ -42,4 +42,6 @@ return {
     "sextant", -- setup/nvim/sextant.sh
     -- GLSL
     "glsl_analyzer",
+    -- Slang
+    "slangd", -- shader-slang-bin from the AUR, see lsp/slangd.lua
 }

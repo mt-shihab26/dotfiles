@@ -61,4 +61,6 @@ return {
     "commonlisp",
     -- GLSL
     "glsl",
+    -- Slang
+    "slang",
 }
