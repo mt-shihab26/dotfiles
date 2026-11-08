@@ -121,6 +121,10 @@ lazy.add({
                         nowait = false,
                         desc = "toggle_node",
                     },
+                    -- <cr> opens the file in the current window, shift+<cr> opens it in a vertical split
+                    ["<S-CR>"] = "open_vsplit",
+                    -- <S-h> moves to the window on the left (keymaps.lua), not neo-tree's toggle hidden files
+                    ["H"] = "none",
                 },
             },
             event_handlers = {
