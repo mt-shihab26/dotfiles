@@ -108,7 +108,7 @@ lazy.add({
                 git_status = { symbols = { ignored = "" } },
             },
             window = {
-                width = 45, -- a little wider than the default 40, to fit the size column
+                width = 40, -- a little wider than the default 40, to fit the size column
                 mappings = {
                     -- <space> is also <leader>, so it can fire after the tree lost its window, and nui's
                     -- get_node then errors with "Invalid 'win'"; only toggle while the tree is on screen
