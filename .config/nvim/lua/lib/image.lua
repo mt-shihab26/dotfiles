@@ -432,6 +432,25 @@ local function zoom_images(image)
     end
 end
 
+-- Snacks sends PNG files to the terminal as they are, and the terminal scales them up smoothly,
+-- which blurs small images. Run PNGs through the same magick step as other formats, so the
+-- magick args can scale them up with sharp pixels first.
+local function convert_pngs(image)
+    local convert = image.convert
+    local new = convert.convert
+
+    convert.convert = function(opts)
+        local self = new(opts)
+        if self:ft() == "png" and not convert.is_uri(self.src) then
+            self.steps = {}
+            self:_resolve "convert"
+            self:_resolve "identify"
+            self.file = self.meta.src
+        end
+        return self
+    end
+end
+
 -- Each part wraps a snacks function, so running setup again (like re-sourcing the config)
 -- would wrap them twice and draw the border around the border instead of the image
 local did_setup = false
@@ -446,6 +465,7 @@ function M.setup(image)
     reshow_images(image)
     border_images(image)
     zoom_images(image)
+    convert_pngs(image)
 end
 
 return M
