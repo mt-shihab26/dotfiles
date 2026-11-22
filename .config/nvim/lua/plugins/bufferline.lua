@@ -39,6 +39,10 @@ lazy.add({
                 diagnostics_update_in_insert = false,
                 always_show_bufferline = false,
                 mode = "buffers",
+                -- the default ("id") orders by buffer number, so a file that already had a buffer
+                -- (seen in a picker preview, opened before, restored) lands at its old spot instead
+                -- of next to the current one
+                sort_by = "insert_after_current",
                 numbers = "none",
                 left_mouse_command = "buffer %d",
                 middle_mouse_command = nil,
