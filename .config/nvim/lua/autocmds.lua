@@ -42,7 +42,17 @@ vim.filetype.add {
         -- such as "#type vertex" or "#type fragment"
         glsl = "glsl",
         -- .slang: built-in as "shaderslang" since Neovim 0.11, highlighted by the slang treesitter parser
+        -- .ejs: not detected by Neovim, highlighted by the embedded_template parser loaded as "ejs" (below)
+        ejs = "ejs",
     },
 }
 
 vim.treesitter.language.register("markdown", "mdx")
+
+-- .ejs: the embedded_template parser (also behind .erb) loaded a second time under the name "ejs", so
+-- queries/ejs/injections.scm can inject javascript into the <% %> tags where the erb queries inject ruby.
+-- Fails quietly until nvim-treesitter has installed the parser
+local ejs_parser = vim.api.nvim_get_runtime_file("parser/embedded_template.so", false)[1]
+if ejs_parser then
+    pcall(vim.treesitter.language.add, "ejs", { path = ejs_parser, symbol_name = "embedded_template" })
+end
