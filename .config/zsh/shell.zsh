@@ -1,6 +1,9 @@
 # Ensure command hashing is off for mise
 unsetopt HASH_CMDS
 
+# Like bash: pass unmatched globs through as-is (e.g. scp host:/path/*.txt)
+unsetopt NOMATCH
+
 # Prompt & Theme Setup
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
